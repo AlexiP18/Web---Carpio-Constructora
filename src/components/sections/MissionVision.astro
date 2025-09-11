@@ -1,0 +1,28 @@
+---
+const Layout355 = '/images/layout-355.png';
+const PlayButton = '/images/play-button.svg';
+---
+
+<section class="bg-cover bg-center bg-no-repeat bg-[#000000b3] bg-blend-multiply text-white px-4 sm:px-16 pt-0 pb-28 sm:pb-64 rounded-t-none sm:rounded-t-[40px]" style={`backgroundImage: url(${Layout355})`}>
+  <div class="max-w-[1280px] mx-auto">
+    <div class="h-[400px] sm:h-[900px] flex items-center justify-center">
+      <button>
+        <img src={PlayButton} alt="Play Video" class="w-16 h-16 hover:scale-110 transition-transform"/>
+      </button>
+    </div>
+    <div class="flex flex-col gap-10 sm:gap-20">
+      <div class="max-w-[480px] flex flex-col gap-6">
+        <h3 class="font-['Urbanist',_sans-serif] font-medium text-[36px] sm:text-[48px] leading-tight tracking-[0.48px]">Misión</h3>
+        <p class="font-['Heebo',_sans-serif] font-normal text-[18px] sm:text-[20px] leading-relaxed">Nuestro proceso de construcción se basa en la planificación meticulosa y la ejecución precisa. Desde la concepción hasta la finalización, cada etapa está diseñada para garantizar calidad y satisfacción.</p>
+      </div>
+      <div class="max-w-[480px] self-end text-right flex flex-col gap-6 items-end">
+        <h3 class="font-['Urbanist',_sans-serif] font-medium text-[36px] sm:text-[48px] leading-tight tracking-[0.48px]">Objetivos</h3>
+        <p class="font-['Heebo',_sans-serif] font-normal text-[18px] sm:text-[20px] leading-relaxed">Cada proyecto comienza con una consulta detallada para entender sus necesidades. Luego, pasamos a la fase de diseño, donde creamos planos personalizados que reflejan su visión.</p>
+      </div>
+      <div class="max-w-[480px] flex flex-col gap-6">
+        <h3 class="font-['Urbanist',_sans-serif] font-medium text-[36px] sm:text-[48px] leading-tight tracking-[0.48px]">Visión</h3>
+        <p class="font-['Heebo',_sans-serif] font-normal text-[18px] sm:text-[20px] leading-relaxed">Nos aseguramos de que cada material y técnica utilizada cumpla con los estándares más altos. La seguridad en el sitio es nuestra prioridad, protegiendo tanto a nuestros trabajadores como a nuestros clientes.</p>
+      </div>
+    </div>
+  </div>
+</section>

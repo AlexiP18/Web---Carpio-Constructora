@@ -1,0 +1,45 @@
+---
+import PortfolioCard from "../ui/PortfolioCard.astro";
+---
+
+<section class="bg-[#dad9d8] py-16 md:py-28 px-5 md:px-16">
+  <div class="container mx-auto max-w-[335px] md:max-w-[1280px]">
+    <div class="text-center max-w-[768px] mx-auto mb-12 md:mb-20">
+      <div class="mb-4 md:mb-6">
+        <span class="text-[#0c0801] text-sm md:text-base font-semibold font-['Heebo']">Portafolio</span>
+      </div>
+      <h2 class="text-[#0c0801] text-3xl md:text-[60px] font-medium leading-[1.2] tracking-[0.6px] mb-6 font-['Urbanist']">
+        Nuestros Proyectos Destacados
+      </h2>
+      <p class="text-[#0c0801] text-base md:text-xl leading-[1.6] font-['Heebo']">
+        Explora nuestra amplia gama de proyectos realizados.
+      </p>
+    </div>
+    <div class="flex flex-col gap-8 md:gap-20">
+      <PortfolioCard
+        title="Proyecto Residencial Moderno"
+        tags={["Residencial Urbano", "Sostenibilidad", "Innovación"]}
+        description="Este proyecto representa un hito en diseño arquitectónico. Combinamos funcionalidad y estética para crear espacios únicos."
+        image="/images/placeholder-image.png"
+        isMobile={false}
+        slug="proyecto-residencial-moderno"
+      />
+      <PortfolioCard
+        title="Centro Comercial Innovador"
+        tags={["Comercio Local", "Espacios Abiertos", "Accesibilidad"]}
+        description="Este centro comercial está diseñado para la comunidad. Fomenta el comercio local y ofrece espacios accesibles."
+        image="/images/placeholder-image.png"
+        isMobile={false}
+        slug="centro-comercial-innovador"
+      />
+      <PortfolioCard
+        title="Parque Recreativo Familiar"
+        tags={["Naturaleza", "Familia", "Diversión"]}
+        description="Este parque recreativo es un espacio para disfrutar en familia. Ofrece áreas verdes y actividades para todas las edades."
+        image="/images/placeholder-image.png"
+        isMobile={false}
+        slug="parque-recreativo-familiar"
+      />
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/ui/Header.astro";
+import Footer from "../components/sections/Footer.astro";
+import Portfolio from "../components/sections/Portfolio.astro";
+import Testimonial from "../components/sections/Testimonial.astro";
+import Cta from "../components/sections/Cta.astro";
+---
+
+<Layout title="Proyectos - Constructora Carpio">
+  <Header />
+  <main>
+    <section
+      class="bg-[#00000080] bg-cover bg-center bg-no-repeat py-16 md:py-28 px-5 md:px-16"
+      style="background-image: url('/images/header-50.png');"
+    >
+      <div class="container mx-auto max-w-[1280px]">
+        <div class="max-w-[768px]">
+          <div class="mb-4 md:mb-6">
+            <span class="text-white text-sm md:text-base font-semibold font-['Heebo']">Proyectos</span>
+          </div>
+          <h1 class="text-white text-4xl md:text-[84px] font-medium leading-[1.1] tracking-[0.84px] mb-6 md:mb-8 font-['Urbanist']">
+            Nuestros Proyectos Destacados
+          </h1>
+          <p class="text-white text-base md:text-xl leading-[1.6] mb-6 md:mb-8 font-['Heebo']">
+            Descubre la calidad y creatividad en cada uno de nuestros proyectos de construcción.
+          </p>
+          <div class="flex flex-col md:flex-row gap-3 md:gap-4">
+            <button class="bg-[#d7e6fd] text-[#0c0801] font-medium py-2.5 px-6 rounded-full border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] text-sm md:text-lg font-['Heebo']">
+              Ver Más
+            </button>
+            <button class="bg-[#f2f2f2] text-[#0c0801] font-medium py-2.5 px-6 rounded-full border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] text-sm md:text-lg font-['Heebo']">
+              Contáctanos
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <Portfolio />
+    <Testimonial />
+    <Cta />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,569 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/sections/Header.astro';
+import Footer from '../../components/sections/Footer.astro';
+
+// Datos estáticos de servicios para generar las páginas
+export function getStaticPaths() {
+  return [
+    {
+      params: { slug: 'construccion' },
+      props: {
+        title: 'Innovación en Construcción',
+        subtitle: 'Construcción',
+        description: 'Transformamos tus ideas en realidad con soluciones constructivas de alta calidad y eficiencia.',
+        service: {
+          name: 'Servicio de Construcción',
+          category: 'Construcción',
+          tagline: 'Calidad',
+          featuresTitle: 'Características Destacadas de Nuestro Servicio de Construcción',
+          featuresDescription: 'Nuestro servicio de construcción se distingue por su enfoque en la calidad y la atención al detalle. Nos aseguramos de que cada proyecto cumpla con los más altos estándares de excelencia.',
+          features: [
+            {
+              title: 'Compromiso con la Sostenibilidad',
+              description: 'Implementamos prácticas sostenibles en cada etapa del proceso.'
+            },
+            {
+              title: 'Equipo de Profesionales Altamente Capacitados',
+              description: 'Nuestro equipo está compuesto por expertos en la industria.'
+            },
+            {
+              title: 'Atención Personalizada para Cada Cliente',
+              description: 'Nos adaptamos a las necesidades específicas de nuestros clientes.'
+            }
+          ]
+        }
+      }
+    },
+    {
+      params: { slug: 'remodelacion' },
+      props: {
+        title: 'Remodelación Integral',
+        subtitle: 'Remodelación',
+        description: 'Renovamos y transformamos espacios existentes con diseños modernos y funcionales.',
+        service: {
+          name: 'Servicio de Remodelación',
+          category: 'Remodelación',
+          tagline: 'Renovación',
+          featuresTitle: 'Características Destacadas de Nuestro Servicio de Remodelación',
+          featuresDescription: 'Nuestro servicio de remodelación combina creatividad y funcionalidad para transformar espacios según tus necesidades.',
+          features: [
+            {
+              title: 'Diseños Modernos y Funcionales',
+              description: 'Creamos espacios que combinan estética y practicidad.'
+            },
+            {
+              title: 'Optimización de Espacios',
+              description: 'Maximizamos el potencial de cada área de tu hogar o negocio.'
+            },
+            {
+              title: 'Materiales de Alta Calidad',
+              description: 'Utilizamos los mejores materiales para garantizar durabilidad.'
+            }
+          ]
+        }
+      }
+    },
+    {
+      params: { slug: 'mantenimiento' },
+      props: {
+        title: 'Mantenimiento Preventivo',
+        subtitle: 'Mantenimiento',
+        description: 'Servicios de mantenimiento preventivo y correctivo para conservar tus espacios en perfecto estado.',
+        service: {
+          name: 'Servicio de Mantenimiento',
+          category: 'Mantenimiento',
+          tagline: 'Cuidado',
+          featuresTitle: 'Características Destacadas de Nuestro Servicio de Mantenimiento',
+          featuresDescription: 'Nuestro servicio de mantenimiento asegura la longevidad y buen funcionamiento de tus instalaciones.',
+          features: [
+            {
+              title: 'Mantenimiento Preventivo Programado',
+              description: 'Planes de mantenimiento para evitar problemas futuros.'
+            },
+            {
+              title: 'Respuesta Rápida en Emergencias',
+              description: 'Atención inmediata para situaciones urgentes.'
+            },
+            {
+              title: 'Diagnóstico Especializado',
+              description: 'Evaluación experta para identificar necesidades específicas.'
+            }
+          ]
+        }
+      }
+    }
+  ];
+}
+
+const { title, subtitle, description, service } = Astro.props;
+
+// Imágenes de assets
+const imgHeader50 = "http://localhost:3845/assets/d50ffb0afa333613e155822dc6b3dfe63f150a74.png";
+const imgPlaceholderImage = "http://localhost:3845/assets/d568b164c26b35eebe6a407c03f478bc8049c84b.png";
+const imgAvatarImage = "http://localhost:3845/assets/49a20f9ebf384e91252deaa60c764a58949b0aa4.png";
+const imgPlaceholderImage1 = "http://localhost:3845/assets/1de7f5b16c38dd3644b963b0bca1dbf2605e03aa.png";
+const imgStars = "http://localhost:3845/assets/1cd49e18934601dde00af4df26a5cd54da0f4b1c.svg";
+
+// SVG icons
+const imgCompost = "http://localhost:3845/assets/188627d2615bce06e9fdbecbe78ebe4f43d09c91.svg";
+const imgHvac = "http://localhost:3845/assets/5dd8878797d1434ddb4de808bcc47e940388b952.svg";
+const imgAllInclusive = "http://localhost:3845/assets/201b48490cc06fe495808dde4a78d93ebff06d02.svg";
+const imgChevronRight = "http://localhost:3845/assets/aea3cabe7b26afc0e72967ff812d5074c4da9be9.svg";
+const imgSecurity = "http://localhost:3845/assets/f75d30c823cd4a0f692bd86c4dd91110fbcdd3ad.svg";
+const imgPersonalBag = "http://localhost:3845/assets/c57d2fb165ab3edebdb2558a0c706c912c2d77fc.svg";
+const imgDetails = "http://localhost:3845/assets/d73bf168d3b82783efd87b40a8fc2a1215253577.svg";
+const imgNextPlan = "http://localhost:3845/assets/84d59f50304a8ac697062b088b4bd3fd541b0074.svg";
+const imgTransform = "http://localhost:3845/assets/7dd511f0ebf6594ceac9d853572ebd7f043bbf75.svg";
+const imgLogo = "http://localhost:3845/assets/7f0e944948c422504b8f8a30db1c146740a308d1.svg";
+const imgDivider = "http://localhost:3845/assets/9379d24c7587bb30a80faffc4681288e756d355e.svg";
+---
+
+<Layout title={`${title} | Constructora Carpio`}>
+  <Header />
+  
+  <!-- Hero Section -->
+  <section 
+    class="bg-[#00000080] bg-cover bg-center bg-no-repeat box-border content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start overflow-clip px-5 md:px-16 py-16 md:py-28 relative shrink-0 w-full"
+    style={`background-image: url('${imgHeader50}')`}
+  >
+    <div class="content-stretch flex flex-col gap-12 md:gap-20 items-start justify-start max-w-[1280px] relative shrink-0 w-full">
+      <div class="content-stretch flex flex-col gap-6 md:gap-8 items-start justify-start max-w-[768px] relative shrink-0 w-full">
+        <div class="content-stretch flex flex-col gap-3 md:gap-4 items-start justify-start relative shrink-0 w-full">
+          <div class="content-stretch flex items-center justify-start relative shrink-0">
+            <div class="font-['Heebo:SemiBold',_sans-serif] font-semibold leading-[0] relative shrink-0 text-[16px] text-nowrap text-white">
+              <p class="leading-[1.5] whitespace-pre">{subtitle}</p>
+            </div>
+          </div>
+          <div class="content-stretch flex flex-col gap-5 md:gap-6 items-start justify-start leading-[0] relative shrink-0 text-white w-full">
+            <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[48px] md:text-[84px] tracking-[0.48px] md:tracking-[0.84px] w-full">
+              <p class="leading-[1.1]">{title}</p>
+            </div>
+            <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[20px] w-full">
+              <p class="leading-[1.6]">{description}</p>
+            </div>
+          </div>
+        </div>
+        <div class="content-stretch flex gap-4 items-start justify-start relative shrink-0">
+          <div class="bg-[#d7e6fd] box-border content-stretch flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shrink-0">
+            <div aria-hidden="true" class="absolute border-2 border-[#0c0801] border-solid inset-[-2px] pointer-events-none rounded-[102px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]" />
+            <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+              <p class="leading-[1.6] whitespace-pre">Descubre</p>
+            </div>
+            <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]" />
+          </div>
+          <div class="bg-[#f2f2f2] box-border content-stretch flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shrink-0">
+            <div aria-hidden="true" class="absolute border-2 border-[#0c0801] border-solid inset-[-2px] pointer-events-none rounded-[102px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]" />
+            <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+              <p class="leading-[1.6] whitespace-pre">Contáctanos</p>
+            </div>
+            <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="bg-[#dad9d8] box-border content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start overflow-clip px-5 md:px-16 py-16 md:py-28 relative shrink-0 w-full">
+    <div class="content-stretch flex flex-col gap-12 md:gap-20 items-start justify-start max-w-[1280px] relative shrink-0 w-full">
+      <div class="content-stretch flex flex-col gap-3 md:gap-4 items-start justify-start max-w-[768px] relative shrink-0 w-full">
+        <div class="content-stretch flex items-center justify-start relative shrink-0">
+          <div class="font-['Heebo:SemiBold',_sans-serif] font-semibold leading-[0] relative shrink-0 text-[#0c0801] text-[16px] text-nowrap">
+            <p class="leading-[1.5] whitespace-pre">{service.tagline}</p>
+          </div>
+        </div>
+        <div class="content-stretch flex flex-col gap-5 md:gap-6 items-start justify-start leading-[0] relative shrink-0 text-[#0c0801] w-full">
+          <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[44px] md:text-[60px] tracking-[0.44px] md:tracking-[0.6px] w-full">
+            <p class="leading-[1.2]">{service.featuresTitle}</p>
+          </div>
+          <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[20px] w-full">
+            <p class="leading-[1.6]">{service.featuresDescription}</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Features Grid - Mobile: Column, Desktop: Row -->
+      <div class="content-stretch flex flex-col md:flex-row gap-12 md:gap-16 items-start justify-start relative shrink-0 w-full">
+        {service.features.map((feature, index) => (
+          <div class="basis-0 content-stretch flex flex-col gap-3 md:gap-6 grow items-start justify-start min-h-px min-w-px relative shrink-0">
+            <div class="relative shrink-0 size-12">
+              <img alt={feature.title} class="block max-w-none size-full" src={index === 0 ? imgCompost : index === 1 ? imgHvac : imgAllInclusive} />
+            </div>
+            <div class="font-['Urbanist:Medium',_sans-serif] font-medium leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[24px] md:text-[40px] tracking-[0.24px] md:tracking-[0.4px]" style="width: min-content">
+              <p class="leading-[1.2]">{feature.title}</p>
+            </div>
+            <div class="font-['Heebo:Regular',_sans-serif] font-normal leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px]" style="width: min-content">
+              <p class="leading-[1.6]">{feature.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <div class="content-stretch flex gap-6 items-center justify-start relative shrink-0">
+        <div class="bg-[#f2f2f2] relative rounded-[100px] shrink-0">
+          <div class="box-border content-stretch flex gap-2 items-center justify-center overflow-clip px-6 py-2.5 relative">
+            <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+              <p class="leading-[1.6] whitespace-pre">Más</p>
+            </div>
+          </div>
+          <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]" />
+          <div aria-hidden="true" class="absolute border-2 border-[#0c0801] border-solid inset-[-2px] pointer-events-none rounded-[102px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]" />
+        </div>
+        <div class="content-stretch flex gap-2 items-center justify-center overflow-clip relative rounded-[100px] shrink-0">
+          <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+            <p class="leading-[1.6] whitespace-pre">Contáctanos</p>
+          </div>
+          <div class="overflow-clip relative shrink-0 size-6">
+            <img alt="chevron_right" class="block max-w-none size-full" src={imgChevronRight} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="bg-white box-border content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start overflow-clip px-5 md:px-16 py-16 md:py-28 relative shrink-0 w-full">
+    <div class="content-stretch flex flex-col gap-12 md:gap-20 items-start justify-start max-w-[1280px] relative shrink-0 w-full">
+      <div class="content-stretch flex flex-col md:flex-row gap-12 md:gap-20 items-start md:items-center justify-start relative shrink-0 w-full">
+        <div class="basis-0 content-stretch flex flex-col gap-6 md:gap-8 grow items-start justify-start min-h-px min-w-px relative shrink-0">
+          <div class="content-stretch flex flex-col gap-5 md:gap-6 items-start justify-start leading-[0] relative shrink-0 text-[#0c0801] w-full">
+            <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[44px] md:text-[48px] tracking-[0.44px] md:tracking-[0.48px] w-full">
+              <p class="leading-[1.2]">Ventajas de nuestro {service.name.toLowerCase()} para tu proyecto ideal</p>
+            </div>
+            <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[20px] w-full">
+              <p class="leading-[1.6]">Nuestro {service.name.toLowerCase()} ofrece soluciones personalizadas que se adaptan a tus necesidades. Con un enfoque en la calidad y la eficiencia, garantizamos resultados excepcionales.</p>
+            </div>
+          </div>
+          
+          <!-- Benefits List -->
+          <div class="box-border content-stretch flex flex-col gap-6 md:gap-4 items-start justify-start px-0 py-2 relative shrink-0 w-full">
+            <div class="content-stretch flex flex-col md:flex-row gap-6 md:gap-0 items-start justify-start relative shrink-0 w-full">
+              <div class="basis-0 content-stretch flex flex-col gap-3 md:gap-4 grow items-start justify-start min-h-px min-w-px relative shrink-0">
+                <div class="relative shrink-0 size-12">
+                  <img alt="security" class="block max-w-none size-full" src={imgSecurity} />
+                </div>
+                <div class="font-['Urbanist:Medium',_sans-serif] font-medium leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[24px] md:text-[26px] tracking-[0.24px] md:tracking-[0.26px]" style="width: min-content">
+                  <p class="leading-[1.2]">Calidad garantizada</p>
+                </div>
+                <div class="font-['Heebo:Regular',_sans-serif] font-normal leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px]" style="width: min-content">
+                  <p class="leading-[1.6]">Utilizamos materiales de primera para asegurar la durabilidad y seguridad de tu proyecto.</p>
+                </div>
+              </div>
+              <div class="basis-0 content-stretch flex flex-col gap-3 md:gap-4 grow items-start justify-start min-h-px min-w-px relative shrink-0">
+                <div class="relative shrink-0 size-12">
+                  <img alt="personal_bag" class="block max-w-none size-full" src={imgPersonalBag} />
+                </div>
+                <div class="font-['Urbanist:Medium',_sans-serif] font-medium leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[24px] md:text-[26px] tracking-[0.24px] md:tracking-[0.26px]" style="width: min-content">
+                  <p class="leading-[1.2]">Atención personalizada</p>
+                </div>
+                <div class="font-['Heebo:Regular',_sans-serif] font-normal leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px]" style="width: min-content">
+                  <p class="leading-[1.6]">Nuestro equipo te acompaña en cada etapa, garantizando una comunicación fluida y efectiva.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="aspect-[335/348] md:aspect-[600/640] basis-0 bg-center bg-cover bg-no-repeat grow min-h-px min-w-px rounded-[40px] shrink-0" style={`background-image: url('${imgPlaceholderImage}')`} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="bg-[#dad9d8] box-border content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start overflow-clip px-5 md:px-16 py-16 md:py-28 relative shrink-0 w-full">
+    <div class="content-stretch flex flex-col gap-12 md:gap-20 items-start justify-start max-w-[1280px] relative shrink-0 w-full">
+      <div class="font-['Urbanist:Medium',_sans-serif] font-medium leading-[0] max-w-[768px] relative shrink-0 text-[#0c0801] text-[44px] md:text-[48px] tracking-[0.44px] md:tracking-[0.48px] w-full">
+        <p class="leading-[1.2]">Descubre cómo implementamos nuestros servicios de {service.category.toLowerCase()} de manera efectiva.</p>
+      </div>
+      
+      <!-- Process Steps -->
+      <div class="content-stretch flex flex-col md:flex-row gap-12 items-center md:items-start justify-center relative shrink-0 w-full">
+        <div class="basis-0 content-stretch flex flex-col gap-6 md:gap-8 grow items-start justify-start min-h-px min-w-px relative shrink-0">
+          <div class="content-stretch flex flex-col gap-3 md:gap-6 items-start justify-start relative shrink-0 w-full">
+            <div class="relative shrink-0 size-12">
+              <img alt="details" class="block max-w-none size-full" src={imgDetails} />
+            </div>
+            <div class="font-['Urbanist:Medium',_sans-serif] font-medium leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[24px] md:text-[32px] tracking-[0.24px] md:tracking-[0.32px]" style="width: min-content">
+              <p class="leading-[1.2]">Pasos clave para llevar a cabo tu proyecto de {service.category.toLowerCase()} con éxito.</p>
+            </div>
+            <div class="font-['Heebo:Regular',_sans-serif] font-normal leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px]" style="width: min-content">
+              <p class="leading-[1.6]">Nuestro proceso comienza con una consulta detallada para entender tus necesidades.</p>
+            </div>
+          </div>
+          <div class="content-stretch flex flex-col gap-2 items-start justify-start relative shrink-0 w-full">
+            <div class="content-stretch flex gap-2 items-center justify-center overflow-clip relative rounded-[100px] shrink-0">
+              <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+                <p class="leading-[1.6] whitespace-pre">Más</p>
+              </div>
+              <div class="overflow-clip relative shrink-0 size-6">
+                <img alt="chevron_right" class="block max-w-none size-full" src={imgChevronRight} />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    <div class="basis-0 content-stretch flex flex-col gap-6 md:gap-8 grow items-start justify-start min-h-px min-w-px relative shrink-0">
+          <div class="content-stretch flex flex-col gap-3 md:gap-6 items-start justify-start relative shrink-0 w-full">
+            <div class="relative shrink-0 size-12">
+              <img alt="next_plan" class="block max-w-none size-full" src={imgNextPlan} />
+            </div>
+      <div class="font-['Urbanist:Medium',_sans-serif] font-medium leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[24px] md:text-[32px] tracking-[0.24px] md:tracking-[0.32px]" style="width: min-content">
+              <p class="leading-[1.2]">Planificación y diseño: la base de un proyecto exitoso.</p>
+            </div>
+            <div class="font-['Heebo:Regular',_sans-serif] font-normal leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px]" style="width: min-content">
+              <p class="leading-[1.6]">Creamos un plan personalizado que se ajusta a tus requerimientos específicos.</p>
+            </div>
+          </div>
+          <div class="content-stretch flex flex-col gap-2 items-start justify-start relative shrink-0 w-full">
+            <div class="content-stretch flex gap-2 items-center justify-center overflow-clip relative rounded-[100px] shrink-0">
+              <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+                <p class="leading-[1.6] whitespace-pre">Iniciar</p>
+              </div>
+              <div class="overflow-clip relative shrink-0 size-6">
+                <img alt="chevron_right" class="block max-w-none size-full" src={imgChevronRight} />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+    <div class="basis-0 content-stretch flex flex-col gap-6 md:gap-8 grow items-start justify-start min-h-px min-w-px relative shrink-0">
+          <div class="content-stretch flex flex-col gap-3 md:gap-6 items-start justify-start relative shrink-0 w-full">
+            <div class="relative shrink-0 size-12">
+              <img alt="transform" class="block max-w-none size-full" src={imgTransform} />
+            </div>
+      <div class="font-['Urbanist:Medium',_sans-serif] font-medium leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[24px] md:text-[32px] tracking-[0.24px] md:tracking-[0.32px]" style="width: min-content">
+              <p class="leading-[1.2]">Ejecución: transformamos tus ideas en realidad con precisión y calidad.</p>
+            </div>
+            <div class="font-['Heebo:Regular',_sans-serif] font-normal leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px]" style="width: min-content">
+              <p class="leading-[1.6]">Nuestro equipo se encarga de cada detalle para asegurar un resultado óptimo.</p>
+            </div>
+          </div>
+          <div class="content-stretch flex flex-col gap-2 items-start justify-start relative shrink-0 w-full">
+            <div class="content-stretch flex gap-2 items-center justify-center overflow-clip relative rounded-[100px] shrink-0">
+              <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+                <p class="leading-[1.6] whitespace-pre">Contáctanos</p>
+              </div>
+              <div class="overflow-clip relative shrink-0 size-6">
+                <img alt="chevron_right" class="block max-w-none size-full" src={imgChevronRight} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="bg-white box-border content-stretch flex flex-col gap-12 md:gap-20 items-start md:items-center justify-start overflow-clip px-5 md:px-16 py-16 md:py-28 relative shrink-0 w-full">
+    <div class="content-stretch flex flex-col gap-12 md:gap-20 items-start justify-start max-w-[1280px] relative shrink-0 w-full">
+      <div class="content-stretch flex flex-col gap-5 md:gap-6 items-start justify-start leading-[0] max-w-[768px] relative shrink-0 text-[#0c0801] w-full">
+        <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[48px] md:text-[60px] tracking-[0.48px] md:tracking-[0.6px] w-full">
+          <p class="leading-[1.2]">Testimonios de Clientes</p>
+        </div>
+        <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[20px] w-full">
+          <p class="leading-[1.6]">Nuestros clientes comparten su experiencia con nosotros.</p>
+        </div>
+      </div>
+      
+      <!-- Testimonials Grid -->
+      <div class="content-stretch flex flex-col md:flex-row gap-12 md:gap-8 items-start justify-start relative shrink-0 w-full">
+        <div class="basis-0 content-stretch flex flex-col gap-6 md:gap-8 grow items-start justify-start min-h-px min-w-px overflow-clip relative shrink-0">
+          <div class="h-[18.889px] relative shrink-0 w-[116px]">
+            <img alt="Stars" class="block max-w-none size-full" src={imgStars} />
+          </div>
+          <div class="font-['Urbanist:Medium',_sans-serif] font-medium leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[18px] md:text-[26px] tracking-[0.18px] md:tracking-[0.26px]" style="width: min-content">
+            <p class="leading-[1.2]">"El servicio superó nuestras expectativas en cada aspecto."</p>
+          </div>
+          <div class="content-stretch flex flex-col gap-4 items-start justify-start relative shrink-0">
+            <div class="relative shrink-0 size-14">
+              <img alt="Juan Pérez" class="block max-w-none size-full rounded-full" height="56" src={imgAvatarImage} width="56" />
+            </div>
+            <div class="content-stretch flex flex-col items-start justify-start leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+              <div class="font-['Heebo:SemiBold',_sans-serif] font-semibold relative shrink-0">
+                <p class="leading-[1.6] text-nowrap whitespace-pre">Juan Pérez</p>
+              </div>
+              <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0">
+                <p class="leading-[1.6] text-nowrap whitespace-pre">Gerente, Constructora XYZ</p>
+              </div>
+            </div>
+            <div class="h-12 overflow-clip relative shrink-0 w-[120px]">
+              <img alt="Company Logo" class="block max-w-none size-full" src={imgLogo} />
+            </div>
+          </div>
+        </div>
+        
+        <div class="basis-0 content-stretch flex flex-col gap-6 md:gap-8 grow items-start justify-start min-h-px min-w-px overflow-clip relative shrink-0">
+          <div class="h-[18.889px] relative shrink-0 w-[116px]">
+            <img alt="Stars" class="block max-w-none size-full" src={imgStars} />
+          </div>
+          <div class="font-['Urbanist:Medium',_sans-serif] font-medium leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[18px] md:text-[26px] tracking-[0.18px] md:tracking-[0.26px]" style="width: min-content">
+            <p class="leading-[1.2]">"Un equipo profesional que cumplió con los plazos acordados."</p>
+          </div>
+          <div class="content-stretch flex flex-col gap-4 items-start justify-start relative shrink-0">
+            <div class="relative shrink-0 size-14">
+              <img alt="María López" class="block max-w-none size-full rounded-full" height="56" src={imgAvatarImage} width="56" />
+            </div>
+            <div class="content-stretch flex flex-col items-start justify-start leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+              <div class="font-['Heebo:SemiBold',_sans-serif] font-semibold relative shrink-0">
+                <p class="leading-[1.6] text-nowrap whitespace-pre">María López</p>
+              </div>
+              <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0">
+                <p class="leading-[1.6] text-nowrap whitespace-pre">Directora, Inmobiliaria ABC</p>
+              </div>
+            </div>
+            <div class="h-12 overflow-clip relative shrink-0 w-[120px]">
+              <img alt="Company Logo" class="block max-w-none size-full" src={imgLogo} />
+            </div>
+          </div>
+        </div>
+        
+        <div class="basis-0 content-stretch flex flex-col gap-6 md:gap-8 grow items-start justify-start min-h-px min-w-px overflow-clip relative shrink-0">
+          <div class="h-[18.889px] relative shrink-0 w-[116px]">
+            <img alt="Stars" class="block max-w-none size-full" src={imgStars} />
+          </div>
+          <div class="font-['Urbanist:Medium',_sans-serif] font-medium leading-[0] min-w-full relative shrink-0 text-[#0c0801] text-[18px] md:text-[26px] tracking-[0.18px] md:tracking-[0.26px]" style="width: min-content">
+            <p class="leading-[1.2]">"Recomiendo sus servicios sin dudarlo."</p>
+          </div>
+          <div class="content-stretch flex flex-col gap-4 items-start justify-start relative shrink-0">
+            <div class="relative shrink-0 size-14">
+              <img alt="Carlos Ruiz" class="block max-w-none size-full rounded-full" height="56" src={imgAvatarImage} width="56" />
+            </div>
+            <div class="content-stretch flex flex-col items-start justify-start leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+              <div class="font-['Heebo:SemiBold',_sans-serif] font-semibold relative shrink-0">
+                <p class="leading-[1.6] text-nowrap whitespace-pre">Carlos Ruiz</p>
+              </div>
+              <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0">
+                <p class="leading-[1.6] text-nowrap whitespace-pre">Propietario, Negocios 123</p>
+              </div>
+            </div>
+            <div class="h-12 overflow-clip relative shrink-0 w-[120px]">
+              <img alt="Company Logo" class="block max-w-none size-full" src={imgLogo} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-[#dad9d8] box-border content-stretch flex flex-col gap-12 items-start md:items-center justify-start overflow-clip px-5 md:px-16 py-16 md:py-28 relative shrink-0 w-full">
+    <div class="content-stretch flex flex-col gap-12 md:gap-20 items-start justify-start max-w-[1280px] relative shrink-0 w-full">
+      <div class="bg-[#dad9d8] relative rounded-[40px] shrink-0 w-full">
+        <div class="content-stretch flex flex-col md:flex-row items-start md:items-center justify-start overflow-clip relative w-full">
+          <div class="box-border content-stretch flex flex-col gap-6 md:gap-8 items-start justify-center min-h-px min-w-px p-8 md:p-12 relative shrink-0 md:basis-0 md:grow">
+            <div class="content-stretch flex flex-col gap-5 md:gap-6 items-start justify-start leading-[0] relative shrink-0 text-[#0c0801] w-full">
+              <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[44px] md:text-[60px] tracking-[0.44px] md:tracking-[0.6px] w-full">
+                <p class="leading-[1.2]">Solicita tu cotización hoy</p>
+              </div>
+              <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[20px] w-full">
+                <p class="leading-[1.6]">Contáctanos para obtener más información sobre nuestro {service.name.toLowerCase()} y cómo podemos ayudarte.</p>
+              </div>
+            </div>
+            <div class="content-stretch flex gap-4 items-start justify-start relative shrink-0">
+              <div class="bg-[#2d862d] box-border content-stretch flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shrink-0">
+                <div aria-hidden="true" class="absolute border-2 border-[#2d862d] border-solid inset-[-2px] pointer-events-none rounded-[102px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]" />
+                <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+                  <p class="leading-[1.6] whitespace-pre">Solicitar</p>
+                </div>
+                <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]" />
+              </div>
+              <div class="bg-[#f2f2f2] box-border content-stretch flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shrink-0">
+                <div aria-hidden="true" class="absolute border-2 border-[#0c0801] border-solid inset-[-2px] pointer-events-none rounded-[102px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]" />
+                <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+                  <p class="leading-[1.6] whitespace-pre">Más información</p>
+                </div>
+                <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]" />
+              </div>
+            </div>
+          </div>
+          <div class="basis-0 flex-row grow items-center self-stretch shrink-0 hidden md:flex">
+            <div class="basis-0 bg-center bg-cover bg-no-repeat grow h-full min-h-px min-w-px shrink-0" style={`background-image: url('${imgPlaceholderImage1}')`} />
+          </div>
+          <div class="bg-center bg-cover bg-no-repeat h-[223px] shrink-0 w-full md:hidden" style={`background-image: url('${imgPlaceholderImage1}')`} />
+        </div>
+        <div aria-hidden="true" class="absolute border-2 border-[#0c0801] border-solid inset-0 pointer-events-none rounded-[40px]" />
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="bg-white box-border content-stretch flex flex-col gap-12 md:gap-20 items-start md:items-center justify-start overflow-clip px-5 md:px-16 py-16 md:py-28 relative shrink-0 w-full">
+    <div class="content-stretch flex flex-col gap-12 md:gap-20 items-start justify-start max-w-[1280px] relative shrink-0 w-full">
+      <div class="content-stretch flex flex-col gap-5 md:gap-6 items-start justify-start leading-[0] max-w-[768px] relative shrink-0 text-[#0c0801] w-full">
+        <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[48px] md:text-[60px] tracking-[0.48px] md:tracking-[0.6px] w-full">
+          <p class="leading-[1.2]">Preguntas</p>
+        </div>
+        <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[20px] w-full">
+          <p class="leading-[1.6]">Aquí encontrarás respuestas a las preguntas más comunes sobre nuestro {service.name.toLowerCase()}.</p>
+        </div>
+      </div>
+      
+      <!-- FAQ List -->
+      <div class="content-stretch flex flex-col gap-10 md:gap-12 items-start justify-start relative shrink-0 w-full">
+        <div class="content-stretch flex flex-col gap-5 md:gap-6 items-start justify-start relative shrink-0 w-full">
+          <div class="h-0 relative shrink-0 w-full">
+            <img alt="Divider" class="block max-w-none size-full" src={imgDivider} />
+          </div>
+          <div class="content-stretch flex flex-col md:flex-row gap-4 md:gap-16 items-start justify-start leading-[0] relative shrink-0 text-[#0c0801] text-[16px] md:text-[20px] w-full">
+            <div class="font-['Heebo:Bold',_sans-serif] font-bold relative shrink-0 md:w-[500px] w-full">
+              <p class="leading-[1.6]">¿Cuánto tiempo toma?</p>
+            </div>
+            <div class="basis-0 font-['Heebo:Regular',_sans-serif] font-normal grow min-h-px min-w-px relative shrink-0">
+              <p class="leading-[1.6]">El tiempo de ejecución depende del tipo de proyecto. Generalmente, un proyecto puede tardar entre 3 a 6 meses. Sin embargo, siempre trabajamos para cumplir con los plazos establecidos.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-stretch flex flex-col gap-5 md:gap-6 items-start justify-start relative shrink-0 w-full">
+          <div class="h-0 relative shrink-0 w-full">
+            <img alt="Divider" class="block max-w-none size-full" src={imgDivider} />
+          </div>
+          <div class="content-stretch flex flex-col md:flex-row gap-4 md:gap-16 items-start justify-start leading-[0] relative shrink-0 text-[#0c0801] text-[16px] md:text-[20px] w-full">
+            <div class="font-['Heebo:Bold',_sans-serif] font-bold relative shrink-0 md:w-[500px] w-full">
+              <p class="leading-[1.6]">¿Qué materiales usan?</p>
+            </div>
+            <div class="basis-0 font-['Heebo:Regular',_sans-serif] font-normal grow min-h-px min-w-px relative shrink-0">
+              <p class="leading-[1.6]">Utilizamos materiales de alta calidad que cumplen con las normativas de seguridad. Nuestros proveedores son seleccionados cuidadosamente para garantizar durabilidad y sostenibilidad.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="content-stretch flex flex-col gap-5 md:gap-6 items-start justify-start relative shrink-0 w-full">
+          <div class="h-0 relative shrink-0 w-full">
+            <img alt="Divider" class="block max-w-none size-full" src={imgDivider} />
+          </div>
+          <div class="content-stretch flex flex-col md:flex-row gap-4 md:gap-16 items-start justify-start leading-[0] relative shrink-0 text-[#0c0801] text-[16px] md:text-[20px] w-full">
+            <div class="font-['Heebo:Bold',_sans-serif] font-bold relative shrink-0 md:w-[500px] w-full">
+              <p class="leading-[1.6]">¿Ofrecen garantía?</p>
+            </div>
+            <div class="basis-0 font-['Heebo:Regular',_sans-serif] font-normal grow min-h-px min-w-px relative shrink-0">
+              <p class="leading-[1.6]">Sí, ofrecemos garantía en todos nuestros proyectos. La duración y condiciones de la garantía varían según el tipo de trabajo realizado.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="content-stretch flex flex-col gap-6 items-start justify-start max-w-[560px] relative shrink-0 w-full">
+        <div class="content-stretch flex flex-col gap-3 md:gap-4 items-center md:items-start justify-start leading-[0] relative shrink-0 text-[#0c0801] w-full">
+          <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[24px] md:text-[40px] tracking-[0.24px] md:tracking-[0.4px] w-full">
+            <p class="leading-[1.2]">¿Aún tienes preguntas?</p>
+          </div>
+          <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[20px] w-full">
+            <p class="leading-[1.6]">Estamos aquí para ayudarte.</p>
+          </div>
+        </div>
+        <div class="content-stretch flex gap-6 items-center justify-start relative shrink-0">
+          <div class="bg-[#f2f2f2] box-border content-stretch flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shrink-0">
+            <div aria-hidden="true" class="absolute border-2 border-[#0c0801] border-solid inset-[-2px] pointer-events-none rounded-[102px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]" />
+            <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[#0c0801] text-[14px] md:text-[18px] text-nowrap">
+              <p class="leading-[1.6] whitespace-pre">Contacto</p>
+            </div>
+            <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

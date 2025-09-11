@@ -1,0 +1,64 @@
+---
+import CompanyLogo from './CompanyLogo.astro';
+---
+
+<header class="bg-white px-4 sm:px-16 py-4 sticky top-0 z-50 shadow-md">
+  <div class="max-w-[1280px] mx-auto flex justify-between items-center">
+    <div class="shrink-0">
+      <CompanyLogo src="/logo.svg" alt="Constructora Carpio" />
+    </div>
+    <nav class="hidden md:flex items-center gap-8 font-['Heebo',_sans-serif] font-semibold text-[16px] text-[#0c0801]">
+      <a href="/proyectos" class="hover:underline">Proyectos</a>
+      <a href="/servicios" class="hover:underline">Servicios</a>
+      <a href="/nosotros" class="hover:underline">Nosotros</a>
+      <a href="/contacto" class="hover:underline">Contacto</a>
+    </nav>
+    <div class="hidden md:block">
+      <a href="/cotizacion" class="bg-[#d7e6fd] text-[#0c0801] font-['Heebo',_sans-serif] font-medium text-[18px] px-6 py-2.5 rounded-[100px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-blue-200 border-2 border-[#0c0801]">
+        Cotización
+      </a>
+    </div>
+    <div class="md:hidden">
+      <button id="menu-btn" class="text-[#0c0801] focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden fixed top-0 left-0 w-3/4 max-w-sm h-full bg-white z-50 shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="flex justify-end p-4">
+        <button id="close-btn" class="text-[#0c0801] focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    </div>
+    <nav class="flex flex-col items-start p-8 h-full gap-8 font-['Heebo',_sans-serif] font-semibold text-[24px] text-[#0c0801]">
+      <a href="/proyectos" class="hover:underline">Proyectos</a>
+      <a href="/servicios" class="hover:underline">Servicios</a>
+      <a href="/nosotros" class="hover:underline">Nosotros</a>
+      <a href="/contacto" class="hover:underline">Contacto</a>
+      <a href="/cotizacion" class="bg-[#d7e6fd] text-[#0c0801] font-['Heebo',_sans-serif] font-medium text-[24px] px-8 py-4 rounded-[100px] shadow-lg hover:bg-blue-200 border-2 border-[#0c0801] mt-8">
+        Cotización
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const closeBtn = document.getElementById('close-btn');
+
+  function toggleMenu() {
+    if (mobileMenu) {
+      mobileMenu.classList.toggle('-translate-x-full');
+      mobileMenu.classList.toggle('translate-x-0');
+    }
+  }
+
+  if (menuBtn && closeBtn) {
+    menuBtn.addEventListener('click', toggleMenu);
+    closeBtn.addEventListener('click', toggleMenu);
+  }
+</script>

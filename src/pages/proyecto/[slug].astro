@@ -1,0 +1,144 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/ui/Header.astro";
+import Footer from "../../components/sections/Footer.astro";
+import ProjectTestimonial from "../../components/sections/ProjectTestimonial.astro";
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { slug: "proyecto-residencial-moderno" },
+      props: {
+        title: "Proyecto Residencial Moderno",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+        tags: ["Residencial Urbano", "Sostenibilidad", "Innovación"],
+        content: `Descubre la esencia de nuestro Proyecto 1, donde la modernidad se encuentra con la funcionalidad. Esta construcción ha sido diseñada para ofrecer un ambiente acogedor y práctico, ideal para disfrutar de cada rincón de tu hogar.
+
+Con un enfoque en la sostenibilidad, hemos implementado materiales de alta calidad que garantizan durabilidad y eficiencia energética. Cada detalle ha sido cuidadosamente pensado para maximizar la comodidad y el estilo, desde la distribución de los espacios hasta la elección de acabados.
+
+Nuestro equipo de expertos ha trabajado arduamente para crear un espacio que no solo cumpla con tus expectativas, sino que las supere. La combinación de diseño contemporáneo y tecnología avanzada se traduce en un hogar que se adapta a tus necesidades.
+
+Además, el Proyecto 1 está ubicado en una zona privilegiada, rodeada de servicios y naturaleza, lo que lo convierte en el lugar perfecto para vivir. Aquí, cada día es una nueva oportunidad para disfrutar de la vida en un entorno armonioso.
+
+Te invitamos a explorar más sobre este proyecto y descubrir cómo podemos hacer realidad la casa de tus sueños. ¡Contáctanos para más información!`,
+        images: [
+          "/images/placeholder-image.png",
+          "/images/placeholder-image.png",
+          "/images/placeholder-image.png"
+        ]
+      }
+    },
+    {
+      params: { slug: "centro-comercial-innovador" },
+      props: {
+        title: "Centro Comercial Innovador",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+        tags: ["Comercio Local", "Espacios Abiertos", "Accesibilidad"],
+        content: `Este centro comercial está diseñado para la comunidad. Fomenta el comercio local y ofrece espacios accesibles para todos.
+
+Con una arquitectura moderna y funcional, el proyecto integra áreas comerciales con espacios de recreación y servicios comunitarios. Cada elemento ha sido planificado para crear un ambiente vibrante y acogedor.
+
+La sostenibilidad es una prioridad en este desarrollo, implementando tecnologías verdes y materiales eco-amigables. El diseño maximiza la luz natural y promueve la ventilación cruzada para crear espacios cómodos y eficientes.
+
+El proyecto incluye amplias áreas de estacionamiento, accesos para personas con discapacidad y zonas verdes que mejoran la calidad del entorno urbano.
+
+¡Descubre cómo este proyecto está transformando la experiencia comercial en la comunidad!`,
+        images: [
+          "/images/placeholder-image.png",
+          "/images/placeholder-image.png",
+          "/images/placeholder-image.png"
+        ]
+      }
+    },
+    {
+      params: { slug: "parque-recreativo-familiar" },
+      props: {
+        title: "Parque Recreativo Familiar",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+        tags: ["Naturaleza", "Familia", "Diversión"],
+        content: `Este parque recreativo es un espacio para disfrutar en familia. Ofrece áreas verdes y actividades para todas las edades.
+
+El diseño del parque incluye senderos naturales, áreas de juegos infantiles, espacios para ejercicio al aire libre y zonas de picnic familiares. Cada área ha sido cuidadosamente planificada para integrarse con el entorno natural.
+
+La seguridad y accesibilidad son fundamentales en este proyecto, con iluminación adecuada, señalización clara y accesos universales para personas con diferentes capacidades.
+
+El proyecto preserva la flora nativa y crea nuevos ecosistemas que benefician la biodiversidad local. Los materiales utilizados son duraderos y de bajo mantenimiento.
+
+¡Un espacio donde la naturaleza y la diversión se combinan para crear momentos inolvidables en familia!`,
+        images: [
+          "/images/placeholder-image.png",
+          "/images/placeholder-image.png",
+          "/images/placeholder-image.png"
+        ]
+      }
+    }
+  ];
+}
+
+const { title, description, tags, content, images } = Astro.props;
+---
+
+<Layout title={`${title} - Constructora Carpio`}>
+  <Header />
+  <main>
+    <!-- Hero Section -->
+    <section
+      class="bg-[#00000080] bg-cover bg-center bg-no-repeat h-[500px] md:h-[900px] flex items-center justify-center px-5 md:px-16"
+      style="background-image: url('/images/portfolio-header-4.png');"
+    >
+      <div class="container mx-auto max-w-[1280px]">
+        <div class="max-w-[335px] md:max-w-[768px] mx-auto text-center text-white">
+          <h1 class="text-3xl md:text-[84px] font-medium leading-[1.1] tracking-[0.84px] mb-4 md:mb-6 font-['Urbanist']">
+            {title}
+          </h1>
+          <p class="text-sm md:text-xl leading-[1.6] mb-4 md:mb-6 font-['Heebo']">
+            {description}
+          </p>
+          <div class="flex flex-wrap gap-2 justify-center">
+            {tags.map((tag) => (
+              <span class="bg-transparent border-2 border-white text-white px-2.5 py-1 rounded-full text-xs md:text-base font-semibold font-['Heebo']">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="bg-white py-16 md:py-28 px-5 md:px-16">
+      <div class="container mx-auto max-w-[1280px]">
+        <div class="flex flex-col md:flex-row gap-12 md:gap-20 items-start">
+          <!-- Text Content -->
+          <div class="flex-1">
+            <h2 class="text-3xl md:text-[60px] font-medium leading-[1.2] tracking-[0.6px] mb-6 text-[#0c0801] font-['Urbanist']">
+              Información del Proyecto
+            </h2>
+            <div class="prose prose-lg max-w-none">
+              {content.split('\n\n').map((paragraph) => (
+                <p class="text-sm md:text-lg leading-[1.6] mb-4 text-[#0c0801] font-['Heebo']">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+          
+          <!-- Gallery -->
+          <div class="w-full md:w-[768px] flex flex-col gap-6 md:gap-8">
+            {images.map((image, index) => (
+              <img
+                src={image}
+                alt={`${title} - Imagen ${index + 1}`}
+                class="w-full h-[250px] md:h-[768px] object-cover rounded-[40px]"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <ProjectTestimonial />
+  </main>
+  <Footer />
+</Layout>

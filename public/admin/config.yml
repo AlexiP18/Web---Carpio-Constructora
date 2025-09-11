@@ -1,0 +1,32 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "proyectos"
+    label: "Proyectos"
+    folder: "src/content/proyectos"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Descripción", name: "description", widget: "text"}
+      - {label: "Imagen", name: "image", widget: "image"}
+      - {label: "Categoría", name: "category", widget: "select", options: ["Residencial", "Comercial", "Industrial"]}
+      - {label: "Fecha", name: "date", widget: "datetime"}
+      - {label: "Contenido", name: "body", widget: "markdown"}
+
+  - name: "servicios"
+    label: "Servicios"
+    folder: "src/content/servicios"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Descripción", name: "description", widget: "text"}
+      - {label: "Imagen", name: "image", widget: "image"}
+      - {label: "Icono", name: "icon", widget: "image"}
+      - {label: "Contenido", name: "body", widget: "markdown"}

@@ -1,0 +1,49 @@
+---
+const PlaceholderImage2 = '/images/placeholder-image-2.png';
+const MailIcon = '/images/mail.svg';
+const CallIcon = '/images/call.svg';
+const LocationIcon = '/images/location-on.svg';
+const ChevronRight = '/images/chevron-right.svg';
+---
+
+<section class="bg-[#dad9d8] px-4 sm:px-16 py-14 sm:py-28">
+  <div class="max-w-[1280px] mx-auto">
+    <div class="max-w-[768px] mb-10 sm:mb-20">
+      <p class="font-['Heebo',_sans-serif] font-semibold text-[16px] text-[#0c0801]">Construcción</p>
+      <h2 class="font-['Urbanist',_sans-serif] font-medium text-[40px] sm:text-[60px] leading-tight tracking-[0.6px] text-[#0c0801] mt-4">Contáctanos</h2>
+      <p class="font-['Heebo',_sans-serif] font-normal text-[18px] sm:text-[20px] leading-relaxed text-[#0c0801] mt-6">Estamos aquí para ayudarte con tu proyecto.</p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-10 sm:gap-20 items-start">
+      <div class="flex flex-col gap-10">
+        <div class="flex gap-4 items-start">
+          <img src={MailIcon} alt="email icon" class="w-8 h-8"/>
+          <div>
+            <h3 class="font-['Urbanist',_sans-serif] font-medium text-[26px] text-[#0c0801]">Correo</h3>
+            <p class="font-['Heebo',_sans-serif] font-normal text-[18px] text-[#0c0801]">info@constructoraejemplo.com</p>
+            <a href="mailto:info@constructoraejemplo.com" class="font-['Heebo',_sans-serif] font-normal text-[18px] text-[#0c0801] underline">info@constructoraejemplo.com</a>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <img src={CallIcon} alt="call icon" class="w-8 h-8"/>
+          <div>
+            <h3 class="font-['Urbanist',_sans-serif] font-medium text-[26px] text-[#0c0801]">Teléfono</h3>
+            <p class="font-['Heebo',_sans-serif] font-normal text-[18px] text-[#0c0801]">Llámanos para más información.</p>
+            <a href="tel:+15550000000" class="font-['Heebo',_sans-serif] font-normal text-[18px] text-[#0c0801] underline">+1 (555) 000-0000</a>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <img src={LocationIcon} alt="location icon" class="w-8 h-8"/>
+          <div>
+            <h3 class="font-['Urbanist',_sans-serif] font-medium text-[26px] text-[#0c0801]">Oficina</h3>
+            <p class="font-['Heebo',_sans-serif] font-normal text-[18px] text-[#0c0801]">123 Calle Ejemplo, Sydney NSW 2000 AU</p>
+            <a href="#" class="flex items-center gap-2 text-[#0c0801] font-['Heebo',_sans-serif] font-medium text-[18px] hover:underline mt-4">
+              Obtener Direcciones
+              <img src={ChevronRight} alt="chevron right" class="w-6 h-6" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="h-[300px] sm:h-[516px] rounded-[40px] bg-cover bg-center" style={`backgroundImage: url(${PlaceholderImage2})`}></div>
+    </div>
+  </div>
+</section>

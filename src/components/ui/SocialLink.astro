@@ -1,0 +1,12 @@
+---
+interface Props {
+  href: string;
+  icon: string;
+}
+
+const { href, icon } = Astro.props;
+---
+
+<a href={href}>
+  <img src={icon} alt="Social media icon" class="w-6 h-6" />
+</a>

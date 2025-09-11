@@ -1,0 +1,48 @@
+---
+import ArrowBack from "../icons/ArrowBack.astro";
+import ArrowForward from "../icons/ArrowForward.astro";
+---
+
+<section class="bg-white py-16 md:py-28 px-5 md:px-16">
+  <div class="container mx-auto max-w-[1280px] relative">
+    <div class="flex flex-col items-center gap-5 md:gap-12">
+      <div class="max-w-[335px] md:max-w-[768px] text-center">
+        <img
+          src="/images/logo-placeholder.svg"
+          alt="Company Logo"
+          class="h-12 w-[120px] mx-auto mb-6 md:mb-8"
+        />
+        <h3 class="text-xl md:text-[32px] font-medium leading-[1.2] tracking-[0.32px] mb-6 md:mb-8 text-[#0c0801] font-['Urbanist']">
+          "La calidad del trabajo superó nuestras expectativas. Cada detalle fue
+          cuidadosamente considerado y ejecutado."
+        </h3>
+        <div class="flex flex-col items-center">
+          <img
+            src="/images/avatar-image.png"
+            alt="Avatar"
+            class="w-14 h-14 rounded-full mb-4"
+          />
+          <p class="font-semibold text-sm md:text-lg text-[#0c0801] font-['Heebo']">Juan Pérez</p>
+          <p class="text-sm md:text-lg text-[#0c0801] font-['Heebo']">Gerente, Constructora XYZ</p>
+        </div>
+      </div>
+      <!-- Desktop Arrow Navigation (positioned absolutely) -->
+      <div class="hidden md:block">
+        <button
+          class="absolute left-0 top-[142px] p-3 rounded-full border-2 border-[#0c0801] bg-white"
+        >
+          <ArrowBack />
+        </button>
+        <button
+          class="absolute right-0 top-[142px] p-3 rounded-full border-2 border-[#0c0801] bg-white"
+        >
+          <ArrowForward />
+        </button>
+      </div>
+      <!-- Slider Dots -->
+      <div class="md:block">
+        <img src="/images/slider-dots.svg" alt="Slider dots" class="h-7" />
+      </div>
+    </div>
+  </div>
+</section>

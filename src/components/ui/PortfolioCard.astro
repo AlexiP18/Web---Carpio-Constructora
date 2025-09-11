@@ -1,0 +1,108 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  isMobile?: boolean;
+  slug?: string;
+}
+
+const { title, description, image, tags, isMobile = false, slug } = Astro.props;
+---
+
+{isMobile ? (
+  <!-- Mobile Layout -->
+  <div class="bg-[#dad9d8] rounded-[32px] border-2 border-[#0c0801] p-6">
+    <div class="mb-6">
+      <img
+        src={image}
+        alt={title}
+        class="w-full h-48 object-cover rounded-[32px]"
+      />
+    </div>
+    <div class="mb-4">
+      <h3 class="text-[#0c0801] text-xl font-medium mb-4 leading-[1.2] tracking-[0.2px] font-['Urbanist']">
+        {title}
+      </h3>
+      <div class="flex flex-wrap gap-2 mb-4">
+        {tags.map((tag) => (
+          <span class="bg-transparent border-2 border-[#0c0801] text-[#0c0801] px-2.5 py-1 rounded-full text-sm font-semibold font-['Heebo']">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+    <div class="mb-6">
+      <p class="text-[#0c0801] text-sm leading-[1.6] font-['Heebo']">
+        {description}
+      </p>
+    </div>
+    <div class="flex flex-col gap-3">
+      <a
+        href={slug ? `/proyecto/${slug}` : "#"}
+        class="bg-[#f2f2f2] text-[#0c0801] font-medium py-2.5 px-6 rounded-full border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] text-sm font-['Heebo']"
+      >
+        Ver Más
+      </a>
+      <a
+        href={slug ? `/proyecto/${slug}` : "#"}
+        class="text-[#0c0801] font-medium text-sm flex items-center gap-2 font-['Heebo']"
+      >
+        <span>Detalles</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+) : (
+  <!-- Desktop Layout - Exact Figma Design -->
+  <div class="bg-[#dad9d8] rounded-[32px] border-2 border-[#0c0801]">
+    <div class="p-12 flex gap-20 items-start">
+      <div class="flex-1 flex flex-col justify-between self-stretch min-h-[368px]">
+        <div>
+          <h3 class="text-[#0c0801] text-[48px] font-medium leading-[1.2] tracking-[0.48px] mb-4 font-['Urbanist']">
+            {title}
+          </h3>
+          <div class="flex flex-wrap gap-2 mb-8">
+            {tags.map((tag) => (
+              <span class="bg-transparent border-2 border-[#0c0801] text-[#0c0801] px-2.5 py-1 rounded-full text-base font-semibold font-['Heebo']">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p class="text-[#0c0801] text-xl leading-[1.6] mb-8 font-['Heebo']">
+            {description}
+          </p>
+          <div class="flex gap-6 items-center">
+            <a
+              href={slug ? `/proyecto/${slug}` : "#"}
+              class="bg-[#f2f2f2] text-[#0c0801] font-medium py-2.5 px-6 rounded-full border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] text-lg font-['Heebo']"
+            >
+              Ver Más
+            </a>
+            <a
+              href={slug ? `/proyecto/${slug}` : "#"}
+              class="text-[#0c0801] font-medium text-lg flex items-center gap-2 font-['Heebo']"
+            >
+              <span>Detalles</span>
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="flex-1 h-[368px]">
+        <img
+          src={image}
+          alt={title}
+          class="w-full h-full object-cover rounded-[32px]"
+        />
+      </div>
+    </div>
+  </div>
+)}

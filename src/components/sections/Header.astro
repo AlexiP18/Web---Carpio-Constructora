@@ -1,0 +1,72 @@
+---
+import CompanyLogo from '../ui/CompanyLogo.astro';
+const ChevronDown = '/images/chevron-down.svg';
+---
+
+<header class="bg-white box-border content-stretch flex flex-col h-[72px] items-center justify-center px-4 sm:px-16 py-0 relative shrink-0 w-full">
+  <div class="content-stretch flex items-center justify-between relative shrink-0 w-full max-w-[1280px]">
+    <div class="content-stretch flex h-10 items-center justify-center relative shrink-0 w-20">
+      <CompanyLogo src="/images/logo.svg" alt="Company Logo" />
+    </div>
+    <nav class="hidden lg:flex gap-8 items-center justify-center">
+      <div class="content-stretch flex gap-8 items-center justify-end">
+  <a href="/" class="font-['Heebo',_sans-serif] font-normal text-[#0c0801] text-[18px] hover:text-gray-700">Inicio</a>
+  <a href="/quienes-somos" class="font-['Heebo',_sans-serif] font-normal text-[#0c0801] text-[18px] hover:text-gray-700">Quiénes Somos</a>
+        <div class="relative group">
+          <button class="flex items-center gap-1 font-['Heebo',_sans-serif] font-normal text-[#0c0801] text-[18px] hover:text-gray-700">
+            Servicios
+            <img src={ChevronDown} alt="chevron down" class="w-6 h-6" />
+          </button>
+          <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 py-2 w-48 z-10">
+            <a href="/servicios/proyectos-industriales" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Proyectos Industriales</a>
+            <a href="/servicios/centros-logisticos" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Centros Logísticos</a>
+            <a href="/servicios/planimetria" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Planimetría</a>
+            <a href="/servicios/oficinas-industriales" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Oficinas Industriales</a>
+          </div>
+        </div>
+        <div class="relative group">
+            <button class="flex items-center gap-1 font-['Heebo',_sans-serif] font-normal text-[#0c0801] text-[18px] hover:text-gray-700">
+              Proyectos
+              <img src={ChevronDown} alt="chevron down" class="w-6 h-6" />
+            </button>
+            <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2 py-2 w-48 z-10">
+              <a href="/proyectos/aurora" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">AURORA</a>
+              <a href="/proyectos/grand-bay" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">GRAND BAY</a>
+              <a href="/proyectos/agora" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">AGORA</a>
+            </div>
+          </div>
+      </div>
+      <div class="flex gap-4 items-center justify-center">
+        <a href="tel:0956324598" class="bg-[#f2f2f2] border-2 border-[#0c0801] rounded-[100px] px-5 py-2 font-['Heebo',_sans-serif] font-medium text-[#0c0801] text-[18px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-gray-300">0956324598</a>
+        <a href="/contacto" class="bg-[#2d862d] border-2 border-[#2d862d] rounded-[100px] px-5 py-2 font-['Heebo',_sans-serif] font-medium text-white text-[18px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-green-700">Contacto</a>
+      </div>
+    </nav>
+    <div class="lg:hidden">
+        <button id="mobile-menu-button">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden w-full bg-white">
+  <a href="/" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Inicio</a>
+  <a href="/quienes-somos" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Quiénes Somos</a>
+    <a href="/servicios" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Servicios</a>
+    <a href="/proyectos" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Proyectos</a>
+    <a href="/contacto" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">Contacto</a>
+    <a href="tel:0956324598" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">0956324598</a>
+  </div>
+</header>
+
+<script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    if (mobileMenuButton) {
+        mobileMenuButton.addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            if (menu && menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else if (menu) {
+                menu.classList.add('hidden');
+            }
+        });
+    }
+</script>
