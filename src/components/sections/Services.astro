@@ -1,38 +1,121 @@
 ---
-const TabPane1 = '/images/tab-pane-1.png';
+import { Icon } from 'astro-icon/components';
+
+// Asset constants from Figma
+const servicesImage = "http://localhost:3845/assets/b7b4e314cc3eb923b7fa8aac8183d1866fe76120.png";
 ---
 
-<section class="bg-[#dad9d8] px-4 sm:px-16 py-14 sm:py-28 relative overflow-hidden">
-  <div class="max-w-[1280px] mx-auto">
-    <div class="max-w-[768px] mb-10 sm:mb-20">
-      <p class="font-['Heebo',_sans-serif] font-semibold text-[16px] text-[#0c0801]">Nuestros mejores servicios</p>
-      <div class="mt-4 space-y-2">
-        <a href="/servicios/proyectos-industriales" class="block border-b-2 border-[#0c0801] py-6 group">
-          <div class="flex items-center gap-8">
-            <span class="font-['Urbanist',_sans-serif] font-medium text-[32px] text-[#0c0801] group-hover:text-gray-600">01</span>
-            <h3 class="font-['Urbanist',_sans-serif] font-medium text-[40px] sm:text-[84px] text-[#0c0801] group-hover:text-gray-600 leading-none">Proyectos y Construcciones Industriales</h3>
-          </div>
-        </a>
-        <a href="/servicios/centros-logisticos" class="block border-b-2 border-[#0c0801] py-6 group">
-          <div class="flex items-center gap-8">
-            <span class="font-['Urbanist',_sans-serif] font-medium text-[32px] text-gray-400 group-hover:text-gray-600">02</span>
-            <h3 class="font-['Urbanist',_sans-serif] font-medium text-[40px] sm:text-[84px] text-gray-400 group-hover:text-gray-600 leading-none">Centros de Distribución Logística</h3>
-          </div>
-        </a>
-        <a href="/servicios/planimetria" class="block border-b-2 border-[#0c0801] py-6 group">
-          <div class="flex items-center gap-8">
-            <span class="font-['Urbanist',_sans-serif] font-medium text-[32px] text-gray-400 group-hover:text-gray-600">03</span>
-            <h3 class="font-['Urbanist',_sans-serif] font-medium text-[40px] sm:text-[84px] text-gray-400 group-hover:text-gray-600 leading-none">Planimetría</h3>
-          </div>
-        </a>
-        <a href="/servicios/oficinas-industriales" class="block border-b-2 border-[#0c0801] py-6 group">
-          <div class="flex items-center gap-8">
-            <span class="font-['Urbanist',_sans-serif] font-medium text-[32px] text-gray-400 group-hover:text-gray-600">04</span>
-            <h3 class="font-['Urbanist',_sans-serif] font-medium text-[40px] sm:text-[84px] text-gray-400 group-hover:text-gray-600 leading-none">Oficinas para Complejos Industriales</h3>
-          </div>
-        </a>
+<section class="bg-neutral-lighter px-5 py-16 lg:px-16 lg:py-28 relative overflow-hidden">
+  <div class="max-w-container-large mx-auto">
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+      <!-- Services List -->
+      <div class="lg:max-w-large" data-aos="fade-up">
+        <p class="font-heebo font-semibold text-text-small text-neutral-darkest mb-4 lg:mb-6">
+          Nuestros mejores servicios
+        </p>
+        
+        <div class="space-y-2 lg:space-y-4">
+          <!-- Service 1 - Active -->
+          <a 
+            href="/servicios/proyectos-industriales" 
+            class="block border-b-2 border-neutral-darkest py-4 lg:py-6 group transition-all duration-300 hover:bg-neutral-lighter/50"
+            data-aos="fade-right"
+            data-aos-delay="100"
+          >
+            <div class="flex items-center justify-between gap-4 lg:gap-8">
+              <div class="flex items-center gap-4 lg:gap-8">
+                <span class="font-urbanist font-medium text-heading-6 lg:text-[32px] text-neutral-darkest group-hover:text-forest-green transition-colors duration-300">
+                  01
+                </span>
+                <h3 class="font-urbanist font-medium text-heading-6 lg:text-heading-1 text-neutral-darkest group-hover:text-forest-green leading-tight transition-colors duration-300">
+                  Proyectos y Construcciones Industriales
+                </h3>
+              </div>
+              <Icon 
+                name="ph:arrow-right" 
+                class="w-5 h-5 lg:w-8 lg:h-8 text-neutral-darkest group-hover:text-forest-green group-hover:translate-x-2 transition-all duration-300 flex-shrink-0" 
+              />
+            </div>
+          </a>
+          
+          <!-- Service 2 -->
+          <a 
+            href="/servicios/centros-logisticos" 
+            class="block border-b-2 border-neutral-darkest py-4 lg:py-6 group transition-all duration-300 hover:bg-neutral-lighter/50"
+            data-aos="fade-right"
+            data-aos-delay="200"
+          >
+            <div class="flex items-center justify-between gap-4 lg:gap-8">
+              <div class="flex items-center gap-4 lg:gap-8">
+                <span class="font-urbanist font-medium text-heading-6 lg:text-[32px] text-neutral-medium group-hover:text-forest-green transition-colors duration-300">
+                  02
+                </span>
+                <h3 class="font-urbanist font-medium text-heading-6 lg:text-heading-1 text-neutral-medium group-hover:text-forest-green leading-tight transition-colors duration-300">
+                  Centros de Distribución Logística
+                </h3>
+              </div>
+              <Icon 
+                name="ph:arrow-right" 
+                class="w-5 h-5 lg:w-8 lg:h-8 text-neutral-medium group-hover:text-forest-green group-hover:translate-x-2 transition-all duration-300 flex-shrink-0" 
+              />
+            </div>
+          </a>
+          
+          <!-- Service 3 -->
+          <a 
+            href="/servicios/planimetria" 
+            class="block border-b-2 border-neutral-darkest py-4 lg:py-6 group transition-all duration-300 hover:bg-neutral-lighter/50"
+            data-aos="fade-right"
+            data-aos-delay="300"
+          >
+            <div class="flex items-center justify-between gap-4 lg:gap-8">
+              <div class="flex items-center gap-4 lg:gap-8">
+                <span class="font-urbanist font-medium text-heading-6 lg:text-[32px] text-neutral-medium group-hover:text-forest-green transition-colors duration-300">
+                  03
+                </span>
+                <h3 class="font-urbanist font-medium text-heading-6 lg:text-heading-1 text-neutral-medium group-hover:text-forest-green leading-tight transition-colors duration-300">
+                  Planimetría
+                </h3>
+              </div>
+              <Icon 
+                name="ph:arrow-right" 
+                class="w-5 h-5 lg:w-8 lg:h-8 text-neutral-medium group-hover:text-forest-green group-hover:translate-x-2 transition-all duration-300 flex-shrink-0" 
+              />
+            </div>
+          </a>
+          
+          <!-- Service 4 -->
+          <a 
+            href="/servicios/oficinas-industriales" 
+            class="block border-b-2 border-neutral-darkest py-4 lg:py-6 group transition-all duration-300 hover:bg-neutral-lighter/50"
+            data-aos="fade-right"
+            data-aos-delay="400"
+          >
+            <div class="flex items-center justify-between gap-4 lg:gap-8">
+              <div class="flex items-center gap-4 lg:gap-8">
+                <span class="font-urbanist font-medium text-heading-6 lg:text-[32px] text-neutral-medium group-hover:text-forest-green transition-colors duration-300">
+                  04
+                </span>
+                <h3 class="font-urbanist font-medium text-heading-6 lg:text-heading-1 text-neutral-medium group-hover:text-forest-green leading-tight transition-colors duration-300">
+                  Oficinas para Complejos Industriales
+                </h3>
+              </div>
+              <Icon 
+                name="ph:arrow-right" 
+                class="w-5 h-5 lg:w-8 lg:h-8 text-neutral-medium group-hover:text-forest-green group-hover:translate-x-2 transition-all duration-300 flex-shrink-0" 
+              />
+            </div>
+          </a>
+        </div>
       </div>
+      
+      <!-- Service Image -->
+      <div 
+        class="hidden lg:block w-full h-[560px] bg-cover bg-center rounded-large shadow-lg"
+        style={`background-image: url('${servicesImage}')`}
+        data-aos="fade-left"
+        data-aos-delay="200"
+      />
     </div>
   </div>
-  <div class="hidden lg:block absolute top-24 right-0 w-[38%] h-[560px] bg-cover bg-center rounded-[40px]" style={`backgroundImage: url(${TabPane1})`}></div>
 </section>

@@ -1,27 +1,73 @@
 ---
-const Layout355 = '/images/layout-355.png';
-const PlayButton = '/images/play-button.svg';
+import { Icon } from 'astro-icon/components';
+
+// Asset constants from Figma
+const layoutBackground = "http://localhost:3845/assets/fc7e88dbc3f94e7bbedadb17d983accd59e2c42a.png";
 ---
 
-<section class="bg-cover bg-center bg-no-repeat bg-[#000000b3] bg-blend-multiply text-white px-4 sm:px-16 pt-0 pb-28 sm:pb-64 rounded-t-none sm:rounded-t-[40px]" style={`backgroundImage: url(${Layout355})`}>
-  <div class="max-w-[1280px] mx-auto">
-    <div class="h-[400px] sm:h-[900px] flex items-center justify-center">
-      <button>
-        <img src={PlayButton} alt="Play Video" class="w-16 h-16 hover:scale-110 transition-transform"/>
+<section 
+  class="bg-cover bg-center bg-no-repeat bg-neutral-darkest bg-blend-multiply text-neutral-lightest px-5 py-16 lg:px-16 lg:pt-0 lg:pb-28 rounded-t-large relative overflow-hidden"
+  style={`background-image: url('${layoutBackground}')`}
+>
+  <div class="max-w-container-large mx-auto relative">
+    <!-- Video Section -->
+    <div 
+      class="h-64 lg:h-[900px] flex items-center justify-center mb-12 lg:mb-20"
+      data-aos="zoom-in"
+    >
+      <button 
+        class="hover:scale-110 transition-all duration-500 p-3 lg:p-4 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 group"
+        aria-label="Reproducir video corporativo"
+      >
+        <Icon 
+          name="ph:play-fill" 
+          class="w-12 h-12 lg:w-16 lg:h-16 text-neutral-lightest group-hover:text-white transition-colors duration-300" 
+        />
       </button>
     </div>
-    <div class="flex flex-col gap-10 sm:gap-20">
-      <div class="max-w-[480px] flex flex-col gap-6">
-        <h3 class="font-['Urbanist',_sans-serif] font-medium text-[36px] sm:text-[48px] leading-tight tracking-[0.48px]">Misión</h3>
-        <p class="font-['Heebo',_sans-serif] font-normal text-[18px] sm:text-[20px] leading-relaxed">Nuestro proceso de construcción se basa en la planificación meticulosa y la ejecución precisa. Desde la concepción hasta la finalización, cada etapa está diseñada para garantizar calidad y satisfacción.</p>
+    
+    <!-- Mission, Vision, Objectives -->
+    <div class="space-y-12 lg:space-y-20">
+      <!-- Mission -->
+      <div 
+        class="max-w-medium lg:max-w-medium"
+        data-aos="fade-right"
+        data-aos-delay="100"
+      >
+        <h3 class="font-urbanist font-medium text-heading-4 lg:text-heading-2 text-neutral-lightest mb-4 lg:mb-6">
+          Misión
+        </h3>
+        <p class="font-heebo font-normal text-text-regular lg:text-text-large text-neutral-lighter leading-relaxed">
+          Nuestro proceso de construcción se basa en la planificación meticulosa y la ejecución precisa. Desde la concepción hasta la finalización, cada etapa está diseñada para garantizar calidad y satisfacción.
+        </p>
       </div>
-      <div class="max-w-[480px] self-end text-right flex flex-col gap-6 items-end">
-        <h3 class="font-['Urbanist',_sans-serif] font-medium text-[36px] sm:text-[48px] leading-tight tracking-[0.48px]">Objetivos</h3>
-        <p class="font-['Heebo',_sans-serif] font-normal text-[18px] sm:text-[20px] leading-relaxed">Cada proyecto comienza con una consulta detallada para entender sus necesidades. Luego, pasamos a la fase de diseño, donde creamos planos personalizados que reflejan su visión.</p>
+      
+      <!-- Objectives -->
+      <div 
+        class="max-w-medium lg:max-w-medium lg:ml-auto lg:text-right"
+        data-aos="fade-left"
+        data-aos-delay="200"
+      >
+        <h3 class="font-urbanist font-medium text-heading-4 lg:text-heading-2 text-neutral-lightest mb-4 lg:mb-6">
+          Objetivos
+        </h3>
+        <p class="font-heebo font-normal text-text-regular lg:text-text-large text-neutral-lighter leading-relaxed">
+          Cada proyecto comienza con una consulta detallada para entender sus necesidades. Luego, pasamos a la fase de diseño, donde creamos planos personalizados que reflejan su visión.
+        </p>
       </div>
-      <div class="max-w-[480px] flex flex-col gap-6">
-        <h3 class="font-['Urbanist',_sans-serif] font-medium text-[36px] sm:text-[48px] leading-tight tracking-[0.48px]">Visión</h3>
-        <p class="font-['Heebo',_sans-serif] font-normal text-[18px] sm:text-[20px] leading-relaxed">Nos aseguramos de que cada material y técnica utilizada cumpla con los estándares más altos. La seguridad en el sitio es nuestra prioridad, protegiendo tanto a nuestros trabajadores como a nuestros clientes.</p>
+      
+      <!-- Vision -->
+      <div 
+        class="max-w-medium lg:max-w-medium"
+        data-aos="fade-right"
+        data-aos-delay="300"
+      >
+        <h3 class="font-urbanist font-medium text-heading-4 lg:text-heading-2 text-neutral-lightest mb-4 lg:mb-6">
+          Visión
+        </h3>
+        <p class="font-heebo font-normal text-text-regular lg:text-text-large text-neutral-lighter leading-relaxed">
+          Nos aseguramos de que cada material y técnica utilizada cumpla con los estándares más altos. La seguridad en el sitio es nuestra prioridad, protegiendo tanto a nuestros trabajadores como a nuestros clientes.
+        </p>
       </div>
     </div>
   </div>

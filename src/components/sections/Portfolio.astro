@@ -1,45 +1,153 @@
 ---
-import PortfolioCard from "../ui/PortfolioCard.astro";
+import { Icon } from 'astro-icon/components';
+
+// Asset constants from Figma
+const imgPlaceholderImage = "http://localhost:3845/assets/b7b4e314cc3eb923b7fa8aac8183d1866fe76120.png";
 ---
 
-<section class="bg-[#dad9d8] py-16 md:py-28 px-5 md:px-16">
-  <div class="container mx-auto max-w-[335px] md:max-w-[1280px]">
-    <div class="text-center max-w-[768px] mx-auto mb-12 md:mb-20">
-      <div class="mb-4 md:mb-6">
-        <span class="text-[#0c0801] text-sm md:text-base font-semibold font-['Heebo']">Portafolio</span>
+<section class="bg-neutral-lighter px-5 py-16 lg:px-16 lg:py-28 w-full">
+  <div class="max-w-container-large mx-auto">
+    <!-- Section Title -->
+    <div 
+      class="text-center mb-12 lg:mb-20"
+      data-aos="fade-up"
+    >
+      <div class="mb-2">
+        <div class="font-heebo font-semibold text-text-small text-neutral-darkest">
+          Construcción
+        </div>
       </div>
-      <h2 class="text-[#0c0801] text-3xl md:text-[60px] font-medium leading-[1.2] tracking-[0.6px] mb-6 font-['Urbanist']">
-        Nuestros Proyectos Destacados
-      </h2>
-      <p class="text-[#0c0801] text-base md:text-xl leading-[1.6] font-['Heebo']">
-        Explora nuestra amplia gama de proyectos realizados.
-      </p>
+      <div class="space-y-4 lg:space-y-6">
+        <h2 class="font-urbanist font-medium text-heading-3 lg:text-heading-2 text-neutral-darkest">
+          Calidad en cada proyecto
+        </h2>
+        <p class="font-heebo font-normal text-text-regular lg:text-text-medium text-neutral-darkest">
+          Transformamos tus ideas en realidades constructivas.
+        </p>
+      </div>
     </div>
-    <div class="flex flex-col gap-8 md:gap-20">
-      <PortfolioCard
-        title="Proyecto Residencial Moderno"
-        tags={["Residencial Urbano", "Sostenibilidad", "Innovación"]}
-        description="Este proyecto representa un hito en diseño arquitectónico. Combinamos funcionalidad y estética para crear espacios únicos."
-        image="/images/placeholder-image.png"
-        isMobile={false}
-        slug="proyecto-residencial-moderno"
-      />
-      <PortfolioCard
-        title="Centro Comercial Innovador"
-        tags={["Comercio Local", "Espacios Abiertos", "Accesibilidad"]}
-        description="Este centro comercial está diseñado para la comunidad. Fomenta el comercio local y ofrece espacios accesibles."
-        image="/images/placeholder-image.png"
-        isMobile={false}
-        slug="centro-comercial-innovador"
-      />
-      <PortfolioCard
-        title="Parque Recreativo Familiar"
-        tags={["Naturaleza", "Familia", "Diversión"]}
-        description="Este parque recreativo es un espacio para disfrutar en familia. Ofrece áreas verdes y actividades para todas las edades."
-        image="/images/placeholder-image.png"
-        isMobile={false}
-        slug="parque-recreativo-familiar"
-      />
+    
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+      <!-- Project Card 1 -->
+      <div 
+        class="bg-neutral-lighter rounded-medium border-2 border-neutral-darkest hover:shadow-xl transition-all duration-300 group"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <div class="overflow-hidden rounded-t-medium">
+          <div 
+            class="h-48 lg:h-[233px] bg-center bg-cover bg-no-repeat w-full group-hover:scale-105 transition-transform duration-500" 
+            style={{ backgroundImage: `url('${imgPlaceholderImage}')` }}
+          />
+        </div>
+        <div class="p-6 lg:p-8 space-y-6">
+          <div class="space-y-2">
+            <div class="font-heebo font-semibold text-text-small text-neutral-darkest">
+              Innovación
+            </div>
+            <div class="space-y-4">
+              <h3 class="font-urbanist font-medium text-heading-5 lg:text-heading-4 text-neutral-darkest">
+                AURORA
+              </h3>
+              <p class="font-heebo font-normal text-text-small lg:text-text-regular text-neutral-darkest">
+                Compromiso con la excelencia y la satisfacción del cliente.
+              </p>
+            </div>
+          </div>
+          <div>
+            <a 
+              href="/proyectos/aurora"
+              class="inline-flex items-center gap-2 hover:text-forest-green transition-colors group"
+            >
+              <span class="font-heebo font-medium text-text-regular text-neutral-darkest group-hover:text-forest-green">
+                Descubre
+              </span>
+              <Icon name="ph:arrow-right" class="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project Card 2 -->
+      <div 
+        class="bg-neutral-lighter rounded-medium border-2 border-neutral-darkest hover:shadow-xl transition-all duration-300 group"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <div class="overflow-hidden rounded-t-medium">
+          <div 
+            class="h-48 lg:h-[233px] bg-center bg-cover bg-no-repeat w-full group-hover:scale-105 transition-transform duration-500" 
+            style={{ backgroundImage: `url('${imgPlaceholderImage}')` }}
+          />
+        </div>
+        <div class="p-6 lg:p-8 space-y-6">
+          <div class="space-y-2">
+            <div class="font-heebo font-semibold text-text-small text-neutral-darkest">
+              Eficiencia
+            </div>
+            <div class="space-y-4">
+              <h3 class="font-urbanist font-medium text-heading-5 lg:text-heading-4 text-neutral-darkest">
+                GRAND BAY
+              </h3>
+              <p class="font-heebo font-normal text-text-small lg:text-text-regular text-neutral-darkest">
+                Soluciones personalizadas para cada necesidad constructiva.
+              </p>
+            </div>
+          </div>
+          <div>
+            <a 
+              href="/proyectos/grand-bay"
+              class="inline-flex items-center gap-2 hover:text-forest-green transition-colors group"
+            >
+              <span class="font-heebo font-medium text-text-regular text-neutral-darkest group-hover:text-forest-green">
+                Explora
+              </span>
+              <Icon name="ph:arrow-right" class="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project Card 3 -->
+      <div 
+        class="bg-neutral-lighter rounded-medium border-2 border-neutral-darkest hover:shadow-xl transition-all duration-300 group"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <div class="overflow-hidden rounded-t-medium">
+          <div 
+            class="h-48 lg:h-[233px] bg-center bg-cover bg-no-repeat w-full group-hover:scale-105 transition-transform duration-500" 
+            style={{ backgroundImage: `url('${imgPlaceholderImage}')` }}
+          />
+        </div>
+        <div class="p-6 lg:p-8 space-y-6">
+          <div class="space-y-2">
+            <div class="font-heebo font-semibold text-text-small text-neutral-darkest">
+              Compromiso
+            </div>
+            <div class="space-y-4">
+              <h3 class="font-urbanist font-medium text-heading-5 lg:text-heading-4 text-neutral-darkest">
+                ÁGORA
+              </h3>
+              <p class="font-heebo font-normal text-text-small lg:text-text-regular text-neutral-darkest">
+                Tu satisfacción es nuestra prioridad en cada proyecto.
+              </p>
+            </div>
+          </div>
+          <div>
+            <a 
+              href="/contacto"
+              class="inline-flex items-center gap-2 hover:text-forest-green transition-colors group"
+            >
+              <span class="font-heebo font-medium text-text-regular text-neutral-darkest group-hover:text-forest-green">
+                Contáctanos
+              </span>
+              <Icon name="ph:arrow-right" class="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

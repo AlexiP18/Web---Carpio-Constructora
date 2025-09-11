@@ -2,14 +2,14 @@
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/ui/Header.astro";
 import Footer from "../../components/sections/Footer.astro";
-import ProjectTestimonial from "../../components/sections/ProjectTestimonial.astro";
+import { Icon } from "astro-icon/components";
 
 export async function getStaticPaths() {
   return [
     {
       params: { slug: "proyecto-residencial-moderno" },
       props: {
-        title: "Proyecto Residencial Moderno",
+        title: "Residencial Moderna Vista",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
         tags: ["Residencial Urbano", "Sostenibilidad", "Innovación"],
         content: `Descubre la esencia de nuestro Proyecto 1, donde la modernidad se encuentra con la funcionalidad. Esta construcción ha sido diseñada para ofrecer un ambiente acogedor y práctico, ideal para disfrutar de cada rincón de tu hogar.
@@ -22,16 +22,50 @@ Además, el Proyecto 1 está ubicado en una zona privilegiada, rodeada de servic
 
 Te invitamos a explorar más sobre este proyecto y descubrir cómo podemos hacer realidad la casa de tus sueños. ¡Contáctanos para más información!`,
         images: [
-          "/images/placeholder-image.png",
-          "/images/placeholder-image.png",
-          "/images/placeholder-image.png"
+          "/images/placeholder-image.jpg",
+          "/images/placeholder-image.jpg",
+          "/images/placeholder-image.jpg"
+        ],
+        testimonial: {
+          rating: 5,
+          quote: "La calidad de la construcción superó nuestras expectativas y el equipo fue excepcional en su atención al detalle.",
+          name: "Juan Pérez",
+          position: "Director, Constructora XYZ",
+          logo: "/images/logo-placeholder.svg",
+          image: "/images/placeholder-image.jpg"
+        },
+        testimonials: [
+          {
+            rating: 5,
+            quote: "La calidad de la construcción superó nuestras expectativas y el equipo fue excepcional en su atención al detalle.",
+            name: "Juan Pérez",
+            position: "Director, Constructora XYZ",
+            logo: "/images/logo-placeholder.svg",
+            image: "/images/placeholder-image.jpg"
+          },
+          {
+            rating: 5,
+            quote: "Profesionalismo excepcional desde el primer día. El proyecto se completó a tiempo y dentro del presupuesto.",
+            name: "María González",
+            position: "Gerente de Proyectos, Inmobiliaria del Norte",
+            logo: "/images/logo-placeholder.svg",
+            image: "/images/placeholder-image.jpg"
+          },
+          {
+            rating: 4,
+            quote: "Trabajo de alta calidad y atención a cada detalle. Definitivamente recomendaríamos sus servicios.",
+            name: "Carlos Rodríguez",
+            position: "CEO, Desarrollos Urbanos SA",
+            logo: "/images/logo-placeholder.svg",
+            image: "/images/placeholder-image.jpg"
+          }
         ]
       }
     },
     {
       params: { slug: "centro-comercial-innovador" },
       props: {
-        title: "Centro Comercial Innovador",
+        title: "Centro Comercial Plaza",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
         tags: ["Comercio Local", "Espacios Abiertos", "Accesibilidad"],
         content: `Este centro comercial está diseñado para la comunidad. Fomenta el comercio local y ofrece espacios accesibles para todos.
@@ -44,9 +78,43 @@ El proyecto incluye amplias áreas de estacionamiento, accesos para personas con
 
 ¡Descubre cómo este proyecto está transformando la experiencia comercial en la comunidad!`,
         images: [
-          "/images/placeholder-image.png",
-          "/images/placeholder-image.png",
-          "/images/placeholder-image.png"
+          "/images/placeholder-image.jpg",
+          "/images/placeholder-image.jpg",
+          "/images/placeholder-image.jpg"
+        ],
+        testimonial: {
+          rating: 5,
+          quote: "Un proyecto excepcional que ha revitalizado nuestra comunidad comercial.",
+          name: "María García",
+          position: "Directora, Inmobiliaria ABC",
+          logo: "/images/logo-placeholder.svg",
+          image: "/images/placeholder-image.jpg"
+        },
+        testimonials: [
+          {
+            rating: 5,
+            quote: "Un proyecto excepcional que ha revitalizado nuestra comunidad comercial.",
+            name: "María García",
+            position: "Directora, Inmobiliaria ABC",
+            logo: "/images/logo-placeholder.svg",
+            image: "/images/placeholder-image.jpg"
+          },
+          {
+            rating: 5,
+            quote: "La integración de espacios comerciales y recreativos es brillante. Un diseño muy funcional.",
+            name: "Roberto Silva",
+            position: "Arquitecto Principal, Estudio Moderno",
+            logo: "/images/logo-placeholder.svg",
+            image: "/images/placeholder-image.jpg"
+          },
+          {
+            rating: 4,
+            quote: "Excelente trabajo en la planificación y ejecución. El resultado final es impresionante.",
+            name: "Ana Martínez",
+            position: "Coordinadora de Desarrollo, Ciudad Nueva",
+            logo: "/images/logo-placeholder.svg",
+            image: "/images/placeholder-image.jpg"
+          }
         ]
       }
     },
@@ -66,16 +134,50 @@ El proyecto preserva la flora nativa y crea nuevos ecosistemas que benefician la
 
 ¡Un espacio donde la naturaleza y la diversión se combinan para crear momentos inolvidables en familia!`,
         images: [
-          "/images/placeholder-image.png",
-          "/images/placeholder-image.png",
-          "/images/placeholder-image.png"
+          "/images/placeholder-image.jpg",
+          "/images/placeholder-image.jpg",
+          "/images/placeholder-image.jpg"
+        ],
+        testimonial: {
+          rating: 5,
+          quote: "Un espacio maravilloso donde nuestras familias pueden conectar con la naturaleza.",
+          name: "Carlos López",
+          position: "CEO, Desarrollo Urbano",
+          logo: "/images/logo-placeholder.svg",
+          image: "/images/placeholder-image.jpg"
+        },
+        testimonials: [
+          {
+            rating: 5,
+            quote: "Un espacio maravilloso donde nuestras familias pueden conectar con la naturaleza.",
+            name: "Carlos López",
+            position: "CEO, Desarrollo Urbano",
+            logo: "/images/logo-placeholder.svg",
+            image: "/images/placeholder-image.jpg"
+          },
+          {
+            rating: 5,
+            quote: "El diseño del parque es excepcional. Perfecto equilibrio entre naturaleza y funcionalidad.",
+            name: "Laura Fernández",
+            position: "Directora de Parques, Municipio Central",
+            logo: "/images/logo-placeholder.svg",
+            image: "/images/placeholder-image.jpg"
+          },
+          {
+            rating: 4,
+            quote: "Un proyecto que realmente mejora la calidad de vida de la comunidad. Muy bien ejecutado.",
+            name: "Diego Herrera",
+            position: "Planificador Urbano, Consultora Verde",
+            logo: "/images/logo-placeholder.svg",
+            image: "/images/placeholder-image.jpg"
+          }
         ]
       }
     }
   ];
 }
 
-const { title, description, tags, content, images } = Astro.props;
+const { title, description, tags, content, images, testimonial, testimonials } = Astro.props;
 ---
 
 <Layout title={`${title} - Constructora Carpio`}>
@@ -83,20 +185,21 @@ const { title, description, tags, content, images } = Astro.props;
   <main>
     <!-- Hero Section -->
     <section
-      class="bg-[#00000080] bg-cover bg-center bg-no-repeat h-[500px] md:h-[900px] flex items-center justify-center px-5 md:px-16"
+      class="bg-[#00000080] bg-cover bg-center bg-no-repeat h-[500px] lg:h-[900px] flex items-center justify-center px-5 lg:px-16"
       style="background-image: url('/images/portfolio-header-4.png');"
+      data-aos="fade-up"
     >
       <div class="container mx-auto max-w-[1280px]">
-        <div class="max-w-[335px] md:max-w-[768px] mx-auto text-center text-white">
-          <h1 class="text-3xl md:text-[84px] font-medium leading-[1.1] tracking-[0.84px] mb-4 md:mb-6 font-['Urbanist']">
+        <div class="max-w-[335px] lg:max-w-[768px] mx-auto text-center text-white">
+          <h1 class="text-3xl lg:text-[84px] font-medium leading-[1.1] tracking-[0.84px] mb-4 lg:mb-6 font-urbanist" data-aos="fade-up" data-aos-delay="100">
             {title}
           </h1>
-          <p class="text-sm md:text-xl leading-[1.6] mb-4 md:mb-6 font-['Heebo']">
+          <p class="text-sm lg:text-xl leading-[1.6] mb-4 lg:mb-6 font-heebo" data-aos="fade-up" data-aos-delay="200">
             {description}
           </p>
-          <div class="flex flex-wrap gap-2 justify-center">
+          <div class="flex flex-wrap gap-2 justify-center" data-aos="fade-up" data-aos-delay="300">
             {tags.map((tag) => (
-              <span class="bg-transparent border-2 border-white text-white px-2.5 py-1 rounded-full text-xs md:text-base font-semibold font-['Heebo']">
+              <span class="bg-transparent border-2 border-white text-white px-2.5 py-1 rounded-full text-xs lg:text-base font-semibold font-heebo">
                 {tag}
               </span>
             ))}
@@ -106,39 +209,544 @@ const { title, description, tags, content, images } = Astro.props;
     </section>
 
     <!-- Content Section -->
-    <section class="bg-white py-16 md:py-28 px-5 md:px-16">
+    <section class="bg-white py-16 lg:py-28 px-5 lg:px-16" data-aos="fade-up">
       <div class="container mx-auto max-w-[1280px]">
-        <div class="flex flex-col md:flex-row gap-12 md:gap-20 items-start">
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           <!-- Text Content -->
-          <div class="flex-1">
-            <h2 class="text-3xl md:text-[60px] font-medium leading-[1.2] tracking-[0.6px] mb-6 text-[#0c0801] font-['Urbanist']">
+          <div class="flex-1" data-aos="fade-right" data-aos-delay="100">
+            <h2 class="text-3xl lg:text-[60px] font-medium leading-[1.2] tracking-[0.6px] mb-6 text-neutral-darkest font-urbanist">
               Información del Proyecto
             </h2>
             <div class="prose prose-lg max-w-none">
-              {content.split('\n\n').map((paragraph) => (
-                <p class="text-sm md:text-lg leading-[1.6] mb-4 text-[#0c0801] font-['Heebo']">
+              {content.split('\n\n').map((paragraph, index) => (
+                <p class="text-sm lg:text-lg leading-[1.6] mb-4 text-neutral-darkest font-heebo" data-aos="fade-up" data-aos-delay={100 * (index + 2)}>
                   {paragraph}
                 </p>
               ))}
             </div>
           </div>
           
-          <!-- Gallery -->
-          <div class="w-full md:w-[768px] flex flex-col gap-6 md:gap-8">
-            {images.map((image, index) => (
-              <img
-                src={image}
-                alt={`${title} - Imagen ${index + 1}`}
-                class="w-full h-[250px] md:h-[768px] object-cover rounded-[40px]"
-              />
-            ))}
+          <!-- Gallery Slider -->
+          <div class="w-full lg:w-[768px] relative" data-aos="fade-left" data-aos-delay="200">
+            <!-- Main Image Display -->
+            <div id="gallery-container" class="relative h-[400px] lg:h-[768px] rounded-[40px] overflow-hidden">
+              {images.map((image, index) => (
+                <div 
+                  class={`gallery-slide absolute inset-0 transition-all duration-1000 ease-in-out ${index === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
+                  data-slide={index}
+                >
+                  <img
+                    src={image}
+                    alt={`${title} - Imagen ${index + 1}`}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
+              
+              <!-- Slide Indicators -->
+              <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                {images.map((_, index) => (
+                  <button 
+                    class={`gallery-dot w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-white' : 'bg-white/50'}`}
+                    data-slide={index}
+                  ></button>
+                ))}
+              </div>
+              
+              <!-- Navigation Arrows -->
+              <button 
+                id="prev-gallery" 
+                class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-3 transition-all duration-200 opacity-0 hover:opacity-100 z-10"
+              >
+                <Icon name="ph:caret-left" class="w-6 h-6 text-neutral-darkest" />
+              </button>
+              <button 
+                id="next-gallery" 
+                class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-3 transition-all duration-200 opacity-0 hover:opacity-100 z-10"
+              >
+                <Icon name="ph:caret-right" class="w-6 h-6 text-neutral-darkest" />
+              </button>
+            </div>
+            
+            <!-- Thumbnail Strip -->
+            <div class="flex gap-4 mt-6 lg:mt-8 justify-center">
+              {images.map((image, index) => (
+                <button 
+                  class={`gallery-thumb w-16 h-16 lg:w-20 lg:h-20 rounded-lg overflow-hidden transition-all duration-300 ${index === 0 ? 'ring-2 ring-forest-green' : 'ring-1 ring-neutral-light'}`}
+                  data-slide={index}
+                >
+                  <img
+                    src={image}
+                    alt={`Thumbnail ${index + 1}`}
+                    class="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Testimonial Section -->
-    <ProjectTestimonial />
+    <section class="bg-beige py-16 lg:py-28 px-5 lg:px-16" data-aos="fade-up">
+      <div class="container mx-auto max-w-[1280px]">
+        <!-- Testimonial Slider Container -->
+        <div id="testimonial-slider" class="relative">
+          <!-- Main Content -->
+          <div class="flex flex-col lg:flex-row gap-8 lg:gap-20 items-center mb-8">
+            <!-- Image -->
+            <div id="testimonial-image" class="w-full lg:w-[616px] h-64 lg:h-[640px] bg-cover bg-center bg-no-repeat rounded-[40px] transition-all duration-500 ease-in-out" 
+                 style={`background-image: url('${testimonial.image}');`}
+                 data-aos="fade-right" data-aos-delay="100">
+            </div>
+            
+            <!-- Content -->
+            <div class="flex-1 flex flex-col gap-6 lg:gap-8" data-aos="fade-left" data-aos-delay="200">
+              <!-- Rating Stars -->
+              <div id="testimonial-rating" class="flex gap-1">
+                {Array.from({ length: testimonial.rating }).map((_, i) => (
+                  <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                ))}
+              </div>
+              
+              <!-- Quote -->
+              <h3 id="testimonial-quote" class="text-xl lg:text-[32px] font-medium leading-[1.2] tracking-[0.32px] text-neutral-darkest font-urbanist transition-all duration-500 ease-in-out">
+                "{testimonial.quote}"
+              </h3>
+              
+              <!-- Avatar and Company -->
+              <div class="flex gap-5 items-center">
+                <div id="testimonial-info" class="flex flex-col text-neutral-darkest text-lg transition-all duration-500 ease-in-out">
+                  <p class="font-semibold font-heebo">{testimonial.name}</p>
+                  <p class="font-heebo">{testimonial.position}</p>
+                </div>
+                
+                <!-- Divider -->
+                <div class="w-0 h-12 border-l-2 border-neutral-darkest rotate-90"></div>
+                
+                <!-- Company Logo -->
+                <div id="testimonial-logo" class="h-12 w-[120px] transition-all duration-500 ease-in-out">
+                  <img src={testimonial.logo} alt="Company Logo" class="h-full w-full object-contain" />
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Navigation Controls -->
+          <div class="flex justify-between items-center" data-aos="fade-up" data-aos-delay="300">
+            <!-- Dots -->
+            <div id="testimonial-dots" class="flex gap-2">
+              <button class="testimonial-dot w-2 h-2 rounded-full bg-neutral-darkest transition-all duration-300" data-slide="0"></button>
+              <button class="testimonial-dot w-6 h-2 rounded-full bg-neutral-darkest opacity-30 transition-all duration-300" data-slide="1"></button>
+              <button class="testimonial-dot w-2 h-2 rounded-full bg-neutral-darkest opacity-30 transition-all duration-300" data-slide="2"></button>
+            </div>
+            
+            <!-- Arrow Controls -->
+            <div class="flex gap-4">
+              <button id="prev-testimonial" class="bg-beige border-2 border-neutral-darkest rounded-full p-3 hover:bg-neutral-lightest transition-colors duration-200" aria-label="Testimonio anterior">
+                <Icon name="ph:caret-left" class="w-6 h-6 text-neutral-darkest" />
+              </button>
+              <button id="next-testimonial" class="bg-beige border-2 border-neutral-darkest rounded-full p-3 hover:bg-neutral-lightest transition-colors duration-200" aria-label="Siguiente testimonio">
+                <Icon name="ph:caret-right" class="w-6 h-6 text-neutral-darkest" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
   <Footer />
 </Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const gallerySlides = document.querySelectorAll('.gallery-slide') as NodeListOf<HTMLElement>;
+    const galleryDots = document.querySelectorAll('.gallery-dot') as NodeListOf<HTMLButtonElement>;
+    const galleryThumbs = document.querySelectorAll('.gallery-thumb') as NodeListOf<HTMLButtonElement>;
+    const prevButton = document.getElementById('prev-gallery') as HTMLButtonElement | null;
+    const nextButton = document.getElementById('next-gallery') as HTMLButtonElement | null;
+    const galleryContainer = document.getElementById('gallery-container') as HTMLElement | null;
+    
+    let currentSlide: number = 0;
+    let isScrolling: boolean = false;
+    let scrollProgress: number = 0;
+    let autoSlideInterval: ReturnType<typeof setInterval> | null = null;
+    
+    const totalSlides: number = gallerySlides.length;
+    
+    function updateSlide(index: number): void {
+      if (index < 0 || index >= totalSlides) return;
+      
+      // Update slides
+      gallerySlides.forEach((slide, i) => {
+        slide.classList.remove('opacity-100', 'scale-100');
+        slide.classList.add('opacity-0', 'scale-105');
+        
+        if (i === index) {
+          slide.classList.remove('opacity-0', 'scale-105');
+          slide.classList.add('opacity-100', 'scale-100');
+        }
+      });
+      
+      // Update dots
+      galleryDots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.remove('bg-white/50');
+          dot.classList.add('bg-white');
+        } else {
+          dot.classList.remove('bg-white');
+          dot.classList.add('bg-white/50');
+        }
+      });
+      
+      // Update thumbnails
+      galleryThumbs.forEach((thumb, i) => {
+        if (i === index) {
+          thumb.classList.remove('ring-1', 'ring-neutral-light');
+          thumb.classList.add('ring-2', 'ring-forest-green');
+        } else {
+          thumb.classList.remove('ring-2', 'ring-forest-green');
+          thumb.classList.add('ring-1', 'ring-neutral-light');
+        }
+      });
+      
+      currentSlide = index;
+    }
+    
+    function nextSlide(): void {
+      updateSlide((currentSlide + 1) % totalSlides);
+    }
+    
+    function prevSlide(): void {
+      updateSlide((currentSlide - 1 + totalSlides) % totalSlides);
+    }
+    
+    // Auto-slide based on scroll progress
+    function handleScroll(): void {
+      if (!galleryContainer) return;
+      
+      const rect = galleryContainer.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const containerTop = rect.top;
+      const containerHeight = rect.height;
+      
+      // Check if container is in viewport
+      if (containerTop < windowHeight && containerTop + containerHeight > 0) {
+        // Calculate scroll progress (0 to 1)
+        const progress = Math.max(0, Math.min(1, (windowHeight - containerTop) / (windowHeight + containerHeight)));
+        
+        // Determine which slide to show based on progress
+        const targetSlide = Math.floor(progress * totalSlides);
+        const clampedSlide = Math.max(0, Math.min(totalSlides - 1, targetSlide));
+        
+        if (clampedSlide !== currentSlide && !isScrolling) {
+          isScrolling = true;
+          updateSlide(clampedSlide);
+          
+          // Debounce scroll updates
+          setTimeout(() => {
+            isScrolling = false;
+          }, 100);
+        }
+      }
+    }
+    
+    // Start auto-slide when not scrolling
+    function startAutoSlide(): void {
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(() => {
+        if (!isScrolling) {
+          nextSlide();
+        }
+      }, 4000);
+    }
+    
+    // Stop auto-slide on interaction
+    function stopAutoSlide(): void {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+      }
+    }
+    
+    // Event listeners
+    window.addEventListener('scroll', handleScroll);
+    
+    // Navigation buttons
+    if (prevButton) {
+      prevButton.addEventListener('click', () => {
+        stopAutoSlide();
+        prevSlide();
+        setTimeout(startAutoSlide, 5000); // Restart after 5 seconds
+      });
+    }
+    
+    if (nextButton) {
+      nextButton.addEventListener('click', () => {
+        stopAutoSlide();
+        nextSlide();
+        setTimeout(startAutoSlide, 5000); // Restart after 5 seconds
+      });
+    }
+    
+    // Dot navigation
+    galleryDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        stopAutoSlide();
+        updateSlide(index);
+        setTimeout(startAutoSlide, 5000); // Restart after 5 seconds
+      });
+    });
+    
+    // Thumbnail navigation
+    galleryThumbs.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => {
+        stopAutoSlide();
+        updateSlide(index);
+        setTimeout(startAutoSlide, 5000); // Restart after 5 seconds
+      });
+    });
+    
+    // Hover controls for navigation arrows
+    if (galleryContainer) {
+      galleryContainer.addEventListener('mouseenter', () => {
+        if (prevButton) prevButton.classList.add('opacity-100');
+        if (nextButton) nextButton.classList.add('opacity-100');
+      });
+      
+      galleryContainer.addEventListener('mouseleave', () => {
+        if (prevButton) prevButton.classList.remove('opacity-100');
+        if (nextButton) nextButton.classList.remove('opacity-100');
+      });
+    }
+    
+    // Touch/swipe support
+    let touchStartX: number = 0;
+    let touchEndX: number = 0;
+    
+    if (galleryContainer) {
+      galleryContainer.addEventListener('touchstart', (e: TouchEvent) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+      
+      galleryContainer.addEventListener('touchend', (e: TouchEvent) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      });
+    }
+    
+    function handleSwipe(): void {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        stopAutoSlide();
+        if (diff > 0) {
+          nextSlide(); // Swipe left - next slide
+        } else {
+          prevSlide(); // Swipe right - previous slide
+        }
+        setTimeout(startAutoSlide, 5000); // Restart after 5 seconds
+      }
+    }
+    
+    // Initialize
+    updateSlide(0);
+    startAutoSlide();
+    
+    // Pause auto-slide when page is not visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoSlide();
+      } else {
+        startAutoSlide();
+      }
+    });
+
+    // Testimonial Slider Functionality
+    const testimonialDots = document.querySelectorAll('.testimonial-dot') as NodeListOf<HTMLButtonElement>;
+    const prevTestimonial = document.getElementById('prev-testimonial') as HTMLButtonElement | null;
+    const nextTestimonial = document.getElementById('next-testimonial') as HTMLButtonElement | null;
+    const testimonialImage = document.getElementById('testimonial-image') as HTMLElement | null;
+    const testimonialRating = document.getElementById('testimonial-rating') as HTMLElement | null;
+    const testimonialQuote = document.getElementById('testimonial-quote') as HTMLElement | null;
+    const testimonialInfo = document.getElementById('testimonial-info') as HTMLElement | null;
+    const testimonialLogo = document.getElementById('testimonial-logo') as HTMLElement | null;
+
+    const testimonials: Array<{
+      rating: number;
+      quote: string;
+      name: string;
+      position: string;
+      logo: string;
+      image: string;
+    }> = [
+      {
+        rating: 5,
+        quote: "La calidad de la construcción superó nuestras expectativas y el equipo fue excepcional en su atención al detalle.",
+        name: "Juan Pérez",
+        position: "Director, Constructora XYZ",
+        logo: "/images/logo-placeholder.svg",
+        image: "/images/placeholder-image.jpg"
+      },
+      {
+        rating: 5,
+        quote: "Profesionalismo excepcional desde el primer día. El proyecto se completó a tiempo y dentro del presupuesto.",
+        name: "María González",
+        position: "Gerente de Proyectos, Inmobiliaria del Norte",
+        logo: "/images/logo-placeholder.svg",
+        image: "/images/placeholder-image.jpg"
+      },
+      {
+        rating: 4,
+        quote: "Trabajo de alta calidad y atención a cada detalle. Definitivamente recomendaríamos sus servicios.",
+        name: "Carlos Rodríguez",
+        position: "CEO, Desarrollos Urbanos SA",
+        logo: "/images/logo-placeholder.svg",
+        image: "/images/placeholder-image.jpg"
+      }
+    ];
+
+    let currentTestimonial: number = 0;
+    let testimonialAutoSlideInterval: ReturnType<typeof setInterval> | null = null;
+
+    function updateTestimonialSlide(index: number): void {
+      if (index < 0 || index >= testimonials.length) return;
+
+      const testimonial = testimonials[index];
+
+      // Update image with fade effect
+      if (testimonialImage) {
+        testimonialImage.style.opacity = '0';
+        setTimeout(() => {
+          testimonialImage.style.backgroundImage = `url('${testimonial.image}')`;
+          testimonialImage.style.opacity = '1';
+        }, 250);
+      }
+
+      // Update rating stars
+      if (testimonialRating) {
+        testimonialRating.style.opacity = '0';
+        setTimeout(() => {
+          testimonialRating.innerHTML = '';
+          for (let i = 0; i < testimonial.rating; i++) {
+            const star = document.createElement('div');
+            star.innerHTML = '<svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 256 256"><path d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L165.93,81.17l59.46,5.15A16,16,0,0,1,234.5,114.38Z"></path></svg>';
+            testimonialRating.appendChild(star);
+          }
+          testimonialRating.style.opacity = '1';
+        }, 250);
+      }
+
+      // Update quote with slide effect
+      if (testimonialQuote) {
+        testimonialQuote.style.opacity = '0';
+        testimonialQuote.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          testimonialQuote.textContent = `"${testimonial.quote}"`;
+          testimonialQuote.style.opacity = '1';
+          testimonialQuote.style.transform = 'translateY(0)';
+        }, 250);
+      }
+
+      // Update testimonial info
+      if (testimonialInfo) {
+        testimonialInfo.style.opacity = '0';
+        setTimeout(() => {
+          testimonialInfo.innerHTML = `
+            <p class="font-semibold font-heebo">${testimonial.name}</p>
+            <p class="font-heebo">${testimonial.position}</p>
+          `;
+          testimonialInfo.style.opacity = '1';
+        }, 250);
+      }
+
+      // Update logo
+      if (testimonialLogo) {
+        testimonialLogo.style.opacity = '0';
+        setTimeout(() => {
+          const img = testimonialLogo.querySelector('img') as HTMLImageElement;
+          if (img) {
+            img.src = testimonial.logo;
+          }
+          testimonialLogo.style.opacity = '1';
+        }, 250);
+      }
+
+      // Update dots
+      testimonialDots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.remove('w-2', 'opacity-30');
+          dot.classList.add('w-6');
+        } else {
+          dot.classList.remove('w-6');
+          dot.classList.add('w-2', 'opacity-30');
+        }
+      });
+
+      currentTestimonial = index;
+    }
+
+    function nextTestimonialSlide(): void {
+      updateTestimonialSlide((currentTestimonial + 1) % testimonials.length);
+    }
+
+    function prevTestimonialSlide(): void {
+      updateTestimonialSlide((currentTestimonial - 1 + testimonials.length) % testimonials.length);
+    }
+
+    function startTestimonialAutoSlide(): void {
+      if (testimonialAutoSlideInterval) clearInterval(testimonialAutoSlideInterval);
+      testimonialAutoSlideInterval = setInterval(() => {
+        nextTestimonialSlide();
+      }, 6000);
+    }
+
+    function stopTestimonialAutoSlide(): void {
+      if (testimonialAutoSlideInterval) {
+        clearInterval(testimonialAutoSlideInterval);
+        testimonialAutoSlideInterval = null;
+      }
+    }
+
+    // Testimonial navigation event listeners
+    if (prevTestimonial) {
+      prevTestimonial.addEventListener('click', () => {
+        stopTestimonialAutoSlide();
+        prevTestimonialSlide();
+        setTimeout(startTestimonialAutoSlide, 8000);
+      });
+    }
+
+    if (nextTestimonial) {
+      nextTestimonial.addEventListener('click', () => {
+        stopTestimonialAutoSlide();
+        nextTestimonialSlide();
+        setTimeout(startTestimonialAutoSlide, 8000);
+      });
+    }
+
+    // Testimonial dot navigation
+    testimonialDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        stopTestimonialAutoSlide();
+        updateTestimonialSlide(index);
+        setTimeout(startTestimonialAutoSlide, 8000);
+      });
+    });
+
+    // Initialize testimonial slider
+    updateTestimonialSlide(0);
+    startTestimonialAutoSlide();
+
+    // Pause testimonial auto-slide when page is not visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopTestimonialAutoSlide();
+      } else {
+        startTestimonialAutoSlide();
+      }
+    });
+  });
+</script>

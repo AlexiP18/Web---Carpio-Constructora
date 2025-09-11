@@ -1,48 +1,199 @@
 ---
-import ArrowBack from "../icons/ArrowBack.astro";
-import ArrowForward from "../icons/ArrowForward.astro";
+import { Icon } from "astro-icon/components";
 ---
 
-<section class="bg-white py-16 md:py-28 px-5 md:px-16">
+<section class="bg-white py-16 lg:py-28 px-5 lg:px-16" data-aos="fade-up">
   <div class="container mx-auto max-w-[1280px] relative">
-    <div class="flex flex-col items-center gap-5 md:gap-12">
-      <div class="max-w-[335px] md:max-w-[768px] text-center">
-        <img
-          src="/images/logo-placeholder.svg"
-          alt="Company Logo"
-          class="h-12 w-[120px] mx-auto mb-6 md:mb-8"
-        />
-        <h3 class="text-xl md:text-[32px] font-medium leading-[1.2] tracking-[0.32px] mb-6 md:mb-8 text-[#0c0801] font-['Urbanist']">
-          "La calidad del trabajo superó nuestras expectativas. Cada detalle fue
-          cuidadosamente considerado y ejecutado."
-        </h3>
-        <div class="flex flex-col items-center">
-          <img
-            src="/images/avatar-image.png"
-            alt="Avatar"
-            class="w-14 h-14 rounded-full mb-4"
-          />
-          <p class="font-semibold text-sm md:text-lg text-[#0c0801] font-['Heebo']">Juan Pérez</p>
-          <p class="text-sm md:text-lg text-[#0c0801] font-['Heebo']">Gerente, Constructora XYZ</p>
+    <div class="flex flex-col items-center gap-5 lg:gap-12">
+      <!-- Testimonial Slider Container -->
+      <div class="max-w-[335px] lg:max-w-[768px] text-center relative overflow-hidden">
+        <!-- Testimonial Content -->
+        <div id="testimonial-slider" class="flex transition-transform duration-500 ease-in-out">
+          <!-- Testimonial 1 -->
+          <div class="w-full flex-shrink-0 flex flex-col items-center">
+            <img
+              src="/images/logo-placeholder.svg"
+              alt="Company Logo"
+              class="h-12 w-[120px] mx-auto mb-6 lg:mb-8"
+            />
+            <h3 class="text-xl lg:text-[32px] font-medium leading-[1.2] tracking-[0.32px] mb-6 lg:mb-8 text-neutral-darkest font-urbanist">
+              "La calidad del trabajo superó nuestras expectativas. Cada detalle fue cuidadosamente considerado y ejecutado."
+            </h3>
+            <div class="flex flex-col items-center">
+              <img
+                src="/images/avatar-image.png"
+                alt="Avatar"
+                class="w-14 h-14 rounded-full mb-4"
+              />
+              <p class="font-semibold text-sm lg:text-lg text-neutral-darkest font-heebo">Juan Pérez</p>
+              <p class="text-sm lg:text-lg text-neutral-darkest font-heebo">Gerente, Constructora XYZ</p>
+            </div>
+          </div>
+          
+          <!-- Testimonial 2 -->
+          <div class="w-full flex-shrink-0 flex flex-col items-center">
+            <img
+              src="/images/logo-placeholder.svg"
+              alt="Company Logo"
+              class="h-12 w-[120px] mx-auto mb-6 lg:mb-8"
+            />
+            <h3 class="text-xl lg:text-[32px] font-medium leading-[1.2] tracking-[0.32px] mb-6 lg:mb-8 text-neutral-darkest font-urbanist">
+              "Profesionalismo excepcional y atención al detalle. Recomendamos sus servicios sin dudar."
+            </h3>
+            <div class="flex flex-col items-center">
+              <img
+                src="/images/avatar-image.png"
+                alt="Avatar"
+                class="w-14 h-14 rounded-full mb-4"
+              />
+              <p class="font-semibold text-sm lg:text-lg text-neutral-darkest font-heebo">María García</p>
+              <p class="text-sm lg:text-lg text-neutral-darkest font-heebo">Directora, Inmobiliaria ABC</p>
+            </div>
+          </div>
+          
+          <!-- Testimonial 3 -->
+          <div class="w-full flex-shrink-0 flex flex-col items-center">
+            <img
+              src="/images/logo-placeholder.svg"
+              alt="Company Logo"
+              class="h-12 w-[120px] mx-auto mb-6 lg:mb-8"
+            />
+            <h3 class="text-xl lg:text-[32px] font-medium leading-[1.2] tracking-[0.32px] mb-6 lg:mb-8 text-neutral-darkest font-urbanist">
+              "Excelente comunicación durante todo el proyecto. Entregaron exactamente lo que prometieron."
+            </h3>
+            <div class="flex flex-col items-center">
+              <img
+                src="/images/avatar-image.png"
+                alt="Avatar"
+                class="w-14 h-14 rounded-full mb-4"
+              />
+              <p class="font-semibold text-sm lg:text-lg text-neutral-darkest font-heebo">Carlos López</p>
+              <p class="text-sm lg:text-lg text-neutral-darkest font-heebo">CEO, Desarrollo Urbano</p>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- Desktop Arrow Navigation (positioned absolutely) -->
-      <div class="hidden md:block">
+      
+      <!-- Desktop Arrow Navigation -->
+      <div class="hidden lg:block">
         <button
-          class="absolute left-0 top-[142px] p-3 rounded-full border-2 border-[#0c0801] bg-white"
+          id="prev-testimonial"
+          class="absolute left-0 top-[142px] p-3 rounded-full border-2 border-neutral-darkest bg-white hover:bg-neutral-lightest transition-colors duration-200"
+          aria-label="Testimonio anterior"
         >
-          <ArrowBack />
+          <Icon name="ph:caret-left" class="w-6 h-6 text-neutral-darkest" />
         </button>
         <button
-          class="absolute right-0 top-[142px] p-3 rounded-full border-2 border-[#0c0801] bg-white"
+          id="next-testimonial"
+          class="absolute right-0 top-[142px] p-3 rounded-full border-2 border-neutral-darkest bg-white hover:bg-neutral-lightest transition-colors duration-200"
+          aria-label="Siguiente testimonio"
         >
-          <ArrowForward />
+          <Icon name="ph:caret-right" class="w-6 h-6 text-neutral-darkest" />
         </button>
       </div>
+      
       <!-- Slider Dots -->
-      <div class="md:block">
-        <img src="/images/slider-dots.svg" alt="Slider dots" class="h-7" />
+      <div class="flex gap-2 items-center justify-center lg:block">
+        <button
+          class="testimonial-dot w-3 h-3 rounded-full bg-neutral-darkest transition-opacity duration-200"
+          data-slide="0"
+          aria-label="Ir al testimonio 1"
+        ></button>
+        <button
+          class="testimonial-dot w-3 h-3 rounded-full bg-neutral-darkest opacity-30 transition-opacity duration-200"
+          data-slide="1"
+          aria-label="Ir al testimonio 2"
+        ></button>
+        <button
+          class="testimonial-dot w-3 h-3 rounded-full bg-neutral-darkest opacity-30 transition-opacity duration-200"
+          data-slide="2"
+          aria-label="Ir al testimonio 3"
+        ></button>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('testimonial-slider');
+    const prevBtn = document.getElementById('prev-testimonial');
+    const nextBtn = document.getElementById('next-testimonial');
+    const dots = document.querySelectorAll('.testimonial-dot');
+    
+    let currentSlide = 0;
+    const totalSlides = 3;
+
+    function updateSlider() {
+      if (slider) {
+        const translateX = -currentSlide * 100;
+        slider.style.transform = `translateX(${translateX}%)`;
+      }
+      
+      // Update dots
+      dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.remove('opacity-30');
+        } else {
+          dot.classList.add('opacity-30');
+        }
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlider();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSlider();
+    }
+
+    // Event listeners
+    nextBtn?.addEventListener('click', nextSlide);
+    prevBtn?.addEventListener('click', prevSlide);
+
+    // Dot navigation
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentSlide = index;
+        updateSlider();
+      });
+    });
+
+    // Auto-play slider every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Touch/swipe support for mobile
+    let startX = 0;
+    let startY = 0;
+
+    slider?.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    });
+
+    slider?.addEventListener('touchend', (e) => {
+      if (!startX || !startY) return;
+
+      const endX = e.changedTouches[0].clientX;
+      const endY = e.changedTouches[0].clientY;
+
+      const diffX = startX - endX;
+      const diffY = startY - endY;
+
+      // Only trigger if horizontal swipe is greater than vertical
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 50) {
+          nextSlide();
+        } else if (diffX < -50) {
+          prevSlide();
+        }
+      }
+
+      startX = 0;
+      startY = 0;
+    });
+  });
+</script>

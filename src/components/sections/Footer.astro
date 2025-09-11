@@ -1,36 +1,148 @@
 ---
-import SocialLink from "../ui/SocialLink.astro";
+import { Icon } from 'astro-icon/components';
+
+// Asset constants from Figma
+const logoImage = "http://localhost:3845/assets/layout-logo.svg";
 ---
 
-<footer class="bg-white py-16 md:py-20 px-5 md:px-16">
-  <div class="container mx-auto">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0 mb-16 md:mb-20">
+<footer class="bg-neutral-lightest py-16 md:py-20 px-5 md:px-16">
+  <div class="container mx-auto max-w-container-large">
+    <!-- Footer Main Content -->
+    <div 
+      class="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-0 mb-16 md:mb-20"
+      data-aos="fade-up"
+    >
+      <!-- Logo -->
       <img
-        src="/images/logo-wide-1.svg"
+        src={logoImage}
         alt="Constructora Carpio"
         class="h-7 md:h-9"
       />
-      <div class="flex flex-col md:flex-row gap-4 md:gap-8 font-semibold text-center md:text-left text-sm md:text-base">
-        <a href="#">Enlace Uno</a>
-        <a href="#">Enlace Dos</a>
-        <a href="#">Enlace Tres</a>
-        <a href="#">Enlace Cuatro</a>
-        <a href="#">Enlace Cinco</a>
+      
+      <!-- Navigation Links -->
+      <div class="flex flex-col md:flex-row gap-4 md:gap-8 font-heebo font-semibold text-center md:text-left text-text-small md:text-text-medium">
+        <a 
+          href="/servicios" 
+          class="text-neutral-darkest hover:text-forest-green transition-colors duration-300"
+        >
+          Servicios
+        </a>
+        <a 
+          href="/proyectos" 
+          class="text-neutral-darkest hover:text-forest-green transition-colors duration-300"
+        >
+          Proyectos
+        </a>
+        <a 
+          href="/nosotros" 
+          class="text-neutral-darkest hover:text-forest-green transition-colors duration-300"
+        >
+          Nosotros
+        </a>
+        <a 
+          href="/contacto" 
+          class="text-neutral-darkest hover:text-forest-green transition-colors duration-300"
+        >
+          Contacto
+        </a>
+        <a 
+          href="/blog" 
+          class="text-neutral-darkest hover:text-forest-green transition-colors duration-300"
+        >
+          Blog
+        </a>
       </div>
+      
+      <!-- Social Links -->
       <div class="flex gap-3">
-        <SocialLink href="#" icon="/images/facebook.svg" />
-        <SocialLink href="#" icon="/images/instagram.svg" />
-        <SocialLink href="#" icon="/images/x.svg" />
-        <SocialLink href="#" icon="/images/linkedin.svg" />
-        <SocialLink href="#" icon="/images/youtube.svg" />
+        <a 
+          href="https://facebook.com" 
+          target="_blank"
+          class="flex items-center justify-center w-10 h-10 bg-neutral-lighter rounded-full hover:bg-forest-green group transition-all duration-300"
+          aria-label="Síguenos en Facebook"
+        >
+          <Icon 
+            name="ph:facebook-logo" 
+            class="w-5 h-5 text-neutral-darkest group-hover:text-neutral-lightest transition-colors duration-300" 
+          />
+        </a>
+        <a 
+          href="https://instagram.com" 
+          target="_blank"
+          class="flex items-center justify-center w-10 h-10 bg-neutral-lighter rounded-full hover:bg-forest-green group transition-all duration-300"
+          aria-label="Síguenos en Instagram"
+        >
+          <Icon 
+            name="ph:instagram-logo" 
+            class="w-5 h-5 text-neutral-darkest group-hover:text-neutral-lightest transition-colors duration-300" 
+          />
+        </a>
+        <a 
+          href="https://twitter.com" 
+          target="_blank"
+          class="flex items-center justify-center w-10 h-10 bg-neutral-lighter rounded-full hover:bg-forest-green group transition-all duration-300"
+          aria-label="Síguenos en Twitter"
+        >
+          <Icon 
+            name="ph:x-logo" 
+            class="w-5 h-5 text-neutral-darkest group-hover:text-neutral-lightest transition-colors duration-300" 
+          />
+        </a>
+        <a 
+          href="https://linkedin.com" 
+          target="_blank"
+          class="flex items-center justify-center w-10 h-10 bg-neutral-lighter rounded-full hover:bg-forest-green group transition-all duration-300"
+          aria-label="Síguenos en LinkedIn"
+        >
+          <Icon 
+            name="ph:linkedin-logo" 
+            class="w-5 h-5 text-neutral-darkest group-hover:text-neutral-lightest transition-colors duration-300" 
+          />
+        </a>
+        <a 
+          href="https://youtube.com" 
+          target="_blank"
+          class="flex items-center justify-center w-10 h-10 bg-neutral-lighter rounded-full hover:bg-forest-green group transition-all duration-300"
+          aria-label="Síguenos en YouTube"
+        >
+          <Icon 
+            name="ph:youtube-logo" 
+            class="w-5 h-5 text-neutral-darkest group-hover:text-neutral-lightest transition-colors duration-300" 
+          />
+        </a>
       </div>
     </div>
-    <hr class="border-black mb-6 md:mb-8" />
-    <div class="flex flex-col md:flex-row gap-4 md:gap-6 text-xs md:text-sm text-center md:text-left">
-      <p>© 2025 Relume. Todos los derechos reservados.</p>
-      <a href="#" class="underline">Política de Privacidad</a>
-      <a href="#" class="underline">Términos de Servicio</a>
-      <a href="#" class="underline">Configuración de Cookies</a>
+    
+    <!-- Divider -->
+    <hr class="border-neutral-darkest mb-6 md:mb-8" />
+    
+    <!-- Footer Bottom -->
+    <div 
+      class="flex flex-col md:flex-row gap-4 md:gap-6 text-text-small md:text-text-regular text-center md:text-left"
+      data-aos="fade-up"
+      data-aos-delay="100"
+    >
+      <p class="text-neutral-darkest">
+        © 2025 Constructora Carpio. Todos los derechos reservados.
+      </p>
+      <a 
+        href="/privacidad" 
+        class="text-neutral-darkest hover:text-forest-green transition-colors duration-300 underline"
+      >
+        Política de Privacidad
+      </a>
+      <a 
+        href="/terminos" 
+        class="text-neutral-darkest hover:text-forest-green transition-colors duration-300 underline"
+      >
+        Términos de Servicio
+      </a>
+      <a 
+        href="/cookies" 
+        class="text-neutral-darkest hover:text-forest-green transition-colors duration-300 underline"
+      >
+        Configuración de Cookies
+      </a>
     </div>
   </div>
 </footer>

@@ -1,40 +1,33 @@
 ---
-// No props needed for this component
+// Based on Figma node 9217:63100
 ---
-
-<section class="bg-[#00000080] bg-[position:0%_0%,_50%_50%] bg-size-[auto,cover] box-border content-stretch flex flex-col gap-20 items-center justify-start overflow-clip px-16 py-28 relative shrink-0 w-full" style="background-image: url('http://localhost:3845/assets/d50ffb0afa333613e155822dc6b3dfe63f150a74.png')">
-  <div class="content-stretch flex flex-col gap-20 items-center justify-start max-w-[1280px] relative shrink-0 w-full">
-    <div class="content-stretch flex flex-col gap-8 items-center justify-start max-w-[768px] relative shrink-0 w-full">
-      <div class="content-stretch flex flex-col gap-4 items-center justify-start relative shrink-0 w-full">
-        <div class="content-stretch flex items-center justify-start relative shrink-0 w-full">
-          <div class="font-['Heebo:SemiBold',_sans-serif] font-semibold leading-[0] relative shrink-0 text-[16px] text-center text-nowrap text-white">
-            <p class="leading-[1.5] whitespace-pre">Construcción</p>
-          </div>
-        </div>
-        <div class="content-stretch flex flex-col gap-6 items-center justify-start leading-[0] relative shrink-0 text-center text-white w-full">
-          <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[84px] tracking-[0.84px] w-full">
-            <p class="leading-[1.1]">Servicios de Calidad</p>
-          </div>
-          <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[20px] w-full">
-            <p class="leading-[1.6]">Ofrecemos soluciones constructivas personalizadas para satisfacer todas tus necesidades de construcción.</p>
-          </div>
+<section 
+  class="bg-cover bg-center bg-no-repeat py-28 px-16" 
+  style="background-image: url('/images/servicios-hero.jpg'); background-color: rgba(0,0,0,0.5); background-blend-mode: overlay;"
+  data-aos="fade-in"
+>
+  <div class="max-w-[1280px] mx-auto flex flex-col items-center gap-20">
+    <div class="max-w-[768px] flex flex-col items-center gap-8 text-center text-white">
+      <div class="flex flex-col gap-4 items-center" data-aos="fade-up" data-aos-delay="100">
+        <p class="font-heebo font-semibold text-[16px] leading-[1.5]">
+          Construcción
+        </p>
+        <div class="flex flex-col gap-6 items-center">
+          <h1 class="font-urbanist font-medium text-[84px] leading-[1.1] tracking-[0.84px]">
+            Servicios de Calidad
+          </h1>
+          <p class="font-heebo font-normal text-[20px] leading-[1.6]">
+            Ofrecemos soluciones constructivas personalizadas para satisfacer todas tus necesidades de construcción.
+          </p>
         </div>
       </div>
-      <div class="content-stretch flex gap-4 items-start justify-start relative shrink-0">
-        <div class="bg-[#d7e6fd] box-border content-stretch flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shrink-0">
-          <div aria-hidden="true" class="absolute border-2 border-[#0c0801] border-solid inset-[-2px] pointer-events-none rounded-[102px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]"></div>
-          <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[#0c0801] text-[18px] text-nowrap">
-            <p class="leading-[1.6] whitespace-pre">Descubre</p>
-          </div>
-          <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]"></div>
-        </div>
-        <div class="bg-[#f2f2f2] box-border content-stretch flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shrink-0">
-          <div aria-hidden="true" class="absolute border-2 border-[#0c0801] border-solid inset-[-2px] pointer-events-none rounded-[102px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]"></div>
-          <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative shrink-0 text-[#0c0801] text-[18px] text-nowrap">
-            <p class="leading-[1.6] whitespace-pre">Contáctanos</p>
-          </div>
-          <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]"></div>
-        </div>
+      <div class="flex gap-4" data-aos="fade-up" data-aos-delay="200">
+        <button class="bg-[#d7e6fd] text-[#0c0801] font-heebo font-medium text-[18px] px-6 py-2.5 rounded-[100px] border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-blue-200 transition-colors">
+          Descubre
+        </button>
+        <a href="/contacto" class="bg-[#f2f2f2] text-[#0c0801] font-heebo font-medium text-[18px] px-6 py-2.5 rounded-[100px] border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-gray-300 transition-colors">
+          Contáctanos
+        </a>
       </div>
     </div>
   </div>

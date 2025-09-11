@@ -1,25 +1,82 @@
 ---
-const Header30 = '/images/header-30.png';
+import { Icon } from 'astro-icon/components';
+
+// Asset constants from Figma
+const imgBgLanding = "http://localhost:3845/assets/5b5e5bdc6b866c2cdd3e11dccd69fd7cdfacaba8.webp";
+const imgGradient = "http://localhost:3845/assets/5dd0a8dfa11c65b2d8ea0b61b9ee0b61f5da6b7b.svg";
 ---
 
-<section
-  class="bg-cover bg-center bg-no-repeat bg-[#00000080] bg-blend-multiply h-[900px] flex items-center justify-center text-white px-4 sm:px-16"
-  style={`background-image: url(${Header30})`}
->
-  <div class="max-w-[768px] text-center flex flex-col items-center gap-8">
-    <h1 class="font-['Urbanist',_sans-serif] font-medium text-[48px] sm:text-[84px] leading-tight tracking-[0.84px]">
-      Constructora Carpio
-    </h1>
-    <p class="font-['Heebo',_sans-serif] font-normal text-[18px] sm:text-[20px] leading-relaxed">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 mt-4">
-      <a href="/proyectos" class="bg-[#d7e6fd] text-[#0c0801] font-['Heebo',_sans-serif] font-medium text-[18px] px-6 py-2.5 rounded-[100px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-blue-200 border-2 border-[#0c0801]">
-        Ver Proyectos
-      </a>
-      <a href="/servicios" class="bg-[#f2f2f2] text-[#0c0801] font-['Heebo',_sans-serif] font-medium text-[18px] px-6 py-2.5 rounded-[100px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-gray-300 border-2 border-[#0c0801]">
-        Ver Servicios
-      </a>
+<section class="flex relative w-full min-h-screen">
+  <!-- Background Image -->
+  <div class="absolute inset-0 overflow-hidden">
+    <img 
+      src={imgBgLanding} 
+      alt="Constructora Carpio Background" 
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+    <!-- Gradient Overlay -->
+    <div 
+      class="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent"
+      style={`background-image: url(${imgGradient})`}
+    >
+    </div>
+  </div>
+  
+  <!-- Content -->
+  <div class="relative z-10 flex items-center w-full py-20 lg:py-0">
+    <div class="w-full max-w-container-large mx-auto px-5 lg:px-16">
+      <div class="max-w-[576px] lg:max-w-[576px] space-y-6 lg:space-y-8" data-aos="fade-up" data-aos-duration="1000">
+        <!-- Main Heading -->
+        <h1 class="font-urbanist font-medium text-heading-3 lg:text-heading-1 text-white leading-tight">
+          Construimos tus sueños con calidad y confianza
+        </h1>
+        
+        <!-- Subtitle -->
+        <p class="font-heebo font-normal text-text-medium lg:text-text-large text-white/90 leading-relaxed">
+          En Constructora Carpio transformamos tus ideas en realidad. Con más de 15 años de experiencia, 
+          ofrecemos servicios integrales de construcción, remodelación y mantenimiento para proyectos 
+          residenciales y comerciales.
+        </p>
+        
+        <!-- Action Buttons -->
+        <div class="flex flex-col gap-4 lg:flex-row">
+          <a 
+            href="/contacto" 
+            class="bg-forest-green text-white px-6 py-3 lg:px-8 lg:py-4 rounded-full font-heebo font-medium text-text-regular lg:text-text-medium hover:bg-green-700 transition-all duration-300 inline-flex items-center justify-center gap-2 shadow-xl"
+            data-aos="fade-up" 
+            data-aos-delay="200"
+          >
+            Solicitar Cotización
+            <Icon name="ph:arrow-right" class="w-4 h-4 lg:w-5 lg:h-5" />
+          </a>
+          
+          <a 
+            href="/proyectos" 
+            class="bg-white/10 backdrop-blur-sm text-white px-6 py-3 lg:px-8 lg:py-4 rounded-full font-heebo font-medium text-text-regular lg:text-text-medium hover:bg-white/20 transition-all duration-300 inline-flex items-center justify-center gap-2 border border-white/30"
+            data-aos="fade-up" 
+            data-aos-delay="300"
+          >
+            Ver Proyectos
+            <Icon name="ph:eye" class="w-4 h-4 lg:w-5 lg:h-5" />
+          </a>
+        </div>
+        
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-4 lg:gap-8 pt-6 lg:pt-8" data-aos="fade-up" data-aos-delay="400">
+          <div class="text-center">
+            <div class="font-urbanist font-medium text-heading-5 lg:text-heading-3 text-white">15+</div>
+            <div class="font-heebo text-text-tiny lg:text-text-small text-white/80">Años de Experiencia</div>
+          </div>
+          <div class="text-center">
+            <div class="font-urbanist font-medium text-heading-5 lg:text-heading-3 text-white">150+</div>
+            <div class="font-heebo text-text-tiny lg:text-text-small text-white/80">Proyectos Completados</div>
+          </div>
+          <div class="text-center">
+            <div class="font-urbanist font-medium text-heading-5 lg:text-heading-3 text-white">98%</div>
+            <div class="font-heebo text-text-tiny lg:text-text-small text-white/80">Clientes Satisfechos</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

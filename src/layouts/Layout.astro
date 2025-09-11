@@ -1,3 +1,11 @@
+---
+export interface Props {
+	title?: string;
+}
+
+const { title = "Constructora Carpio - Transformamos sueños en estructuras duraderas" } = Astro.props;
+---
+
 <!doctype html>
 <html lang="es">
     <head>
@@ -6,12 +14,19 @@
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
-        <title>Constructora Carpio - Transformamos sueños en estructuras duraderas</title>
+        <title>{title}</title>
+        
+        <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Urbanist:wght@500&display=swap" rel="stylesheet">
+        
+        <!-- AOS CSS -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        
         <!-- Netlify Identity Widget -->
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
+        
         <style is:global>
             html,
             body {
@@ -21,10 +36,43 @@
                 font-family: 'Heebo', sans-serif;
                 scroll-behavior: smooth;
             }
+            
+            /* Custom scrollbar */
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+            }
+            
+            ::-webkit-scrollbar-thumb {
+                background: #2d862d;
+                border-radius: 4px;
+            }
+            
+            ::-webkit-scrollbar-thumb:hover {
+                background: #1f5f1f;
+            }
         </style>
     </head>
     <body>
         <slot />
+        
+        <!-- AOS JS -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" is:inline></script>
+        
+        <!-- Initialize AOS -->
+        <script is:inline>
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true,
+                offset: 100
+            });
+        </script>
+        
+        <!-- Netlify Identity -->
         {import.meta.env.PROD && (
             <script is:inline>
                 if (window.netlifyIdentity) {

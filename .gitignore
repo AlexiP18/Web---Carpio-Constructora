@@ -1,24 +1,59 @@
-# build output
-dist/
-
-# generated types
-.astro/
-
-# dependencies
+# Dependencias
 node_modules/
 
-# logs
+# Build
+dist/
+.output/
+
+# Archivos generados
+.astro/
+
+# Logs
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# environment variables
+# Variables de entorno
 .env
-.env.production
+.env.local
+.env.*.local
 
-# macOS-specific files
-.DS_Store
+# Caché
+.cache
+.mf
+.rollup.cache
+tsconfig.tsbuildinfo
 
-# jetbrains setting folder
+# Editores
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
 .idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de test de Netlify
+.netlify/
+
+# Carpeta local de Vercel
+.vercel/
+
+# Archivos de respaldo que algunos editores crean
+*~
+*.bak
+*.swp
+
+# Media generada y archivos grandes
+# (considera usar Git LFS para estos en lugar de ignorarlos si son cruciales)
+# public/images/uploads/*
