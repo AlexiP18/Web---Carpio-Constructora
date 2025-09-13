@@ -1,0 +1,88 @@
+---
+import Button from '../ui/Button.astro';
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  tagline: string;
+  title: string;
+  description: string;
+  centerImage: string;
+  items: Array<{
+    icon: string;
+    title: string;
+    description: string;
+  }>;
+}
+
+const { tagline, title, description, centerImage, items } = Astro.props;
+---
+
+<section class="bg-white box-border content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start overflow-clip px-5 md:px-16 py-20 md:py-28 relative shrink-0 w-full">
+  <div class="content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start max-w-[1280px] relative shrink-0 w-full">
+    <div class="content-stretch flex flex-col gap-4 items-center justify-start max-w-[768px] relative shrink-0 w-full">
+      <div class="content-stretch flex items-center justify-start relative shrink-0 w-full">
+        <div class="font-['Heebo:SemiBold',_sans-serif] font-semibold leading-[0] relative shrink-0 text-[#0c0801] text-[16px] text-center text-nowrap">
+          <p class="leading-[1.5] whitespace-pre">{tagline}</p>
+        </div>
+      </div>
+      <div class="content-stretch flex flex-col gap-6 items-center justify-start leading-[0] relative shrink-0 text-[#0c0801] text-center w-full">
+        <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[44px] md:text-[60px] tracking-[0.44px] md:tracking-[0.6px] w-full">
+          <p class="leading-[1.2]">{title}</p>
+        </div>
+        <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[20px] w-full">
+          <p class="leading-[1.6]">{description}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-stretch grid grid-cols-1 md:grid-cols-3 gap-12 items-start justify-start relative shrink-0 w-full">
+      <!-- Left column -->
+      <div class="content-stretch flex flex-col gap-16 items-center md:items-start justify-start w-full">
+        {items.slice(0, 2).map((item, index) => (
+          <div class="content-stretch flex flex-col gap-6 items-center md:items-start justify-start w-full" data-aos="fade-right" data-aos-delay={100 + (index * 100)}>
+            <div class="relative shrink-0 size-12 text-[#2d862d]">
+              <Icon name={item.icon} class="w-12 h-12" />
+            </div>
+            <div class="content-stretch flex flex-col gap-4 items-center md:items-start justify-start leading-[0] text-[#0c0801] text-center md:text-left w-full">
+              <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[20px] md:text-[32px] tracking-[0.2px] md:tracking-[0.32px] w-full">
+                <p class="leading-[1.2]">{item.title}</p>
+              </div>
+              <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[18px] w-full">
+                <p class="leading-[1.6]">{item.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Center image -->
+      <div class="bg-center bg-cover bg-no-repeat rounded-[40px] w-full max-w-[335px] aspect-square md:h-[540px] md:w-[540px] md:aspect-auto mx-auto" style={`background-image: url('${centerImage}')`} data-aos="zoom-in" data-aos-delay="200"></div>
+
+      <!-- Right column -->
+      <div class="content-stretch flex flex-col gap-16 items-center md:items-start justify-start w-full">
+        {items.slice(2, 4).map((item, index) => (
+          <div class="content-stretch flex flex-col gap-6 items-center md:items-start justify-start w-full" data-aos="fade-left" data-aos-delay={100 + (index * 100)}>
+            <div class="relative shrink-0 size-12 text-[#2d862d]">
+              <Icon name={item.icon} class="w-12 h-12" />
+            </div>
+            <div class="content-stretch flex flex-col gap-4 items-center md:items-start justify-start leading-[0] text-[#0c0801] text-center md:text-left w-full">
+              <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[20px] md:text-[32px] tracking-[0.2px] md:tracking-[0.32px] w-full">
+                <p class="leading-[1.2]">{item.title}</p>
+              </div>
+              <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[18px] w-full">
+                <p class="leading-[1.6]">{item.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="content-stretch flex gap-6 items-center justify-start relative shrink-0" data-aos="fade-up" data-aos-delay="500">
+      <Button variant="secondary">Contáctanos</Button>
+      <Button variant="outline" class="text-[#0c0801]" icon="ph:arrow-right">
+        Aprender Más
+      </Button>
+    </div>
+  </div>
+</section>

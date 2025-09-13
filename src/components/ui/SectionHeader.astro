@@ -1,0 +1,54 @@
+---
+// SectionHeader.astro - Reusable section header component
+export interface Props {
+  tagline?: string;
+  title: string;
+  description?: string;
+  align?: 'left' | 'center';
+  textColor?: 'dark' | 'light';
+  maxWidth?: 'sm' | 'md' | 'lg';
+  titleSize?: 'normal' | 'hero';
+}
+
+const { 
+  tagline, 
+  title, 
+  description, 
+  align = 'left',
+  textColor = 'dark',
+  maxWidth = 'md',
+  titleSize = 'normal'
+} = Astro.props;
+
+const alignClasses = align === 'center' ? 'items-center text-center' : 'items-start';
+const colorClasses = textColor === 'light' ? 'text-white' : 'text-[#0c0801]';
+const widthClasses = {
+  sm: 'max-w-[500px]',
+  md: 'max-w-[768px]', 
+  lg: 'max-w-[1024px]'
+};
+const titleSizeClasses = titleSize === 'hero' 
+  ? 'text-[48px] lg:text-[84px] tracking-[0.48px] lg:tracking-[0.84px]'
+  : 'text-[44px] lg:text-[60px] tracking-[0.44px] lg:tracking-[0.6px]';
+const titleLeading = titleSize === 'hero' ? 'leading-[1.1]' : 'leading-[1.2]';
+---
+
+<div class={`content-stretch flex flex-col gap-3 lg:gap-4 ${alignClasses} justify-start ${widthClasses[maxWidth]} relative w-full`}>
+  {tagline && (
+    <div class="content-stretch flex items-center justify-start relative w-full">
+      <div class={`font-['Heebo:SemiBold',_sans-serif] font-semibold leading-[1.5] relative ${colorClasses} text-[16px] ${align === 'center' ? 'text-center w-full' : ''}`}>
+        <p>{tagline}</p>
+      </div>
+    </div>
+  )}
+  <div class={`content-stretch flex flex-col gap-5 lg:gap-6 ${alignClasses} justify-start leading-[0] relative ${colorClasses} w-full`}>
+    <div class={`font-['Urbanist:Medium',_sans-serif] font-medium relative ${titleSizeClasses} w-full`}>
+      <p class={titleLeading}>{title}</p>
+    </div>
+    {description && (
+      <div class={`font-['Heebo:Regular',_sans-serif] font-normal relative text-[14px] lg:text-[20px] w-full`}>
+        <p class="leading-[1.6]">{description}</p>
+      </div>
+    )}
+  </div>
+</div>

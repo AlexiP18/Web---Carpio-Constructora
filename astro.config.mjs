@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
+import alpinejs from "@astrojs/alpinejs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,7 +12,8 @@ export default defineConfig({
       include: {
         ph: ["*"],
       },
-    })
+    }),
+    alpinejs()
   ],
   // Habilitar content collections
   experimental: {

@@ -1,0 +1,47 @@
+---
+import Button from '../ui/Button.astro';
+
+export interface Props {
+  tagline: string;
+  title: string;
+  description: string;
+  primaryButtonText: string;
+  secondaryButtonText: string;
+  primaryButtonHref?: string;
+  secondaryButtonHref?: string;
+}
+
+const { 
+  tagline, 
+  title, 
+  description, 
+  primaryButtonText, 
+  secondaryButtonText,
+  primaryButtonHref,
+  secondaryButtonHref
+} = Astro.props;
+---
+
+<section class="bg-[#54524d] box-border content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start overflow-clip px-5 md:px-16 py-20 md:py-28 relative shrink-0 w-full">
+  <div class="content-stretch flex flex-col gap-12 md:gap-20 items-start justify-start max-w-[1280px] relative shrink-0 w-full">
+    <div class="content-stretch flex flex-col gap-6 md:gap-8 items-start justify-start max-w-[768px] relative shrink-0 w-full">
+      <div class="content-stretch flex items-center justify-start relative shrink-0">
+        <div class="font-['Heebo:SemiBold',_sans-serif] font-semibold leading-[0] relative shrink-0 text-[16px] text-nowrap text-white">
+          <p class="leading-[1.5] whitespace-pre">{tagline}</p>
+        </div>
+      </div>
+      <div class="content-stretch flex flex-col gap-5 md:gap-6 items-start justify-start leading-[0] relative shrink-0 text-white w-full">
+        <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[48px] md:text-[84px] tracking-[0.48px] md:tracking-[0.84px] w-full">
+          <p class="leading-[1.1]">{title}</p>
+        </div>
+        <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[20px] w-full">
+          <p class="leading-[1.6]">{description}</p>
+        </div>
+      </div>
+      <div class="content-stretch flex gap-4 items-start justify-start relative shrink-0">
+        <Button variant="primary" href={primaryButtonHref}>{primaryButtonText}</Button>
+        <Button variant="secondary" href={secondaryButtonHref}>{secondaryButtonText}</Button>
+      </div>
+    </div>
+  </div>
+</section>

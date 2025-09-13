@@ -1,0 +1,72 @@
+---
+// LocationsGrid.astro - Locations section with location cards
+import { Icon } from "astro-icon/components";
+import SectionLayout from '../ui/SectionLayout.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+
+interface Location {
+  name: string;
+  address: string;
+  image: string;
+}
+
+const locations: Location[] = [
+  {
+    name: "Quito",
+    address: "Av. Siempre Viva 742, Quito, Ecuador",
+    image: "/images/placeholder-image-1.png"
+  },
+  {
+    name: "Guayaquil", 
+    address: "Av. Francisco de Orellana 123, Guayaquil, Ecuador",
+    image: "/images/placeholder-image-2.png"
+  }
+];
+---
+
+<SectionLayout background="white">
+  <SectionHeader 
+    tagline="Ubicaciones"
+    title="Ubicaciones"
+    description="Encuentra nuestras oficinas y proyectos destacados aquí."
+    align="center"
+  />
+  
+  <div class="content-stretch flex flex-col gap-10 lg:gap-16 items-start justify-start relative w-full">
+    <div class="content-stretch flex flex-col lg:flex-row gap-10 lg:gap-16 items-start justify-start relative w-full">
+      {locations.map((location) => (
+        <div class="basis-0 content-stretch flex flex-col gap-6 lg:gap-8 grow items-center justify-start min-h-px min-w-px relative w-full">
+          <!-- Location Image -->
+          <div 
+            class="bg-no-repeat bg-size-[100%_100%] bg-top-left h-[250px] lg:h-96 rounded-[20px] lg:rounded-[40px] w-full max-w-[624px]" 
+            style={`background-image: url('${location.image}')`}
+          />
+          
+          <!-- Location Info -->
+          <div class="content-stretch flex flex-col gap-5 lg:gap-6 items-center justify-start relative w-full">
+            <div class="content-stretch flex flex-col gap-3 lg:gap-4 items-center justify-start leading-[0] relative text-[#0c0801] text-center">
+              <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative text-[32px] lg:text-[40px] tracking-[0.32px] lg:tracking-[0.4px] w-full">
+                <p class="leading-[1.2]">{location.name}</p>
+              </div>
+              <div class="font-['Heebo:Regular',_sans-serif] font-normal relative text-[14px] lg:text-[18px] w-full">
+                <p class="leading-[1.6]">{location.address}</p>
+              </div>
+            </div>
+            
+            <!-- Get Directions Button -->
+            <div class="content-stretch flex flex-col gap-4 items-start justify-start relative">
+              <button class="content-stretch flex gap-2 items-center justify-center relative rounded-[100px] bg-transparent border-none cursor-pointer hover:opacity-80 transition-opacity">
+                <div class="font-['Heebo:Medium',_sans-serif] font-medium leading-[0] relative text-[#0c0801] text-[14px] lg:text-[18px]">
+                  <p class="leading-[1.6]">Obtener Direcciones</p>
+                </div>
+                <div class="overflow-clip relative size-6">
+                  <Icon name="ph:caret-right" class="w-6 h-6 text-[#0c0801]" />
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</SectionLayout>

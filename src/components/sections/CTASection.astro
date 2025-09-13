@@ -1,0 +1,39 @@
+---
+import Button from '../ui/Button.astro';
+
+export interface Props {
+  title: string;
+  description: string;
+  primaryButton: {
+    text: string;
+    href?: string;
+  };
+  secondaryButton: {
+    text: string;
+    href?: string;
+  };
+  image: string;
+}
+
+const { title, description, primaryButton, secondaryButton, image } = Astro.props;
+---
+
+<section class="bg-[#dad9d8] box-border content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start overflow-clip px-5 md:px-16 py-20 md:py-28 relative shrink-0 w-full">
+  <div class="content-stretch flex flex-col gap-12 md:gap-20 items-start justify-start max-w-[1280px] relative shrink-0 w-full">
+    <div class="content-stretch flex flex-col md:flex-row gap-12 md:gap-20 items-center justify-start w-full">
+      <div class="basis-0 content-stretch flex flex-col gap-6 grow items-start justify-start min-h-px min-w-px text-[#0c0801]">
+        <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[44px] md:text-[60px] tracking-[0.44px] md:tracking-[0.6px] w-full">
+          <p class="leading-[1.2]">{title}</p>
+        </div>
+        <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[20px] w-full">
+          <p class="leading-[1.6]">{description}</p>
+        </div>
+        <div class="content-stretch flex gap-4 items-start justify-start">
+          <Button variant="success" href={primaryButton.href}>{primaryButton.text}</Button>
+          <Button variant="secondary" href={secondaryButton.href}>{secondaryButton.text}</Button>
+        </div>
+      </div>
+      <div class="bg-center bg-cover bg-no-repeat rounded-[40px] w-full max-w-[335px] aspect-[335/218] md:h-[400px] md:w-[600px] md:aspect-auto" style={`background-image: url('${image}')`}></div>
+    </div>
+  </div>
+</section>

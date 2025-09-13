@@ -1,0 +1,64 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  variant?: 'primary' | 'secondary' | 'outline' | 'success';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  class?: string;
+  icon?: string;
+  iconPosition?: 'left' | 'right';
+}
+
+const { 
+  variant = 'primary', 
+  size = 'md', 
+  href, 
+  type = 'button',
+  class: className = '', 
+  icon,
+  iconPosition = 'right'
+} = Astro.props;
+
+const baseClasses = 'box-border content-stretch flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shrink-0 font-[\'Heebo:Medium\',_sans-serif] font-medium leading-[0] text-nowrap transition-colors';
+
+const variants = {
+  primary: 'bg-[#d7e6fd] text-[#0c0801] border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]',
+  secondary: 'bg-[#f2f2f2] text-[#0c0801] border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]',
+  outline: 'bg-transparent text-white border-2 border-white',
+  success: 'bg-[#2d862d] text-[#0c0801] border-2 border-[#2d862d] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]'
+};
+
+const sizes = {
+  sm: 'text-[14px] px-4 py-2',
+  md: 'text-[14px] md:text-[18px] px-6 py-2.5',
+  lg: 'text-[16px] md:text-[20px] px-8 py-3'
+};
+
+const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`;
+---
+
+{href ? (
+  <a href={href} class={classes}>
+    {icon && iconPosition === 'left' && (
+      <Icon name={icon} class="w-4 h-4" />
+    )}
+    <span class="leading-[1.6]"><slot /></span>
+    {icon && iconPosition === 'right' && (
+      <Icon name={icon} class="w-4 h-4" />
+    )}
+    <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),_0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]" />
+  </a>
+) : (
+  <button type={type} class={classes}>
+    {icon && iconPosition === 'left' && (
+      <Icon name={icon} class="w-4 h-4" />
+    )}
+    <span class="leading-[1.6]"><slot /></span>
+    {icon && iconPosition === 'right' && (
+      <Icon name={icon} class="w-4 h-4" />
+    )}
+    <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),_0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]" />
+  </button>
+)}

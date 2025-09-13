@@ -1,0 +1,38 @@
+---
+import Button from '../ui/Button.astro';
+
+export interface Props {
+  banners: Array<{
+    bg: string;
+    title: string;
+    desc: string;
+    primary: string;
+    secondary: string;
+  }>;
+}
+
+const { banners } = Astro.props;
+---
+
+<section class="content-stretch flex flex-col items-stretch justify-stretch w-full">
+  {banners.map((item) => (
+    <div class="bg-[#00000080] bg-[position:0%_0%,_50%_50%] bg-no-repeat bg-[length:auto,cover] box-border content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start overflow-clip px-5 md:px-16 py-20 md:py-28 relative shrink-0 w-full" style={`background-image: url(''), url('${item.bg}')`}>
+      <div class="content-stretch flex flex-col gap-12 md:gap-20 items-start justify-start max-w-[1280px] relative shrink-0 w-full">
+        <div class="content-stretch flex flex-col gap-8 items-start justify-start max-w-[560px] relative shrink-0 w-full">
+          <div class="content-stretch flex flex-col gap-6 items-start justify-start leading-[0] relative shrink-0 text-white w-full">
+            <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[44px] md:text-[60px] tracking-[0.44px] md:tracking-[0.6px] w-full">
+              <p class="leading-[1.2]">{item.title}</p>
+            </div>
+            <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[20px] w-full">
+              <p class="leading-[1.6]">{item.desc}</p>
+            </div>
+          </div>
+          <div class="content-stretch flex gap-4 items-start justify-start relative shrink-0">
+            <Button variant="primary">{item.primary}</Button>
+            <Button variant="secondary">{item.secondary}</Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+</section>

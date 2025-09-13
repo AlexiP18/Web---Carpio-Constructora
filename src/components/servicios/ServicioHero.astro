@@ -10,35 +10,35 @@ const { tagline, title, description, backgroundImage = "/images/servicios-hero.j
 ---
 
 <section 
-  class="bg-[#00000080] bg-cover bg-center bg-no-repeat flex flex-col gap-20 items-center justify-start overflow-clip px-16 py-28 relative w-full"
+  class="bg-[#00000080] bg-cover bg-center bg-no-repeat flex flex-col gap-12 lg:gap-20 items-center justify-start overflow-clip px-5 lg:px-16 py-16 lg:py-28 relative w-full"
   style={`background-image: url('${backgroundImage}')`}
   data-aos="fade-in"
 >
-  <div class="flex flex-col gap-20 items-start justify-start max-w-[1280px] relative w-full">
-    <div class="flex flex-col gap-8 items-start justify-start max-w-[768px] relative w-full">
-      <div class="flex flex-col gap-4 items-start justify-start relative w-full">
+  <div class="flex flex-col gap-12 lg:gap-20 items-start justify-start max-w-[1280px] relative w-full">
+    <div class="flex flex-col gap-6 lg:gap-8 items-start justify-start max-w-[768px] relative w-full">
+      <div class="flex flex-col gap-3 lg:gap-4 items-start justify-start relative w-full">
         <div class="flex items-center justify-start relative" data-aos="fade-up" data-aos-delay="100">
-          <div class="font-heebo font-semibold leading-[1.5] relative text-[16px] text-white">
+          <div class="font-heebo font-semibold leading-[1.5] relative text-sm lg:text-[16px] text-white">
             {tagline}
           </div>
         </div>
-        <div class="flex flex-col gap-6 items-start justify-start leading-[0] relative text-white w-full" data-aos="fade-up" data-aos-delay="200">
-          <div class="font-urbanist font-medium relative text-[84px] tracking-[0.84px] w-full">
+        <div class="flex flex-col gap-4 lg:gap-6 items-start justify-start leading-[0] relative text-white w-full" data-aos="fade-up" data-aos-delay="200">
+          <div class="font-urbanist font-medium relative text-[32px] sm:text-[48px] lg:text-[84px] tracking-[0.32px] lg:tracking-[0.84px] w-full">
             <p class="leading-[1.1]">{title}</p>
           </div>
-          <div class="font-heebo font-normal relative text-[20px] w-full">
+          <div class="font-heebo font-normal relative text-base lg:text-[20px] w-full">
             <p class="leading-[1.6]">{description}</p>
           </div>
         </div>
       </div>
-      <div class="flex gap-4 items-start justify-start relative" data-aos="fade-up" data-aos-delay="300">
-        <button class="bg-[#d7e6fd] border-2 border-[#0c0801] flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-blue-200 transition-colors">
-          <div class="font-heebo font-medium leading-[0] relative text-[#0c0801] text-[18px]">
+      <div class="flex flex-col sm:flex-row gap-3 lg:gap-4 items-start justify-start relative w-full" data-aos="fade-up" data-aos-delay="300">
+        <button class="bg-[#d7e6fd] border-2 border-[#0c0801] flex gap-2 items-center justify-center px-5 lg:px-6 py-2 lg:py-2.5 relative rounded-[100px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-blue-200 transition-colors w-full sm:w-auto">
+          <div class="font-heebo font-medium leading-[0] relative text-[#0c0801] text-base lg:text-[18px]">
             Descubre
           </div>
         </button>
-        <a href="/contacto" class="bg-[#f2f2f2] border-2 border-[#0c0801] flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-gray-300 transition-colors">
-          <div class="font-heebo font-medium leading-[0] relative text-[#0c0801] text-[18px]">
+        <a href="/contacto" class="bg-[#f2f2f2] border-2 border-[#0c0801] flex gap-2 items-center justify-center px-5 lg:px-6 py-2 lg:py-2.5 relative rounded-[100px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-gray-300 transition-colors w-full sm:w-auto">
+          <div class="font-heebo font-medium leading-[0] relative text-[#0c0801] text-base lg:text-[18px]">
             Contáctanos
           </div>
         </a>

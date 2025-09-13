@@ -18,30 +18,30 @@ const { title, description, benefits, imageUrl = "/images/placeholder-image.jpg"
 const defaultIcons = ["ph:shield-check", "ph:user-focus"];
 ---
 
-<section class="bg-white flex flex-col gap-20 items-center justify-start overflow-clip px-16 py-28 relative w-full" data-aos="fade-up">
-  <div class="flex flex-col gap-20 items-start justify-start max-w-[1280px] relative w-full">
-    <div class="flex gap-20 items-center justify-start relative w-full">
-      <div class="basis-0 flex flex-col gap-8 grow items-start justify-start min-h-px min-w-px relative" data-aos="fade-right">
-        <div class="flex flex-col gap-6 items-start justify-start leading-[0] relative text-[#0c0801] w-full">
-          <div class="font-urbanist font-medium relative text-[48px] tracking-[0.48px] w-full">
+<section class="bg-white flex flex-col gap-12 lg:gap-20 items-center justify-start overflow-clip px-5 lg:px-16 py-16 lg:py-28 relative w-full" data-aos="fade-up">
+  <div class="flex flex-col gap-12 lg:gap-20 items-start justify-start max-w-[1280px] relative w-full">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start lg:items-center justify-start relative w-full">
+      <div class="w-full lg:basis-0 flex flex-col gap-6 lg:gap-8 lg:grow items-start justify-start min-h-px min-w-px relative" data-aos="fade-right">
+        <div class="flex flex-col gap-4 lg:gap-6 items-start justify-start leading-[0] relative text-[#0c0801] w-full">
+          <div class="font-urbanist font-medium relative text-[28px] sm:text-[36px] lg:text-[48px] tracking-[0.28px] lg:tracking-[0.48px] w-full">
             <p class="leading-[1.2]">{title}</p>
           </div>
-          <div class="font-heebo font-normal relative text-[20px] w-full">
+          <div class="font-heebo font-normal relative text-base lg:text-[20px] w-full">
             <p class="leading-[1.6]">{description}</p>
           </div>
         </div>
         
-        <div class="flex flex-col gap-4 items-start justify-start relative w-full">
-          <div class="flex gap-6 items-start justify-start relative w-full">
+        <div class="flex flex-col gap-3 lg:gap-4 items-start justify-start relative w-full">
+          <div class="flex flex-col lg:flex-row gap-6 lg:gap-6 items-start justify-start relative w-full">
             {benefits.map((benefit, index) => (
-              <div class="basis-0 flex flex-col gap-4 grow items-start justify-start min-h-px min-w-px relative" data-aos="fade-up" data-aos-delay={200 + (index * 100)}>
-                <div class="relative size-12">
+              <div class="w-full lg:basis-0 flex flex-col gap-3 lg:gap-4 lg:grow items-start justify-start min-h-px min-w-px relative" data-aos="fade-up" data-aos-delay={200 + (index * 100)}>
+                <div class="relative size-10 lg:size-12">
                   <Icon name={benefit.icon || defaultIcons[index] || "ph:star"} class="w-full h-full text-[#0c0801]" />
                 </div>
-                <div class="font-urbanist font-medium leading-[1.2] text-[#0c0801] text-[26px] tracking-[0.26px]">
+                <div class="font-urbanist font-medium leading-[1.2] text-[#0c0801] text-[20px] lg:text-[26px] tracking-[0.20px] lg:tracking-[0.26px]">
                   {benefit.title}
                 </div>
-                <div class="font-heebo font-normal leading-[1.6] text-[#0c0801] text-[18px]">
+                <div class="font-heebo font-normal leading-[1.6] text-[#0c0801] text-base lg:text-[18px]">
                   {benefit.description}
                 </div>
               </div>
@@ -50,7 +50,7 @@ const defaultIcons = ["ph:shield-check", "ph:user-focus"];
         </div>
       </div>
       <div 
-        class="aspect-[600/640] basis-0 bg-center bg-cover bg-no-repeat grow min-h-px min-w-px rounded-[40px]" 
+        class="w-full h-64 lg:h-auto lg:aspect-[600/640] lg:basis-0 bg-center bg-cover bg-no-repeat lg:grow min-h-px min-w-px rounded-[20px] lg:rounded-[40px]" 
         style={`background-image: url('${imageUrl}')`}
         data-aos="fade-left"
         data-aos-delay="300"

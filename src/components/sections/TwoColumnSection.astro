@@ -1,0 +1,47 @@
+---
+import Button from '../ui/Button.astro';
+
+export interface Props {
+  backgroundImage: string;
+  leftColumn: {
+    title: string;
+    description: string;
+    buttonText: string;
+    buttonHref?: string;
+  };
+  rightColumn: {
+    title: string;
+    description: string;
+    buttonText: string;
+    buttonHref?: string;
+  };
+  buttonIcon?: string;
+}
+
+const { backgroundImage, leftColumn, rightColumn, buttonIcon } = Astro.props;
+---
+
+<section class="bg-[#00000080] bg-[position:0%_0%,_50%_50%] bg-no-repeat bg-[length:auto,cover] box-border content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start overflow-clip px-5 md:px-16 py-20 md:py-28 relative shrink-0 w-full" style={`background-image: url(''), url('${backgroundImage}')`}>
+  <div class="content-stretch flex flex-col gap-16 md:gap-20 items-start justify-start max-w-[1280px] relative shrink-0 w-full">
+    <div class="content-stretch flex flex-col md:flex-row gap-12 md:gap-16 items-start justify-start relative shrink-0 w-full">
+      <div class="basis-0 content-stretch flex flex-col gap-6 grow items-start justify-start min-h-px min-w-px relative shrink-0 text-white">
+        <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[24px] md:text-[40px] tracking-[0.24px] md:tracking-[0.4px] w-full">
+          <p class="leading-[1.2]">{leftColumn.title}</p>
+        </div>
+        <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[18px] w-full">
+          <p class="leading-[1.6]">{leftColumn.description}</p>
+        </div>
+        <Button variant="outline" icon={buttonIcon} href={leftColumn.buttonHref}>{leftColumn.buttonText}</Button>
+      </div>
+      <div class="basis-0 content-stretch flex flex-col gap-6 grow items-start justify-start min-h-px min-w-px relative shrink-0 text-white">
+        <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[24px] md:text-[40px] tracking-[0.24px] md:tracking-[0.4px] w-full">
+          <p class="leading-[1.2]">{rightColumn.title}</p>
+        </div>
+        <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[18px] w-full">
+          <p class="leading-[1.6]">{rightColumn.description}</p>
+        </div>
+        <Button variant="outline" icon={buttonIcon} href={rightColumn.buttonHref}>{rightColumn.buttonText}</Button>
+      </div>
+    </div>
+  </div>
+</section>

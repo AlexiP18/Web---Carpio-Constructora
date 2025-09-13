@@ -20,33 +20,33 @@ const {
 } = Astro.props;
 ---
 
-<section class="bg-[#0c0801] flex flex-col gap-20 items-center justify-start overflow-clip px-16 py-28 relative w-full" data-aos="fade-up">
+<section class="bg-[#0c0801] flex flex-col gap-12 lg:gap-20 items-center justify-start overflow-clip px-5 lg:px-16 py-16 lg:py-28 relative w-full" data-aos="fade-up">
   <div 
     class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
     style={`background-image: url('${backgroundImage}')`}
   />
-  <div class="flex flex-col gap-20 items-start justify-start max-w-[1280px] relative w-full z-10">
-    <div class="flex flex-col gap-8 items-center justify-start relative text-center w-full" data-aos="fade-right">
-      <div class="flex flex-col gap-6 items-center justify-start leading-[0] relative text-white w-full">
-        <div class="font-urbanist font-medium relative text-[48px] tracking-[0.48px] w-full">
+  <div class="flex flex-col gap-12 lg:gap-20 items-start justify-start max-w-[1280px] relative w-full z-10">
+    <div class="flex flex-col gap-6 lg:gap-8 items-center justify-start relative text-center w-full" data-aos="fade-right">
+      <div class="flex flex-col gap-4 lg:gap-6 items-center justify-start leading-[0] relative text-white w-full">
+        <div class="font-urbanist font-medium relative text-[28px] sm:text-[36px] lg:text-[48px] tracking-[0.28px] lg:tracking-[0.48px] w-full">
           <p class="leading-[1.2]">{title}</p>
         </div>
-        <div class="font-heebo font-normal relative text-[20px] w-full max-w-3xl">
+        <div class="font-heebo font-normal relative text-base lg:text-[20px] w-full max-w-3xl">
           <p class="leading-[1.6]">{description}</p>
         </div>
       </div>
       
-      <div class="flex gap-4 items-center justify-center relative w-full" data-aos="fade-up" data-aos-delay="200">
+      <div class="flex flex-col sm:flex-row gap-3 lg:gap-4 items-center justify-center relative w-full" data-aos="fade-up" data-aos-delay="200">
         <a 
           href={primaryButtonHref}
-          class="bg-[#2d862d] hover:bg-[#245a24] transition-colors duration-300 font-urbanist font-medium px-8 py-4 relative rounded-[8px] text-white text-[16px] tracking-[0.16px] inline-block"
+          class="bg-[#2d862d] hover:bg-[#245a24] transition-colors duration-300 font-urbanist font-medium px-6 lg:px-8 py-3 lg:py-4 relative rounded-[8px] text-white text-sm lg:text-[16px] tracking-[0.14px] lg:tracking-[0.16px] inline-block w-full sm:w-auto text-center"
         >
           {primaryButtonText}
         </a>
         {secondaryButtonText && secondaryButtonHref && (
           <a 
             href={secondaryButtonHref}
-            class="border border-white hover:bg-white hover:text-[#0c0801] transition-colors duration-300 font-urbanist font-medium px-8 py-4 relative rounded-[8px] text-white text-[16px] tracking-[0.16px] inline-block"
+            class="border border-white hover:bg-white hover:text-[#0c0801] transition-colors duration-300 font-urbanist font-medium px-6 lg:px-8 py-3 lg:py-4 relative rounded-[8px] text-white text-sm lg:text-[16px] tracking-[0.14px] lg:tracking-[0.16px] inline-block w-full sm:w-auto text-center"
           >
             {secondaryButtonText}
           </a>
