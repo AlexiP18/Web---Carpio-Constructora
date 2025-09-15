@@ -1,0 +1,91 @@
+---
+// OptimizedImage.astro - Imagen optimizada con Sharp y Astro Assets
+import { Image } from 'astro:assets';
+import { cn } from "../../lib/utils";
+
+interface Props {
+  src: ImageMetadata | string;
+  alt: string;
+  width?: number;
+  height?: number;
+  widths?: number[];
+  sizes?: string;
+  formats?: ('avif' | 'webp' | 'jpeg' | 'png')[];
+  format?: 'avif' | 'webp' | 'jpeg' | 'png';
+  quality?: number;
+  loading?: 'lazy' | 'eager';
+  decoding?: 'async' | 'sync' | 'auto';
+  class?: string;
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+  aspectRatio?: string;
+  placeholder?: 'blur' | 'none';
+  [key: string]: any;
+}
+
+const {
+  src,
+  alt,
+  width = 800,
+  height = 600,
+  widths = [320, 640, 960, 1280],
+  sizes = "(min-width: 1024px) 50vw, 100vw",
+  format = 'webp',
+  quality = 80,
+  loading = 'lazy',
+  decoding = 'async',
+  class: className = "",
+  objectFit = 'cover',
+  aspectRatio,
+  placeholder = 'none',
+  ...rest
+} = Astro.props;
+
+const imageClasses = cn(
+  "w-full h-full transition-all duration-300",
+  objectFit === 'cover' && "object-cover",
+  objectFit === 'contain' && "object-contain",
+  objectFit === 'fill' && "object-fill",
+  objectFit === 'none' && "object-none",
+  objectFit === 'scale-down' && "object-scale-down",
+  className
+);
+
+const containerClasses = cn(
+  "relative overflow-hidden",
+  aspectRatio && `aspect-[${aspectRatio}]`
+);
+---
+
+<div class={containerClasses}>
+  {typeof src === 'string' ? (
+    <img 
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      decoding={decoding}
+      class={imageClasses}
+      {...rest}
+    />
+  ) : (
+    <Image 
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      widths={widths}
+      sizes={sizes}
+      format={format}
+      quality={quality}
+      loading={loading}
+      decoding={decoding}
+      class={imageClasses}
+      {...rest}
+    />
+  )}
+  
+  {placeholder === 'blur' && (
+    <div class="absolute inset-0 bg-gray-200 animate-pulse" aria-hidden="true"></div>
+  )}
+</div>

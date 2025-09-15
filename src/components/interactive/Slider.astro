@@ -1,0 +1,94 @@
+---
+// Slider.astro - Carrusel base con Swiper
+interface Props {
+  slidesPerView?: number | "auto";
+  spaceBetween?: number;
+  loop?: boolean;
+  autoplay?: boolean | { delay: number };
+  navigation?: boolean;
+  pagination?: boolean;
+  breakpoints?: object;
+  class?: string;
+  id?: string;
+}
+
+const {
+  slidesPerView = 1,
+  spaceBetween = 30,
+  loop = true,
+  autoplay = { delay: 5000 },
+  navigation = true,
+  pagination = true,
+  breakpoints = {
+    640: { slidesPerView: 1 },
+    768: { slidesPerView: 2 },
+    1024: { slidesPerView: 3 }
+  },
+  class: className = "",
+  id = "swiper-" + Math.random().toString(36).substr(2, 9)
+} = Astro.props;
+
+const swiperConfig = {
+  slidesPerView,
+  spaceBetween,
+  loop,
+  autoplay,
+  navigation: navigation ? {
+    nextEl: `#${id} .swiper-button-next`,
+    prevEl: `#${id} .swiper-button-prev`
+  } : false,
+  pagination: pagination ? {
+    el: `#${id} .swiper-pagination`,
+    clickable: true
+  } : false,
+  breakpoints
+};
+---
+
+<div id={id} class={`swiper ${className}`}>
+  <div class="swiper-wrapper">
+    <!-- Los slides se deben pasar como content en slot default -->
+    <slot />
+  </div>
+  
+  {navigation && (
+    <>
+      <div class="swiper-button-prev !w-10 !h-10 !mt-0 !text-[#2d862d] after:!text-[20px] hover:!text-[#256f25]"></div>
+      <div class="swiper-button-next !w-10 !h-10 !mt-0 !text-[#2d862d] after:!text-[20px] hover:!text-[#256f25]"></div>
+    </>
+  )}
+  
+  {pagination && (
+    <div class="swiper-pagination !bottom-0 [&_.swiper-pagination-bullet]:!bg-[#0c0801] [&_.swiper-pagination-bullet-active]:!bg-[#2d862d]"></div>
+  )}
+</div>
+
+<script define:vars={{ id, swiperConfig }}>
+  import { Swiper } from 'swiper';
+  import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const swiperEl = document.getElementById(id);
+    if (swiperEl) {
+      new Swiper(`#${id}`, {
+        modules: [Navigation, Pagination, Autoplay],
+        ...swiperConfig
+      });
+    }
+  });
+</script>
+
+<style>
+  @import 'swiper/css';
+  @import 'swiper/css/navigation';
+  @import 'swiper/css/pagination';
+  
+  .swiper {
+    width: 100%;
+    padding-bottom: 50px;
+  }
+  
+  .swiper-slide {
+    height: auto;
+  }
+</style>

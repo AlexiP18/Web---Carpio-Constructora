@@ -1,0 +1,80 @@
+---
+// Button.astro - Botón base del sistema de diseño
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "../../lib/utils";
+
+interface Props extends VariantProps<typeof buttonVariants> {
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+  class?: string;
+  id?: string;
+  [key: string]: any;
+}
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2d862d] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        primary: "bg-[#2d862d] text-white hover:bg-[#256f25] active:bg-[#1e5a1e] shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]",
+        secondary: "bg-[#f2f2f2] text-[#0c0801] border-2 border-[#0c0801] hover:bg-[#0c0801] hover:text-white shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]",
+        outline: "border-2 border-[#0c0801] bg-transparent text-[#0c0801] hover:bg-[#0c0801] hover:text-white",
+        ghost: "bg-transparent text-[#0c0801] hover:bg-[#f2f2f2]",
+        link: "text-[#2d862d] underline-offset-4 hover:underline p-0 h-auto"
+      },
+      size: {
+        sm: "h-9 rounded-full px-4 text-[14px]",
+        md: "h-11 rounded-full px-6 text-[14px] lg:text-[18px]",
+        lg: "h-14 rounded-full px-8 text-[16px] lg:text-[20px]",
+        icon: "h-10 w-10 rounded-full"
+      },
+      fullWidth: {
+        true: "w-full",
+        false: ""
+      }
+    },
+    defaultVariants: {
+      variant: "primary",
+      size: "md",
+      fullWidth: false
+    }
+  }
+);
+
+const { 
+  variant, 
+  size, 
+  fullWidth, 
+  href, 
+  type = "button", 
+  disabled = false, 
+  class: className, 
+  id,
+  ...rest 
+} = Astro.props;
+
+const classes = cn(buttonVariants({ variant, size, fullWidth }), className);
+---
+
+{href ? (
+  <a 
+    id={id}
+    href={href}
+    class={classes}
+    role="button"
+    {...rest}
+  >
+    <slot />
+  </a>
+) : (
+  <button 
+    id={id}
+    type={type}
+    disabled={disabled}
+    class={classes}
+    {...rest}
+  >
+    <slot />
+  </button>
+)}

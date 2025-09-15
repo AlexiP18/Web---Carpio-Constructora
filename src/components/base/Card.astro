@@ -1,0 +1,101 @@
+---
+import { cn } from "@/lib/utils";
+import OptimizedImage from "../media/OptimizedImage.astro";
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  category?: string;
+  href: string;
+  buttonText?: string;
+  className?: string;
+  variant?: "default" | "elevated" | "outlined";
+  size?: "sm" | "md" | "lg";
+}
+
+const { 
+  title,
+  description,
+  imageSrc,
+  imageAlt,
+  category,
+  href,
+  buttonText = "Descubre",
+  className, 
+  variant = "default", 
+  size = "lg" 
+} = Astro.props;
+
+const cardClasses = cn(
+  "relative bg-neutral-lightest rounded-[32px] overflow-hidden group w-full",
+  className
+);
+---
+
+<div class={cardClasses}>
+  <!-- Card Content -->
+  <div class="flex flex-col w-full">
+    <!-- Image Section - Fixed height as per Figma -->
+    <div class="h-[233px] w-full flex items-end justify-center relative overflow-hidden">
+      <a href={href} class="w-full h-full">
+        <OptimizedImage
+          src={imageSrc}
+          alt={imageAlt}
+          width={400}
+          height={233}
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          class="w-full h-full object-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105"
+        />
+      </a>
+      <!-- Subtle divider/gradient into content area -->
+      <div class="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-b from-transparent to-neutral-lightest/90"></div>
+    </div>
+    
+    <!-- Content Section - 32px padding as per Figma -->
+    <div class="p-8 flex flex-col gap-6 w-full">
+      <!-- Content Top -->
+      <div class="flex flex-col gap-2 w-full">
+        <!-- Tagline/Category -->
+        {category && (
+          <div class="flex items-center justify-start">
+            <div class="font-heebo font-semibold text-base text-neutral-darkest leading-[1.5]">
+              {category}
+            </div>
+          </div>
+        )}
+        
+        <!-- Title and Description -->
+        <div class="flex flex-col gap-4 text-neutral-darkest w-full">
+          <!-- Title - 40px as per Figma -->
+          <h3 class="font-urbanist font-medium text-[40px] leading-[1.2] tracking-[0.4px] uppercase w-full">
+            <a href={href} class="hover:text-forest-green transition-colors">{title}</a>
+          </h3>
+          
+          <!-- Description - 18px as per Figma -->
+          <p class="font-heebo font-normal text-[18px] leading-[1.6] w-full">
+            {description}
+          </p>
+        </div>
+      </div>
+      
+      <!-- Actions/Button -->
+      <div class="flex gap-6 items-center justify-start w-full">
+        <a 
+          href={href}
+          class="flex gap-2 items-center justify-center overflow-hidden rounded-full group/button"
+        >
+          <span class="font-heebo font-medium text-[18px] leading-[1.6] text-neutral-darkest group-hover/button:text-forest-green transition-colors">
+            {buttonText}
+          </span>
+          <Icon name="ph:arrow-right" class="w-6 h-6 text-neutral-darkest group-hover/button:text-forest-green transition-all duration-300 group-hover/button:translate-x-1" />
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Border Overlay - 2px border as per Figma -->
+  <div class="absolute inset-[-2px] border-2 border-solid border-neutral-darkest rounded-[34px] pointer-events-none" aria-hidden="true"></div>
+</div>

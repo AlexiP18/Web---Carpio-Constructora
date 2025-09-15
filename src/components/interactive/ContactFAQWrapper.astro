@@ -1,0 +1,95 @@
+---
+// ContactFAQWrapper.astro - Wrapper para el accordion React de shadcn/ui
+---
+
+<div id="contact-faq-wrapper">
+  <div id="contact-faq-react"></div>
+</div>
+
+<script>
+  import { createElement } from "react";
+  import { createRoot } from "react-dom/client";
+  import { 
+    Accordion, 
+    AccordionContent, 
+    AccordionItem, 
+    AccordionTrigger 
+  } from "../ui/accordion.tsx";
+
+  // Datos de FAQ
+  const faqData = [
+    {
+      id: "item-1",
+      question: "¿Cuánto tiempo toma completar un proyecto de construcción?",
+      answer: "El tiempo de construcción varía según el tamaño y complejidad del proyecto. Una casa residencial típica puede tomar entre 6-12 meses, mientras que proyectos comerciales pueden extenderse de 12-24 meses. Proporcionamos cronogramas detallados durante la fase de planificación."
+    },
+    {
+      id: "item-2", 
+      question: "¿Ofrecen garantías en sus trabajos de construcción?",
+      answer: "Sí, ofrecemos garantías comprensivas en todos nuestros proyectos. Proporcionamos garantía estructural de 10 años, garantía en instalaciones de 5 años, y garantía en acabados de 2 años. Nuestro equipo de servicio post-venta está disponible para cualquier consulta."
+    },
+    {
+      id: "item-3",
+      question: "¿Manejan todos los permisos y documentación legal?",
+      answer: "Absolutamente. Nuestro equipo se encarga de todos los trámites legales, incluyendo permisos de construcción, licencias municipales, y documentación requerida por las autoridades locales. Mantenemos a nuestros clientes informados durante todo el proceso."
+    },
+    {
+      id: "item-4",
+      question: "¿Qué tipos de proyectos de construcción realizan?",
+      answer: "Especializamos en construcción residencial (casas, condominios), comercial (oficinas, locales comerciales), industrial (almacenes, fábricas), y proyectos de infraestructura. También ofrecemos servicios de remodelación y ampliación de estructuras existentes."
+    },
+    {
+      id: "item-5",
+      question: "¿Cómo manejan el presupuesto y los costos del proyecto?",
+      answer: "Proporcionamos presupuestos detallados y transparentes desde el inicio. Utilizamos sistemas de control de costos que permiten monitorear el gasto en tiempo real. Nuestros clientes reciben informes regulares sobre el estado financiero del proyecto y cualquier variación es comunicada inmediatamente."
+    }
+  ];
+
+  // Crear el componente React
+  const ContactFAQ = () => {
+    return createElement(
+      Accordion,
+      { type: "single", collapsible: true, className: "w-full space-y-4" },
+      faqData.map((item) =>
+        createElement(
+          AccordionItem,
+          { 
+            key: item.id, 
+            value: item.id, 
+            className: "border rounded-[20px] px-6 py-2 border-[#0c0801] bg-white shadow-sm hover:shadow-md transition-shadow" 
+          },
+          createElement(
+            AccordionTrigger,
+            { 
+              className: "text-left text-[16px] lg:text-[18px] font-semibold text-[#0c0801] hover:no-underline py-4" 
+            },
+            item.question
+          ),
+          createElement(
+            AccordionContent,
+            { 
+              className: "text-[14px] lg:text-[16px] text-[#0c0801]/80 leading-relaxed pb-4" 
+            },
+            item.answer
+          )
+        )
+      )
+    );
+  };
+
+  // Renderizar el componente cuando el DOM esté listo
+  function initContactFAQ() {
+    const container = document.getElementById('contact-faq-react');
+    if (container) {
+      const root = createRoot(container);
+      root.render(createElement(ContactFAQ));
+    }
+  }
+
+  // Inicializar cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initContactFAQ);
+  } else {
+    initContactFAQ();
+  }
+</script>

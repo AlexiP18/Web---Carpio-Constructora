@@ -1,0 +1,35 @@
+---
+import { cn } from "@/lib/utils";
+import type { Props as CardProps } from "./Card.astro";
+
+export interface Props {
+  className?: string;
+  variant?: CardProps["variant"];
+  size?: CardProps["size"];
+}
+
+const { className, variant = "elevated", size = "lg" } = Astro.props;
+
+const cardVariants = {
+  default: "rounded-lg border bg-card text-card-foreground shadow-sm",
+  elevated: "rounded-lg border bg-card text-card-foreground shadow-lg transition-all duration-300 hover:shadow-xl",
+  outlined: "rounded-lg border-2 bg-card text-card-foreground shadow-none transition-all duration-300 hover:shadow-lg"
+};
+
+const cardSizes = {
+  sm: "p-4",
+  md: "p-6",
+  lg: "p-8"
+};
+
+const cardClasses = cn(
+  "flex flex-col h-full",
+  cardVariants[variant],
+  cardSizes[size],
+  className
+);
+---
+
+<div class={cardClasses}>
+  <slot />
+</div>

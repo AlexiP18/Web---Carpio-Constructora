@@ -20,7 +20,8 @@ const {
   titleSize = 'normal'
 } = Astro.props;
 
-const alignClasses = align === 'center' ? 'items-center text-center' : 'items-start';
+const alignClasses = align === 'center' ? 'items-center text-center mx-auto' : 'items-start';
+const taglineAlign = align === 'center' ? 'justify-center text-center w-full' : 'justify-start';
 const colorClasses = textColor === 'light' ? 'text-white' : 'text-[#0c0801]';
 const widthClasses = {
   sm: 'max-w-[500px]',
@@ -35,18 +36,18 @@ const titleLeading = titleSize === 'hero' ? 'leading-[1.1]' : 'leading-[1.2]';
 
 <div class={`content-stretch flex flex-col gap-3 lg:gap-4 ${alignClasses} justify-start ${widthClasses[maxWidth]} relative w-full`}>
   {tagline && (
-    <div class="content-stretch flex items-center justify-start relative w-full">
+    <div class={`content-stretch flex items-center ${taglineAlign} relative w-full`}>
       <div class={`font-['Heebo:SemiBold',_sans-serif] font-semibold leading-[1.5] relative ${colorClasses} text-[16px] ${align === 'center' ? 'text-center w-full' : ''}`}>
         <p>{tagline}</p>
       </div>
     </div>
   )}
   <div class={`content-stretch flex flex-col gap-5 lg:gap-6 ${alignClasses} justify-start leading-[0] relative ${colorClasses} w-full`}>
-    <div class={`font-['Urbanist:Medium',_sans-serif] font-medium relative ${titleSizeClasses} w-full`}>
+    <div class={`font-['Urbanist:Medium',_sans-serif] font-medium relative ${titleSizeClasses} w-full ${align === 'center' ? 'text-center' : ''}`}>
       <p class={titleLeading}>{title}</p>
     </div>
     {description && (
-      <div class={`font-['Heebo:Regular',_sans-serif] font-normal relative text-[14px] lg:text-[20px] w-full`}>
+      <div class={`font-['Heebo:Regular',_sans-serif] font-normal relative text-[14px] lg:text-[20px] w-full ${align === 'center' ? 'text-center' : ''}`}>
         <p class="leading-[1.6]">{description}</p>
       </div>
     )}

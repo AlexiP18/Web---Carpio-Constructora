@@ -1,0 +1,77 @@
+﻿---
+import { Icon } from "astro-icon/components";
+import SectionLayout from "../../ui/SectionLayout.astro";
+import SectionHeader from "../../ui/SectionHeader.astro";
+
+const testimonials = [
+  {
+    name: "María González",
+    role: "Propietaria", 
+    company: "Casa Familiar",
+    content: "Excelente trabajo, cumplieron con todos los plazos y la calidad superó nuestras expectativas.",
+    rating: 5
+  },
+  {
+    name: "Carlos Rodríguez",
+    role: "Arquitecto",
+    company: "Estudios AR", 
+    content: "Profesionalismo excepcional. Su equipo trabajó de manera coordinada y el resultado final fue impresionante.",
+    rating: 5
+  },
+  {
+    name: "Ana Martínez",
+    role: "Directora General",
+    company: "Inmobiliaria Central",
+    content: "Los mejores constructores con los que hemos trabajado. Atención al detalle y comunicación constante.",
+    rating: 5
+  }
+];
+---
+
+<SectionLayout background="light" paddingY="lg" paddingX="lg" maxWidth="xl">
+  <SectionHeader 
+    tagline="Testimonios"
+    title="Lo que dicen nuestros clientes"
+    description="Conoce las experiencias de quienes han confiado en nosotros."
+    align="center"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  />
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+    {testimonials.map((testimonial) => (
+      <article class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+        <div class="mb-4">
+          <Icon name="ph:quotes-fill" class="w-8 h-8 text-primary-green opacity-60" />
+        </div>
+        
+        <div class="flex gap-1 mb-4">
+          {Array.from({ length: 5 }).map((_, starIndex) => (
+            <Icon 
+              name={starIndex < testimonial.rating ? "ph:star-fill" : "ph:star"} 
+              class={`w-5 h-5 ${starIndex < testimonial.rating ? "text-primary-green" : "text-neutral-light"}`}
+            />
+          ))}
+        </div>
+        
+        <blockquote class="font-heebo text-neutral-darkest leading-relaxed mb-6">
+          "{testimonial.content}"
+        </blockquote>
+        
+        <footer class="flex items-center gap-4 pt-4 border-t border-neutral-lighter">
+          <div class="w-12 h-12 rounded-full bg-primary-green/10 flex items-center justify-center">
+            <Icon name="ph:user-circle-fill" class="w-8 h-8 text-primary-green" />
+          </div>
+          <div>
+            <cite class="font-urbanist font-semibold text-neutral-darkest not-italic">
+              {testimonial.name}
+            </cite>
+            <p class="font-heebo text-sm text-neutral-darkest/70">
+              {testimonial.role} • {testimonial.company}
+            </p>
+          </div>
+        </footer>
+      </article>
+    ))}
+  </div>
+</SectionLayout>

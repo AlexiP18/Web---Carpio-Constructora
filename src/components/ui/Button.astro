@@ -1,15 +1,39 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "../../lib/utils";
 
-export interface Props {
-  variant?: 'primary' | 'secondary' | 'outline' | 'success';
-  size?: 'sm' | 'md' | 'lg';
+interface Props extends VariantProps<typeof buttonVariants> {
   href?: string;
   type?: 'button' | 'submit' | 'reset';
   class?: string;
   icon?: string;
   iconPosition?: 'left' | 'right';
+  [key: string]: any;
 }
+
+const buttonVariants = cva(
+  "box-border content-stretch flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shrink-0 font-['Heebo:Medium',_sans-serif] font-medium leading-[0] text-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2d862d] focus-visible:ring-offset-2",
+  {
+    variants: {
+      variant: {
+        primary: 'bg-[#d7e6fd] text-[#0c0801] border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]',
+        secondary: 'bg-[#f2f2f2] text-[#0c0801] border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]',
+        outline: 'bg-transparent text-white border-2 border-white',
+        success: 'bg-[#2d862d] text-[#0c0801] border-2 border-[#2d862d] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]'
+      },
+      size: {
+        sm: 'text-[14px] px-4 py-2',
+        md: 'text-[14px] md:text-[18px] px-6 py-2.5',
+        lg: 'text-[16px] md:text-[20px] px-8 py-3'
+      }
+    },
+    defaultVariants: {
+      variant: 'primary',
+      size: 'md'
+    }
+  }
+);
 
 const { 
   variant = 'primary', 
@@ -18,29 +42,15 @@ const {
   type = 'button',
   class: className = '', 
   icon,
-  iconPosition = 'right'
+  iconPosition = 'right',
+  ...rest
 } = Astro.props;
 
-const baseClasses = 'box-border content-stretch flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shrink-0 font-[\'Heebo:Medium\',_sans-serif] font-medium leading-[0] text-nowrap transition-colors';
-
-const variants = {
-  primary: 'bg-[#d7e6fd] text-[#0c0801] border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]',
-  secondary: 'bg-[#f2f2f2] text-[#0c0801] border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]',
-  outline: 'bg-transparent text-white border-2 border-white',
-  success: 'bg-[#2d862d] text-[#0c0801] border-2 border-[#2d862d] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]'
-};
-
-const sizes = {
-  sm: 'text-[14px] px-4 py-2',
-  md: 'text-[14px] md:text-[18px] px-6 py-2.5',
-  lg: 'text-[16px] md:text-[20px] px-8 py-3'
-};
-
-const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`;
+const classes = cn(buttonVariants({ variant, size }), className);
 ---
 
 {href ? (
-  <a href={href} class={classes}>
+  <a href={href} class={classes} {...rest}>
     {icon && iconPosition === 'left' && (
       <Icon name={icon} class="w-4 h-4" />
     )}

@@ -2,10 +2,12 @@
 // SectionLayout.astro - Reusable section layout wrapper
 export interface Props {
   id?: string;
-  background?: 'white' | 'gray' | 'transparent';
-  paddingY?: 'sm' | 'md' | 'lg';
-  paddingX?: 'sm' | 'md' | 'lg';
+  background?: 'white' | 'gray' | 'light' | 'transparent';
+  paddingY?: 'none' | 'sm' | 'md' | 'lg';
+  paddingX?: 'none' | 'sm' | 'md' | 'lg';
   maxWidth?: 'sm' | 'md' | 'lg' | 'xl';
+  className?: string;
+  contentClassName?: string;
 }
 
 const { 
@@ -13,22 +15,27 @@ const {
   background = 'white',
   paddingY = 'lg',
   paddingX = 'md',
-  maxWidth = 'xl'
+  maxWidth = 'xl',
+  className = '',
+  contentClassName = ''
 } = Astro.props;
 
 const bgClasses = {
   white: 'bg-white',
   gray: 'bg-[#dad9d8]',
+  light: 'bg-neutral-lightest',
   transparent: 'bg-transparent'
 };
 
 const paddingYClasses = {
+  none: 'py-0',
   sm: 'py-8 lg:py-12',
   md: 'py-12 lg:py-16', 
   lg: 'py-16 lg:py-28'
 };
 
 const paddingXClasses = {
+  none: 'px-0',
   sm: 'px-3 lg:px-8',
   md: 'px-5 lg:px-16',
   lg: 'px-8 lg:px-24'
@@ -44,9 +51,9 @@ const maxWidthClasses = {
 
 <section 
   {id}
-  class={`${bgClasses[background]} box-border content-stretch flex flex-col gap-12 lg:gap-20 items-center justify-start overflow-clip ${paddingXClasses[paddingX]} ${paddingYClasses[paddingY]} relative w-full`}
+  class={`${bgClasses[background]} box-border content-stretch flex flex-col gap-12 lg:gap-20 items-center justify-start overflow-clip ${paddingXClasses[paddingX]} ${paddingYClasses[paddingY]} relative w-full ${className}`}
 >
-  <div class={`content-stretch flex flex-col gap-12 lg:gap-20 items-start justify-start ${maxWidthClasses[maxWidth]} relative w-full`}>
+  <div class={`content-stretch flex flex-col gap-12 lg:gap-20 items-start justify-start ${maxWidthClasses[maxWidth]} relative w-full ${contentClassName}`}>
     <slot />
   </div>
 </section>
