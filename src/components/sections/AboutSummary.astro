@@ -1,5 +1,5 @@
 ---
-import Button from '../base/Button.astro';
+import Button from '../ui/Button.astro';
 import OptimizedImage from '../media/OptimizedImage.astro';
 import SectionLayout from '../ui/SectionLayout.astro';
 import { Icon } from 'astro-icon/components';
@@ -71,9 +71,13 @@ import aboutImage from '../../assets/about-summary-image.jpg';
 
         <!-- CTA Button -->
         <div class="pt-4" data-aos="fade-right" data-aos-delay="400">
-          <Button href="/quienes-somos" variant="outline" size="lg" className="border-neutral-darkest/50 text-neutral-darkest hover:bg-neutral-darkest hover:text-white">
+          <Button 
+            href="/quienes-somos" 
+            variant="outline-dark" 
+            size="lg"
+            icon="ph:arrow-right"
+          >
             Conoce Más Sobre Nosotros
-            <Icon name="ph:arrow-right" class="w-5 h-5" />
           </Button>
         </div>
       </div>

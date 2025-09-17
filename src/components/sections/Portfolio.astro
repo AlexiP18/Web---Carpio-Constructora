@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Card from '../base/Card.astro';
-import Button from '../base/Button.astro';
+import Button from '../ui/Button.astro';
 
 const projects = (await getCollection('proyectos')).slice(0, 3);
 ---
@@ -31,11 +31,11 @@ const projects = (await getCollection('proyectos')).slice(0, 3);
       {projects.map((project, index) => (
         <div data-aos="fade-up" data-aos-delay={index * 100} data-aos-duration="800">
           <Card
-            title={project.data.title}
-            description={project.data.description}
-            imageSrc={project.data.image}
-            imageAlt={`Imagen del proyecto ${project.data.title}`}
-            category={project.data.category}
+            title={project.data.title || 'Proyecto Sin Título'}
+            description={project.data.description || 'Descripción del proyecto en desarrollo.'}
+            imageSrc={project.data.image || '/images/placeholder-image.png'}
+            imageAlt={`Imagen del proyecto ${project.data.title || project.slug}`}
+            category={project.data.category || 'General'}
             href={`/proyecto/${project.slug}`}
             buttonText="Ver proyecto"
           />
@@ -46,9 +46,10 @@ const projects = (await getCollection('proyectos')).slice(0, 3);
     <!-- CTA Button -->
     <div class="text-center" data-aos="fade-up" data-aos-delay="300">
       <Button
-        variant="primary"
+        variant="success"
         size="lg"
         href="/proyectos"
+        icon="ph:arrow-right"
         class="px-8 py-4"
       >
         Ver todos los proyectos

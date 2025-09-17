@@ -1,0 +1,265 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<Layout title="Componente Button - Ejemplo de Variantes">
+  <main class="min-h-screen bg-gray-50 py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          Componente Button Estandarizado
+        </h1>
+        <p class="text-xl text-gray-600">
+          Todas las variantes disponibles para el sitio web
+        </p>
+      </div>
+
+      <!-- Variantes Principales -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-8">Variantes Principales</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Primary</h3>
+            <Button variant="primary" class="w-full">
+              Botón Primary
+            </Button>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Success</h3>
+            <Button variant="success" class="w-full">
+              Botón Success
+            </Button>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Orange</h3>
+            <Button variant="orange" class="w-full">
+              Botón Orange
+            </Button>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Danger</h3>
+            <Button variant="danger" class="w-full">
+              Botón Danger
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Variantes Outline -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-8">Variantes Outline</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Outline Dark</h3>
+            <Button variant="outline-dark" class="w-full">
+              Outline Dark
+            </Button>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Outline Green</h3>
+            <Button variant="outline-green" class="w-full">
+              Outline Green
+            </Button>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Outline Danger</h3>
+            <Button variant="outline-danger" class="w-full">
+              Outline Danger
+            </Button>
+          </div>
+          
+          <div class="bg-gray-900 p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-white mb-4">Outline (Fondo Oscuro)</h3>
+            <Button variant="outline" class="w-full">
+              Outline White
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tamaños -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-8">Tamaños Disponibles</h2>
+        <div class="bg-white p-8 rounded-lg shadow-sm">
+          <div class="flex flex-wrap items-center gap-4 justify-center">
+            <Button variant="primary" size="xs">Extra Small</Button>
+            <Button variant="primary" size="sm">Small</Button>
+            <Button variant="primary" size="md">Medium</Button>
+            <Button variant="primary" size="lg">Large</Button>
+            <Button variant="primary" size="xl">Extra Large</Button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Con Iconos -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-8">Botones con Iconos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Icono Derecha</h3>
+            <Button variant="success" icon="ph:arrow-right" class="w-full">
+              Ver Más
+            </Button>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Icono Izquierda</h3>
+            <Button variant="orange" icon="ph:phone" iconPosition="left" class="w-full">
+              Llamar
+            </Button>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Solo Icono</h3>
+            <Button variant="primary" icon="ph:download-simple" class="w-full">
+              Descargar
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Animaciones -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-8">Tipos de Animación</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Hover (Default)</h3>
+            <Button variant="primary" animation="hover" class="w-full">
+              Hover Up
+            </Button>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Scale</h3>
+            <Button variant="success" animation="scale" class="w-full">
+              Scale
+            </Button>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Slide</h3>
+            <Button variant="orange" animation="slide" class="w-full">
+              Slide
+            </Button>
+          </div>
+          
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="text-sm font-medium text-gray-700 mb-4">Sin Animación</h3>
+            <Button variant="secondary" animation="none" class="w-full">
+              Sin Animación
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bordes Redondeados -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-8">Bordes Redondeados</h2>
+        <div class="bg-white p-8 rounded-lg shadow-sm">
+          <div class="flex flex-wrap items-center gap-4 justify-center">
+            <Button variant="primary" rounded="none">Sin Redondeo</Button>
+            <Button variant="primary" rounded="sm">Pequeño</Button>
+            <Button variant="primary" rounded="md">Mediano</Button>
+            <Button variant="primary" rounded="lg">Grande</Button>
+            <Button variant="primary" rounded="full">Completo</Button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Casos de Uso Comunes -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-8">Casos de Uso Comunes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- CTA Principal -->
+          <div class="bg-white p-8 rounded-lg shadow-sm">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Call-to-Action Principal</h3>
+            <Button 
+              variant="orange" 
+              size="lg" 
+              icon="ph:arrow-right"
+              class="w-full"
+            >
+              Solicitar Cotización Gratuita
+            </Button>
+          </div>
+
+          <!-- Navegación -->
+          <div class="bg-white p-8 rounded-lg shadow-sm">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Navegación Secundaria</h3>
+            <div class="space-y-3">
+              <Button 
+                variant="outline-dark" 
+                size="md"
+                icon="ph:buildings"
+                class="w-full"
+              >
+                Ver Proyectos
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="md"
+                icon="ph:phone"
+                iconPosition="left"
+                class="w-full"
+              >
+                Contactar
+              </Button>
+            </div>
+          </div>
+
+          <!-- Formulario -->
+          <div class="bg-white p-8 rounded-lg shadow-sm">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Acciones de Formulario</h3>
+            <div class="flex gap-3">
+              <Button 
+                variant="success" 
+                size="md"
+                icon="ph:paper-plane-tilt"
+                class="flex-1"
+              >
+                Enviar
+              </Button>
+              <Button 
+                variant="secondary" 
+                size="md"
+                class="flex-1"
+              >
+                Cancelar
+              </Button>
+            </div>
+          </div>
+
+          <!-- Estados -->
+          <div class="bg-white p-8 rounded-lg shadow-sm">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Estados Especiales</h3>
+            <div class="space-y-3">
+              <Button variant="primary" class="w-full">
+                Estado Normal
+              </Button>
+              <Button variant="primary" disabled class="w-full">
+                Estado Deshabilitado
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fondo Oscuro -->
+      <section class="bg-gray-900 p-16 rounded-lg">
+        <h2 class="text-2xl font-semibold text-white mb-8 text-center">En Fondos Oscuros</h2>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <Button variant="outline">Outline White</Button>
+          <Button variant="ghost-white">Ghost White</Button>
+          <Button variant="orange">Orange CTA</Button>
+          <Button variant="success">Success Action</Button>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>

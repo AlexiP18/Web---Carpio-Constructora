@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import Button from '../base/Button.astro';
+import Button from '../ui/Button.astro';
 import OptimizedImage from '../media/OptimizedImage.astro';
 import backgroundLanding from '../../assets/background_landing.jpg';
 ---
@@ -38,15 +38,16 @@ import backgroundLanding from '../../assets/background_landing.jpg';
         con más de 15 años de experiencia en el sector.
       </p>
       
-      <!-- Action Buttons - Styled according to Figma specifications -->
+      <!-- Action Buttons - Using new standardized Button component -->
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4" 
            data-aos="fade-up" 
            data-aos-delay="300">
         <Button 
           href="/proyectos" 
-          variant="primary"
+          variant="orange"
           size="lg"
-          className="figma-button-primary min-w-[180px] shadow-lg hover-lift"
+          icon="ph:arrow-right"
+          class="min-w-[180px]"
         >
           Ver Proyectos
         </Button>
@@ -55,7 +56,8 @@ import backgroundLanding from '../../assets/background_landing.jpg';
           href="/servicios" 
           variant="outline"
           size="lg"
-          className="figma-button-secondary min-w-[180px] shadow-lg hover-lift"
+          icon="ph:list-bullets"
+          class="min-w-[180px]"
         >
           Ver Servicios
         </Button>

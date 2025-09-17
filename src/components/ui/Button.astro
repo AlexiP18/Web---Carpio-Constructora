@@ -9,28 +9,68 @@ interface Props extends VariantProps<typeof buttonVariants> {
   class?: string;
   icon?: string;
   iconPosition?: 'left' | 'right';
+  disabled?: boolean;
+  animation?: 'hover' | 'scale' | 'slide' | 'none';
+  rounded?: 'none' | 'sm' | 'md' | 'lg' | 'full';
   [key: string]: any;
 }
 
 const buttonVariants = cva(
-  "box-border content-stretch flex gap-2 items-center justify-center px-6 py-2.5 relative rounded-[100px] shrink-0 font-['Heebo:Medium',_sans-serif] font-medium leading-[0] text-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2d862d] focus-visible:ring-offset-2",
+  "box-border flex items-center justify-center gap-2 relative shrink-0 font-['Heebo:Medium',_sans-serif] font-medium text-nowrap transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed",
   {
     variants: {
       variant: {
-        primary: 'bg-[#d7e6fd] text-[#0c0801] border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]',
-        secondary: 'bg-[#f2f2f2] text-[#0c0801] border-2 border-[#0c0801] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]',
-        outline: 'bg-transparent text-white border-2 border-white',
-        success: 'bg-[#2d862d] text-[#0c0801] border-2 border-[#2d862d] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)]'
+        // Primary variants
+        primary: 'bg-gradient-to-r from-blue-500 to-blue-600 text-white border-2 border-blue-500 shadow-lg hover:from-blue-600 hover:to-blue-700 hover:shadow-xl focus-visible:ring-blue-500',
+        
+        // Success/Green variants  
+        success: 'bg-gradient-to-r from-green-500 to-green-600 text-white border-2 border-green-500 shadow-lg hover:from-green-600 hover:to-green-700 hover:shadow-xl focus-visible:ring-green-500',
+        
+        // Orange/CTA variants
+        orange: 'bg-gradient-to-r from-orange-500 to-orange-600 text-white border-2 border-orange-500 shadow-lg hover:from-orange-600 hover:to-orange-700 hover:shadow-xl focus-visible:ring-orange-500',
+        
+        // Secondary variants
+        secondary: 'bg-gray-100 text-gray-900 border-2 border-gray-300 shadow-md hover:bg-gray-200 hover:border-gray-400 hover:shadow-lg focus-visible:ring-gray-500',
+        
+        // Outline variants
+        outline: 'bg-transparent text-white border-2 border-white shadow-md hover:bg-white hover:text-gray-900 hover:shadow-lg focus-visible:ring-white',
+        'outline-dark': 'bg-transparent text-gray-900 border-2 border-gray-900 shadow-md hover:bg-gray-900 hover:text-white hover:shadow-lg focus-visible:ring-gray-900',
+        'outline-green': 'bg-transparent text-green-600 border-2 border-green-600 shadow-md hover:bg-green-600 hover:text-white hover:shadow-lg focus-visible:ring-green-600',
+        
+        // Ghost variants
+        ghost: 'bg-transparent text-gray-900 border-2 border-transparent hover:bg-gray-100 hover:border-gray-200 focus-visible:ring-gray-500',
+        'ghost-white': 'bg-transparent text-white border-2 border-transparent hover:bg-white/10 hover:border-white/20 focus-visible:ring-white',
+        
+        // Danger variants
+        danger: 'bg-gradient-to-r from-red-500 to-red-600 text-white border-2 border-red-500 shadow-lg hover:from-red-600 hover:to-red-700 hover:shadow-xl focus-visible:ring-red-500',
+        'outline-danger': 'bg-transparent text-red-600 border-2 border-red-600 shadow-md hover:bg-red-600 hover:text-white hover:shadow-lg focus-visible:ring-red-600'
       },
       size: {
-        sm: 'text-[14px] px-4 py-2',
-        md: 'text-[14px] md:text-[18px] px-6 py-2.5',
-        lg: 'text-[16px] md:text-[20px] px-8 py-3'
+        xs: 'text-xs px-3 py-1.5',
+        sm: 'text-sm px-4 py-2',
+        md: 'text-sm md:text-base px-6 py-2.5',
+        lg: 'text-base md:text-lg px-8 py-3',
+        xl: 'text-lg md:text-xl px-10 py-4'
+      },
+      animation: {
+        hover: 'hover:-translate-y-0.5',
+        scale: 'hover:scale-105',
+        slide: 'hover:translate-x-1',
+        none: ''
+      },
+      rounded: {
+        none: 'rounded-none',
+        sm: 'rounded-sm',
+        md: 'rounded-md',
+        lg: 'rounded-lg',
+        full: 'rounded-full'
       }
     },
     defaultVariants: {
       variant: 'primary',
-      size: 'md'
+      size: 'md',
+      animation: 'hover',
+      rounded: 'full'
     }
   }
 );
@@ -43,32 +83,112 @@ const {
   class: className = '', 
   icon,
   iconPosition = 'right',
+  disabled = false,
+  animation = 'hover',
+  rounded = 'full',
   ...rest
 } = Astro.props;
 
-const classes = cn(buttonVariants({ variant, size }), className);
+const classes = cn(buttonVariants({ variant, size, animation, rounded }), className);
+const iconClasses = cn(
+  "transition-transform duration-300 flex-shrink-0",
+  size === 'xs' ? 'w-3 h-3' :
+  size === 'sm' ? 'w-4 h-4' :
+  size === 'md' ? 'w-4 h-4' :
+  size === 'lg' ? 'w-5 h-5' :
+  'w-6 h-6'
+);
 ---
 
 {href ? (
-  <a href={href} class={classes} {...rest}>
+  <a 
+    href={href} 
+    class={classes} 
+    aria-disabled={disabled}
+    tabindex={disabled ? -1 : undefined}
+    {...rest}
+  >
     {icon && iconPosition === 'left' && (
-      <Icon name={icon} class="w-4 h-4" />
+      <Icon name={icon} class={iconClasses} />
     )}
-    <span class="leading-[1.6]"><slot /></span>
+    <span class="flex-1 text-center">
+      <slot />
+    </span>
     {icon && iconPosition === 'right' && (
-      <Icon name={icon} class="w-4 h-4" />
+      <Icon name={icon} class={iconClasses} />
     )}
-    <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),_0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]" />
+    
+    <!-- Subtle inner shadow for depth -->
+    <div class="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),inset_0_-1px_0_0_rgba(0,0,0,0.1)]" />
   </a>
 ) : (
-  <button type={type} class={classes}>
+  <button 
+    type={type} 
+    class={classes}
+    disabled={disabled}
+    {...rest}
+  >
     {icon && iconPosition === 'left' && (
-      <Icon name={icon} class="w-4 h-4" />
+      <Icon name={icon} class={iconClasses} />
     )}
-    <span class="leading-[1.6]"><slot /></span>
+    <span class="flex-1 text-center">
+      <slot />
+    </span>
     {icon && iconPosition === 'right' && (
-      <Icon name={icon} class="w-4 h-4" />
+      <Icon name={icon} class={iconClasses} />
     )}
-    <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),_0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]" />
+    
+    <!-- Subtle inner shadow for depth -->
+    <div class="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.1),inset_0_-1px_0_0_rgba(0,0,0,0.1)]" />
   </button>
 )}
+
+<style>
+  /* Custom animations and enhanced effects */
+  [data-animation="scale"]:hover {
+    transform: scale(1.05);
+  }
+  
+  [data-animation="slide"]:hover {
+    transform: translateX(4px);
+  }
+  
+  [data-animation="hover"]:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Enhanced focus states */
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+  
+  /* Disabled states */
+  button:disabled,
+  a[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+  
+  /* Loading state support */
+  .button-loading {
+    pointer-events: none;
+  }
+  
+  .button-loading span {
+    opacity: 0;
+  }
+  
+  /* Icon animations */
+  button:hover .icon-right,
+  a:hover .icon-right {
+    transform: translateX(2px);
+  }
+  
+  button:hover .icon-left,
+  a:hover .icon-left {
+    transform: translateX(-2px);
+  }
+</style>

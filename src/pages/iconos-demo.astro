@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<Layout title="Botones con Iconos - Layout Mejorado">
+  <main class="min-h-screen bg-gray-50 py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          Botones con Iconos Alineados Horizontalmente
+        </h1>
+        <p class="text-xl text-gray-600">
+          Los iconos ahora aparecen al lado del texto, no arriba
+        </p>
+      </div>
+
+      <!-- Ejemplos de Iconos al Lado del Texto -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-8 text-center">
+          ✅ Iconos y Texto Alineados Horizontalmente
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Icono a la Izquierda -->
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-6 text-center">Icono a la Izquierda</h3>
+            <div class="space-y-4">
+              <Button variant="success" icon="ph:phone" iconPosition="left" class="w-full">
+                Llamar Ahora
+              </Button>
+              
+              <Button variant="orange" icon="ph:calendar-check" iconPosition="left" class="w-full">
+                Agendar Cita
+              </Button>
+              
+              <Button variant="primary" icon="ph:download-simple" iconPosition="left" class="w-full">
+                Descargar Catálogo
+              </Button>
+            </div>
+          </div>
+
+          <!-- Icono a la Derecha -->
+          <div class="bg-white p-8 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-6 text-center">Icono a la Derecha</h3>
+            <div class="space-y-4">
+              <Button variant="success" icon="ph:arrow-right" iconPosition="right" class="w-full">
+                Ver Más Proyectos
+              </Button>
+              
+              <Button variant="orange" icon="ph:arrow-square-out" iconPosition="right" class="w-full">
+                Ir a Servicios
+              </Button>
+              
+              <Button variant="primary" icon="ph:caret-right" iconPosition="right" class="w-full">
+                Siguiente Paso
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comparación de Tamaños -->
+      <section class="mb-16">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-8 text-center">
+          Diferentes Tamaños con Iconos
+        </h2>
+        
+        <div class="bg-white p-8 rounded-lg shadow-md">
+          <div class="space-y-6">
+            <div class="flex flex-wrap gap-4 justify-center items-center">
+              <Button variant="primary" size="xs" icon="ph:star" iconPosition="left">
+                Extra Small
+              </Button>
+              
+              <Button variant="success" size="sm" icon="ph:check-circle" iconPosition="left">
+                Small Button
+              </Button>
+              
+              <Button variant="orange" size="md" icon="ph:arrow-right" iconPosition="right">
+                Medium Button
+              </Button>
+              
+              <Button variant="danger" size="lg" icon="ph:warning" iconPosition="left">
+                Large Button
+              </Button>
+              
+              <Button variant="primary" size="xl" icon="ph:rocket-launch" iconPosition="right">
+                Extra Large
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Casos de Uso Reales -->
+      <section>
+        <h2 class="text-2xl font-semibold text-gray-900 mb-8 text-center">
+          Casos de Uso Reales
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Call to Action -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-4">Call to Action</h3>
+            <Button 
+              variant="orange" 
+              size="lg" 
+              icon="ph:arrow-right" 
+              iconPosition="right"
+              class="w-full"
+            >
+              Solicitar Cotización
+            </Button>
+          </div>
+
+          <!-- Contacto -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-4">Contacto</h3>
+            <div class="space-y-3">
+              <Button 
+                variant="success" 
+                icon="ph:phone" 
+                iconPosition="left"
+                class="w-full"
+              >
+                Llamar
+              </Button>
+              <Button 
+                variant="outline-green" 
+                icon="ph:envelope" 
+                iconPosition="left"
+                class="w-full"
+              >
+                Email
+              </Button>
+            </div>
+          </div>
+
+          <!-- Navegación -->
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-lg font-semibold mb-4">Navegación</h3>
+            <div class="space-y-3">
+              <Button 
+                variant="outline-dark" 
+                icon="ph:buildings" 
+                iconPosition="left"
+                class="w-full"
+              >
+                Proyectos
+              </Button>
+              <Button 
+                variant="ghost" 
+                icon="ph:info" 
+                iconPosition="left"
+                class="w-full"
+              >
+                Sobre Nosotros
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fondo Oscuro para Contrastar -->
+      <section class="mt-16 bg-gray-900 p-12 rounded-lg">
+        <h2 class="text-2xl font-semibold text-white mb-8 text-center">
+          En Fondos Oscuros
+        </h2>
+        
+        <div class="flex flex-wrap gap-4 justify-center">
+          <Button variant="outline" icon="ph:moon" iconPosition="left">
+            Modo Oscuro
+          </Button>
+          
+          <Button variant="ghost-white" icon="ph:star" iconPosition="right">
+            Favoritos
+          </Button>
+          
+          <Button variant="orange" icon="ph:lightning" iconPosition="left">
+            Acción Rápida
+          </Button>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
