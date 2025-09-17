@@ -1,88 +1,155 @@
 ---
 import Button from '../ui/Button.astro';
 import { Icon } from 'astro-icon/components';
-
-export interface Props {
-  tagline: string;
-  title: string;
-  description: string;
-  centerImage: string;
-  items: Array<{
-    icon: string;
-    title: string;
-    description: string;
-  }>;
-}
-
-const { tagline, title, description, centerImage, items } = Astro.props;
 ---
 
-<section class="bg-white box-border content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start overflow-clip px-5 md:px-16 py-20 md:py-28 relative shrink-0 w-full">
-  <div class="content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start max-w-[1280px] relative shrink-0 w-full">
-    <div class="content-stretch flex flex-col gap-4 items-center justify-start max-w-[768px] relative shrink-0 w-full">
-      <div class="content-stretch flex items-center justify-start relative shrink-0 w-full">
-        <div class="font-['Heebo:SemiBold',_sans-serif] font-semibold leading-[0] relative shrink-0 text-[#0c0801] text-[16px] text-center text-nowrap">
-          <p class="leading-[1.5] whitespace-pre">{tagline}</p>
+<section class="bg-gray-50 py-20 relative overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 left-0 w-72 h-72 bg-primary-green/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Header Section -->
+    <div class="text-center max-w-4xl mx-auto mb-20" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:buildings-fill" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm">Nuestra Empresa</span>
+      </div>
+      
+      <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+        Comprometidos con la 
+        <span class="bg-gradient-to-r from-primary-green to-emerald-500 bg-clip-text text-transparent">
+          calidad y la innovación
+        </span>
+      </h2>
+      
+      <p class="text-xl text-gray-600 leading-relaxed">
+        En Constructora Carpio, nos dedicamos a construir sueños. Cada proyecto es una oportunidad para crear espacios únicos y funcionales que perduren en el tiempo.
+      </p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid lg:grid-cols-3 gap-12 items-center">
+      <!-- Left Column - Misión y Visión -->
+      <div class="space-y-12">
+        <!-- Misión -->
+        <div class="space-y-6" data-aos="fade-right" data-aos-delay="100">
+          <div class="w-16 h-16 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center">
+            <Icon name="ph:target-fill" class="w-8 h-8 text-white" />
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestra Misión</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Ofrecer soluciones constructivas que superen las expectativas de nuestros clientes, utilizando tecnología de vanguardia y materiales de la más alta calidad.
+            </p>
+          </div>
+        </div>
+
+        <!-- Visión -->
+        <div class="space-y-6" data-aos="fade-right" data-aos-delay="200">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center">
+            <Icon name="ph:eye-fill" class="w-8 h-8 text-white" />
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestra Visión</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Ser líderes en el sector de la construcción en Costa Rica, reconocidos por nuestra excelencia, innovación y compromiso con el desarrollo sostenible.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="content-stretch flex flex-col gap-6 items-center justify-start leading-[0] relative shrink-0 text-[#0c0801] text-center w-full">
-        <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[44px] md:text-[60px] tracking-[0.44px] md:tracking-[0.6px] w-full">
-          <p class="leading-[1.2]">{title}</p>
+
+      <!-- Center Image -->
+      <div class="relative" data-aos="zoom-in" data-aos-delay="300">
+        <div class="aspect-square bg-gradient-to-br from-slate-100 to-slate-200 rounded-3xl overflow-hidden shadow-2xl">
+          <!-- Placeholder para imagen de la empresa -->
+          <div class="w-full h-full bg-gradient-to-br from-primary-green/20 to-blue-500/20 flex items-center justify-center">
+            <div class="text-center space-y-4">
+              <Icon name="ph:buildings-fill" class="w-20 h-20 text-primary-green mx-auto" />
+              <div class="text-2xl font-bold text-gray-700">Constructora Carpio</div>
+              <div class="text-gray-500">15+ años construyendo sueños</div>
+            </div>
+          </div>
         </div>
-        <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[20px] w-full">
-          <p class="leading-[1.6]">{description}</p>
+        
+        <!-- Floating stats cards -->
+        <div class="absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-lg border">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary-green">150+</div>
+            <div class="text-sm text-gray-500">Proyectos</div>
+          </div>
+        </div>
+        
+        <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-lg border">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-blue-500">100%</div>
+            <div class="text-sm text-gray-500">Satisfacción</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Valores y Diferenciadores -->
+      <div class="space-y-12">
+        <!-- Valores -->
+        <div class="space-y-6" data-aos="fade-left" data-aos-delay="100">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center">
+            <Icon name="ph:heart-fill" class="w-8 h-8 text-white" />
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestros Valores</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Integridad, innovación, trabajo en equipo y responsabilidad social son los pilares fundamentales que guían cada decisión en nuestra empresa.
+            </p>
+          </div>
+        </div>
+
+        <!-- Por qué elegirnos -->
+        <div class="space-y-6" data-aos="fade-left" data-aos-delay="200">
+          <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center">
+            <Icon name="ph:star-fill" class="w-8 h-8 text-white" />
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Por Qué Elegirnos</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Contamos con más de 15 años de experiencia, un equipo de expertos certificados y un compromiso inquebrantable con la satisfacción del cliente.
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="content-stretch grid grid-cols-1 md:grid-cols-3 gap-12 items-start justify-start relative shrink-0 w-full">
-      <!-- Left column -->
-      <div class="content-stretch flex flex-col gap-16 items-center md:items-start justify-start w-full">
-        {items.slice(0, 2).map((item, index) => (
-          <div class="content-stretch flex flex-col gap-6 items-center md:items-start justify-start w-full" data-aos="fade-right" data-aos-delay={100 + (index * 100)}>
-            <div class="relative shrink-0 size-12 text-[#2d862d]">
-              <Icon name={item.icon} class="w-12 h-12" />
-            </div>
-            <div class="content-stretch flex flex-col gap-4 items-center md:items-start justify-start leading-[0] text-[#0c0801] text-center md:text-left w-full">
-              <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[20px] md:text-[32px] tracking-[0.2px] md:tracking-[0.32px] w-full">
-                <p class="leading-[1.2]">{item.title}</p>
-              </div>
-              <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[18px] w-full">
-                <p class="leading-[1.6]">{item.description}</p>
-              </div>
-            </div>
-          </div>
-        ))}
+    <!-- CTA Section -->
+    <div class="text-center mt-20 space-y-8" data-aos="fade-up" data-aos-delay="500">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="success" href="/contacto">
+          <Icon name="ph:phone" class="w-5 h-5" />
+          Contáctanos Hoy
+        </Button>
+        <Button variant="outline" href="/proyectos">
+          <Icon name="ph:arrow-right" class="w-5 h-5" />
+          Ver Nuestros Proyectos
+        </Button>
       </div>
 
-      <!-- Center image -->
-      <div class="bg-center bg-cover bg-no-repeat rounded-[40px] w-full max-w-[335px] aspect-square md:h-[540px] md:w-[540px] md:aspect-auto mx-auto" style={`background-image: url('${centerImage}')`} data-aos="zoom-in" data-aos-delay="200"></div>
-
-      <!-- Right column -->
-      <div class="content-stretch flex flex-col gap-16 items-center md:items-start justify-start w-full">
-        {items.slice(2, 4).map((item, index) => (
-          <div class="content-stretch flex flex-col gap-6 items-center md:items-start justify-start w-full" data-aos="fade-left" data-aos-delay={100 + (index * 100)}>
-            <div class="relative shrink-0 size-12 text-[#2d862d]">
-              <Icon name={item.icon} class="w-12 h-12" />
-            </div>
-            <div class="content-stretch flex flex-col gap-4 items-center md:items-start justify-start leading-[0] text-[#0c0801] text-center md:text-left w-full">
-              <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[20px] md:text-[32px] tracking-[0.2px] md:tracking-[0.32px] w-full">
-                <p class="leading-[1.2]">{item.title}</p>
-              </div>
-              <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[18px] w-full">
-                <p class="leading-[1.6]">{item.description}</p>
-              </div>
-            </div>
-          </div>
-        ))}
+      <!-- Feature highlights -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-12">
+        <div class="text-center">
+          <Icon name="ph:certificate-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
+          <div class="text-sm text-gray-600">Certificados</div>
+        </div>
+        <div class="text-center">
+          <Icon name="ph:shield-check-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
+          <div class="text-sm text-gray-600">Garantía</div>
+        </div>
+        <div class="text-center">
+          <Icon name="ph:clock-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
+          <div class="text-sm text-gray-600">Puntualidad</div>
+        </div>
+        <div class="text-center">
+          <Icon name="ph:users-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
+          <div class="text-sm text-gray-600">Equipo Experto</div>
+        </div>
       </div>
-    </div>
-
-    <div class="content-stretch flex gap-6 items-center justify-start relative shrink-0" data-aos="fade-up" data-aos-delay="500">
-      <Button variant="secondary">Contáctanos</Button>
-      <Button variant="outline" class="text-[#0c0801]" icon="ph:arrow-right">
-        Aprender Más
-      </Button>
     </div>
   </div>
 </section>

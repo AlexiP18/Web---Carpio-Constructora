@@ -1,0 +1,369 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface FAQItem {
+  question: string;
+  answer: string;
+  category: string;
+}
+
+const faqs: FAQItem[] = [
+  {
+    category: "General",
+    question: "¿Qué tipos de proyectos realizan?",
+    answer: "Realizamos construcción residencial, comercial, remodelaciones, mantenimiento y proyectos especiales. Nos especializamos en casas, edificios, centros comerciales, oficinas y espacios recreativos."
+  },
+  {
+    category: "General", 
+    question: "¿En qué ciudades tienen presencia?",
+    answer: "Tenemos oficinas principales en Quito, Guayaquil y Cuenca, pero brindamos servicios en todo el territorio ecuatoriano, incluyendo proyectos especiales en Galápagos."
+  },
+  {
+    category: "Cotización",
+    question: "¿Es gratuita la cotización?",
+    answer: "Sí, la cotización inicial es completamente gratuita. Incluye evaluación del terreno, análisis de requerimientos y una propuesta detallada con cronograma y presupuesto."
+  },
+  {
+    category: "Cotización",
+    question: "¿Cuánto tiempo toma recibir una cotización?",
+    answer: "Nos comprometemos a entregar una cotización preliminar en menos de 24 horas. Para cotizaciones detalladas con planos, el tiempo es de 3-5 días hábiles."
+  },
+  {
+    category: "Proceso",
+    question: "¿Cuál es el proceso de construcción?",
+    answer: "Nuestro proceso incluye: 1) Consulta inicial y cotización, 2) Diseño y planificación, 3) Obtención de permisos, 4) Construcción con supervisión constante, 5) Entrega y garantía."
+  },
+  {
+    category: "Proceso",
+    question: "¿Manejan los permisos de construcción?",
+    answer: "Sí, nos encargamos de todos los trámites y permisos necesarios ante los municipios y organismos correspondientes. Esto está incluido en nuestro servicio integral."
+  },
+  {
+    category: "Financiamiento",
+    question: "¿Ofrecen opciones de financiamiento?",
+    answer: "Trabajamos con varios bancos y cooperativas para ofrecerte las mejores opciones de financiamiento. También manejamos planes de pago flexibles según tu proyecto."
+  },
+  {
+    category: "Financiamiento",
+    question: "¿Qué formas de pago aceptan?",
+    answer: "Aceptamos efectivo, transferencias bancarias, cheques y tarjetas de crédito. Manejamos cronogramas de pago por hitos de construcción para mayor tranquilidad."
+  },
+  {
+    category: "Garantía",
+    question: "¿Qué garantía ofrecen en sus construcciones?",
+    answer: "Ofrecemos garantía integral: 2 años en estructura, 1 año en instalaciones eléctricas y sanitarias, 6 meses en acabados. Además, servicio post-venta por 5 años."
+  },
+  {
+    category: "Garantía",
+    question: "¿Qué incluye el servicio post-venta?",
+    answer: "Incluye mantenimiento preventivo, revisiones periódicas, soporte técnico 24/7, y reparaciones menores sin costo durante el período de garantía."
+  },
+  {
+    category: "Emergencias",
+    question: "¿Atienden emergencias fuera de horario?",
+    answer: "Sí, tenemos servicio de emergencias 24/7 para nuestros clientes. Respondemos llamadas urgentes relacionadas con problemas estructurales, instalaciones o seguridad."
+  },
+  {
+    category: "Emergencias",
+    question: "¿Cuánto tiempo tardan en responder emergencias?",
+    answer: "Para emergencias en Quito, Guayaquil y Cuenca: máximo 2 horas. En otras ciudades: máximo 4 horas. Para consultas telefónicas: inmediato."
+  }
+];
+
+const categories = [...new Set(faqs.map(faq => faq.category))];
+---
+
+<section class="py-20 bg-gradient-to-br from-white via-gray-50 to-slate-100 relative overflow-hidden" id="faq">
+  <!-- Background decorations -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-20 w-40 h-40 bg-primary-green/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:question-fill" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm">Preguntas Frecuentes</span>
+      </div>
+      
+      <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        Resolvemos Tus <span class="bg-gradient-to-r from-primary-green to-emerald-500 bg-clip-text text-transparent">Dudas</span>
+      </h2>
+      
+      <p class="text-xl text-gray-600 leading-relaxed mb-8">
+        Encuentra respuestas a las preguntas más comunes sobre nuestros servicios y procesos
+      </p>
+
+      <!-- Search Bar -->
+      <div class="max-w-md mx-auto relative">
+        <input 
+          type="text" 
+          id="faqSearch"
+          placeholder="Buscar pregunta..."
+          class="w-full px-6 py-4 bg-white border border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-green focus:border-transparent shadow-sm"
+        />
+        <Icon name="ph:magnifying-glass" class="absolute right-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+      </div>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up" data-aos-delay="100">
+      <button 
+        class="category-filter px-6 py-3 bg-primary-green text-white rounded-2xl font-semibold transition-all duration-200 hover:bg-primary-green/90 active"
+        data-category="all"
+      >
+        Todas
+      </button>
+      {categories.map((category) => (
+        <button 
+          class="category-filter px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-2xl font-semibold transition-all duration-200 hover:border-primary-green hover:text-primary-green"
+          data-category={category}
+        >
+          {category}
+        </button>
+      ))}
+    </div>
+
+    <!-- FAQ Grid -->
+    <div class="space-y-4" data-aos="fade-up" data-aos-delay="200">
+      {faqs.map((faq, index) => (
+        <div 
+          class="faq-item bg-white rounded-2xl border border-gray-200/50 hover:border-primary-green/30 transition-all duration-300 shadow-sm hover:shadow-md"
+          data-category={faq.category}
+          data-aos="fade-up" 
+          data-aos-delay={50 * (index + 1)}
+        >
+          <button 
+            class="faq-question w-full px-6 py-6 text-left flex items-center justify-between group focus:outline-none"
+            type="button"
+          >
+            <div class="flex items-start gap-4 flex-1">
+              <!-- Category Badge -->
+              <span class="px-3 py-1 bg-primary-green/10 text-primary-green text-xs font-semibold rounded-full flex-shrink-0 mt-1">
+                {faq.category}
+              </span>
+              
+              <!-- Question -->
+              <h3 class="text-lg font-semibold text-gray-900 group-hover:text-primary-green transition-colors leading-relaxed">
+                {faq.question}
+              </h3>
+            </div>
+            
+            <!-- Toggle Icon -->
+            <div class="faq-icon flex-shrink-0 ml-4">
+              <Icon name="ph:plus" class="w-6 h-6 text-gray-400 group-hover:text-primary-green transition-all duration-200" />
+            </div>
+          </button>
+          
+          <!-- Answer -->
+          <div class="faq-answer overflow-hidden transition-all duration-300 max-h-0">
+            <div class="px-6 pb-6 pl-[74px]">
+              <p class="text-gray-600 leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- No Results Message -->
+    <div id="noResults" class="hidden text-center py-12">
+      <div class="w-20 h-20 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <Icon name="ph:magnifying-glass" class="w-10 h-10 text-gray-400" />
+      </div>
+      <h3 class="text-xl font-bold text-gray-900 mb-2">No se encontraron resultados</h3>
+      <p class="text-gray-600">Intenta con otros términos de búsqueda o selecciona una categoría diferente.</p>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="400">
+      <div class="bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 rounded-3xl p-8 text-white relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+          <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary-green/20 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-2xl mx-auto">
+          <div class="flex items-center justify-center gap-3 mb-4">
+            <Icon name="ph:headset-fill" class="w-8 h-8 text-primary-green" />
+            <h3 class="text-2xl lg:text-3xl font-bold">¿No encontraste tu respuesta?</h3>
+          </div>
+          
+          <p class="text-gray-300 mb-6 leading-relaxed">
+            Nuestro equipo de expertos está disponible para resolver cualquier duda específica sobre tu proyecto
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="tel:+593956324598"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-primary-green hover:bg-primary-green/90 text-white font-semibold rounded-2xl transition-all duration-200 hover:scale-105"
+            >
+              <Icon name="ph:phone-fill" class="w-5 h-5" />
+              Llamar Ahora
+            </a>
+            
+            <a 
+              href="https://wa.me/593956324598"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold rounded-2xl transition-all duration-200 hover:scale-105"
+            >
+              <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5" />
+              Chat WhatsApp
+            </a>
+            
+            <a 
+              href="#form"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold rounded-2xl transition-all duration-200 hover:scale-105"
+            >
+              <Icon name="ph:envelope-fill" class="w-5 h-5" />
+              Enviar Mensaje
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="grid md:grid-cols-4 gap-6 mt-12" data-aos="fade-up" data-aos-delay="500">
+      <div class="text-center p-6 bg-white rounded-2xl shadow-md border border-gray-100">
+        <div class="text-3xl font-bold text-primary-green mb-2">&lt; 24h</div>
+        <div class="text-sm text-gray-600">Tiempo de respuesta</div>
+      </div>
+      
+      <div class="text-center p-6 bg-white rounded-2xl shadow-md border border-gray-100">
+        <div class="text-3xl font-bold text-blue-500 mb-2">24/7</div>
+        <div class="text-sm text-gray-600">Soporte de emergencia</div>
+      </div>
+      
+      <div class="text-center p-6 bg-white rounded-2xl shadow-md border border-gray-100">
+        <div class="text-3xl font-bold text-purple-500 mb-2">15+</div>
+        <div class="text-sm text-gray-600">Años de experiencia</div>
+      </div>
+      
+      <div class="text-center p-6 bg-white rounded-2xl shadow-md border border-gray-100">
+        <div class="text-3xl font-bold text-orange-500 mb-2">98%</div>
+        <div class="text-sm text-gray-600">Satisfacción del cliente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('faqSearch') as HTMLInputElement;
+    const categoryFilters = document.querySelectorAll('.category-filter') as NodeListOf<HTMLButtonElement>;
+    const faqItems = document.querySelectorAll('.faq-item') as NodeListOf<HTMLElement>;
+    const faqQuestions = document.querySelectorAll('.faq-question') as NodeListOf<HTMLButtonElement>;
+    const noResults = document.getElementById('noResults') as HTMLElement;
+    
+    let currentCategory = 'all';
+    let currentSearch = '';
+
+    // FAQ Accordion functionality
+    faqQuestions.forEach((question) => {
+      question.addEventListener('click', () => {
+        const faqItem = question.closest('.faq-item') as HTMLElement;
+        const answer = faqItem.querySelector('.faq-answer') as HTMLElement;
+        const icon = question.querySelector('.faq-icon svg') as SVGElement;
+        
+        const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+        
+        // Close all other FAQs
+        faqItems.forEach((item) => {
+          const otherAnswer = item.querySelector('.faq-answer') as HTMLElement;
+          const otherIcon = item.querySelector('.faq-icon svg') as SVGElement;
+          
+          if (item !== faqItem) {
+            otherAnswer.style.maxHeight = '0px';
+            otherIcon.style.transform = 'rotate(0deg)';
+          }
+        });
+        
+        // Toggle current FAQ
+        if (isOpen) {
+          answer.style.maxHeight = '0px';
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          icon.style.transform = 'rotate(45deg)';
+        }
+      });
+    });
+
+    // Category filter functionality
+    categoryFilters.forEach((filter) => {
+      filter.addEventListener('click', () => {
+        const category = filter.getAttribute('data-category') || 'all';
+        currentCategory = category;
+        
+        // Update active filter
+        categoryFilters.forEach((f) => {
+          f.classList.remove('active', 'bg-primary-green', 'text-white');
+          f.classList.add('bg-white', 'border-gray-200', 'text-gray-700');
+        });
+        
+        filter.classList.add('active', 'bg-primary-green', 'text-white');
+        filter.classList.remove('bg-white', 'border-gray-200', 'text-gray-700');
+        
+        filterFAQs();
+      });
+    });
+
+    // Search functionality
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = (e.target as HTMLInputElement).value.toLowerCase();
+      filterFAQs();
+    });
+
+    function filterFAQs(): void {
+      let visibleCount = 0;
+      
+      faqItems.forEach((item) => {
+        const category = item.getAttribute('data-category') || '';
+        const question = item.querySelector('.faq-question h3')?.textContent?.toLowerCase() || '';
+        const answer = item.querySelector('.faq-answer p')?.textContent?.toLowerCase() || '';
+        
+        const matchesCategory = currentCategory === 'all' || category === currentCategory;
+        const matchesSearch = currentSearch === '' || 
+          question.includes(currentSearch) || 
+          answer.includes(currentSearch);
+        
+        if (matchesCategory && matchesSearch) {
+          item.style.display = 'block';
+          visibleCount++;
+        } else {
+          item.style.display = 'none';
+          // Close FAQ if it's hidden
+          const answer = item.querySelector('.faq-answer') as HTMLElement;
+          const icon = item.querySelector('.faq-icon svg') as SVGElement;
+          answer.style.maxHeight = '0px';
+          icon.style.transform = 'rotate(0deg)';
+        }
+      });
+      
+      // Show/hide no results message
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    // Keyboard navigation for search
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchInput.value = '';
+        currentSearch = '';
+        filterFAQs();
+        searchInput.blur();
+      }
+    });
+
+    // Initialize
+    filterFAQs();
+  });
+</script>

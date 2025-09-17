@@ -1,4 +1,7 @@
 ---
+import { Icon } from "astro-icon/components";
+import Button from '../ui/Button.astro';
+
 export interface Props {
   title: string;
   description: string;
@@ -16,41 +19,100 @@ const {
   primaryButtonHref,
   secondaryButtonText,
   secondaryButtonHref,
-  backgroundImage = "/images/cta-background.jpg"
+  backgroundImage = "/images/placeholder-image.jpg"
 } = Astro.props;
 ---
 
-<section class="bg-[#0c0801] flex flex-col gap-12 lg:gap-20 items-center justify-start overflow-clip px-5 lg:px-16 py-16 lg:py-28 relative w-full" data-aos="fade-up">
-  <div 
-    class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-    style={`background-image: url('${backgroundImage}')`}
-  />
-  <div class="flex flex-col gap-12 lg:gap-20 items-start justify-start max-w-[1280px] relative w-full z-10">
-    <div class="flex flex-col gap-6 lg:gap-8 items-center justify-start relative text-center w-full" data-aos="fade-right">
-      <div class="flex flex-col gap-4 lg:gap-6 items-center justify-start leading-[0] relative text-white w-full">
-        <div class="font-urbanist font-medium relative text-[28px] sm:text-[36px] lg:text-[48px] tracking-[0.28px] lg:tracking-[0.48px] w-full">
-          <p class="leading-[1.2]">{title}</p>
+<section class="py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 relative overflow-hidden" id="cta">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0">
+    <img 
+      src={backgroundImage} 
+      alt="Background CTA"
+      class="w-full h-full object-cover opacity-20"
+    />
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-gray-900/60 to-slate-900/80"></div>
+  </div>
+
+  <!-- Background decorations -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-20 w-40 h-40 bg-primary-green/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
+    <div class="absolute top-1/2 right-10 w-24 h-24 bg-purple-500/10 rounded-full blur-xl"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <div class="text-center space-y-8" data-aos="fade-up">
+      <!-- Header -->
+      <div class="space-y-6">
+        <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2">
+          <Icon name="ph:rocket-launch-fill" class="w-5 h-5 text-primary-green" />
+          <span class="text-primary-green font-semibold text-sm">¡Es el momento!</span>
         </div>
-        <div class="font-heebo font-normal relative text-base lg:text-[20px] w-full max-w-3xl">
-          <p class="leading-[1.6]">{description}</p>
+        
+        <h2 class="text-4xl lg:text-6xl font-bold text-white leading-tight max-w-4xl mx-auto">
+          {title}
+        </h2>
+        
+        <p class="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+          {description}
+        </p>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="grid lg:grid-cols-3 gap-6 max-w-4xl mx-auto my-12" data-aos="fade-up" data-aos-delay="200">
+        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
+          <Icon name="ph:clock-fill" class="w-8 h-8 text-primary-green mx-auto mb-3" />
+          <div class="text-white font-semibold mb-1">Respuesta Rápida</div>
+          <div class="text-gray-400 text-sm">En menos de 24 horas</div>
+        </div>
+        
+        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
+          <Icon name="ph:calculator-fill" class="w-8 h-8 text-primary-green mx-auto mb-3" />
+          <div class="text-white font-semibold mb-1">Cotización Gratuita</div>
+          <div class="text-gray-400 text-sm">Sin compromiso</div>
+        </div>
+        
+        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center">
+          <Icon name="ph:handshake-fill" class="w-8 h-8 text-primary-green mx-auto mb-3" />
+          <div class="text-white font-semibold mb-1">Asesoría Personalizada</div>
+          <div class="text-gray-400 text-sm">Expertos dedicados</div>
         </div>
       </div>
-      
-      <div class="flex flex-col sm:flex-row gap-3 lg:gap-4 items-center justify-center relative w-full" data-aos="fade-up" data-aos-delay="200">
-        <a 
-          href={primaryButtonHref}
-          class="bg-[#2d862d] hover:bg-[#245a24] transition-colors duration-300 font-urbanist font-medium px-6 lg:px-8 py-3 lg:py-4 relative rounded-[8px] text-white text-sm lg:text-[16px] tracking-[0.14px] lg:tracking-[0.16px] inline-block w-full sm:w-auto text-center"
-        >
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 items-center justify-center max-w-md mx-auto" data-aos="fade-up" data-aos-delay="400">
+        <Button variant="success" href={primaryButtonHref} class="w-full sm:w-auto group">
+          <Icon name="ph:phone-fill" class="w-5 h-5 group-hover:scale-110 transition-transform" />
           {primaryButtonText}
-        </a>
+        </Button>
+        
         {secondaryButtonText && secondaryButtonHref && (
-          <a 
-            href={secondaryButtonHref}
-            class="border border-white hover:bg-white hover:text-[#0c0801] transition-colors duration-300 font-urbanist font-medium px-6 lg:px-8 py-3 lg:py-4 relative rounded-[8px] text-white text-sm lg:text-[16px] tracking-[0.14px] lg:tracking-[0.16px] inline-block w-full sm:w-auto text-center"
-          >
+          <Button variant="outline" href={secondaryButtonHref} class="w-full sm:w-auto">
+            <Icon name="ph:info-fill" class="w-5 h-5" />
             {secondaryButtonText}
-          </a>
+          </Button>
         )}
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="pt-8 border-t border-white/10" data-aos="fade-up" data-aos-delay="500">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-8 text-gray-400">
+          <div class="flex items-center gap-2">
+            <Icon name="ph:shield-check-fill" class="w-5 h-5 text-primary-green" />
+            <span class="text-sm">15+ años de experiencia</span>
+          </div>
+          
+          <div class="flex items-center gap-2">
+            <Icon name="ph:star-fill" class="w-5 h-5 text-yellow-400" />
+            <span class="text-sm">150+ proyectos exitosos</span>
+          </div>
+          
+          <div class="flex items-center gap-2">
+            <Icon name="ph:users-fill" class="w-5 h-5 text-primary-green" />
+            <span class="text-sm">Clientes satisfechos</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

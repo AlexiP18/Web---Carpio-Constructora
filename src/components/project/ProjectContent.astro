@@ -1,0 +1,154 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from '../ui/Button.astro';
+
+export interface Props {
+  title: string;
+  content: string;
+}
+
+const { title, content } = Astro.props;
+
+// Split content into paragraphs
+const paragraphs = content.split('\n\n').filter(p => p.trim());
+---
+
+<section class="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden" id="details">
+  <!-- Background decorations -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-20 w-40 h-40 bg-primary-green/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
+  </div>
+
+  <div class="max-w-6xl mx-auto px-6 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:file-text-fill" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm">Información Detallada</span>
+      </div>
+      
+      <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
+        {title}
+      </h2>
+    </div>
+
+    <!-- Content Layout -->
+    <div class="grid lg:grid-cols-3 gap-12 items-start">
+      <!-- Main Content -->
+      <div class="lg:col-span-2 space-y-8">
+        {paragraphs.map((paragraph, index) => (
+          <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300" data-aos="fade-up" data-aos-delay={100 + (index * 100)}>
+            <p class="text-lg text-gray-700 leading-relaxed">
+              {paragraph}
+            </p>
+          </div>
+        ))}
+
+        <!-- Call to Action -->
+        <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 relative overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+          <!-- Background decoration -->
+          <div class="absolute top-0 right-0 w-24 h-24 bg-primary-green/10 rounded-full blur-2xl"></div>
+          
+          <div class="relative z-10 text-center space-y-6">
+            <h3 class="text-2xl font-bold text-white">¿Te interesa un proyecto similar?</h3>
+            <p class="text-gray-300">Podemos ayudarte a crear el proyecto de tus sueños</p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="success" href="/contacto">
+                <Icon name="ph:chat-circle-text-fill" class="w-5 h-5" />
+                Solicitar Consulta
+              </Button>
+              <Button variant="outline" href="/servicios">
+                <Icon name="ph:list-fill" class="w-5 h-5" />
+                Ver Servicios
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-8">
+        <!-- Project Details Card -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 sticky top-8" data-aos="fade-left" data-aos-delay="200">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Detalles del Proyecto</h3>
+          
+          <div class="space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center">
+                <Icon name="ph:calendar-fill" class="w-6 h-6 text-primary-green" />
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900">Año</div>
+                <div class="text-gray-600">2024</div>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
+                <Icon name="ph:map-pin-fill" class="w-6 h-6 text-blue-500" />
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900">Ubicación</div>
+                <div class="text-gray-600">Costa Rica</div>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center">
+                <Icon name="ph:users-fill" class="w-6 h-6 text-purple-500" />
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900">Cliente</div>
+                <div class="text-gray-600">Privado</div>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center">
+                <Icon name="ph:timer-fill" class="w-6 h-6 text-orange-500" />
+              </div>
+              <div>
+                <div class="font-semibold text-gray-900">Duración</div>
+                <div class="text-gray-600">8 meses</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Share Card -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100" data-aos="fade-left" data-aos-delay="300">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Compartir Proyecto</h3>
+          
+          <div class="flex gap-4">
+            <button class="w-12 h-12 bg-blue-500 hover:bg-blue-600 rounded-xl flex items-center justify-center transition-colors group">
+              <Icon name="ph:facebook-logo-fill" class="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+            </button>
+            <button class="w-12 h-12 bg-sky-500 hover:bg-sky-600 rounded-xl flex items-center justify-center transition-colors group">
+              <Icon name="ph:twitter-logo-fill" class="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+            </button>
+            <button class="w-12 h-12 bg-blue-700 hover:bg-blue-800 rounded-xl flex items-center justify-center transition-colors group">
+              <Icon name="ph:linkedin-logo-fill" class="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+            </button>
+            <button class="w-12 h-12 bg-green-500 hover:bg-green-600 rounded-xl flex items-center justify-center transition-colors group">
+              <Icon name="ph:whatsapp-logo-fill" class="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
+            </button>
+          </div>
+        </div>
+
+        <!-- Related Projects -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100" data-aos="fade-left" data-aos-delay="400">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Proyectos Relacionados</h3>
+          
+          <div class="text-center">
+            <Button variant="outline" href="/proyectos" class="w-full">
+              <Icon name="ph:grid-four-fill" class="w-5 h-5" />
+              Ver Todos los Proyectos
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

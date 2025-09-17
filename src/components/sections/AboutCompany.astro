@@ -1,0 +1,138 @@
+---
+import { Icon } from 'astro-icon/components';
+import SectionLayout from '../ui/SectionLayout.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import Button from '../ui/Button.astro';
+---
+
+<SectionLayout background="light" paddingY="lg" paddingX="lg" maxWidth="xl">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    
+    <!-- Left Column - Content -->
+    <div class="space-y-8" data-aos="fade-right" data-aos-delay="100">
+      <SectionHeader 
+        tagline="Nuestra Historia"
+        title="Una empresa familiar con valores sólidos"
+        description="Constructora Carpio nació como un emprendimiento familiar con la visión de transformar el sector de la construcción en Costa Rica."
+        align="left"
+      />
+      
+      <div class="space-y-6">
+        <div class="flex gap-4 items-start">
+          <div class="w-12 h-12 bg-primary-green/10 rounded-2xl flex items-center justify-center flex-shrink-0 mt-1">
+            <Icon name="ph:heart-fill" class="w-6 h-6 text-primary-green" />
+          </div>
+          <div>
+            <h3 class="font-urbanist font-semibold text-[18px] text-neutral-darkest mb-2">
+              Compromiso familiar
+            </h3>
+            <p class="font-heebo text-[16px] text-neutral-darkest/70 leading-relaxed">
+              Nuestro compromiso es ofrecer calidad y excelencia en cada proyecto, manteniendo 
+              siempre los valores que nos han caracterizado desde nuestros inicios.
+            </p>
+          </div>
+        </div>
+        
+        <div class="flex gap-4 items-start">
+          <div class="w-12 h-12 bg-primary-green/10 rounded-2xl flex items-center justify-center flex-shrink-0 mt-1">
+            <Icon name="ph:trophy-fill" class="w-6 h-6 text-primary-green" />
+          </div>
+          <div>
+            <h3 class="font-urbanist font-semibold text-[18px] text-neutral-darkest mb-2">
+              Experiencia que marca la diferencia
+            </h3>
+            <p class="font-heebo text-[16px] text-neutral-darkest/70 leading-relaxed">
+              Con más de 150 proyectos completados exitosamente, contamos con un equipo de 
+              profesionales altamente capacitados y certificados.
+            </p>
+          </div>
+        </div>
+        
+        <div class="flex gap-4 items-start">
+          <div class="w-12 h-12 bg-primary-green/10 rounded-2xl flex items-center justify-center flex-shrink-0 mt-1">
+            <Icon name="ph:gear-fill" class="w-6 h-6 text-primary-green" />
+          </div>
+          <div>
+            <h3 class="font-urbanist font-semibold text-[18px] text-neutral-darkest mb-2">
+              Tecnología de vanguardia
+            </h3>
+            <p class="font-heebo text-[16px] text-neutral-darkest/70 leading-relaxed">
+              Utilizamos tecnología de vanguardia y materiales de primera calidad para superar 
+              las expectativas de nuestros clientes.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row gap-4">
+        <Button 
+          href="/proyectos" 
+          variant="success"
+          size="md"
+          icon="ph:eye-fill"
+          iconPosition="left"
+        >
+          Ver Proyectos
+        </Button>
+        
+        <Button 
+          href="/contacto" 
+          variant="outline"
+          size="md"
+          icon="ph:phone-fill"
+          iconPosition="left"
+        >
+          Contáctanos
+        </Button>
+      </div>
+    </div>
+    
+    <!-- Right Column - Visual -->
+    <div class="relative" data-aos="fade-left" data-aos-delay="200">
+      <!-- Main Image Container -->
+      <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-primary-green/20">
+        <div class="aspect-[4/5] bg-gradient-to-br from-neutral-100 via-neutral-50 to-primary-green/5 flex items-center justify-center">
+          <!-- Placeholder for company image -->
+          <div class="text-center p-8">
+            <div class="w-20 h-20 bg-gradient-to-r from-primary-green to-primary-green-dark rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl">
+              <Icon name="ph:buildings-fill" class="w-10 h-10 text-white" />
+            </div>
+            <h3 class="font-urbanist font-bold text-[24px] text-neutral-darkest mb-3">
+              Constructora Carpio
+            </h3>
+            <p class="font-heebo text-[16px] text-neutral-darkest/70 mb-6">
+              Construyendo sueños desde 2008
+            </p>
+            
+            <!-- Mini stats -->
+            <div class="grid grid-cols-2 gap-4 text-center">
+              <div>
+                <p class="font-urbanist font-bold text-[20px] text-primary-green">15+</p>
+                <p class="font-heebo text-[12px] text-neutral-darkest/60">Años</p>
+              </div>
+              <div>
+                <p class="font-urbanist font-bold text-[20px] text-primary-green">150+</p>
+                <p class="font-heebo text-[12px] text-neutral-darkest/60">Proyectos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-primary-green/10 via-transparent to-transparent"></div>
+      </div>
+      
+      <!-- Floating Elements -->
+      <div class="absolute -top-6 -right-6 w-24 h-24 bg-primary-green/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/50">
+        <Icon name="ph:medal-fill" class="w-12 h-12 text-primary-green" />
+      </div>
+      
+      <div class="absolute -bottom-6 -left-6 w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-xl border border-primary-green/20">
+        <Icon name="ph:handshake-fill" class="w-10 h-10 text-primary-green" />
+      </div>
+      
+      <!-- Decorative line -->
+      <div class="absolute top-1/2 -left-8 w-16 h-1 bg-gradient-to-r from-primary-green to-transparent rounded-full"></div>
+    </div>
+  </div>
+</SectionLayout>

@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import Button from '../ui/Button.astro';
 
 export interface Props {
   tagline: string;
@@ -16,48 +17,120 @@ export interface Props {
 const { tagline, title, description, steps } = Astro.props;
 
 // Default icons for process steps
-const defaultIcons = ["ph:one", "ph:two", "ph:three"];
+const defaultIcons = ["ph:play-fill", "ph:gear-fill", "ph:check-circle-fill"];
 ---
 
-<section class="bg-[#f8f9fa] flex flex-col gap-12 lg:gap-20 items-center justify-start overflow-clip px-5 lg:px-16 py-16 lg:py-28 relative w-full" data-aos="fade-up">
-  <div class="flex flex-col gap-12 lg:gap-20 items-start justify-start max-w-[1280px] relative w-full">
-    <div class="flex flex-col gap-6 lg:gap-8 items-start justify-start relative w-full" data-aos="fade-right">
-      <div class="text-[#2d862d] uppercase font-urbanist font-semibold relative text-xs lg:text-[14px] tracking-[1.2px] lg:tracking-[1.4px] w-full">
-        {tagline}
+<section class="py-20 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 relative overflow-hidden" id="process">
+  <!-- Background decorations -->
+  <div class="absolute inset-0">
+    <div class="absolute top-0 left-1/4 w-64 h-64 bg-primary-green/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-48 h-48 bg-blue-500/5 rounded-full blur-2xl"></div>
+    <div class="absolute top-1/2 left-0 w-32 h-32 bg-purple-500/5 rounded-full blur-xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:flow-arrow-fill" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm uppercase tracking-wider">{tagline}</span>
       </div>
-      <div class="flex flex-col gap-4 lg:gap-6 items-start justify-start leading-[0] relative text-[#0c0801] w-full">
-        <div class="font-urbanist font-medium relative text-[28px] sm:text-[36px] lg:text-[48px] tracking-[0.28px] lg:tracking-[0.48px] w-full">
-          <p class="leading-[1.2]">{title}</p>
-        </div>
-        <div class="font-heebo font-normal relative text-base lg:text-[20px] w-full">
-          <p class="leading-[1.6]">{description}</p>
-        </div>
-      </div>
+      
+      <h2 class="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
+        {title}
+      </h2>
+      
+      <p class="text-xl text-gray-300 leading-relaxed">
+        {description}
+      </p>
     </div>
-    
-    <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start justify-start relative w-full">
+
+    <!-- Process Steps -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
       {steps.map((step, index) => (
-        <div class="w-full lg:basis-0 flex flex-col gap-4 lg:gap-6 lg:grow items-start justify-start min-h-px min-w-px relative" data-aos="fade-up" data-aos-delay={200 + (index * 150)}>
-          <div class="flex flex-col gap-3 lg:gap-4 items-start justify-start relative w-full">
-            <div class="flex gap-3 lg:gap-4 items-center justify-start relative w-full">
-              <div class="aspect-square bg-[#d7e6fd] flex items-center justify-center relative rounded-full size-12 lg:size-14">
-                <div class="font-urbanist font-semibold text-[#0c0801] text-lg lg:text-[20px]">
+        <div class="relative group" data-aos="fade-up" data-aos-delay={200 + (index * 150)}>
+          <!-- Connection Line (hidden on mobile) -->
+          {index < steps.length - 1 && (
+            <div class="hidden lg:block absolute top-20 -right-4 w-8 h-px bg-gradient-to-r from-primary-green/50 to-transparent z-10"></div>
+          )}
+          
+          <!-- Step Card -->
+          <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 hover:border-primary-green/30 transition-all duration-300 group-hover:bg-white/10 h-full">
+            <div class="space-y-6">
+              <!-- Step Number & Icon -->
+              <div class="flex items-center gap-4">
+                <div class="w-16 h-16 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform duration-300">
                   {step.number}
                 </div>
+                {step.icon && (
+                  <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
+                    <Icon name={step.icon} class="w-6 h-6 text-primary-green" />
+                  </div>
+                )}
               </div>
-              {step.icon && (
-                <Icon name={step.icon} class="w-6 lg:w-8 h-6 lg:h-8 text-[#2d862d]" />
-              )}
-            </div>
-            <div class="font-urbanist font-medium leading-[1.2] text-[#0c0801] text-[20px] lg:text-[26px] tracking-[0.20px] lg:tracking-[0.26px]">
-              {step.title}
-            </div>
-            <div class="font-heebo font-normal leading-[1.6] text-[#0c0801] text-base lg:text-[18px]">
-              {step.description}
+              
+              <!-- Content -->
+              <div class="space-y-4">
+                <h3 class="text-2xl font-bold text-white group-hover:text-primary-green transition-colors">
+                  {step.title}
+                </h3>
+                <p class="text-gray-300 leading-relaxed">
+                  {step.description}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       ))}
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/10" data-aos="fade-up" data-aos-delay="600">
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
+        <!-- Left Content -->
+        <div class="space-y-6">
+          <h3 class="text-2xl lg:text-3xl font-bold text-white">
+            ¿Listo para comenzar tu proyecto?
+          </h3>
+          <p class="text-gray-300 leading-relaxed">
+            Nuestro proceso está diseñado para asegurar la máxima calidad y tu completa satisfacción 
+            en cada etapa del proyecto.
+          </p>
+          
+          <!-- Process Highlights -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white/5 rounded-2xl p-4 text-center">
+              <Icon name="ph:clock-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
+              <div class="text-white font-semibold">Puntualidad</div>
+              <div class="text-gray-400 text-sm">Garantizada</div>
+            </div>
+            <div class="bg-white/5 rounded-2xl p-4 text-center">
+              <Icon name="ph:shield-check-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
+              <div class="text-white font-semibold">Calidad</div>
+              <div class="text-gray-400 text-sm">Certificada</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Actions -->
+        <div class="text-center lg:text-right space-y-6">
+          <div class="space-y-2">
+            <div class="text-primary-green font-semibold">Proceso Transparente</div>
+            <div class="text-white text-lg">Seguimiento en tiempo real</div>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row lg:flex-col gap-4 lg:items-end">
+            <Button variant="success" href="/contacto">
+              <Icon name="ph:rocket-launch-fill" class="w-5 h-5" />
+              Iniciar Proyecto
+            </Button>
+            <Button variant="outline" href="#testimonials">
+              <Icon name="ph:chat-teardrop-text-fill" class="w-5 h-5" />
+              Ver Testimonios
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

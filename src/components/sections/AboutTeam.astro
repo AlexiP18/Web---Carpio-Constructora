@@ -1,0 +1,327 @@
+---
+import { Icon } from 'astro-icon/components';
+import SectionLayout from '../ui/SectionLayout.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import Button from '../ui/Button.astro';
+---
+
+<SectionLayout background="white" paddingY="lg" paddingX="lg" maxWidth="xl">
+  <SectionHeader 
+    tagline="Nuestro Equipo"
+    title="Profesionales dedicados"
+    description="Conoce a las personas que hacen posible cada proyecto con su experiencia y pasión por la construcción."
+    align="center"
+  />
+  
+  <div class="mt-12 lg:mt-16">
+    <!-- Team Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      
+      <!-- Team Member 1 -->
+      <div 
+        class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-neutral-light/50 hover:border-primary-green/30 hover:-translate-y-2"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        <div class="text-center">
+          <!-- Avatar -->
+          <div class="relative mb-6">
+            <div class="w-24 h-24 bg-gradient-to-r from-primary-green to-primary-green-dark rounded-full flex items-center justify-center mx-auto shadow-xl">
+              <Icon name="ph:user-fill" class="w-12 h-12 text-white" />
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-primary-green rounded-full flex items-center justify-center border-2 border-white">
+              <Icon name="ph:certificate-fill" class="w-4 h-4 text-white" />
+            </div>
+          </div>
+          
+          <!-- Info -->
+          <h3 class="font-urbanist font-bold text-[20px] text-neutral-darkest mb-2">
+            Carlos Carpio
+          </h3>
+          <p class="font-heebo text-[14px] text-primary-green font-medium mb-4">
+            Director General
+          </p>
+          <p class="font-heebo text-[14px] text-neutral-darkest/70 leading-relaxed mb-6">
+            Ingeniero civil con más de 20 años de experiencia en proyectos de construcción 
+            residencial y comercial.
+          </p>
+          
+          <!-- Social Links -->
+          <div class="flex gap-3 justify-center">
+            <a 
+              href="#" 
+              class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center hover:bg-blue-700 transition-colors duration-300"
+              aria-label="LinkedIn"
+            >
+              <Icon name="ph:linkedin-logo-fill" class="w-5 h-5 text-white" />
+            </a>
+            <a 
+              href="#" 
+              class="w-10 h-10 bg-neutral-700 rounded-xl flex items-center justify-center hover:bg-neutral-800 transition-colors duration-300"
+              aria-label="Email"
+            >
+              <Icon name="ph:envelope-fill" class="w-5 h-5 text-white" />
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Team Member 2 -->
+      <div 
+        class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-neutral-light/50 hover:border-primary-green/30 hover:-translate-y-2"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <div class="text-center">
+          <!-- Avatar -->
+          <div class="relative mb-6">
+            <div class="w-24 h-24 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto shadow-xl">
+              <Icon name="ph:user-fill" class="w-12 h-12 text-white" />
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center border-2 border-white">
+              <Icon name="ph:blueprint-fill" class="w-4 h-4 text-white" />
+            </div>
+          </div>
+          
+          <!-- Info -->
+          <h3 class="font-urbanist font-bold text-[20px] text-neutral-darkest mb-2">
+            María Rodríguez
+          </h3>
+          <p class="font-heebo text-[14px] text-primary-green font-medium mb-4">
+            Jefa de Proyectos
+          </p>
+          <p class="font-heebo text-[14px] text-neutral-darkest/70 leading-relaxed mb-6">
+            Arquitecta especializada en diseño sostenible y gestión de proyectos de gran envergadura.
+          </p>
+          
+          <!-- Social Links -->
+          <div class="flex gap-3 justify-center">
+            <a 
+              href="#" 
+              class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center hover:bg-blue-700 transition-colors duration-300"
+              aria-label="LinkedIn"
+            >
+              <Icon name="ph:linkedin-logo-fill" class="w-5 h-5 text-white" />
+            </a>
+            <a 
+              href="#" 
+              class="w-10 h-10 bg-pink-500 rounded-xl flex items-center justify-center hover:bg-pink-600 transition-colors duration-300"
+              aria-label="Dribbble"
+            >
+              <Icon name="ph:dribbble-logo-fill" class="w-5 h-5 text-white" />
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Team Member 3 -->
+      <div 
+        class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-neutral-light/50 hover:border-primary-green/30 hover:-translate-y-2"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <div class="text-center">
+          <!-- Avatar -->
+          <div class="relative mb-6">
+            <div class="w-24 h-24 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto shadow-xl">
+              <Icon name="ph:user-fill" class="w-12 h-12 text-white" />
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center border-2 border-white">
+              <Icon name="ph:hard-hat-fill" class="w-4 h-4 text-white" />
+            </div>
+          </div>
+          
+          <!-- Info -->
+          <h3 class="font-urbanist font-bold text-[20px] text-neutral-darkest mb-2">
+            José Hernández
+          </h3>
+          <p class="font-heebo text-[14px] text-primary-green font-medium mb-4">
+            Jefe de Obra
+          </p>
+          <p class="font-heebo text-[14px] text-neutral-darkest/70 leading-relaxed mb-6">
+            Maestro constructor con amplia experiencia en supervisión y control de calidad en obras civiles.
+          </p>
+          
+          <!-- Social Links -->
+          <div class="flex gap-3 justify-center">
+            <a 
+              href="#" 
+              class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center hover:bg-blue-700 transition-colors duration-300"
+              aria-label="LinkedIn"
+            >
+              <Icon name="ph:linkedin-logo-fill" class="w-5 h-5 text-white" />
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Team Member 4 -->
+      <div 
+        class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-neutral-light/50 hover:border-primary-green/30 hover:-translate-y-2"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      >
+        <div class="text-center">
+          <!-- Avatar -->
+          <div class="relative mb-6">
+            <div class="w-24 h-24 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto shadow-xl">
+              <Icon name="ph:user-fill" class="w-12 h-12 text-white" />
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center border-2 border-white">
+              <Icon name="ph:check-circle-fill" class="w-4 h-4 text-white" />
+            </div>
+          </div>
+          
+          <!-- Info -->
+          <h3 class="font-urbanist font-bold text-[20px] text-neutral-darkest mb-2">
+            Ana García
+          </h3>
+          <p class="font-heebo text-[14px] text-primary-green font-medium mb-4">
+            Coordinadora de Calidad
+          </p>
+          <p class="font-heebo text-[14px] text-neutral-darkest/70 leading-relaxed mb-6">
+            Ingeniera especializada en control de calidad y seguridad industrial en proyectos de construcción.
+          </p>
+          
+          <!-- Social Links -->
+          <div class="flex gap-3 justify-center">
+            <a 
+              href="#" 
+              class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center hover:bg-blue-700 transition-colors duration-300"
+              aria-label="LinkedIn"
+            >
+              <Icon name="ph:linkedin-logo-fill" class="w-5 h-5 text-white" />
+            </a>
+            <a 
+              href="#" 
+              class="w-10 h-10 bg-sky-500 rounded-xl flex items-center justify-center hover:bg-sky-600 transition-colors duration-300"
+              aria-label="Twitter"
+            >
+              <Icon name="ph:x-logo-fill" class="w-5 h-5 text-white" />
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Team Member 5 -->
+      <div 
+        class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-neutral-light/50 hover:border-primary-green/30 hover:-translate-y-2"
+        data-aos="fade-up"
+        data-aos-delay="500"
+      >
+        <div class="text-center">
+          <!-- Avatar -->
+          <div class="relative mb-6">
+            <div class="w-24 h-24 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto shadow-xl">
+              <Icon name="ph:user-fill" class="w-12 h-12 text-white" />
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center border-2 border-white">
+              <Icon name="ph:leaf-fill" class="w-4 h-4 text-white" />
+            </div>
+          </div>
+          
+          <!-- Info -->
+          <h3 class="font-urbanist font-bold text-[20px] text-neutral-darkest mb-2">
+            Luis Mora
+          </h3>
+          <p class="font-heebo text-[14px] text-primary-green font-medium mb-4">
+            Especialista en Sostenibilidad
+          </p>
+          <p class="font-heebo text-[14px] text-neutral-darkest/70 leading-relaxed mb-6">
+            Experto en construcción verde y certificaciones ambientales para proyectos sostenibles.
+          </p>
+          
+          <!-- Social Links -->
+          <div class="flex gap-3 justify-center">
+            <a 
+              href="#" 
+              class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center hover:bg-blue-700 transition-colors duration-300"
+              aria-label="LinkedIn"
+            >
+              <Icon name="ph:linkedin-logo-fill" class="w-5 h-5 text-white" />
+            </a>
+            <a 
+              href="#" 
+              class="w-10 h-10 bg-pink-500 rounded-xl flex items-center justify-center hover:bg-pink-600 transition-colors duration-300"
+              aria-label="Dribbble"
+            >
+              <Icon name="ph:dribbble-logo-fill" class="w-5 h-5 text-white" />
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Team Member 6 -->
+      <div 
+        class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-neutral-light/50 hover:border-primary-green/30 hover:-translate-y-2"
+        data-aos="fade-up"
+        data-aos-delay="600"
+      >
+        <div class="text-center">
+          <!-- Avatar -->
+          <div class="relative mb-6">
+            <div class="w-24 h-24 bg-gradient-to-r from-indigo-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto shadow-xl">
+              <Icon name="ph:user-fill" class="w-12 h-12 text-white" />
+            </div>
+            <div class="absolute -bottom-2 -right-2 w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center border-2 border-white">
+              <Icon name="ph:calculator-fill" class="w-4 h-4 text-white" />
+            </div>
+          </div>
+          
+          <!-- Info -->
+          <h3 class="font-urbanist font-bold text-[20px] text-neutral-darkest mb-2">
+            Patricia Jiménez
+          </h3>
+          <p class="font-heebo text-[14px] text-primary-green font-medium mb-4">
+            Directora Financiera
+          </p>
+          <p class="font-heebo text-[14px] text-neutral-darkest/70 leading-relaxed mb-6">
+            Contadora pública con especialización en gestión financiera de proyectos de construcción.
+          </p>
+          
+          <!-- Social Links -->
+          <div class="flex gap-3 justify-center">
+            <a 
+              href="#" 
+              class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center hover:bg-blue-700 transition-colors duration-300"
+              aria-label="LinkedIn"
+            >
+              <Icon name="ph:linkedin-logo-fill" class="w-5 h-5 text-white" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Hiring CTA -->
+    <div 
+      class="bg-gradient-to-r from-primary-green/5 to-primary-green-dark/5 rounded-3xl p-8 lg:p-12 text-center border border-primary-green/20"
+      data-aos="fade-up"
+      data-aos-delay="700"
+    >
+      <div class="max-w-2xl mx-auto">
+        <div class="w-16 h-16 bg-primary-green/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+          <Icon name="ph:users-four-fill" class="w-8 h-8 text-primary-green" />
+        </div>
+        
+        <h3 class="font-urbanist font-bold text-[28px] text-neutral-darkest mb-4">
+          ¡Únete a nuestro equipo!
+        </h3>
+        <p class="font-heebo text-[16px] text-neutral-darkest/70 mb-8 leading-relaxed">
+          Estamos buscando profesionales talentosos que compartan nuestra pasión por la 
+          construcción de calidad y quieran formar parte de nuestra familia.
+        </p>
+        
+        <Button 
+          href="/contacto" 
+          variant="success"
+          size="lg"
+          icon="ph:briefcase-fill"
+          iconPosition="left"
+        >
+          Ver Posiciones Abiertas
+        </Button>
+      </div>
+    </div>
+  </div>
+</SectionLayout>

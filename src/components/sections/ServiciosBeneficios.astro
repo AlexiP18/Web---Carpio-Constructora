@@ -1,16 +1,154 @@
-<div class="bg-white flex flex-col items-center px-16 py-28 max-md:px-5" data-aos="fade-up">
-    <div class="flex w-full max-w-[1280px] items-center gap-20 max-md:max-w-full max-md:flex-wrap">
-      <div class="flex flex-col items-stretch my-auto basis-0 max-md:max-w-full" data-aos="fade-right" data-aos-delay="100">
-        <div class="text-black text-5xl font-medium leading-[58px] tracking-wide max-md:max-w-full max-md:text-4xl max-md:leading-[53px]">
-          Beneficios de elegir nuestros servicios de construcción de alta
-          calidad
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<section class="py-20 bg-gradient-to-br from-white via-gray-50 to-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:star-fill" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm">¿Por Qué Elegirnos?</span>
+      </div>
+      
+      <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        Beneficios de elegir nuestros
+        <span class="bg-gradient-to-r from-primary-green to-emerald-500 bg-clip-text text-transparent">
+          servicios de calidad
+        </span>
+      </h2>
+      
+      <p class="text-xl text-gray-600 leading-relaxed">
+        Contratar nuestros servicios garantiza la máxima calidad y eficiencia en cada proyecto. 
+        Con años de experiencia en el sector, transformamos tus ideas en realidades duraderas.
+      </p>
+    </div>
+
+    <!-- Benefits Grid -->
+    <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+      <!-- Benefits List -->
+      <div class="space-y-8" data-aos="fade-right" data-aos-duration="1000">
+        <!-- Benefit 1: Quality -->
+        <div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary-green/20">
+          <div class="flex items-start gap-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <Icon name="ph:shield-check-fill" class="w-8 h-8 text-white" />
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold text-gray-900 mb-3">Calidad Garantizada</h3>
+              <p class="text-gray-600 leading-relaxed">
+                Utilizamos materiales de primera calidad y técnicas constructivas avanzadas. 
+                Cada proyecto incluye garantía extendida y certificaciones de calidad.
+              </p>
+            </div>
+          </div>
         </div>
-        <div class="text-black text-xl leading-8 tracking-wide mt-6 max-md:max-w-full">
-          Contratar nuestros servicios garantiza la máxima calidad y eficiencia
-          en cada proyecto. Con años de experiencia en el sector, transformamos
-          tus ideas en realidades duraderas.
+
+        <!-- Benefit 2: Experience -->
+        <div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-blue-500/20">
+          <div class="flex items-start gap-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <Icon name="ph:medal-fill" class="w-8 h-8 text-white" />
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold text-gray-900 mb-3">15+ Años de Experiencia</h3>
+              <p class="text-gray-600 leading-relaxed">
+                Más de una década perfeccionando técnicas constructivas y satisfaciendo 
+                clientes. Nuestro equipo combina tradición familiar con innovación moderna.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Benefit 3: Personalization -->
+        <div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-purple-500/20">
+          <div class="flex items-start gap-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <Icon name="ph:palette-fill" class="w-8 h-8 text-white" />
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold text-gray-900 mb-3">Soluciones Personalizadas</h3>
+              <p class="text-gray-600 leading-relaxed">
+                Cada proyecto es único. Adaptamos nuestros servicios a tus necesidades específicas, 
+                presupuesto y visión arquitectónica para resultados excepcionales.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/8db54a52-f461-46e7-9742-3293e12b633c?" class="aspect-[0.94] object-contain object-center w-[600px] overflow-hidden shrink-0 max-w-full rounded-[40px]" alt="High-quality construction services" data-aos="fade-left" data-aos-delay="200" />
+
+      <!-- Visual Column -->
+      <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+        <!-- Main image container -->
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+          <img 
+            src="/images/placeholder-image-1.png" 
+            alt="Servicios de construcción de alta calidad"
+            class="w-full h-[600px] object-cover"
+          />
+          <!-- Overlay gradient -->
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50 via-transparent to-transparent"></div>
+          
+          <!-- Floating stats cards -->
+          <div class="absolute top-6 right-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-gradient-to-br from-primary-green to-emerald-500 rounded-xl flex items-center justify-center">
+                <Icon name="ph:check-circle-fill" class="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-gray-900">150+</div>
+                <div class="text-sm text-gray-600">Proyectos Completados</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
+                <Icon name="ph:users-fill" class="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-gray-900">98%</div>
+                <div class="text-sm text-gray-600">Satisfacción Cliente</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decorative elements -->
+        <div class="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full blur-2xl opacity-60"></div>
+        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full blur-2xl opacity-40"></div>
+      </div>
+    </div>
+
+    <!-- Additional Benefits Row -->
+    <div class="grid md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="400">
+      <!-- Support -->
+      <div class="bg-gradient-to-br from-primary-green/5 to-emerald-500/5 rounded-2xl p-8 text-center border border-primary-green/10">
+        <div class="w-16 h-16 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+          <Icon name="ph:headset-fill" class="w-8 h-8 text-white" />
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Soporte 24/7</h3>
+        <p class="text-gray-600">Atención continua durante y después del proyecto. Mantenimiento y soporte técnico garantizado.</p>
+      </div>
+
+      <!-- Efficiency -->
+      <div class="bg-gradient-to-br from-blue-500/5 to-blue-600/5 rounded-2xl p-8 text-center border border-blue-500/10">
+        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+          <Icon name="ph:lightning-fill" class="w-8 h-8 text-white" />
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Entrega Eficiente</h3>
+        <p class="text-gray-600">Proyectos completados en tiempo récord sin comprometer la calidad. Planificación optimizada.</p>
+      </div>
+
+      <!-- Value -->
+      <div class="bg-gradient-to-br from-purple-500/5 to-purple-600/5 rounded-2xl p-8 text-center border border-purple-500/10">
+        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+          <Icon name="ph:coins-fill" class="w-8 h-8 text-white" />
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-4">Mejor Valor</h3>
+        <p class="text-gray-600">Relación calidad-precio imbatible. Presupuestos transparentes sin costos ocultos.</p>
+      </div>
     </div>
   </div>
+</section>

@@ -1,0 +1,120 @@
+---
+import { Icon } from 'astro-icon/components';
+import SectionLayout from '../ui/SectionLayout.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+---
+
+<SectionLayout background="light" paddingY="lg" paddingX="lg" maxWidth="xl">
+  <SectionHeader 
+    tagline="Valores"
+    title="Comprometidos con la calidad y la innovación"
+    description="En Constructora Carpio, nos dedicamos a construir sueños. Cada proyecto es una oportunidad para crear espacios únicos y funcionales que perduren en el tiempo."
+    align="center"
+  />
+  
+  <div class="mt-12 lg:mt-16">
+    <!-- Central Visual Element -->
+    <div class="relative mb-16" data-aos="zoom-in" data-aos-delay="100">
+      <div class="max-w-md mx-auto">
+        <!-- Main Circle -->
+        <div class="relative w-64 h-64 mx-auto">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary-green to-primary-green-dark rounded-full flex items-center justify-center shadow-2xl">
+            <Icon name="ph:buildings-fill" class="w-20 h-20 text-white" />
+          </div>
+          
+          <!-- Orbiting elements -->
+          <div class="absolute inset-0 animate-spin" style="animation-duration: 20s;">
+            <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white rounded-full shadow-xl flex items-center justify-center border-4 border-primary-green/20">
+              <Icon name="ph:heart-fill" class="w-8 h-8 text-primary-green" />
+            </div>
+            <div class="absolute top-1/2 -right-8 transform -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-xl flex items-center justify-center border-4 border-primary-green/20">
+              <Icon name="ph:shield-check-fill" class="w-8 h-8 text-primary-green" />
+            </div>
+            <div class="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-white rounded-full shadow-xl flex items-center justify-center border-4 border-primary-green/20">
+              <Icon name="ph:users-fill" class="w-8 h-8 text-primary-green" />
+            </div>
+            <div class="absolute top-1/2 -left-8 transform -translate-y-1/2 w-16 h-16 bg-white rounded-full shadow-xl flex items-center justify-center border-4 border-primary-green/20">
+              <Icon name="ph:lightbulb-fill" class="w-8 h-8 text-primary-green" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Values Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      
+      <!-- Misión -->
+      <div 
+        class="text-center p-8 bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-neutral-light/50 hover:border-primary-green/30 group"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        <div class="w-16 h-16 bg-gradient-to-r from-primary-green to-primary-green-dark rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
+          <Icon name="ph:target-fill" class="w-8 h-8 text-white" />
+        </div>
+        <h3 class="font-urbanist font-bold text-[20px] text-neutral-darkest mb-4">
+          Nuestra Misión
+        </h3>
+        <p class="font-heebo text-[14px] text-neutral-darkest/70 leading-relaxed">
+          Ofrecer soluciones constructivas que superen las expectativas de nuestros clientes, 
+          utilizando tecnología de vanguardia y materiales de la más alta calidad.
+        </p>
+      </div>
+      
+      <!-- Visión -->
+      <div 
+        class="text-center p-8 bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-neutral-light/50 hover:border-primary-green/30 group"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
+          <Icon name="ph:eye-fill" class="w-8 h-8 text-white" />
+        </div>
+        <h3 class="font-urbanist font-bold text-[20px] text-neutral-darkest mb-4">
+          Nuestra Visión
+        </h3>
+        <p class="font-heebo text-[14px] text-neutral-darkest/70 leading-relaxed">
+          Ser líderes en el sector de la construcción en Costa Rica, reconocidos por nuestra 
+          excelencia, innovación y compromiso con el desarrollo sostenible.
+        </p>
+      </div>
+      
+      <!-- Valores -->
+      <div 
+        class="text-center p-8 bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-neutral-light/50 hover:border-primary-green/30 group"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      >
+        <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
+          <Icon name="ph:heart-fill" class="w-8 h-8 text-white" />
+        </div>
+        <h3 class="font-urbanist font-bold text-[20px] text-neutral-darkest mb-4">
+          Nuestros Valores
+        </h3>
+        <p class="font-heebo text-[14px] text-neutral-darkest/70 leading-relaxed">
+          Integridad, innovación, trabajo en equipo y responsabilidad social son los pilares 
+          fundamentales que guían cada decisión en nuestra empresa.
+        </p>
+      </div>
+      
+      <!-- Por qué elegirnos -->
+      <div 
+        class="text-center p-8 bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-neutral-light/50 hover:border-primary-green/30 group"
+        data-aos="fade-up"
+        data-aos-delay="500"
+      >
+        <div class="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
+          <Icon name="ph:trophy-fill" class="w-8 h-8 text-white" />
+        </div>
+        <h3 class="font-urbanist font-bold text-[20px] text-neutral-darkest mb-4">
+          Por Qué Elegirnos
+        </h3>
+        <p class="font-heebo text-[14px] text-neutral-darkest/70 leading-relaxed">
+          Contamos con más de 15 años de experiencia, un equipo de expertos certificados y un 
+          compromiso inquebrantable con la satisfacción del cliente.
+        </p>
+      </div>
+    </div>
+  </div>
+</SectionLayout>

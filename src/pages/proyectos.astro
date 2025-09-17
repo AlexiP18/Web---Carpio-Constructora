@@ -2,229 +2,25 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/ui/Header.astro";
 import Footer from "../components/sections/Footer.astro";
-import Portfolio from "../components/sections/Portfolio.astro";
+import ProjectsHero from "../components/sections/ProjectsHero.astro";
+import ProjectsList from "../components/sections/ProjectsList.astro";
 import Testimonial from "../components/sections/Testimonial.astro";
 import Cta from "../components/sections/Cta.astro";
-import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="Proyectos - Constructora Carpio">
   <Header />
   <main>
-    <!-- Hero Header Section -->
-    <section
-      class="bg-[#00000080] bg-cover bg-center bg-no-repeat py-16 lg:py-28 px-5 lg:px-16"
-      style="background-image: url('/images/header-50.png');"
-      data-aos="fade-up"
-    >
-      <div class="container mx-auto max-w-[1280px]">
-        <div class="max-w-[768px]">
-          <div class="mb-4 lg:mb-6" data-aos="fade-up" data-aos-delay="100">
-            <span class="text-white text-sm lg:text-base font-semibold font-heebo">Proyectos</span>
-          </div>
-          <h1 class="text-white text-4xl lg:text-[84px] font-medium leading-[1.1] tracking-[0.84px] mb-6 lg:mb-8 font-urbanist" data-aos="fade-up" data-aos-delay="200">
-            Nuestros Proyectos Destacados
-          </h1>
-          <p class="text-white text-base lg:text-xl leading-[1.6] mb-6 lg:mb-8 font-heebo" data-aos="fade-up" data-aos-delay="300">
-            Descubre la calidad y creatividad en cada uno de nuestros proyectos de construcción.
-          </p>
-          <div class="flex flex-col lg:flex-row gap-3 lg:gap-4" data-aos="fade-up" data-aos-delay="400">
-            <button class="bg-[#d7e6fd] text-neutral-darkest font-medium py-2.5 px-6 rounded-full border-2 border-neutral-darkest shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] text-sm lg:text-lg font-heebo relative overflow-hidden">
-              <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]"></div>
-              Ver Más
-            </button>
-            <button class="bg-neutral-lightest text-neutral-darkest font-medium py-2.5 px-6 rounded-full border-2 border-neutral-darkest shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] text-sm lg:text-lg font-heebo relative overflow-hidden">
-              <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]"></div>
-              Contáctanos
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Hero Section with modern design -->
+    <ProjectsHero />
+    
+    <!-- Projects Portfolio Section -->
+    <ProjectsList />
 
-    <!-- Portfolio Section -->
-    <section class="bg-beige px-5 lg:px-16 py-16 lg:py-28">
-      <div class="container mx-auto max-w-[1280px]">
-        <!-- Section Title -->
-        <div class="flex flex-col gap-4 items-center justify-center max-w-[768px] mx-auto mb-16 lg:mb-20" data-aos="fade-up">
-          <div class="flex items-center justify-center">
-            <span class="text-neutral-darkest text-base font-semibold font-heebo">Portafolio</span>
-          </div>
-          <div class="flex flex-col gap-6 items-center justify-center text-center">
-            <h2 class="text-neutral-darkest text-3xl lg:text-[60px] font-medium leading-[1.2] tracking-[0.6px] font-urbanist">
-              Nuestros Proyectos Destacados
-            </h2>
-            <p class="text-neutral-darkest text-base lg:text-xl leading-[1.6] font-heebo">
-              Explora nuestra amplia gama de proyectos realizados.
-            </p>
-          </div>
-        </div>
-
-        <!-- Portfolio Grid -->
-        <div class="flex flex-col gap-16 lg:gap-20">
-          <!-- Project Card 1 -->
-          <div class="bg-beige rounded-[32px] border-2 border-neutral-darkest relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-            <div class="flex flex-col lg:flex-row gap-8 lg:gap-20 p-6 lg:p-12">
-              <!-- Content -->
-              <div class="flex-1 flex flex-col justify-between">
-                <!-- Content Top -->
-                <div class="flex flex-col gap-4 mb-6 lg:mb-8">
-                  <h3 class="text-neutral-darkest text-2xl lg:text-[48px] font-medium leading-[1.2] tracking-[0.48px] font-urbanist">
-                    Residencial Moderna Vista
-                  </h3>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="bg-transparent border-2 border-neutral-darkest rounded-full px-2.5 py-1 text-neutral-darkest text-sm lg:text-base font-semibold font-heebo">
-                      Residencial Urbano
-                    </span>
-                    <span class="bg-transparent border-2 border-neutral-darkest rounded-full px-2.5 py-1 text-neutral-darkest text-sm lg:text-base font-semibold font-heebo">
-                      Sostenibilidad
-                    </span>
-                    <span class="bg-transparent border-2 border-neutral-darkest rounded-full px-2.5 py-1 text-neutral-darkest text-sm lg:text-base font-semibold font-heebo">
-                      Innovación
-                    </span>
-                  </div>
-                </div>
-                
-                <!-- Content Bottom -->
-                <div class="flex flex-col gap-6 lg:gap-8">
-                  <p class="text-neutral-darkest text-base lg:text-xl leading-[1.6] font-heebo">
-                    Este proyecto representa un hito en diseño arquitectónico. Combinamos funcionalidad y estética para crear espacios únicos.
-                  </p>
-                  <div class="flex gap-4 lg:gap-6">
-                    <a 
-                      href="/proyecto/proyecto-residencial-moderno"
-                      class="bg-neutral-lightest text-neutral-darkest font-medium py-2.5 px-6 rounded-full border-2 border-neutral-darkest shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] text-base lg:text-lg font-heebo relative overflow-hidden hover:bg-neutral-darkest hover:text-white transition-colors duration-200"
-                    >
-                      <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]"></div>
-                      Ver Más
-                    </a>
-                    <a 
-                      href="/proyecto/proyecto-residencial-moderno"
-                      class="flex items-center gap-2 text-neutral-darkest font-medium text-base lg:text-lg font-heebo hover:text-forest-green transition-colors duration-200"
-                    >
-                      Detalles
-                      <Icon name="ph:caret-right" class="w-6 h-6" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Image -->
-              <div class="flex-1 h-64 lg:h-[368px] bg-cover bg-center bg-no-repeat rounded-[32px]" style="background-image: url('/images/placeholder-image.jpg');">
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Card 2 -->
-          <div class="bg-beige rounded-[32px] border-2 border-neutral-darkest relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-            <div class="flex flex-col lg:flex-row gap-8 lg:gap-20 p-6 lg:p-12">
-              <!-- Content -->
-              <div class="flex-1 flex flex-col justify-between">
-                <!-- Content Top -->
-                <div class="flex flex-col gap-4 mb-6 lg:mb-8">
-                  <h3 class="text-neutral-darkest text-2xl lg:text-[48px] font-medium leading-[1.2] tracking-[0.48px] font-urbanist">
-                    Centro Comercial Plaza
-                  </h3>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="bg-transparent border-2 border-neutral-darkest rounded-full px-2.5 py-1 text-neutral-darkest text-sm lg:text-base font-semibold font-heebo">
-                      Comercio Local
-                    </span>
-                    <span class="bg-transparent border-2 border-neutral-darkest rounded-full px-2.5 py-1 text-neutral-darkest text-sm lg:text-base font-semibold font-heebo">
-                      Espacios Abiertos
-                    </span>
-                    <span class="bg-transparent border-2 border-neutral-darkest rounded-full px-2.5 py-1 text-neutral-darkest text-sm lg:text-base font-semibold font-heebo">
-                      Accesibilidad
-                    </span>
-                  </div>
-                </div>
-                
-                <!-- Content Bottom -->
-                <div class="flex flex-col gap-6 lg:gap-8">
-                  <p class="text-neutral-darkest text-base lg:text-xl leading-[1.6] font-heebo">
-                    Este centro comercial está diseñado para la comunidad. Fomenta el comercio local y ofrece espacios accesibles.
-                  </p>
-                  <div class="flex gap-4 lg:gap-6">
-                    <a 
-                      href="/proyecto/centro-comercial-innovador"
-                      class="bg-neutral-lightest text-neutral-darkest font-medium py-2.5 px-6 rounded-full border-2 border-neutral-darkest shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] text-base lg:text-lg font-heebo relative overflow-hidden hover:bg-neutral-darkest hover:text-white transition-colors duration-200"
-                    >
-                      <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]"></div>
-                      Ver Más
-                    </a>
-                    <a 
-                      href="/proyecto/centro-comercial-innovador"
-                      class="flex items-center gap-2 text-neutral-darkest font-medium text-base lg:text-lg font-heebo hover:text-forest-green transition-colors duration-200"
-                    >
-                      Detalles
-                      <Icon name="ph:caret-right" class="w-6 h-6" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Image -->
-              <div class="flex-1 h-64 lg:h-[368px] bg-cover bg-center bg-no-repeat rounded-[32px]" style="background-image: url('/images/placeholder-image.jpg');">
-              </div>
-            </div>
-          </div>
-
-          <!-- Project Card 3 -->
-          <div class="bg-beige rounded-[32px] border-2 border-neutral-darkest relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
-            <div class="flex flex-col lg:flex-row gap-8 lg:gap-20 p-6 lg:p-12">
-              <!-- Content -->
-              <div class="flex-1 flex flex-col justify-between">
-                <!-- Content Top -->
-                <div class="flex flex-col gap-4 mb-6 lg:mb-8">
-                  <h3 class="text-neutral-darkest text-2xl lg:text-[48px] font-medium leading-[1.2] tracking-[0.48px] font-urbanist">
-                    Parque Recreativo Familiar
-                  </h3>
-                  <div class="flex flex-wrap gap-2">
-                    <span class="bg-transparent border-2 border-neutral-darkest rounded-full px-2.5 py-1 text-neutral-darkest text-sm lg:text-base font-semibold font-heebo">
-                      Naturaleza
-                    </span>
-                    <span class="bg-transparent border-2 border-neutral-darkest rounded-full px-2.5 py-1 text-neutral-darkest text-sm lg:text-base font-semibold font-heebo">
-                      Familia
-                    </span>
-                    <span class="bg-transparent border-2 border-neutral-darkest rounded-full px-2.5 py-1 text-neutral-darkest text-sm lg:text-base font-semibold font-heebo">
-                      Diversión
-                    </span>
-                  </div>
-                </div>
-                
-                <!-- Content Bottom -->
-                <div class="flex flex-col gap-6 lg:gap-8">
-                  <p class="text-neutral-darkest text-base lg:text-xl leading-[1.6] font-heebo">
-                    Este parque recreativo es un espacio para disfrutar en familia. Ofrece áreas verdes y actividades para todas las edades.
-                  </p>
-                  <div class="flex gap-4 lg:gap-6">
-                    <a 
-                      href="/proyecto/parque-recreativo-familiar"
-                      class="bg-neutral-lightest text-neutral-darkest font-medium py-2.5 px-6 rounded-full border-2 border-neutral-darkest shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] text-base lg:text-lg font-heebo relative overflow-hidden hover:bg-neutral-darkest hover:text-white transition-colors duration-200"
-                    >
-                      <div class="absolute inset-0 pointer-events-none shadow-[0px_4px_0px_0px_inset_rgba(255,255,255,0.2),0px_-5px_0px_0px_inset_rgba(12,8,1,0.15)]"></div>
-                      Ver Más
-                    </a>
-                    <a 
-                      href="/proyecto/parque-recreativo-familiar"
-                      class="flex items-center gap-2 text-neutral-darkest font-medium text-base lg:text-lg font-heebo hover:text-forest-green transition-colors duration-200"
-                    >
-                      Detalles
-                      <Icon name="ph:caret-right" class="w-6 h-6" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Image -->
-              <div class="flex-1 h-64 lg:h-[368px] bg-cover bg-center bg-no-repeat rounded-[32px]" style="background-image: url('/images/placeholder-image.jpg');">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- Testimonials Section -->
     <Testimonial />
+    
+    <!-- Call to Action Section -->
     <Cta />
   </main>
   <Footer />

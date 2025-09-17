@@ -1,0 +1,133 @@
+---
+import { Icon } from 'astro-icon/components';
+import Button from '../ui/Button.astro';
+import SectionLayout from '../ui/SectionLayout.astro';
+---
+
+<section class="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-50 via-white to-primary-green/5">
+  <!-- Decorative Background Elements -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-20 left-20 w-64 h-64 bg-primary-green rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-32 right-20 w-80 h-80 bg-primary-green-dark rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-delay: 1s"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-delay: 2s"></div>
+  </div>
+  
+  <!-- Pattern Overlay -->
+  <div class="absolute inset-0 opacity-10">
+    <svg class="w-full h-full" viewBox="0 0 100 100">
+      <defs>
+        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+          <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" class="text-primary-green"/>
+    </svg>
+  </div>
+  
+  <!-- Main Content -->
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 text-center">
+    <div class="max-w-4xl mx-auto space-y-8" data-aos="fade-up" data-aos-duration="1200">
+      
+      <!-- Tagline Badge -->
+      <div 
+        class="inline-flex items-center gap-2 bg-primary-green/10 border border-primary-green/20 rounded-full px-6 py-3 mb-6"
+        data-aos="fade-down"
+        data-aos-delay="100"
+      >
+        <Icon name="ph:buildings-fill" class="w-5 h-5 text-primary-green" />
+        <span class="font-heebo font-medium text-primary-green text-[16px]">Quiénes Somos</span>
+      </div>
+      
+      <!-- Main Heading -->
+      <h1 
+        class="font-urbanist font-bold text-neutral-darkest leading-tight mb-6"
+        style="font-size: clamp(48px, 8vw, 72px); line-height: 1.1;"
+        data-aos="fade-up"
+        data-aos-delay="200"
+      >
+        Construyendo el futuro de 
+        <span class="text-primary-green">Costa Rica</span>
+      </h1>
+      
+      <!-- Subtitle -->
+      <p 
+        class="font-heebo font-normal text-neutral-darkest/80 max-w-3xl mx-auto leading-relaxed text-[18px] lg:text-[20px] mb-8"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        Somos una empresa familiar con más de 15 años de experiencia, dedicada a crear espacios 
+        que inspiran y transforman comunidades. Cada proyecto es una oportunidad para construir 
+        sueños y generar un impacto positivo duradero.
+      </p>
+      
+      <!-- Stats Row -->
+      <div 
+        class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto mb-10"
+        data-aos="fade-up"
+        data-aos-delay="400"
+      >
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary-green/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Icon name="ph:calendar-check-fill" class="w-8 h-8 text-primary-green" />
+          </div>
+          <div class="font-urbanist font-bold text-[32px] text-primary-green mb-2">15+</div>
+          <div class="font-heebo text-[16px] text-neutral-darkest/70">Años de experiencia</div>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary-green/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Icon name="ph:buildings-fill" class="w-8 h-8 text-primary-green" />
+          </div>
+          <div class="font-urbanist font-bold text-[32px] text-primary-green mb-2">150+</div>
+          <div class="font-heebo text-[16px] text-neutral-darkest/70">Proyectos completados</div>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-primary-green/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Icon name="ph:users-fill" class="w-8 h-8 text-primary-green" />
+          </div>
+          <div class="font-urbanist font-bold text-[32px] text-primary-green mb-2">500+</div>
+          <div class="font-heebo text-[16px] text-neutral-darkest/70">Familias felices</div>
+        </div>
+      </div>
+      
+      <!-- Action Buttons -->
+      <div 
+        class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4" 
+        data-aos="fade-up" 
+        data-aos-delay="500"
+      >
+        <Button 
+          href="/proyectos" 
+          variant="success"
+          size="lg"
+          icon="ph:eye-fill"
+          iconPosition="left"
+        >
+          Ver Nuestros Proyectos
+        </Button>
+        
+        <Button 
+          href="/contacto" 
+          variant="outline"
+          size="lg"
+          icon="ph:chat-circle-fill"
+          iconPosition="left"
+        >
+          Conversemos
+        </Button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div 
+    class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+    data-aos="fade-in"
+    data-aos-delay="800"
+  >
+    <div class="w-8 h-12 border-2 border-neutral-darkest/30 rounded-full flex justify-center">
+      <div class="w-1 h-3 bg-primary-green rounded-full mt-2 animate-pulse"></div>
+    </div>
+  </div>
+</section>

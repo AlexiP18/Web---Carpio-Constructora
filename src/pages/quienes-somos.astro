@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/sections/Header.astro";
+import Header from '../components/ui/Header.astro';
 import Footer from "../components/sections/Footer.astro";
 import HeroSection from "../components/sections/HeroSection.astro";
 import CompanyOverview from "../components/sections/CompanyOverview.astro";
@@ -9,220 +9,6 @@ import TwoColumnSection from "../components/sections/TwoColumnSection.astro";
 import TestimonialSection from "../components/sections/TestimonialSection.astro";
 import FeatureBannerSection from "../components/sections/FeatureBannerSection.astro";
 import CTASection from "../components/sections/CTASection.astro";
-import Button from "../components/ui/Button.astro";
-
-// Assets from Figma
-const imgLayout126 = "http://localhost:3845/assets/d50ffb0afa333613e155822dc6b3dfe63f150a74.png";
-const imgPlaceholderImage = "http://localhost:3845/assets/f0398e9b11b92762fc7d56bb66f6b1efddf6485f.png";
-const imgComponent = "http://localhost:3845/assets/f83aefda4fcaa0a98985f08523b8407a6849bf84.png";
-const imgComponent1 = "http://localhost:3845/assets/123598581007b9dfa52e07bb013d8c8f0bf3cf1b.png";
-const imgComponent2 = "http://localhost:3845/assets/92f0e227c66e6c324822257631726354253695b0.png";
-const imgPlaceholderImage1 = "http://localhost:3845/assets/dfa5d8a123288e8a4ee8093b8a1f267ff06fe5d4.png";
-const imgAvatarImage = "http://localhost:3845/assets/49a20f9ebf384e91252deaa60c764a58949b0aa4.png";
-const imgPlaceholderImage2 = "http://localhost:3845/assets/1de7f5b16c38dd3644b963b0bca1dbf2605e03aa.png";
-const imgLogo = "http://localhost:3845/assets/7f0e944948c422504b8f8a30db1c146740a308d1.svg";
-const imgSliderDots = "http://localhost:3845/assets/5ee37cc500fadd2657348db5388a10c643d2870e.svg";
-
-// Icons (usando Phosphor Icons)
-const iconConstruction = "ph:buildings";
-const iconOverviewKey = "ph:key";
-const iconEnterprise = "ph:office-chair";
-const iconConcierge = "ph:handshake";
-const iconArrowBack = "ph:arrow-left";
-const iconArrowForward = "ph:arrow-right";
-
-// Social media icons (usando Phosphor Icons)
-const iconLinkedIn = "ph:linkedin-logo";
-const iconX = "ph:x-logo";
-const iconDribbble = "ph:dribbble-logo";
-
-// Hero Section Data
-const heroData = {
-  tagline: "Construcción",
-  title: "Conoce a Constructora Carpio",
-  description: "Nos dedicamos a crear espacios que inspiran y construyen el futuro de nuestras comunidades con más de 15 años de experiencia en el sector.",
-  primaryButtonText: "Descubre Más",
-  secondaryButtonText: "Contáctanos",
-  primaryButtonHref: "/proyectos",
-  secondaryButtonHref: "/contacto"
-};
-
-// Two Column Section Data
-const twoColumnData = {
-  backgroundImage: imgLayout126,
-  leftColumn: {
-    title: "Una empresa familiar con valores sólidos",
-    description: "Constructora Carpio nació como un emprendimiento familiar con la visión de transformar el sector de la construcción en Costa Rica. Nuestro compromiso es ofrecer calidad y excelencia en cada proyecto, manteniendo siempre los valores que nos han caracterizado desde nuestros inicios.",
-    buttonText: "Nuestra Historia",
-    buttonHref: "/historia"
-  },
-  rightColumn: {
-    title: "Experiencia que marca la diferencia",
-    description: "Con más de 150 proyectos completados exitosamente, contamos con un equipo de profesionales altamente capacitados y certificados. Utilizamos tecnología de vanguardia y materiales de primera calidad para superar las expectativas de nuestros clientes.",
-    buttonText: "Ver Proyectos",
-    buttonHref: "/proyectos"
-  },
-  buttonIcon: iconArrowForward
-};
-
-// Company Overview Data
-const companyOverviewData = {
-  tagline: "Construcción",
-  title: "Comprometidos con la calidad y la innovación",
-  description: "En Constructora Carpio, nos dedicamos a construir sueños. Cada proyecto es una oportunidad para crear espacios únicos y funcionales que perduren en el tiempo.",
-  centerImage: imgPlaceholderImage,
-  items: [
-    {
-      icon: iconConstruction,
-      title: "Nuestra Misión",
-      description: "Ofrecer soluciones constructivas que superen las expectativas de nuestros clientes, utilizando tecnología de vanguardia y materiales de la más alta calidad."
-    },
-    {
-      icon: iconOverviewKey,
-      title: "Nuestra Visión",
-      description: "Ser líderes en el sector de la construcción en Costa Rica, reconocidos por nuestra excelencia, innovación y compromiso con el desarrollo sostenible."
-    },
-    {
-      icon: iconEnterprise,
-      title: "Nuestros Valores",
-      description: "Integridad, innovación, trabajo en equipo y responsabilidad social son los pilares fundamentales que guían cada decisión en nuestra empresa."
-    },
-    {
-      icon: iconConcierge,
-      title: "Por Qué Elegirnos",
-      description: "Contamos con más de 15 años de experiencia, un equipo de expertos certificados y un compromiso inquebrantable con la satisfacción del cliente."
-    }
-  ]
-};
-
-// Feature Banners Data
-const featureBannersData = {
-  banners: [
-    { 
-      bg: imgComponent, 
-      title: "Conoce a Nuestro Equipo de Expertos", 
-      desc: "En Constructora Carpio, contamos con profesionales certificados y con amplia experiencia en el sector. Nuestro equipo multidisciplinario está comprometido con la excelencia y la innovación en cada proyecto que emprendemos.", 
-      primary: "Conocer Equipo", 
-      secondary: "Únete a Nosotros" 
-    },
-    { 
-      bg: imgComponent1, 
-      title: "Compromiso con la Sostenibilidad", 
-      desc: "Creemos firmemente en la construcción sostenible y responsable con el medio ambiente. Implementamos prácticas eco-amigables y utilizamos materiales sostenibles para minimizar nuestro impacto ambiental.", 
-      primary: "Descubre Más", 
-      secondary: "Certificaciones" 
-    },
-    { 
-      bg: imgComponent2, 
-      title: "Innovación y Tecnología", 
-      desc: "Mantenemos actualizada nuestra tecnología y métodos constructivos para ofrecer soluciones innovadoras. Utilizamos software especializado, herramientas de última generación y técnicas constructivas modernas.", 
-      primary: "Ver Tecnología", 
-      secondary: "Métodos" 
-    }
-  ]
-};
-
-// Team Section Data
-const teamData = {
-  tagline: "Nuestro Equipo",
-  title: "Profesionales dedicados",
-  description: "Conoce a las personas que hacen posible cada proyecto con su experiencia y pasión por la construcción.",
-  teamMembers: [
-    {
-      name: "Carlos Carpio",
-      position: "Director General",
-      bio: "Ingeniero civil con más de 20 años de experiencia en proyectos de construcción residencial y comercial.",
-      avatar: imgPlaceholderImage1,
-      social: { linkedin: "#", twitter: "#" }
-    },
-    {
-      name: "María Rodríguez",
-      position: "Jefa de Proyectos",
-      bio: "Arquitecta especializada en diseño sostenible y gestión de proyectos de gran envergadura.",
-      avatar: imgPlaceholderImage1,
-      social: { linkedin: "#", dribbble: "#" }
-    },
-    {
-      name: "José Hernández",
-      position: "Jefe de Obra",
-      bio: "Maestro constructor con amplia experiencia en supervisión y control de calidad en obras civiles.",
-      avatar: imgPlaceholderImage1,
-      social: { linkedin: "#" }
-    },
-    {
-      name: "Ana García",
-      position: "Coordinadora de Calidad",
-      bio: "Ingeniera especializada en control de calidad y seguridad industrial en proyectos de construcción.",
-      avatar: imgPlaceholderImage1,
-      social: { linkedin: "#", twitter: "#" }
-    },
-    {
-      name: "Luis Mora",
-      position: "Especialista en Sostenibilidad",
-      bio: "Experto en construcción verde y certificaciones ambientales para proyectos sostenibles.",
-      avatar: imgPlaceholderImage1,
-      social: { linkedin: "#", dribbble: "#" }
-    },
-    {
-      name: "Patricia Jiménez",
-      position: "Directora Financiera",
-      bio: "Contadora pública con especialización en gestión financiera de proyectos de construcción.",
-      avatar: imgPlaceholderImage1,
-      social: { linkedin: "#" }
-    }
-  ],
-  hiringTitle: "¡Únete a nuestro equipo!",
-  hiringDescription: "Estamos buscando profesionales talentosos que compartan nuestra pasión por la construcción de calidad.",
-  hiringButtonText: "Ver Posiciones Abiertas"
-};
-
-// Testimonial Section Data
-const testimonialData = {
-  testimonials: [
-    {
-      logo: imgLogo,
-      testimonial: "Constructora Carpio superó nuestras expectativas en cada etapa del proyecto, demostrando un compromiso excepcional con la calidad y los plazos de entrega.",
-      author: {
-        name: "Juan Pérez",
-        position: "Propietario, Residencial Los Robles",
-        avatar: imgAvatarImage
-      }
-    },
-    {
-      logo: imgLogo,
-      testimonial: "La profesionalidad y experiencia del equipo de Constructora Carpio hizo que nuestro proyecto se completara sin contratiempos. Altamente recomendados.",
-      author: {
-        name: "María González",
-        position: "Directora, Empresa Constructora ABC",
-        avatar: imgAvatarImage
-      }
-    },
-    {
-      logo: imgLogo,
-      testimonial: "Excelente trabajo en nuestro complejo residencial. La atención al detalle y la calidad de construcción fueron excepcionales.",
-      author: {
-        name: "Carlos Rodríguez",
-        position: "Gerente de Proyectos, Inmobiliaria XYZ",
-        avatar: imgAvatarImage
-      }
-    }
-  ]
-};
-
-// CTA Section Data
-const ctaData = {
-  title: "¿Listo para construir tu proyecto?",
-  description: "Estamos aquí para convertir tus ideas en realidad. Contáctanos hoy mismo y descubre cómo podemos ayudarte a construir el futuro.",
-  primaryButton: {
-    text: "Solicitar Cotización",
-    href: "/contacto"
-  },
-  secondaryButton: {
-    text: "Ver Proyectos",
-    href: "/proyectos"
-  },
-  image: imgPlaceholderImage2
-};
 ---
 
 <style>
@@ -275,31 +61,31 @@ const ctaData = {
   <Header />
 
   <div data-aos="fade-up" data-aos-duration="1000">
-    <HeroSection {...heroData} />
+    <HeroSection />
   </div>
 
   <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-    <TwoColumnSection {...twoColumnData} />
+    <TwoColumnSection />
   </div>
 
   <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-    <CompanyOverview {...companyOverviewData} />
+    <CompanyOverview />
   </div>
 
   <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-    <FeatureBannerSection {...featureBannersData} />
+    <FeatureBannerSection />
   </div>
 
   <div data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
-    <TeamSection {...teamData} />
+    <TeamSection />
   </div>
 
   <div data-aos="fade-left" data-aos-delay="500" data-aos-duration="1000">
-    <TestimonialSection {...testimonialData} />
+    <TestimonialSection />
   </div>
 
   <div data-aos="zoom-in" data-aos-delay="600" data-aos-duration="1000">
-    <CTASection {...ctaData} />
+    <CTASection />
   </div>
 
   <Footer />

@@ -1,0 +1,324 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from '../ui/Button.astro';
+
+export interface Props {
+  testimonials: Array<{
+    rating: number;
+    quote: string;
+    name: string;
+    position: string;
+    logo: string;
+    image: string;
+  }>;
+}
+
+const { testimonials } = Astro.props;
+---
+
+<section class="py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 relative overflow-hidden">
+  <!-- Background decorations -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-20 w-40 h-40 bg-primary-green/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
+    <div class="absolute top-1/2 right-10 w-24 h-24 bg-purple-500/10 rounded-full blur-xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:chat-teardrop-text-fill" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm">Testimonios del Proyecto</span>
+      </div>
+      
+      <h2 class="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
+        Lo Que Dicen <span class="bg-gradient-to-r from-primary-green to-emerald-400 bg-clip-text text-transparent">Nuestros Clientes</span>
+      </h2>
+      
+      <p class="text-xl text-gray-300 leading-relaxed">
+        Experiencias reales de quienes confiaron en nosotros para sus proyectos
+      </p>
+    </div>
+
+    <!-- Testimonials Slider -->
+    <div class="testimonial-slider-container relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/10">
+        <!-- Main Testimonial Display -->
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Image Side -->
+          <div class="relative">
+            <div class="testimonial-image-container h-80 lg:h-96 rounded-3xl overflow-hidden relative">
+              {testimonials.map((testimonial, index) => (
+                <div 
+                  class={`testimonial-image absolute inset-0 transition-all duration-700 ease-in-out ${index === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
+                  data-testimonial={index}
+                >
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    class="w-full h-full object-cover"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                </div>
+              ))}
+              
+              <!-- Floating Quote Icon -->
+              <div class="absolute top-6 left-6 w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                <Icon name="ph:quotes-fill" class="w-8 h-8 text-white" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Side -->
+          <div class="space-y-8">
+            <!-- Rating Stars -->
+            <div class="testimonial-rating flex gap-1">
+              {Array.from({ length: testimonials[0].rating }).map((_, i) => (
+                <Icon name="ph:star-fill" class="w-7 h-7 text-yellow-400" />
+              ))}
+            </div>
+            
+            <!-- Quote -->
+            <div class="testimonial-quote-container relative">
+              {testimonials.map((testimonial, index) => (
+                <blockquote 
+                  class={`testimonial-quote text-2xl lg:text-3xl font-bold text-white leading-tight transition-all duration-700 ease-in-out ${index === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 absolute inset-0'}`}
+                  data-testimonial={index}
+                >
+                  "{testimonial.quote}"
+                </blockquote>
+              ))}
+            </div>
+            
+            <!-- Author Info -->
+            <div class="testimonial-author-container relative">
+              {testimonials.map((testimonial, index) => (
+                <div 
+                  class={`testimonial-author flex items-center gap-6 transition-all duration-700 ease-in-out ${index === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 absolute inset-0'}`}
+                  data-testimonial={index}
+                >
+                  <div class="flex flex-col text-white">
+                    <div class="text-xl font-bold">{testimonial.name}</div>
+                    <div class="text-gray-300">{testimonial.position}</div>
+                  </div>
+                  
+                  <!-- Divider -->
+                  <div class="w-px h-16 bg-white/20"></div>
+                  
+                  <!-- Company Logo -->
+                  <div class="h-12 w-32">
+                    <img 
+                      src={testimonial.logo} 
+                      alt="Company Logo" 
+                      class="h-full w-full object-contain opacity-80"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Controls -->
+        <div class="flex justify-between items-center mt-12">
+          <!-- Dots Navigation -->
+          <div class="testimonial-dots flex gap-3">
+            {testimonials.map((_, index) => (
+              <button 
+                class={`testimonial-dot transition-all duration-300 ${index === 0 ? 'w-8 h-3 bg-primary-green' : 'w-3 h-3 bg-white/30 hover:bg-white/50'} rounded-full`}
+                data-testimonial={index}
+              ></button>
+            ))}
+          </div>
+          
+          <!-- Arrow Navigation -->
+          <div class="flex gap-4">
+            <button 
+              class="testimonial-prev bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 hover:bg-white/20 transition-all duration-200 hover:scale-110"
+            >
+              <Icon name="ph:caret-left-bold" class="w-6 h-6 text-white" />
+            </button>
+            <button 
+              class="testimonial-next bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 hover:bg-white/20 transition-all duration-200 hover:scale-110"
+            >
+              <Icon name="ph:caret-right-bold" class="w-6 h-6 text-white" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="grid lg:grid-cols-2 gap-8 mt-16" data-aos="fade-up" data-aos-delay="200">
+      <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 text-center">
+        <h3 class="text-2xl font-bold text-white mb-4">¿Quieres ser nuestro próximo cliente satisfecho?</h3>
+        <p class="text-gray-300 mb-6">Únete a más de 150 clientes que han confiado en nosotros</p>
+        <Button variant="success" href="/contacto" class="w-full">
+          <Icon name="ph:rocket-launch-fill" class="w-5 h-5" />
+          Iniciar Mi Proyecto
+        </Button>
+      </div>
+      
+      <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 text-center">
+        <h3 class="text-2xl font-bold text-white mb-4">¿Tienes alguna pregunta?</h3>
+        <p class="text-gray-300 mb-6">Nuestro equipo está listo para ayudarte</p>
+        <Button variant="outline" href="/contacto" class="w-full">
+          <Icon name="ph:chat-circle-text-fill" class="w-5 h-5" />
+          Hablar con un Experto
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const testimonialImages = document.querySelectorAll('.testimonial-image') as NodeListOf<HTMLElement>;
+    const testimonialQuotes = document.querySelectorAll('.testimonial-quote') as NodeListOf<HTMLElement>;
+    const testimonialAuthors = document.querySelectorAll('.testimonial-author') as NodeListOf<HTMLElement>;
+    const testimonialRating = document.querySelector('.testimonial-rating') as HTMLElement | null;
+    const testimonialDots = document.querySelectorAll('.testimonial-dot') as NodeListOf<HTMLButtonElement>;
+    const prevButton = document.querySelector('.testimonial-prev') as HTMLButtonElement | null;
+    const nextButton = document.querySelector('.testimonial-next') as HTMLButtonElement | null;
+    
+    let currentTestimonial = 0;
+    const totalTestimonials = testimonialImages.length;
+    let autoSlideInterval: ReturnType<typeof setInterval> | null = null;
+
+    // Testimonials data
+    const testimonialsData = [
+      { rating: 5 },
+      { rating: 5 },
+      { rating: 4 }
+    ];
+    
+    function updateTestimonial(index: number): void {
+      if (index < 0 || index >= totalTestimonials) return;
+      
+      // Update images
+      testimonialImages.forEach((image, i) => {
+        image.classList.remove('opacity-100', 'scale-100');
+        image.classList.add('opacity-0', 'scale-105');
+        
+        if (i === index) {
+          image.classList.remove('opacity-0', 'scale-105');
+          image.classList.add('opacity-100', 'scale-100');
+        }
+      });
+      
+      // Update quotes
+      testimonialQuotes.forEach((quote, i) => {
+        quote.classList.remove('opacity-100', 'translate-y-0');
+        quote.classList.add('opacity-0', 'translate-y-4');
+        if (i !== index) quote.classList.add('absolute', 'inset-0');
+        
+        if (i === index) {
+          quote.classList.remove('opacity-0', 'translate-y-4', 'absolute', 'inset-0');
+          quote.classList.add('opacity-100', 'translate-y-0');
+        }
+      });
+      
+      // Update authors
+      testimonialAuthors.forEach((author, i) => {
+        author.classList.remove('opacity-100', 'translate-y-0');
+        author.classList.add('opacity-0', 'translate-y-4');
+        if (i !== index) author.classList.add('absolute', 'inset-0');
+        
+        if (i === index) {
+          author.classList.remove('opacity-0', 'translate-y-4', 'absolute', 'inset-0');
+          author.classList.add('opacity-100', 'translate-y-0');
+        }
+      });
+      
+      // Update rating stars
+      if (testimonialRating) {
+        const rating = testimonialsData[index]?.rating || 5;
+        testimonialRating.style.opacity = '0';
+        setTimeout(() => {
+          testimonialRating.innerHTML = '';
+          for (let i = 0; i < rating; i++) {
+            const star = document.createElement('div');
+            star.innerHTML = '<svg class="w-7 h-7 text-yellow-400" fill="currentColor" viewBox="0 0 256 256"><path d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L165.93,81.17l59.46,5.15A16,16,0,0,1,234.5,114.38Z"></path></svg>';
+            testimonialRating.appendChild(star);
+          }
+          testimonialRating.style.opacity = '1';
+        }, 350);
+      }
+      
+      // Update dots
+      testimonialDots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.remove('w-3', 'bg-white/30', 'hover:bg-white/50');
+          dot.classList.add('w-8', 'bg-primary-green');
+        } else {
+          dot.classList.remove('w-8', 'bg-primary-green');
+          dot.classList.add('w-3', 'bg-white/30', 'hover:bg-white/50');
+        }
+      });
+      
+      currentTestimonial = index;
+    }
+    
+    function nextTestimonial(): void {
+      updateTestimonial((currentTestimonial + 1) % totalTestimonials);
+    }
+    
+    function prevTestimonial(): void {
+      updateTestimonial((currentTestimonial - 1 + totalTestimonials) % totalTestimonials);
+    }
+    
+    function startAutoSlide(): void {
+      if (autoSlideInterval) clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(() => {
+        nextTestimonial();
+      }, 7000);
+    }
+    
+    function stopAutoSlide(): void {
+      if (autoSlideInterval) {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = null;
+      }
+    }
+    
+    // Event listeners
+    if (prevButton) {
+      prevButton.addEventListener('click', () => {
+        stopAutoSlide();
+        prevTestimonial();
+        setTimeout(startAutoSlide, 10000);
+      });
+    }
+    
+    if (nextButton) {
+      nextButton.addEventListener('click', () => {
+        stopAutoSlide();
+        nextTestimonial();
+        setTimeout(startAutoSlide, 10000);
+      });
+    }
+    
+    // Dot navigation
+    testimonialDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        stopAutoSlide();
+        updateTestimonial(index);
+        setTimeout(startAutoSlide, 10000);
+      });
+    });
+    
+    // Initialize
+    updateTestimonial(0);
+    startAutoSlide();
+    
+    // Pause auto-slide when page is not visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoSlide();
+      } else {
+        startAutoSlide();
+      }
+    });
+  });
+</script>

@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import Button from '../ui/Button.astro';
 
 export interface Props {
   tagline: string;
@@ -14,55 +15,144 @@ export interface Props {
 }
 
 const { tagline, title, testimonials } = Astro.props;
+
+// Default avatars for testimonials without image
+const defaultAvatars = [
+  "/images/avatar-image.png",
+  "/images/avatar-image.png",
+  "/images/avatar-image.png"
+];
 ---
 
-<section class="bg-white flex flex-col gap-12 lg:gap-20 items-center justify-start overflow-clip px-5 lg:px-16 py-16 lg:py-28 relative w-full" data-aos="fade-up">
-  <div class="flex flex-col gap-12 lg:gap-20 items-start justify-start max-w-[1280px] relative w-full">
-    <div class="flex flex-col gap-6 lg:gap-8 items-start justify-start relative w-full" data-aos="fade-right">
-      <div class="text-[#2d862d] uppercase font-urbanist font-semibold relative text-xs lg:text-[14px] tracking-[1.2px] lg:tracking-[1.4px] w-full">
-        {tagline}
+<section class="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden" id="testimonials">
+  <!-- Background decorations -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-20 w-40 h-40 bg-primary-green/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:chat-teardrop-text-fill" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm uppercase tracking-wider">{tagline}</span>
       </div>
-      <div class="font-urbanist font-medium relative text-[#0c0801] text-[28px] sm:text-[36px] lg:text-[48px] tracking-[0.28px] lg:tracking-[0.48px] w-full">
-        <p class="leading-[1.2]">{title}</p>
+      
+      <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        {title}
+      </h2>
+      
+      <div class="flex items-center justify-center gap-2">
+        <div class="flex">
+          {[...Array(5)].map((_, i) => (
+            <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+          ))}
+        </div>
+        <span class="text-gray-600 font-medium">Promedio de 4.9/5 en más de 150 proyectos</span>
       </div>
     </div>
-    
-    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 relative w-full">
+
+    <!-- Testimonials Grid -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
       {testimonials.map((testimonial, index) => (
-        <div class="bg-[#f8f9fa] border border-[#e9ecef] flex flex-col gap-4 lg:gap-6 items-start justify-start p-6 lg:p-8 relative rounded-[16px]" data-aos="fade-up" data-aos-delay={200 + (index * 100)}>
-          {testimonial.rating && (
-            <div class="flex gap-1 items-center justify-start">
-              {[...Array(testimonial.rating)].map((_, i) => (
-                <Icon name="ph:star-fill" class="w-4 lg:w-5 h-4 lg:h-5 text-[#fbbf24]" />
-              ))}
-            </div>
-          )}
-          <div class="font-heebo font-normal leading-[1.6] text-[#0c0801] text-sm lg:text-[16px]">
-            "{testimonial.content}"
-          </div>
-          <div class="flex gap-3 lg:gap-4 items-center justify-start relative w-full">
-            {testimonial.avatarUrl ? (
-              <img 
-                src={testimonial.avatarUrl} 
-                alt={testimonial.author}
-                class="aspect-square bg-[#e9ecef] relative rounded-full size-10 lg:size-12 object-cover"
-              />
-            ) : (
-              <div class="aspect-square bg-[#e9ecef] flex items-center justify-center relative rounded-full size-10 lg:size-12">
-                <Icon name="ph:user" class="w-5 lg:w-6 h-5 lg:h-6 text-[#6c757d]" />
+        <div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary-green/20 hover:-translate-y-2" data-aos="fade-up" data-aos-delay={200 + (index * 100)}>
+          <div class="space-y-6">
+            <!-- Rating -->
+            {testimonial.rating && (
+              <div class="flex gap-1 items-center justify-start">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Icon name="ph:star-fill" class="w-5 h-5 text-yellow-400" />
+                ))}
               </div>
             )}
-            <div class="flex flex-col gap-1 items-start justify-start">
-              <div class="font-urbanist font-medium text-[#0c0801] text-sm lg:text-[16px]">
-                {testimonial.author}
-              </div>
-              <div class="font-heebo font-normal text-[#6c757d] text-xs lg:text-[14px]">
-                {testimonial.position}
+            
+            <!-- Quote Icon -->
+            <div class="w-12 h-12 bg-gradient-to-br from-primary-green/10 to-emerald-500/10 rounded-2xl flex items-center justify-center">
+              <Icon name="ph:quotes-fill" class="w-6 h-6 text-primary-green" />
+            </div>
+            
+            <!-- Content -->
+            <p class="text-gray-700 leading-relaxed text-lg italic">
+              "{testimonial.content}"
+            </p>
+            
+            <!-- Author -->
+            <div class="flex items-center gap-4 pt-4 border-t border-gray-100">
+              <img 
+                src={testimonial.avatarUrl || defaultAvatars[index] || "/images/avatar-image.png"} 
+                alt={testimonial.author}
+                class="w-14 h-14 rounded-2xl object-cover border-2 border-gray-100 group-hover:border-primary-green/20 transition-colors"
+              />
+              <div class="space-y-1">
+                <div class="font-bold text-gray-900 group-hover:text-primary-green transition-colors">
+                  {testimonial.author}
+                </div>
+                <div class="text-gray-600 text-sm">
+                  {testimonial.position}
+                </div>
               </div>
             </div>
           </div>
         </div>
       ))}
+    </div>
+
+    <!-- Bottom CTA Section -->
+    <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 lg:p-12 relative overflow-hidden" data-aos="fade-up" data-aos-delay="500">
+      <!-- Background decoration -->
+      <div class="absolute inset-0">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-primary-green/10 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/10 rounded-full blur-xl"></div>
+      </div>
+
+      <div class="relative z-10 grid lg:grid-cols-2 gap-8 items-center">
+        <!-- Content -->
+        <div class="space-y-6">
+          <h3 class="text-2xl lg:text-3xl font-bold text-white">
+            Únete a nuestros clientes satisfechos
+          </h3>
+          <p class="text-gray-300 leading-relaxed">
+            Más de 150 familias han confiado en nosotros para hacer realidad sus proyectos de construcción. 
+            ¡Sé el próximo en vivir la experiencia Constructora Carpio!
+          </p>
+          
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-4">
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
+              <div class="text-2xl font-bold text-primary-green mb-1">150+</div>
+              <div class="text-gray-300 text-sm">Proyectos</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
+              <div class="text-2xl font-bold text-primary-green mb-1">4.9★</div>
+              <div class="text-gray-300 text-sm">Calificación</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
+              <div class="text-2xl font-bold text-primary-green mb-1">15+</div>
+              <div class="text-gray-300 text-sm">Años</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center lg:text-right space-y-6">
+          <div class="space-y-2">
+            <h4 class="text-xl font-bold text-white">¿Listo para tu proyecto?</h4>
+            <p class="text-gray-300">Obtén una cotización personalizada</p>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row lg:flex-col gap-4 lg:items-end">
+            <Button variant="success" href="/contacto">
+              <Icon name="ph:chat-circle-text-fill" class="w-5 h-5" />
+              Solicitar Cotización
+            </Button>
+            <Button variant="outline" href="/proyectos">
+              <Icon name="ph:images-fill" class="w-5 h-5" />
+              Ver Proyectos
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

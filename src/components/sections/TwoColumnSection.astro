@@ -1,46 +1,100 @@
 ---
 import Button from '../ui/Button.astro';
-
-export interface Props {
-  backgroundImage: string;
-  leftColumn: {
-    title: string;
-    description: string;
-    buttonText: string;
-    buttonHref?: string;
-  };
-  rightColumn: {
-    title: string;
-    description: string;
-    buttonText: string;
-    buttonHref?: string;
-  };
-  buttonIcon?: string;
-}
-
-const { backgroundImage, leftColumn, rightColumn, buttonIcon } = Astro.props;
+import { Icon } from 'astro-icon/components';
 ---
 
-<section class="bg-[#00000080] bg-[position:0%_0%,_50%_50%] bg-no-repeat bg-[length:auto,cover] box-border content-stretch flex flex-col gap-12 md:gap-20 items-center justify-start overflow-clip px-5 md:px-16 py-20 md:py-28 relative shrink-0 w-full" style={`background-image: url(''), url('${backgroundImage}')`}>
-  <div class="content-stretch flex flex-col gap-16 md:gap-20 items-start justify-start max-w-[1280px] relative shrink-0 w-full">
-    <div class="content-stretch flex flex-col md:flex-row gap-12 md:gap-16 items-start justify-start relative shrink-0 w-full">
-      <div class="basis-0 content-stretch flex flex-col gap-6 grow items-start justify-start min-h-px min-w-px relative shrink-0 text-white">
-        <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[24px] md:text-[40px] tracking-[0.24px] md:tracking-[0.4px] w-full">
-          <p class="leading-[1.2]">{leftColumn.title}</p>
+<section class="relative py-20 overflow-hidden">
+  <!-- Background with overlay -->
+  <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+  <div class="absolute inset-0 bg-[url('/images/placeholder-image.png')] bg-cover bg-center opacity-20"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-800/90"></div>
+
+  <!-- Decorative elements -->
+  <div class="absolute top-20 left-20 w-32 h-32 bg-primary-green/10 rounded-full blur-2xl"></div>
+  <div class="absolute bottom-20 right-20 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Left Column - Historia -->
+      <div class="space-y-8" data-aos="fade-right" data-aos-duration="1000">
+        <div class="space-y-6">
+          <!-- Icon badge -->
+          <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2">
+            <Icon name="ph:clock-clockwise-fill" class="w-5 h-5 text-primary-green" />
+            <span class="text-primary-green font-semibold text-sm">Nuestra Historia</span>
+          </div>
+
+          <h2 class="text-4xl lg:text-5xl font-bold text-white leading-tight">
+            Una empresa familiar con 
+            <span class="bg-gradient-to-r from-primary-green to-emerald-400 bg-clip-text text-transparent">
+              valores sólidos
+            </span>
+          </h2>
+
+          <p class="text-lg text-gray-300 leading-relaxed">
+            Constructora Carpio nació como un emprendimiento familiar con la visión de transformar el sector de la construcción en Costa Rica. Nuestro compromiso es ofrecer calidad y excelencia en cada proyecto, manteniendo siempre los valores que nos han caracterizado desde nuestros inicios.
+          </p>
         </div>
-        <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[18px] w-full">
-          <p class="leading-[1.6]">{leftColumn.description}</p>
+
+        <!-- Features list -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-primary-green rounded-full"></div>
+            <span class="text-gray-300">Empresa familiar establecida con tradición</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-primary-green rounded-full"></div>
+            <span class="text-gray-300">Valores sólidos y compromiso con la calidad</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-2 h-2 bg-primary-green rounded-full"></div>
+            <span class="text-gray-300">Transformando el sector constructivo</span>
+          </div>
         </div>
-        <Button variant="outline" icon={buttonIcon} href={leftColumn.buttonHref}>{leftColumn.buttonText}</Button>
+
+        <Button variant="outline" href="/historia">
+          <Icon name="ph:book-open" class="w-5 h-5" />
+          Conoce Nuestra Historia
+        </Button>
       </div>
-      <div class="basis-0 content-stretch flex flex-col gap-6 grow items-start justify-start min-h-px min-w-px relative shrink-0 text-white">
-        <div class="font-['Urbanist:Medium',_sans-serif] font-medium relative shrink-0 text-[24px] md:text-[40px] tracking-[0.24px] md:tracking-[0.4px] w-full">
-          <p class="leading-[1.2]">{rightColumn.title}</p>
+
+      <!-- Right Column - Experiencia -->
+      <div class="space-y-8" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+        <div class="space-y-6">
+          <!-- Icon badge -->
+          <div class="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-4 py-2">
+            <Icon name="ph:medal-fill" class="w-5 h-5 text-blue-400" />
+            <span class="text-blue-400 font-semibold text-sm">Experiencia</span>
+          </div>
+
+          <h2 class="text-4xl lg:text-5xl font-bold text-white leading-tight">
+            Experiencia que marca 
+            <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              la diferencia
+            </span>
+          </h2>
+
+          <p class="text-lg text-gray-300 leading-relaxed">
+            Con más de 150 proyectos completados exitosamente, contamos con un equipo de profesionales altamente capacitados y certificados. Utilizamos tecnología de vanguardia y materiales de primera calidad para superar las expectativas de nuestros clientes.
+          </p>
         </div>
-        <div class="font-['Heebo:Regular',_sans-serif] font-normal relative shrink-0 text-[14px] md:text-[18px] w-full">
-          <p class="leading-[1.6]">{rightColumn.description}</p>
+
+        <!-- Stats grid -->
+        <div class="grid grid-cols-2 gap-6">
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center">
+            <div class="text-2xl font-bold text-blue-400">150+</div>
+            <div class="text-sm text-gray-400">Proyectos Exitosos</div>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center">
+            <div class="text-2xl font-bold text-blue-400">100%</div>
+            <div class="text-sm text-gray-400">Profesionales Certificados</div>
+          </div>
         </div>
-        <Button variant="outline" icon={buttonIcon} href={rightColumn.buttonHref}>{rightColumn.buttonText}</Button>
+
+        <Button variant="outline" href="/proyectos">
+          <Icon name="ph:buildings" class="w-5 h-5" />
+          Ver Nuestros Proyectos
+        </Button>
       </div>
     </div>
   </div>

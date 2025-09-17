@@ -1,4 +1,7 @@
 ---
+import { Icon } from 'astro-icon/components';
+import Button from '../ui/Button.astro';
+
 export interface Props {
   tagline: string;
   title: string;
@@ -6,42 +9,136 @@ export interface Props {
   backgroundImage?: string;
 }
 
-const { tagline, title, description, backgroundImage = "/images/servicios-hero.jpg" } = Astro.props;
+const { tagline, title, description, backgroundImage = "/images/placeholder-image.png" } = Astro.props;
 ---
 
-<section 
-  class="bg-[#00000080] bg-cover bg-center bg-no-repeat flex flex-col gap-12 lg:gap-20 items-center justify-start overflow-clip px-5 lg:px-16 py-16 lg:py-28 relative w-full"
-  style={`background-image: url('${backgroundImage}')`}
-  data-aos="fade-in"
->
-  <div class="flex flex-col gap-12 lg:gap-20 items-start justify-start max-w-[1280px] relative w-full">
-    <div class="flex flex-col gap-6 lg:gap-8 items-start justify-start max-w-[768px] relative w-full">
-      <div class="flex flex-col gap-3 lg:gap-4 items-start justify-start relative w-full">
-        <div class="flex items-center justify-start relative" data-aos="fade-up" data-aos-delay="100">
-          <div class="font-heebo font-semibold leading-[1.5] relative text-sm lg:text-[16px] text-white">
-            {tagline}
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-900/70 z-10"></div>
+    <img 
+      src={backgroundImage} 
+      alt={title}
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 z-20">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-primary-green/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary-green/5 to-blue-500/5 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Grid pattern overlay -->
+  <div class="absolute inset-0 opacity-20 z-20">
+    <div class="h-full w-full bg-[linear-gradient(to_right,#8b5cf6_1px,transparent_1px),linear-gradient(to_bottom,#8b5cf6_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+  </div>
+
+  <div class="relative z-30 max-w-7xl mx-auto px-6 py-20">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Content Column -->
+      <div class="space-y-8" data-aos="fade-right" data-aos-duration="1000">
+        <!-- Tagline -->
+        <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2">
+          <Icon name="ph:sparkle-fill" class="w-5 h-5 text-primary-green" />
+          <span class="text-primary-green font-semibold text-sm">{tagline}</span>
+        </div>
+
+        <!-- Main Heading -->
+        <div class="space-y-6">
+          <h1 class="text-4xl lg:text-6xl font-bold text-white leading-tight">
+            {title}
+          </h1>
+          <p class="text-xl text-gray-300 leading-relaxed">
+            {description}
+          </p>
+        </div>
+
+        <!-- Service highlights -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4">
+            <div class="flex items-center gap-3">
+              <Icon name="ph:shield-check-fill" class="w-6 h-6 text-primary-green" />
+              <div>
+                <div class="text-sm font-semibold text-white">Garantía Extendida</div>
+                <div class="text-xs text-gray-400">Calidad asegurada</div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4">
+            <div class="flex items-center gap-3">
+              <Icon name="ph:clock-fill" class="w-6 h-6 text-blue-400" />
+              <div>
+                <div class="text-sm font-semibold text-white">Entrega Puntual</div>
+                <div class="text-xs text-gray-400">Tiempos acordados</div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="flex flex-col gap-4 lg:gap-6 items-start justify-start leading-[0] relative text-white w-full" data-aos="fade-up" data-aos-delay="200">
-          <div class="font-urbanist font-medium relative text-[32px] sm:text-[48px] lg:text-[84px] tracking-[0.32px] lg:tracking-[0.84px] w-full">
-            <p class="leading-[1.1]">{title}</p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="400">
+          <Button variant="success" href="#features">
+            <Icon name="ph:arrow-down" class="w-5 h-5" />
+            Explorar Servicio
+          </Button>
+          <Button variant="outline" href="/contacto">
+            <Icon name="ph:phone" class="w-5 h-5" />
+            Solicitar Cotización
+          </Button>
+        </div>
+      </div>
+
+      <!-- Visual Column -->
+      <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+        <!-- Main visual container -->
+        <div class="relative">
+          <!-- Central service card -->
+          <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-2xl">
+            <div class="space-y-6 text-center">
+              <div class="w-20 h-20 bg-gradient-to-br from-primary-green to-emerald-500 rounded-3xl flex items-center justify-center mx-auto">
+                <Icon name="ph:check-circle-fill" class="w-10 h-10 text-white" />
+              </div>
+              <div>
+                <h3 class="text-2xl font-bold text-white mb-2">Servicio Profesional</h3>
+                <p class="text-gray-300">Calidad certificada con garantía extendida</p>
+              </div>
+              <!-- Service stats -->
+              <div class="grid grid-cols-2 gap-4 pt-4">
+                <div>
+                  <div class="text-2xl font-bold text-primary-green">15+</div>
+                  <div class="text-xs text-gray-400">Años de Experiencia</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-bold text-primary-green">98%</div>
+                  <div class="text-xs text-gray-400">Satisfacción</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="font-heebo font-normal relative text-base lg:text-[20px] w-full">
-            <p class="leading-[1.6]">{description}</p>
+
+          <!-- Floating elements -->
+          <div class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg animate-bounce">
+            <Icon name="ph:star-fill" class="w-12 h-12 text-white" />
+          </div>
+
+          <div class="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg animate-pulse">
+            <Icon name="ph:heart-fill" class="w-10 h-10 text-white" />
+          </div>
+
+          <div class="absolute top-1/2 -right-12 w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center shadow-lg">
+            <Icon name="ph:thumbs-up-fill" class="w-8 h-8 text-white" />
           </div>
         </div>
       </div>
-      <div class="flex flex-col sm:flex-row gap-3 lg:gap-4 items-start justify-start relative w-full" data-aos="fade-up" data-aos-delay="300">
-        <button class="bg-[#d7e6fd] border-2 border-[#0c0801] flex gap-2 items-center justify-center px-5 lg:px-6 py-2 lg:py-2.5 relative rounded-[100px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-blue-200 transition-colors w-full sm:w-auto">
-          <div class="font-heebo font-medium leading-[0] relative text-[#0c0801] text-base lg:text-[18px]">
-            Descubre
-          </div>
-        </button>
-        <a href="/contacto" class="bg-[#f2f2f2] border-2 border-[#0c0801] flex gap-2 items-center justify-center px-5 lg:px-6 py-2 lg:py-2.5 relative rounded-[100px] shadow-[0px_2px_2px_0px_rgba(12,8,1,0.15)] hover:bg-gray-300 transition-colors w-full sm:w-auto">
-          <div class="font-heebo font-medium leading-[0] relative text-[#0c0801] text-base lg:text-[18px]">
-            Contáctanos
-          </div>
-        </a>
+    </div>
+
+    <!-- Bottom scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center" data-aos="fade-up" data-aos-delay="600">
+      <div class="text-gray-400 text-sm mb-2">Descubre más detalles</div>
+      <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
       </div>
     </div>
   </div>
