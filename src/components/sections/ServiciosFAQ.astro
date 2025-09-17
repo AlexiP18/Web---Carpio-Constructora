@@ -14,7 +14,7 @@ import Button from '../ui/Button.astro';
       
       <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
         Resolvemos tus
-        <span class="bg-gradient-to-r from-primary-green to-emerald-500 bg-clip-text text-transparent">
+        <span class="text-green-600">
           dudas más frecuentes
         </span>
       </h2>
@@ -205,16 +205,13 @@ import Button from '../ui/Button.astro';
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button variant="success" href="/contacto">
-            <Icon name="ph:envelope-simple" class="w-5 h-5" />
+          <Button variant="success" href="/contacto" iconPosition="left" icon="ph:envelope-simple">
             Contactar Ahora
           </Button>
-          <Button variant="outline" href="tel:+50688887777">
-            <Icon name="ph:phone" class="w-5 h-5" />
+          <Button variant="outline" href="tel:+50688887777" iconPosition="left" icon="ph:phone">
             Llamar Directamente
           </Button>
-          <Button variant="outline" href="https://wa.me/50688887777">
-            <Icon name="ph:chat-circle-text" class="w-5 h-5" />
+          <Button variant="outline" href="https://wa.me/50688887777" iconPosition="left" icon="ph:chat-circle-text">
             WhatsApp
           </Button>
         </div>

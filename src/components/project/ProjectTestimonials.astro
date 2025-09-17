@@ -1,7 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
-import Button from '../ui/Button.astro';
-
+// Componente simplificado sin dependencias externas
 export interface Props {
   testimonials: Array<{
     rating: number;
@@ -16,157 +14,129 @@ export interface Props {
 const { testimonials } = Astro.props;
 ---
 
-<section class="py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 relative overflow-hidden">
-  <!-- Background decorations -->
-  <div class="absolute inset-0">
-    <div class="absolute top-20 left-20 w-40 h-40 bg-primary-green/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
-    <div class="absolute top-1/2 right-10 w-24 h-24 bg-purple-500/10 rounded-full blur-xl"></div>
-  </div>
-
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
+<section class="py-16 lg:py-24 bg-gray-600">
+  <div class="max-w-4xl mx-auto px-6">
+    
     <!-- Section Header -->
-    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
-      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
-        <Icon name="ph:chat-teardrop-text-fill" class="w-5 h-5 text-primary-green" />
-        <span class="text-primary-green font-semibold text-sm">Testimonios del Proyecto</span>
-      </div>
-      
-      <h2 class="text-4xl lg:text-6xl font-bold text-white leading-tight mb-6">
-        Lo Que Dicen <span class="bg-gradient-to-r from-primary-green to-emerald-400 bg-clip-text text-transparent">Nuestros Clientes</span>
+    <div class="text-center mb-12">
+      <p class="text-sm font-medium text-white/80 uppercase tracking-wider mb-4">
+        Testimonios del Proyecto
+      </p>
+      <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+        Lo Que Dicen Nuestros Clientes
       </h2>
-      
-      <p class="text-xl text-gray-300 leading-relaxed">
+      <p class="text-lg text-white/80 max-w-2xl mx-auto">
         Experiencias reales de quienes confiaron en nosotros para sus proyectos
       </p>
     </div>
 
-    <!-- Testimonials Slider -->
-    <div class="testimonial-slider-container relative" data-aos="fade-up" data-aos-delay="100">
-      <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-white/10">
-        <!-- Main Testimonial Display -->
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <!-- Image Side -->
-          <div class="relative">
-            <div class="testimonial-image-container h-80 lg:h-96 rounded-3xl overflow-hidden relative">
-              {testimonials.map((testimonial, index) => (
-                <div 
-                  class={`testimonial-image absolute inset-0 transition-all duration-700 ease-in-out ${index === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
-                  data-testimonial={index}
-                >
+    <!-- Testimonial Container -->
+    <div class="bg-gray-700 rounded-lg shadow-lg p-8 lg:p-12 relative overflow-hidden">
+      
+      <!-- Testimonial Slider -->
+      <div id="project-testimonial-slider" class="flex transition-transform duration-500 ease-in-out">
+        
+        {testimonials.map((testimonial, index) => (
+          <div class="w-full flex-shrink-0">
+            <div class="grid lg:grid-cols-2 gap-8 items-center">
+              
+              <!-- Image Side -->
+              <div class="relative">
+                <div class="h-80 lg:h-96 rounded-lg overflow-hidden">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
                     class="w-full h-full object-cover"
                   />
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 </div>
-              ))}
-              
-              <!-- Floating Quote Icon -->
-              <div class="absolute top-6 left-6 w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center">
-                <Icon name="ph:quotes-fill" class="w-8 h-8 text-white" />
               </div>
-            </div>
-          </div>
 
-          <!-- Content Side -->
-          <div class="space-y-8">
-            <!-- Rating Stars -->
-            <div class="testimonial-rating flex gap-1">
-              {Array.from({ length: testimonials[0].rating }).map((_, i) => (
-                <Icon name="ph:star-fill" class="w-7 h-7 text-yellow-400" />
-              ))}
-            </div>
-            
-            <!-- Quote -->
-            <div class="testimonial-quote-container relative">
-              {testimonials.map((testimonial, index) => (
-                <blockquote 
-                  class={`testimonial-quote text-2xl lg:text-3xl font-bold text-white leading-tight transition-all duration-700 ease-in-out ${index === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 absolute inset-0'}`}
-                  data-testimonial={index}
-                >
+              <!-- Content Side -->
+              <div class="space-y-6">
+                <!-- Rating Stars -->
+                <div class="flex gap-1">
+                  {Array.from({ length: testimonial.rating }).map(() => (
+                    <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                    </svg>
+                  ))}
+                </div>
+                
+                <!-- Quote -->
+                <blockquote class="text-xl lg:text-2xl text-white leading-relaxed font-medium">
                   "{testimonial.quote}"
                 </blockquote>
-              ))}
-            </div>
-            
-            <!-- Author Info -->
-            <div class="testimonial-author-container relative">
-              {testimonials.map((testimonial, index) => (
-                <div 
-                  class={`testimonial-author flex items-center gap-6 transition-all duration-700 ease-in-out ${index === 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 absolute inset-0'}`}
-                  data-testimonial={index}
-                >
+                
+                <!-- Author Info -->
+                <div class="flex items-center gap-6">
                   <div class="flex flex-col text-white">
-                    <div class="text-xl font-bold">{testimonial.name}</div>
-                    <div class="text-gray-300">{testimonial.position}</div>
+                    <div class="text-lg font-bold">{testimonial.name}</div>
+                    <div class="text-white/70">{testimonial.position}</div>
                   </div>
                   
-                  <!-- Divider -->
-                  <div class="w-px h-16 bg-white/20"></div>
-                  
                   <!-- Company Logo -->
-                  <div class="h-12 w-32">
+                  <div class="h-8 w-24">
                     <img 
                       src={testimonial.logo} 
                       alt="Company Logo" 
-                      class="h-full w-full object-contain opacity-80"
+                      class="h-full w-full object-contain opacity-60"
                     />
                   </div>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
-        </div>
-
-        <!-- Navigation Controls -->
-        <div class="flex justify-between items-center mt-12">
-          <!-- Dots Navigation -->
-          <div class="testimonial-dots flex gap-3">
-            {testimonials.map((_, index) => (
-              <button 
-                class={`testimonial-dot transition-all duration-300 ${index === 0 ? 'w-8 h-3 bg-primary-green' : 'w-3 h-3 bg-white/30 hover:bg-white/50'} rounded-full`}
-                data-testimonial={index}
-              ></button>
-            ))}
-          </div>
-          
-          <!-- Arrow Navigation -->
-          <div class="flex gap-4">
-            <button 
-              class="testimonial-prev bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 hover:bg-white/20 transition-all duration-200 hover:scale-110"
-            >
-              <Icon name="ph:caret-left-bold" class="w-6 h-6 text-white" />
-            </button>
-            <button 
-              class="testimonial-next bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-4 hover:bg-white/20 transition-all duration-200 hover:scale-110"
-            >
-              <Icon name="ph:caret-right-bold" class="w-6 h-6 text-white" />
-            </button>
-          </div>
-        </div>
+        ))}
       </div>
+      
+      <!-- Navigation Arrows -->
+      <button
+        id="prev-project-testimonial"
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-200 shadow-md"
+        aria-label="Testimonio anterior"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+      <button
+        id="next-project-testimonial"
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-white/20 hover:bg-white/30 text-white transition-all duration-200 shadow-md"
+        aria-label="Siguiente testimonio"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Dots Navigation -->
+    <div class="flex gap-3 items-center justify-center mt-8">
+      {testimonials.map((_, index) => (
+        <button
+          class={`project-testimonial-dot w-3 h-3 rounded-full transition-all duration-200 ${index === 0 ? 'bg-white' : 'bg-white/30 hover:bg-white/50'}`}
+          data-slide={index}
+          aria-label={`Ir al testimonio ${index + 1}`}
+        ></button>
+      ))}
     </div>
 
     <!-- Call to Action -->
-    <div class="grid lg:grid-cols-2 gap-8 mt-16" data-aos="fade-up" data-aos-delay="200">
-      <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 text-center">
-        <h3 class="text-2xl font-bold text-white mb-4">¿Quieres ser nuestro próximo cliente satisfecho?</h3>
-        <p class="text-gray-300 mb-6">Únete a más de 150 clientes que han confiado en nosotros</p>
-        <Button variant="success" href="/contacto" class="w-full">
-          <Icon name="ph:rocket-launch-fill" class="w-5 h-5" />
+    <div class="grid lg:grid-cols-2 gap-6 mt-12">
+      <div class="bg-gray-700 rounded-lg p-6 text-center border border-gray-600">
+        <h3 class="text-xl font-bold text-white mb-3">¿Quieres ser nuestro próximo cliente satisfecho?</h3>
+        <p class="text-white/70 mb-4">Únete a más de 150 clientes que han confiado en nosotros</p>
+        <a href="/contacto" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200">
           Iniciar Mi Proyecto
-        </Button>
+        </a>
       </div>
       
-      <div class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 text-center">
-        <h3 class="text-2xl font-bold text-white mb-4">¿Tienes alguna pregunta?</h3>
-        <p class="text-gray-300 mb-6">Nuestro equipo está listo para ayudarte</p>
-        <Button variant="outline" href="/contacto" class="w-full">
-          <Icon name="ph:chat-circle-text-fill" class="w-5 h-5" />
+      <div class="bg-gray-700 rounded-lg p-6 text-center border border-gray-600">
+        <h3 class="text-xl font-bold text-white mb-3">¿Tienes alguna pregunta?</h3>
+        <p class="text-white/70 mb-4">Nuestro equipo está listo para ayudarte</p>
+        <a href="/contacto" class="inline-flex items-center gap-2 bg-transparent hover:bg-white/10 text-white border border-white/30 hover:border-white/50 px-6 py-3 rounded-lg font-medium transition-all duration-200">
           Hablar con un Experto
-        </Button>
+        </a>
       </div>
     </div>
   </div>
@@ -174,151 +144,86 @@ const { testimonials } = Astro.props;
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const testimonialImages = document.querySelectorAll('.testimonial-image') as NodeListOf<HTMLElement>;
-    const testimonialQuotes = document.querySelectorAll('.testimonial-quote') as NodeListOf<HTMLElement>;
-    const testimonialAuthors = document.querySelectorAll('.testimonial-author') as NodeListOf<HTMLElement>;
-    const testimonialRating = document.querySelector('.testimonial-rating') as HTMLElement | null;
-    const testimonialDots = document.querySelectorAll('.testimonial-dot') as NodeListOf<HTMLButtonElement>;
-    const prevButton = document.querySelector('.testimonial-prev') as HTMLButtonElement | null;
-    const nextButton = document.querySelector('.testimonial-next') as HTMLButtonElement | null;
+    const slider = document.getElementById('project-testimonial-slider');
+    const prevBtn = document.getElementById('prev-project-testimonial');
+    const nextBtn = document.getElementById('next-project-testimonial');
+    const dots = document.querySelectorAll('.project-testimonial-dot');
     
-    let currentTestimonial = 0;
-    const totalTestimonials = testimonialImages.length;
-    let autoSlideInterval: ReturnType<typeof setInterval> | null = null;
+    let currentSlide = 0;
+    const totalSlides = dots.length;
 
-    // Testimonials data
-    const testimonialsData = [
-      { rating: 5 },
-      { rating: 5 },
-      { rating: 4 }
-    ];
-    
-    function updateTestimonial(index: number): void {
-      if (index < 0 || index >= totalTestimonials) return;
-      
-      // Update images
-      testimonialImages.forEach((image, i) => {
-        image.classList.remove('opacity-100', 'scale-100');
-        image.classList.add('opacity-0', 'scale-105');
-        
-        if (i === index) {
-          image.classList.remove('opacity-0', 'scale-105');
-          image.classList.add('opacity-100', 'scale-100');
-        }
-      });
-      
-      // Update quotes
-      testimonialQuotes.forEach((quote, i) => {
-        quote.classList.remove('opacity-100', 'translate-y-0');
-        quote.classList.add('opacity-0', 'translate-y-4');
-        if (i !== index) quote.classList.add('absolute', 'inset-0');
-        
-        if (i === index) {
-          quote.classList.remove('opacity-0', 'translate-y-4', 'absolute', 'inset-0');
-          quote.classList.add('opacity-100', 'translate-y-0');
-        }
-      });
-      
-      // Update authors
-      testimonialAuthors.forEach((author, i) => {
-        author.classList.remove('opacity-100', 'translate-y-0');
-        author.classList.add('opacity-0', 'translate-y-4');
-        if (i !== index) author.classList.add('absolute', 'inset-0');
-        
-        if (i === index) {
-          author.classList.remove('opacity-0', 'translate-y-4', 'absolute', 'inset-0');
-          author.classList.add('opacity-100', 'translate-y-0');
-        }
-      });
-      
-      // Update rating stars
-      if (testimonialRating) {
-        const rating = testimonialsData[index]?.rating || 5;
-        testimonialRating.style.opacity = '0';
-        setTimeout(() => {
-          testimonialRating.innerHTML = '';
-          for (let i = 0; i < rating; i++) {
-            const star = document.createElement('div');
-            star.innerHTML = '<svg class="w-7 h-7 text-yellow-400" fill="currentColor" viewBox="0 0 256 256"><path d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L165.93,81.17l59.46,5.15A16,16,0,0,1,234.5,114.38Z"></path></svg>';
-            testimonialRating.appendChild(star);
-          }
-          testimonialRating.style.opacity = '1';
-        }, 350);
+    function updateSlider() {
+      if (slider) {
+        const translateX = -currentSlide * 100;
+        slider.style.transform = `translateX(${translateX}%)`;
       }
       
       // Update dots
-      testimonialDots.forEach((dot, i) => {
-        if (i === index) {
-          dot.classList.remove('w-3', 'bg-white/30', 'hover:bg-white/50');
-          dot.classList.add('w-8', 'bg-primary-green');
+      dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.remove('bg-white/30');
+          dot.classList.add('bg-white');
         } else {
-          dot.classList.remove('w-8', 'bg-primary-green');
-          dot.classList.add('w-3', 'bg-white/30', 'hover:bg-white/50');
+          dot.classList.remove('bg-white');
+          dot.classList.add('bg-white/30');
         }
       });
-      
-      currentTestimonial = index;
     }
-    
-    function nextTestimonial(): void {
-      updateTestimonial((currentTestimonial + 1) % totalTestimonials);
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlider();
     }
-    
-    function prevTestimonial(): void {
-      updateTestimonial((currentTestimonial - 1 + totalTestimonials) % totalTestimonials);
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSlider();
     }
-    
-    function startAutoSlide(): void {
-      if (autoSlideInterval) clearInterval(autoSlideInterval);
-      autoSlideInterval = setInterval(() => {
-        nextTestimonial();
-      }, 7000);
-    }
-    
-    function stopAutoSlide(): void {
-      if (autoSlideInterval) {
-        clearInterval(autoSlideInterval);
-        autoSlideInterval = null;
-      }
-    }
-    
+
     // Event listeners
-    if (prevButton) {
-      prevButton.addEventListener('click', () => {
-        stopAutoSlide();
-        prevTestimonial();
-        setTimeout(startAutoSlide, 10000);
-      });
-    }
-    
-    if (nextButton) {
-      nextButton.addEventListener('click', () => {
-        stopAutoSlide();
-        nextTestimonial();
-        setTimeout(startAutoSlide, 10000);
-      });
-    }
-    
+    nextBtn?.addEventListener('click', nextSlide);
+    prevBtn?.addEventListener('click', prevSlide);
+
     // Dot navigation
-    testimonialDots.forEach((dot, index) => {
+    dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
-        stopAutoSlide();
-        updateTestimonial(index);
-        setTimeout(startAutoSlide, 10000);
+        currentSlide = index;
+        updateSlider();
       });
     });
-    
-    // Initialize
-    updateTestimonial(0);
-    startAutoSlide();
-    
-    // Pause auto-slide when page is not visible
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        stopAutoSlide();
-      } else {
-        startAutoSlide();
+
+    // Auto-play slider every 7 seconds
+    setInterval(nextSlide, 7000);
+
+    // Touch/swipe support for mobile
+    let startX = 0;
+    let startY = 0;
+
+    slider?.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+    });
+
+    slider?.addEventListener('touchend', (e) => {
+      if (!startX || !startY) return;
+
+      const endX = e.changedTouches[0].clientX;
+      const endY = e.changedTouches[0].clientY;
+
+      const diffX = startX - endX;
+      const diffY = startY - endY;
+
+      // Only trigger if horizontal swipe is greater than vertical
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 50) {
+          nextSlide();
+        } else if (diffX < -50) {
+          prevSlide();
+        }
       }
+
+      startX = 0;
+      startY = 0;
     });
   });
 </script>

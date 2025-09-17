@@ -63,7 +63,7 @@ const locations: Location[] = [
       </div>
       
       <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-        Cerca de Ti en Todo <span class="bg-gradient-to-r from-primary-green to-emerald-500 bg-clip-text text-transparent">Ecuador</span>
+        Cerca de Ti en Todo <span class="text-green-600">Ecuador</span>
       </h2>
       
       <p class="text-xl text-gray-600 leading-relaxed">
@@ -170,8 +170,9 @@ const locations: Location[] = [
                 href={location.mapUrl}
                 target="_blank"
                 class="flex-1"
+                iconPosition="left"
+                icon="ph:navigation-arrow"
               >
-                <Icon name="ph:navigation-arrow" class="w-4 h-4" />
                 Ver Mapa
               </Button>
               <Button 
@@ -179,8 +180,9 @@ const locations: Location[] = [
                 size="sm" 
                 href={`tel:${location.phone}`}
                 class="flex-1"
+                iconPosition="left"
+                icon="ph:phone"
               >
-                <Icon name="ph:phone" class="w-4 h-4" />
                 Llamar
               </Button>
             </div>
@@ -205,30 +207,29 @@ const locations: Location[] = [
 
           <!-- Coverage Stats -->
           <div class="grid grid-cols-2 gap-6">
-            <div class="text-center p-4 bg-primary-green/5 rounded-2xl">
-              <div class="text-3xl font-bold text-primary-green mb-1">3</div>
+            <div class="text-center p-4 bg-green-50 rounded-2xl border border-green-200">
+              <div class="text-3xl font-bold text-green-600 mb-1">3</div>
               <div class="text-sm text-gray-600">Oficinas</div>
             </div>
-            <div class="text-center p-4 bg-blue-500/5 rounded-2xl">
-              <div class="text-3xl font-bold text-blue-500 mb-1">24</div>
+            <div class="text-center p-4 bg-blue-50 rounded-2xl border border-blue-200">
+              <div class="text-3xl font-bold text-blue-600 mb-1">24</div>
               <div class="text-sm text-gray-600">Provincias</div>
             </div>
-            <div class="text-center p-4 bg-purple-500/5 rounded-2xl">
-              <div class="text-3xl font-bold text-purple-500 mb-1">100+</div>
+            <div class="text-center p-4 bg-purple-50 rounded-2xl border border-purple-200">
+              <div class="text-3xl font-bold text-purple-600 mb-1">100+</div>
               <div class="text-sm text-gray-600">Ciudades</div>
             </div>
-            <div class="text-center p-4 bg-orange-500/5 rounded-2xl">
-              <div class="text-3xl font-bold text-orange-500 mb-1">15k+</div>
+            <div class="text-center p-4 bg-orange-50 rounded-2xl border border-orange-200">
+              <div class="text-3xl font-bold text-orange-600 mb-1">15k+</div>
               <div class="text-sm text-gray-600">Clientes</div>
             </div>
           </div>
 
           <!-- Quick Contact -->
-          <div class="bg-gradient-to-r from-primary-green to-emerald-500 rounded-2xl p-6 text-white">
+          <div class="bg-green-600 rounded-2xl p-6 text-white">
             <h4 class="font-bold mb-2">¿No encuentras una oficina cerca?</h4>
             <p class="text-green-100 text-sm mb-4">También brindamos servicios a domicilio en todo el país</p>
-            <Button variant="outline" href="#form" class="border-white text-white hover:bg-white hover:text-primary-green">
-              <Icon name="ph:house-fill" class="w-4 h-4" />
+            <Button variant="outline" href="#form" class="border-white text-white hover:bg-white hover:text-green-600" iconPosition="left" icon="ph:house-fill">
               Solicitar Visita
             </Button>
           </div>
@@ -251,27 +252,26 @@ const locations: Location[] = [
 
             <!-- Map Placeholder Content -->
             <div class="text-center space-y-4 relative z-10">
-              <div class="w-16 h-16 bg-primary-green rounded-2xl flex items-center justify-center mx-auto">
+              <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mx-auto">
                 <Icon name="ph:map-trifold-fill" class="w-8 h-8 text-white" />
               </div>
               <div>
                 <h4 class="font-bold text-gray-900 mb-2">Mapa Interactivo</h4>
                 <p class="text-gray-600 text-sm mb-4">Explora nuestras ubicaciones</p>
-                <Button variant="success" href="https://maps.google.com" target="_blank">
-                  <Icon name="ph:map-pin" class="w-4 h-4" />
+                <Button variant="success" href="https://maps.google.com" target="_blank" iconPosition="left" icon="ph:map-pin">
                   Ver en Google Maps
                 </Button>
               </div>
             </div>
 
             <!-- Location Pins -->
-            <div class="absolute top-4 left-4 w-6 h-6 bg-primary-green rounded-full flex items-center justify-center animate-pulse">
+            <div class="absolute top-4 left-4 w-6 h-6 bg-green-600 rounded-full flex items-center justify-center animate-pulse">
               <Icon name="ph:map-pin-fill" class="w-4 h-4 text-white" />
             </div>
-            <div class="absolute top-12 right-8 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center animate-pulse" style="animation-delay: 0.5s;">
+            <div class="absolute top-12 right-8 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center animate-pulse" style="animation-delay: 0.5s;">
               <Icon name="ph:map-pin-fill" class="w-4 h-4 text-white" />
             </div>
-            <div class="absolute bottom-8 left-1/3 w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center animate-pulse" style="animation-delay: 1s;">
+            <div class="absolute bottom-8 left-1/3 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center animate-pulse" style="animation-delay: 1s;">
               <Icon name="ph:map-pin-fill" class="w-4 h-4 text-white" />
             </div>
           </div>
@@ -282,32 +282,32 @@ const locations: Location[] = [
     <!-- Service Areas -->
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12" data-aos="fade-up" data-aos-delay="500">
       <div class="text-center p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-primary-green/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-          <Icon name="ph:buildings-fill" class="w-6 h-6 text-primary-green" />
+        <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <Icon name="ph:buildings-fill" class="w-6 h-6 text-white" />
         </div>
         <h4 class="font-bold text-gray-900 mb-2">Costa</h4>
         <p class="text-sm text-gray-600">Guayaquil, Manta, Machala y más</p>
       </div>
 
       <div class="text-center p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-          <Icon name="ph:mountains-fill" class="w-6 h-6 text-blue-500" />
+        <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <Icon name="ph:mountains-fill" class="w-6 h-6 text-white" />
         </div>
         <h4 class="font-bold text-gray-900 mb-2">Sierra</h4>
         <p class="text-sm text-gray-600">Quito, Cuenca, Ambato y más</p>
       </div>
 
       <div class="text-center p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-          <Icon name="ph:tree-fill" class="w-6 h-6 text-green-500" />
+        <div class="w-12 h-12 bg-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <Icon name="ph:tree-fill" class="w-6 h-6 text-white" />
         </div>
         <h4 class="font-bold text-gray-900 mb-2">Oriente</h4>
         <p class="text-sm text-gray-600">Puyo, Tena, Macas y más</p>
       </div>
 
       <div class="text-center p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-          <Icon name="ph:island-fill" class="w-6 h-6 text-purple-500" />
+        <div class="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+          <Icon name="ph:island-fill" class="w-6 h-6 text-white" />
         </div>
         <h4 class="font-bold text-gray-900 mb-2">Galápagos</h4>
         <p class="text-sm text-gray-600">Proyectos especiales</p>

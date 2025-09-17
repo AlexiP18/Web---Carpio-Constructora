@@ -1,0 +1,289 @@
+---
+import { Icon } from 'astro-icon/components';
+import Button from '../ui/Button.astro';
+import OptimizedImage from '../media/OptimizedImage.astro';
+import backgroundLanding from '../../assets/background_landing.jpg';
+---
+
+<section class="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
+  <!-- Background Image with Corporate Overlay -->
+  <OptimizedImage
+    src={backgroundLanding}
+    alt="Constructora Carpio - Líderes en construcción e inmobiliaria"
+    sizes="100vw"
+    class="absolute inset-0 w-full h-full object-cover"
+    quality={95}
+    format="webp"
+    preload={true}
+  />
+  
+  <!-- Corporate Gradient Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/90"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/20 to-slate-900/50"></div>
+  
+  <!-- Hero Content -->
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+      
+      <!-- Left Column - Main Content -->
+      <div class="space-y-8" data-aos="fade-right" data-aos-duration="1000">
+        
+        <!-- Company Badge -->
+        <div class="inline-flex items-center px-4 py-2 bg-blue-600/20 border border-blue-400/30 rounded-full text-blue-300 text-sm font-medium backdrop-blur-sm">
+          <Icon name="ph:buildings" class="w-4 h-4 mr-2" />
+          Más de 15 años construyendo el futuro
+        </div>
+        
+        <!-- Main Heading -->
+        <div class="space-y-4">
+          <h1 class="text-5xl lg:text-7xl font-bold text-white leading-tight">
+            Constructora 
+            <span class="text-blue-400">Carpio</span>
+          </h1>
+          <p class="text-xl lg:text-2xl text-slate-300 font-light leading-relaxed">
+            Expertos en construcción residencial, comercial e industrial. 
+            <span class="text-white font-medium">Calidad garantizada</span> en cada proyecto.
+          </p>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <Button 
+            href="/proyectos" 
+            variant="primary"
+            size="lg"
+            icon="ph:buildings"
+            iconPosition="left"
+            class="text-lg"
+          >
+            Ver Proyectos
+          </Button>
+          
+          <Button 
+            href="/contacto" 
+            variant="outline"
+            size="lg"
+            icon="ph:phone"
+            iconPosition="left"
+            class="text-lg"
+          >
+            Cotizar Proyecto
+          </Button>
+        </div>
+      </div>
+      
+      <!-- Right Column - Statistics -->
+      <div class="space-y-8" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+        
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-2 gap-6">
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center" 
+               data-aos="zoom-in" data-aos-delay="400">
+            <div class="text-4xl lg:text-5xl font-bold text-blue-400 mb-2">15+</div>
+            <div class="text-slate-300 text-sm uppercase tracking-wide">Años de experiencia</div>
+          </div>
+          
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center" 
+               data-aos="zoom-in" data-aos-delay="500">
+            <div class="text-4xl lg:text-5xl font-bold text-blue-400 mb-2">500K+</div>
+            <div class="text-slate-300 text-sm uppercase tracking-wide">m² construidos</div>
+          </div>
+          
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center" 
+               data-aos="zoom-in" data-aos-delay="600">
+            <div class="text-4xl lg:text-5xl font-bold text-blue-400 mb-2">200+</div>
+            <div class="text-slate-300 text-sm uppercase tracking-wide">Proyectos completados</div>
+          </div>
+          
+          <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center" 
+               data-aos="zoom-in" data-aos-delay="700">
+            <div class="text-4xl lg:text-5xl font-bold text-blue-400 mb-2">98%</div>
+            <div class="text-slate-300 text-sm uppercase tracking-wide">Clientes satisfechos</div>
+          </div>
+        </div>
+        
+        <!-- Trust Indicators -->
+        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6" 
+             data-aos="fade-up" data-aos-delay="800">
+          <h3 class="text-white font-semibold mb-4 flex items-center">
+            <Icon name="ph:shield-check" class="w-5 h-5 mr-2 text-green-400" />
+            Certificaciones y Garantías
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-blue-600/20 text-blue-300 text-xs rounded-full border border-blue-400/30">
+              ISO 9001
+            </span>
+            <span class="px-3 py-1 bg-green-600/20 text-green-300 text-xs rounded-full border border-green-400/30">
+              Licencia Municipal
+            </span>
+            <span class="px-3 py-1 bg-orange-600/20 text-orange-300 text-xs rounded-full border border-orange-400/30">
+              Garantía 5 años
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60 animate-bounce" 
+       data-aos="fade-in" data-aos-delay="1200">
+    <Icon name="ph:arrow-down" class="w-6 h-6" />
+  </div>
+</section>
+  
+  .figma-button-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(251, 146, 60, 0.4);
+  }
+  
+  .figma-button-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .figma-button-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Enhanced hover effects */
+  .hover-lift {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hover-lift::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s ease;
+  }
+  
+  .hover-lift:hover::before {
+    left: 100%;
+  }
+  
+  /* Background image animations */
+  .hero-bg {
+    animation: subtleZoom 20s ease-in-out infinite alternate;
+  }
+  
+  @keyframes subtleZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+  
+  /* Parallax effect for background */
+  @media (prefers-reduced-motion: no-preference) {
+    section {
+      background-attachment: fixed;
+    }
+    
+    /* Enhanced animations */
+    .animate-bounce {
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 53%, 80%, 100% {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: translate3d(-50%, 0, 0);
+      }
+      40%, 43% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(-50%, -30px, 0);
+      }
+      70% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(-50%, -15px, 0);
+      }
+      90% {
+        transform: translate3d(-50%, -4px, 0);
+      }
+    }
+  }
+  
+  /* Text glow effect */
+  h1 {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Improved responsive typography */
+  @media (max-width: 640px) {
+    h1 {
+      font-size: clamp(36px, 10vw, 48px) !important;
+    }
+  }
+</style>
+
+<script>
+  // Enhanced scroll behavior with throttling
+  let ticking = false;
+  
+  function updateParallax(): void {
+    const scrolled = window.pageYOffset;
+    const rate = scrolled * -0.5;
+    const heroSection = document.querySelector('.hero-bg') as HTMLElement | null;
+    
+    if (heroSection) {
+      heroSection.style.transform = `translate3d(0, ${rate}px, 0) scale(1.05)`;
+    }
+    
+    ticking = false;
+  }
+  
+  function requestTick(): void {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+  
+  // Only apply parallax on larger screens and if motion is preferred
+  if (window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.addEventListener('scroll', requestTick);
+  }
+  
+  // Button hover effects with explicit typing
+  document.querySelectorAll('.hover-lift').forEach((button) => {
+    const buttonElement = button as HTMLElement;
+    
+    buttonElement.addEventListener('mouseenter', function(this: HTMLElement) {
+      this.style.transform = 'translateY(-2px) scale(1.02)';
+    });
+    
+    buttonElement.addEventListener('mouseleave', function(this: HTMLElement) {
+      this.style.transform = 'translateY(0) scale(1)';
+    });
+  });
+  
+  // Intersection Observer for enhanced animations
+  const observerOptions: IntersectionObserverInit = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).classList.add('animate-in');
+      }
+    });
+  }, observerOptions);
+  
+  // Observe stats elements for staggered animation
+  document.querySelectorAll('[data-aos="zoom-in"]').forEach(el => {
+    observer.observe(el);
+  });
+</script>

@@ -1,196 +1,60 @@
 ---
-import { Icon } from "astro-icon/components";
-import Button from '../ui/Button.astro';
-
+// Componente minimalista
 ---
 
-<section class="relative py-20 lg:py-32 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 overflow-hidden">
-  <!-- Background Image with Overlay -->
-  <div class="absolute inset-0">
-    <img 
-      src="/images/header-50.png" 
-      alt="Contacto Constructora Carpio"
-      class="w-full h-full object-cover opacity-30"
-    />
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-gray-900/60 to-slate-900/80"></div>
-  </div>
+<section class="py-16 lg:py-24 bg-gray-600">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    
+    <!-- Main Content -->
+    <div class="space-y-8">
+      <!-- Heading -->
+      <div class="space-y-4">
+        <h1 class="text-4xl lg:text-5xl font-bold text-white leading-tight">
+          Contactanos
+        </h1>
+        <p class="text-lg text-white/80 max-w-2xl mx-auto">
+          Estamos listos para convertir tus ideas en realidad
+        </p>
+      </div>
 
-  <!-- Background decorations -->
-  <div class="absolute inset-0">
-    <div class="absolute top-20 left-20 w-40 h-40 bg-primary-green/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl"></div>
-    <div class="absolute top-1/2 right-10 w-24 h-24 bg-purple-500/15 rounded-full blur-xl"></div>
-  </div>
-
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <!-- Content Side -->
-      <div class="space-y-8" data-aos="fade-right">
-        <!-- Badge -->
-        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2">
-          <Icon name="ph:chat-circle-text-fill" class="w-5 h-5 text-primary-green" />
-          <span class="text-white font-semibold text-sm">Contacto Directo</span>
+      <!-- Contact Info -->
+      <div class="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+        <div class="bg-gray-700 rounded-lg p-6 border border-gray-600">
+          <div class="text-center space-y-3">
+            <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mx-auto">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.785"/>
+              </svg>
+            </div>
+            <div class="text-white">
+              <div class="font-semibold">WhatsApp</div>
+              <div class="text-white/70">095 632 4598</div>
+            </div>
+          </div>
         </div>
         
-        <!-- Main Heading -->
-        <div class="space-y-6">
-          <h1 class="text-5xl lg:text-7xl font-bold text-white leading-tight">
-            Hablemos de Tu <span class="bg-gradient-to-r from-primary-green to-emerald-400 bg-clip-text text-transparent">Próximo Proyecto</span>
-          </h1>
-          
-          <p class="text-xl text-gray-300 leading-relaxed max-w-lg">
-            Estamos listos para convertir tus ideas en realidad. Contacta con nuestro equipo de expertos y comencemos a construir juntos.
-          </p>
-        </div>
-
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-3 gap-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10 text-center">
-            <div class="text-2xl font-bold text-white">150+</div>
-            <div class="text-sm text-gray-300">Proyectos</div>
-          </div>
-          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10 text-center">
-            <div class="text-2xl font-bold text-white">24h</div>
-            <div class="text-sm text-gray-300">Respuesta</div>
-          </div>
-          <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/10 text-center">
-            <div class="text-2xl font-bold text-white">15+</div>
-            <div class="text-sm text-gray-300">Años</div>
-          </div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="300">
-          <Button variant="success" href="#form" class="group">
-            <Icon name="ph:rocket-launch-fill" class="w-5 h-5 group-hover:animate-bounce" />
-            Solicitar Cotización
-          </Button>
-          <Button variant="outline" href="#info" class="group">
-            <Icon name="ph:phone-fill" class="w-5 h-5 group-hover:scale-110 transition-transform" />
-            Llamar Ahora
-          </Button>
-        </div>
-
-        <!-- Quick Contact -->
-        <div class="flex items-center gap-6 pt-4" data-aos="fade-up" data-aos-delay="400">
-          <div class="flex items-center gap-3 text-white">
-            <div class="w-12 h-12 bg-primary-green/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-              <Icon name="ph:whatsapp-logo-fill" class="w-6 h-6 text-primary-green" />
+        <div class="bg-gray-700 rounded-lg p-6 border border-gray-600">
+          <div class="text-center space-y-3">
+            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mx-auto">
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+              </svg>
             </div>
-            <div>
-              <div class="text-sm text-gray-300">WhatsApp</div>
-              <div class="font-semibold">095 632 4598</div>
-            </div>
-          </div>
-          
-          <div class="w-px h-12 bg-white/20"></div>
-          
-          <div class="flex items-center gap-3 text-white">
-            <div class="w-12 h-12 bg-blue-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
-              <Icon name="ph:envelope-fill" class="w-6 h-6 text-blue-400" />
-            </div>
-            <div>
-              <div class="text-sm text-gray-300">Email</div>
-              <div class="font-semibold">hola@carpio.com</div>
+            <div class="text-white">
+              <div class="font-semibold">Email</div>
+              <div class="text-white/70">hola@carpio.com</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Visual Side -->
-      <div class="relative" data-aos="fade-left" data-aos-delay="200">
-        <!-- Main Contact Card -->
-        <div class="bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 relative">
-          <!-- Floating Elements -->
-          <div class="absolute -top-4 -right-4 w-16 h-16 bg-primary-green/30 rounded-2xl rotate-12 blur-sm"></div>
-          <div class="absolute -bottom-4 -left-4 w-12 h-12 bg-blue-500/30 rounded-xl -rotate-12 blur-sm"></div>
-          
-          <div class="space-y-6">
-            <div class="text-center">
-              <div class="w-20 h-20 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary-green/30">
-                <Icon name="ph:buildings-fill" class="w-10 h-10 text-white" />
-              </div>
-              <h3 class="text-xl font-bold text-white mb-2">Constructora Carpio</h3>
-              <p class="text-gray-300 text-sm">Construyendo sueños desde 2009</p>
-            </div>
-
-            <!-- Quick Info Grid -->
-            <div class="grid grid-cols-2 gap-4 pt-4">
-              <div class="text-center">
-                <div class="text-2xl font-bold text-primary-green">24/7</div>
-                <div class="text-xs text-gray-300">Atención</div>
-              </div>
-              <div class="text-center">
-                <div class="text-2xl font-bold text-blue-400">100%</div>
-                <div class="text-xs text-gray-300">Garantía</div>
-              </div>
-              <div class="text-center">
-                <div class="text-2xl font-bold text-purple-400">15min</div>
-                <div class="text-xs text-gray-300">Respuesta</div>
-              </div>
-              <div class="text-center">
-                <div class="text-2xl font-bold text-orange-400">Gratis</div>
-                <div class="text-xs text-gray-300">Cotización</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Floating Action Cards -->
-        <div class="absolute -top-8 left-8 bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 animate-float">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-green-500/30 rounded-xl flex items-center justify-center">
-              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-green-400" />
-            </div>
-            <div class="text-white">
-              <div class="text-sm font-semibold">Presupuesto Gratuito</div>
-              <div class="text-xs text-gray-300">En menos de 24h</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="absolute -bottom-8 right-8 bg-white/10 backdrop-blur-sm rounded-2xl p-4 border border-white/20 animate-float-delayed">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-blue-500/30 rounded-xl flex items-center justify-center">
-              <Icon name="ph:headset-fill" class="w-5 h-5 text-blue-400" />
-            </div>
-            <div class="text-white">
-              <div class="text-sm font-semibold">Asesoría Personalizada</div>
-              <div class="text-xs text-gray-300">Sin compromiso</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2" data-aos="fade-up" data-aos-delay="600">
-      <div class="flex flex-col items-center gap-2 text-white/60">
-        <span class="text-sm font-medium">Desliza para más información</span>
-        <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <div class="w-1 h-3 bg-white/60 rounded-full animate-bounce mt-2"></div>
-        </div>
+      <!-- Action Button -->
+      <div class="pt-4">
+        <a href="#form" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-200">
+          Solicitar Cotización
+        </a>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-  
-  @keyframes float-delayed {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-  }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  .animate-float-delayed {
-    animation: float-delayed 3s ease-in-out infinite 1.5s;
-  }
-</style>

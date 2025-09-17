@@ -18,7 +18,7 @@ import { Icon } from 'astro-icon/components';
       
       <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
         Comprometidos con la 
-        <span class="bg-gradient-to-r from-primary-green to-emerald-500 bg-clip-text text-transparent">
+        <span class="text-green-600">
           calidad y la innovación
         </span>
       </h2>
@@ -34,8 +34,8 @@ import { Icon } from 'astro-icon/components';
       <div class="space-y-12">
         <!-- Misión -->
         <div class="space-y-6" data-aos="fade-right" data-aos-delay="100">
-          <div class="w-16 h-16 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center">
-            <Icon name="ph:target-fill" class="w-8 h-8 text-white" />
+          <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center">
+            <Icon name="ph:target-fill" class="w-8 h-8 text-gray-900" />
           </div>
           <div>
             <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestra Misión</h3>
@@ -121,12 +121,10 @@ import { Icon } from 'astro-icon/components';
     <!-- CTA Section -->
     <div class="text-center mt-20 space-y-8" data-aos="fade-up" data-aos-delay="500">
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button variant="success" href="/contacto">
-          <Icon name="ph:phone" class="w-5 h-5" />
+        <Button variant="success" href="/contacto" iconPosition="left" icon="ph:phone">
           Contáctanos Hoy
         </Button>
-        <Button variant="outline" href="/proyectos">
-          <Icon name="ph:arrow-right" class="w-5 h-5" />
+        <Button variant="outline-dark" href="/proyectos" iconPosition="left" icon="ph:arrow-right">
           Ver Nuestros Proyectos
         </Button>
       </div>

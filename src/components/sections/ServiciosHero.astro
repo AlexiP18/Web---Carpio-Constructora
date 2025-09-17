@@ -1,126 +1,76 @@
 ---
 import Button from '../ui/Button.astro';
-import { Icon } from 'astro-icon/components';
 ---
 
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-  <!-- Background decorative elements -->
-  <div class="absolute inset-0">
-    <div class="absolute top-20 left-10 w-72 h-72 bg-primary-green/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary-green/5 to-blue-500/5 rounded-full blur-3xl"></div>
-  </div>
-
-  <!-- Grid pattern overlay -->
-  <div class="absolute inset-0 opacity-20">
-    <div class="h-full w-full bg-[linear-gradient(to_right,#8b5cf6_1px,transparent_1px),linear-gradient(to_bottom,#8b5cf6_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
-  </div>
-
-  <div class="relative z-10 max-w-7xl mx-auto px-6 py-20">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <!-- Content Column -->
-      <div class="space-y-8" data-aos="fade-right" data-aos-duration="1000">
-        <!-- Tagline -->
-        <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2">
-          <Icon name="ph:wrench-fill" class="w-5 h-5 text-primary-green" />
-          <span class="text-primary-green font-semibold text-sm">Servicios Profesionales</span>
+<section class="bg-gray-600 py-32 lg:py-40">
+  <div class="max-w-4xl mx-auto px-6 text-left">
+    <!-- Tagline -->
+    <p class="text-sm font-medium text-white/80 uppercase tracking-wider mb-8">
+      Servicios
+    </p>
+    
+    <!-- Main Heading -->
+    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8">
+      Nuestros<br>
+      Servicios
+    </h1>
+    
+    <!-- Description -->
+    <p class="text-xl lg:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl">
+      Ofrecemos soluciones constructivas integrales con los más altos estándares de calidad para satisfacer todas tus necesidades.
+    </p>
+    
+    <!-- Service categories - Simple grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
+        <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm3 1h6v4H7V5zm6 6H7v2h6v-2z" clip-rule="evenodd"/>
+          </svg>
         </div>
-
-        <!-- Main Heading -->
-        <div class="space-y-6">
-          <h1 class="text-5xl lg:text-7xl font-bold text-white leading-tight">
-            Servicios de
-            <span class="bg-gradient-to-r from-primary-green to-emerald-400 bg-clip-text text-transparent">
-              Calidad Superior
-            </span>
-          </h1>
-          <p class="text-xl text-gray-300 leading-relaxed max-w-xl">
-            Ofrecemos soluciones constructivas personalizadas e integrales para satisfacer todas tus necesidades de construcción con los más altos estándares de calidad.
-          </p>
-        </div>
-
-        <!-- Service highlights -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center">
-            <Icon name="ph:buildings-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
-            <div class="text-sm font-semibold text-white">Construcción</div>
-            <div class="text-xs text-gray-400">Residencial & Comercial</div>
-          </div>
-          <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center">
-            <Icon name="ph:hammer-fill" class="w-8 h-8 text-blue-400 mx-auto mb-2" />
-            <div class="text-sm font-semibold text-white">Remodelación</div>
-            <div class="text-xs text-gray-400">Espacios Renovados</div>
-          </div>
-          <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 text-center">
-            <Icon name="ph:gear-fill" class="w-8 h-8 text-purple-400 mx-auto mb-2" />
-            <div class="text-sm font-semibold text-white">Mantenimiento</div>
-            <div class="text-xs text-gray-400">Cuidado Integral</div>
-          </div>
-        </div>
-
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="400">
-          <Button variant="success" href="#servicios">
-            <Icon name="ph:arrow-down" class="w-5 h-5" />
-            Explorar Servicios
-          </Button>
-          <Button variant="outline-dark" href="/contacto">
-            <Icon name="ph:phone" class="w-5 h-5" />
-            Solicitar Cotización
-          </Button>
-        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">Construcción</h3>
+        <p class="text-sm text-white/70">Residencial & Comercial</p>
       </div>
-
-      <!-- Visual Column -->
-      <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-        <!-- Main visual container -->
-        <div class="relative">
-          <!-- Central service hub -->
-          <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 shadow-2xl">
-            <div class="space-y-6 text-center">
-              <div class="w-20 h-20 bg-gradient-to-br from-primary-green to-emerald-500 rounded-3xl flex items-center justify-center mx-auto">
-                <Icon name="ph:check-circle-fill" class="w-10 h-10 text-white" />
-              </div>
-              <div>
-                <h3 class="text-2xl font-bold text-white mb-2">Garantía de Calidad</h3>
-                <p class="text-gray-300">Servicios certificados con garantía extendida</p>
-              </div>
-              <!-- Service stats -->
-              <div class="grid grid-cols-2 gap-4 pt-4">
-                <div>
-                  <div class="text-2xl font-bold text-primary-green">3</div>
-                  <div class="text-xs text-gray-400">Servicios Principales</div>
-                </div>
-                <div>
-                  <div class="text-2xl font-bold text-primary-green">24/7</div>
-                  <div class="text-xs text-gray-400">Soporte</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Floating service cards -->
-          <div class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg animate-bounce">
-            <Icon name="ph:house-fill" class="w-12 h-12 text-white" />
-          </div>
-
-          <div class="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg animate-pulse">
-            <Icon name="ph:wrench-fill" class="w-10 h-10 text-white" />
-          </div>
-
-          <div class="absolute top-1/2 -right-12 w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center shadow-lg">
-            <Icon name="ph:shield-check-fill" class="w-8 h-8 text-white" />
-          </div>
+      
+      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
+        <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+          </svg>
         </div>
+        <h3 class="text-lg font-semibold text-white mb-2">Remodelación</h3>
+        <p class="text-sm text-white/70">Renovación de Espacios</p>
+      </div>
+      
+      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
+        <div class="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-white mb-2">Mantenimiento</h3>
+        <p class="text-sm text-white/70">Cuidado Integral</p>
       </div>
     </div>
-
-    <!-- Bottom scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center" data-aos="fade-up" data-aos-delay="600">
-      <div class="text-gray-400 text-sm mb-2">Descubre nuestros servicios</div>
-      <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-        <div class="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
-      </div>
+    
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4">
+      <Button 
+        variant="primary" 
+        size="lg"
+        href="#servicios-lista"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-medium transition-colors"
+      >
+        Ver Todos los Servicios
+      </Button>
+      <Button 
+        variant="outline" 
+        size="lg"
+        href="/contacto"
+        class="border-2 border-white text-white hover:bg-white hover:text-gray-600 px-8 py-4 rounded-full font-medium transition-all"
+      >
+        Solicitar Cotización
+      </Button>
     </div>
   </div>
 </section>

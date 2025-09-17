@@ -1,104 +1,43 @@
 ---
 import Button from '../ui/Button.astro';
-import { Icon } from 'astro-icon/components';
 ---
 
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-  <!-- Background decorative elements -->
-  <div class="absolute inset-0">
-    <div class="absolute top-20 left-10 w-72 h-72 bg-primary-green/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary-green/5 to-blue-500/5 rounded-full blur-3xl"></div>
-  </div>
-
-  <!-- Grid pattern overlay -->
-  <div class="absolute inset-0 opacity-20">
-    <div class="h-full w-full bg-[linear-gradient(to_right,#8b5cf6_1px,transparent_1px),linear-gradient(to_bottom,#8b5cf6_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
-  </div>
-
-  <div class="relative z-10 max-w-7xl mx-auto px-6 py-20">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <!-- Content Column -->
-      <div class="space-y-8" data-aos="fade-right" data-aos-duration="1000">
-        <!-- Tagline -->
-        <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2">
-          <Icon name="ph:buildings-fill" class="w-5 h-5 text-primary-green" />
-          <span class="text-primary-green font-semibold text-sm">Construcción de Excelencia</span>
-        </div>
-
-        <!-- Main Heading -->
-        <div class="space-y-6">
-          <h1 class="text-5xl lg:text-7xl font-bold text-white leading-tight">
-            Conoce a
-            <span class="bg-gradient-to-r from-primary-green to-emerald-400 bg-clip-text text-transparent">
-              Constructora Carpio
-            </span>
-          </h1>
-          <p class="text-xl text-gray-300 leading-relaxed max-w-xl">
-            Más de 15 años construyendo sueños y transformando espacios. Somos una empresa familiar comprometida con la calidad, innovación y excelencia en cada proyecto.
-          </p>
-        </div>
-
-        <!-- Stats -->
-        <div class="grid grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="200">
-          <div class="text-center">
-            <div class="text-3xl font-bold text-primary-green">150+</div>
-            <div class="text-sm text-gray-400">Proyectos Completados</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-primary-green">15+</div>
-            <div class="text-sm text-gray-400">Años de Experiencia</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-primary-green">50+</div>
-            <div class="text-sm text-gray-400">Clientes Satisfechos</div>
-          </div>
-        </div>
-
-        <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="400">
-          <Button variant="success" href="/proyectos">
-            <Icon name="ph:arrow-right" class="w-5 h-5" />
-            Descubre Nuestros Proyectos
-          </Button>
-          <Button variant="outline" href="/contacto">
-            <Icon name="ph:phone" class="w-5 h-5" />
-            Contáctanos Hoy
-          </Button>
-        </div>
-      </div>
-
-      <!-- Visual Column -->
-      <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-        <!-- Main image placeholder with floating elements -->
-        <div class="relative">
-          <!-- Central card -->
-          <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 shadow-2xl">
-            <div class="space-y-6">
-              <div class="w-16 h-16 bg-primary-green rounded-2xl flex items-center justify-center">
-                <Icon name="ph:hard-hat-fill" class="w-8 h-8 text-white" />
-              </div>
-              <div>
-                <h3 class="text-2xl font-bold text-white mb-2">Calidad Garantizada</h3>
-                <p class="text-gray-300">Utilizamos materiales de primera calidad y técnicas constructivas avanzadas.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Floating elements -->
-          <div class="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg animate-bounce">
-            <Icon name="ph:certificate-fill" class="w-12 h-12 text-white" />
-          </div>
-
-          <div class="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg animate-pulse">
-            <Icon name="ph:medal-fill" class="w-10 h-10 text-white" />
-          </div>
-
-          <div class="absolute top-1/2 -right-12 w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-lg">
-            <Icon name="ph:star-fill" class="w-8 h-8 text-white" />
-          </div>
-        </div>
-      </div>
+<section class="bg-gray-600 py-32 lg:py-40">
+  <div class="max-w-4xl mx-auto px-6 text-left">
+    <!-- Tagline -->
+    <p class="text-sm font-medium text-white/80 uppercase tracking-wider mb-8">
+      Construcción
+    </p>
+    
+    <!-- Main Heading -->
+    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8">
+      Conoce a Nuestra<br>
+      Empresa
+    </h1>
+    
+    <!-- Description -->
+    <p class="text-xl lg:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl">
+      Nos dedicamos a crear espacios que inspiran y construyen el futuro de nuestras comunidades.
+    </p>
+    
+    <!-- CTA Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4">
+      <Button 
+        variant="primary" 
+        size="lg"
+        href="/quienes-somos"
+        class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-medium transition-colors"
+      >
+        Descubre
+      </Button>
+      <Button 
+        variant="outline" 
+        size="lg"
+        href="/contacto"
+        class="border-2 border-white text-white hover:bg-white hover:text-gray-600 px-8 py-4 rounded-full font-medium transition-all"
+      >
+        Contáctanos
+      </Button>
     </div>
   </div>
 </section>

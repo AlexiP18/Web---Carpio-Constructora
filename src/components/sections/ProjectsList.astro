@@ -45,7 +45,7 @@ const projects = [
       </div>
       
       <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-        Nuestros Proyectos <span class="bg-gradient-to-r from-primary-green to-emerald-400 bg-clip-text text-transparent">Destacados</span>
+        Nuestros Proyectos <span class="text-green-600">Destacados</span>
       </h2>
       
       <p class="text-xl text-gray-600 leading-relaxed">
@@ -56,22 +56,22 @@ const projects = [
 
     <!-- Filter Tabs (Future Enhancement) -->
     <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
-      <button class="bg-primary-green text-white px-6 py-3 rounded-full font-semibold hover:bg-primary-green/90 transition-colors">
+      <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold transition-colors shadow-md">
         Todos los Proyectos
       </button>
-      <button class="bg-white border border-gray-200 text-gray-600 px-6 py-3 rounded-full font-semibold hover:border-primary-green hover:text-primary-green transition-colors">
+      <button class="bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-full font-semibold hover:border-green-600 hover:text-green-600 hover:bg-green-50 transition-colors shadow-md">
         Residencial
       </button>
-      <button class="bg-white border border-gray-200 text-gray-600 px-6 py-3 rounded-full font-semibold hover:border-primary-green hover:text-primary-green transition-colors">
+      <button class="bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-full font-semibold hover:border-green-600 hover:text-green-600 hover:bg-green-50 transition-colors shadow-md">
         Comercial
       </button>
-      <button class="bg-white border border-gray-200 text-gray-600 px-6 py-3 rounded-full font-semibold hover:border-primary-green hover:text-primary-green transition-colors">
+      <button class="bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-full font-semibold hover:border-green-600 hover:text-green-600 hover:bg-green-50 transition-colors shadow-md">
         Recreativo
       </button>
     </div>
 
     <!-- Projects Grid -->
-    <div class="grid lg:grid-cols-2 xl:grid-cols-1 gap-12 mb-16">
+    <div class="space-y-8 mb-16">
       {projects.map((project, index) => (
         <ProjectCard 
           {...project}
@@ -79,60 +79,4 @@ const projects = [
         />
       ))}
     </div>
-
-    <!-- Call to Action -->
-    <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl p-8 lg:p-12 relative overflow-hidden" data-aos="fade-up" data-aos-delay="500">
-      <!-- Background decoration -->
-      <div class="absolute inset-0">
-        <div class="absolute top-0 right-0 w-32 h-32 bg-primary-green/10 rounded-full blur-2xl"></div>
-        <div class="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/10 rounded-full blur-xl"></div>
-      </div>
-
-      <div class="relative z-10 grid lg:grid-cols-2 gap-8 items-center">
-        <!-- Content -->
-        <div class="space-y-6">
-          <h3 class="text-2xl lg:text-3xl font-bold text-white">
-            ¿Tienes un proyecto en mente?
-          </h3>
-          <p class="text-gray-300 leading-relaxed">
-            Nuestro equipo de expertos está listo para hacer realidad tu visión. 
-            Desde la conceptualización hasta la entrega final, te acompañamos en cada paso.
-          </p>
-          
-          <!-- Features -->
-          <div class="grid grid-cols-2 gap-4">
-            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
-              <Icon name="ph:users-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
-              <div class="text-white font-semibold">Equipo Experto</div>
-              <div class="text-gray-400 text-sm">15+ años experiencia</div>
-            </div>
-            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center">
-              <Icon name="ph:certificate-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
-              <div class="text-white font-semibold">Calidad Garantizada</div>
-              <div class="text-gray-400 text-sm">Certificaciones</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Call to Action -->
-        <div class="text-center lg:text-right space-y-6">
-          <div class="space-y-2">
-            <h4 class="text-xl font-bold text-white">¿Listo para empezar?</h4>
-            <p class="text-gray-300">Contacta con nosotros hoy mismo</p>
-          </div>
-          
-          <div class="flex flex-col sm:flex-row lg:flex-col gap-4 lg:items-end">
-            <Button variant="success" href="/contacto">
-              <Icon name="ph:chat-circle-text-fill" class="w-5 h-5" />
-              Iniciar Proyecto
-            </Button>
-            <Button variant="outline" href="/servicios">
-              <Icon name="ph:list-fill" class="w-5 h-5" />
-              Ver Servicios
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>

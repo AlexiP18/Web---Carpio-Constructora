@@ -4,7 +4,6 @@ import Header from "../../components/ui/Header.astro";
 import Footer from "../../components/sections/Footer.astro";
 import ProjectHero from "../../components/project/ProjectHero.astro";
 import ProjectContent from "../../components/project/ProjectContent.astro";
-import ProjectGallery from "../../components/project/ProjectGallery.astro";
 import ProjectTestimonials from "../../components/project/ProjectTestimonials.astro";
 
 export async function getStaticPaths() {
@@ -195,11 +194,7 @@ const { title, description, tags, content, images, testimonial, testimonials } =
     <ProjectContent 
       title={title}
       content={content}
-    />
-    
-    <ProjectGallery 
       images={images}
-      title={title}
     />
     
     <ProjectTestimonials 
