@@ -1,0 +1,179 @@
+---
+import { Icon } from 'astro-icon/components';
+import Button from '../../ui/Button.astro';
+import OptimizedImage from '../../media/OptimizedImage.astro';
+import backgroundLanding from '../../../assets/background_landing.jpg';
+---
+
+<section class="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background Image with Optimization -->
+  <OptimizedImage
+    src={backgroundLanding}
+    alt="Constructora Carpio - Proyectos de construcción"
+    sizes="100vw"
+    class="absolute inset-0 w-full h-full object-cover hero-bg"
+    quality={95}
+    format="webp"
+    preload={true}
+  />
+  
+  <!-- Gradient Overlay matching Figma design -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/20"></div>
+  
+  <!-- Centered Content Container following Figma layout -->
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 text-center">
+    <div class="max-w-4xl mx-auto space-y-8" data-aos="fade-up" data-aos-duration="1200">
+      
+      <!-- Main Heading - Figma specs: 84px font size -->
+      <h1 class="font-urbanist font-bold text-white leading-tight"
+          style="font-size: clamp(48px, 8vw, 84px); line-height: 1.1;">
+        Constructora Carpio
+      </h1>
+      
+      <!-- Subtitle - Figma specs: 20px font size -->
+      <p class="font-heebo font-normal text-white/90 max-w-2xl mx-auto leading-relaxed"
+         style="font-size: 20px; line-height: 1.6;">
+        Construimos tus sueños con calidad y confianza. Proyectos residenciales y comerciales 
+        con más de 15 años de experiencia en el sector.
+      </p>
+      
+      <!-- Action Buttons - Using new standardized Button component -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4" 
+           data-aos="fade-up" 
+           data-aos-delay="300">
+        <Button 
+          href="/proyectos" 
+          variant="orange"
+          size="lg"
+          icon="ph:arrow-right"
+          iconPosition="left"
+          class="min-w-[180px]"
+        >
+          Ver Proyectos
+        </Button>
+        
+        <Button 
+          href="/servicios" 
+          variant="outline"
+          size="lg"
+          icon="ph:list-bullets"
+          iconPosition="left"
+          class="min-w-[180px]"
+        >
+          Ver Servicios
+        </Button>
+      </div>
+      
+    </div>
+  </div>
+  
+  <!-- Scroll Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce" 
+       data-aos="fade-in" 
+       data-aos-delay="1200">
+    <Icon name="ph:arrow-down" class="w-6 h-6" />
+  </div>
+</section>
+
+<style>
+  /* Background image animations */
+  .hero-bg {
+    animation: subtleZoom 20s ease-in-out infinite alternate;
+  }
+  
+  @keyframes subtleZoom {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
+  
+  /* Parallax effect for background */
+  @media (prefers-reduced-motion: no-preference) {
+    section {
+      background-attachment: fixed;
+    }
+    
+    /* Enhanced animations */
+    .animate-bounce {
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 53%, 80%, 100% {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transform: translate3d(-50%, 0, 0);
+      }
+      40%, 43% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(-50%, -30px, 0);
+      }
+      70% {
+        animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+        transform: translate3d(-50%, -15px, 0);
+      }
+      90% {
+        transform: translate3d(-50%, -4px, 0);
+      }
+    }
+  }
+  
+  /* Text glow effect */
+  h1 {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Improved responsive typography */
+  @media (max-width: 640px) {
+    h1 {
+      font-size: clamp(36px, 10vw, 48px) !important;
+    }
+  }
+</style>
+
+<script>
+  // Enhanced scroll behavior with throttling
+  let ticking = false;
+  
+  function updateParallax(): void {
+    const scrolled = window.pageYOffset;
+    const rate = scrolled * -0.5;
+    const heroSection = document.querySelector('.hero-bg') as HTMLElement | null;
+    
+    if (heroSection) {
+      heroSection.style.transform = `translate3d(0, ${rate}px, 0) scale(1.05)`;
+    }
+    
+    ticking = false;
+  }
+  
+  function requestTick(): void {
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+  
+  // Only apply parallax on larger screens and if motion is preferred
+  if (window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.addEventListener('scroll', requestTick);
+  }
+  
+  // Intersection Observer for enhanced animations
+  const observerOptions: IntersectionObserverInit = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).classList.add('animate-in');
+      }
+    });
+  }, observerOptions);
+  
+  // Observe stats elements for staggered animation
+  document.querySelectorAll('[data-aos="zoom-in"]').forEach(el => {
+    observer.observe(el);
+  });
+</script>

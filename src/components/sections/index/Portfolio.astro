@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import Card from '../../base/Card.astro';
+import Button from '../../ui/Button.astro';
+
+const projects = (await getCollection('proyectos')).slice(0, 3);
+---
+
+<!-- Portfolio Section based on Figma Layout 395 -->
+<section class="w-full bg-neutral-lightest py-20">
+  <div class="container mx-auto px-6 lg:px-8">
+    <!-- Header Section -->
+    <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
+      <!-- Tagline -->
+      <div class="font-heebo font-semibold text-sm text-neutral-darkest mb-3 tracking-wider uppercase">
+        Construcción
+      </div>
+      
+      <!-- Main Title - 60px as per Figma -->
+      <h2 class="font-urbanist font-medium text-[60px] leading-[1.2] text-neutral-darkest mb-6 max-w-4xl mx-auto">
+        Calidad en cada proyecto
+      </h2>
+      <!-- Subtitle under title -->
+      <p class="font-heebo font-normal text-[18px] leading-[1.6] text-neutral-darkest/80 max-w-2xl mx-auto">
+        Transformamos tus ideas en realidades constructivas.
+      </p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      {projects.map((project, index) => (
+        <div data-aos="fade-up" data-aos-delay={index * 100} data-aos-duration="800">
+          <Card
+            title={project.data.title || 'Proyecto Sin Título'}
+            description={project.data.description || 'Descripción del proyecto en desarrollo.'}
+            imageSrc={project.data.image || '/images/placeholder-image.png'}
+            imageAlt={`Imagen del proyecto ${project.data.title || project.slug}`}
+            category={project.data.category || 'General'}
+            href={`/proyecto/${project.slug}`}
+            buttonText="Ver proyecto"
+          />
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA Button -->
+    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+      <Button
+        variant="success"
+        size="lg"
+        href="/proyectos"
+        icon="ph:arrow-right"
+        class="px-8 py-4"
+      >
+        Ver todos los proyectos
+      </Button>
+    </div>
+  </div>
+</section>

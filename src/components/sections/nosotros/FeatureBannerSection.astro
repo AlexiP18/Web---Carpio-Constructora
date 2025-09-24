@@ -1,0 +1,277 @@
+---
+import Button from '../../ui/Button.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<section class="space-y-0">
+  <!-- Banner 1: Nuestro Equipo de Expertos -->
+  <div class="relative py-24 overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700"></div>
+    <div class="absolute inset-0 bg-[url('/images/placeholder-image.png')] bg-cover bg-center opacity-30"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-transparent"></div>
+
+    <!-- Decorative elements -->
+    <div class="absolute top-20 right-20 w-32 h-32 bg-primary-green/20 rounded-full blur-2xl"></div>
+    <div class="absolute bottom-20 left-20 w-40 h-40 bg-blue-500/20 rounded-full blur-2xl"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8" data-aos="fade-right" data-aos-duration="1000">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2">
+            <Icon name="ph:users-fill" class="w-5 h-5 text-primary-green" />
+            <span class="text-primary-green font-semibold text-sm">Nuestro Equipo</span>
+          </div>
+
+          <h2 class="text-5xl lg:text-6xl font-bold text-white leading-tight">
+            Conoce a Nuestro Equipo de 
+            <span class="text-green-400">
+              Expertos
+            </span>
+          </h2>
+
+          <p class="text-xl text-gray-300 leading-relaxed">
+            En Constructora Carpio, contamos con profesionales certificados y con amplia experiencia en el sector. Nuestro equipo multidisciplinario está comprometido con la excelencia y la innovación en cada proyecto que emprendemos.
+          </p>
+
+          <!-- Features list -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <Icon name="ph:check-circle-fill" class="w-6 h-6 text-primary-green" />
+              <span class="text-gray-300">Profesionales certificados y especializados</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <Icon name="ph:check-circle-fill" class="w-6 h-6 text-primary-green" />
+              <span class="text-gray-300">Más de 15 años de experiencia combinada</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <Icon name="ph:check-circle-fill" class="w-6 h-6 text-primary-green" />
+              <span class="text-gray-300">Compromiso con la excelencia e innovación</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <Button variant="success" href="/equipo">
+              <Icon name="ph:users" class="w-5 h-5" />
+              Conocer Nuestro Equipo
+            </Button>
+            <Button variant="outline" href="/trabajar">
+              <Icon name="ph:briefcase" class="w-5 h-5" />
+              Únete a Nosotros
+            </Button>
+          </div>
+        </div>
+
+        <!-- Visual element -->
+        <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="space-y-4">
+              <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+                <Icon name="ph:hard-hat-fill" class="w-12 h-12 text-primary-green mb-4" />
+                <div class="text-2xl font-bold text-white">15+</div>
+                <div class="text-gray-300">Años Experiencia</div>
+              </div>
+              <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+                <Icon name="ph:certificate-fill" class="w-12 h-12 text-blue-400 mb-4" />
+                <div class="text-2xl font-bold text-white">100%</div>
+                <div class="text-gray-300">Certificados</div>
+              </div>
+            </div>
+            <div class="space-y-4 pt-8">
+              <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+                <Icon name="ph:users-four-fill" class="w-12 h-12 text-purple-400 mb-4" />
+                <div class="text-2xl font-bold text-white">25+</div>
+                <div class="text-gray-300">Profesionales</div>
+              </div>
+              <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+                <Icon name="ph:medal-fill" class="w-12 h-12 text-orange-400 mb-4" />
+                <div class="text-2xl font-bold text-white">150+</div>
+                <div class="text-gray-300">Proyectos</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Banner 2: Compromiso con la Sostenibilidad -->
+  <div class="relative py-24 overflow-hidden bg-gray-50">
+    <!-- Decorative elements -->
+    <div class="absolute top-20 left-20 w-40 h-40 bg-green-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Visual element first on this banner -->
+        <div class="order-2 lg:order-1 relative" data-aos="fade-right" data-aos-duration="1000">
+          <div class="bg-gradient-to-br from-green-100 to-emerald-100 rounded-3xl p-8 aspect-square flex items-center justify-center">
+            <div class="text-center space-y-6">
+              <div class="w-24 h-24 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto">
+                <Icon name="ph:leaf-fill" class="w-12 h-12 text-white" />
+              </div>
+              <div>
+                <div class="text-4xl font-bold text-green-700 mb-2">100%</div>
+                <div class="text-green-600">Materiales Sostenibles</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating elements -->
+          <div class="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg">
+            <Icon name="ph:recycle-fill" class="w-8 h-8 text-white" />
+          </div>
+          <div class="absolute -bottom-4 -left-4 w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center shadow-lg">
+            <Icon name="ph:plant-fill" class="w-10 h-10 text-white" />
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2 space-y-8" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 bg-green-500/10 backdrop-blur-sm border border-green-500/20 rounded-full px-4 py-2">
+            <Icon name="ph:leaf-fill" class="w-5 h-5 text-green-600" />
+            <span class="text-green-600 font-semibold text-sm">Sostenibilidad</span>
+          </div>
+
+          <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+            Compromiso con la 
+            <span class="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
+              Sostenibilidad
+            </span>
+          </h2>
+
+          <p class="text-xl text-gray-600 leading-relaxed">
+            Creemos firmemente en la construcción sostenible y responsable con el medio ambiente. Implementamos prácticas eco-amigables y utilizamos materiales sostenibles para minimizar nuestro impacto ambiental.
+          </p>
+
+          <!-- Sustainability features -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-white rounded-xl p-4 border border-green-200">
+              <Icon name="ph:solar-panel-fill" class="w-8 h-8 text-green-600 mb-2" />
+              <div class="font-semibold text-gray-900">Energía Solar</div>
+              <div class="text-sm text-gray-600">Paneles solares integrados</div>
+            </div>
+            <div class="bg-white rounded-xl p-4 border border-green-200">
+              <Icon name="ph:drop-fill" class="w-8 h-8 text-blue-600 mb-2" />
+              <div class="font-semibold text-gray-900">Agua Reciclada</div>
+              <div class="text-sm text-gray-600">Sistemas de reutilización</div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <Button variant="success" href="/sostenibilidad">
+              <Icon name="ph:leaf" class="w-5 h-5" />
+              Descubre Más
+            </Button>
+            <Button variant="outline" href="/certificaciones">
+              <Icon name="ph:certificate" class="w-5 h-5" />
+              Ver Certificaciones
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Banner 3: Innovación y Tecnología -->
+  <div class="relative py-24 overflow-hidden">
+    <!-- Background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900"></div>
+    <div class="absolute inset-0 bg-[url('/images/placeholder-image.png')] bg-cover bg-center opacity-20"></div>
+
+    <!-- Animated background elements -->
+    <div class="absolute top-10 left-10 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl animate-pulse"></div>
+    <div class="absolute bottom-10 right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="space-y-8" data-aos="fade-right" data-aos-duration="1000">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-4 py-2">
+            <Icon name="ph:gear-fill" class="w-5 h-5 text-blue-400" />
+            <span class="text-blue-400 font-semibold text-sm">Innovación</span>
+          </div>
+
+          <h2 class="text-5xl lg:text-6xl font-bold text-white leading-tight">
+            Innovación y 
+            <span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Tecnología
+            </span>
+          </h2>
+
+          <p class="text-xl text-gray-300 leading-relaxed">
+            Mantenemos actualizada nuestra tecnología y métodos constructivos para ofrecer soluciones innovadoras. Utilizamos software especializado, herramientas de última generación y técnicas constructivas modernas.
+          </p>
+
+          <!-- Technology features -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+                <Icon name="ph:cube-fill" class="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <div class="font-semibold text-white">Modelado 3D</div>
+                <div class="text-sm text-gray-400">Visualización completa del proyecto</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                <Icon name="ph:drone-fill" class="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <div class="font-semibold text-white">Drones de Inspección</div>
+                <div class="text-sm text-gray-400">Monitoreo aéreo de precisión</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center">
+                <Icon name="ph:robot-fill" class="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <div class="font-semibold text-white">Automatización</div>
+                <div class="text-sm text-gray-400">Procesos automatizados</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4">
+            <Button variant="success" href="/tecnologia">
+              <Icon name="ph:rocket" class="w-5 h-5" />
+              Ver Nuestra Tecnología
+            </Button>
+            <Button variant="outline" href="/metodos">
+              <Icon name="ph:gear" class="w-5 h-5" />
+              Conocer Métodos
+            </Button>
+          </div>
+        </div>
+
+        <!-- Technology showcase -->
+        <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+          <div class="relative">
+            <!-- Central tech hub -->
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 text-center">
+              <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <Icon name="ph:cpu-fill" class="w-10 h-10 text-white" />
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-2">Centro Tecnológico</h3>
+              <p class="text-gray-300">Herramientas de última generación</p>
+            </div>
+
+            <!-- Orbiting tech elements -->
+            <div class="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center animate-bounce">
+              <Icon name="ph:monitor-fill" class="w-8 h-8 text-white" />
+            </div>
+            <div class="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center animate-pulse">
+              <Icon name="ph:device-tablet-fill" class="w-8 h-8 text-white" />
+            </div>
+            <div class="absolute top-1/2 -right-12 w-12 h-12 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-full flex items-center justify-center">
+              <Icon name="ph:device-mobile-fill" class="w-6 h-6 text-white" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

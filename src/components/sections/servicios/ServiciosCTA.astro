@@ -1,0 +1,197 @@
+---
+import { Icon } from 'astro-icon/components';
+import Button from '../../ui/Button.astro';
+---
+
+<section class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0">
+    <div class="absolute top-10 left-10 w-64 h-64 bg-primary-green/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary-green/5 to-blue-500/5 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Grid pattern overlay -->
+  <div class="absolute inset-0 opacity-20">
+    <div class="h-full w-full bg-[linear-gradient(to_right,#8b5cf6_1px,transparent_1px),linear-gradient(to_bottom,#8b5cf6_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+  </div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Content Column -->
+      <div class="space-y-8" data-aos="fade-right" data-aos-duration="1000">
+        <!-- Tagline -->
+        <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2">
+          <Icon name="ph:rocket-launch-fill" class="w-5 h-5 text-primary-green" />
+          <span class="text-primary-green font-semibold text-sm">¡Comencemos Tu Proyecto!</span>
+        </div>
+
+        <!-- Main Heading -->
+        <div class="space-y-6">
+          <h2 class="text-4xl lg:text-6xl font-bold text-white leading-tight">
+            ¿Listo para
+            <span class="text-green-400">
+              construir
+            </span>
+            tus sueños?
+          </h2>
+          <p class="text-xl text-gray-300 leading-relaxed">
+            Estamos aquí para hacer realidad tu proyecto de construcción. Con más de 15 años de experiencia, 
+            convertimos tus ideas en espacios excepcionales.
+          </p>
+        </div>
+
+        <!-- Key Benefits -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center gap-3">
+            <Icon name="ph:check-circle-fill" class="w-6 h-6 text-primary-green" />
+            <span class="text-gray-300">Cotización gratuita</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <Icon name="ph:check-circle-fill" class="w-6 h-6 text-primary-green" />
+            <span class="text-gray-300">Respuesta en 24h</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <Icon name="ph:check-circle-fill" class="w-6 h-6 text-primary-green" />
+            <span class="text-gray-300">Asesoría personalizada</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <Icon name="ph:check-circle-fill" class="w-6 h-6 text-primary-green" />
+            <span class="text-gray-300">Garantía extendida</span>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="400">
+          <Button variant="success" href="/contacto">
+            <Icon name="ph:calendar-plus" class="w-5 h-5" />
+            Solicitar Cotización
+          </Button>
+          <Button variant="outline" href="tel:+50688887777">
+            <Icon name="ph:phone" class="w-5 h-5" />
+            Llamar Ahora
+          </Button>
+        </div>
+      </div>
+
+      <!-- Contact Information Column -->
+      <div class="space-y-8" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+        <!-- Main Contact Card -->
+        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 space-y-6">
+          <div class="text-center">
+            <h3 class="text-2xl font-bold text-white mb-2">Información de Contacto</h3>
+            <p class="text-gray-300">Múltiples formas de comunicarte con nosotros</p>
+          </div>
+
+          <!-- Contact Methods -->
+          <div class="space-y-6">
+            <!-- Phone -->
+            <div class="flex items-center gap-4 p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">
+              <div class="w-12 h-12 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <Icon name="ph:phone-fill" class="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <p class="text-white font-semibold">Teléfono</p>
+                <a href="tel:+50688887777" class="text-primary-green hover:text-emerald-400 transition-colors">
+                  +506 8888-7777
+                </a>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="flex items-center gap-4 p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">
+              <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <Icon name="ph:envelope-fill" class="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <p class="text-white font-semibold">Email</p>
+                <a href="mailto:info@constructoracarpio.com" class="text-blue-400 hover:text-blue-300 transition-colors">
+                  info@constructoracarpio.com
+                </a>
+              </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <div class="flex items-center gap-4 p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">
+              <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <Icon name="ph:chat-circle-fill" class="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <p class="text-white font-semibold">WhatsApp</p>
+                <a href="https://wa.me/50688887777" class="text-green-400 hover:text-green-300 transition-colors">
+                  Chatear Ahora
+                </a>
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="flex items-center gap-4 p-4 bg-white/5 rounded-2xl hover:bg-white/10 transition-colors">
+              <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <Icon name="ph:map-pin-fill" class="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <p class="text-white font-semibold">Ubicación</p>
+                <p class="text-gray-300 text-sm">San José, Costa Rica</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Hours Card -->
+        <div class="bg-gradient-to-br from-primary-green/10 to-emerald-500/10 border border-primary-green/20 rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <Icon name="ph:clock-fill" class="w-6 h-6 text-primary-green" />
+            <h4 class="text-lg font-bold text-white">Horarios de Atención</h4>
+          </div>
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-gray-300">Lunes - Viernes:</span>
+              <span class="text-white">7:00 AM - 6:00 PM</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-300">Sábados:</span>
+              <span class="text-white">8:00 AM - 4:00 PM</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-300">Emergencias:</span>
+              <span class="text-primary-green">24/7</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-white/5 rounded-2xl p-4 text-center">
+            <div class="text-2xl font-bold text-primary-green">24h</div>
+            <div class="text-xs text-gray-400">Tiempo de Respuesta</div>
+          </div>
+          <div class="bg-white/5 rounded-2xl p-4 text-center">
+            <div class="text-2xl font-bold text-primary-green">15+</div>
+            <div class="text-xs text-gray-400">Años de Experiencia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="600">
+      <div class="bg-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-8 max-w-4xl mx-auto">
+        <h3 class="text-2xl font-bold text-white mb-4">¿Tienes un proyecto en mente?</h3>
+        <p class="text-gray-300 mb-6">
+          Desde construcciones residenciales hasta proyectos comerciales, tenemos la experiencia y 
+          las herramientas para hacer realidad tu visión. ¡Hablemos de tu proyecto!
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <Button variant="success" href="/contacto">
+            <Icon name="ph:paper-plane-tilt" class="w-5 h-5" />
+            Enviar Consulta
+          </Button>
+          <Button variant="outline" href="/proyectos">
+            <Icon name="ph:images" class="w-5 h-5" />
+            Ver Proyectos
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

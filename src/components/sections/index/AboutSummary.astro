@@ -1,0 +1,116 @@
+---
+import Button from '../../ui/Button.astro';
+import OptimizedImage from '../../media/OptimizedImage.astro';
+import SectionLayout from '../../ui/SectionLayout.astro';
+import { Icon } from 'astro-icon/components';
+import aboutImage from '../../../assets/about-summary-image.jpg';
+---
+
+<SectionLayout background="white" paddingY="lg">
+  <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Left Content -->
+      <div class="space-y-6 lg:space-y-8" data-aos="fade-right" data-aos-duration="1000">
+        <div class="space-y-4">
+          <p class="font-heebo font-semibold text-sm text-forest-green uppercase tracking-wider">
+            Sobre Nosotros
+          </p>
+          <h2 class="font-urbanist font-medium text-heading-3 lg:text-heading-2 text-neutral-darkest">
+            15 años construyendo confianza
+          </h2>
+          <p class="font-heebo font-normal text-base lg:text-lg text-neutral-darkest/80 leading-relaxed">
+            Somos una empresa comprometida con la excelencia en cada proyecto. Desde construcciones industriales 
+            hasta centros logísticos, aplicamos nuestra experiencia y tecnología de vanguardia para entregar 
+            resultados que superan expectativas.
+          </p>
+        </div>
+
+        <!-- Key Points -->
+        <div class="space-y-5 pt-4" data-aos="fade-right" data-aos-delay="200">
+          <div class="flex items-start gap-4">
+            <div class="flex items-center justify-center w-10 h-10 bg-forest-green rounded-full flex-shrink-0 shadow-lg shadow-forest-green/30">
+              <Icon name="ph:check-circle" class="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h4 class="font-urbanist font-semibold text-lg text-neutral-darkest mb-1">
+                Experiencia Comprobada
+              </h4>
+              <p class="font-heebo text-sm text-neutral-darkest/70">
+                Más de 150 proyectos completados exitosamente.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="flex items-center justify-center w-10 h-10 bg-forest-green rounded-full flex-shrink-0 shadow-lg shadow-forest-green/30">
+              <Icon name="ph:users-three" class="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h4 class="font-urbanist font-semibold text-lg text-neutral-darkest mb-1">
+                Equipo Especializado
+              </h4>
+              <p class="font-heebo text-sm text-neutral-darkest/70">
+                Profesionales certificados en cada área de la construcción.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="flex items-center justify-center w-10 h-10 bg-forest-green rounded-full flex-shrink-0 shadow-lg shadow-forest-green/30">
+              <Icon name="ph:clock-countdown" class="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h4 class="font-urbanist font-semibold text-lg text-neutral-darkest mb-1">
+                Puntualidad Garantizada
+              </h4>
+              <p class="font-heebo text-sm text-neutral-darkest/70">
+                Cumplimos con los plazos establecidos en cada proyecto.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Button -->
+        <div class="pt-4" data-aos="fade-right" data-aos-delay="400">
+          <Button 
+            href="/quienes-somos" 
+            variant="outline-dark" 
+            size="lg"
+            icon="ph:arrow-right"
+          >
+            Conoce Más Sobre Nosotros
+          </Button>
+        </div>
+      </div>
+
+      <!-- Right Image -->
+      <div class="relative" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="200">
+        <div class="relative overflow-hidden rounded-2xl shadow-2xl shadow-neutral-darkest/20 aspect-[4/3]">
+          <OptimizedImage
+            src={aboutImage}
+            alt="Equipo de Constructora Carpio trabajando en un proyecto de construcción"
+            width={600}
+            height={450}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            loading="lazy"
+          />
+          <!-- Modern Stats Overlay -->
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="bg-white/80 backdrop-blur-md rounded-xl p-5 border border-white/50 shadow-lg">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="text-center">
+                  <div class="font-urbanist font-bold text-3xl lg:text-4xl text-forest-green">98%</div>
+                  <div class="font-heebo text-xs lg:text-sm text-neutral-darkest/80 tracking-wide">Satisfacción</div>
+                </div>
+                <div class="text-center">
+                  <div class="font-urbanist font-bold text-3xl lg:text-4xl text-forest-green">150+</div>
+                  <div class="font-heebo text-xs lg:text-sm text-neutral-darkest/80 tracking-wide">Proyectos</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</SectionLayout>

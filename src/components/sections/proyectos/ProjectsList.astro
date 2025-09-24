@@ -1,0 +1,82 @@
+---
+import { Icon } from "astro-icon/components";
+import ProjectCard from '../../ui/ProjectCard.astro';
+import Button from '../../ui/Button.astro';
+
+// Data de proyectos (normalmente vendría de content collections o API)
+const projects = [
+  {
+    title: "Residencial Moderna Vista",
+    description: "Este proyecto representa un hito en diseño arquitectónico. Combinamos funcionalidad y estética para crear espacios únicos que reflejan la vida moderna.",
+    tags: ["Residencial Urbano", "Sostenibilidad", "Innovación"],
+    imageUrl: "/images/placeholder-image.jpg",
+    projectSlug: "proyecto-residencial-moderno"
+  },
+  {
+    title: "Centro Comercial Plaza",
+    description: "Este centro comercial está diseñado para la comunidad. Fomenta el comercio local y ofrece espacios accesibles para todas las personas.",
+    tags: ["Comercio Local", "Espacios Abiertos", "Accesibilidad"],
+    imageUrl: "/images/placeholder-image.jpg",
+    projectSlug: "centro-comercial-innovador"
+  },
+  {
+    title: "Parque Recreativo Familiar",
+    description: "Este parque recreativo es un espacio para disfrutar en familia. Ofrece áreas verdes y actividades para todas las edades en un ambiente natural.",
+    tags: ["Naturaleza", "Familia", "Diversión"],
+    imageUrl: "/images/placeholder-image.jpg",
+    projectSlug: "parque-recreativo-familiar"
+  }
+];
+---
+
+<section class="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden" id="portfolio">
+  <!-- Background decorations -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-20 w-40 h-40 bg-primary-green/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:stack-fill" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm">Portafolio</span>
+      </div>
+      
+      <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        Nuestros Proyectos <span class="text-green-600">Destacados</span>
+      </h2>
+      
+      <p class="text-xl text-gray-600 leading-relaxed">
+        Explora nuestra amplia gama de proyectos realizados con excelencia, 
+        innovación y el compromiso de transformar espacios en experiencias excepcionales.
+      </p>
+    </div>
+
+    <!-- Filter Tabs (Future Enhancement) -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
+      <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold transition-colors shadow-md">
+        Todos los Proyectos
+      </button>
+      <button class="bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-full font-semibold hover:border-green-600 hover:text-green-600 hover:bg-green-50 transition-colors shadow-md">
+        Residencial
+      </button>
+      <button class="bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-full font-semibold hover:border-green-600 hover:text-green-600 hover:bg-green-50 transition-colors shadow-md">
+        Comercial
+      </button>
+      <button class="bg-white border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-full font-semibold hover:border-green-600 hover:text-green-600 hover:bg-green-50 transition-colors shadow-md">
+        Recreativo
+      </button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="space-y-8 mb-16">
+      {projects.map((project, index) => (
+        <ProjectCard 
+          {...project}
+          delay={200 + (index * 150)}
+        />
+      ))}
+    </div>
+</section>

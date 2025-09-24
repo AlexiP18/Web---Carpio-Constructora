@@ -1,0 +1,153 @@
+---
+import Button from '../../ui/Button.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<section class="bg-gray-50 py-20 relative overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 left-0 w-72 h-72 bg-primary-green/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Header Section -->
+    <div class="text-center max-w-4xl mx-auto mb-20" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:buildings-fill" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm">Nuestra Empresa</span>
+      </div>
+      
+      <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+        Comprometidos con la 
+        <span class="text-green-600">
+          calidad y la innovación
+        </span>
+      </h2>
+      
+      <p class="text-xl text-gray-600 leading-relaxed">
+        En Constructora Carpio, nos dedicamos a construir sueños. Cada proyecto es una oportunidad para crear espacios únicos y funcionales que perduren en el tiempo.
+      </p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid lg:grid-cols-3 gap-12 items-center">
+      <!-- Left Column - Misión y Visión -->
+      <div class="space-y-12">
+        <!-- Misión -->
+        <div class="space-y-6" data-aos="fade-right" data-aos-delay="100">
+          <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center">
+            <Icon name="ph:target-fill" class="w-8 h-8 text-gray-900" />
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestra Misión</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Ofrecer soluciones constructivas que superen las expectativas de nuestros clientes, utilizando tecnología de vanguardia y materiales de la más alta calidad.
+            </p>
+          </div>
+        </div>
+
+        <!-- Visión -->
+        <div class="space-y-6" data-aos="fade-right" data-aos-delay="200">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center">
+            <Icon name="ph:eye-fill" class="w-8 h-8 text-white" />
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestra Visión</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Ser líderes en el sector de la construcción en Costa Rica, reconocidos por nuestra excelencia, innovación y compromiso con el desarrollo sostenible.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Image -->
+      <div class="relative" data-aos="zoom-in" data-aos-delay="300">
+        <div class="aspect-square bg-gradient-to-br from-slate-100 to-slate-200 rounded-3xl overflow-hidden shadow-2xl">
+          <!-- Placeholder para imagen de la empresa -->
+          <div class="w-full h-full bg-gradient-to-br from-primary-green/20 to-blue-500/20 flex items-center justify-center">
+            <div class="text-center space-y-4">
+              <Icon name="ph:buildings-fill" class="w-20 h-20 text-primary-green mx-auto" />
+              <div class="text-2xl font-bold text-gray-700">Constructora Carpio</div>
+              <div class="text-gray-500">15+ años construyendo sueños</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Floating stats cards -->
+        <div class="absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-lg border">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary-green">150+</div>
+            <div class="text-sm text-gray-500">Proyectos</div>
+          </div>
+        </div>
+        
+        <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-lg border">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-blue-500">100%</div>
+            <div class="text-sm text-gray-500">Satisfacción</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Valores y Diferenciadores -->
+      <div class="space-y-12">
+        <!-- Valores -->
+        <div class="space-y-6" data-aos="fade-left" data-aos-delay="100">
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center">
+            <Icon name="ph:heart-fill" class="w-8 h-8 text-white" />
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestros Valores</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Integridad, innovación, trabajo en equipo y responsabilidad social son los pilares fundamentales que guían cada decisión en nuestra empresa.
+            </p>
+          </div>
+        </div>
+
+        <!-- Por qué elegirnos -->
+        <div class="space-y-6" data-aos="fade-left" data-aos-delay="200">
+          <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center">
+            <Icon name="ph:star-fill" class="w-8 h-8 text-white" />
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Por Qué Elegirnos</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Contamos con más de 15 años de experiencia, un equipo de expertos certificados y un compromiso inquebrantable con la satisfacción del cliente.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="text-center mt-20 space-y-8" data-aos="fade-up" data-aos-delay="500">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button variant="success" href="/contacto" iconPosition="left" icon="ph:phone">
+          Contáctanos Hoy
+        </Button>
+        <Button variant="outline-dark" href="/proyectos" iconPosition="left" icon="ph:arrow-right">
+          Ver Nuestros Proyectos
+        </Button>
+      </div>
+
+      <!-- Feature highlights -->
+      <!-- <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-12">
+        <div class="text-center">
+          <Icon name="ph:certificate-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
+          <div class="text-sm text-gray-600">Certificados</div>
+        </div>
+        <div class="text-center">
+          <Icon name="ph:shield-check-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
+          <div class="text-sm text-gray-600">Garantía</div>
+        </div>
+        <div class="text-center">
+          <Icon name="ph:clock-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
+          <div class="text-sm text-gray-600">Puntualidad</div>
+        </div>
+        <div class="text-center">
+          <Icon name="ph:users-fill" class="w-8 h-8 text-primary-green mx-auto mb-2" />
+          <div class="text-sm text-gray-600">Equipo Experto</div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
