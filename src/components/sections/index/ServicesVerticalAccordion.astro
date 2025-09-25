@@ -1,0 +1,278 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const servicesVertical = [
+  {
+    id: 'planificacion-detallada',
+    number: '01',
+    title: 'Nuestro primer paso esencial',
+    navLabel: 'Planificación detallada',
+    description:
+      'Comenzamos con una planificación meticulosa para entender sus necesidades y asegurar que cada detalle esté considerado desde el inicio.',
+    icon: 'ph:clipboard-text',
+    image: '/images/layout-355.png',
+    href: '/servicios/construccion',
+    cta: 'Conoce más'
+  },
+  {
+    id: 'diseno-personalizado',
+    number: '02',
+    title: 'Diseño personalizado',
+    navLabel: 'Diseño personalizado',
+    description:
+      'Creamos soluciones arquitectónicas adaptadas a cada proyecto, equilibrando funcionalidad, estética y viabilidad técnica.',
+    icon: 'ph:pencil-ruler',
+    image: '/images/layout-85.png',
+    href: '/servicios/remodelacion',
+    cta: 'Conoce más'
+  },
+  {
+    id: 'construccion-calidad',
+    number: '03',
+    title: 'Construcción de calidad',
+    navLabel: 'Construcción de calidad',
+    description:
+      'Gestionamos la ejecución con estándares de excelencia, materiales certificados y supervisión continua para garantizar resultados fiables.',
+    icon: 'ph:hammer',
+    image: '/images/header-30.png',
+    href: '/servicios/mantenimiento',
+    cta: 'Conoce más'
+  },
+  {
+    id: 'entrega-puntual',
+    number: '04',
+    title: 'Entrega puntual',
+    navLabel: 'Entrega puntual',
+    description:
+      'Cumplimos con los plazos acordados mediante planificación precisa y equipos coordinados en todas las etapas del proyecto.',
+    icon: 'ph:clock',
+    image: '/images/header-50.png',
+    href: '/servicios/construccion',
+    cta: 'Conoce más'
+  }
+];
+---
+
+<section id="services-vertical-accordion" class="relative bg-neutral-100 py-20 lg:py-28">
+  <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
+      <!-- Content Panel -->
+      <div class="relative flex-1">
+        <div class="relative bg-white border border-neutral-200/80 rounded-[32px] shadow-xl overflow-hidden min-h-[520px] lg:min-h-[580px]">
+          {servicesVertical.map((service, index) => (
+            <article
+              id={`panel-${service.id}`}
+              class={`service-panel absolute inset-0 flex flex-col lg:flex-row gap-10 lg:gap-16 p-8 sm:p-10 lg:p-12 transition-all duration-700 ease-out pointer-events-none ${
+                index === 0 ? 'active pointer-events-auto' : ''
+              }`}
+              data-panel-index={index}
+              role="tabpanel"
+              aria-labelledby={`tab-${service.id}`}
+              aria-hidden={index === 0 ? 'false' : 'true'}
+              tabindex={index === 0 ? '0' : '-1'}
+            >
+              <div class="absolute left-6 top-6 hidden lg:flex">
+                <div class="vertical-label writing-mode-vertical bg-neutral-900 text-white text-xs tracking-[0.3em] uppercase px-3 py-3 rounded-2xl shadow-md">
+                  {service.navLabel}
+                </div>
+              </div>
+
+              <div class="lg:pl-20 flex-1 flex flex-col justify-center">
+                <div class="inline-flex items-center gap-4 mb-6">
+                  <span class="text-sm font-semibold tracking-[0.4em] uppercase text-neutral-400">Paso</span>
+                  <span class="text-4xl font-urbanist font-bold text-neutral-900">{service.number}</span>
+                </div>
+
+                <h2 class="font-urbanist font-semibold text-3xl sm:text-4xl lg:text-[40px] text-neutral-900 leading-tight mb-6">
+                  {service.title}
+                </h2>
+
+                <p class="font-heebo text-base sm:text-lg text-neutral-700/90 leading-relaxed max-w-xl">
+                  {service.description}
+                </p>
+
+                <a
+                  href={service.href}
+                  class="inline-flex items-center gap-3 mt-10 px-6 py-3 rounded-full border-2 border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white transition-colors duration-300"
+                >
+                  <Icon name="ph:arrow-up-right" class="w-5 h-5" />
+                  {service.cta}
+                </a>
+              </div>
+
+              <div class="w-full lg:w-[45%]">
+                <div class="h-full rounded-[24px] border border-neutral-200/80 bg-neutral-50 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <!-- Vertical Tabs -->
+      <div class="lg:w-[140px] flex lg:flex-col gap-4 lg:gap-6">
+        <div class="hidden lg:flex flex-col gap-4 lg:gap-6" role="tablist" aria-orientation="vertical">
+          {servicesVertical.map((service, index) => (
+            <button
+              type="button"
+              id={`tab-${service.id}`}
+              class={`vertical-tab group relative flex-1 lg:flex-none overflow-hidden rounded-[26px] border transition-all duration-500 ease-out ${
+                index === 0 ? 'active' : ''
+              }`}
+              data-tab-index={index}
+              aria-controls={`panel-${service.id}`}
+              aria-expanded={index === 0 ? 'true' : 'false'}
+              aria-selected={index === 0 ? 'true' : 'false'}
+              role="tab"
+            >
+              <div class="absolute inset-0 bg-neutral-900/5 opacity-0 group-[.active]:opacity-100 transition-opacity"></div>
+              <div class="relative h-[220px] flex flex-col items-center justify-between py-6">
+                <span class="text-sm font-semibold tracking-[0.3em] text-neutral-500">{service.number}</span>
+                <span class="writing-mode-vertical text-neutral-900 font-urbanist text-lg tracking-wide">
+                  {service.navLabel}
+                </span>
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <!-- Mobile Tabs -->
+        <div class="flex lg:hidden gap-3 overflow-x-auto pb-2" role="tablist" aria-orientation="horizontal">
+          {servicesVertical.map((service, index) => (
+            <button
+              type="button"
+              class={`vertical-tab-mobile flex-shrink-0 min-w-[150px] px-4 py-3 rounded-2xl border transition-all duration-300 ${
+                index === 0 ? 'active' : ''
+              }`}
+              data-tab-index={index}
+              aria-controls={`panel-${service.id}`}
+              aria-expanded={index === 0 ? 'true' : 'false'}
+              aria-selected={index === 0 ? 'true' : 'false'}
+              role="tab"
+            >
+              <div class="flex flex-col gap-1 text-left">
+                <span class="text-xs font-semibold tracking-[0.3em] uppercase text-neutral-500">{service.number}</span>
+                <span class="font-urbanist text-base font-semibold">{service.navLabel}</span>
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .writing-mode-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .vertical-tab {
+    background: rgb(243 244 246);
+    border-color: transparent;
+  }
+
+  .vertical-tab.active {
+    background: rgb(255 255 255);
+    border-color: rgba(17, 24, 39, 0.6);
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.12);
+    transform: translateY(-4px);
+  }
+
+  .vertical-tab:not(.active):hover {
+    background: rgb(229 231 235);
+  }
+
+  .vertical-tab-mobile {
+    background: rgb(229 231 235);
+    border-color: transparent;
+    color: rgb(87 87 87);
+  }
+
+  .vertical-tab-mobile.active {
+    background: rgb(255 255 255);
+    border-color: rgba(17, 24, 39, 0.6);
+    color: rgb(17 24 39);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+  }
+
+  .service-panel {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+
+  .service-panel.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (max-width: 1024px) {
+    .writing-mode-vertical {
+      writing-mode: horizontal-tb;
+    }
+  }
+</style>
+
+<script is:inline>
+  function initServicesVerticalAccordion() {
+    const root = document.querySelector('#services-vertical-accordion');
+    if (!root) return;
+
+    const tabButtons = Array.from(root.querySelectorAll('[data-tab-index]'));
+    const panels = Array.from(root.querySelectorAll('[data-panel-index]'));
+
+    if (!tabButtons.length || tabButtons.length !== panels.length) return;
+
+    const setActive = (index) => {
+      tabButtons.forEach((tab, i) => {
+        const isActive = i === index;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-expanded', String(isActive));
+        tab.setAttribute('aria-selected', String(isActive));
+      });
+
+      panels.forEach((panel, i) => {
+        const isActive = i === index;
+        panel.classList.toggle('active', isActive);
+        panel.classList.toggle('pointer-events-none', !isActive);
+        panel.classList.toggle('pointer-events-auto', isActive);
+        panel.setAttribute('aria-hidden', String(!isActive));
+        panel.setAttribute('tabindex', isActive ? '0' : '-1');
+        if (isActive) {
+          if (typeof panel.focus === 'function') {
+            try {
+              panel.focus({ preventScroll: true });
+            } catch (_) {
+              panel.focus();
+            }
+          }
+        }
+      });
+    };
+
+    tabButtons.forEach((tab, index) => {
+      tab.addEventListener('click', () => setActive(index));
+      tab.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          setActive(index);
+        }
+      });
+    });
+
+    setActive(0);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initServicesVerticalAccordion, { once: true });
+  } else {
+    initServicesVerticalAccordion();
+  }
+</script>

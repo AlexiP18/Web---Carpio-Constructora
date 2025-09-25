@@ -52,132 +52,512 @@ const services = [
 ---
 
 <SectionLayout background="white" paddingY="lg" paddingX="lg" maxWidth="xl" className="relative overflow-hidden">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-      <!-- Left: Scroll-activated accordion -->
-      <div id="services-accordion" class="space-y-1" data-aos="fade-up">
-        {services.map((s, idx) => (
-          <article 
-            id={`service-${s.id}`} 
-            class="group border-b-2 border-neutral-darkest"
-            data-service-index={idx}
+  <div data-services-vertical class="vertical-services">
+    <div class="vertical-services__track">
+      <div aria-hidden="true" class="vertical-services__pad vertical-services__pad--intro"></div>
+
+      <div data-services-stage class="vertical-services__stage">
+        <div class="vertical-services__layout flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-14">
+          <div
+            class="vertical-services__headline"
+            role="group"
+            aria-live="polite"
           >
-            <!-- Header Row -->
-            <button type="button" class="w-full py-5 lg:py-6 flex items-center justify-between gap-4 lg:gap-8 focus:outline-none"
-              aria-controls={`panel-${s.id}`} aria-expanded={idx === 0 ? 'true' : 'false'}
+            {services.map((s, idx) => (
+              <article
+                data-service-headline
+                data-service-index={idx}
+                class={`vertical-services__headline-item ${idx === 0 ? 'is-active' : 'hidden'}`}
+                aria-hidden={idx === 0 ? 'false' : 'true'}
+              >
+                <div class="vertical-services__headline-card">
+                  <Icon name={s.icon} class="vertical-services__headline-icon" />
+                  <div class="vertical-services__headline-text">
+                    <span class="vertical-services__headline-label">Servicio</span>
+                    <p class="vertical-services__headline-number">{s.number}</p>
+                    <h3 class="vertical-services__headline-title">{s.title}</h3>
+                  </div>
+                </div>
+              </article>
+            ))}
+
+            <div
+              class="vertical-services__controls"
+              data-service-controls
+              role="toolbar"
+              aria-label="Cambiar servicio"
+              tabindex="0"
             >
-              <div class="flex items-center gap-4 lg:gap-6 text-left">
-                <Icon name={s.icon} class="w-6 h-6 lg:w-7 lg:h-7 text-neutral-darkest" />
-                <span class="font-urbanist font-medium text-[20px] lg:text-[32px] text-neutral-darkest">
-                  <span class="mr-3 text-neutral-darkest">{s.number}</span>{s.title}
+              <button
+                type="button"
+                class="vertical-services__control-button"
+                data-service-prev
+                aria-label="Servicio anterior"
+              >
+                <Icon name="ph:arrow-up" class="vertical-services__control-icon" />
+              </button>
+              <div class="vertical-services__progress" aria-live="polite">
+                <span data-service-progress-current class="vertical-services__progress-current">
+                  {String(1).padStart(2, '0')}
+                </span>
+                <span aria-hidden="true" class="vertical-services__progress-separator">/</span>
+                <span data-service-progress-total class="vertical-services__progress-total">
+                  {String(services.length).padStart(2, '0')}
                 </span>
               </div>
-              <Icon name="ph:caret-down" class="w-5 h-5 lg:w-6 lg:h-6 text-neutral-darkest transition-transform duration-300 group-[.active]:rotate-180" />
-            </button>
-            <!-- Panel -->
-            <div id={`panel-${s.id}`} class={`grid transition-[grid-template-rows] duration-500 ease-out ${idx === 0 ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} overflow-hidden`}
-                 aria-hidden={idx === 0 ? 'false' : 'true'}>
-              <div class="min-h-0 overflow-hidden pb-5 lg:pb-6">
-                <p class="font-heebo text-[16px] lg:text-[18px] text-neutral-darkest/80 leading-[1.6] max-w-prose">
-                  {s.description}
-                </p>
-                <a href={s.href} class="inline-flex items-center justify-center mt-4 px-5 py-2 rounded-full border-2 border-neutral-darkest text-neutral-darkest hover:bg-neutral-darkest hover:text-white transition-colors">
-                  {s.cta}
-                  <Icon name="ph:arrow-right" class="w-5 h-5 ml-2" />
-                </a>
-              </div>
+              <button
+                type="button"
+                class="vertical-services__control-button"
+                data-service-next
+                aria-label="Siguiente servicio"
+              >
+                <Icon name="ph:arrow-down" class="vertical-services__control-icon" />
+              </button>
             </div>
-          </article>
+          </div>
+
+          <div data-service-panels class="vertical-services__panels flex-1 space-y-6">
+            {services.map((s, idx) => (
+              <article
+                id={`service-panel-${s.id}`}
+                role="group"
+                aria-hidden={idx === 0 ? 'false' : 'true'}
+                data-service-panel
+                data-service-index={idx}
+                class={`vertical-services__panel grid gap-6 lg:gap-10 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] items-start rounded-3xl border border-neutral-darkest/10 bg-white/70 p-6 lg:p-10 shadow-[0_24px_60px_rgba(15,23,42,0.08)] backdrop-blur ${idx === 0 ? 'is-active' : 'hidden'}`}
+              >
+                <div class="vertical-services__panel-copy space-y-5 text-neutral-darkest">
+                  <div class="flex items-center gap-4">
+                    <Icon name={s.icon} class="w-6 h-6 lg:w-7 lg:h-7 text-neutral-darkest" />
+                    <div>
+                      <p class="font-urbanist text-sm uppercase tracking-[0.35em] text-neutral-darkest/60">{s.number}</p>
+                      <h3 class="font-urbanist font-semibold text-2xl lg:text-4xl leading-tight">{s.title}</h3>
+                    </div>
+                  </div>
+                  <p class="font-heebo text-base lg:text-lg text-neutral-darkest/80 leading-relaxed">
+                    {s.description}
+                  </p>
+                  <a
+                    href={s.href}
+                    class="inline-flex items-center justify-center w-fit mt-2 px-5 py-2.5 rounded-full border-2 border-neutral-darkest text-neutral-darkest font-medium transition-colors hover:bg-neutral-darkest hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-darkest focus-visible:ring-offset-2"
+                  >
+                    {s.cta}
+                    <Icon name="ph:arrow-right" class="w-5 h-5 ml-2" />
+                  </a>
+                </div>
+                <div class="vertical-services__panel-media">
+                  <div class="grid grid-cols-2 grid-rows-3 gap-3 lg:gap-4 h-[300px] lg:h-[520px]">
+                    <div class="col-span-2 row-span-1 rounded-xl overflow-hidden border border-neutral-darkest/15">
+                      <img src={s.images[0]} alt={s.title} class="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                    <div class="col-span-1 row-span-1 rounded-xl overflow-hidden border border-neutral-darkest/15">
+                      <img src={s.images[1]} alt={s.title} class="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                    <div class="col-span-1 row-span-2 rounded-xl overflow-hidden border border-neutral-darkest/15">
+                      <img src={s.images[2]} alt={s.title} class="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                    <div class="col-span-1 row-span-1 hidden lg:block"></div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div aria-hidden="true" class="vertical-services__scroll-steps">
+        {services.map((_, idx) => (
+          <div
+            class="vertical-services__scroll-step"
+            data-scroll-step
+            data-scroll-index={idx}
+          ></div>
         ))}
       </div>
 
-      <!-- Right: Sticky images that change with active item -->
-      <div class="hidden lg:block sticky top-24 self-start" aria-live="polite">
-        {services.map((s, idx) => (
-          <div class={`service-images ${idx === 0 ? '' : 'hidden'} transition-opacity duration-500`} data-images-index={idx}>
-            <div class="grid grid-cols-2 grid-rows-3 gap-3 h-[560px]">
-              <!-- image 1: span 2 cols on row 1 -->
-              <div class="col-span-2 row-span-1 rounded-xl overflow-hidden border border-neutral-darkest/20">
-                <img src={s.images[0]} alt={s.title} class="w-full h-full object-cover" />
-              </div>
-              <!-- image 2: row 2, col 1 -->
-              <div class="col-span-1 row-span-1 rounded-xl overflow-hidden border border-neutral-darkest/20">
-                <img src={s.images[1]} alt={s.title} class="w-full h-full object-cover" />
-              </div>
-              <!-- image 3: row 2-3, col 2 -->
-              <div class="col-span-1 row-span-2 rounded-xl overflow-hidden border border-neutral-darkest/20">
-                <img src={s.images[2]} alt={s.title} class="w-full h-full object-cover" />
-              </div>
-              <!-- spacer to align grid height -->
-              <div class="col-span-1 row-span-1"></div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <div aria-hidden="true" class="vertical-services__pad vertical-services__pad--outro"></div>
     </div>
   </div>
 
   <script is:inline>
-    // Scroll-activated accordion logic with IntersectionObserver
-    function initServicesAccordion() {
-      const items = document.querySelectorAll('#services-accordion article');
-      const imagesGroups = document.querySelectorAll('.service-images');
+    function initServicesVertical() {
+      const root = document.querySelector('[data-services-vertical]');
+      if (!root) return;
 
-      if (!items.length) return;
+      const headlineItems = Array.from(root.querySelectorAll('[data-service-headline]'));
+      const panels = Array.from(root.querySelectorAll('[data-service-panel]'));
+      const scrollSteps = Array.from(root.querySelectorAll('[data-scroll-step]'));
+      const stage = root.querySelector('[data-services-stage]');
+      const controls = root.querySelector('[data-service-controls]');
+      const prevButton = controls?.querySelector('[data-service-prev]');
+      const nextButton = controls?.querySelector('[data-service-next]');
+      const progressCurrent = controls?.querySelector('[data-service-progress-current]');
+      const progressTotal = controls?.querySelector('[data-service-progress-total]');
 
-      function setActive(index) {
-        items.forEach((it, i) => {
-          it.classList.toggle('active', i === index);
-          const btn = it.querySelector('button');
-          const panel = it.querySelector('[id^="panel-"]');
-          if (btn) btn.setAttribute('aria-expanded', String(i === index));
-          if (panel) panel.setAttribute('aria-hidden', String(i !== index));
-          if (panel) panel.className = `grid transition-[grid-template-rows] duration-500 ease-out ${i === index ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} overflow-hidden`;
-        });
-        imagesGroups.forEach((g, i) => {
-          if (i === index) {
-            g.classList.remove('hidden');
-            g.style.opacity = '1';
-          } else {
-            g.classList.add('hidden');
-            g.style.opacity = '0';
+      if (!headlineItems.length || !panels.length) return;
+
+      const total = panels.length;
+      if (progressTotal) {
+        progressTotal.textContent = String(total).padStart(2, '0');
+      }
+
+      const TRANSITION_MS = 650;
+      let current = 0;
+      let isAnimating = false;
+      let pending = null;
+
+      function setActiveState(list, idx) {
+        list.forEach((node, i) => {
+          const active = i === idx;
+          node.classList.toggle('is-active', active);
+          node.classList.toggle('hidden', !active);
+          if (node.hasAttribute('aria-hidden')) {
+            node.setAttribute('aria-hidden', String(!active));
           }
         });
       }
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const target = entry.target;
-            const idxAttr = target.getAttribute('data-service-index');
-            const idx = idxAttr ? Number(idxAttr) : 0;
-            setActive(isNaN(idx) ? 0 : idx);
+      function updateProgress(idx) {
+        if (progressCurrent) {
+          progressCurrent.textContent = String(idx + 1).padStart(2, '0');
+        }
+      }
+
+      function updateDisplay(idx) {
+        if (idx < 0 || idx >= total) return;
+        setActiveState(headlineItems, idx);
+        setActiveState(panels, idx);
+        updateProgress(idx);
+        current = idx;
+      }
+
+      function requestActivation(idx, options = {}) {
+        if (idx === current || idx < 0 || idx >= total) {
+          return;
+        }
+
+        if (options.immediate) {
+          isAnimating = false;
+          pending = null;
+          updateDisplay(idx);
+          return;
+        }
+
+        if (isAnimating) {
+          pending = { idx, options };
+          return;
+        }
+
+        isAnimating = true;
+        stage?.classList.add('is-animating');
+        updateDisplay(idx);
+
+        window.setTimeout(() => {
+          isAnimating = false;
+          stage?.classList.remove('is-animating');
+
+          if (pending && pending.idx !== current) {
+            const next = pending;
+            pending = null;
+            requestActivation(next.idx, next.options);
+          } else {
+            pending = null;
           }
-        });
-      }, { root: null, threshold: 0.4, rootMargin: '0px 0px -20% 0px' });
+        }, TRANSITION_MS);
+      }
 
-      items.forEach((it) => observer.observe(it));
+      function goToPrevious() {
+        const target = (current - 1 + total) % total;
+        requestActivation(target);
+      }
 
-      // Click and keyboard toggle behavior
-      items.forEach((it, i) => {
-        const btn = it.querySelector('button');
-        if (btn) {
-          btn.addEventListener('click', () => setActive(i));
-          btn.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              setActive(i);
-            }
-          });
+      function goToNext() {
+        const target = (current + 1) % total;
+        requestActivation(target);
+      }
+
+      prevButton?.addEventListener('click', goToPrevious);
+      nextButton?.addEventListener('click', goToNext);
+
+      controls?.addEventListener('keydown', (event) => {
+        switch (event.key) {
+          case 'ArrowUp':
+          case 'ArrowLeft':
+            event.preventDefault();
+            goToPrevious();
+            break;
+          case 'ArrowDown':
+          case 'ArrowRight':
+            event.preventDefault();
+            goToNext();
+            break;
+          case 'Enter':
+          case ' ': {
+            event.preventDefault();
+            goToNext();
+            break;
+          }
+          default:
+            break;
         }
       });
+
+      if (scrollSteps.length) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+              .forEach((entry) => {
+                const indexAttr = entry.target.getAttribute('data-scroll-index');
+                const idx = indexAttr ? Number.parseInt(indexAttr, 10) : NaN;
+                if (!Number.isNaN(idx)) {
+                  requestActivation(idx);
+                }
+              });
+          },
+          {
+            threshold: 0.6,
+            rootMargin: '0px 0px -20% 0px'
+          }
+        );
+
+        scrollSteps.forEach((step) => observer.observe(step));
+      }
+
+      updateDisplay(current);
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initServicesAccordion, { once: true });
+      document.addEventListener('DOMContentLoaded', initServicesVertical, { once: true });
     } else {
-      initServicesAccordion();
+      initServicesVertical();
     }
   </script>
 </SectionLayout>
 
-<style></style>
+<style>
+  .vertical-services {
+    position: relative;
+  }
+
+  .vertical-services__track {
+    position: relative;
+    display: block;
+  }
+
+  .vertical-services__pad {
+    width: 100%;
+    pointer-events: none;
+  }
+
+  .vertical-services__pad--intro {
+    height: clamp(18vh, 12rem, 22vh);
+  }
+
+  .vertical-services__pad--outro {
+    height: clamp(24vh, 18rem, 34vh);
+  }
+
+  .vertical-services__stage {
+    position: sticky;
+    top: clamp(3.5rem, 10vh, 6rem);
+    z-index: 2;
+    width: 100%;
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+    will-change: transform;
+  }
+
+  @media (max-width: 1023px) {
+    .vertical-services__stage {
+      top: clamp(1.5rem, 8vh, 3rem);
+    }
+  }
+
+  .vertical-services__stage.is-animating {
+    transform: translateY(-6px);
+  }
+
+  .vertical-services__stage.is-animating .vertical-services__tab {
+    pointer-events: none;
+  }
+
+  .vertical-services__scroll-steps {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(14vh, 12vw, 24vh);
+    padding-block: clamp(8vh, 6vw, 12vh);
+    pointer-events: none;
+  }
+
+  .vertical-services__scroll-step {
+    width: 100%;
+    height: max(68vh, 520px);
+  }
+
+  .vertical-services__headline {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2.75rem);
+    max-width: 420px;
+  }
+
+  .vertical-services__headline-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: clamp(1.75rem, 3vw, 2.75rem);
+    border-radius: 2.75rem;
+    background: linear-gradient(140deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.75));
+    color: #f8fafc;
+    box-shadow: 0 32px 80px rgba(15, 23, 42, 0.35);
+  }
+
+  .vertical-services__headline-icon {
+    width: 48px;
+    height: 48px;
+    color: #f8fafc;
+  }
+
+  .vertical-services__headline-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .vertical-services__headline-label {
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    opacity: 0.65;
+  }
+
+  .vertical-services__headline-number {
+    font-family: 'Urbanist', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .vertical-services__headline-title {
+    font-family: 'Urbanist', sans-serif;
+    font-size: clamp(1.85rem, 3.4vw, 2.8rem);
+    font-weight: 600;
+    line-height: 1.2;
+    max-width: 14ch;
+  }
+
+  .vertical-services__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+  }
+
+  .vertical-services__headline-item.is-active .vertical-services__headline-card {
+    animation: headline-fade 0.55s ease forwards;
+  }
+
+  .vertical-services__control-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid rgba(248, 250, 252, 0.25);
+    background: rgba(15, 23, 42, 0.85);
+    color: #f8fafc;
+    transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  }
+
+  .vertical-services__control-button:hover,
+  .vertical-services__control-button:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba(248, 250, 252, 0.55);
+  }
+
+  .vertical-services__control-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .vertical-services__progress {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Urbanist', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.72);
+    background: rgba(248, 250, 252, 0.9);
+    border-radius: 999px;
+    padding: 0.55rem 1.4rem;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
+  }
+
+  .vertical-services__progress-current {
+    font-weight: 600;
+  }
+
+  .vertical-services__progress-total {
+    opacity: 0.72;
+  }
+
+  .vertical-services__progress-separator {
+    opacity: 0.4;
+  }
+
+  .vertical-services__stage.is-animating .vertical-services__control-button {
+    pointer-events: none;
+    opacity: 0.5;
+    transform: none;
+  }
+
+  @media (max-width: 1023px) {
+    .vertical-services__headline {
+      max-width: none;
+    }
+
+    .vertical-services__progress {
+      font-size: 0.8rem;
+      letter-spacing: 0.22em;
+    }
+  }
+
+  .vertical-services__panel {
+    background: rgba(255, 255, 255, 0.78);
+    border-radius: 1.75rem;
+  }
+
+  .vertical-services__panel.is-active {
+    animation: fade-in-up 0.45s ease forwards;
+  }
+
+  @keyframes headline-fade {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.99);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

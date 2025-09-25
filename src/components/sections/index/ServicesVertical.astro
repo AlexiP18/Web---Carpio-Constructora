@@ -1,0 +1,404 @@
+---
+const servicesData = [
+  {
+    id: 'planificacion',
+    number: '01',
+    title: 'Nuestro primer paso esencial',
+    navLabel: 'Planificación detallada',
+    description: 'Comenzamos con una planificación meticulosa para entender tus necesidades. Esto asegura que cada detalle sea considerado desde el inicio.',
+    image: '/images/placeholder-image.png',
+    icon: 'ph:clipboard-text'
+  },
+  {
+    id: 'diseno',
+    number: '02',
+    title: 'Diseño personalizado y a medida',
+    navLabel: 'Diseño personalizado',
+    description: 'Creamos diseños únicos que se adaptan a tus requerimientos, combinando estética y funcionalidad para un resultado excepcional.',
+    image: '/images/placeholder-image-1.png',
+    icon: 'ph:pencil-ruler'
+  },
+  {
+    id: 'construccion',
+    number: '03',
+    title: 'Construcción con altos estándares',
+    navLabel: 'Construcción de calidad',
+    description: 'Ejecutamos cada proyecto con los más altos estándares de calidad, utilizando materiales de primera y mano de obra calificada.',
+    image: '/images/placeholder-image-2.png',
+    icon: 'ph:hammer'
+  },
+  {
+    id: 'entrega',
+    number: '04',
+    title: 'Entrega puntual y garantizada',
+    navLabel: 'Entrega puntual',
+    description: 'Nos comprometemos a cumplir con los plazos acordados, garantizando que tu proyecto se complete a tiempo y dentro del presupuesto.',
+    image: '/images/tab-pane-1.png',
+    icon: 'ph:clock'
+  }
+];
+---
+
+<section id="services-vertical" class="bg-gray-50 py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="service-scroll-region relative">
+      <div class="service-sticky-wrapper sticky top-24 sm:top-28 lg:top-32 z-10">
+        <div class="services-wrapper flex justify-center">
+          <div class="services-frame flex flex-col lg:flex-row bg-white/95 rounded-[44px] border border-neutral-200 shadow-xl overflow-hidden">
+            <!-- Content Area -->
+            <div class="services-panels relative flex-1 min-h-[520px]">
+              {servicesData.map((service, index) => (
+                <div 
+                  id={`panel-${service.id}`}
+                  class:list={[
+                    "service-panel absolute inset-0 flex flex-col lg:flex-row gap-10 bg-white p-8 lg:py-14 lg:pl-20 lg:pr-16 transition-all duration-600 ease-out",
+                    { "opacity-100 translate-x-0 z-10 active pointer-events-auto": index === 0, "opacity-0 translate-x-12 pointer-events-none": index !== 0 }
+                  ]}
+                  data-panel-index={index}
+                  role="tabpanel"
+                  aria-labelledby={`tab-${service.id}`}
+                >
+                  <span class="panel-label hidden lg:flex items-center justify-center text-sm font-semibold tracking-[0.4em] uppercase text-neutral-500 writing-mode-vertical">
+                    {service.navLabel}
+                  </span>
+                  <div class="flex-1 flex flex-col">
+                    <div class="flex items-start gap-6 mb-6">
+                      <span class="text-2xl lg:text-[32px] font-bold text-neutral-400">{service.number}</span>
+                      <div class="flex-1">
+                        <h2 class="text-3xl lg:text-[40px] font-semibold text-neutral-900 font-urbanist leading-tight">{service.title}</h2>
+                        <p class="mt-4 text-base lg:text-xl text-neutral-600 max-w-xl">{service.description}</p>
+                      </div>
+                    </div>
+                    <div class="flex-grow rounded-[28px] border border-neutral-200 overflow-hidden">
+                      <img src={service.image} alt={service.title} class="w-full h-full object-cover" loading={index === 0 ? 'eager' : 'lazy'} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <!-- Vertical Tabs -->
+            <div class="services-tabs flex lg:flex-col overflow-x-auto lg:overflow-visible bg-neutral-100/60 lg:bg-transparent lg:border-l lg:border-neutral-200">
+              {servicesData.map((service, index) => {
+                const isFirst = index === 0;
+                const isLast = index === servicesData.length - 1;
+
+                return (
+                  <button
+                    id={`tab-${service.id}`}
+                    class:list={[
+                      "vertical-tab relative flex items-center justify-center px-4 py-6 lg:px-6 lg:py-12 min-w-[110px] lg:min-w-[120px] min-h-[120px] lg:min-h-[520px] border-l border-neutral-200 lg:border-l-0 lg:border-t text-center transition-all duration-300 ease-in-out focus-visible:outline-hidden rounded-[28px] lg:rounded-none",
+                      {
+                        "active bg-white text-neutral-900": isFirst,
+                        "bg-neutral-100 text-neutral-500": !isFirst,
+                        "lg:rounded-tr-[44px] lg:border-t-0": isFirst,
+                        "lg:rounded-br-[44px]": isLast
+                      }
+                    ]}
+                    data-tab-index={index}
+                    role="tab"
+                    aria-controls={`panel-${service.id}`}
+                    aria-selected={isFirst}
+                  >
+                    <span class="tab-number absolute top-4 left-1/2 -translate-x-1/2 text-sm font-semibold tracking-[0.4em] uppercase">{service.number}</span>
+                    <span class="tab-label writing-mode-vertical font-urbanist text-lg font-semibold">{service.navLabel}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-scroll-steps" aria-hidden="true">
+        {servicesData.map((_, index) => (
+          <div class="service-scroll-step h-[110vh] lg:h-[120vh]" data-scroll-index={index}></div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --services-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .service-scroll-region {
+    position: relative;
+  }
+
+  .service-sticky-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .services-wrapper {
+    width: 100%;
+    max-width: 1080px;
+    padding: 0 1.25rem;
+  }
+
+  .service-scroll-steps {
+    pointer-events: none;
+  }
+
+  .service-scroll-step {
+    width: 100%;
+  }
+
+  .service-scroll-steps::after {
+    content: '';
+    display: block;
+    height: 40vh;
+  }
+
+  .services-wrapper {
+    position: relative;
+  }
+
+  .services-frame {
+    border: 2px solid rgba(15, 23, 42, 0.12);
+    border-radius: 44px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(249, 250, 251, 0.92));
+    box-shadow: 0 40px 80px -60px rgba(15, 23, 42, 0.35);
+    width: 100%;
+    max-width: 1080px;
+    min-height: clamp(520px, 72vh, 720px);
+  }
+
+  .services-tabs {
+    min-height: 120px;
+    gap: 0;
+  }
+
+  .services-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vertical-tab {
+    position: relative;
+    border-color: rgba(15, 23, 42, 0.12);
+    background: rgba(244, 244, 245, 0.85);
+    color: rgba(71, 85, 105, 0.85);
+    transition: transform 0.45s var(--services-ease),
+      background-color 0.3s ease,
+      color 0.3s ease,
+      box-shadow 0.45s var(--services-ease);
+  }
+
+  .vertical-tab .tab-number {
+    letter-spacing: 0.35em;
+    color: rgba(71, 85, 105, 0.75);
+    text-transform: uppercase;
+  }
+
+  .vertical-tab .tab-label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    letter-spacing: 0.08em;
+  }
+
+  .vertical-tab.active {
+    background: #ffffff;
+    color: #0f172a;
+    box-shadow: inset 0 0 0 2px rgba(15, 23, 42, 0.16);
+    transform: translateY(-2px);
+  }
+
+  .vertical-tab.active .tab-number {
+    color: #0f172a;
+  }
+
+  .vertical-tab:not(.active):hover {
+    background: rgba(229, 231, 235, 0.9);
+  }
+
+  .service-panel {
+    transition: opacity 0.6s var(--services-ease), transform 0.6s var(--services-ease);
+  }
+
+  .panel-label {
+    position: absolute;
+    inset-inline-start: 36px;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(180deg);
+    padding: 1.25rem 0.95rem;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    color: rgba(30, 41, 59, 0.85);
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    box-shadow: 0 32px 54px -28px rgba(15, 23, 42, 0.25);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .service-panel.active .panel-label {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+
+  @media (max-width: 1023px) {
+    .services-frame {
+      border-radius: 32px;
+      border-width: 1.5px;
+    }
+
+    .services-tabs {
+      padding: 0.5rem 0.75rem;
+      background: transparent;
+      gap: 0.75rem;
+    }
+
+    .vertical-tab {
+      min-height: 120px;
+      min-width: 160px;
+      border-radius: 28px;
+      align-items: flex-end;
+    }
+
+    .vertical-tab .tab-label {
+      writing-mode: horizontal-tb;
+      transform: none;
+      letter-spacing: 0.04em;
+    }
+
+    .vertical-tab .tab-number {
+      left: auto;
+      right: 1.25rem;
+      transform: none;
+    }
+
+    .panel-label {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-wrapper {
+      padding: 0 2rem;
+    }
+
+    .services-tabs {
+      min-width: 132px;
+    }
+  }
+</style>
+
+<script is:inline>
+  function initServicesVertical() {
+    const container = document.querySelector('#services-vertical');
+    if (!container) return;
+
+    const tabs = Array.from(container.querySelectorAll('.vertical-tab'));
+    const panels = Array.from(container.querySelectorAll('.service-panel'));
+    const scrollSteps = Array.from(container.querySelectorAll('.service-scroll-step'));
+
+    if (!tabs.length || !panels.length || !scrollSteps.length) return;
+
+    let currentIndex = 0;
+    let isAnimating = false;
+    let queuedIndex = null;
+    let animationTimeout = null;
+    const animationDuration = 750;
+
+    const commitQueuedIndex = () => {
+      if (queuedIndex === null) return;
+      const nextIndex = queuedIndex;
+      queuedIndex = null;
+      updateActive(nextIndex, { force: true });
+    };
+
+    const updateActive = (index, options = {}) => {
+      const { force = false } = options;
+
+      if (index < 0 || index >= panels.length) return;
+      if (!force && (index === currentIndex || isAnimating)) {
+        if (isAnimating && index !== currentIndex) {
+          queuedIndex = index;
+        }
+        return;
+      }
+
+      currentIndex = index;
+      isAnimating = true;
+
+      tabs.forEach((tab, i) => {
+        const isActive = i === index;
+        tab.classList.toggle('active', isActive);
+        tab.classList.toggle('bg-white', isActive);
+        tab.classList.toggle('text-neutral-900', isActive);
+        tab.classList.toggle('bg-neutral-100', !isActive);
+        tab.classList.toggle('text-neutral-500', !isActive);
+        tab.setAttribute('aria-selected', String(isActive));
+      });
+
+      panels.forEach((panel, i) => {
+        const isActive = i === index;
+        panel.classList.toggle('active', isActive);
+        panel.classList.toggle('opacity-100', isActive);
+        panel.classList.toggle('translate-x-0', isActive);
+        panel.classList.toggle('z-10', isActive);
+        panel.classList.toggle('opacity-0', !isActive);
+        panel.classList.toggle('translate-x-12', !isActive);
+        panel.classList.toggle('pointer-events-auto', isActive);
+        panel.classList.toggle('pointer-events-none', !isActive);
+        panel.setAttribute('aria-hidden', String(!isActive));
+      });
+
+      if (force) {
+        isAnimating = false;
+        if (animationTimeout) {
+          clearTimeout(animationTimeout);
+          animationTimeout = null;
+        }
+        return;
+      }
+
+      if (animationTimeout) {
+        clearTimeout(animationTimeout);
+      }
+
+      animationTimeout = window.setTimeout(() => {
+        isAnimating = false;
+        commitQueuedIndex();
+      }, animationDuration);
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        updateActive(index);
+      });
+
+      tab.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          updateActive(index);
+        }
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const scrollIndex = Number(entry.target.getAttribute('data-scroll-index'));
+          if (!Number.isNaN(scrollIndex)) {
+            updateActive(scrollIndex);
+          }
+        }
+      });
+    }, {
+      threshold: 0.6,
+      rootMargin: '-25% 0px -25% 0px'
+    });
+
+    scrollSteps.forEach((step) => observer.observe(step));
+
+    updateActive(0, { force: true });
+  }
+
+  document.addEventListener('DOMContentLoaded', initServicesVertical);
+</script>

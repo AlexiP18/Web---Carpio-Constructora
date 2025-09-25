@@ -2,24 +2,54 @@
 import { Icon } from 'astro-icon/components';
 import Button from '../../ui/Button.astro';
 import OptimizedImage from '../../media/OptimizedImage.astro';
-import backgroundLanding from '../../../assets/background_landing.jpg';
+
+// Import slider images
+import sliderImage1 from '../../../assets/img/index/INDEX_Slider_1.webp';
+import sliderImage2 from '../../../assets/img/index/INDEX_Slider_2.jpg';
+import sliderImage3 from '../../../assets/img/index/INDEX_Slider_3.jpg';
+import sliderImage4 from '../../../assets/img/index/INDEX_Slider_4.jpeg';
+
+const sliderImages = [
+  { src: sliderImage1, alt: "Proyecto Constructora Carpio 1" },
+  { src: sliderImage2, alt: "Proyecto Constructora Carpio 2" },
+  { src: sliderImage3, alt: "Proyecto Constructora Carpio 3" },
+  { src: sliderImage4, alt: "Proyecto Constructora Carpio 4" }
+];
 ---
 
-<section class="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-  <!-- Background Image with Optimization -->
-  <OptimizedImage
-    src={backgroundLanding}
-    alt="Constructora Carpio - Proyectos de construcción"
-    sizes="100vw"
-    class="absolute inset-0 w-full h-full object-cover hero-bg"
-    quality={95}
-    format="webp"
-    preload={true}
-  />
+<section class="relative w-full min-h-screen flex items-center justify-center overflow-hidden" id="hero-slider">
+  <!-- Background Slider Container -->
+  <div class="absolute inset-0 w-full h-full bg-gray-900">
+    {sliderImages.map((image, index) => (
+      <div 
+        class={`slider-slide absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${index === 0 ? 'active' : ''}`} 
+        data-slide={index}
+        style={index === 0 ? 'opacity: 1; z-index: 2;' : 'opacity: 0; z-index: 1;'}
+      >
+        <img
+          src={image.src.src}
+          alt={image.alt}
+          class="absolute inset-0 w-full h-full object-cover slider-bg opacity-70"
+          loading={index === 0 ? 'eager' : 'lazy'}
+        />
+      </div>
+    ))}
+  </div>
   
-  <!-- Gradient Overlay matching Figma design -->
-  <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
-  <div class="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/20"></div>
+  <!-- Enhanced Gradient Overlays -->
+  <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/20"></div>
+  
+  <!-- Slider Navigation Dots -->
+  <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+    {sliderImages.map((_, index) => (
+      <button 
+        class={`slider-dot w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/75'}`}
+        data-slide-to={index}
+        aria-label={`Ir a imagen ${index + 1}`}
+      ></button>
+    ))}
+  </div>
   
   <!-- Centered Content Container following Figma layout -->
   <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 text-center">
@@ -77,28 +107,123 @@ import backgroundLanding from '../../../assets/background_landing.jpg';
 </section>
 
 <style>
-  /* Background image animations */
-  .hero-bg {
-    animation: subtleZoom 20s ease-in-out infinite alternate;
+  /* Advanced Slider Effects */
+  .slider-slide {
+    z-index: 1;
+    transform-origin: center center;
+    transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
-  @keyframes subtleZoom {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
+  .slider-slide.active {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    z-index: 2 !important;
   }
   
-  /* Parallax effect for background */
+  .slider-slide.prev {
+    transform: scale(1.1) translateX(-50px) !important;
+    opacity: 0 !important;
+    z-index: 1;
+  }
+  
+  .slider-slide.next {
+    transform: scale(1.1) translateX(50px) !important;
+    opacity: 0 !important;
+    z-index: 1;
+  }
+  
+  .slider-bg {
+    transition: transform 8s ease-out;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  /* Ensure first slide is visible immediately */
+  .slider-slide[data-slide="0"] {
+    opacity: 1;
+    z-index: 2;
+  }
+  
+  /* Ken Burns Effect - Different for each slide */
+  @keyframes kenBurns {
+    0% { 
+      transform: scale(1) rotate(0deg); 
+      transform-origin: top left;
+    }
+    100% { 
+      transform: scale(1.08) rotate(0.5deg); 
+      transform-origin: bottom right;
+    }
+  }
+  
+  @keyframes kenBurnsReverse {
+    0% { 
+      transform: scale(1.08) rotate(-0.5deg); 
+      transform-origin: bottom right;
+    }
+    100% { 
+      transform: scale(1) rotate(0deg); 
+      transform-origin: top left;
+    }
+  }
+  
+  @keyframes kenBurnsCenter {
+    0% { 
+      transform: scale(1) rotate(0deg); 
+      transform-origin: center center;
+    }
+    100% { 
+      transform: scale(1.1) rotate(0.3deg); 
+      transform-origin: center center;
+    }
+  }
+  
+  @keyframes kenBurnsZoom {
+    0% { 
+      transform: scale(1.05) rotate(0.2deg); 
+      transform-origin: top right;
+    }
+    100% { 
+      transform: scale(1) rotate(-0.2deg); 
+      transform-origin: bottom left;
+    }
+  }
+  
+  /* Apply different animations to each slide */
+  .slider-slide[data-slide="0"] .slider-bg { animation: kenBurns 12s ease-in-out infinite alternate; }
+  .slider-slide[data-slide="1"] .slider-bg { animation: kenBurnsReverse 10s ease-in-out infinite alternate; }
+  .slider-slide[data-slide="2"] .slider-bg { animation: kenBurnsCenter 14s ease-in-out infinite alternate; }
+  .slider-slide[data-slide="3"] .slider-bg { animation: kenBurnsZoom 11s ease-in-out infinite alternate; }
+  
+  /* Slider Dots Enhanced */
+  .slider-dot {
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .slider-dot.active {
+    background: white !important;
+    transform: scale(1.3) !important;
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+  }
+  
+  .slider-dot:hover {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+  
+  /* Enhanced bounce effect */
   @media (prefers-reduced-motion: no-preference) {
-    section {
-      background-attachment: fixed;
-    }
-    
-    /* Enhanced animations */
     .animate-bounce {
-      animation: bounce 2s infinite;
+      animation: enhancedBounce 2s infinite;
     }
     
-    @keyframes bounce {
+    @keyframes enhancedBounce {
       0%, 20%, 53%, 80%, 100% {
         animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
         transform: translate3d(-50%, 0, 0);
@@ -117,9 +242,22 @@ import backgroundLanding from '../../../assets/background_landing.jpg';
     }
   }
   
-  /* Text glow effect */
+  /* Enhanced text effects */
   h1 {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 
+                 0 0 30px rgba(0, 0, 0, 0.6),
+                 0 0 20px rgba(255, 255, 255, 0.1);
+    animation: textGlow 3s ease-in-out infinite alternate;
+  }
+  
+  /* Better text readability */
+  p {
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  }
+  
+  @keyframes textGlow {
+    0% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.1); }
+    100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7), 0 0 30px rgba(255, 255, 255, 0.2); }
   }
   
   /* Improved responsive typography */
@@ -127,38 +265,257 @@ import backgroundLanding from '../../../assets/background_landing.jpg';
     h1 {
       font-size: clamp(36px, 10vw, 48px) !important;
     }
+    
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+    }
+  }
+  
+  /* GPU acceleration */
+  .slider-slide,
+  .slider-bg {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform, opacity;
   }
 </style>
 
 <script>
-  // Enhanced scroll behavior with throttling
-  let ticking = false;
-  
-  function updateParallax(): void {
-    const scrolled = window.pageYOffset;
-    const rate = scrolled * -0.5;
-    const heroSection = document.querySelector('.hero-bg') as HTMLElement | null;
+  // Advanced Hero Slider with Enhanced Effects
+  class HeroSlider {
+    private currentSlide = 0;
+    private slides: HTMLElement[] = [];
+    private dots: HTMLElement[] = [];
+    private totalSlides = 0;
+    private isAutoPlaying = true;
+    private autoPlayInterval: number | null = null;
+    private transitionDuration = 6000; // 6 seconds
     
-    if (heroSection) {
-      heroSection.style.transform = `translate3d(0, ${rate}px, 0) scale(1.05)`;
+    constructor() {
+      this.init();
     }
     
-    ticking = false;
-  }
-  
-  function requestTick(): void {
-    if (!ticking) {
-      requestAnimationFrame(updateParallax);
-      ticking = true;
+    private init(): void {
+      this.slides = Array.from(document.querySelectorAll('.slider-slide'));
+      this.dots = Array.from(document.querySelectorAll('.slider-dot'));
+      this.totalSlides = this.slides.length;
+      
+      console.log('Hero Slider initialized:', {
+        slides: this.totalSlides,
+        dots: this.dots.length
+      });
+      
+      // Debug: show image sources
+      this.slides.forEach((slide, index) => {
+        const img = slide.querySelector('img');
+        if (img) {
+          console.log(`Slide ${index} image:`, img.src);
+        }
+      });
+      
+      if (this.totalSlides === 0) {
+        console.error('No slider slides found!');
+        return;
+      }
+      
+      // Set initial state
+      this.updateSlider(0, false);
+      
+      // Add event listeners
+      this.dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => this.goToSlide(index));
+      });
+      
+      // Start autoplay (no pause on hover)
+      this.startAutoPlay();
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') this.prevSlide();
+        if (e.key === 'ArrowRight') this.nextSlide();
+      });
+      
+      // Swipe support for mobile
+      this.initSwipeSupport();
+    }
+    
+    private updateSlider(newIndex: number, useTransition = true): void {
+      const prevIndex = this.currentSlide;
+      this.currentSlide = newIndex;
+      
+      console.log('Updating slider:', { from: prevIndex, to: newIndex });
+      
+      // Update slides - simplified approach
+      this.slides.forEach((slide, index) => {
+        slide.classList.remove('active', 'prev', 'next');
+        
+        if (index === newIndex) {
+          slide.classList.add('active');
+          slide.style.opacity = '1';
+          slide.style.zIndex = '10';
+          slide.style.transform = 'scale(1)';
+        } else {
+          slide.style.opacity = '0';
+          slide.style.zIndex = '1';
+          slide.style.transform = 'scale(1.05)';
+        }
+      });
+      
+      // Update dots
+      this.dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === newIndex);
+      });
+      
+      console.log(`Active slide: ${newIndex}, visible slide opacity:`, this.slides[newIndex]?.style.opacity);
+    }
+    
+    private applyTransitionEffect(prevIndex: number, newIndex: number): void {
+      const prevSlide = this.slides[prevIndex];
+      const newSlide = this.slides[newIndex];
+      
+      if (!prevSlide || !newSlide) return;
+      
+      // Different effects based on slide direction
+      const effects = [
+        'fadeZoom',
+        'slideRotate', 
+        'scaleBlur',
+        'flipFade'
+      ];
+      
+      const effectIndex = Math.abs(newIndex - prevIndex) % effects.length;
+      const effect = effects[effectIndex];
+      
+      switch (effect) {
+        case 'fadeZoom':
+          this.fadeZoomTransition(prevSlide, newSlide);
+          break;
+        case 'slideRotate':
+          this.slideRotateTransition(prevSlide, newSlide, newIndex > prevIndex);
+          break;
+        case 'scaleBlur':
+          this.scaleBlurTransition(prevSlide, newSlide);
+          break;
+        case 'flipFade':
+          this.flipFadeTransition(prevSlide, newSlide);
+          break;
+      }
+    }
+    
+    private fadeZoomTransition(prevSlide: HTMLElement, newSlide: HTMLElement): void {
+      prevSlide.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+      newSlide.style.transition = 'opacity 1s ease-in, transform 1s ease-in';
+      
+      prevSlide.style.transform = 'scale(0.95)';
+      newSlide.style.transform = 'scale(1)';
+    }
+    
+    private slideRotateTransition(prevSlide: HTMLElement, newSlide: HTMLElement, isNext: boolean): void {
+      const direction = isNext ? 1 : -1;
+      
+      prevSlide.style.transition = 'transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1)';
+      newSlide.style.transition = 'transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1)';
+      
+      prevSlide.style.transform = `translateX(${-50 * direction}px) rotate(${2 * direction}deg) scale(0.9)`;
+      newSlide.style.transform = 'translateX(0) rotate(0deg) scale(1)';
+    }
+    
+    private scaleBlurTransition(prevSlide: HTMLElement, newSlide: HTMLElement): void {
+      prevSlide.style.transition = 'transform 1s ease-out, filter 0.5s ease-out';
+      newSlide.style.transition = 'transform 1s ease-in, filter 0.5s ease-in';
+      
+      prevSlide.style.filter = 'blur(2px)';
+      prevSlide.style.transform = 'scale(1.1)';
+      
+      setTimeout(() => {
+        newSlide.style.filter = 'blur(0px)';
+        newSlide.style.transform = 'scale(1)';
+      }, 300);
+    }
+    
+    private flipFadeTransition(prevSlide: HTMLElement, newSlide: HTMLElement): void {
+      prevSlide.style.transition = 'transform 0.8s ease-in-out, opacity 0.4s ease-out';
+      newSlide.style.transition = 'transform 0.8s ease-in-out, opacity 0.4s ease-in 0.4s';
+      
+      prevSlide.style.transform = 'rotateY(90deg) scale(0.8)';
+      
+      setTimeout(() => {
+        newSlide.style.transform = 'rotateY(0deg) scale(1)';
+      }, 400);
+    }
+    
+    private goToSlide(index: number): void {
+      if (index !== this.currentSlide && index >= 0 && index < this.totalSlides) {
+        this.updateSlider(index);
+        this.resetAutoPlay();
+      }
+    }
+    
+    private nextSlide(): void {
+      const nextIndex = (this.currentSlide + 1) % this.totalSlides;
+      this.goToSlide(nextIndex);
+    }
+    
+    private prevSlide(): void {
+      const prevIndex = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+      this.goToSlide(prevIndex);
+    }
+    
+    private startAutoPlay(): void {
+      if (!this.isAutoPlaying) return;
+      
+      this.autoPlayInterval = window.setInterval(() => {
+        this.nextSlide();
+      }, this.transitionDuration);
+    }
+    
+    private pauseAutoPlay(): void {
+      if (this.autoPlayInterval) {
+        clearInterval(this.autoPlayInterval);
+        this.autoPlayInterval = null;
+      }
+    }
+    
+    private resetAutoPlay(): void {
+      this.pauseAutoPlay();
+      this.startAutoPlay();
+    }
+    
+    private initSwipeSupport(): void {
+      let startX = 0;
+      let startY = 0;
+      let endX = 0;
+      let endY = 0;
+      
+      const heroSection = document.getElementById('hero-slider');
+      if (!heroSection) return;
+      
+      heroSection.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+      });
+      
+      heroSection.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        endY = e.changedTouches[0].clientY;
+        
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        
+        // Only trigger if horizontal swipe is dominant
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+          if (deltaX > 0) {
+            this.prevSlide();
+          } else {
+            this.nextSlide();
+          }
+        }
+      });
     }
   }
   
-  // Only apply parallax on larger screens and if motion is preferred
-  if (window.innerWidth > 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.addEventListener('scroll', requestTick);
-  }
-  
-  // Intersection Observer for enhanced animations
+  // Enhanced Intersection Observer for animations
   const observerOptions: IntersectionObserverInit = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -172,8 +529,33 @@ import backgroundLanding from '../../../assets/background_landing.jpg';
     });
   }, observerOptions);
   
-  // Observe stats elements for staggered animation
-  document.querySelectorAll('[data-aos="zoom-in"]').forEach(el => {
-    observer.observe(el);
-  });
+  // Initialize slider
+  function initHeroSlider() {
+    try {
+      console.log('Initializing Hero Slider...');
+      new HeroSlider();
+      
+      // Observe elements for animations
+      document.querySelectorAll('[data-aos]').forEach(el => {
+        observer.observe(el);
+      });
+    } catch (error) {
+      console.error('Error initializing Hero Slider:', error);
+    }
+  }
+  
+  // Multiple initialization attempts to ensure it works
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeroSlider);
+  } else {
+    initHeroSlider();
+  }
+  
+  // Also try after a small delay
+  setTimeout(initHeroSlider, 100);
+  
+  // Reduced motion support
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.style.setProperty('--animation-duration', '0s');
+  }
 </script>

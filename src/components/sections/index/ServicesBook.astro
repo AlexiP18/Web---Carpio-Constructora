@@ -1,0 +1,476 @@
+---
+import { Icon } from 'astro-icon/components';
+
+// Data: services list para acordeón vertical
+const servicesSteps = [
+  {
+    id: 'planificacion-detallada',
+    number: '01',
+    title: 'Nuestro primer paso esencial',
+    subtitle: 'Planificación detallada',
+    description: 'Comenzamos con una planificación meticulosa para entender las necesidades. Esto asegura que cada detalle sea considerado desde el inicio.',
+    icon: 'ph:clipboard-text',
+    image: '/images/layout-355.png'
+  },
+  {
+    id: 'diseno-personalizado',
+    number: '02',
+    title: 'Diseño personalizado',
+    subtitle: 'Diseño personalizado',
+    description: 'Creamos diseños únicos adaptados a sus necesidades específicas, combinando funcionalidad y estética para resultados excepcionales.',
+    icon: 'ph:pencil-ruler',
+    image: '/images/layout-85.png'
+  },
+  {
+    id: 'construccion-calidad',
+    number: '03',
+    title: 'Construcción de calidad',
+    subtitle: 'Construcción de calidad',
+    description: 'Ejecutamos cada proyecto con los más altos estándares de calidad, utilizando materiales premium y técnicas constructivas avanzadas.',
+    icon: 'ph:hammer',
+    image: '/images/header-30.png'
+  },
+  {
+    id: 'entrega-puntual',
+    number: '04',
+    title: 'Entrega puntual',
+    subtitle: 'Entrega puntual',
+    description: 'Cumplimos con los tiempos establecidos sin comprometer la calidad, asegurando que su proyecto esté listo cuando lo necesite.',
+    icon: 'ph:clock',
+    image: '/images/header-50.png'
+  }
+];
+---
+
+<section id="services-accordion-section" class="relative">
+  
+  <!-- Sticky Container -->
+  <div class="sticky top-0 h-screen overflow-hidden bg-gray-50">
+    
+    <!-- Main Container -->
+    <div class="relative w-full h-full max-w-7xl mx-auto">
+      
+      <!-- Accordion Headers Stack (Left Side) -->
+      <div class="absolute left-0 top-0 h-full flex flex-col justify-center z-20">
+        <div class="bg-white rounded-r-2xl shadow-xl border border-l-0 border-gray-200 overflow-hidden">
+          {servicesSteps.map((step, index) => (
+            <div 
+              class={`accordion-header transition-all duration-500 cursor-pointer ${index === 0 ? 'active' : ''}`}
+              data-step-index={index}
+              data-step-id={step.id}
+            >
+              <!-- Header Content -->
+              <div class="flex items-center p-6 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 transition-colors">
+                <div class="flex items-center gap-4 min-w-0">
+                  <!-- Step Number -->
+                  <div class="flex-shrink-0 w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
+                    <span class="font-urbanist font-bold text-lg text-gray-700">{step.number}</span>
+                  </div>
+                  
+                  <!-- Step Title (Vertical Text) -->
+                  <div class="writing-mode-vertical text-orientation-mixed transform rotate-180">
+                    <h3 class="font-urbanist font-medium text-lg text-gray-800 whitespace-nowrap">
+                      {step.subtitle}
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Content Area (Right Side) -->
+      <div class="absolute left-64 right-0 top-0 h-full flex items-center justify-center">
+        
+        {servicesSteps.map((step, index) => (
+          <div 
+            class={`accordion-content absolute inset-0 transition-all duration-700 ease-out ${index === 0 ? 'active opacity-100' : 'opacity-0 translate-x-8'}`}
+            data-content-index={index}
+          >
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden h-[600px] mx-8">
+              <div class="h-full flex">
+                
+                <!-- Content Left -->
+                <div class="w-1/2 p-12 flex flex-col justify-center">
+                  
+                  <!-- Step Badge -->
+                  <div class="inline-flex items-center gap-3 mb-8">
+                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center">
+                      <Icon name={step.icon} class="w-8 h-8 text-blue-600" />
+                    </div>
+                    <span class="font-heebo text-sm text-gray-500 uppercase tracking-wider">
+                      Paso {step.number}
+                    </span>
+                  </div>
+                  
+                  <!-- Main Title -->
+                  <h2 class="font-urbanist font-bold text-4xl lg:text-5xl text-gray-900 leading-tight mb-4">
+                    {step.title}
+                  </h2>
+                  
+                  <!-- Description -->
+                  <p class="font-heebo text-lg text-gray-600 leading-relaxed max-w-md">
+                    {step.description}
+                  </p>
+                  
+                </div>
+                
+                <!-- Content Right - Image -->
+                <div class="w-1/2 p-8 flex items-center justify-center bg-gray-50">
+                  <div class="w-full h-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-200">
+                    <img 
+                      src={step.image} 
+                      alt={step.title}
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        ))}
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  <!-- Scroll Spacer -->
+  <div class="h-[400vh]"></div>
+  
+</section>
+
+<style>
+  /* Vertical Writing Mode for Headers */
+  .writing-mode-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+  
+  /* Accordion Header States */
+  .accordion-header {
+    position: relative;
+    background: white;
+    transform: translateX(0);
+    cursor: pointer;
+  }
+  
+  .accordion-header.active {
+    background: rgb(239 246 255);
+    border-right: 4px solid rgb(59 130 246);
+  }
+  
+  .accordion-header.passed {
+    background: rgb(249 250 251);
+    opacity: 0.7;
+    transform: translateX(-10px);
+  }
+  
+  /* Content States */
+  .accordion-content {
+    position: absolute;
+    inset: 0;
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .accordion-content.active {
+    opacity: 1;
+    transform: translateX(0);
+    z-index: 10;
+  }
+  
+  .accordion-content:not(.active) {
+    opacity: 0;
+    transform: translateX(50px);
+    z-index: 1;
+  }
+  
+  /* Smooth Animations */
+  .accordion-header {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Header Stack Effect */
+  .accordion-header:not(.active):not(.passed) {
+    opacity: 0.8;
+  }
+  
+  /* Content Area Styling */
+  .accordion-content.active > div > div > div {
+    animation: slideInFromRight 0.7s ease-out;
+  }
+  
+  @keyframes slideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  /* Header Hover Effects */
+  .accordion-header:hover {
+    background: rgb(243 244 246) !important;
+    transform: translateX(5px);
+  }
+  
+  .accordion-header.active:hover {
+    background: rgb(219 234 254) !important;
+    transform: translateX(0);
+  }
+  
+  /* Header Content Styling */
+  .accordion-header .flex {
+    border-bottom: 1px solid rgb(229 231 235);
+  }
+  
+  .accordion-header:last-child .flex {
+    border-bottom: none;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .writing-mode-vertical {
+      writing-mode: horizontal-tb;
+      transform: none;
+    }
+    
+    .accordion-content > div > div {
+      flex-direction: column;
+      height: auto;
+    }
+    
+    .accordion-content > div > div > div {
+      width: 100% !important;
+      padding: 1.5rem;
+    }
+    
+    .accordion-content > div > div > div:last-child {
+      height: 300px;
+    }
+    
+    /* Stack headers horizontally on mobile */
+    .accordion-header {
+      display: inline-block;
+      width: auto;
+      min-width: 150px;
+    }
+    
+    .accordion-header .writing-mode-vertical h3 {
+      writing-mode: horizontal-tb;
+      white-space: normal;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .accordion-header {
+      padding: 0.75rem;
+    }
+    
+    .accordion-content {
+      left: 0 !important;
+      right: 0 !important;
+      margin: 0 1rem;
+    }
+  }
+  
+  /* Performance Optimizations */
+  .accordion-header,
+  .accordion-content {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script>
+  class ServicesAccordion {
+    private currentStep = 0;
+    private totalSteps = 0;
+    private headers: HTMLElement[] = [];
+    private contents: HTMLElement[] = [];
+    private section: HTMLElement | null = null;
+    private isTransitioning = false;
+    
+    constructor() {
+      this.init();
+    }
+    
+    private init(): void {
+      this.section = document.querySelector('#services-accordion-section');
+      this.headers = Array.from(document.querySelectorAll('.accordion-header'));
+      this.contents = Array.from(document.querySelectorAll('.accordion-content'));
+      this.totalSteps = this.headers.length;
+      
+      if (!this.section || this.totalSteps === 0) {
+        console.error('ServicesAccordion: Required elements not found');
+        return;
+      }
+      
+      console.log('ServicesAccordion initialized:', {
+        steps: this.totalSteps,
+        headers: this.headers.length,
+        contents: this.contents.length
+      });
+      
+      this.setupScrollObserver();
+      this.setupHeaderNavigation();
+      this.setActiveStep(0, false);
+    }
+    
+    private setupScrollObserver(): void {
+      if (!this.section) return;
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Calculate which step should be active based on scroll position
+            const rect = entry.target.getBoundingClientRect();
+            const sectionHeight = rect.height;
+            const viewportHeight = window.innerHeight;
+            const scrollProgress = Math.abs(rect.top) / (sectionHeight - viewportHeight);
+            
+            // Determine step based on scroll progress
+            const targetStep = Math.min(
+              Math.floor(scrollProgress * this.totalSteps), 
+              this.totalSteps - 1
+            );
+            
+            if (targetStep !== this.currentStep && !this.isTransitioning) {
+              this.setActiveStep(targetStep);
+            }
+          }
+        });
+      }, {
+        threshold: [0, 0.1, 0.5, 0.9, 1],
+        rootMargin: '0px'
+      });
+      
+      observer.observe(this.section);
+    }
+    
+    private setupHeaderNavigation(): void {
+      this.headers.forEach((header, index) => {
+        header.addEventListener('click', () => {
+          if (index !== this.currentStep && !this.isTransitioning) {
+            this.setActiveStep(index);
+          }
+        });
+        
+        // Add hover effects for better UX
+        header.addEventListener('mouseenter', () => {
+          if (index !== this.currentStep) {
+            header.style.transform = 'translateX(5px)';
+          }
+        });
+        
+        header.addEventListener('mouseleave', () => {
+          if (index !== this.currentStep) {
+            header.style.transform = 'translateX(0)';
+          }
+        });
+      });
+    }
+    
+    private setActiveStep(stepIndex: number, animate = true): void {
+      if (stepIndex < 0 || stepIndex >= this.totalSteps || this.isTransitioning) return;
+      
+      const prevStep = this.currentStep;
+      this.currentStep = stepIndex;
+      
+      console.log(`Activating step ${stepIndex} from ${prevStep}`);
+      
+      if (animate && prevStep !== stepIndex) {
+        this.animateStepChange(prevStep, stepIndex);
+      } else {
+        this.updateStepsState();
+      }
+    }
+    
+    private animateStepChange(fromStep: number, toStep: number): void {
+      this.isTransitioning = true;
+      
+      // Start transition animation
+      setTimeout(() => {
+        this.updateStepsState();
+        
+        // End transition
+        setTimeout(() => {
+          this.isTransitioning = false;
+        }, 300);
+      }, 50);
+    }
+    
+    private updateStepsState(): void {
+      // Update headers state
+      this.headers.forEach((header, index) => {
+        header.classList.remove('active', 'passed');
+        
+        if (index === this.currentStep) {
+          header.classList.add('active');
+        } else if (index < this.currentStep) {
+          header.classList.add('passed');
+        }
+      });
+      
+      // Update content state
+      this.contents.forEach((content, index) => {
+        content.classList.remove('active');
+        
+        if (index === this.currentStep) {
+          content.classList.add('active');
+        }
+      });
+    }
+  }
+  
+  // Enhanced Intersection Observer for animations
+  const observerOptions: IntersectionObserverInit = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const animationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        (entry.target as HTMLElement).classList.add('animate-in');
+      }
+    });
+  }, observerOptions);
+  
+  // Initialize when DOM is loaded
+  function initServicesAccordion() {
+    try {
+      console.log('Initializing Services Accordion...');
+      new ServicesAccordion();
+      
+      // Observe elements for animations
+      document.querySelectorAll('[data-aos]').forEach(el => {
+        animationObserver.observe(el);
+      });
+    } catch (error) {
+      console.error('Error initializing Services Accordion:', error);
+    }
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initServicesAccordion);
+  } else {
+    initServicesAccordion();
+  }
+  
+  // Also try after a small delay to ensure all elements are loaded
+  setTimeout(initServicesAccordion, 100);
+</script>
