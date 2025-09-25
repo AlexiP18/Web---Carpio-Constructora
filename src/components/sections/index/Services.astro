@@ -7,7 +7,7 @@ const services = [
   {
     id: 'proyectos-industriales',
     number: '01',
-    title: 'Proyectos y Construcciones Industriales',
+    title: 'Construcciones',
     icon: 'ph:factory',
     description:
       'Diseñamos y ejecutamos proyectos industriales con enfoque en eficiencia, seguridad y estándares de calidad.',
@@ -18,7 +18,7 @@ const services = [
   {
     id: 'centros-logisticos',
     number: '02',
-    title: 'Centros de Distribución Logística',
+    title: 'Renovaciones',
     icon: 'ph:warehouse',
     description:
       'Soluciones a la medida para cadenas logísticas: capacidad, flujo y seguridad operativa.',
@@ -40,7 +40,7 @@ const services = [
   {
     id: 'oficinas-industriales',
     number: '04',
-    title: 'Oficinas para Complejos Industriales',
+    title: 'Asesorías',
     icon: 'ph:buildings',
     description:
       'Espacios corporativos funcionales y modernos integrados a complejos industriales.',
@@ -58,11 +58,7 @@ const services = [
 
       <div data-services-stage class="vertical-services__stage">
         <div class="vertical-services__layout flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-14">
-          <div
-            class="vertical-services__headline"
-            role="group"
-            aria-live="polite"
-          >
+          <div class="vertical-services__headline" role="group" aria-live="polite">
             {services.map((s, idx) => (
               <article
                 data-service-headline
@@ -71,49 +67,11 @@ const services = [
                 aria-hidden={idx === 0 ? 'false' : 'true'}
               >
                 <div class="vertical-services__headline-card">
-                  <Icon name={s.icon} class="vertical-services__headline-icon" />
-                  <div class="vertical-services__headline-text">
-                    <span class="vertical-services__headline-label">Servicio</span>
-                    <p class="vertical-services__headline-number">{s.number}</p>
-                    <h3 class="vertical-services__headline-title">{s.title}</h3>
-                  </div>
+                  <span class="vertical-services__headline-number">{s.number}</span>
+                  <span class="vertical-services__headline-title">{s.title}</span>
                 </div>
               </article>
             ))}
-
-            <div
-              class="vertical-services__controls"
-              data-service-controls
-              role="toolbar"
-              aria-label="Cambiar servicio"
-              tabindex="0"
-            >
-              <button
-                type="button"
-                class="vertical-services__control-button"
-                data-service-prev
-                aria-label="Servicio anterior"
-              >
-                <Icon name="ph:arrow-up" class="vertical-services__control-icon" />
-              </button>
-              <div class="vertical-services__progress" aria-live="polite">
-                <span data-service-progress-current class="vertical-services__progress-current">
-                  {String(1).padStart(2, '0')}
-                </span>
-                <span aria-hidden="true" class="vertical-services__progress-separator">/</span>
-                <span data-service-progress-total class="vertical-services__progress-total">
-                  {String(services.length).padStart(2, '0')}
-                </span>
-              </div>
-              <button
-                type="button"
-                class="vertical-services__control-button"
-                data-service-next
-                aria-label="Siguiente servicio"
-              >
-                <Icon name="ph:arrow-down" class="vertical-services__control-icon" />
-              </button>
-            </div>
           </div>
 
           <div data-service-panels class="vertical-services__panels flex-1 space-y-6">
@@ -188,18 +146,10 @@ const services = [
       const panels = Array.from(root.querySelectorAll('[data-service-panel]'));
       const scrollSteps = Array.from(root.querySelectorAll('[data-scroll-step]'));
       const stage = root.querySelector('[data-services-stage]');
-      const controls = root.querySelector('[data-service-controls]');
-      const prevButton = controls?.querySelector('[data-service-prev]');
-      const nextButton = controls?.querySelector('[data-service-next]');
-      const progressCurrent = controls?.querySelector('[data-service-progress-current]');
-      const progressTotal = controls?.querySelector('[data-service-progress-total]');
 
       if (!headlineItems.length || !panels.length) return;
 
       const total = panels.length;
-      if (progressTotal) {
-        progressTotal.textContent = String(total).padStart(2, '0');
-      }
 
       const TRANSITION_MS = 650;
       let current = 0;
@@ -217,17 +167,10 @@ const services = [
         });
       }
 
-      function updateProgress(idx) {
-        if (progressCurrent) {
-          progressCurrent.textContent = String(idx + 1).padStart(2, '0');
-        }
-      }
-
       function updateDisplay(idx) {
         if (idx < 0 || idx >= total) return;
         setActiveState(headlineItems, idx);
         setActiveState(panels, idx);
-        updateProgress(idx);
         current = idx;
       }
 
@@ -275,32 +218,6 @@ const services = [
         const target = (current + 1) % total;
         requestActivation(target);
       }
-
-      prevButton?.addEventListener('click', goToPrevious);
-      nextButton?.addEventListener('click', goToNext);
-
-      controls?.addEventListener('keydown', (event) => {
-        switch (event.key) {
-          case 'ArrowUp':
-          case 'ArrowLeft':
-            event.preventDefault();
-            goToPrevious();
-            break;
-          case 'ArrowDown':
-          case 'ArrowRight':
-            event.preventDefault();
-            goToNext();
-            break;
-          case 'Enter':
-          case ' ': {
-            event.preventDefault();
-            goToNext();
-            break;
-          }
-          default:
-            break;
-        }
-      });
 
       if (scrollSteps.length) {
         const observer = new IntersectionObserver(
@@ -382,6 +299,18 @@ const services = [
     pointer-events: none;
   }
 
+  .vertical-services__layout {
+    height: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    .vertical-services__layout {
+      display: grid;
+      grid-template-columns: clamp(160px, 18vw, 220px) minmax(0, 1fr);
+      align-items: stretch;
+    }
+  }
+
   .vertical-services__scroll-steps {
     position: relative;
     display: flex;
@@ -399,138 +328,83 @@ const services = [
   .vertical-services__headline {
     display: flex;
     flex-direction: column;
-    gap: clamp(1.5rem, 3vw, 2.75rem);
-    max-width: 420px;
+    align-items: center;
+    gap: clamp(2rem, 4vw, 3rem);
+    max-width: clamp(160px, 18vw, 220px);
+    margin-inline: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .vertical-services__headline {
+      height: 100%;
+    }
   }
 
   .vertical-services__headline-card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
-    padding: clamp(1.75rem, 3vw, 2.75rem);
-    border-radius: 2.75rem;
-    background: linear-gradient(140deg, rgba(15, 23, 42, 0.94), rgba(15, 23, 42, 0.75));
+    align-items: center;
+    gap: clamp(2rem, 3.5vw, 2.8rem);
+    padding: clamp(2.5rem, 6vw, 3.75rem) clamp(1.75rem, 4vw, 2.25rem);
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.78));
     color: #f8fafc;
-    box-shadow: 0 32px 80px rgba(15, 23, 42, 0.35);
+    border: 1px solid rgba(248, 250, 252, 0.08);
+    box-shadow: 0 28px 70px rgba(15, 23, 42, 0.38);
+    min-height: clamp(320px, 48vh, 520px);
+    width: 100%;
   }
 
-  .vertical-services__headline-icon {
-    width: 48px;
-    height: 48px;
-    color: #f8fafc;
-  }
-
-  .vertical-services__headline-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .vertical-services__headline-label {
-    font-family: 'Urbanist', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    opacity: 0.65;
+  @media (min-width: 1024px) {
+    .vertical-services__headline-card {
+      height: 100%;
+    }
   }
 
   .vertical-services__headline-number {
     font-family: 'Urbanist', sans-serif;
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
     font-weight: 600;
-    line-height: 1;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: rgba(248, 250, 252, 0.7);
   }
 
   .vertical-services__headline-title {
+    display: inline-flex;
     font-family: 'Urbanist', sans-serif;
-    font-size: clamp(1.85rem, 3.4vw, 2.8rem);
     font-weight: 600;
-    line-height: 1.2;
-    max-width: 14ch;
-  }
-
-  .vertical-services__controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.25rem;
+    font-size: clamp(1.05rem, 1.9vw, 1.45rem);
+    line-height: 1.4;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(248, 250, 252, 0.92);
+    text-align: center;
   }
 
   .vertical-services__headline-item.is-active .vertical-services__headline-card {
     animation: headline-fade 0.55s ease forwards;
   }
 
-  .vertical-services__control-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    border: 1px solid rgba(248, 250, 252, 0.25);
-    background: rgba(15, 23, 42, 0.85);
-    color: #f8fafc;
-    transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
-  }
-
-  .vertical-services__control-button:hover,
-  .vertical-services__control-button:focus-visible {
-    transform: translateY(-3px);
-    border-color: rgba(248, 250, 252, 0.55);
-  }
-
-  .vertical-services__control-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .vertical-services__progress {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'Urbanist', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: rgba(15, 23, 42, 0.72);
-    background: rgba(248, 250, 252, 0.9);
-    border-radius: 999px;
-    padding: 0.55rem 1.4rem;
-    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.15);
-  }
-
-  .vertical-services__progress-current {
-    font-weight: 600;
-  }
-
-  .vertical-services__progress-total {
-    opacity: 0.72;
-  }
-
-  .vertical-services__progress-separator {
-    opacity: 0.4;
-  }
-
-  .vertical-services__stage.is-animating .vertical-services__control-button {
-    pointer-events: none;
-    opacity: 0.5;
-    transform: none;
-  }
-
   @media (max-width: 1023px) {
     .vertical-services__headline {
-      max-width: none;
-    }
-
-    .vertical-services__progress {
-      font-size: 0.8rem;
-      letter-spacing: 0.22em;
+      max-width: 220px;
     }
   }
 
   .vertical-services__panel {
     background: rgba(255, 255, 255, 0.78);
     border-radius: 1.75rem;
+  }
+
+  @media (min-width: 1024px) {
+    .vertical-services__panels,
+    .vertical-services__panel {
+      height: 100%;
+    }
   }
 
   .vertical-services__panel.is-active {

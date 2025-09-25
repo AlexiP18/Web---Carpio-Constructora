@@ -112,7 +112,7 @@ const servicesData = [
 
       <div class="service-scroll-steps" aria-hidden="true">
         {servicesData.map((_, index) => (
-          <div class="service-scroll-step h-[110vh] lg:h-[120vh]" data-scroll-index={index}></div>
+          <div class="service-scroll-step h-[120vh] lg:h-[130vh]" data-scroll-index={index}></div>
         ))}
       </div>
     </div>
@@ -303,7 +303,7 @@ const servicesData = [
     let isAnimating = false;
     let queuedIndex = null;
     let animationTimeout = null;
-    const animationDuration = 750;
+    const animationDuration = 300; // Shorter duration for more responsive scroll
 
     const commitQueuedIndex = () => {
       if (queuedIndex === null) return;
@@ -381,23 +381,77 @@ const servicesData = [
       });
     });
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const scrollIndex = Number(entry.target.getAttribute('data-scroll-index'));
-          if (!Number.isNaN(scrollIndex)) {
-            updateActive(scrollIndex);
-          }
+    // Improved scroll-based step detection
+    let ticking = false;
+    
+    const updateStepOnScroll = () => {
+      if (isAnimating) return;
+      
+      const containerRect = container.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      
+      // Check if container is in viewport
+      if (containerRect.top > viewportHeight || containerRect.bottom < 0) return;
+      
+      // Calculate total scrollable height (all scroll steps)
+      const scrollRegion = container.querySelector('.service-scroll-steps');
+      if (!scrollRegion) return;
+      
+      const scrollRect = scrollRegion.getBoundingClientRect();
+      const scrollTop = scrollRect.top;
+      const scrollHeight = scrollRect.height;
+      
+      // Calculate how far we've scrolled through the scroll region
+      const scrolledIntoRegion = Math.max(0, viewportHeight - scrollTop);
+      const scrollProgress = Math.min(1, scrolledIntoRegion / scrollHeight);
+      
+      // Determine which step should be active
+      const targetStep = Math.min(
+        Math.floor(scrollProgress * scrollSteps.length),
+        scrollSteps.length - 1
+      );
+      
+      // Add smoothing to prevent rapid flickering
+      const stepBoundary = 1 / scrollSteps.length;
+      const progressInStep = (scrollProgress % stepBoundary) / stepBoundary;
+      
+      let finalStep = targetStep;
+      
+      // Only switch if we're clearly past the midpoint of a step transition
+      if (targetStep !== currentIndex) {
+        if (targetStep > currentIndex && progressInStep > 0.3) {
+          finalStep = targetStep;
+        } else if (targetStep < currentIndex && progressInStep < 0.7) {
+          finalStep = targetStep;
+        } else {
+          finalStep = currentIndex;
         }
-      });
-    }, {
-      threshold: 0.6,
-      rootMargin: '-25% 0px -25% 0px'
-    });
-
-    scrollSteps.forEach((step) => observer.observe(step));
+      }
+      
+      if (finalStep !== currentIndex) {
+        console.log('ServicesVertical - Scroll progress:', scrollProgress.toFixed(3), 'Target step:', finalStep);
+        updateActive(finalStep);
+      }
+    };
+    
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateStepOnScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Initial check
+    updateStepOnScroll();
 
     updateActive(0, { force: true });
+    
+    console.log('ServicesVertical initialized with', scrollSteps.length, 'steps');
   }
 
   document.addEventListener('DOMContentLoaded', initServicesVertical);

@@ -126,6 +126,7 @@ const servicesVertical = [
                 index === 0 ? 'active' : ''
               }`}
               data-tab-index={index}
+              data-animation-delay={index * 200}
               aria-controls={`panel-${service.id}`}
               aria-expanded={index === 0 ? 'true' : 'false'}
               aria-selected={index === 0 ? 'true' : 'false'}
@@ -151,6 +152,7 @@ const servicesVertical = [
                 index === 0 ? 'active' : ''
               }`}
               data-tab-index={index}
+              data-animation-delay={index * 150}
               aria-controls={`panel-${service.id}`}
               aria-expanded={index === 0 ? 'true' : 'false'}
               aria-selected={index === 0 ? 'true' : 'false'}
@@ -166,6 +168,9 @@ const servicesVertical = [
       </div>
     </div>
   </div>
+  
+  <!-- Scroll spacer for scroll-based navigation -->
+  <div class="scroll-spacer h-[400vh] bg-transparent" aria-hidden="true" data-debug="scroll-spacer"></div>
 </section>
 
 <style>
@@ -213,61 +218,250 @@ const servicesVertical = [
     transform: translateX(0);
   }
 
+  /* Header animation states */
+  .vertical-tab.animate-in,
+  .vertical-tab-mobile.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Headers should be visible by default */
+  .vertical-tab,
+  .vertical-tab-mobile {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Sticky positioning for scroll effect */
+  #services-vertical-accordion > div:first-child {
+    position: sticky;
+    top: 2rem;
+    z-index: 10;
+  }
+
+  .scroll-spacer {
+    pointer-events: none;
+  }
+
   @media (max-width: 1024px) {
     .writing-mode-vertical {
       writing-mode: horizontal-tb;
+    }
+    
+    #services-vertical-accordion > div {
+      top: 1rem;
     }
   }
 </style>
 
 <script is:inline>
-  function initServicesVerticalAccordion() {
-    const root = document.querySelector('#services-vertical-accordion');
-    if (!root) return;
-
-    const tabButtons = Array.from(root.querySelectorAll('[data-tab-index]'));
-    const panels = Array.from(root.querySelectorAll('[data-panel-index]'));
-
-    if (!tabButtons.length || tabButtons.length !== panels.length) return;
-
-    const setActive = (index) => {
-      tabButtons.forEach((tab, i) => {
-        const isActive = i === index;
+  class ServicesVerticalAccordion {
+    constructor() {
+      this.root = document.querySelector('#services-vertical-accordion');
+      this.currentStep = 0;
+      this.totalSteps = 0;
+      this.tabButtons = [];
+      this.panels = [];
+      this.isTransitioning = false;
+      this.headersAnimated = false;
+      
+      if (!this.root) return;
+      
+      this.init();
+    }
+    
+    init() {
+      this.tabButtons = Array.from(this.root.querySelectorAll('[data-tab-index]'));
+      this.panels = Array.from(this.root.querySelectorAll('[data-panel-index]'));
+      this.totalSteps = this.tabButtons.length;
+      
+      if (!this.tabButtons.length || this.tabButtons.length !== this.panels.length) return;
+      
+      console.log('ServicesVerticalAccordion initialized:', {
+        steps: this.totalSteps,
+        tabs: this.tabButtons.length,
+        panels: this.panels.length
+      });
+      
+      this.setupScrollObserver();
+      this.setupTabNavigation();
+      this.setActiveStep(0, false);
+    }
+    
+    setupScrollObserver() {
+      let ticking = false;
+      
+      const handleScroll = () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            this.updateStepOnScroll();
+            this.animateHeadersOnScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+      
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      
+      // Initial check
+      this.updateStepOnScroll();
+      this.animateHeadersOnScroll();
+      
+      // Debug: Log initial state
+      console.log('Scroll observer setup complete. Initial step:', this.currentStep);
+    }
+    
+    updateStepOnScroll() {
+      if (this.isTransitioning) return;
+      
+      const rect = this.root.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      
+      // Get the scroll spacer element
+      const scrollSpacer = this.root.querySelector('.scroll-spacer');
+      if (!scrollSpacer) return;
+      
+      const spacerRect = scrollSpacer.getBoundingClientRect();
+      const spacerTop = spacerRect.top;
+      const spacerHeight = spacerRect.height;
+      
+      // Check if we're in the scrollable area
+      if (spacerTop > viewportHeight || spacerTop + spacerHeight < 0) return;
+      
+      // Calculate how far we've scrolled through the spacer
+      const scrolledIntoSpacer = Math.max(0, viewportHeight - spacerTop);
+      const scrollProgress = Math.min(1, scrolledIntoSpacer / spacerHeight);
+      
+      // Determine which step should be active
+      const targetStep = Math.min(
+        Math.floor(scrollProgress * this.totalSteps),
+        this.totalSteps - 1
+      );
+      
+      // Add some smoothing to prevent rapid flickering
+      const stepBoundary = 1 / this.totalSteps;
+      const progressInStep = (scrollProgress % stepBoundary) / stepBoundary;
+      
+      let finalStep = targetStep;
+      
+      // Only switch if we're clearly past the midpoint of a step transition
+      if (targetStep !== this.currentStep) {
+        if (targetStep > this.currentStep && progressInStep > 0.3) {
+          finalStep = targetStep;
+        } else if (targetStep < this.currentStep && progressInStep < 0.7) {
+          finalStep = targetStep;
+        } else {
+          finalStep = this.currentStep;
+        }
+      }
+      
+      if (finalStep !== this.currentStep) {
+        console.log('Scroll progress:', scrollProgress.toFixed(3), 'Step:', finalStep, 'Spacer top:', spacerTop);
+        this.setActiveStep(finalStep);
+      }
+    }
+    
+    animateHeadersOnScroll() {
+      if (this.headersAnimated) return;
+      
+      const rect = this.root.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      
+      // Check if section is coming into view
+      if (rect.top < viewportHeight * 0.9) {
+        this.headersAnimated = true;
+        this.animateHeaders();
+      }
+    }
+    
+    animateHeaders() {
+      // Headers are now visible by default, but we can add sequential reveal here if needed
+      this.tabButtons.forEach((tab, index) => {
+        tab.classList.add('animate-in');
+      });
+    }
+    
+    setupTabNavigation() {
+      this.tabButtons.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+          if (!this.isTransitioning) {
+            this.setActiveStep(index);
+          }
+        });
+        
+        tab.addEventListener('keydown', (event) => {
+          if ((event.key === 'Enter' || event.key === ' ') && !this.isTransitioning) {
+            event.preventDefault();
+            this.setActiveStep(index);
+          }
+        });
+      });
+    }
+    
+    setActiveStep(stepIndex, animate = true) {
+      if (stepIndex < 0 || stepIndex >= this.totalSteps) return;
+      
+      const prevStep = this.currentStep;
+      this.currentStep = stepIndex;
+      
+      console.log(`Activating step ${stepIndex} from ${prevStep}`);
+      
+      if (animate && prevStep !== stepIndex) {
+        this.animateStepChange(prevStep, stepIndex);
+      } else {
+        this.updateStepsState();
+      }
+    }
+    
+    animateStepChange(fromStep, toStep) {
+      this.isTransitioning = true;
+      
+      // Immediately update state for smooth transitions
+      this.updateStepsState();
+      
+      // End transition after a shorter duration to allow more responsive scrolling
+      setTimeout(() => {
+        this.isTransitioning = false;
+      }, 300); // Shorter duration for more responsive scroll
+    }
+    
+    updateStepsState() {
+      // Update tab buttons
+      this.tabButtons.forEach((tab, index) => {
+        const isActive = index === this.currentStep;
         tab.classList.toggle('active', isActive);
         tab.setAttribute('aria-expanded', String(isActive));
         tab.setAttribute('aria-selected', String(isActive));
       });
-
-      panels.forEach((panel, i) => {
-        const isActive = i === index;
+      
+      // Update panels
+      this.panels.forEach((panel, index) => {
+        const isActive = index === this.currentStep;
         panel.classList.toggle('active', isActive);
         panel.classList.toggle('pointer-events-none', !isActive);
         panel.classList.toggle('pointer-events-auto', isActive);
         panel.setAttribute('aria-hidden', String(!isActive));
         panel.setAttribute('tabindex', isActive ? '0' : '-1');
-        if (isActive) {
-          if (typeof panel.focus === 'function') {
-            try {
-              panel.focus({ preventScroll: true });
-            } catch (_) {
-              panel.focus();
-            }
+        
+        if (isActive && typeof panel.focus === 'function') {
+          try {
+            panel.focus({ preventScroll: true });
+          } catch (_) {
+            panel.focus();
           }
         }
       });
-    };
-
-    tabButtons.forEach((tab, index) => {
-      tab.addEventListener('click', () => setActive(index));
-      tab.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          setActive(index);
-        }
-      });
-    });
-
-    setActive(0);
+    }
+  }
+  
+  function initServicesVerticalAccordion() {
+    try {
+      console.log('Initializing Services Vertical Accordion...');
+      new ServicesVerticalAccordion();
+    } catch (error) {
+      console.error('Error initializing Services Vertical Accordion:', error);
+    }
   }
 
   if (document.readyState === 'loading') {
@@ -275,4 +469,7 @@ const servicesVertical = [
   } else {
     initServicesVerticalAccordion();
   }
+  
+  // Also try after a small delay to ensure all elements are loaded
+  setTimeout(initServicesVerticalAccordion, 100);
 </script>

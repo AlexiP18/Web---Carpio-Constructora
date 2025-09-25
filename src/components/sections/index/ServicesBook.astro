@@ -138,8 +138,8 @@ const servicesSteps = [
     
   </div>
   
-  <!-- Scroll Spacer -->
-  <div class="h-[400vh]"></div>
+  <!-- Scroll Spacer - Adjusted height for better step transitions -->
+  <div class="h-[300vh]"></div>
   
 </section>
 
@@ -333,32 +333,70 @@ const servicesSteps = [
     private setupScrollObserver(): void {
       if (!this.section) return;
       
+      let ticking = false;
+      
+      const handleScroll = () => {
+        if (!ticking && !this.isTransitioning) {
+          requestAnimationFrame(() => {
+            this.updateStepOnScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+      
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      
+      // Also use intersection observer as fallback
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            // Calculate which step should be active based on scroll position
-            const rect = entry.target.getBoundingClientRect();
-            const sectionHeight = rect.height;
-            const viewportHeight = window.innerHeight;
-            const scrollProgress = Math.abs(rect.top) / (sectionHeight - viewportHeight);
-            
-            // Determine step based on scroll progress
-            const targetStep = Math.min(
-              Math.floor(scrollProgress * this.totalSteps), 
-              this.totalSteps - 1
-            );
-            
-            if (targetStep !== this.currentStep && !this.isTransitioning) {
-              this.setActiveStep(targetStep);
-            }
+            this.updateStepOnScroll();
           }
         });
       }, {
-        threshold: [0, 0.1, 0.5, 0.9, 1],
+        threshold: [0.1, 0.5, 0.9],
         rootMargin: '0px'
       });
       
       observer.observe(this.section);
+    }
+    
+    private updateStepOnScroll(): void {
+      if (!this.section || this.isTransitioning) return;
+      
+      const rect = this.section.getBoundingClientRect();
+      const sectionTop = rect.top;
+      const sectionHeight = rect.height;
+      const viewportHeight = window.innerHeight;
+      
+      // Only process when section is in viewport
+      if (sectionTop > viewportHeight || sectionTop + sectionHeight < 0) return;
+      
+      // Calculate scroll progress through the section
+      const scrollableHeight = sectionHeight - viewportHeight;
+      const scrollProgress = Math.max(0, Math.min(1, -sectionTop / scrollableHeight));
+      
+      // Determine target step based on scroll progress
+      const targetStep = Math.min(
+        Math.floor(scrollProgress * this.totalSteps),
+        this.totalSteps - 1
+      );
+      
+      // Add some hysteresis to prevent flickering
+      const threshold = 0.1;
+      const stepProgress = (scrollProgress * this.totalSteps) % 1;
+      
+      let finalStep = targetStep;
+      if (targetStep > this.currentStep && stepProgress < threshold) {
+        finalStep = this.currentStep;
+      } else if (targetStep < this.currentStep && stepProgress > (1 - threshold)) {
+        finalStep = this.currentStep;
+      }
+      
+      if (finalStep !== this.currentStep) {
+        this.setActiveStep(finalStep);
+      }
     }
     
     private setupHeaderNavigation(): void {
@@ -385,7 +423,7 @@ const servicesSteps = [
     }
     
     private setActiveStep(stepIndex: number, animate = true): void {
-      if (stepIndex < 0 || stepIndex >= this.totalSteps || this.isTransitioning) return;
+      if (stepIndex < 0 || stepIndex >= this.totalSteps) return;
       
       const prevStep = this.currentStep;
       this.currentStep = stepIndex;
@@ -402,15 +440,13 @@ const servicesSteps = [
     private animateStepChange(fromStep: number, toStep: number): void {
       this.isTransitioning = true;
       
-      // Start transition animation
+      // Immediately update state for smooth transitions
+      this.updateStepsState();
+      
+      // End transition after animation completes
       setTimeout(() => {
-        this.updateStepsState();
-        
-        // End transition
-        setTimeout(() => {
-          this.isTransitioning = false;
-        }, 300);
-      }, 50);
+        this.isTransitioning = false;
+      }, 700); // Match the CSS transition duration
     }
     
     private updateStepsState(): void {
