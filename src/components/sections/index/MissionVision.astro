@@ -1,81 +1,152 @@
 ---
 import { Icon } from 'astro-icon/components';
-import SectionLayout from '../../ui/SectionLayout.astro';
+import Button from '../../ui/Button.astro';
 ---
 
-<!-- Mission & Vision redesigned: light section with bordered cards -->
-<SectionLayout background="white" paddingY="lg" paddingX="md" maxWidth="xl" contentClassName="items-center">
+<!-- Mission & Vision redesigned: modern section with enhanced cards -->
+<section class="py-20 bg-gradient-to-br from-white via-gray-50 to-slate-100 relative overflow-hidden">
+  <!-- Background decorations -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-20 w-40 h-40 bg-primary-green/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
     <!-- Header -->
-    <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
-      <p class="font-heebo font-semibold text-sm text-neutral-darkest uppercase tracking-wider mb-3">
-        Nuestra filosofía
-      </p>
-      <h2 class="font-urbanist font-medium text-[60px] leading-[1.2] text-neutral-darkest mb-4">
-        Misión y Visión
+    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up" data-aos-duration="1000">
+      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:lightbulb-fill" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm uppercase tracking-wider">Nuestra filosofía</span>
+      </div>
+      
+      <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        Misión y <span class="bg-gradient-to-r from-primary-green to-emerald-500 bg-clip-text text-transparent">Visión</span>
       </h2>
-      <p class="font-heebo font-normal text-[18px] leading-[1.6] text-neutral-darkest/80 max-w-3xl mx-auto">
+      
+      <p class="text-xl text-gray-600 leading-relaxed">
         Construimos con propósito: calidad, seguridad e innovación en cada etapa del proyecto.
       </p>
     </div>
 
-  <!-- Content Grid -->
-
-  <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 w-full">
-    <!-- Left: Video Card (spans 3 columns on large screens) -->
-    <div class="lg:col-span-3" data-aos="zoom-in" data-aos-duration="800">
-      <div class="h-full flex flex-col rounded-[32px] border-2 border-neutral-darkest overflow-hidden bg-[#dad9d8] hover:bg-[#cfcfcf] transition-colors duration-300">
-        <div class="w-full flex-1 bg-neutral-lightest flex items-center justify-center min-h-[280px]">
-          <button
-            class="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-neutral-darkest bg-white text-neutral-darkest hover:bg-neutral-darkest hover:text-white transition-all duration-300 hover:scale-105"
-            aria-label="Reproducir video corporativo"
-          >
-            <Icon name="ph:play-fill" class="w-8 h-8" />
-          </button>
+    <!-- Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 w-full">
+      <!-- Left: Video Card (spans 3 columns on large screens) -->
+      <div class="lg:col-span-3" data-aos="zoom-in" data-aos-duration="800">
+        <div class="h-full flex flex-col rounded-3xl border border-gray-200/50 overflow-hidden bg-gradient-to-br from-white to-gray-50 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] shadow-lg">
+          <div class="w-full flex-1 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center min-h-[280px] relative overflow-hidden">
+            <!-- Background pattern -->
+            <div class="absolute inset-0 opacity-20">
+              <div class="absolute top-10 left-10 w-32 h-32 bg-primary-green/20 rounded-full blur-2xl"></div>
+              <div class="absolute bottom-10 right-10 w-24 h-24 bg-blue-500/20 rounded-full blur-xl"></div>
+            </div>
+            
+            <!-- Play button -->
+            <button
+              class="relative z-10 group inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-green to-emerald-500 text-white hover:shadow-2xl transition-all duration-300 hover:scale-110 shadow-lg"
+              aria-label="Reproducir video corporativo"
+            >
+              <Icon name="ph:play-fill" class="w-10 h-10" />
+            </button>
+          </div>
+          
+          <div class="p-8 bg-white">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center">
+                <Icon name="ph:video-fill" class="w-6 h-6 text-white" />
+              </div>
+              <h3 class="text-2xl lg:text-3xl font-bold text-gray-900">
+                Conoce nuestro proceso
+              </h3>
+            </div>
+            <p class="text-lg text-gray-600 leading-relaxed">
+              Desde la planificación hasta la entrega, cuidamos cada detalle para garantizar resultados excepcionales.
+            </p>
+          </div>
         </div>
-        <div class="p-8">
-          <h3 class="font-urbanist font-medium text-[32px] leading-[1.2] text-neutral-darkest mb-2">
-            Conoce nuestro proceso
-          </h3>
-          <p class="font-heebo font-normal text-[18px] leading-[1.6] text-neutral-darkest/80">
-            Desde la planificación hasta la entrega, cuidamos cada detalle para garantizar resultados excepcionales.
+      </div>
+
+      <!-- Right: Mission and Vision stacked (2 columns) -->
+      <div class="lg:col-span-2 grid grid-rows-2 gap-8">
+        <!-- Mission Card -->
+        <div class="rounded-3xl border border-gray-200/50 bg-gradient-to-br from-white to-gray-50 p-8 hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02] shadow-lg" data-aos="fade-left" data-aos-delay="100">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <Icon name="ph:target" class="w-8 h-8 text-white" />
+            </div>
+            <h3 class="text-3xl lg:text-4xl font-bold text-gray-900">
+              Misión
+            </h3>
+          </div>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            Nuestro proceso de construcción se basa en la planificación meticulosa y la ejecución precisa. Cada etapa está diseñada para garantizar calidad y satisfacción.
+          </p>
+        </div>
+
+        <!-- Vision Card -->
+        <div class="rounded-3xl border border-gray-200/50 bg-gradient-to-br from-white to-gray-50 p-8 hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02] shadow-lg" data-aos="fade-left" data-aos-delay="200">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <Icon name="ph:eye" class="w-8 h-8 text-white" />
+            </div>
+            <h3 class="text-3xl lg:text-4xl font-bold text-gray-900">
+              Visión
+            </h3>
+          </div>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            Aspiramos a liderar la industria mediante la innovación, la sostenibilidad y la confianza de nuestros clientes.
           </p>
         </div>
       </div>
     </div>
 
-    <!-- Right: Mission and Vision stacked (2 columns) -->
-    <div class="lg:col-span-2 grid grid-rows-2 gap-8">
-      <!-- Mission Card -->
-      <div class="rounded-[32px] border-2 border-neutral-darkest bg-[#dad9d8] p-8 hover:bg-[#cfcfcf] transition-all duration-300 group" data-aos="fade-left" data-aos-delay="100">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-full border-2 border-neutral-darkest bg-white flex items-center justify-center">
-            <Icon name="ph:target" class="w-6 h-6 text-neutral-darkest" />
-          </div>
-          <h3 class="font-urbanist font-medium text-[40px] leading-[1.2] tracking-[0.4px] text-neutral-darkest">
-            Misión
-          </h3>
+    <!-- CTA Section -->
+    <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="400">
+      <div class="bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 rounded-3xl p-12 text-white relative overflow-hidden shadow-2xl">
+        <!-- Background decorations -->
+        <div class="absolute inset-0">
+          <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary-green/10 via-emerald-500/5 to-transparent"></div>
+          <div class="absolute -top-20 -right-20 w-40 h-40 bg-primary-green/10 rounded-full blur-3xl"></div>
+          <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl"></div>
         </div>
-        <p class="font-heebo font-normal text-[18px] leading-[1.6] text-neutral-darkest">
-          Nuestro proceso de construcción se basa en la planificación meticulosa y la ejecución precisa. Cada etapa está diseñada para garantizar calidad y satisfacción.
-        </p>
-      </div>
 
-      <!-- Vision Card -->
-      <div class="rounded-[32px] border-2 border-neutral-darkest bg-[#dad9d8] p-8 hover:bg-[#cfcfcf] transition-all duration-300 group" data-aos="fade-left" data-aos-delay="200">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-12 h-12 rounded-full border-2 border-neutral-darkest bg-white flex items-center justify-center">
-            <Icon name="ph:eye" class="w-6 h-6 text-neutral-darkest" />
+        <div class="relative z-10 max-w-3xl mx-auto">
+          <div class="flex items-center justify-center gap-3 mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-primary-green to-emerald-500 rounded-3xl flex items-center justify-center shadow-lg">
+              <Icon name="ph:handshake-fill" class="w-8 h-8 text-white" />
+            </div>
           </div>
-          <h3 class="font-urbanist font-medium text-[40px] leading-[1.2] tracking-[0.4px] text-neutral-darkest">
-            Visión
+          
+          <h3 class="text-3xl lg:text-4xl font-bold mb-4">
+            ¿Listo para construir tu <span class="bg-gradient-to-r from-primary-green to-emerald-400 bg-clip-text text-transparent">proyecto?</span>
           </h3>
+          
+          <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+            Trabajemos juntos para hacer realidad tu visión con la calidad y profesionalismo que nos caracteriza
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              href="/contacto"
+              variant="primary"
+              size="lg"
+              icon="ph:arrow-right"
+              class="shadow-lg hover:shadow-xl"
+            >
+              Iniciar Proyecto
+            </Button>
+            
+            <Button
+              href="/quienes-somos"
+              variant="outline-dark"
+              size="lg"
+              icon="ph:info"
+              class="shadow-lg hover:shadow-xl"
+            >
+              Conocer Más
+            </Button>
+          </div>
         </div>
-        <p class="font-heebo font-normal text-[18px] leading-[1.6] text-neutral-darkest">
-          Aspiramos a liderar la industria mediante la innovación, la sostenibilidad y la confianza de nuestros clientes.
-        </p>
       </div>
     </div>
   </div>
-
-    
-  </SectionLayout>
+</section>

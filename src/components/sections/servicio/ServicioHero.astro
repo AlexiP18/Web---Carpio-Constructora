@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Button from '../../ui/Button.astro';
 
 export interface Props {
@@ -11,72 +12,81 @@ export interface Props {
 const { tagline, title, description, backgroundImage = "/images/placeholder-image.png" } = Astro.props;
 ---
 
-<section class="bg-gray-600 py-32 lg:py-40">
-  <div class="max-w-4xl mx-auto px-6 text-left">
-    <!-- Tagline -->
-    <p class="text-sm font-medium text-white/80 uppercase tracking-wider mb-8">
-      {tagline}
-    </p>
-    
-    <!-- Main Heading -->
-    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8">
-      {title}
-    </h1>
-    
-    <!-- Description -->
-    <p class="text-xl lg:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl">
-      {description}
-    </p>
-    
-    <!-- Service highlights - Simple grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-            </svg>
+<section class="relative py-32 lg:py-40 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 overflow-hidden">
+  <!-- Background decorations -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-20 w-60 h-60 bg-primary-green/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-40 h-40 bg-emerald-500/10 rounded-full blur-2xl"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <div class="max-w-4xl text-left">
+      <!-- Tagline -->
+      <div class="inline-flex items-center gap-2 bg-primary-green/20 backdrop-blur-sm border border-primary-green/30 rounded-full px-4 py-2 mb-8" data-aos="fade-up">
+        <Icon name="ph:buildings-fill" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm uppercase tracking-wider">{tagline}</span>
+      </div>
+      
+      <!-- Main Heading -->
+      <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8" data-aos="fade-up" data-aos-delay="100">
+        {title}
+      </h1>
+      
+      <!-- Description -->
+      <p class="text-xl lg:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl" data-aos="fade-up" data-aos-delay="200">
+        {description}
+      </p>
+      
+      <!-- Service highlights - Modern cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12" data-aos="fade-up" data-aos-delay="300">
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+          <div class="flex items-center gap-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center shadow-lg">
+              <Icon name="ph:shield-check-fill" class="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Garantía Extendida</h3>
+              <p class="text-white/70 leading-relaxed">Calidad asegurada en cada proyecto con respaldo total</p>
+            </div>
           </div>
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-1">Garantía Extendida</h3>
-            <p class="text-sm text-white/70">Calidad asegurada en cada proyecto</p>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+          <div class="flex items-center gap-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+              <Icon name="ph:clock-fill" class="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-white mb-2">Entrega Puntual</h3>
+              <p class="text-white/70 leading-relaxed">Cumplimos con los tiempos acordados sin excepciones</p>
+            </div>
           </div>
         </div>
       </div>
       
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6">
-        <div class="flex items-center gap-4">
-          <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-            </svg>
-          </div>
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-1">Entrega Puntual</h3>
-            <p class="text-sm text-white/70">Cumplimos con los tiempos acordados</p>
-          </div>
-        </div>
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="400">
+        <Button 
+          variant="primary"
+          size="lg"
+          href="#features"
+          icon="ph:arrow-down"
+          class="shadow-lg hover:shadow-xl"
+        >
+          Explorar Servicio
+        </Button>
+        
+        <Button 
+          variant="outline-dark"
+          size="lg"
+          href="/contacto"
+          icon="ph:phone-fill"
+          class="shadow-lg hover:shadow-xl"
+        >
+          Solicitar Cotización
+        </Button>
       </div>
-    </div>
-    
-    <!-- CTA Buttons -->
-    <div class="flex flex-col sm:flex-row gap-4">
-      <Button 
-        variant="primary" 
-        size="lg"
-        href="#features"
-        class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-medium transition-colors"
-      >
-        Explorar Servicio
-      </Button>
-      <Button 
-        variant="outline" 
-        size="lg"
-        href="/contacto"
-        class="border-2 border-white text-white hover:bg-white hover:text-gray-600 px-8 py-4 rounded-full font-medium transition-all"
-      >
-        Solicitar Cotización
-      </Button>
     </div>
   </div>
 </section>

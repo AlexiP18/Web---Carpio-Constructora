@@ -1,59 +1,128 @@
 ---
+import { Icon } from "astro-icon/components";
 import Button from '../../ui/Button.astro';
 ---
 
-<section class="bg-gray-600 py-32 lg:py-40">
-  <div class="max-w-4xl mx-auto px-6 text-left">
-    <!-- Tagline -->
-    <p class="text-sm font-medium text-white/80 uppercase tracking-wider mb-8">
-      Proyectos
-    </p>
-    
-    <!-- Main Heading -->
-    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8">
-      Nuestros<br>
-      Proyectos
-    </h1>
-    
-    <!-- Description -->
-    <p class="text-xl lg:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl">
-      Descubre la calidad, creatividad e innovación en cada uno de nuestros proyectos de construcción, donde transformamos ideas en realidades excepcionales.
-    </p>
-    
-    <!-- Stats Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
-        <div class="text-3xl font-bold text-white mb-2">150+</div>
-        <div class="text-white/80 text-sm">Proyectos Completados</div>
+<section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 left-0 w-72 h-72 bg-primary-green/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Hero Content Card -->
+    <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl shadow-2xl relative overflow-hidden" data-aos="fade-up">
+      <!-- Decorative elements -->
+      <div class="absolute inset-0">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-primary-green/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
       </div>
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
-        <div class="text-3xl font-bold text-white mb-2">15+</div>
-        <div class="text-white/80 text-sm">Años de Experiencia</div>
-      </div>
-      <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
-        <div class="text-3xl font-bold text-white mb-2">100%</div>
-        <div class="text-white/80 text-sm">Clientes Satisfechos</div>
+
+      <div class="relative z-10 p-8 lg:p-16">
+        <div class="max-w-4xl">
+          <!-- Tagline -->
+          <div class="inline-flex items-center gap-2 bg-primary-green/20 backdrop-blur-sm border border-primary-green/30 rounded-full px-4 py-2 mb-8" data-aos="fade-up" data-aos-delay="100">
+            <Icon name="ph:buildings" class="w-5 h-5 text-primary-green" />
+            <span class="text-primary-green font-semibold text-sm uppercase tracking-wider">Proyectos</span>
+          </div>
+          
+          <!-- Main Heading -->
+          <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8" data-aos="fade-up" data-aos-delay="200">
+            Nuestros<br>
+            Proyectos
+          </h1>
+          
+          <!-- Description -->
+          <p class="text-xl lg:text-2xl text-gray-300 leading-relaxed mb-12 max-w-3xl" data-aos="fade-up" data-aos-delay="300">
+            Descubre la calidad, creatividad e innovación en cada uno de nuestros proyectos de construcción, donde transformamos ideas en realidades excepcionales.
+          </p>
+          
+          <!-- Stats Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12" data-aos="fade-up" data-aos-delay="400">
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300">
+              <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-blue-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Icon name="ph:check-circle" class="w-6 h-6 text-white" />
+              </div>
+              <div class="text-3xl font-bold text-white mb-2">150+</div>
+              <div class="text-gray-300 font-medium">Proyectos Completados</div>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300">
+              <div class="w-12 h-12 bg-gradient-to-br from-primary-green to-emerald-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Icon name="ph:calendar" class="w-6 h-6 text-white" />
+              </div>
+              <div class="text-3xl font-bold text-white mb-2">15+</div>
+              <div class="text-gray-300 font-medium">Años de Experiencia</div>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300">
+              <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Icon name="ph:star" class="w-6 h-6 text-white" />
+              </div>
+              <div class="text-3xl font-bold text-white mb-2">100%</div>
+              <div class="text-gray-300 font-medium">Clientes Satisfechos</div>
+            </div>
+          </div>
+          
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="500">
+            <Button 
+              variant="primary"
+              size="lg"
+              iconPosition="left"
+              icon="ph:eye"
+              animation="hover"
+              href="#portfolio"
+            >
+              Ver Portafolio
+            </Button>
+            
+            <Button 
+              variant="outline"
+              size="lg"
+              iconPosition="left"
+              icon="ph:info"
+              animation="hover"
+              href="/contacto"
+              class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900"
+            >
+              Solicitar Información
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
-    
-    <!-- CTA Buttons -->
-    <div class="flex flex-col sm:flex-row gap-4">
-      <Button 
-        variant="primary" 
-        size="lg"
-        href="#portfolio"
-        class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-medium transition-colors"
-      >
-        Ver Portafolio
-      </Button>
-      <Button 
-        variant="outline" 
-        size="lg"
-        href="/contacto"
-        class="border-2 border-white text-white hover:bg-white hover:text-gray-600 px-8 py-4 rounded-full font-medium transition-all"
-      >
-        Solicitar Información
-      </Button>
+
+    <!-- Additional Features Section -->
+    <div class="grid lg:grid-cols-3 gap-8 mt-16">
+      <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-500" data-aos="fade-up" data-aos-delay="600">
+        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+          <Icon name="ph:palette" class="w-8 h-8 text-white" />
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Diseño Innovador</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Cada proyecto refleja creatividad y funcionalidad, adaptándose a las últimas tendencias arquitectónicas.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-500" data-aos="fade-up" data-aos-delay="700">
+        <div class="w-16 h-16 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center mb-6">
+          <Icon name="ph:shield-check" class="w-8 h-8 text-white" />
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Calidad Garantizada</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Utilizamos los mejores materiales y técnicas constructivas para asegurar durabilidad y excelencia.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-500" data-aos="fade-up" data-aos-delay="800">
+        <div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6">
+          <Icon name="ph:clock" class="w-8 h-8 text-white" />
+        </div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Entrega Puntual</h3>
+        <p class="text-gray-600 leading-relaxed">
+          Cumplimos con los tiempos acordados sin comprometer la calidad del resultado final.
+        </p>
+      </div>
     </div>
   </div>
 </section>

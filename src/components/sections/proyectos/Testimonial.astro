@@ -1,114 +1,245 @@
 ---
 import { Icon } from "astro-icon/components";
+import Button from '../../ui/Button.astro';
 ---
 
-<section class="bg-white py-16 lg:py-28 px-5 lg:px-16" data-aos="fade-up">
-  <div class="container mx-auto max-w-[1280px] relative">
-    <div class="flex flex-col items-center gap-5 lg:gap-12">
+<section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden" data-aos="fade-up">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 left-0 w-72 h-72 bg-primary-green/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up" data-aos-delay="100">
+      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:quotes" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm uppercase tracking-wider">Testimonios</span>
+      </div>
+      
+      <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        Experiencias Reales
+      </h2>
+      
+      <p class="text-xl text-gray-600 leading-relaxed">
+        Conoce las historias de éxito de nuestros clientes satisfechos
+      </p>
+    </div>
+
+    <!-- Main Testimonial Card -->
+    <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
       <!-- Testimonial Slider Container -->
-      <div class="max-w-[335px] lg:max-w-[768px] text-center relative overflow-hidden">
+      <div class="relative">
         <!-- Testimonial Content -->
         <div id="testimonial-slider" class="flex transition-transform duration-500 ease-in-out">
           <!-- Testimonial 1 -->
-          <div class="w-full flex-shrink-0 flex flex-col items-center">
-            <img
-              src="/images/logo-placeholder.svg"
-              alt="Company Logo"
-              class="h-12 w-[120px] mx-auto mb-6 lg:mb-8"
-            />
-            <h3 class="text-xl lg:text-[32px] font-medium leading-[1.2] tracking-[0.32px] mb-6 lg:mb-8 text-neutral-darkest font-urbanist">
-              "La calidad del trabajo superó nuestras expectativas. Cada detalle fue cuidadosamente considerado y ejecutado."
-            </h3>
-            <div class="flex flex-col items-center">
-              <img
-                src="/images/avatar-image.png"
-                alt="Avatar"
-                class="w-14 h-14 rounded-full mb-4"
-              />
-              <p class="font-semibold text-sm lg:text-lg text-neutral-darkest font-heebo">Juan Pérez</p>
-              <p class="text-sm lg:text-lg text-neutral-darkest font-heebo">Gerente, Constructora XYZ</p>
+          <div class="w-full flex-shrink-0 p-8 lg:p-16">
+            <div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+              <!-- Company Logo -->
+              <div class="w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center mb-8">
+                <img
+                  src="/images/logo-placeholder.svg"
+                  alt="Company Logo"
+                  class="h-10 w-auto opacity-60"
+                />
+              </div>
+              
+              <!-- Quote -->
+              <blockquote class="text-2xl lg:text-4xl font-medium leading-relaxed text-gray-900 mb-8">
+                "La calidad del trabajo superó nuestras expectativas. Cada detalle fue cuidadosamente considerado y ejecutado."
+              </blockquote>
+              
+              <!-- Rating -->
+              <div class="flex gap-1 mb-8">
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+              </div>
+              
+              <!-- Author -->
+              <div class="flex flex-col items-center">
+                <div class="w-16 h-16 rounded-full overflow-hidden mb-4 ring-4 ring-primary-green/20">
+                  <img
+                    src="/images/avatar-image.png"
+                    alt="Avatar"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-1">Juan Pérez</h4>
+                <p class="text-gray-600 font-medium">Gerente, Constructora XYZ</p>
+              </div>
             </div>
           </div>
           
           <!-- Testimonial 2 -->
-          <div class="w-full flex-shrink-0 flex flex-col items-center">
-            <img
-              src="/images/logo-placeholder.svg"
-              alt="Company Logo"
-              class="h-12 w-[120px] mx-auto mb-6 lg:mb-8"
-            />
-            <h3 class="text-xl lg:text-[32px] font-medium leading-[1.2] tracking-[0.32px] mb-6 lg:mb-8 text-neutral-darkest font-urbanist">
-              "Profesionalismo excepcional y atención al detalle. Recomendamos sus servicios sin dudar."
-            </h3>
-            <div class="flex flex-col items-center">
-              <img
-                src="/images/avatar-image.png"
-                alt="Avatar"
-                class="w-14 h-14 rounded-full mb-4"
-              />
-              <p class="font-semibold text-sm lg:text-lg text-neutral-darkest font-heebo">María García</p>
-              <p class="text-sm lg:text-lg text-neutral-darkest font-heebo">Directora, Inmobiliaria ABC</p>
+          <div class="w-full flex-shrink-0 p-8 lg:p-16">
+            <div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+              <!-- Company Logo -->
+              <div class="w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center mb-8">
+                <img
+                  src="/images/logo-placeholder.svg"
+                  alt="Company Logo"
+                  class="h-10 w-auto opacity-60"
+                />
+              </div>
+              
+              <!-- Quote -->
+              <blockquote class="text-2xl lg:text-4xl font-medium leading-relaxed text-gray-900 mb-8">
+                "Profesionalismo excepcional y atención al detalle. Recomendamos sus servicios sin dudar."
+              </blockquote>
+              
+              <!-- Rating -->
+              <div class="flex gap-1 mb-8">
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+              </div>
+              
+              <!-- Author -->
+              <div class="flex flex-col items-center">
+                <div class="w-16 h-16 rounded-full overflow-hidden mb-4 ring-4 ring-primary-green/20">
+                  <img
+                    src="/images/avatar-image.png"
+                    alt="Avatar"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-1">María García</h4>
+                <p class="text-gray-600 font-medium">Directora, Inmobiliaria ABC</p>
+              </div>
             </div>
           </div>
           
           <!-- Testimonial 3 -->
-          <div class="w-full flex-shrink-0 flex flex-col items-center">
-            <img
-              src="/images/logo-placeholder.svg"
-              alt="Company Logo"
-              class="h-12 w-[120px] mx-auto mb-6 lg:mb-8"
-            />
-            <h3 class="text-xl lg:text-[32px] font-medium leading-[1.2] tracking-[0.32px] mb-6 lg:mb-8 text-neutral-darkest font-urbanist">
-              "Excelente comunicación durante todo el proyecto. Entregaron exactamente lo que prometieron."
-            </h3>
-            <div class="flex flex-col items-center">
-              <img
-                src="/images/avatar-image.png"
-                alt="Avatar"
-                class="w-14 h-14 rounded-full mb-4"
-              />
-              <p class="font-semibold text-sm lg:text-lg text-neutral-darkest font-heebo">Carlos López</p>
-              <p class="text-sm lg:text-lg text-neutral-darkest font-heebo">CEO, Desarrollo Urbano</p>
+          <div class="w-full flex-shrink-0 p-8 lg:p-16">
+            <div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+              <!-- Company Logo -->
+              <div class="w-20 h-20 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center mb-8">
+                <img
+                  src="/images/logo-placeholder.svg"
+                  alt="Company Logo"
+                  class="h-10 w-auto opacity-60"
+                />
+              </div>
+              
+              <!-- Quote -->
+              <blockquote class="text-2xl lg:text-4xl font-medium leading-relaxed text-gray-900 mb-8">
+                "Excelente comunicación durante todo el proyecto. Entregaron exactamente lo que prometieron."
+              </blockquote>
+              
+              <!-- Rating -->
+              <div class="flex gap-1 mb-8">
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+              </div>
+              
+              <!-- Author -->
+              <div class="flex flex-col items-center">
+                <div class="w-16 h-16 rounded-full overflow-hidden mb-4 ring-4 ring-primary-green/20">
+                  <img
+                    src="/images/avatar-image.png"
+                    alt="Avatar"
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-1">Carlos López</h4>
+                <p class="text-gray-600 font-medium">CEO, Desarrollo Urbano</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      
-      <!-- Desktop Arrow Navigation -->
-      <div class="hidden lg:block">
+        
+        <!-- Navigation Arrows -->
         <button
           id="prev-testimonial"
-          class="absolute left-0 top-[142px] p-3 rounded-full border-2 border-neutral-darkest bg-white hover:bg-neutral-lightest transition-colors duration-200"
+          class="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm hover:bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
           aria-label="Testimonio anterior"
         >
-          <Icon name="ph:caret-left" class="w-6 h-6 text-neutral-darkest" />
+          <Icon name="ph:caret-left" class="w-5 h-5 text-gray-900 group-hover:text-primary-green transition-colors" />
         </button>
         <button
           id="next-testimonial"
-          class="absolute right-0 top-[142px] p-3 rounded-full border-2 border-neutral-darkest bg-white hover:bg-neutral-lightest transition-colors duration-200"
+          class="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm hover:bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
           aria-label="Siguiente testimonio"
         >
-          <Icon name="ph:caret-right" class="w-6 h-6 text-neutral-darkest" />
+          <Icon name="ph:caret-right" class="w-5 h-5 text-gray-900 group-hover:text-primary-green transition-colors" />
         </button>
       </div>
       
       <!-- Slider Dots -->
-      <div class="flex gap-2 items-center justify-center lg:block">
+      <div class="flex gap-3 items-center justify-center py-8">
         <button
-          class="testimonial-dot w-3 h-3 rounded-full bg-neutral-darkest transition-opacity duration-200"
+          class="testimonial-dot w-3 h-3 rounded-full bg-primary-green w-8 transition-all duration-300"
           data-slide="0"
           aria-label="Ir al testimonio 1"
         ></button>
         <button
-          class="testimonial-dot w-3 h-3 rounded-full bg-neutral-darkest opacity-30 transition-opacity duration-200"
+          class="testimonial-dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"
           data-slide="1"
           aria-label="Ir al testimonio 2"
         ></button>
         <button
-          class="testimonial-dot w-3 h-3 rounded-full bg-neutral-darkest opacity-30 transition-opacity duration-200"
+          class="testimonial-dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300"
           data-slide="2"
           aria-label="Ir al testimonio 3"
         ></button>
+      </div>
+    </div>
+
+    <!-- Bottom CTA Section -->
+    <div class="mt-16 text-center" data-aos="fade-up" data-aos-delay="400">
+      <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl shadow-2xl p-8 lg:p-12 relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute inset-0">
+          <div class="absolute top-0 right-0 w-40 h-40 bg-primary-green/10 rounded-full blur-3xl"></div>
+          <div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
+        </div>
+
+        <div class="relative z-10 max-w-3xl mx-auto">
+          <div class="inline-flex items-center gap-2 bg-primary-green/20 rounded-full px-4 py-2 mb-6">
+            <Icon name="ph:handshake" class="w-5 h-5 text-primary-green" />
+            <span class="text-primary-green font-semibold text-sm">Únete a Nuestros Clientes</span>
+          </div>
+          
+          <h3 class="text-3xl lg:text-4xl font-bold text-white mb-6">
+            ¿Listo para crear tu historia de éxito?
+          </h3>
+          
+          <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+            Forma parte de nuestra familia de clientes satisfechos y experimenta la diferencia de trabajar con verdaderos profesionales.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 items-center justify-center">
+            <Button 
+              variant="primary"
+              size="lg"
+              iconPosition="left"
+              icon="ph:rocket-launch"
+              animation="hover"
+              href="/contacto"
+            >
+              Comenzar Mi Proyecto
+            </Button>
+            
+            <Button 
+              variant="outline"
+              size="lg"
+              iconPosition="left"
+              icon="ph:phone"
+              animation="hover"
+              href="/contacto"
+              class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900"
+            >
+              Hablar con un Experto
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -133,9 +264,11 @@ import { Icon } from "astro-icon/components";
       // Update dots
       dots.forEach((dot, index) => {
         if (index === currentSlide) {
-          dot.classList.remove('opacity-30');
+          dot.classList.remove('bg-gray-300', 'w-3');
+          dot.classList.add('bg-primary-green', 'w-8');
         } else {
-          dot.classList.add('opacity-30');
+          dot.classList.remove('bg-primary-green', 'w-8');
+          dot.classList.add('bg-gray-300', 'w-3');
         }
       });
     }

@@ -7,9 +7,35 @@ export interface Props {
   title: string;
   content: string;
   images: string[];
+  imageCategories?: {
+    name: string;
+    label: string;
+    images: string[];
+  }[];
 }
 
-const { title, content, images } = Astro.props;
+const { title, content, images, imageCategories } = Astro.props;
+
+// Default categories if none provided
+const defaultCategories = [
+  {
+    name: 'exterior',
+    label: 'Vista Exterior',
+    images: images
+  },
+  {
+    name: 'interior',
+    label: 'Vista Interior',
+    images: images
+  },
+  {
+    name: 'planos',
+    label: 'Planos',
+    images: images
+  }
+];
+
+const categories = imageCategories || defaultCategories;
 
 // Split content into paragraphs
 const paragraphs = content.split('\n\n').filter(p => p.trim());
@@ -42,8 +68,38 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
       
       <!-- Gallery Section -->
       <div class="lg:col-span-2 bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden" data-aos="fade-right" data-aos-duration="800">
+        
+        <!-- Gallery Header with Category Selector -->
+        <div class="bg-gradient-to-r from-gray-50 to-white p-6 border-b border-gray-100">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+              <Icon name="ph:images-fill" class="w-5 h-5 text-primary-green" />
+              Galería de Imágenes
+            </h3>
+            
+            <!-- Category Selector -->
+            <div class="relative">
+              <select 
+                id="categorySelector" 
+                class="appearance-none bg-white border border-gray-200 rounded-2xl px-4 py-2 pr-10 text-sm font-medium text-gray-700 hover:border-primary-green focus:outline-none focus:ring-2 focus:ring-primary-green focus:border-transparent transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+              >
+                {categories.map((category, index) => (
+                  <option value={category.name} selected={index === 0}>
+                    {category.label}
+                  </option>
+                ))}
+              </select>
+              
+              <!-- Custom dropdown arrow -->
+              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                <Icon name="ph:caret-down" class="w-4 h-4 text-gray-400" />
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="gallery-container relative h-[400px] lg:h-[500px] group bg-gray-50">
-          {images.map((image, index) => (
+          {categories[0].images.map((image, index) => (
             <div 
               class={`gallery-slide absolute inset-0 transition-all duration-700 ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'}`}
               data-slide={index}
@@ -68,14 +124,19 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
 
           <!-- Image Counter -->
           <div class="absolute top-4 right-4 bg-gray-900/80 backdrop-blur-sm text-white px-3 py-1 rounded-2xl text-sm font-semibold shadow-lg">
-            <span class="gallery-counter">1</span> / {images.length}
+            <span class="gallery-counter">1</span> / <span class="gallery-total">{categories[0].images.length}</span>
+          </div>
+
+          <!-- Category Badge -->
+          <div class="absolute top-4 left-4 bg-primary-green/90 backdrop-blur-sm text-white px-3 py-1 rounded-2xl text-sm font-semibold shadow-lg">
+            <span class="category-badge">{categories[0].label}</span>
           </div>
         </div>
 
         <!-- Thumbnail Strip -->
-        <div class="p-6 border-t border-gray-100">
-          <div class="grid grid-cols-4 gap-3">
-            {images.map((image, index) => (
+        <div class="thumbnail-container p-6 border-t border-gray-100">
+          <div class="grid grid-cols-4 gap-3" id="thumbnailGrid">
+            {categories[0].images.map((image, index) => (
               <button 
                 class={`gallery-thumb h-20 rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-lg ${index === 0 ? 'ring-2 ring-primary-green' : 'ring-1 ring-gray-200 hover:ring-primary-green/50'}`}
                 data-slide={index}
@@ -87,50 +148,6 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
                 />
               </button>
             ))}
-          </div>
-        </div>
-
-        <!-- Action Buttons Section -->
-        <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-b-3xl p-6 border-t border-gray-100 relative overflow-hidden">
-          <!-- Background decoration -->
-          <div class="absolute inset-0">
-            <div class="absolute top-0 right-0 w-32 h-32 bg-primary-green/10 rounded-full blur-2xl"></div>
-            <div class="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/10 rounded-full blur-xl"></div>
-          </div>
-
-          <div class="relative z-10">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <Button 
-                variant="outline"
-                size="sm"
-                iconPosition="left"
-                icon="ph:download"
-                animation="hover"
-                class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900"
-              >
-                Descargar
-              </Button>
-              
-              <Button 
-                variant="primary"
-                size="sm"
-                iconPosition="left"
-                icon="ph:eye"
-                animation="hover"
-              >
-                Tour Virtual
-              </Button>
-              
-              <Button 
-                variant="success"
-                size="sm"
-                iconPosition="left"
-                icon="ph:info"
-                animation="hover"
-              >
-                Más Info
-              </Button>
-            </div>
           </div>
         </div>
       </div>
@@ -212,6 +229,38 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
               </div>
             </div>
           </div>
+
+          <!-- Action Buttons Footer -->
+          <div class="mt-8 pt-6 border-t border-gray-200">
+            <div class="grid grid-cols-3 gap-2">
+              <div class="text-center">
+                <button class="w-full flex flex-col items-center gap-2 p-4 rounded-2xl bg-white hover:bg-gray-50 border border-gray-200 hover:border-primary-green/30 transition-all duration-300 group">
+                  <div class="w-12 h-12 bg-gray-100 group-hover:bg-primary-green/10 rounded-xl flex items-center justify-center transition-colors duration-300">
+                    <Icon name="ph:download" class="w-6 h-6 text-gray-600 group-hover:text-primary-green" />
+                  </div>
+                  <span class="text-sm font-medium text-gray-700 group-hover:text-primary-green">Descargar Brochure</span>
+                </button>
+              </div>
+              
+              <div class="text-center">
+                <button class="w-full flex flex-col items-center gap-2 p-4 rounded-2xl bg-white hover:bg-gray-50 border border-gray-200 hover:border-primary-green/30 transition-all duration-300 group">
+                  <div class="w-12 h-12 bg-gray-100 group-hover:bg-primary-green/10 rounded-xl flex items-center justify-center transition-colors duration-300">
+                    <Icon name="ph:video" class="w-6 h-6 text-gray-600 group-hover:text-primary-green" />
+                  </div>
+                  <span class="text-sm font-medium text-gray-700 group-hover:text-primary-green">Tour Virtual</span>
+                </button>
+              </div>
+              
+              <div class="text-center">
+                <button class="w-full flex flex-col items-center gap-2 p-4 rounded-2xl bg-white hover:bg-gray-50 border border-gray-200 hover:border-primary-green/30 transition-all duration-300 group">
+                  <div class="w-12 h-12 bg-gray-100 group-hover:bg-primary-green/10 rounded-xl flex items-center justify-center transition-colors duration-300">
+                    <Icon name="ph:info" class="w-6 h-6 text-gray-600 group-hover:text-primary-green" />
+                  </div>
+                  <span class="text-sm font-medium text-gray-700 group-hover:text-primary-green">Más información</span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -220,26 +269,67 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Gallery data structure
+    const categories = [
+      {
+        name: 'exterior',
+        label: 'Vista Exterior',
+        images: [
+          '/images/placeholder-image.png',
+          '/images/placeholder-image-1.png',
+          '/images/placeholder-image-2.png',
+          '/images/header-30.png'
+        ]
+      },
+      {
+        name: 'interior',
+        label: 'Vista Interior',
+        images: [
+          '/images/layout-355.png',
+          '/images/layout-85.png',
+          '/images/tab-pane-1.png',
+          '/images/header-50.png'
+        ]
+      },
+      {
+        name: 'planos',
+        label: 'Planos',
+        images: [
+          '/images/tab-pane-1.png',
+          '/images/layout-355.png',
+          '/images/placeholder-image.png'
+        ]
+      }
+    ];
+
+    // DOM elements
+    const categorySelector = document.getElementById('categorySelector') as HTMLSelectElement;
     const gallerySlides = document.querySelectorAll('.gallery-slide') as NodeListOf<HTMLElement>;
     const galleryThumbs = document.querySelectorAll('.gallery-thumb') as NodeListOf<HTMLButtonElement>;
     const prevButton = document.querySelector('.gallery-prev') as HTMLButtonElement | null;
     const nextButton = document.querySelector('.gallery-next') as HTMLButtonElement | null;
     const galleryCounter = document.querySelector('.gallery-counter') as HTMLElement | null;
+    const galleryTotal = document.querySelector('.gallery-total') as HTMLElement | null;
+    const categoryBadge = document.querySelector('.category-badge') as HTMLElement | null;
+    const thumbnailGrid = document.getElementById('thumbnailGrid') as HTMLElement | null;
+    const galleryContainer = document.querySelector('.gallery-container') as HTMLElement | null;
     
     let currentSlide = 0;
-    const totalSlides = gallerySlides.length;
+    let currentCategory = categories[0];
     
     function updateSlide(index: number): void {
-      if (index < 0 || index >= totalSlides) return;
+      if (index < 0 || index >= currentCategory.images.length) return;
       
       // Update slides
-      gallerySlides.forEach((slide, i) => {
+      const slides = galleryContainer?.querySelectorAll('.gallery-slide') as NodeListOf<HTMLElement>;
+      slides.forEach((slide, i) => {
         slide.classList.toggle('opacity-100', i === index);
         slide.classList.toggle('opacity-0', i !== index);
       });
       
       // Update thumbnails
-      galleryThumbs.forEach((thumb, i) => {
+      const thumbs = thumbnailGrid?.querySelectorAll('.gallery-thumb') as NodeListOf<HTMLButtonElement>;
+      thumbs.forEach((thumb, i) => {
         if (i === index) {
           thumb.classList.remove('ring-1', 'ring-gray-200', 'hover:ring-primary-green/50');
           thumb.classList.add('ring-2', 'ring-primary-green');
@@ -258,14 +348,75 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
     }
     
     function nextSlide(): void {
-      updateSlide((currentSlide + 1) % totalSlides);
+      updateSlide((currentSlide + 1) % currentCategory.images.length);
     }
     
     function prevSlide(): void {
-      updateSlide((currentSlide - 1 + totalSlides) % totalSlides);
+      updateSlide((currentSlide - 1 + currentCategory.images.length) % currentCategory.images.length);
+    }
+
+    function updateGalleryContent(categoryName: string): void {
+      const category = categories.find(cat => cat.name === categoryName);
+      if (!category) return;
+
+      currentCategory = category;
+      currentSlide = 0;
+
+      // Update gallery slides
+      if (galleryContainer) {
+        const slidesHTML = category.images.map((image, index) => `
+          <div class="gallery-slide absolute inset-0 transition-all duration-700 ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'}" data-slide="${index}">
+            <img src="${image}" alt="Imagen ${index + 1}" class="w-full h-full object-cover" />
+          </div>
+        `).join('');
+        
+        const existingContent = galleryContainer.innerHTML;
+        const newContent = existingContent.replace(
+          /<div class="gallery-slide[^>]*>[\s\S]*?<\/div>/g, 
+          ''
+        );
+        galleryContainer.innerHTML = newContent + slidesHTML;
+      }
+
+      // Update thumbnails
+      if (thumbnailGrid) {
+        const thumbnailsHTML = category.images.map((image, index) => `
+          <button class="gallery-thumb h-20 rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-lg ${index === 0 ? 'ring-2 ring-primary-green' : 'ring-1 ring-gray-200 hover:ring-primary-green/50'}" data-slide="${index}">
+            <img src="${image}" alt="Thumbnail ${index + 1}" class="w-full h-full object-cover" />
+          </button>
+        `).join('');
+        
+        thumbnailGrid.innerHTML = thumbnailsHTML;
+
+        // Re-attach thumbnail click events
+        const newThumbs = thumbnailGrid.querySelectorAll('.gallery-thumb') as NodeListOf<HTMLButtonElement>;
+        newThumbs.forEach((thumb, index) => {
+          thumb.addEventListener('click', () => updateSlide(index));
+        });
+      }
+
+      // Update total count
+      if (galleryTotal) {
+        galleryTotal.textContent = category.images.length.toString();
+      }
+
+      // Update category badge
+      if (categoryBadge) {
+        categoryBadge.textContent = category.label;
+      }
+
+      // Reset to first slide
+      updateSlide(0);
     }
     
     // Event listeners
+    if (categorySelector) {
+      categorySelector.addEventListener('change', (e) => {
+        const target = e.target as HTMLSelectElement;
+        updateGalleryContent(target.value);
+      });
+    }
+
     if (prevButton) {
       prevButton.addEventListener('click', prevSlide);
     }
@@ -274,8 +425,9 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
       nextButton.addEventListener('click', nextSlide);
     }
     
-    // Thumbnail navigation
-    galleryThumbs.forEach((thumb, index) => {
+    // Thumbnail navigation - initial setup
+    const initialThumbs = thumbnailGrid?.querySelectorAll('.gallery-thumb') as NodeListOf<HTMLButtonElement>;
+    initialThumbs?.forEach((thumb, index) => {
       thumb.addEventListener('click', () => updateSlide(index));
     });
     

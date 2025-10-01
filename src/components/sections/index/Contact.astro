@@ -1,105 +1,166 @@
 ---
+import { Icon } from "astro-icon/components";
+import Button from '../../ui/Button.astro';
+
 // Contact data basado en la imagen de referencia
 const contactInfo = {
-  email: "info@constructoraejemplo.com",
-  phone: "+1 (555) 000-0000", 
-  address: "123 Calle Ejemplo, Sydney NSW 2000 AU"
+  email: "info@constructoracarpio.com",
+  phone: "+593 95 632 4598", 
+  address: "Quito, Pichincha, Ecuador"
 };
 ---
 
-<section class="bg-gray-100 py-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Header similar a la imagen -->
-    <div class="text-left mb-16">
-      <p class="text-sm font-medium text-gray-600 uppercase tracking-wider mb-4">
-        Construcción
-      </p>
-      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-        Contáctanos
-      </h1>
-      <p class="text-lg text-gray-600 max-w-xl">
-        Estamos aquí para ayudarte con tu proyecto.
+<section class="py-20 bg-gradient-to-br from-white via-gray-50 to-slate-100 relative overflow-hidden">
+  <!-- Background decorations -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-20 w-40 h-40 bg-primary-green/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Header -->
+    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:phone-fill" class="w-5 h-5 text-primary-green" />
+        <span class="text-primary-green font-semibold text-sm uppercase tracking-wider">Construcción</span>
+      </div>
+      
+      <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        <span class="bg-gradient-to-r from-primary-green to-emerald-500 bg-clip-text text-transparent">Contáctanos</span>
+      </h2>
+      
+      <p class="text-xl text-gray-600 leading-relaxed">
+        Estamos aquí para ayudarte con tu proyecto de construcción
       </p>
     </div>
 
-    <!-- Grid de dos columnas como en la imagen -->
+    <!-- Grid de dos columnas -->
     <div class="grid lg:grid-cols-2 gap-16 items-start">
       
       <!-- Columna izquierda - Información de contacto -->
-      <div class="space-y-12">
+      <div class="space-y-8" data-aos="fade-right" data-aos-delay="100">
         
         <!-- Correo -->
-        <div>
-          <div class="flex items-center mb-4">
-            <svg class="w-6 h-6 text-gray-900 mr-3" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-            </svg>
-            <h3 class="text-xl font-semibold text-gray-900">Correo</h3>
+        <div class="bg-white rounded-3xl p-8 border border-gray-200/50 hover:border-primary-green/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]">
+          <div class="flex items-center gap-6 mb-4">
+            <div class="w-16 h-16 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center shadow-lg">
+              <Icon name="ph:envelope-fill" class="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-1">Correo Electrónico</h3>
+              <p class="text-gray-600">Escríbenos tu consulta</p>
+            </div>
           </div>
-          <a 
-            href={`mailto:${contactInfo.email}`}
-            class="text-gray-600 hover:text-gray-900 underline transition-colors"
-          >
-            {contactInfo.email}
-          </a>
-          <br>
-          <a 
-            href={`mailto:${contactInfo.email}`}
-            class="text-gray-600 hover:text-gray-900 underline transition-colors"
-          >
-            {contactInfo.email}
-          </a>
+          <div class="space-y-2">
+            <a 
+              href={`mailto:${contactInfo.email}`}
+              class="block text-primary-green hover:text-emerald-600 font-semibold text-lg transition-colors"
+            >
+              {contactInfo.email}
+            </a>
+            <a 
+              href={`mailto:ventas@constructoracarpio.com`}
+              class="block text-primary-green hover:text-emerald-600 font-semibold text-lg transition-colors"
+            >
+              ventas@constructoracarpio.com
+            </a>
+          </div>
         </div>
 
         <!-- Teléfono -->
-        <div>
-          <div class="flex items-center mb-4">
-            <svg class="w-6 h-6 text-gray-900 mr-3" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
-            </svg>
-            <h3 class="text-xl font-semibold text-gray-900">Teléfono</h3>
+        <div class="bg-white rounded-3xl p-8 border border-gray-200/50 hover:border-blue-500/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]">
+          <div class="flex items-center gap-6 mb-4">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+              <Icon name="ph:phone-fill" class="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-1">Teléfono</h3>
+              <p class="text-gray-600">Llámanos para más información</p>
+            </div>
           </div>
-          <p class="text-gray-600 mb-2">Llámanos para más información.</p>
           <a 
             href={`tel:${contactInfo.phone.replace(/[\s\-\(\)]/g, '')}`}
-            class="text-gray-900 font-medium text-lg hover:text-gray-700 transition-colors"
+            class="text-blue-500 hover:text-blue-600 font-bold text-2xl transition-colors"
           >
             {contactInfo.phone}
           </a>
+          
+          <div class="flex gap-3 mt-4">
+            <Button
+              href={`tel:${contactInfo.phone.replace(/[\s\-\(\)]/g, '')}`}
+              variant="primary"
+              size="sm"
+              icon="ph:phone-fill"
+            >
+              Llamar
+            </Button>
+            <Button
+              href="https://wa.me/593956324598"
+              variant="success"
+              size="sm"
+              icon="ph:whatsapp-logo-fill"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp
+            </Button>
+          </div>
         </div>
 
         <!-- Oficina -->
-        <div>
-          <div class="flex items-center mb-4">
-            <svg class="w-6 h-6 text-gray-900 mr-3" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-            </svg>
-            <h3 class="text-xl font-semibold text-gray-900">Oficina</h3>
+        <div class="bg-white rounded-3xl p-8 border border-gray-200/50 hover:border-purple-500/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]">
+          <div class="flex items-center gap-6 mb-4">
+            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+              <Icon name="ph:map-pin-fill" class="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900 mb-1">Ubicación</h3>
+              <p class="text-gray-600">Visítanos en nuestra oficina</p>
+            </div>
           </div>
-          <p class="text-gray-600 mb-3">{contactInfo.address}</p>
-          <button 
-            class="inline-flex items-center text-gray-900 hover:text-gray-700 font-medium transition-colors group"
-            onclick="window.open('https://maps.google.com/search/constructora+sydney+australia', '_blank')"
+          <p class="text-gray-700 font-medium text-lg mb-4">{contactInfo.address}</p>
+          
+          <Button
+            href="https://maps.google.com/search/constructora+quito+ecuador"
+            variant="outline"
+            size="sm"
+            icon="ph:arrow-square-out"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Obtener Direcciones
-            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
-            </svg>
-          </button>
+            Ver en Google Maps
+          </Button>
         </div>
 
       </div>
 
-      <!-- Columna derecha - Mapa o imagen -->
-      <div class="bg-gray-300 rounded-lg aspect-square lg:aspect-auto lg:h-96 flex items-center justify-center">
-        <!-- Placeholder para el mapa como en la imagen -->
-        <div class="text-center text-gray-500">
-          <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-          </svg>
-          <p class="text-lg font-medium">Ubicación del Mapa</p>
-          <p class="text-sm">Integración de Google Maps</p>
+      <!-- Columna derecha - Mapa placeholder mejorado -->
+      <div class="h-full" data-aos="fade-left" data-aos-delay="200">
+        <div class="bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl h-96 lg:h-full min-h-[500px] flex items-center justify-center relative overflow-hidden shadow-lg border border-gray-200">
+          <!-- Background pattern -->
+          <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-32 h-32 bg-primary-green/20 rounded-full blur-2xl"></div>
+            <div class="absolute bottom-10 right-10 w-24 h-24 bg-blue-500/20 rounded-full blur-xl"></div>
+          </div>
+          
+          <!-- Content -->
+          <div class="text-center text-gray-500 relative z-10">
+            <div class="w-20 h-20 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+              <Icon name="ph:map-pin-fill" class="w-10 h-10 text-white" />
+            </div>
+            <h3 class="text-2xl font-bold text-gray-700 mb-2">Ubicación del Mapa</h3>
+            <p class="text-gray-500 mb-4">Integración de Google Maps</p>
+            <Button
+              href="https://maps.google.com/search/constructora+quito+ecuador"
+              variant="outline"
+              size="sm"
+              icon="ph:arrow-square-out"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ver Mapa Completo
+            </Button>
+          </div>
         </div>
       </div>
       
