@@ -19,19 +19,54 @@ const { title, content, images, imageCategories } = Astro.props;
 // Default categories if none provided
 const defaultCategories = [
   {
+    name: 'general',
+    label: 'General',
+    images: images.length > 0 ? images : [
+      '/images/placeholder-image.png',
+      '/images/placeholder-image-1.png',
+      '/images/placeholder-image-2.png',
+      '/images/header-30.png',
+      '/images/header-50.png',
+      '/images/layout-355.png',
+      '/images/layout-85.png',
+      '/images/tab-pane-1.png'
+    ]
+  },
+  {
     name: 'exterior',
     label: 'Vista Exterior',
-    images: images
+    images: images.length > 0 ? images : [
+      '/images/placeholder-image.png',
+      '/images/placeholder-image-1.png',
+      '/images/placeholder-image-2.png',
+      '/images/header-30.png',
+      '/images/header-50.png',
+      '/images/layout-355.png'
+    ]
   },
   {
     name: 'interior',
     label: 'Vista Interior',
-    images: images
+    images: images.length > 0 ? images : [
+      '/images/layout-355.png',
+      '/images/layout-85.png',
+      '/images/tab-pane-1.png',
+      '/images/header-50.png',
+      '/images/placeholder-image.png',
+      '/images/placeholder-image-1.png',
+      '/images/placeholder-image-2.png'
+    ]
   },
   {
     name: 'planos',
     label: 'Planos',
-    images: images
+    images: images.length > 0 ? images : [
+      '/images/tab-pane-1.png',
+      '/images/layout-355.png',
+      '/images/placeholder-image.png',
+      '/images/layout-85.png',
+      '/images/header-30.png'
+    ]
   }
 ];
 
@@ -78,21 +113,28 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
             </h3>
             
             <!-- Category Selector -->
-            <div class="relative">
-              <select 
-                id="categorySelector" 
-                class="appearance-none bg-white border border-gray-200 rounded-2xl px-4 py-2 pr-10 text-sm font-medium text-gray-700 hover:border-primary-green focus:outline-none focus:ring-2 focus:ring-primary-green focus:border-transparent transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
-              >
-                {categories.map((category, index) => (
-                  <option value={category.name} selected={index === 0}>
-                    {category.label}
-                  </option>
-                ))}
-              </select>
+            <div class="flex items-center gap-3">
+              <!-- Category Icon - Changes based on selection -->
+              <div class="w-10 h-10 bg-gradient-to-br from-primary-green/10 to-emerald-500/10 rounded-xl flex items-center justify-center border border-primary-green/20">
+                <Icon name="ph:images-square" id="categoryIcon" class="w-5 h-5 text-primary-green" />
+              </div>
               
-              <!-- Custom dropdown arrow -->
-              <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                <Icon name="ph:caret-down" class="w-4 h-4 text-gray-400" />
+              <div class="relative">
+                <select 
+                  id="categorySelector" 
+                  class="appearance-none bg-white border border-gray-200 rounded-2xl px-4 py-2 pr-10 text-sm font-medium text-gray-700 hover:border-primary-green focus:outline-none focus:ring-2 focus:ring-primary-green focus:border-transparent transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+                >
+                  {categories.map((category, index) => (
+                    <option value={category.name} selected={index === 0}>
+                      {category.label}
+                    </option>
+                  ))}
+                </select>
+                
+                <!-- Custom dropdown arrow -->
+                <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  <Icon name="ph:caret-down" class="w-4 h-4 text-gray-400" />
+                </div>
               </div>
             </div>
           </div>
@@ -134,20 +176,44 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
         </div>
 
         <!-- Thumbnail Strip -->
-        <div class="thumbnail-container p-6 border-t border-gray-100">
-          <div class="grid grid-cols-4 gap-3" id="thumbnailGrid">
-            {categories[0].images.map((image, index) => (
-              <button 
-                class={`gallery-thumb h-20 rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-lg ${index === 0 ? 'ring-2 ring-primary-green' : 'ring-1 ring-gray-200 hover:ring-primary-green/50'}`}
-                data-slide={index}
-              >
-                <img
-                  src={image}
-                  alt={`Thumbnail ${index + 1}`}
-                  class="w-full h-full object-cover"
-                />
-              </button>
-            ))}
+        <div class="thumbnail-container p-6 border-t border-gray-100 overflow-hidden">
+          <div class="relative w-full">
+            <!-- Scroll Navigation Buttons -->
+            <button 
+              id="scrollLeft" 
+              class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-2 z-20 w-8 h-8 bg-white/90 backdrop-blur-sm hover:bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center opacity-1 pointer-events-auto"
+            >
+              <Icon name="ph:caret-left" class="w-4 h-4 text-gray-900" />
+            </button>
+            
+            <button 
+              id="scrollRight" 
+              class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-2 z-20 w-8 h-8 bg-white/90 backdrop-blur-sm hover:bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center opacity-1 pointer-events-auto"
+            >
+              <Icon name="ph:caret-right" class="w-4 h-4 text-gray-900" />
+            </button>
+
+            <!-- Scrollable Container -->
+            <div 
+              id="thumbnailScrollContainer" 
+              class="overflow-x-auto scrollbar-hide scroll-smooth"
+              style="scrollbar-width: none; -ms-overflow-style: none; width: 100%;"
+            >
+              <div class="flex gap-4 pb-2" id="thumbnailGrid" style="width: fit-content; min-width: 100%;">
+                {categories[0].images.map((image, index) => (
+                  <button 
+                    class={`gallery-thumb flex-shrink-0 w-32 h-20 rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-lg ${index === 0 ? 'ring-2 ring-primary-green' : 'ring-1 ring-gray-200 hover:ring-primary-green/50'}`}
+                    data-slide={index}
+                  >
+                    <img
+                      src={image}
+                      alt={`Thumbnail ${index + 1}`}
+                      class="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -267,10 +333,31 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
   </div>
 </section>
 
+<!-- Pass categories data to client-side -->
+<script define:vars={{ categories }}>
+  window.projectCategories = categories;
+</script>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Gallery data structure
-    const categories = [
+    // Get categories from the global variable set by define:vars
+    const serverCategories = (window as any).projectCategories || null;
+    
+    const categories = serverCategories || [
+      {
+        name: 'general',
+        label: 'General',
+        images: [
+          '/images/placeholder-image.png',
+          '/images/placeholder-image-1.png',
+          '/images/placeholder-image-2.png',
+          '/images/header-30.png',
+          '/images/header-50.png',
+          '/images/layout-355.png',
+          '/images/layout-85.png',
+          '/images/tab-pane-1.png'
+        ]
+      },
       {
         name: 'exterior',
         label: 'Vista Exterior',
@@ -278,7 +365,9 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
           '/images/placeholder-image.png',
           '/images/placeholder-image-1.png',
           '/images/placeholder-image-2.png',
-          '/images/header-30.png'
+          '/images/header-30.png',
+          '/images/header-50.png',
+          '/images/layout-355.png'
         ]
       },
       {
@@ -288,7 +377,10 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
           '/images/layout-355.png',
           '/images/layout-85.png',
           '/images/tab-pane-1.png',
-          '/images/header-50.png'
+          '/images/header-50.png',
+          '/images/placeholder-image.png',
+          '/images/placeholder-image-1.png',
+          '/images/placeholder-image-2.png'
         ]
       },
       {
@@ -297,13 +389,16 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
         images: [
           '/images/tab-pane-1.png',
           '/images/layout-355.png',
-          '/images/placeholder-image.png'
+          '/images/placeholder-image.png',
+          '/images/layout-85.png',
+          '/images/header-30.png'
         ]
       }
     ];
 
     // DOM elements
     const categorySelector = document.getElementById('categorySelector') as HTMLSelectElement;
+    const categoryIcon = document.getElementById('categoryIcon') as HTMLElement;
     const gallerySlides = document.querySelectorAll('.gallery-slide') as NodeListOf<HTMLElement>;
     const galleryThumbs = document.querySelectorAll('.gallery-thumb') as NodeListOf<HTMLButtonElement>;
     const prevButton = document.querySelector('.gallery-prev') as HTMLButtonElement | null;
@@ -312,10 +407,31 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
     const galleryTotal = document.querySelector('.gallery-total') as HTMLElement | null;
     const categoryBadge = document.querySelector('.category-badge') as HTMLElement | null;
     const thumbnailGrid = document.getElementById('thumbnailGrid') as HTMLElement | null;
+    const thumbnailScrollContainer = document.getElementById('thumbnailScrollContainer') as HTMLElement | null;
+    const scrollLeftBtn = document.getElementById('scrollLeft') as HTMLButtonElement | null;
+    const scrollRightBtn = document.getElementById('scrollRight') as HTMLButtonElement | null;
     const galleryContainer = document.querySelector('.gallery-container') as HTMLElement | null;
     
     let currentSlide = 0;
     let currentCategory = categories[0];
+    
+    // Initialize category icon
+    updateCategoryIcon(currentCategory.name);
+
+    // Function to update category icon
+    function updateCategoryIcon(categoryName: string): void {
+      if (categoryIcon) {
+        const iconMap: { [key: string]: string } = {
+          'general': `<svg class="w-5 h-5 text-primary-green" fill="currentColor" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H216V200H40ZM144,88a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H152A8,8,0,0,1,144,88Zm0,32a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H152A8,8,0,0,1,144,120Zm0,32a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H152A8,8,0,0,1,144,152ZM112,88v80a8,8,0,0,1-16,0V96L89.66,102.34a8,8,0,0,1-11.32-11.32l16-16A8,8,0,0,1,112,88Z"></path></svg>`,
+          'exterior': `<svg class="w-5 h-5 text-primary-green" fill="currentColor" viewBox="0 0 256 256"><path d="M240,208H224V96a16,16,0,0,0-16-16H164.94L139.58,51.58A16,16,0,0,0,128,48H48A16,16,0,0,0,32,64V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM208,80V208H48V64H128l26.42,32Z"></path></svg>`,
+          'interior': `<svg class="w-5 h-5 text-primary-green" fill="currentColor" viewBox="0 0 256 256"><path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H48V120l80-80,80,80Z"></path></svg>`,
+          'planos': `<svg class="w-5 h-5 text-primary-green" fill="currentColor" viewBox="0 0 256 256"><path d="M232,48V208a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H224A8,8,0,0,1,232,48ZM216,56H40V200H216ZM88,88V176a8,8,0,0,1-16,0V107.31L60.69,118.63a8,8,0,0,1-11.32-11.32l24-24A8,8,0,0,1,88,88Zm136,0a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h56A8,8,0,0,1,224,88Zm0,32a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h56A8,8,0,0,1,224,120Zm0,32a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h56A8,8,0,0,1,224,152Z"></path></svg>`
+        };
+        
+        const iconSvg = iconMap[categoryName] || iconMap['general'];
+        categoryIcon.innerHTML = iconSvg;
+      }
+    }
     
     function updateSlide(index: number): void {
       if (index < 0 || index >= currentCategory.images.length) return;
@@ -356,7 +472,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
     }
 
     function updateGalleryContent(categoryName: string): void {
-      const category = categories.find(cat => cat.name === categoryName);
+      const category = categories.find((cat: any) => cat.name === categoryName);
       if (!category) return;
 
       currentCategory = category;
@@ -364,7 +480,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
 
       // Update gallery slides
       if (galleryContainer) {
-        const slidesHTML = category.images.map((image, index) => `
+        const slidesHTML = category.images.map((image: string, index: number) => `
           <div class="gallery-slide absolute inset-0 transition-all duration-700 ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'}" data-slide="${index}">
             <img src="${image}" alt="Imagen ${index + 1}" class="w-full h-full object-cover" />
           </div>
@@ -380,11 +496,16 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
 
       // Update thumbnails
       if (thumbnailGrid) {
-        const thumbnailsHTML = category.images.map((image, index) => `
-          <button class="gallery-thumb h-20 rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-lg ${index === 0 ? 'ring-2 ring-primary-green' : 'ring-1 ring-gray-200 hover:ring-primary-green/50'}" data-slide="${index}">
+        const thumbnailsHTML = category.images.map((image: string, index: number) => `
+          <button class="gallery-thumb flex-shrink-0 w-32 h-20 rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-lg ${index === 0 ? 'ring-2 ring-primary-green' : 'ring-1 ring-gray-200 hover:ring-primary-green/50'}" data-slide="${index}">
             <img src="${image}" alt="Thumbnail ${index + 1}" class="w-full h-full object-cover" />
           </button>
         `).join('');
+        
+        // Force the container to expand
+        thumbnailGrid.style.width = 'fit-content';
+        thumbnailGrid.style.minWidth = '100%';
+        thumbnailGrid.className = 'flex gap-4 pb-2';
         
         thumbnailGrid.innerHTML = thumbnailsHTML;
 
@@ -405,10 +526,50 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
         categoryBadge.textContent = category.label;
       }
 
+      // Update category icon
+      updateCategoryIcon(categoryName);
+
       // Reset to first slide
       updateSlide(0);
+      
+      // Re-check scroll functionality for new content
+      setTimeout(() => {
+        setupThumbnailScroll();
+      }, 200);
     }
     
+    // Thumbnail scroll functionality
+    function setupThumbnailScroll() {
+      const leftBtn = document.getElementById('scrollLeft') as HTMLButtonElement;
+      const rightBtn = document.getElementById('scrollRight') as HTMLButtonElement;
+      const container = document.getElementById('thumbnailScrollContainer') as HTMLElement;
+      
+      if (!container || !leftBtn || !rightBtn) return;
+
+      const scrollAmount = 320;
+
+      // Simple scroll functions
+      leftBtn.onclick = () => {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      };
+
+      rightBtn.onclick = () => {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      };
+
+      // Update button visibility
+      function updateButtons() {
+        const { scrollLeft, scrollWidth, clientWidth } = container;
+        const maxScroll = scrollWidth - clientWidth;
+        
+        leftBtn.style.opacity = scrollLeft <= 0 ? '0.5' : '1';
+        rightBtn.style.opacity = scrollLeft >= maxScroll - 1 ? '0.5' : '1';
+      }
+
+      container.addEventListener('scroll', updateButtons);
+      setTimeout(updateButtons, 200);
+    }
+
     // Event listeners
     if (categorySelector) {
       categorySelector.addEventListener('change', (e) => {
@@ -425,6 +586,9 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
       nextButton.addEventListener('click', nextSlide);
     }
     
+    // Initialize thumbnail scroll
+    setupThumbnailScroll();
+    
     // Thumbnail navigation - initial setup
     const initialThumbs = thumbnailGrid?.querySelectorAll('.gallery-thumb') as NodeListOf<HTMLButtonElement>;
     initialThumbs?.forEach((thumb, index) => {
@@ -435,3 +599,23 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
     updateSlide(0);
   });
 </script>
+
+<style>
+  #thumbnailScrollContainer {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  #thumbnailScrollContainer::-webkit-scrollbar {
+    display: none;
+  }
+  
+  #thumbnailGrid {
+    width: fit-content !important;
+    min-width: 100%;
+  }
+  
+  .gallery-thumb {
+    min-width: 128px;
+  }
+</style>
