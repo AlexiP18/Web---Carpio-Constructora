@@ -1,5 +1,4 @@
 ---
-import Button from '../ui/Button.astro';
 
 export interface Props {
   title: string;
@@ -9,12 +8,12 @@ export interface Props {
 
 const { title, description, tags } = Astro.props;
 
-// Colors for tags - Colores más claros y vibrantes
+// Colors for tags - Colores corporativos
 const tagColors = [
-  "bg-blue-600 hover:bg-blue-700",
-  "bg-green-600 hover:bg-green-700", 
-  "bg-purple-600 hover:bg-purple-700",
-  "bg-orange-600 hover:bg-orange-700"
+  "bg-brand-primary hover:bg-brand-primary-dark",
+  "bg-brand-secondary hover:bg-brand-secondary-dark", 
+  "bg-gradient-to-r from-brand-primary to-brand-secondary hover:from-brand-primary-dark hover:to-brand-secondary-dark",
+  "bg-gradient-to-r from-brand-secondary to-brand-primary hover:from-brand-secondary-dark hover:to-brand-primary-dark"
 ];
 ---
 

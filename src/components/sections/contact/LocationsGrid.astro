@@ -50,20 +50,20 @@ const locations: Location[] = [
 <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-slate-100 relative overflow-hidden" id="locations">
   <!-- Background decorations -->
   <div class="absolute inset-0">
-    <div class="absolute top-20 right-20 w-40 h-40 bg-primary-green/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 left-20 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
+    <div class="absolute top-20 right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 left-20 w-32 h-32 bg-brand-secondary/5 rounded-full blur-2xl"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <!-- Section Header -->
     <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
-      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
-        <Icon name="ph:map-pin-fill" class="w-5 h-5 text-primary-green" />
-        <span class="text-primary-green font-semibold text-sm">Nuestras Ubicaciones</span>
+      <div class="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:map-pin-fill" class="w-5 h-5 text-brand-primary" />
+        <span class="text-brand-primary font-semibold text-sm">Nuestras Ubicaciones</span>
       </div>
       
       <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-        Cerca de Ti en Todo <span class="text-green-600">Ecuador</span>
+        Cerca de Ti en Todo <span class="text-brand-primary">Ecuador</span>
       </h2>
       
       <p class="text-xl text-gray-600 leading-relaxed">
@@ -91,7 +91,7 @@ const locations: Location[] = [
             <!-- Location Badge -->
             <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-xl px-3 py-2">
               <div class="flex items-center gap-2">
-                <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                <div class="w-3 h-3 bg-brand-primary rounded-full animate-pulse"></div>
                 <span class="text-sm font-semibold text-gray-900">Activa</span>
               </div>
             </div>
@@ -110,7 +110,7 @@ const locations: Location[] = [
                 href={`tel:${location.phone}`}
                 class="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center hover:bg-white transition-colors group/btn"
               >
-                <Icon name="ph:phone" class="w-5 h-5 text-gray-700 group-hover/btn:text-blue-500 transition-colors" />
+                <Icon name="ph:phone" class="w-5 h-5 text-gray-700 group-hover/btn:text-brand-primary transition-colors" />
               </a>
             </div>
           </div>
@@ -131,21 +131,21 @@ const locations: Location[] = [
             <!-- Contact Info -->
             <div class="space-y-3">
               <div class="flex items-center gap-3">
-                <Icon name="ph:phone" class="w-5 h-5 text-blue-500" />
-                <a href={`tel:${location.phone}`} class="text-sm font-medium text-gray-900 hover:text-blue-500 transition-colors">
+                <Icon name="ph:phone" class="w-5 h-5 text-brand-primary" />
+                <a href={`tel:${location.phone}`} class="text-sm font-medium text-gray-900 hover:text-brand-primary transition-colors">
                   {location.phone}
                 </a>
               </div>
               
               <div class="flex items-center gap-3">
-                <Icon name="ph:envelope" class="w-5 h-5 text-purple-500" />
-                <a href={`mailto:${location.email}`} class="text-sm font-medium text-gray-900 hover:text-purple-500 transition-colors">
+                <Icon name="ph:envelope" class="w-5 h-5 text-brand-secondary" />
+                <a href={`mailto:${location.email}`} class="text-sm font-medium text-gray-900 hover:text-brand-secondary transition-colors">
                   {location.email}
                 </a>
               </div>
               
               <div class="flex items-center gap-3">
-                <Icon name="ph:clock" class="w-5 h-5 text-orange-500" />
+                <Icon name="ph:clock" class="w-5 h-5 text-brand-secondary" />
                 <span class="text-sm text-gray-600">{location.hours}</span>
               </div>
             </div>
@@ -155,7 +155,7 @@ const locations: Location[] = [
               <h4 class="text-sm font-semibold text-gray-900 mb-3">Servicios Disponibles:</h4>
               <div class="flex flex-wrap gap-2">
                 {location.features.map((feature) => (
-                  <span class="px-3 py-1 bg-primary-green/10 text-primary-green text-xs font-medium rounded-full">
+                  <span class="px-3 py-1 bg-brand-primary/10 text-brand-primary text-xs font-medium rounded-full">
                     {feature}
                   </span>
                 ))}
@@ -198,7 +198,7 @@ const locations: Location[] = [
         <div class="space-y-6">
           <div>
             <h3 class="text-3xl font-bold text-gray-900 mb-4">
-              Ubicaciones <span class="text-primary-green">Estratégicas</span>
+              Ubicaciones <span class="text-brand-primary">Estratégicas</span>
             </h3>
             <p class="text-gray-600 leading-relaxed">
               Nuestras oficinas están ubicadas en puntos estratégicos de las principales ciudades del Ecuador para ofrecerte la mejor atención y estar siempre cerca cuando nos necesites.
@@ -207,29 +207,29 @@ const locations: Location[] = [
 
           <!-- Coverage Stats -->
           <div class="grid grid-cols-2 gap-6">
-            <div class="text-center p-4 bg-green-50 rounded-2xl border border-green-200">
-              <div class="text-3xl font-bold text-green-600 mb-1">3</div>
+            <div class="text-center p-4 bg-brand-primary/10 rounded-2xl border border-brand-primary/20">
+              <div class="text-3xl font-bold text-brand-primary mb-1">3</div>
               <div class="text-sm text-gray-600">Oficinas</div>
             </div>
-            <div class="text-center p-4 bg-blue-50 rounded-2xl border border-blue-200">
-              <div class="text-3xl font-bold text-blue-600 mb-1">24</div>
+            <div class="text-center p-4 bg-brand-secondary/10 rounded-2xl border border-brand-secondary/20">
+              <div class="text-3xl font-bold text-brand-secondary mb-1">24</div>
               <div class="text-sm text-gray-600">Provincias</div>
             </div>
-            <div class="text-center p-4 bg-purple-50 rounded-2xl border border-purple-200">
-              <div class="text-3xl font-bold text-purple-600 mb-1">100+</div>
+            <div class="text-center p-4 bg-brand-primary/10 rounded-2xl border border-brand-primary/20">
+              <div class="text-3xl font-bold text-brand-primary mb-1">100+</div>
               <div class="text-sm text-gray-600">Ciudades</div>
             </div>
-            <div class="text-center p-4 bg-orange-50 rounded-2xl border border-orange-200">
-              <div class="text-3xl font-bold text-orange-600 mb-1">15k+</div>
+            <div class="text-center p-4 bg-brand-secondary/10 rounded-2xl border border-brand-secondary/20">
+              <div class="text-3xl font-bold text-brand-secondary mb-1">15k+</div>
               <div class="text-sm text-gray-600">Clientes</div>
             </div>
           </div>
 
           <!-- Quick Contact -->
-          <div class="bg-green-600 rounded-2xl p-6 text-white">
+          <div class="bg-brand-primary rounded-2xl p-6 text-white">
             <h4 class="font-bold mb-2">¿No encuentras una oficina cerca?</h4>
-            <p class="text-green-100 text-sm mb-4">También brindamos servicios a domicilio en todo el país</p>
-            <Button variant="outline" href="#form" class="border-white text-white hover:bg-white hover:text-green-600" iconPosition="left" icon="ph:house-fill">
+            <p class="text-brand-primary-light text-sm mb-4">También brindamos servicios a domicilio en todo el país</p>
+            <Button variant="outline" href="#form" class="border-white text-white hover:bg-white hover:text-brand-primary" iconPosition="left" icon="ph:house-fill">
               Solicitar Visita
             </Button>
           </div>
@@ -252,7 +252,7 @@ const locations: Location[] = [
 
             <!-- Map Placeholder Content -->
             <div class="text-center space-y-4 relative z-10">
-              <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mx-auto">
+              <div class="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center mx-auto">
                 <Icon name="ph:map-trifold-fill" class="w-8 h-8 text-white" />
               </div>
               <div>
@@ -265,13 +265,13 @@ const locations: Location[] = [
             </div>
 
             <!-- Location Pins -->
-            <div class="absolute top-4 left-4 w-6 h-6 bg-green-600 rounded-full flex items-center justify-center animate-pulse">
+            <div class="absolute top-4 left-4 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center animate-pulse">
               <Icon name="ph:map-pin-fill" class="w-4 h-4 text-white" />
             </div>
-            <div class="absolute top-12 right-8 w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center animate-pulse" style="animation-delay: 0.5s;">
+            <div class="absolute top-12 right-8 w-6 h-6 bg-brand-secondary rounded-full flex items-center justify-center animate-pulse" style="animation-delay: 0.5s;">
               <Icon name="ph:map-pin-fill" class="w-4 h-4 text-white" />
             </div>
-            <div class="absolute bottom-8 left-1/3 w-6 h-6 bg-purple-600 rounded-full flex items-center justify-center animate-pulse" style="animation-delay: 1s;">
+            <div class="absolute bottom-8 left-1/3 w-6 h-6 bg-brand-primary rounded-full flex items-center justify-center animate-pulse" style="animation-delay: 1s;">
               <Icon name="ph:map-pin-fill" class="w-4 h-4 text-white" />
             </div>
           </div>
@@ -282,7 +282,7 @@ const locations: Location[] = [
     <!-- Service Areas -->
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12" data-aos="fade-up" data-aos-delay="500">
       <div class="text-center p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-green-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <div class="w-12 h-12 bg-brand-primary rounded-xl flex items-center justify-center mx-auto mb-4">
           <Icon name="ph:buildings-fill" class="w-6 h-6 text-white" />
         </div>
         <h4 class="font-bold text-gray-900 mb-2">Costa</h4>
@@ -290,7 +290,7 @@ const locations: Location[] = [
       </div>
 
       <div class="text-center p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <div class="w-12 h-12 bg-brand-secondary rounded-xl flex items-center justify-center mx-auto mb-4">
           <Icon name="ph:mountains-fill" class="w-6 h-6 text-white" />
         </div>
         <h4 class="font-bold text-gray-900 mb-2">Sierra</h4>
@@ -298,7 +298,7 @@ const locations: Location[] = [
       </div>
 
       <div class="text-center p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <div class="w-12 h-12 bg-brand-primary rounded-xl flex items-center justify-center mx-auto mb-4">
           <Icon name="ph:tree-fill" class="w-6 h-6 text-white" />
         </div>
         <h4 class="font-bold text-gray-900 mb-2">Oriente</h4>
@@ -306,7 +306,7 @@ const locations: Location[] = [
       </div>
 
       <div class="text-center p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-        <div class="w-12 h-12 bg-purple-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <div class="w-12 h-12 bg-brand-secondary rounded-xl flex items-center justify-center mx-auto mb-4">
           <Icon name="ph:island-fill" class="w-6 h-6 text-white" />
         </div>
         <h4 class="font-bold text-gray-900 mb-2">Galápagos</h4>

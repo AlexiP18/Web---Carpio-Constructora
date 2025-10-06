@@ -19,7 +19,7 @@ const { title = "Constructora Carpio - Transformamos sueños en estructuras dura
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Urbanist:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
         
         <!-- AOS CSS -->
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -33,8 +33,20 @@ const { title = "Constructora Carpio - Transformamos sueños en estructuras dura
                 margin: 0;
                 width: 100%;
                 height: 100%;
-                font-family: 'Heebo', sans-serif;
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
                 scroll-behavior: smooth;
+            }
+            
+            /* Typography hierarchy */
+            h1, h2, h3, h4, h5, h6,
+            .heading,
+            .font-heading {
+                font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                font-weight: 600;
+            }
+            
+            .font-body {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             }
             
             /* Custom scrollbar */
@@ -47,12 +59,12 @@ const { title = "Constructora Carpio - Transformamos sueños en estructuras dura
             }
             
             ::-webkit-scrollbar-thumb {
-                background: #2d862d;
+                background: #103646;
                 border-radius: 4px;
             }
             
             ::-webkit-scrollbar-thumb:hover {
-                background: #1f5f1f;
+                background: #D79528;
             }
         </style>
     </head>

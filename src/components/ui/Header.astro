@@ -1,19 +1,18 @@
 ---
 import { Icon } from 'astro-icon/components';
-import Button from '../ui/Button.astro';
-
-// Asset constants from Figma
-const imgLogoWide1 = "../../assets/images/logos/logo-constructora.png";
+import Button from './Button.astro';
+// Logo de Constructora Carpio
+import logoCarpio from '../../assets/LogoCarpio.svg';
 ---
 
-<header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md w-full z-50 border-b border-gray-100 shadow-sm transition-all duration-300" id="header">
+<header class="fixed top-0 left-0 right-0 bg-black/95 backdrop-blur-md w-full z-50 border-b border-gray-800 shadow-sm transition-all duration-300" id="header">
   <nav class="w-full">
     <!-- Mobile Header -->
     <div class="lg:hidden flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6 py-0 box-border transition-all duration-300">
       <!-- Logo -->
       <div class="flex items-center justify-start">
         <div class="h-7 sm:h-9 w-[70px] sm:w-[84px] overflow-clip relative">
-          <img src={imgLogoWide1} alt="Constructora Carpio" class="block max-w-none size-full transition-opacity duration-300" />
+          <img src={logoCarpio.src} alt="Constructora Carpio" class="block max-w-none size-full transition-opacity duration-300" />
         </div>
       </div>
       
@@ -44,11 +43,11 @@ const imgLogoWide1 = "../../assets/images/logos/logo-constructora.png";
         
         <!-- Mobile Menu Button -->
         <button 
-          class="flex gap-2.5 items-center justify-center relative w-10 h-10 sm:w-12 sm:h-12 hover:bg-gray-50 rounded-lg transition-colors duration-200 border border-gray-200"
+          class="flex gap-2.5 items-center justify-center relative w-10 h-10 sm:w-12 sm:h-12 hover:bg-gray-800 rounded-lg transition-colors duration-200 border border-gray-600"
           id="mobile-menu-toggle"
           aria-label="Abrir menú de navegación"
         >
-          <Icon name="ph:list" class="w-5 h-5 sm:w-6 sm:h-6 text-neutral-darkest" />
+          <Icon name="ph:list" class="w-5 h-5 sm:w-6 sm:h-6 text-white" />
         </button>
       </div>
     </div>
@@ -59,7 +58,7 @@ const imgLogoWide1 = "../../assets/images/logos/logo-constructora.png";
         <!-- Logo -->
         <div class="flex h-10 items-center justify-center relative w-20">
           <div class="h-9 overflow-clip relative w-[84px]">
-            <img src={imgLogoWide1} alt="Constructora Carpio" class="block max-w-none size-full transition-opacity duration-300" />
+            <img src={logoCarpio.src} alt="Constructora Carpio" class="block max-w-none size-full transition-opacity duration-300" />
           </div>
         </div>
         
@@ -67,22 +66,22 @@ const imgLogoWide1 = "../../assets/images/logos/logo-constructora.png";
         <div class="flex gap-8 items-center justify-center relative">
           <!-- Nav Links -->
           <nav class="flex gap-8 items-center justify-end relative">
-            <a href="/" class="font-heebo font-normal text-text-regular text-neutral-darkest hover:text-forest-green transition-colors duration-200 relative group">
+            <a href="/" class="font-heebo font-normal text-text-regular text-white hover:text-[#D79528] transition-colors duration-200 relative group">
               Inicio
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-forest-green transition-all duration-300 group-hover:w-full"></span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D79528] transition-all duration-300 group-hover:w-full"></span>
             </a>
-            <a href="/quienes-somos" class="font-heebo font-normal text-text-regular text-neutral-darkest hover:text-forest-green transition-colors duration-200 relative group">
+            <a href="/quienes-somos" class="font-heebo font-normal text-text-regular text-white hover:text-[#D79528] transition-colors duration-200 relative group">
               Nosotros
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-forest-green transition-all duration-300 group-hover:w-full"></span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D79528] transition-all duration-300 group-hover:w-full"></span>
             </a>
             
             <!-- Services Dropdown -->
             <div class="relative group">
-              <a href="/servicios" class="flex gap-1 items-center justify-start relative hover:text-forest-green transition-colors duration-200">
-                <span class="font-heebo font-normal text-text-regular text-neutral-darkest group-hover:text-forest-green transition-colors duration-200">
+              <a href="/servicios" class="flex gap-1 items-center justify-start relative hover:text-[#D79528] transition-colors duration-200">
+                <span class="font-heebo font-normal text-text-regular text-white group-hover:text-[#D79528] transition-colors duration-200">
                   Servicios
                 </span>
-                <Icon name="ph:caret-down" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
+                <Icon name="ph:caret-down" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180 text-white" />
               </a>
               <!-- Dropdown Menu -->
               <div class="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50">
@@ -138,11 +137,11 @@ const imgLogoWide1 = "../../assets/images/logos/logo-constructora.png";
             
             <!-- Projects Dropdown -->
             <div class="relative group">
-              <a href="/proyectos" class="flex gap-1 items-center justify-start relative hover:text-forest-green transition-colors duration-200">
-                <span class="font-heebo font-normal text-text-regular text-neutral-darkest group-hover:text-forest-green transition-colors duration-200">
+              <a href="/proyectos" class="flex gap-1 items-center justify-start relative hover:text-[#D79528] transition-colors duration-200">
+                <span class="font-heebo font-normal text-text-regular text-white group-hover:text-[#D79528] transition-colors duration-200">
                   Proyectos
                 </span>
-                <Icon name="ph:caret-down" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" />
+                <Icon name="ph:caret-down" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180 text-white" />
               </a>
               <!-- Dropdown Menu -->
               <div class="absolute top-full left-0 mt-2 w-72 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50">
@@ -189,7 +188,7 @@ const imgLogoWide1 = "../../assets/images/logos/logo-constructora.png";
           </nav>
           
           <!-- Action Buttons -->
-          <div class="flex gap-4 items-center justify-center relative">
+          <div class="flex gap-3 items-center justify-center relative">
             <!-- Phone Button -->
             <Button 
               variant="outline" 
@@ -197,6 +196,7 @@ const imgLogoWide1 = "../../assets/images/logos/logo-constructora.png";
               href="tel:0956324598"
               icon="ph:phone"
               iconPosition="left"
+              class="min-w-[140px] border-white text-white hover:bg-white hover:text-black"
             >
               0956324598
             </Button>
@@ -208,6 +208,7 @@ const imgLogoWide1 = "../../assets/images/logos/logo-constructora.png";
               href="/contacto"
               icon="ph:envelope-simple"
               iconPosition="left"
+              class="min-w-[140px] bg-[#D79528] hover:bg-[#103646]"
             >
               Contacto
             </Button>
@@ -231,7 +232,7 @@ const imgLogoWide1 = "../../assets/images/logos/logo-constructora.png";
           <!-- Mobile Menu Header -->
           <div class="flex h-16 items-center justify-between px-6 py-0 border-b border-gray-100 bg-gradient-to-r from-forest-green/5 to-transparent flex-shrink-0">
             <div class="flex items-center gap-3">
-              <img src={imgLogoWide1} alt="Constructora Carpio" class="h-8 flex-shrink-0" />
+              <img src={logoCarpio.src} alt="Constructora Carpio" class="h-8 flex-shrink-0" />
             </div>
             <button 
               id="mobile-menu-close"
@@ -485,7 +486,7 @@ const imgLogoWide1 = "../../assets/images/logos/logo-constructora.png";
   }
 
   #header.header-scrolled {
-    @apply bg-white/90 backdrop-blur-lg shadow-lg border-b border-gray-200;
+    @apply bg-black/90 backdrop-blur-lg shadow-lg border-b border-gray-700;
   }
 
   #header.header-hidden {

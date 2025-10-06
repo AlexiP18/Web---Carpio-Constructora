@@ -18,16 +18,16 @@ const { testimonials } = Astro.props;
 
 <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
   <!-- Decorative background elements -->
-  <div class="absolute top-0 left-0 w-72 h-72 bg-primary-green/5 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+  <div class="absolute top-0 left-0 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-secondary/5 rounded-full blur-3xl"></div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     
     <!-- Section Header -->
     <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
-      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
-        <Icon name="ph:chat-circle-text" class="w-5 h-5 text-primary-green" />
-        <span class="text-primary-green font-semibold text-sm uppercase tracking-wider">Testimonios del Proyecto</span>
+      <div class="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:chat-circle-text" class="w-5 h-5 text-brand-primary" />
+        <span class="text-brand-primary font-semibold text-sm uppercase tracking-wider">Testimonios del Proyecto</span>
       </div>
       
       <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
@@ -59,7 +59,7 @@ const { testimonials } = Astro.props;
                   />
                 </div>
                 <!-- Decorative element -->
-                <div class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl opacity-20"></div>
+                <div class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-primary/70 rounded-2xl opacity-20"></div>
               </div>
 
               <!-- Content Side -->
@@ -67,7 +67,7 @@ const { testimonials } = Astro.props;
                 <!-- Rating Stars -->
                 <div class="flex gap-1">
                   {Array.from({ length: testimonial.rating }).map(() => (
-                    <Icon name="ph:star-fill" class="w-6 h-6 text-yellow-400" />
+                    <Icon name="ph:star-fill" class="w-6 h-6 text-brand-secondary" />
                   ))}
                   {Array.from({ length: 5 - testimonial.rating }).map(() => (
                     <Icon name="ph:star" class="w-6 h-6 text-gray-300" />
@@ -107,14 +107,14 @@ const { testimonials } = Astro.props;
         class="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm hover:bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
         aria-label="Testimonio anterior"
       >
-        <Icon name="ph:caret-left" class="w-5 h-5 text-gray-900 group-hover:text-primary-green transition-colors" />
+        <Icon name="ph:caret-left" class="w-5 h-5 text-gray-900 group-hover:text-brand-primary transition-colors" />
       </button>
       <button
         id="next-project-testimonial"
         class="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm hover:bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center group"
         aria-label="Siguiente testimonio"
       >
-        <Icon name="ph:caret-right" class="w-5 h-5 text-gray-900 group-hover:text-primary-green transition-colors" />
+        <Icon name="ph:caret-right" class="w-5 h-5 text-gray-900 group-hover:text-brand-primary transition-colors" />
       </button>
     </div>
     
@@ -122,7 +122,7 @@ const { testimonials } = Astro.props;
     <div class="flex gap-3 items-center justify-center mb-16" data-aos="fade-up" data-aos-delay="300">
       {testimonials.map((_, index) => (
         <button
-          class={`project-testimonial-dot w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-primary-green w-8' : 'bg-gray-300 hover:bg-primary-green/50'}`}
+          class={`project-testimonial-dot w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-brand-primary w-8' : 'bg-gray-300 hover:bg-brand-primary/50'}`}
           data-slide={index}
           aria-label={`Ir al testimonio ${index + 1}`}
         ></button>
@@ -131,7 +131,7 @@ const { testimonials } = Astro.props;
 
     <!-- Call to Action -->
     <div class="grid lg:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="400">
-      <div class="bg-gradient-to-br from-primary-green to-emerald-500 rounded-3xl shadow-2xl p-8 text-center relative overflow-hidden">
+      <div class="bg-gradient-to-br from-brand-primary to-brand-primary/80 rounded-3xl shadow-2xl p-8 text-center relative overflow-hidden">
         <!-- Decorative elements -->
         <div class="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full blur-xl"></div>
         <div class="absolute bottom-0 left-0 w-16 h-16 bg-white/10 rounded-full blur-lg"></div>
@@ -150,7 +150,7 @@ const { testimonials } = Astro.props;
             icon="ph:heart"
             animation="hover"
             href="/contacto"
-            class="bg-white text-primary-green hover:bg-gray-50 border-white"
+            class="bg-white text-brand-primary hover:bg-gray-50 border-white"
           >
             Iniciar Mi Proyecto
           </Button>
@@ -159,11 +159,11 @@ const { testimonials } = Astro.props;
       
       <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 text-center relative overflow-hidden">
         <!-- Decorative elements -->
-        <div class="absolute top-0 right-0 w-20 h-20 bg-blue-500/5 rounded-full blur-xl"></div>
-        <div class="absolute bottom-0 left-0 w-16 h-16 bg-primary-green/5 rounded-full blur-lg"></div>
+        <div class="absolute top-0 right-0 w-20 h-20 bg-brand-secondary/5 rounded-full blur-xl"></div>
+        <div class="absolute bottom-0 left-0 w-16 h-16 bg-brand-primary/5 rounded-full blur-lg"></div>
         
         <div class="relative z-10">
-          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+          <div class="w-16 h-16 bg-gradient-to-br from-brand-secondary to-brand-secondary/80 rounded-2xl flex items-center justify-center mx-auto mb-6">
             <Icon name="ph:chat-circle" class="w-8 h-8 text-white" />
           </div>
           <h3 class="text-2xl font-bold text-gray-900 mb-4">¿Tienes alguna pregunta?</h3>
@@ -205,9 +205,9 @@ const { testimonials } = Astro.props;
       dots.forEach((dot, index) => {
         if (index === currentSlide) {
           dot.classList.remove('bg-gray-300', 'w-3');
-          dot.classList.add('bg-primary-green', 'w-8');
+          dot.classList.add('bg-brand-primary', 'w-8');
         } else {
-          dot.classList.remove('bg-primary-green', 'w-8');
+          dot.classList.remove('bg-brand-primary', 'w-8');
           dot.classList.add('bg-gray-300', 'w-3');
         }
       });

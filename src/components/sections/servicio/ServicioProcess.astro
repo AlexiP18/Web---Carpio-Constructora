@@ -19,15 +19,15 @@ const { tagline, title, description, steps } = Astro.props;
 
 <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden" id="process">
   <!-- Decorative background elements -->
-  <div class="absolute top-0 left-0 w-72 h-72 bg-primary-green/5 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+  <div class="absolute top-0 left-0 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-secondary/5 rounded-full blur-3xl"></div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <!-- Section Header -->
     <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
-      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
-        <Icon name="ph:flow-arrow" class="w-5 h-5 text-primary-green" />
-        <span class="text-primary-green font-semibold text-sm uppercase tracking-wider">{tagline}</span>
+      <div class="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:flow-arrow" class="w-5 h-5 text-brand-primary" />
+        <span class="text-brand-primary font-semibold text-sm uppercase tracking-wider">{tagline}</span>
       </div>
       
       <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
@@ -45,7 +45,7 @@ const { tagline, title, description, steps } = Astro.props;
         <div class="relative group" data-aos="fade-up" data-aos-delay={index * 100}>
           <!-- Connection Line (hidden on mobile) -->
           {index < steps.length - 1 && (
-            <div class="hidden lg:block absolute top-16 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary-green to-transparent z-10"></div>
+            <div class="hidden lg:block absolute top-16 -right-4 w-8 h-0.5 bg-gradient-to-r from-brand-primary to-transparent z-10"></div>
           )}
           
           <!-- Step Card -->
@@ -53,19 +53,19 @@ const { tagline, title, description, steps } = Astro.props;
             <div class="space-y-6">
               <!-- Step Number & Icon -->
               <div class="flex items-center gap-4">
-                <div class="w-16 h-16 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-xl">
+                <div class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-xl">
                   {step.number}
                 </div>
                 {step.icon && (
-                  <div class="w-12 h-12 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl flex items-center justify-center border border-blue-200">
-                    <Icon name={step.icon} class="w-6 h-6 text-blue-600" />
+                  <div class="w-12 h-12 bg-gradient-to-br from-brand-secondary/20 to-brand-secondary/30 rounded-xl flex items-center justify-center border border-brand-secondary/30">
+                    <Icon name={step.icon} class="w-6 h-6 text-brand-secondary" />
                   </div>
                 )}
               </div>
               
               <!-- Content -->
               <div class="space-y-4">
-                <h3 class="text-2xl font-bold text-gray-900 group-hover:text-primary-green transition-colors duration-300">
+                <h3 class="text-2xl font-bold text-gray-900 group-hover:text-brand-primary transition-colors duration-300">
                   {step.title}
                 </h3>
                 <p class="text-gray-600 leading-relaxed">
@@ -75,7 +75,7 @@ const { tagline, title, description, steps } = Astro.props;
 
               <!-- Progress indicator -->
               <div class="flex items-center gap-2 pt-4 border-t border-gray-100">
-                <div class="w-2 h-2 bg-primary-green rounded-full"></div>
+                <div class="w-2 h-2 bg-brand-primary rounded-full"></div>
                 <div class="text-sm text-gray-500 font-medium">Paso {step.number}</div>
               </div>
             </div>
@@ -88,17 +88,17 @@ const { tagline, title, description, steps } = Astro.props;
     <div class="bg-gradient-to-r from-slate-900 to-slate-800 rounded-3xl shadow-2xl relative overflow-hidden" data-aos="fade-up" data-aos-delay="400">
       <!-- Background decoration -->
       <div class="absolute inset-0">
-        <div class="absolute top-0 right-0 w-40 h-40 bg-primary-green/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
+        <div class="absolute top-0 right-0 w-40 h-40 bg-brand-primary/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-32 h-32 bg-brand-secondary/10 rounded-full blur-2xl"></div>
       </div>
 
       <div class="relative z-10 p-8 lg:p-12">
         <div class="grid lg:grid-cols-2 gap-8 items-center">
           <!-- Left Content -->
           <div class="space-y-6">
-            <div class="inline-flex items-center gap-2 bg-primary-green/20 rounded-full px-4 py-2">
-              <Icon name="ph:rocket-launch" class="w-5 h-5 text-primary-green" />
-              <span class="text-primary-green font-semibold text-sm">Proceso Garantizado</span>
+            <div class="inline-flex items-center gap-2 bg-brand-primary/20 rounded-full px-4 py-2">
+              <Icon name="ph:rocket-launch" class="w-5 h-5 text-brand-primary" />
+              <span class="text-brand-primary font-semibold text-sm">Proceso Garantizado</span>
             </div>
 
             <h3 class="text-3xl lg:text-4xl font-bold text-white leading-tight">
@@ -113,7 +113,7 @@ const { tagline, title, description, steps } = Astro.props;
             <!-- Process Highlights -->
             <div class="grid grid-cols-2 gap-4">
               <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center border border-white/20">
-                <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-brand-secondary to-brand-secondary-dark rounded-xl flex items-center justify-center mx-auto mb-3">
                   <Icon name="ph:clock" class="w-6 h-6 text-white" />
                 </div>
                 <div class="text-white font-semibold">Puntualidad</div>
@@ -121,7 +121,7 @@ const { tagline, title, description, steps } = Astro.props;
               </div>
               
               <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center border border-white/20">
-                <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-500 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-xl flex items-center justify-center mx-auto mb-3">
                   <Icon name="ph:shield-check" class="w-6 h-6 text-white" />
                 </div>
                 <div class="text-white font-semibold">Calidad</div>
@@ -133,9 +133,9 @@ const { tagline, title, description, steps } = Astro.props;
           <!-- Right Actions -->
           <div class="text-center lg:text-right space-y-6">
             <div class="space-y-3">
-              <div class="inline-flex items-center gap-2 bg-primary-green/20 rounded-full px-4 py-2">
-                <Icon name="ph:eye" class="w-4 h-4 text-primary-green" />
-                <span class="text-primary-green font-semibold text-sm">Proceso Transparente</span>
+              <div class="inline-flex items-center gap-2 bg-brand-primary/20 rounded-full px-4 py-2">
+                <Icon name="ph:eye" class="w-4 h-4 text-brand-primary" />
+                <span class="text-brand-primary font-semibold text-sm">Proceso Transparente</span>
               </div>
               <div class="text-white text-xl font-semibold">Seguimiento en tiempo real</div>
             </div>

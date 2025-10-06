@@ -3,134 +3,51 @@ import { Icon } from "astro-icon/components";
 import Button from '../../ui/Button.astro';
 ---
 
-    <!-- Services Grid -->
-    <div class="grid lg:grid-cols-3 gap-8 mb-16">
-      <!-- Service 1: Residential Construction -->
-      <div class="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105" data-aos="fade-up" data-aos-delay="100">
-        <div class="space-y-6">
-          <!-- Icon -->
-          <div class="w-20 h-20 bg-gradient-to-br from-primary-green to-emerald-500 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <Icon name="ph:house-fill" class="w-10 h-10 text-white" />
-          </div>
-          
-          <!-- Content -->
-          <div class="space-y-4">
-            <h3 class="text-2xl font-bold text-white group-hover:text-primary-green transition-colors">
-              Construcción Residencial
-            </h3>
-            <!-- <p class="text-gray-300 leading-relaxed">
-              Creamos hogares únicos y personalizados que reflejan tu estilo de vida. 
-              Desde casas familiares hasta complejos residenciales de lujo.
-            </p> -->
-          </div>
-          
-          <!-- Features -->
-          <div class="space-y-3">
-            <div class="flex items-center gap-3">
-              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-primary-green" />
-              <span class="text-sm text-gray-300">Diseño arquitectónico personalizado</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-primary-green" />
-              <span class="text-sm text-gray-300">Materiales de primera calidad</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-primary-green" />
-              <span class="text-sm text-gray-300">Garantía extendida</span>
-            </div>
-          </div>
-          
-          <!-- CTA -->
-          <div class="pt-4">
-            <Button variant="outline-dark" href="/servicios/residencial" class="w-full group-hover:bg-primary-green group-hover:text-white group-hover:border-primary-green" iconPosition="left" icon="ph:arrow-right">
-              Explorar Servicio
-            </Button>
-          </div>
+<!-- Services Grid -->
+<div class="w-full">
+  <div class="grid lg:grid-cols-3 gap-8 lg:gap-10">
+    <!-- Service 1: Residential Construction -->
+    <div class="group service-card bg-white border border-gray-200 rounded-3xl p-8 lg:p-10 hover:shadow-2xl transition-all duration-700 hover:scale-[1.02]" data-aos="fade-up" data-aos-delay="100">
+      <div class="space-y-6">
+        <!-- Icon -->
+        <div class="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <Icon name="ph:buildings" class="w-10 h-10 text-white" />
         </div>
-      </div>
-
-      <!-- Service 2: Commercial Construction -->
-      <div class="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105" data-aos="fade-up" data-aos-delay="200">
-        <div class="space-y-6">
-          <!-- Icon -->
-          <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <Icon name="ph:buildings-fill" class="w-10 h-10 text-white" />
-          </div>
-          
-          <!-- Content -->
-          <div class="space-y-4">
-            <h3 class="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
-              Construcción Comercial
-            </h3>
-            <!-- <p class="text-gray-300 leading-relaxed">
-              Espacios comerciales funcionales y atractivos que impulsan tu negocio. 
-              Oficinas, locales comerciales y centros empresariales.
-            </p> -->
-          </div>
-          
-          <!-- Features -->
-          <div class="space-y-3">
-            <div class="flex items-center gap-3">
-              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-blue-400" />
-              <span class="text-sm text-gray-300">Espacios optimizados para negocios</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-blue-400" />
-              <span class="text-sm text-gray-300">Cumplimiento normativo completo</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-blue-400" />
-              <span class="text-sm text-gray-300">Entrega en tiempo récord</span>
-            </div>
-          </div>
-          
-          <!-- CTA -->
-          <div class="pt-4">
-            <Button variant="outline-dark" href="/servicios/comercial" class="w-full group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500" iconPosition="left" icon="ph:arrow-right">
-              Explorar Servicio
-            </Button>
-          </div>
+        
+        <!-- Title - Always visible -->
+        <div class="title-section">
+          <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-brand-primary transition-colors duration-300">
+            Construcción Residencial
+          </h3>
         </div>
-      </div>
 
-      <!-- Service 3: Renovations -->
-      <div class="group bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-500 hover:scale-105" data-aos="fade-up" data-aos-delay="300">
-        <div class="space-y-6">
-          <!-- Icon -->
-          <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-            <Icon name="ph:hammer-fill" class="w-10 h-10 text-white" />
-          </div>
-          
-          <!-- Content -->
-          <div class="space-y-4">
-            <h3 class="text-2xl font-bold text-white group-hover:text-purple-400 transition-colors">
-              Renovaciones y Remodelaciones
-            </h3>
-            <!-- <p class="text-gray-300 leading-relaxed">
-              Transformamos espacios existentes en ambientes modernos y funcionales. 
-              Dale nueva vida a tu hogar o negocio con nuestras renovaciones.
-            </p> -->
-          </div>
-          
+        <!-- Content - Appears on scroll -->
+        <div class="content-section opacity-0 max-h-0 overflow-hidden transition-all duration-700 space-y-6">
           <!-- Features -->
-          <div class="space-y-3">
+          <div class="space-y-4">
             <div class="flex items-center gap-3">
-              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-purple-400" />
-              <span class="text-sm text-gray-300">Diseño interior y exterior</span>
+              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-brand-primary flex-shrink-0" />
+              <span class="text-sm lg:text-base text-gray-600">Diseño arquitectónico personalizado</span>
             </div>
             <div class="flex items-center gap-3">
-              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-purple-400" />
-              <span class="text-sm text-gray-300">Modernización de instalaciones</span>
+              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-brand-primary flex-shrink-0" />
+              <span class="text-sm lg:text-base text-gray-600">Materiales de primera calidad</span>
             </div>
             <div class="flex items-center gap-3">
-              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-purple-400" />
-              <span class="text-sm text-gray-300">Trabajo sin interrupciones</span>
+              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-brand-primary flex-shrink-0" />
+              <span class="text-sm lg:text-base text-gray-600">Garantía extendida</span>
             </div>
           </div>
           
           <!-- CTA -->
           <div class="pt-4">
-            <Button variant="outline-dark" href="/servicios/renovaciones" class="w-full group-hover:bg-purple-500 group-hover:text-white group-hover:border-purple-500" iconPosition="left" icon="ph:arrow-right">
+            <Button 
+              variant="outline" 
+              href="/servicios/construccion" 
+              class="w-full group-hover:bg-brand-primary group-hover:text-white group-hover:border-brand-primary" 
+              iconPosition="left" 
+              icon="ph:arrow-right"
+            >
               Explorar Servicio
             </Button>
           </div>
@@ -138,51 +55,167 @@ import Button from '../../ui/Button.astro';
       </div>
     </div>
 
-    <!-- Additional Services Section -->
-    <!-- <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" data-aos="fade-up" data-aos-delay="400">
-      Maintenance
-      <div class="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 rounded-2xl p-6 text-center">
-        <div class="w-14 h-14 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <Icon name="ph:gear-fill" class="w-7 h-7 text-white" />
+    <!-- Service 2: Commercial Construction -->
+    <div class="group service-card bg-white border border-gray-200 rounded-3xl p-8 lg:p-10 hover:shadow-2xl transition-all duration-700 hover:scale-[1.02]" data-aos="fade-up" data-aos-delay="200">
+      <div class="space-y-6">
+        <!-- Icon -->
+        <div class="w-20 h-20 bg-gradient-to-br from-brand-secondary to-brand-secondary-dark rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <Icon name="ph:buildings-fill" class="w-10 h-10 text-white" />
         </div>
-        <h4 class="text-lg font-bold text-white mb-2">Mantenimiento</h4>
-        <p class="text-gray-300 text-sm">Cuidado integral de tus espacios</p>
-      </div>
-
-      Consulting
-      <div class="bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-2xl p-6 text-center">
-        <div class="w-14 h-14 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <Icon name="ph:lightbulb-fill" class="w-7 h-7 text-white" />
+        
+        <!-- Title - Always visible -->
+        <div class="title-section">
+          <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-brand-secondary transition-colors duration-300">
+            Construcción Comercial
+          </h3>
         </div>
-        <h4 class="text-lg font-bold text-white mb-2">Consultoría</h4>
-        <p class="text-gray-300 text-sm">Asesoría técnica especializada</p>
-      </div>
 
-      Project Management
-      <div class="bg-gradient-to-br from-pink-500/10 to-rose-500/10 border border-pink-500/20 rounded-2xl p-6 text-center">
-        <div class="w-14 h-14 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <Icon name="ph:chart-line-up-fill" class="w-7 h-7 text-white" />
+        <!-- Content - Appears on scroll -->
+        <div class="content-section opacity-0 max-h-0 overflow-hidden transition-all duration-700 space-y-6">
+          <!-- Features -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-brand-secondary flex-shrink-0" />
+              <span class="text-sm lg:text-base text-gray-600">Espacios optimizados para negocios</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-brand-secondary flex-shrink-0" />
+              <span class="text-sm lg:text-base text-gray-600">Cumplimiento normativo completo</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-brand-secondary flex-shrink-0" />
+              <span class="text-sm lg:text-base text-gray-600">Entrega en tiempo récord</span>
+            </div>
+          </div>
+          
+          <!-- CTA -->
+          <div class="pt-4">
+            <Button 
+              variant="outline" 
+              href="/servicios/remodelacion" 
+              class="w-full group-hover:bg-brand-secondary group-hover:text-white group-hover:border-brand-secondary" 
+              iconPosition="left" 
+              icon="ph:arrow-right"
+            >
+              Explorar Servicio
+            </Button>
+          </div>
         </div>
-        <h4 class="text-lg font-bold text-white mb-2">Gestión de Proyectos</h4>
-        <p class="text-gray-300 text-sm">Administración integral</p>
       </div>
+    </div>
 
-      Emergency
-      <div class="bg-gradient-to-br from-red-500/10 to-pink-500/10 border border-red-500/20 rounded-2xl p-6 text-center">
-        <div class="w-14 h-14 bg-gradient-to-br from-red-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <Icon name="ph:siren-fill" class="w-7 h-7 text-white" />
+    <!-- Service 3: Renovations -->
+    <div class="group service-card bg-white border border-gray-200 rounded-3xl p-8 lg:p-10 hover:shadow-2xl transition-all duration-700 hover:scale-[1.02]" data-aos="fade-up" data-aos-delay="300">
+      <div class="space-y-6">
+        <!-- Icon -->
+        <div class="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-3xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <Icon name="ph:hammer-fill" class="w-10 h-10 text-white" />
         </div>
-        <h4 class="text-lg font-bold text-white mb-2">Emergencias</h4>
-        <p class="text-gray-300 text-sm">Atención inmediata 24/7</p>
-      </div>
-    </div> -->
+        
+        <!-- Title - Always visible -->
+        <div class="title-section">
+          <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-brand-primary transition-colors duration-300">
+            Renovaciones y Remodelaciones
+          </h3>
+        </div>
 
-<!-- Bottom CTA -->
-<!-- <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="500">
-  <h3 class="text-2xl font-bold text-white mb-4">¿No encuentras lo que buscas?</h3>
-  <p class="text-gray-300 mb-8">Contáctanos para servicios personalizados y cotizaciones específicas</p>
-  <Button variant="success" href="/contacto" iconPosition="left" icon="ph:chat-circle-text">
-    Consulta Personalizada
-  </Button>
-</div> -->
+        <!-- Content - Appears on scroll -->
+        <div class="content-section opacity-0 max-h-0 overflow-hidden transition-all duration-700 space-y-6">
+          <!-- Features -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-brand-primary flex-shrink-0" />
+              <span class="text-sm lg:text-base text-gray-600">Diseño interior y exterior</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-brand-primary flex-shrink-0" />
+              <span class="text-sm lg:text-base text-gray-600">Modernización de instalaciones</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <Icon name="ph:check-circle-fill" class="w-5 h-5 text-brand-primary flex-shrink-0" />
+              <span class="text-sm lg:text-base text-gray-600">Trabajo sin interrupciones</span>
+            </div>
+          </div>
+          
+          <!-- CTA -->
+          <div class="pt-4">
+            <Button 
+              variant="outline" 
+              href="/servicios/mantenimiento" 
+              class="w-full group-hover:bg-brand-primary group-hover:text-white group-hover:border-brand-primary" 
+              iconPosition="left" 
+              icon="ph:arrow-right"
+            >
+              Explorar Servicio
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Intersection Observer for progressive card reveal
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const card = entry.target as HTMLElement;
+        const contentSection = card.querySelector('.content-section') as HTMLElement;
+        
+        if (contentSection) {
+          // Reveal content with animation
+          setTimeout(() => {
+            contentSection.style.opacity = '1';
+            contentSection.style.maxHeight = '500px';
+            contentSection.classList.remove('overflow-hidden');
+          }, 300);
+        }
+        
+        // Disconnect observer for this card after animation
+        cardObserver.unobserve(card);
+      }
+    });
+  }, observerOptions);
+
+  // Observe all service cards
+  document.addEventListener('DOMContentLoaded', () => {
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+      cardObserver.observe(card);
+    });
+  });
+</script>
+
+<style>
+  .service-card {
+    min-height: 200px;
+  }
+  
+  .content-section {
+    transition: opacity 0.7s ease-out, max-height 0.7s ease-out;
+  }
+  
+  .service-card:hover .content-section {
+    opacity: 1 !important;
+    max-height: 500px !important;
+  }
+  
+  @media (max-width: 1023px) {
+    .service-card {
+      min-height: auto;
+    }
+    
+    .content-section {
+      opacity: 1 !important;
+      max-height: none !important;
+      overflow: visible !important;
+    }
+  }
+</style>
             

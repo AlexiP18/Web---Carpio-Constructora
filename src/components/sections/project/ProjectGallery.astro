@@ -12,16 +12,16 @@ const { images, title } = Astro.props;
 <section class="py-20 bg-gradient-to-br from-slate-50 via-white to-gray-50 relative overflow-hidden" id="gallery">
   <!-- Background decorations -->
   <div class="absolute inset-0">
-    <div class="absolute top-20 right-20 w-40 h-40 bg-primary-green/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 left-20 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
+    <div class="absolute top-20 right-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 left-20 w-32 h-32 bg-brand-secondary/5 rounded-full blur-2xl"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <!-- Section Header -->
     <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
-      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
-        <Icon name="ph:images-fill" class="w-5 h-5 text-primary-green" />
-        <span class="text-primary-green font-semibold text-sm">Galería del Proyecto</span>
+      <div class="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:images-fill" class="w-5 h-5 text-brand-primary" />
+        <span class="text-brand-primary font-semibold text-sm">Galería del Proyecto</span>
       </div>
       
       <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
@@ -89,7 +89,7 @@ const { images, title } = Astro.props;
     <div class="grid grid-cols-3 lg:grid-cols-6 gap-4" data-aos="fade-up" data-aos-delay="200">
       {images.map((image, index) => (
         <button 
-          class={`gallery-thumb group relative h-24 lg:h-32 rounded-2xl overflow-hidden transition-all duration-300 ${index === 0 ? 'ring-4 ring-primary-green scale-105' : 'ring-2 ring-gray-200 hover:ring-primary-green/50 hover:scale-105'}`}
+          class={`gallery-thumb group relative h-24 lg:h-32 rounded-2xl overflow-hidden transition-all duration-300 ${index === 0 ? 'ring-4 ring-brand-primary scale-105' : 'ring-2 ring-gray-200 hover:ring-brand-primary/50 hover:scale-105'}`}
           data-slide={index}
         >
           <img
@@ -110,24 +110,24 @@ const { images, title } = Astro.props;
     <!-- Gallery Stats -->
     <div class="grid lg:grid-cols-3 gap-6 mt-16" data-aos="fade-up" data-aos-delay="300">
       <div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
-        <div class="w-12 h-12 bg-primary-green/10 rounded-xl mx-auto mb-4 flex items-center justify-center">
-          <Icon name="ph:images-fill" class="w-6 h-6 text-primary-green" />
+        <div class="w-12 h-12 bg-brand-primary/10 rounded-xl mx-auto mb-4 flex items-center justify-center">
+          <Icon name="ph:images-fill" class="w-6 h-6 text-brand-primary" />
         </div>
         <div class="text-2xl font-bold text-gray-900">{images.length}</div>
         <div class="text-gray-600">Imágenes</div>
       </div>
       
       <div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
-        <div class="w-12 h-12 bg-blue-500/10 rounded-xl mx-auto mb-4 flex items-center justify-center">
-          <Icon name="ph:camera-fill" class="w-6 h-6 text-blue-500" />
+        <div class="w-12 h-12 bg-brand-secondary/10 rounded-xl mx-auto mb-4 flex items-center justify-center">
+          <Icon name="ph:camera-fill" class="w-6 h-6 text-brand-secondary" />
         </div>
         <div class="text-2xl font-bold text-gray-900">HD</div>
         <div class="text-gray-600">Calidad</div>
       </div>
       
       <div class="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
-        <div class="w-12 h-12 bg-purple-500/10 rounded-xl mx-auto mb-4 flex items-center justify-center">
-          <Icon name="ph:eye-fill" class="w-6 h-6 text-purple-500" />
+        <div class="w-12 h-12 bg-brand-primary/15 rounded-xl mx-auto mb-4 flex items-center justify-center">
+          <Icon name="ph:eye-fill" class="w-6 h-6 text-brand-primary" />
         </div>
         <div class="text-2xl font-bold text-gray-900">360°</div>
         <div class="text-gray-600">Vista Completa</div>
@@ -177,11 +177,11 @@ const { images, title } = Astro.props;
       // Update thumbnails
       galleryThumbs.forEach((thumb, i) => {
         if (i === index) {
-          thumb.classList.remove('ring-2', 'ring-gray-200', 'hover:ring-primary-green/50');
-          thumb.classList.add('ring-4', 'ring-primary-green', 'scale-105');
+          thumb.classList.remove('ring-2', 'ring-gray-200', 'hover:ring-brand-primary/50');
+          thumb.classList.add('ring-4', 'ring-brand-primary', 'scale-105');
         } else {
-          thumb.classList.remove('ring-4', 'ring-primary-green', 'scale-105');
-          thumb.classList.add('ring-2', 'ring-gray-200', 'hover:ring-primary-green/50');
+          thumb.classList.remove('ring-4', 'ring-brand-primary', 'scale-105');
+          thumb.classList.add('ring-2', 'ring-gray-200', 'hover:ring-brand-primary/50');
         }
       });
       

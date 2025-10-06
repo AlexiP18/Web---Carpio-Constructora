@@ -1,0 +1,560 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from '../../ui/Button.astro';
+
+// Datos de proyectos - estos podrían venir de una colección o API
+const projects = [
+  {
+    id: 1,
+    title: "Residencial Moderna Vista",
+    subtitle: "Complejo Habitacional",
+    description: "Un innovador desarrollo residencial que combina diseño contemporáneo con espacios verdes, creando un ambiente ideal para familias modernas.",
+    image: "/images/placeholder-image-1.png",
+    category: "Residencial",
+    area: "2,500 m²",
+    year: "2024",
+    location: "San José, Costa Rica",
+    status: "Completado"
+  },
+  {
+    id: 2,
+    title: "Centro Comercial Plaza",
+    subtitle: "Espacio Comercial",
+    description: "Centro comercial de última generación con diseño sustentable, espacios flexibles y tecnología inteligente para una experiencia de compra única.",
+    image: "/images/placeholder-image-2.png",
+    category: "Comercial",
+    area: "4,800 m²",
+    year: "2023",
+    location: "Cartago, Costa Rica",
+    status: "Completado"
+  },
+  {
+    id: 3,
+    title: "Parque Recreativo Familiar",
+    subtitle: "Área de Esparcimiento",
+    description: "Espacio recreativo que integra naturaleza y arquitectura, diseñado para promover la convivencia familiar y actividades al aire libre.",
+    image: "/images/placeholder-image.png",
+    category: "Recreativo",
+    area: "3,200 m²",
+    year: "2024",
+    location: "Heredia, Costa Rica",
+    status: "En construcción"
+  },
+  {
+    id: 4,
+    title: "Torre Empresarial Skyline",
+    subtitle: "Edificio Corporativo",
+    description: "Moderno edificio de oficinas con tecnología inteligente, espacios colaborativos y certificación LEED Gold para sostenibilidad.",
+    image: "/images/placeholder-image-1.png",
+    category: "Corporativo",
+    area: "8,500 m²",
+    year: "2024",
+    location: "San José, Costa Rica",
+    status: "En construcción"
+  },
+  {
+    id: 5,
+    title: "Complejo Habitacional Los Álamos",
+    subtitle: "Desarrollo Residencial",
+    description: "Conjunto residencial de 120 unidades con amenidades completas, áreas verdes y seguridad 24/7.",
+    image: "/images/placeholder-image-2.png",
+    category: "Residencial",
+    area: "15,000 m²",
+    year: "2023",
+    location: "Alajuela, Costa Rica",
+    status: "Completado"
+  },
+  {
+    id: 6,
+    title: "Centro Médico Especializado",
+    subtitle: "Infraestructura Sanitaria",
+    description: "Moderno centro médico con consultorios especializados, laboratorios y tecnología de última generación.",
+    image: "/images/placeholder-image.png",
+    category: "Salud",
+    area: "5,200 m²",
+    year: "2024",
+    location: "Cartago, Costa Rica",
+    status: "En construcción"
+  }
+];
+---
+
+<section id="projects-slider-hero" class="relative h-screen overflow-hidden">
+  <!-- Slider Container -->
+  <div class="slider-wrapper relative w-full h-full">
+    <div class="slider-track flex w-full h-full transition-transform duration-1000 ease-out" id="slider-track">
+      {/* Duplicate projects for infinite scroll effect */}
+      {[...projects, ...projects].map((project, index) => (
+        <div 
+          class="slide relative flex-shrink-0 w-1/3 h-full bg-cover bg-center bg-no-repeat group cursor-pointer overflow-hidden"
+          style={`background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('${project.image}');`}
+          data-slide={index}
+        >
+          <!-- Content Overlay -->
+          <div class="absolute inset-0 flex flex-col justify-end p-8 lg:p-12 text-white z-10">
+            <!-- Basic Info - Always visible -->
+            <div class="slide-basic-info transform transition-all duration-500 ease-out">
+              <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1 mb-4">
+                <Icon 
+                  name={
+                    project.category === 'Residencial' ? 'ph:house' :
+                    project.category === 'Comercial' ? 'ph:storefront' :
+                    project.category === 'Recreativo' ? 'ph:tree' :
+                    project.category === 'Corporativo' ? 'ph:buildings' :
+                    project.category === 'Salud' ? 'ph:first-aid-kit' :
+                    'ph:buildings'
+                  } 
+                  class="w-4 h-4" 
+                />
+                <span class="text-sm font-medium">{project.category}</span>
+              </div>
+              
+              <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold mb-2 leading-tight">
+                {project.title}
+              </h2>
+              
+              <p class="text-lg lg:text-xl text-white/90 mb-6">
+                {project.subtitle}
+              </p>
+            </div>
+
+            <!-- Extended Info - Appears on hover -->
+            <div class="slide-extended-info opacity-0 max-h-0 overflow-hidden transform translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:max-h-96 group-hover:translate-y-0">
+              <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 mb-6">
+                <!-- Project Details Grid -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div>
+                    <div class="text-white/70 text-sm font-medium mb-1">Área</div>
+                    <div class="text-white font-semibold">{project.area}</div>
+                  </div>
+                  <div>
+                    <div class="text-white/70 text-sm font-medium mb-1">Año</div>
+                    <div class="text-white font-semibold">{project.year}</div>
+                  </div>
+                  <div>
+                    <div class="text-white/70 text-sm font-medium mb-1">Ubicación</div>
+                    <div class="text-white font-semibold">{project.location}</div>
+                  </div>
+                  <div>
+                    <div class="text-white/70 text-sm font-medium mb-1">Estado</div>
+                    <div class={`font-semibold ${project.status === 'Completado' ? 'text-green-400' : 'text-yellow-400'}`}>
+                      {project.status}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA Buttons - Always visible -->
+            <div class="mt-4">
+              <div class="flex flex-col sm:flex-row gap-3">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  href={`/proyecto/${project.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  iconPosition="left" 
+                  icon="ph:eye"
+                  class="bg-white/20 border-white/30 text-white hover:bg-white hover:text-gray-900 backdrop-blur-sm"
+                >
+                  Ver Proyecto
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  href="/contacto"
+                  iconPosition="left" 
+                  icon="ph:chat-circle"
+                  class="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm"
+                >
+                  Consultar
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gradient Overlay for better text readability -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Navigation Controls -->
+  <div class="absolute top-1/2 left-4 transform -translate-y-1/2 z-20">
+    <button id="prev-btn" class="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300">
+      <Icon name="ph:arrow-left" class="w-6 h-6 text-white" />
+    </button>
+  </div>
+  
+  <div class="absolute top-1/2 right-4 transform -translate-y-1/2 z-20">
+    <button id="next-btn" class="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 transition-all duration-300">
+      <Icon name="ph:arrow-right" class="w-6 h-6 text-white" />
+    </button>
+  </div>
+
+  <!-- Navigation Indicators -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+    <div class="flex space-x-3">
+      {Array.from({length: 6}).map((_, index) => (
+        <button 
+          class="slide-indicator w-3 h-3 rounded-full transition-all duration-300 border-2 border-white"
+          data-slide={index}
+          aria-label={`Ir al proyecto ${index + 1}`}
+        >
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <div class="absolute bottom-8 right-8 z-20 animate-bounce">
+    <div class="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center">
+      <Icon name="ph:arrow-down" class="w-6 h-6 text-white" />
+    </div>
+  </div>
+</section>
+
+<script>
+  // @ts-nocheck
+  class ProjectsSliderHero {
+    constructor() {
+      this.currentSlide = 0;
+      this.totalSlides = 6; // Total original projects
+      this.totalDisplaySlides = 12; // Duplicated projects (6 * 2)
+      this.isAutoPlaying = true;
+      this.autoPlayInterval = null;
+      this.sliderTrack = null;
+      this.indicators = null;
+      this.section = null;
+      this.isTransitioning = false;
+      
+      this.init();
+    }
+
+    init() {
+      // Wait for DOM elements to be available
+      this.sliderTrack = document.getElementById('slider-track');
+      this.indicators = document.querySelectorAll('.slide-indicator');
+      this.section = document.getElementById('projects-slider-hero');
+      this.prevBtn = document.getElementById('prev-btn');
+      this.nextBtn = document.getElementById('next-btn');
+      
+      if (!this.sliderTrack || !this.section) {
+        console.warn('ProjectsSliderHero: Required elements not found');
+        return;
+      }
+      
+      this.updateSlide(0);
+      this.setupIndicators();
+      this.setupNavigationButtons();
+      this.setupIntersectionObserver();
+      this.startAutoPlay();
+      this.setupMouseEvents();
+    }
+
+    updateSlide(slideIndex, instant = false) {
+      if (!this.sliderTrack || this.isTransitioning) return;
+      
+      this.currentSlide = slideIndex;
+      
+      // Apply transition only if not instant
+      if (instant) {
+        this.sliderTrack.style.transition = 'none';
+      } else {
+        this.sliderTrack.style.transition = 'transform 1000ms ease-out';
+      }
+      
+      // Update slider position - move one column at a time (33.333% per slide)
+      const translateX = -slideIndex * (100 / 3); // Always move by 1/3 of container width
+      this.sliderTrack.style.transform = `translateX(${translateX}%)`;
+      
+      // Force reflow if instant transition
+      if (instant) {
+        this.sliderTrack.offsetHeight;
+        this.sliderTrack.style.transition = 'transform 1000ms ease-out';
+      }
+      
+      // Update indicators with proper styling (based on original slides cycle)
+      if (this.indicators) {
+        const indicatorIndex = slideIndex % this.totalSlides;
+        this.indicators.forEach((indicator, index) => {
+          // Reset styles
+          indicator.style.backgroundColor = '';
+          
+          // Apply appropriate styling
+          if (index === indicatorIndex) {
+            indicator.style.backgroundColor = 'rgb(255, 255, 255)';
+            indicator.setAttribute('aria-current', 'true');
+          } else {
+            indicator.style.backgroundColor = 'rgb(255 255 255 / 0.3)';
+            indicator.removeAttribute('aria-current');
+          }
+        });
+      }
+    }
+
+    nextSlide() {
+      if (this.isTransitioning) return;
+      
+      this.isTransitioning = true;
+      this.currentSlide++;
+      
+      this.updateSlide(this.currentSlide);
+      
+      // Check if we need to reset to beginning (when we reach the end of first set)
+      setTimeout(() => {
+        if (this.currentSlide >= this.totalSlides) {
+          // Reset to beginning position without animation
+          this.currentSlide = 0;
+          this.updateSlide(this.currentSlide, true);
+        }
+        this.isTransitioning = false;
+      }, 1000); // Match transition duration
+    }
+
+    prevSlide() {
+      if (this.isTransitioning) return;
+      
+      this.isTransitioning = true;
+      
+      // If at beginning, jump to end position instantly
+      if (this.currentSlide <= 0) {
+        this.currentSlide = this.totalSlides;
+        this.updateSlide(this.currentSlide, true);
+        
+        // Small delay then move to actual previous position
+        setTimeout(() => {
+          this.currentSlide--;
+          this.updateSlide(this.currentSlide);
+          setTimeout(() => {
+            this.isTransitioning = false;
+          }, 1000);
+        }, 50);
+      } else {
+        this.currentSlide--;
+        this.updateSlide(this.currentSlide);
+        setTimeout(() => {
+          this.isTransitioning = false;
+        }, 1000);
+      }
+    }
+
+    setupNavigationButtons() {
+      if (this.prevBtn) {
+        this.prevBtn.addEventListener('click', () => {
+          this.prevSlide();
+          this.startAutoPlay();
+        });
+      }
+
+      if (this.nextBtn) {
+        this.nextBtn.addEventListener('click', () => {
+          this.nextSlide();
+          this.startAutoPlay();
+        });
+      }
+    }
+
+    startAutoPlay() {
+      this.stopAutoPlay();
+      this.autoPlayInterval = setInterval(() => {
+        if (this.isAutoPlaying) {
+          this.nextSlide();
+        }
+      }, 4000); // Change slide every 4 seconds
+    }
+
+    stopAutoPlay() {
+      if (this.autoPlayInterval) {
+        clearInterval(this.autoPlayInterval);
+        this.autoPlayInterval = null;
+      }
+    }
+
+    setupMouseEvents() {
+      if (!this.section) return;
+      
+      // Pause auto-play on hover
+      this.section.addEventListener('mouseenter', () => {
+        this.isAutoPlaying = false;
+      });
+
+      this.section.addEventListener('mouseleave', () => {
+        this.isAutoPlaying = true;
+      });
+    }
+
+    setupIndicators() {
+      if (!this.indicators) return;
+      
+      this.indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          if (this.isTransitioning) return;
+          
+          this.isTransitioning = true;
+          this.currentSlide = index;
+          this.updateSlide(this.currentSlide);
+          
+          setTimeout(() => {
+            this.isTransitioning = false;
+          }, 1000);
+          
+          // Reset auto-play timer when manually changing slides
+          this.startAutoPlay();
+        });
+      });
+    }
+
+    setupIntersectionObserver() {
+      if (!this.section) return;
+      
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+              this.isAutoPlaying = true;
+              this.startAutoPlay();
+            } else {
+              this.isAutoPlaying = false;
+              this.stopAutoPlay();
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      observer.observe(this.section);
+    }
+  }
+
+  // Initialize when DOM is loaded
+  function initProjectsSlider() {
+    try {
+      new ProjectsSliderHero();
+    } catch (error) {
+      console.error('Error initializing ProjectsSliderHero:', error);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProjectsSlider);
+  } else {
+    // DOM is already loaded
+    initProjectsSlider();
+  }
+</script>
+
+<style>
+  /* Remove background-attachment for better performance and mobile compatibility */
+  .slide {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .slide-indicator {
+    background-color: rgb(255 255 255 / 0.3);
+    transition: all 300ms;
+  }
+
+  .slide-indicator:hover {
+    background-color: rgb(255 255 255 / 0.8);
+  }
+
+  /* Smooth hover transitions */
+  .slide:hover .slide-basic-info {
+    transform: translateY(-20px);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .slider-track {
+      flex-direction: row; /* Keep horizontal layout on mobile */
+    }
+    
+    .slide {
+      width: 100vw; /* Each slide takes full viewport width on mobile */
+      min-width: 100vw;
+      flex-shrink: 0;
+    }
+    
+    .slide-extended-info {
+      opacity: 1 !important;
+      max-height: none !important;
+      transform: none !important;
+    }
+    
+    /* Adjust padding for mobile */
+    .slide > div {
+      padding: 1.5rem;
+    }
+    
+    /* Smaller text on mobile */
+    .slide h2 {
+      font-size: 1.5rem !important;
+      line-height: 1.2 !important;
+    }
+    
+    .slide p {
+      font-size: 1rem !important;
+    }
+
+    /* Adjust grid layout for mobile */
+    .slide .grid-cols-2 {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    /* Stack buttons vertically on mobile */
+    .slide .flex-col.sm\:flex-row {
+      flex-direction: column;
+    }
+  }
+
+  /* Performance optimizations */
+  .slider-track {
+    will-change: transform;
+  }
+
+  .slide-basic-info,
+  .slide-extended-info {
+    will-change: transform, opacity;
+  }
+
+  /* Ensure proper stacking */
+  .slide {
+    position: relative;
+    z-index: 1;
+  }
+
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    z-index: -1;
+  }
+
+  /* Improve button visibility */
+  .slide .bg-white\/20 {
+    backdrop-filter: blur(8px);
+  }
+
+  .slide .bg-white\/10 {
+    backdrop-filter: blur(4px);
+  }
+
+  /* Fix Tailwind classes that might not be recognized */
+  .bg-white\/30 {
+    background-color: rgb(255 255 255 / 0.3);
+  }
+
+  .bg-white\/10 {
+    background-color: rgb(255 255 255 / 0.1);
+  }
+
+  .bg-white\/20 {
+    background-color: rgb(255 255 255 / 0.2);
+  }
+</style>

@@ -4,10 +4,13 @@ import Button from '../../ui/Button.astro';
 import OptimizedImage from '../../media/OptimizedImage.astro';
 
 // Import slider images
-import sliderImage1 from '../../../assets/img/index/INDEX_Slider_1.webp';
-import sliderImage2 from '../../../assets/img/index/INDEX_Slider_2.jpg';
-import sliderImage3 from '../../../assets/img/index/INDEX_Slider_3.jpg';
-import sliderImage4 from '../../../assets/img/index/INDEX_Slider_4.jpeg';
+import sliderImage1 from '../../../assets/img/index/INDEX_Hero_Slider_1.webp';
+import sliderImage2 from '../../../assets/img/index/INDEX_Hero_Slider_2.webp';
+import sliderImage3 from '../../../assets/img/index/INDEX_Hero_Slider_3.webp';
+import sliderImage4 from '../../../assets/img/index/INDEX_Hero_Slider_4.webp';
+
+// Import logo
+import logoCarpioConstructora from '../../../assets/LogoCarpioConstructora.svg';
 
 const sliderImages = [
   { src: sliderImage1, alt: "Proyecto Constructora Carpio 1" },
@@ -55,11 +58,15 @@ const sliderImages = [
   <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 text-center">
     <div class="max-w-4xl mx-auto space-y-8" data-aos="fade-up" data-aos-duration="1200">
       
-      <!-- Main Heading - Figma specs: 84px font size -->
-      <h1 class="font-urbanist font-bold text-white leading-tight"
-          style="font-size: clamp(48px, 8vw, 84px); line-height: 1.1;">
-        Constructora Carpio
-      </h1>
+      <!-- Main Heading - Logo SVG -->
+      <div class="flex justify-center items-center mb-6" data-aos="fade-up" data-aos-duration="1200">
+        <img 
+          src={logoCarpioConstructora.src} 
+          alt="Constructora Carpio" 
+          class="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto"
+          style="filter: brightness(0) invert(1);"
+        />
+      </div>
       
       <!-- Subtitle - Figma specs: 20px font size -->
       <p class="font-heebo font-normal text-white/90 max-w-2xl mx-auto leading-relaxed"
@@ -74,11 +81,11 @@ const sliderImages = [
            data-aos-delay="300">
         <Button 
           href="/proyectos" 
-          variant="orange"
+          variant="primary"
           size="lg"
           icon="ph:arrow-right"
           iconPosition="left"
-          class="min-w-[180px]"
+          class="min-w-[180px] bg-gradient-to-r from-[#D79528] to-[#103646] hover:from-[#103646] hover:to-[#D79528]"
         >
           Ver Proyectos
         </Button>
@@ -89,7 +96,7 @@ const sliderImages = [
           size="lg"
           icon="ph:list-bullets"
           iconPosition="left"
-          class="min-w-[180px]"
+          class="min-w-[180px] border-[#D79528] text-[#D79528] hover:bg-[#D79528] hover:text-white"
         >
           Ver Servicios
         </Button>

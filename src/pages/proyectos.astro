@@ -1,27 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/ui/Header.astro";
-import Footer from "../components/sections/Footer.astro";
-import ProjectsHero from "../components/sections/proyectos/ProjectsHero.astro";
-import ProjectsList from "../components/sections/proyectos/ProjectsList.astro";
-import Testimonial from "../components/sections/proyectos/Testimonial.astro";
-import Cta from "../components/sections/proyectos/Cta.astro";
+import ProjectsSliderHero from "../components/sections/proyectos/ProjectsSliderHero.astro";
 ---
 
 <Layout title="Proyectos - Constructora Carpio">
   <Header />
   <main>
-    <!-- Hero Section with modern design -->
-    <ProjectsHero />
-    
-    <!-- Projects Portfolio Section -->
-    <ProjectsList />
-
-    <!-- Testimonials Section -->
-    <Testimonial />
-    
-    <!-- Call to Action Section -->
-    <Cta />
+    <!-- Hero Slider Section with scroll interaction -->
+    <ProjectsSliderHero />
   </main>
-  <Footer />
 </Layout>

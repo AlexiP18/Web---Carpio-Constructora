@@ -5,6 +5,24 @@ export default {
   theme: {
   	extend: {
   		fontFamily: {
+  			// Fuentes principales del proyecto
+  			'heading': [
+  				'Montserrat',
+  				'-apple-system',
+  				'BlinkMacSystemFont',
+  				'"Segoe UI"',
+  				'Roboto',
+  				'sans-serif'
+  			],
+  			'body': [
+  				'Inter',
+  				'-apple-system',
+  				'BlinkMacSystemFont',
+  				'"Segoe UI"',
+  				'Roboto',
+  				'sans-serif'
+  			],
+  			// Fuentes heredadas (por compatibilidad)
   			urbanist: [
   				'Urbanist',
   				'sans-serif'
@@ -12,9 +30,31 @@ export default {
   			heebo: [
   				'Heebo',
   				'sans-serif'
+  			],
+  			// Alias para facilidad de uso
+  			'sans': [
+  				'Inter',
+  				'-apple-system',
+  				'BlinkMacSystemFont',
+  				'"Segoe UI"',
+  				'Roboto',
+  				'sans-serif'
   			]
   		},
   		colors: {
+  			// Colores corporativos principales
+  			'brand': {
+  				'primary': '#103646',
+  				'secondary': '#D79528',
+  				'primary-light': '#1a4a5a',
+  				'primary-dark': '#0a252f',
+  				'secondary-light': '#e6a740',
+  				'secondary-dark': '#b67d1f'
+  			},
+  			// Alias para facilidad de uso
+  			'primary-green': '#103646',
+  			'secondary-gold': '#D79528',
+  			// Colores existentes
   			neutral: {
   				darkest: '#0c0801',
   				lightest: '#f2f2f2',

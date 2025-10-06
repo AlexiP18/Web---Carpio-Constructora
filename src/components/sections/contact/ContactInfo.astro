@@ -6,21 +6,21 @@ import Button from '../../ui/Button.astro';
 <section class="py-20 bg-gradient-to-br from-white via-gray-50 to-slate-100 relative overflow-hidden" id="info">
   <!-- Background decorations -->
   <div class="absolute inset-0">
-    <div class="absolute top-20 left-20 w-40 h-40 bg-primary-green/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 right-20 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
-    <div class="absolute top-1/2 right-10 w-24 h-24 bg-purple-500/5 rounded-full blur-xl"></div>
+    <div class="absolute top-20 left-20 w-40 h-40 bg-brand-primary/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 bg-brand-secondary/5 rounded-full blur-2xl"></div>
+    <div class="absolute top-1/2 right-10 w-24 h-24 bg-brand-primary/10 rounded-full blur-xl"></div>
   </div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <!-- Section Header -->
     <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
-      <div class="inline-flex items-center gap-2 bg-primary-green/10 backdrop-blur-sm border border-primary-green/20 rounded-full px-4 py-2 mb-6">
-        <Icon name="ph:info-fill" class="w-5 h-5 text-primary-green" />
-        <span class="text-primary-green font-semibold text-sm">Información de Contacto</span>
+      <div class="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:info-fill" class="w-5 h-5 text-brand-primary" />
+        <span class="text-brand-primary font-semibold text-sm">Información de Contacto</span>
       </div>
       
       <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-        Múltiples Formas de <span class="text-green-600">Conectar</span>
+        Múltiples Formas de <span class="text-brand-primary">Conectar</span>
       </h2>
       
       <p class="text-xl text-gray-600 leading-relaxed">
@@ -32,9 +32,9 @@ import Button from '../../ui/Button.astro';
       <!-- Contact Methods -->
       <div class="space-y-8" data-aos="fade-right" data-aos-delay="100">
         <!-- Phone Contact -->
-        <div class="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 hover:border-primary-green/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary-green/10">
+        <div class="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 hover:border-brand-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-brand-primary/10">
           <div class="flex items-start gap-6">
-            <div class="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center shadow-lg shadow-green-600/30 group-hover:scale-110 transition-transform duration-300">
+            <div class="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center shadow-lg shadow-brand-primary/30 group-hover:scale-110 transition-transform duration-300">
               <Icon name="ph:phone-fill" class="w-8 h-8 text-white" />
             </div>
             
@@ -44,8 +44,8 @@ import Button from '../../ui/Button.astro';
               
               <div class="space-y-2">
                 <div class="flex items-center gap-3">
-                  <Icon name="ph:phone" class="w-5 h-5 text-primary-green" />
-                  <a href="tel:+593956324598" class="text-lg font-semibold text-gray-900 hover:text-primary-green transition-colors">
+                  <Icon name="ph:phone" class="w-5 h-5 text-brand-primary" />
+                  <a href="tel:+593956324598" class="text-lg font-semibold text-gray-900 hover:text-brand-primary transition-colors">
                     +593 95 632 4598
                   </a>
                 </div>
@@ -92,9 +92,9 @@ import Button from '../../ui/Button.astro';
         </div>
 
         <!-- Email Contact -->
-        <div class="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 hover:border-blue-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
+        <div class="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 hover:border-brand-secondary/30 transition-all duration-300 hover:shadow-lg hover:shadow-brand-secondary/10">
           <div class="flex items-start gap-6">
-            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30 group-hover:scale-110 transition-transform duration-300">
+            <div class="w-16 h-16 bg-gradient-to-br from-brand-secondary to-brand-secondary/80 rounded-2xl flex items-center justify-center shadow-lg shadow-brand-secondary/30 group-hover:scale-110 transition-transform duration-300">
               <Icon name="ph:envelope-fill" class="w-8 h-8 text-white" />
             </div>
             
@@ -104,8 +104,8 @@ import Button from '../../ui/Button.astro';
               
               <div class="space-y-2">
                 <div class="flex items-center gap-3">
-                  <Icon name="ph:envelope" class="w-5 h-5 text-blue-500" />
-                  <a href="mailto:hola@constructoracarpio.com" class="text-lg font-semibold text-gray-900 hover:text-blue-500 transition-colors">
+                  <Icon name="ph:envelope" class="w-5 h-5 text-brand-secondary" />
+                  <a href="mailto:hola@constructoracarpio.com" class="text-lg font-semibold text-gray-900 hover:text-brand-secondary transition-colors">
                     hola@constructoracarpio.com
                   </a>
                 </div>
@@ -115,7 +115,7 @@ import Button from '../../ui/Button.astro';
                 </div>
               </div>
               
-              <Button variant="outline" size="sm" href="mailto:hola@constructoracarpio.com" class="w-fit border-blue-500 text-blue-600 hover:bg-blue-500 hover:text-white" iconPosition="left" icon="ph:paper-plane-tilt">
+              <Button variant="outline" size="sm" href="mailto:hola@constructoracarpio.com" class="w-fit border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white" iconPosition="left" icon="ph:paper-plane-tilt">
                 Enviar Email
               </Button>
             </div>
@@ -128,14 +128,14 @@ import Button from '../../ui/Button.astro';
         <div class="bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 rounded-3xl p-8 text-white relative overflow-hidden">
           <!-- Background Pattern -->
           <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary-green/20 to-transparent"></div>
-            <div class="absolute bottom-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl"></div>
+            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-primary/20 to-transparent"></div>
+            <div class="absolute bottom-0 right-0 w-32 h-32 bg-brand-secondary/20 rounded-full blur-2xl"></div>
           </div>
 
           <div class="relative z-10 space-y-8">
             <!-- Header -->
             <div class="text-center space-y-4">
-              <div class="w-20 h-20 bg-gradient-to-br from-primary-green to-emerald-500 rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
+              <div class="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
                 <Icon name="ph:building-office-fill" class="w-10 h-10 text-white" />
               </div>
               <h3 class="text-3xl font-bold">¿Necesitas Ayuda Inmediata?</h3>
@@ -145,8 +145,8 @@ import Button from '../../ui/Button.astro';
             <!-- Quick Actions -->
             <div class="space-y-4">
               <a href="tel:+593956324598" class="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-200 group">
-                <div class="w-12 h-12 bg-primary-green/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Icon name="ph:phone-fill" class="w-6 h-6 text-primary-green" />
+                <div class="w-12 h-12 bg-brand-primary/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Icon name="ph:phone-fill" class="w-6 h-6 text-brand-primary" />
                 </div>
                 <div class="flex-1">
                   <div class="font-semibold">Llamada Inmediata</div>
@@ -167,8 +167,8 @@ import Button from '../../ui/Button.astro';
               </a>
 
               <a href="mailto:hola@constructoracarpio.com" class="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-200 group">
-                <div class="w-12 h-12 bg-blue-500/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Icon name="ph:envelope-fill" class="w-6 h-6 text-blue-400" />
+                <div class="w-12 h-12 bg-brand-secondary/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Icon name="ph:envelope-fill" class="w-6 h-6 text-brand-secondary" />
                 </div>
                 <div class="flex-1">
                   <div class="font-semibold">Enviar Email</div>
@@ -181,7 +181,7 @@ import Button from '../../ui/Button.astro';
             <!-- Business Hours -->
             <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
               <h4 class="font-bold mb-4 flex items-center gap-2">
-                <Icon name="ph:clock-fill" class="w-5 h-5 text-primary-green" />
+                <Icon name="ph:clock-fill" class="w-5 h-5 text-brand-primary" />
                 Horarios de Atención
               </h4>
               
