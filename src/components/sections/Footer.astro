@@ -1,11 +1,11 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-// Asset constants from Figma
-const logoImage = "http://localhost:3845/assets/layout-logo.svg";
+// Asset constants - Corporate Logo
+const logoImage = "/src/assets/LogoCarpio.svg";
 ---
 
-<footer class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+<footer class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden py-8">
   <!-- Background decoration -->
   <div class="absolute inset-0">
     <div class="absolute top-0 right-0 w-96 h-96 bg-[#103646]/5 rounded-full blur-3xl"></div>
@@ -34,20 +34,20 @@ const logoImage = "http://localhost:3845/assets/layout-logo.svg";
           <!-- Contact Info Quick -->
           <div class="space-y-3">
             <div class="flex items-center gap-3 text-gray-300">
-              <div class="w-8 h-8 bg-primary-green/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Icon name="ph:phone" class="w-4 h-4 text-primary-green" />
+              <div class="w-8 h-8 bg-[#103646]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Icon name="ph:phone" class="w-4 h-4 text-[#103646]" />
               </div>
               <span class="text-sm">+506 8888-7777</span>
             </div>
             <div class="flex items-center gap-3 text-gray-300">
-              <div class="w-8 h-8 bg-primary-green/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Icon name="ph:envelope-simple" class="w-4 h-4 text-primary-green" />
+              <div class="w-8 h-8 bg-[#103646]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Icon name="ph:envelope-simple" class="w-4 h-4 text-[#103646]" />
               </div>
               <span class="text-sm">info@constructoracarpio.com</span>
             </div>
             <div class="flex items-center gap-3 text-gray-300">
-              <div class="w-8 h-8 bg-primary-green/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Icon name="ph:map-pin" class="w-4 h-4 text-primary-green" />
+              <div class="w-8 h-8 bg-[#103646]/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Icon name="ph:map-pin" class="w-4 h-4 text-[#103646]" />
               </div>
               <span class="text-sm">San José, Costa Rica</span>
             </div>
@@ -57,36 +57,36 @@ const logoImage = "http://localhost:3845/assets/layout-logo.svg";
         <!-- Services -->
         <div>
           <h3 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
-            <Icon name="ph:buildings" class="w-5 h-5 text-[#103646]" />
+            <Icon name="ph:buildings" class="w-5 h-5 text-[#D79528]" />
             Servicios
           </h3>
           <ul class="space-y-3">
             <li>
-              <a href="/servicios/construccion" class="text-gray-300 hover:text-primary-green transition-colors duration-200 text-sm flex items-center gap-2 group">
-                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-primary-green transition-colors duration-200" />
+              <a href="/servicios/construccion" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
+                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
                 Construcción Residencial
               </a>
             </li>
             <li>
-              <a href="/servicios/construccion" class="text-gray-300 hover:text-primary-green transition-colors duration-200 text-sm flex items-center gap-2 group">
-                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-primary-green transition-colors duration-200" />
+              <a href="/servicios/construccion" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
+                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
                 Construcción Comercial
               </a>
             </li>
             <li>
-              <a href="/servicios/remodelacion" class="text-gray-300 hover:text-primary-green transition-colors duration-200 text-sm flex items-center gap-2 group">
-                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-primary-green transition-colors duration-200" />
+              <a href="/servicios/remodelacion" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
+                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
                 Remodelaciones
               </a>
             </li>
             <li>
-              <a href="/servicios/mantenimiento" class="text-gray-300 hover:text-primary-green transition-colors duration-200 text-sm flex items-center gap-2 group">
-                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-primary-green transition-colors duration-200" />
+              <a href="/servicios/mantenimiento" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
+                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
                 Mantenimiento
               </a>
             </li>
             <li>
-              <a href="/servicios" class="text-primary-green hover:text-emerald-400 transition-colors duration-200 text-sm font-medium flex items-center gap-2 group">
+              <a href="/servicios" class="text-[#D79528] hover:text-[#E5A444] transition-colors duration-200 text-sm font-medium flex items-center gap-2 group">
                 <Icon name="ph:arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
                 Ver todos los servicios
               </a>
@@ -97,37 +97,37 @@ const logoImage = "http://localhost:3845/assets/layout-logo.svg";
         <!-- Company -->
         <div>
           <h3 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
-            <Icon name="ph:info" class="w-5 h-5 text-primary-green" />
+            <Icon name="ph:info" class="w-5 h-5 text-[#D79528]" />
             Empresa
           </h3>
           <ul class="space-y-3">
             <li>
-              <a href="/quienes-somos" class="text-gray-300 hover:text-primary-green transition-colors duration-200 text-sm flex items-center gap-2 group">
-                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-primary-green transition-colors duration-200" />
+              <a href="/quienes-somos" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
+                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
                 Quiénes Somos
               </a>
             </li>
             <li>
-              <a href="/proyectos" class="text-gray-300 hover:text-primary-green transition-colors duration-200 text-sm flex items-center gap-2 group">
-                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-primary-green transition-colors duration-200" />
+              <a href="/proyectos" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
+                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
                 Nuestros Proyectos
               </a>
             </li>
             <li>
-              <a href="/contacto" class="text-gray-300 hover:text-primary-green transition-colors duration-200 text-sm flex items-center gap-2 group">
-                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-primary-green transition-colors duration-200" />
+              <a href="/contacto" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
+                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
                 Contacto
               </a>
             </li>
             <li>
-              <a href="/blog" class="text-gray-300 hover:text-primary-green transition-colors duration-200 text-sm flex items-center gap-2 group">
-                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-primary-green transition-colors duration-200" />
+              <a href="/blog" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
+                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
                 Blog y Noticias
               </a>
             </li>
             <li>
-              <a href="/testimonios" class="text-gray-300 hover:text-primary-green transition-colors duration-200 text-sm flex items-center gap-2 group">
-                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-primary-green transition-colors duration-200" />
+              <a href="/testimonios" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
+                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
                 Testimonios
               </a>
             </li>
@@ -137,7 +137,7 @@ const logoImage = "http://localhost:3845/assets/layout-logo.svg";
         <!-- Contact & Social -->
         <div>
           <h3 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
-            <Icon name="ph:chat-circle-text" class="w-5 h-5 text-primary-green" />
+            <Icon name="ph:chat-circle-text" class="w-5 h-5 text-[#D79528]" />
             Conecta con Nosotros
           </h3>
           
@@ -167,56 +167,56 @@ const logoImage = "http://localhost:3845/assets/layout-logo.svg";
               <a 
                 href="https://facebook.com" 
                 target="_blank"
-                class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center hover:bg-primary-green hover:border-primary-green group transition-all duration-300 hover:scale-110"
+                class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center hover:bg-[#1877F2] hover:border-[#1877F2] group transition-all duration-300 hover:scale-110"
                 aria-label="Síguenos en Facebook"
               >
                 <Icon 
                   name="ph:facebook-logo" 
-                  class="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-300" 
+                  class="w-5 h-5 text-[#1877F2] group-hover:text-white transition-colors duration-300" 
                 />
               </a>
               <a 
                 href="https://instagram.com" 
                 target="_blank"
-                class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center hover:bg-primary-green hover:border-primary-green group transition-all duration-300 hover:scale-110"
+                class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center hover:bg-gradient-to-r hover:from-[#E4405F] hover:to-[#833AB4] hover:border-[#E4405F] group transition-all duration-300 hover:scale-110"
                 aria-label="Síguenos en Instagram"
               >
                 <Icon 
                   name="ph:instagram-logo" 
-                  class="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-300" 
+                  class="w-5 h-5 text-[#E4405F] group-hover:text-white transition-colors duration-300" 
                 />
               </a>
               <a 
                 href="https://linkedin.com" 
                 target="_blank"
-                class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center hover:bg-primary-green hover:border-primary-green group transition-all duration-300 hover:scale-110"
+                class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center hover:bg-[#0A66C2] hover:border-[#0A66C2] group transition-all duration-300 hover:scale-110"
                 aria-label="Síguenos en LinkedIn"
               >
                 <Icon 
                   name="ph:linkedin-logo" 
-                  class="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-300" 
+                  class="w-5 h-5 text-[#0A66C2] group-hover:text-white transition-colors duration-300" 
                 />
               </a>
               <a 
                 href="https://youtube.com" 
                 target="_blank"
-                class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center hover:bg-primary-green hover:border-primary-green group transition-all duration-300 hover:scale-110"
+                class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center hover:bg-[#FF0000] hover:border-[#FF0000] group transition-all duration-300 hover:scale-110"
                 aria-label="Síguenos en YouTube"
               >
                 <Icon 
                   name="ph:youtube-logo" 
-                  class="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-300" 
+                  class="w-5 h-5 text-[#FF0000] group-hover:text-white transition-colors duration-300" 
                 />
               </a>
               <a 
                 href="https://wa.me/50688887777" 
                 target="_blank"
-                class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center hover:bg-green-600 hover:border-green-600 group transition-all duration-300 hover:scale-110"
+                class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] group transition-all duration-300 hover:scale-110"
                 aria-label="Escríbenos por WhatsApp"
               >
                 <Icon 
                   name="ph:whatsapp-logo" 
-                  class="w-5 h-5 text-gray-300 group-hover:text-white transition-colors duration-300" 
+                  class="w-5 h-5 text-[#25D366] group-hover:text-white transition-colors duration-300" 
                 />
               </a>
             </div>
@@ -260,7 +260,7 @@ const logoImage = "http://localhost:3845/assets/layout-logo.svg";
             © 2025 Constructora Carpio. Todos los derechos reservados.
           </p>
           <div class="flex items-center gap-2 text-gray-400 text-sm">
-            <Icon name="ph:shield-check" class="w-4 h-4 text-primary-green" />
+            <Icon name="ph:shield-check" class="w-4 h-4 text-[#D79528]" />
             <span>Empresa certificada CFIA</span>
           </div>
         </div>
@@ -269,19 +269,19 @@ const logoImage = "http://localhost:3845/assets/layout-logo.svg";
         <div class="flex flex-wrap justify-center lg:justify-end gap-6 text-sm">
           <a 
             href="/privacidad" 
-            class="text-gray-400 hover:text-primary-green transition-colors duration-200"
+            class="text-gray-400 hover:text-[#D79528] transition-colors duration-200"
           >
             Política de Privacidad
           </a>
           <a 
             href="/terminos" 
-            class="text-gray-400 hover:text-primary-green transition-colors duration-200"
+            class="text-gray-400 hover:text-[#D79528] transition-colors duration-200"
           >
             Términos de Servicio
           </a>
           <a 
             href="/cookies" 
-            class="text-gray-400 hover:text-primary-green transition-colors duration-200"
+            class="text-gray-400 hover:text-[#D79528] transition-colors duration-200"
           >
             Cookies
           </a>
