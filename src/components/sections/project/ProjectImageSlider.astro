@@ -1,0 +1,281 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  images: (string | ImageMetadata)[];
+  title?: string;
+}
+
+const { images, title = "Galería del Proyecto" } = Astro.props;
+
+// Helper function to get image src
+function getImageSrc(image: string | ImageMetadata): string {
+  return typeof image === 'string' ? image : image.src;
+}
+
+// Generate unique IDs for this slider instance
+const sliderId = `slider-${Math.random().toString(36).substr(2, 9)}`;
+const mainImageId = `main-image-${sliderId}`;
+const currentIndexId = `current-index-${sliderId}`;
+const prevBtnId = `prev-image-${sliderId}`;
+const nextBtnId = `next-image-${sliderId}`;
+const thumbnailsContainerId = `thumbnails-container-${sliderId}`;
+const dotsContainerId = `dots-container-${sliderId}`;
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Header -->
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+        {title}
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Explora cada detalle de nuestro trabajo a través de esta galería de imágenes
+      </p>
+    </div>
+
+    <!-- Image Slider Container -->
+    <div class="relative max-w-5xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+      <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+        <!-- Main Image Display -->
+        <div class="relative aspect-video bg-gray-100" id={`main-image-container-${sliderId}`}>
+          <img 
+            id={mainImageId}
+            src={getImageSrc(images[0])}
+            alt="Imagen principal del proyecto"
+            class="w-full h-full object-cover transition-all duration-500 ease-in-out"
+          />
+          
+          <!-- Navigation Arrows -->
+          <button 
+            id={prevBtnId}
+            class="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
+            aria-label="Imagen anterior"
+          >
+            <Icon name="ph:arrow-left" class="w-6 h-6 text-gray-700" />
+          </button>
+          
+          <button 
+            id={nextBtnId}
+            class="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
+            aria-label="Imagen siguiente"
+          >
+            <Icon name="ph:arrow-right" class="w-6 h-6 text-gray-700" />
+          </button>
+
+          <!-- Image Counter -->
+          <div class="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium">
+            <span id={currentIndexId}>1</span> / <span id={`total-images-${sliderId}`}>{images.length}</span>
+          </div>
+        </div>
+
+        <!-- Thumbnails -->
+        <div class="bg-gray-50 p-4">
+          <div class="flex gap-3 overflow-x-auto scrollbar-hide" id={thumbnailsContainerId}>
+            {images.map((image, index) => (
+              <button
+                class={`thumbnail-btn-${sliderId} flex-shrink-0 w-20 h-16 rounded-lg overflow-hidden border-2 transition-all duration-300 ${index === 0 ? 'border-[#103646] shadow-lg' : 'border-gray-200 hover:border-[#103646]/50'}`}
+                data-index={index}
+                aria-label={`Ver imagen ${index + 1}`}
+              >
+                <img
+                  src={getImageSrc(image)}
+                  alt={`Thumbnail ${index + 1}`}
+                  class="w-full h-full object-cover"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Dots Indicator (for mobile) -->
+      <div class="flex justify-center mt-6 gap-2 md:hidden" id={dotsContainerId}>
+        {images.map((_, index) => (
+          <button
+            class={`dot-${sliderId} w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-[#103646]' : 'bg-gray-300'}`}
+            data-index={index}
+            aria-label={`Ir a imagen ${index + 1}`}
+          ></button>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ images, sliderId, mainImageId, currentIndexId, prevBtnId, nextBtnId, thumbnailsContainerId, dotsContainerId }}>
+  document.addEventListener('DOMContentLoaded', function() {
+    let currentIndex = 0;
+    const totalImages = images.length;
+    
+    // Helper function to get image src from ImageMetadata or string
+    function getImageSrc(image) {
+      return typeof image === 'string' ? image : image.src;
+    }
+    
+    // Elements with unique IDs
+    const mainImage = document.getElementById(mainImageId);
+    const currentIndexSpan = document.getElementById(currentIndexId);
+    const prevBtn = document.getElementById(prevBtnId);
+    const nextBtn = document.getElementById(nextBtnId);
+    const thumbnails = document.querySelectorAll(`.thumbnail-btn-${sliderId}`);
+    const dots = document.querySelectorAll(`.dot-${sliderId}`);
+    
+    if (!mainImage || !currentIndexSpan) return;
+    
+    function updateImage(index) {
+      // Smooth transition
+      mainImage.style.opacity = '0.7';
+      
+      setTimeout(() => {
+        // Update main image
+        mainImage.src = getImageSrc(images[index]);
+        mainImage.alt = `Imagen ${index + 1} del proyecto`;
+        
+        // Update counter
+        currentIndexSpan.textContent = index + 1;
+        
+        // Update thumbnails
+        thumbnails.forEach((thumb, i) => {
+          if (i === index) {
+            thumb.classList.remove('border-gray-200');
+            thumb.classList.add('border-[#103646]', 'shadow-lg');
+          } else {
+            thumb.classList.remove('border-[#103646]', 'shadow-lg');
+            thumb.classList.add('border-gray-200');
+          }
+        });
+        
+        // Update dots (mobile)
+        dots.forEach((dot, i) => {
+          if (i === index) {
+            dot.classList.remove('bg-gray-300');
+            dot.classList.add('bg-[#103646]');
+          } else {
+            dot.classList.remove('bg-[#103646]');
+            dot.classList.add('bg-gray-300');
+          }
+        });
+        
+        // Restore opacity
+        mainImage.style.opacity = '1';
+      }, 200);
+    }
+    
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % totalImages;
+      updateImage(currentIndex);
+    }
+    
+    function prevImage() {
+      currentIndex = currentIndex === 0 ? totalImages - 1 : currentIndex - 1;
+      updateImage(currentIndex);
+    }
+    
+    // Event listeners
+    nextBtn?.addEventListener('click', nextImage);
+    prevBtn?.addEventListener('click', prevImage);
+    
+    // Thumbnail clicks
+    thumbnails.forEach((thumb, index) => {
+      thumb.addEventListener('click', () => {
+        currentIndex = index;
+        updateImage(currentIndex);
+      });
+    });
+    
+    // Dot clicks (mobile)
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateImage(currentIndex);
+      });
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        prevImage();
+      } else if (e.key === 'ArrowRight') {
+        nextImage();
+      }
+    });
+    
+    // Touch/swipe support for mobile
+    let startX = 0;
+    let endX = 0;
+    
+    mainImage.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+    
+    mainImage.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+      handleSwipe();
+    });
+    
+    function handleSwipe() {
+      const difference = startX - endX;
+      const threshold = 50; // Minimum swipe distance
+      
+      if (Math.abs(difference) > threshold) {
+        if (difference > 0) {
+          // Swipe left - next image
+          nextImage();
+        } else {
+          // Swipe right - previous image
+          prevImage();
+        }
+      }
+    }
+  });
+</script>
+
+<style>
+  /* Hide scrollbar for thumbnails */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Smooth transitions */
+  [class*="thumbnail-btn-"] {
+    transition: all 0.3s ease;
+  }
+  
+  [class*="thumbnail-btn-"]:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Ensure proper aspect ratio */
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+  
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    [class*="thumbnail-btn-"] {
+      width: 60px;
+      height: 48px;
+    }
+    
+    [id*="main-image-container-"] .absolute.left-4,
+    [id*="main-image-container-"] .absolute.right-4 {
+      width: 40px;
+      height: 40px;
+    }
+    
+    [id*="main-image-container-"] .absolute.left-4 {
+      left: 8px;
+    }
+    
+    [id*="main-image-container-"] .absolute.right-4 {
+      right: 8px;
+    }
+  }
+</style>

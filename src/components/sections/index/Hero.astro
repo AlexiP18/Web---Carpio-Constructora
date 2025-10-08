@@ -47,7 +47,7 @@ const sliderImages = [
   <div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
     {sliderImages.map((_, index) => (
       <button 
-        class={`slider-dot w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/75'}`}
+        class={`slider-dot w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-[#103646] scale-125' : 'bg-white/50 hover:bg-[#103646]/75'}`}
         data-slide-to={index}
         aria-label={`Ir a imagen ${index + 1}`}
       ></button>
@@ -85,7 +85,7 @@ const sliderImages = [
           size="lg"
           icon="ph:arrow-right"
           iconPosition="left"
-          class="min-w-[180px] bg-gradient-to-r from-[#D79528] to-[#103646] hover:from-[#103646] hover:to-[#D79528]"
+          class="min-w-[180px] bg-[#103646] hover:bg-[#103646]/90 text-white border-[#103646]"
         >
           Ver Proyectos
         </Button>
@@ -96,7 +96,7 @@ const sliderImages = [
           size="lg"
           icon="ph:list-bullets"
           iconPosition="left"
-          class="min-w-[180px] border-[#D79528] text-[#D79528] hover:bg-[#D79528] hover:text-white"
+          class="min-w-[180px] border-white/40 text-white hover:bg-white hover:text-[#103646] backdrop-blur-sm"
         >
           Ver Servicios
         </Button>

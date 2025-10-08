@@ -4,49 +4,43 @@ import { Icon } from 'astro-icon/components';
 // Testimonios embebidos específicos para la página "Quiénes Somos"
 const testimonials = [
   {
-    logo: "/images/logo-wide-1.svg",
     testimonial: "Constructora Carpio superó nuestras expectativas en cada etapa del proyecto, demostrando un compromiso excepcional con la calidad y los plazos de entrega.",
     author: {
       name: "Juan Pérez",
-      position: "Propietario, Residencial Los Robles",
-      avatar: "/images/avatar-image.png"
+      position: "Propietario, Residencial Los Robles"
     }
   },
   {
-    logo: "/images/logo-wide-1.svg",
     testimonial: "La profesionalidad y experiencia del equipo de Constructora Carpio hizo que nuestro proyecto se completara sin contratiempos. Altamente recomendados.",
     author: {
       name: "María González",
-      position: "Directora, Empresa Constructora ABC",
-      avatar: "/images/avatar-image.png"
+      position: "Directora, Empresa Constructora ABC"
     }
   },
   {
-    logo: "/images/logo-wide-1.svg",
     testimonial: "Excelente trabajo en nuestro complejo residencial. La atención al detalle y la calidad de construcción fueron excepcionales.",
     author: {
       name: "Carlos Rodríguez",
-      position: "Gerente de Proyectos, Inmobiliaria XYZ",
-      avatar: "/images/avatar-image.png"
+      position: "Gerente de Proyectos, Inmobiliaria XYZ"
     }
   }
 ];
 ---
 
-<section class="bg-white py-20 relative overflow-hidden">
+<section class="bg-white py-12 relative overflow-hidden">
   <!-- Decorative background elements -->
-  <div class="absolute top-20 left-20 w-32 h-32 bg-brand-primary/5 rounded-full blur-2xl"></div>
-  <div class="absolute bottom-20 right-20 w-40 h-40 bg-brand-secondary/5 rounded-full blur-2xl"></div>
+  <div class="absolute top-10 left-10 w-24 h-24 bg-brand-primary/5 rounded-full blur-2xl"></div>
+  <div class="absolute bottom-10 right-10 w-32 h-32 bg-brand-secondary/5 rounded-full blur-2xl"></div>
 
-  <div class="max-w-7xl mx-auto px-6">
+  <div class="max-w-6xl mx-auto px-6">
     <!-- Header Section -->
-    <div class="text-center mb-20" data-aos="fade-up">
-      <div class="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-4 py-2 mb-6">
-        <Icon name="ph:quotes-fill" class="w-5 h-5 text-brand-primary" />
-        <span class="text-brand-primary font-semibold text-sm">Testimonios</span>
+    <div class="text-center mb-12" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-3 py-1 mb-4">
+        <Icon name="ph:quotes-fill" class="w-4 h-4 text-brand-primary" />
+        <span class="text-brand-primary font-semibold text-xs">Testimonios</span>
       </div>
       
-      <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+      <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
         Lo que dicen nuestros 
         <span class="text-brand-primary">
           clientes
@@ -55,51 +49,42 @@ const testimonials = [
     </div>
 
     <!-- Testimonial Slider -->
-    <div class="relative max-w-4xl mx-auto" id="testimonial-container">
-      <div class="bg-gray-50 rounded-3xl p-12 text-center shadow-lg border" data-aos="fade-up" data-aos-delay="200">
-        <!-- Company Logo -->
-        <div class="flex justify-center mb-8">
-          <div class="w-32 h-12 flex items-center justify-center">
-            <img id="testimonial-logo" alt="Logo" class="max-h-full max-w-full object-contain" src={testimonials[0].logo} />
-          </div>
-        </div>
+    <div class="relative max-w-3xl mx-auto" id="testimonial-container">
+      <div class="bg-gray-50 rounded-2xl p-8 text-center shadow-md border" data-aos="fade-up" data-aos-delay="200">
         
         <!-- Quote Icon -->
-        <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-8">
-          <Icon name="ph:quotes-fill" class="w-8 h-8 text-brand-primary" />
+        <div class="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center mx-auto mb-6">
+          <Icon name="ph:quotes-fill" class="w-6 h-6 text-brand-primary" />
         </div>
         
         <!-- Testimonial Text -->
-        <blockquote class="text-2xl lg:text-3xl font-medium text-gray-900 leading-relaxed mb-12 max-w-3xl mx-auto">
+        <blockquote class="text-lg lg:text-xl font-medium text-gray-900 leading-relaxed mb-8 max-w-2xl mx-auto">
           <span id="testimonial-text">"{testimonials[0].testimonial}"</span>
         </blockquote>
         
         <!-- Author Info -->
         <div class="flex flex-col items-center">
-          <div class="w-16 h-16 rounded-full overflow-hidden mb-4 border-4 border-brand-primary/20">
-            <img id="testimonial-avatar" alt={testimonials[0].author.name} class="w-full h-full object-cover" src={testimonials[0].author.avatar} />
-          </div>
           <div class="text-center">
-            <div id="testimonial-name" class="text-xl font-bold text-gray-900 mb-1">{testimonials[0].author.name}</div>
-            <div id="testimonial-position" class="text-brand-primary font-semibold">{testimonials[0].author.position}</div>
+            <div id="testimonial-name" class="text-lg font-bold text-gray-900 mb-1">{testimonials[0].author.name}</div>
+            <div id="testimonial-position" class="text-brand-primary font-semibold text-sm">{testimonials[0].author.position}</div>
           </div>
         </div>
       </div>
       
       <!-- Navigation Arrows -->
-      <button class="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white hover:bg-brand-primary rounded-full shadow-lg border border-gray-200 hover:border-brand-primary flex items-center justify-center group transition-all duration-300" id="prev-testimonial">
-        <Icon name="ph:arrow-left" class="w-6 h-6 text-gray-600 group-hover:text-white" />
+      <button class="absolute left-3 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white hover:bg-brand-primary rounded-full shadow-md border border-gray-200 hover:border-brand-primary flex items-center justify-center group transition-all duration-300" id="prev-testimonial">
+        <Icon name="ph:arrow-left" class="w-5 h-5 text-gray-600 group-hover:text-white" />
       </button>
       
-      <button class="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white hover:bg-brand-primary rounded-full shadow-lg border border-gray-200 hover:border-brand-primary flex items-center justify-center group transition-all duration-300" id="next-testimonial">
-        <Icon name="ph:arrow-right" class="w-6 h-6 text-gray-600 group-hover:text-white" />
+      <button class="absolute right-3 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white hover:bg-brand-primary rounded-full shadow-md border border-gray-200 hover:border-brand-primary flex items-center justify-center group transition-all duration-300" id="next-testimonial">
+        <Icon name="ph:arrow-right" class="w-5 h-5 text-gray-600 group-hover:text-white" />
       </button>
       
       <!-- Dots Indicator -->
-      <div class="flex justify-center mt-8 gap-3" id="testimonial-dots">
+      <div class="flex justify-center mt-6 gap-2" id="testimonial-dots">
         {testimonials.map((_, index) => (
           <button 
-            class={`w-3 h-3 rounded-full transition-all duration-300 testimonial-dot ${index === 0 ? 'bg-brand-primary' : 'bg-gray-300 hover:bg-gray-400'}`}
+            class={`w-2 h-2 rounded-full transition-all duration-300 testimonial-dot ${index === 0 ? 'bg-brand-primary' : 'bg-gray-300 hover:bg-gray-400'}`}
             data-index={index}
           ></button>
         ))}
@@ -142,10 +127,7 @@ const testimonials = [
       testimonialContainer.style.opacity = '0.7';
       
       setTimeout(() => {
-        document.getElementById('testimonial-logo').src = testimonial.logo;
         document.getElementById('testimonial-text').textContent = `"${testimonial.testimonial}"`;
-        document.getElementById('testimonial-avatar').src = testimonial.author.avatar;
-        document.getElementById('testimonial-avatar').alt = testimonial.author.name;
         document.getElementById('testimonial-name').textContent = testimonial.author.name;
         document.getElementById('testimonial-position').textContent = testimonial.author.position;
         

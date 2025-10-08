@@ -6,15 +6,20 @@ import SectionLayout from '../../ui/SectionLayout.astro';
 export interface Props {
   title: string;
   content: string;
-  images: string[];
+  images: (string | ImageMetadata)[];
   imageCategories?: {
     name: string;
     label: string;
-    images: string[];
+    images: (string | ImageMetadata)[];
   }[];
 }
 
 const { title, content, images, imageCategories } = Astro.props;
+
+// Helper function to get image src
+function getImageSrc(image: string | ImageMetadata): string {
+  return typeof image === 'string' ? image : image.src;
+}
 
 // Default categories if none provided
 const defaultCategories = [
@@ -147,7 +152,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
               data-slide={index}
             >
               <img
-                src={image}
+                src={getImageSrc(image)}
                 alt={`${title} - Imagen ${index + 1}`}
                 class="w-full h-full object-cover"
               />
@@ -206,7 +211,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
                     data-slide={index}
                   >
                     <img
-                      src={image}
+                      src={getImageSrc(image)}
                       alt={`Thumbnail ${index + 1}`}
                       class="w-full h-full object-cover"
                     />

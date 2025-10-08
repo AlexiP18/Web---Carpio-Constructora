@@ -4,9 +4,24 @@ import Header from "../../components/ui/Header.astro";
 import Footer from "../../components/sections/Footer.astro";
 import ProjectHero from "../../components/sections/project/ProjectHero.astro";
 import ProjectContent from "../../components/sections/project/ProjectContent.astro";
+import ProjectImageSlider from "../../components/sections/project/ProjectImageSlider.astro";
 import ProjectTestimonials from "../../components/sections/project/ProjectTestimonials.astro";
 
+// Import project images
+import projectImage1 from '../../assets/img/projects/PROJECT_Hero_Slider_1.webp';
+import projectImage2 from '../../assets/img/projects/PROJECT_Hero_Slider_2.webp';
+import projectImage3 from '../../assets/img/projects/PROJECT_Hero_Slider_3.webp';
+import projectImage4 from '../../assets/img/projects/PROJECT_Hero_Slider_4.webp';
+
 export async function getStaticPaths() {
+  // Create image arrays for projects inside getStaticPaths
+  const projectImages = [
+    projectImage1,
+    projectImage2,
+    projectImage3,
+    projectImage4
+  ];
+
   return [
     {
       params: { slug: "proyecto-residencial-moderno" },
@@ -23,11 +38,7 @@ Nuestro equipo de expertos ha trabajado arduamente para crear un espacio que no 
 Además, el Proyecto 1 está ubicado en una zona privilegiada, rodeada de servicios y naturaleza, lo que lo convierte en el lugar perfecto para vivir. Aquí, cada día es una nueva oportunidad para disfrutar de la vida en un entorno armonioso.
 
 Te invitamos a explorar más sobre este proyecto y descubrir cómo podemos hacer realidad la casa de tus sueños. ¡Contáctanos para más información!`,
-        images: [
-          "/images/placeholder-image.jpg",
-          "/images/placeholder-image.jpg",
-          "/images/placeholder-image.jpg"
-        ],
+        images: projectImages,
         testimonial: {
           rating: 5,
           quote: "La calidad de la construcción superó nuestras expectativas y el equipo fue excepcional en su atención al detalle.",
@@ -79,11 +90,7 @@ La sostenibilidad es una prioridad en este desarrollo, implementando tecnología
 El proyecto incluye amplias áreas de estacionamiento, accesos para personas con discapacidad y zonas verdes que mejoran la calidad del entorno urbano.
 
 ¡Descubre cómo este proyecto está transformando la experiencia comercial en la comunidad!`,
-        images: [
-          "/images/placeholder-image.jpg",
-          "/images/placeholder-image.jpg",
-          "/images/placeholder-image.jpg"
-        ],
+        images: projectImages,
         testimonial: {
           rating: 5,
           quote: "Un proyecto excepcional que ha revitalizado nuestra comunidad comercial.",
@@ -135,11 +142,7 @@ La seguridad y accesibilidad son fundamentales en este proyecto, con iluminació
 El proyecto preserva la flora nativa y crea nuevos ecosistemas que benefician la biodiversidad local. Los materiales utilizados son duraderos y de bajo mantenimiento.
 
 ¡Un espacio donde la naturaleza y la diversión se combinan para crear momentos inolvidables en familia!`,
-        images: [
-          "/images/placeholder-image.jpg",
-          "/images/placeholder-image.jpg",
-          "/images/placeholder-image.jpg"
-        ],
+        images: projectImages,
         testimonial: {
           rating: 5,
           quote: "Un espacio maravilloso donde nuestras familias pueden conectar con la naturaleza.",
@@ -197,9 +200,16 @@ const { title, description, tags, content, images, testimonial, testimonials } =
       images={images}
     />
     
+    <ProjectImageSlider 
+      images={images}
+      title="Galería del Proyecto"
+    />
+    
     <!-- <ProjectTestimonials 
       testimonials={testimonials}
     /> -->
+
+
   </main>
   <Footer />
 </Layout>

@@ -1,24 +1,79 @@
 ---
-import SectionLayout from '../../ui/SectionLayout.astro';
-import SectionHeader from '../../ui/SectionHeader.astro';
+import { Icon } from "astro-icon/components";
 import ServiciosLista from './ServiciosLista.astro';
 ---
 
-<SectionLayout 
-  id="servicios-hero"
-  background="gray" 
-  paddingY="md"
-  maxWidth="xl"
-  contentClassName="!gap-8 lg:!gap-10"
->
-  <SectionHeader 
-    tagline="Servicios"
-    title="Nuestros Servicios"
-    description="Ofrecemos soluciones constructivas integrales con los más altos estándares de calidad para satisfacer todas tus necesidades."
-    textColor="dark"
-    align="left"
-    maxWidth="lg"
-  />
-  
-  <ServiciosLista />
-</SectionLayout>
+<section class="relative py-16 lg:py-20 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 overflow-hidden">
+  <!-- Background decorations -->
+  <div class="absolute inset-0">
+    <div class="absolute top-20 left-20 w-60 h-60 bg-[#103646]/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-20 w-40 h-40 bg-[#D79528]/15 rounded-full blur-2xl"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#103646]/5 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- Header Section -->
+    <div class="max-w-4xl mx-auto text-center mb-12">
+      <!-- Tagline -->
+      <div class="inline-flex items-center gap-2 bg-[#103646]/20 backdrop-blur-sm border border-[#103646]/30 rounded-full px-4 py-2 mb-8" data-aos="fade-up">
+        <Icon name="ph:wrench-fill" class="w-5 h-5 text-[#103646]" />
+        <span class="text-[#103646] font-semibold text-sm uppercase tracking-wider">Servicios</span>
+      </div>
+      
+      <!-- Main Heading -->
+      <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8" data-aos="fade-up" data-aos-delay="100">
+        Nuestros<br>
+        <span class="bg-gradient-to-r from-[#103646] to-[#D79528] bg-clip-text text-transparent">Servicios</span>
+      </h1>
+      
+      <!-- Description -->
+      <p class="text-xl lg:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+        Ofrecemos soluciones constructivas integrales con los más altos estándares de calidad para satisfacer todas tus necesidades.
+      </p>
+      
+      <!-- Feature highlights -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16" data-aos="fade-up" data-aos-delay="300">
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-[#103646] to-[#103646]/80 rounded-2xl flex items-center justify-center shadow-lg">
+              <Icon name="ph:buildings-fill" class="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-1">Construcción</h3>
+              <p class="text-white/70 text-sm">Residencial y comercial</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-[#D79528] to-[#D79528]/80 rounded-2xl flex items-center justify-center shadow-lg">
+              <Icon name="ph:hammer-fill" class="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-1">Remodelación</h3>
+              <p class="text-white/70 text-sm">Modernización completa</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-[#103646] to-[#D79528] rounded-2xl flex items-center justify-center shadow-lg">
+              <Icon name="ph:gear-fill" class="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-white mb-1">Mantenimiento</h3>
+              <p class="text-white/70 text-sm">Servicio integral</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Services List Component -->
+    <div data-aos="fade-up" data-aos-delay="400">
+      <ServiciosLista />
+    </div>
+  </div>
+</section>
