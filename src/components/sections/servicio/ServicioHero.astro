@@ -2,17 +2,40 @@
 import { Icon } from "astro-icon/components";
 import Button from '../../ui/Button.astro';
 
+// Import background images
+import construccionBg from '../../../assets/img/ServiciosConstruccion.png';
+import remodelacionBg from '../../../assets/img/ServiciosRemodelacion.png';
+import disenoArquitectonicoBg from '../../../assets/img/ServiciosDiseñoArquitectonico.png';
+
 export interface Props {
   tagline: string;
   title: string;
   description: string;
-  backgroundImage?: string;
+  serviceType?: 'construccion' | 'remodelacion' | 'diseno-arquitectonico';
 }
 
-const { tagline, title, description, backgroundImage = "/images/placeholder-image.png" } = Astro.props;
+const { tagline, title, description, serviceType = 'construccion' } = Astro.props;
+
+// Select background image based on service type
+const backgroundImages = {
+  'construccion': construccionBg,
+  'remodelacion': remodelacionBg,
+  'diseno-arquitectonico': disenoArquitectonicoBg
+};
+
+const backgroundImage = backgroundImages[serviceType];
 ---
 
-<section class="relative py-32 lg:py-40 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 overflow-hidden">
+<section class="relative pt-16 pb-20 lg:pt-20 lg:pb-24 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 overflow-hidden">
+  <!-- Background Image -->
+  <div class="absolute inset-0 w-full h-full">
+    <img 
+      src={backgroundImage.src} 
+      alt={`${title} Hero Background`}
+      class="w-full h-full object-cover opacity-40"
+    />
+  </div>
+  
   <!-- Background decorations -->
   <div class="absolute inset-0">
     <div class="absolute top-20 left-20 w-60 h-60 bg-brand-primary/10 rounded-full blur-3xl"></div>
@@ -22,67 +45,51 @@ const { tagline, title, description, backgroundImage = "/images/placeholder-imag
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="max-w-4xl text-left">
-      <!-- Tagline -->
-      <div class="inline-flex items-center gap-2 bg-brand-primary/20 backdrop-blur-sm border border-brand-primary/30 rounded-full px-4 py-2 mb-8" data-aos="fade-up">
-        <Icon name="ph:buildings-fill" class="w-5 h-5 text-brand-primary" />
-        <span class="text-brand-primary font-semibold text-sm uppercase tracking-wider">{tagline}</span>
-      </div>
-      
       <!-- Main Heading -->
-      <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8" data-aos="fade-up" data-aos-delay="100">
+      <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight mb-6" data-aos="fade-up">
         {title}
       </h1>
       
       <!-- Description -->
-      <p class="text-xl lg:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl" data-aos="fade-up" data-aos-delay="200">
+      <p class="text-lg lg:text-xl text-white/90 leading-relaxed mb-8 max-w-3xl" data-aos="fade-up" data-aos-delay="200">
         {description}
       </p>
       
       <!-- Service highlights - Modern cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12" data-aos="fade-up" data-aos-delay="300">
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-          <div class="flex items-center gap-6">
-            <div class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl flex items-center justify-center shadow-lg">
-              <Icon name="ph:shield-check-fill" class="w-8 h-8 text-white" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8" data-aos="fade-up" data-aos-delay="300">
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
+              <Icon name="ph:star-fill" class="w-7 h-7 text-white" />
             </div>
             <div>
-              <h3 class="text-xl font-bold text-white mb-2">Garantía Extendida</h3>
-              <p class="text-white/70 leading-relaxed">Calidad asegurada en cada proyecto con respaldo total</p>
+              <h3 class="text-lg font-bold text-white mb-1">Calidad Premium</h3>
+              <p class="text-white/70 text-sm leading-relaxed">Materiales de primera y acabados impecables</p>
             </div>
           </div>
         </div>
         
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-          <div class="flex items-center gap-6">
-            <div class="w-16 h-16 bg-gradient-to-br from-brand-secondary to-brand-secondary-dark rounded-2xl flex items-center justify-center shadow-lg">
-              <Icon name="ph:clock-fill" class="w-8 h-8 text-white" />
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+          <div class="flex items-center gap-4">
+            <div class="w-14 h-14 bg-gradient-to-br from-brand-secondary to-brand-secondary-dark rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
+              <Icon name="ph:users-fill" class="w-7 h-7 text-white" />
             </div>
             <div>
-              <h3 class="text-xl font-bold text-white mb-2">Entrega Puntual</h3>
-              <p class="text-white/70 leading-relaxed">Cumplimos con los tiempos acordados sin excepciones</p>
+              <h3 class="text-lg font-bold text-white mb-1">Equipo Profesional</h3>
+              <p class="text-white/70 text-sm leading-relaxed">Especialistas con años de experiencia</p>
             </div>
           </div>
         </div>
       </div>
       
-      <!-- CTA Buttons -->
-      <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="400">
+      <!-- CTA Button -->
+      <div class="inline-block" data-aos="fade-up">
         <Button 
-          variant="primary"
-          size="lg"
-          href="#features"
-          icon="ph:arrow-down"
-          class="shadow-lg hover:shadow-xl"
-        >
-          Explorar Servicio
-        </Button>
-        
-        <Button 
-          variant="outline-dark"
+          variant="secondary"
           size="lg"
           href="/contacto"
           icon="ph:phone-fill"
-          class="shadow-lg hover:shadow-xl"
+          class="shadow-xl hover:shadow-2xl"
         >
           Solicitar Cotización
         </Button>

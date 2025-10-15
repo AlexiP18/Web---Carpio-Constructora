@@ -1,6 +1,9 @@
 ---
 import Button from '../../ui/Button.astro';
 import { Icon } from 'astro-icon/components';
+
+// Import background image
+import valoresImage from '../../../assets/img/ValoresInstitucionales.png';
 ---
 
 <section class="bg-gray-50 py-20 relative overflow-hidden">
@@ -61,29 +64,19 @@ import { Icon } from 'astro-icon/components';
 
       <!-- Center Image -->
       <div class="relative" data-aos="zoom-in" data-aos-delay="300">
-        <div class="aspect-square bg-gradient-to-br from-slate-100 to-slate-200 rounded-3xl overflow-hidden shadow-2xl">
-          <!-- Placeholder para imagen de la empresa -->
-          <div class="w-full h-full bg-gradient-to-br from-brand-primary/20 to-brand-secondary/20 flex items-center justify-center">
-            <div class="text-center space-y-4">
-              <Icon name="ph:buildings-fill" class="w-20 h-20 text-brand-primary mx-auto" />
-              <div class="text-2xl font-bold text-gray-700">Constructora Carpio</div>
-              <div class="text-gray-500">15+ años construyendo sueños</div>
+        <div class="h-[600px] rounded-3xl overflow-hidden shadow-2xl relative">
+          <img 
+            src={valoresImage.src} 
+            alt="Valores Institucionales" 
+            class="w-full h-full object-cover"
+          />
+          <!-- Text overlay -->
+          <div class="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-900/30 to-slate-900/50 flex items-center justify-center">
+            <div class="text-center space-y-4 px-6">
+              <Icon name="ph:buildings-fill" class="w-20 h-20 text-white mx-auto drop-shadow-lg" />
+              <div class="text-3xl font-bold text-white drop-shadow-lg">Constructora Carpio</div>
+              <div class="text-xl text-white/90 drop-shadow-md">15+ años construyendo sueños</div>
             </div>
-          </div>
-        </div>
-        
-        <!-- Floating stats cards -->
-        <div class="absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-lg border">
-          <div class="text-center">
-            <div class="text-2xl font-bold text-brand-primary">150+</div>
-            <div class="text-sm text-gray-500">Proyectos</div>
-          </div>
-        </div>
-        
-        <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-lg border">
-          <div class="text-center">
-            <div class="text-2xl font-bold text-brand-secondary">100%</div>
-            <div class="text-sm text-gray-500">Satisfacción</div>
           </div>
         </div>
       </div>

@@ -70,16 +70,6 @@ const contactInfo = {
           <h3 class="text-lg font-bold text-gray-900 mb-4">Redes Sociales</h3>
           <div class="flex justify-center gap-3">
             <a 
-              href={`tel:${contactInfo.phone.replace(/[\s\-\(\)]/g, '')}`}
-              class="w-10 h-10 bg-[#103646]/10 backdrop-blur-sm border border-[#103646]/20 rounded-xl flex items-center justify-center hover:bg-[#103646] hover:border-[#103646] group transition-all duration-300 hover:scale-110"
-              aria-label="Llámanos"
-            >
-              <Icon 
-                name="ph:phone-fill" 
-                class="w-5 h-5 text-[#103646] group-hover:text-white transition-colors duration-300" 
-              />
-            </a>
-            <a 
               href="https://wa.me/593956324598"
               target="_blank"
               rel="noopener noreferrer"
@@ -89,6 +79,18 @@ const contactInfo = {
               <Icon 
                 name="ph:whatsapp-logo-fill" 
                 class="w-5 h-5 text-[#25D366] group-hover:text-white transition-colors duration-300" 
+              />
+            </a>
+            <a 
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-10 h-10 bg-[#E4405F]/10 backdrop-blur-sm border border-[#E4405F]/20 rounded-xl flex items-center justify-center hover:bg-[#E4405F] hover:border-[#E4405F] group transition-all duration-300 hover:scale-110"
+              aria-label="Síguenos en Instagram"
+            >
+              <Icon 
+                name="ph:instagram-logo-fill" 
+                class="w-5 h-5 text-[#E4405F] group-hover:text-white transition-colors duration-300" 
               />
             </a>
             <a 

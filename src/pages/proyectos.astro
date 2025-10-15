@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/ui/Header.astro";
 import ProjectsSliderHero from "../components/sections/proyectos/ProjectsSliderHero.astro";
+import FeaturedProject from "../components/sections/proyectos/FeaturedProject.astro";
+import Footer from "@/components/sections/Footer.astro";
 ---
 
 <Layout title="Proyectos - Constructora Carpio">
@@ -9,5 +11,9 @@ import ProjectsSliderHero from "../components/sections/proyectos/ProjectsSliderH
   <main>
     <!-- Hero Slider Section with scroll interaction -->
     <ProjectsSliderHero />
+    
+    <!-- Featured Project Section -->
+    <FeaturedProject />
   </main>
+  <Footer />
 </Layout>

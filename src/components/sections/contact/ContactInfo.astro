@@ -28,184 +28,107 @@ import Button from '../../ui/Button.astro';
       </p>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-12 items-start">
-      <!-- Contact Methods -->
-      <div class="space-y-8" data-aos="fade-right" data-aos-delay="100">
-        <!-- Phone Contact -->
-        <div class="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 hover:border-brand-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-brand-primary/10">
-          <div class="flex items-start gap-6">
-            <div class="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center shadow-lg shadow-brand-primary/30 group-hover:scale-110 transition-transform duration-300">
-              <Icon name="ph:phone-fill" class="w-8 h-8 text-white" />
-            </div>
-            
-            <div class="flex-1 space-y-3">
-              <h3 class="text-2xl font-bold text-gray-900">Llamada Directa</h3>
-              <p class="text-gray-600">Habla directamente con nuestro equipo de expertos</p>
-              
-              <div class="space-y-2">
-                <div class="flex items-center gap-3">
-                  <Icon name="ph:phone" class="w-5 h-5 text-brand-primary" />
-                  <a href="tel:+593956324598" class="text-lg font-semibold text-gray-900 hover:text-brand-primary transition-colors">
-                    +593 95 632 4598
-                  </a>
-                </div>
-                <div class="flex items-center gap-3">
-                  <Icon name="ph:clock" class="w-5 h-5 text-gray-500" />
-                  <span class="text-gray-600">Lunes a Viernes: 8:00 AM - 6:00 PM</span>
-                </div>
-              </div>
-              
-              <Button variant="success" size="sm" href="tel:+593956324598" class="w-fit" iconPosition="left" icon="ph:phone-call">
-                Llamar Ahora
-              </Button>
-            </div>
+    <!-- Contact Methods - Horizontal Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
+      <!-- Social Media Contact -->
+      <div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 hover:border-brand-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-brand-primary/10">
+        <div class="text-center space-y-3">
+          <div class="w-12 h-12 bg-brand-primary rounded-xl flex items-center justify-center mx-auto shadow-lg shadow-brand-primary/30 group-hover:scale-110 transition-transform duration-300">
+            <Icon name="ph:share-network-fill" class="w-6 h-6 text-white" />
           </div>
-        </div>
-
-        <!-- WhatsApp Contact -->
-        <div class="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 hover:border-green-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10">
-          <div class="flex items-start gap-6">
-            <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30 group-hover:scale-110 transition-transform duration-300">
-              <Icon name="ph:whatsapp-logo-fill" class="w-8 h-8 text-white" />
+          
+          <div class="space-y-3">
+            <h3 class="text-lg font-bold text-gray-900">Redes Sociales</h3>
+            <p class="text-sm text-gray-600">Síguenos en nuestras redes</p>
+            
+            <div class="flex justify-center gap-3 pt-2">
+              <a 
+                href="https://wa.me/593956324598"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 bg-[#25D366]/10 backdrop-blur-sm border border-[#25D366]/20 rounded-xl flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] group/icon transition-all duration-300 hover:scale-110"
+                aria-label="Escríbenos por WhatsApp"
+              >
+                <Icon 
+                  name="ph:whatsapp-logo-fill" 
+                  class="w-5 h-5 text-[#25D366] group-hover/icon:text-white transition-colors duration-300" 
+                />
+              </a>
+              <a 
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 bg-[#E4405F]/10 backdrop-blur-sm border border-[#E4405F]/20 rounded-xl flex items-center justify-center hover:bg-[#E4405F] hover:border-[#E4405F] group/icon transition-all duration-300 hover:scale-110"
+                aria-label="Síguenos en Instagram"
+              >
+                <Icon 
+                  name="ph:instagram-logo-fill" 
+                  class="w-5 h-5 text-[#E4405F] group-hover/icon:text-white transition-colors duration-300" 
+                />
+              </a>
+              <a 
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-10 h-10 bg-[#1877F2]/10 backdrop-blur-sm border border-[#1877F2]/20 rounded-xl flex items-center justify-center hover:bg-[#1877F2] hover:border-[#1877F2] group/icon transition-all duration-300 hover:scale-110"
+                aria-label="Síguenos en Facebook"
+              >
+                <Icon 
+                  name="ph:facebook-logo-fill" 
+                  class="w-5 h-5 text-[#1877F2] group-hover/icon:text-white transition-colors duration-300" 
+                />
+              </a>
             </div>
             
-            <div class="flex-1 space-y-3">
-              <h3 class="text-2xl font-bold text-gray-900">WhatsApp Business</h3>
-              <p class="text-gray-600">Chatea con nosotros de forma rápida y conveniente</p>
-              
-              <div class="space-y-2">
-                <div class="flex items-center gap-3">
-                  <Icon name="ph:whatsapp-logo" class="w-5 h-5 text-green-500" />
-                  <span class="text-lg font-semibold text-gray-900">+593 95 632 4598</span>
-                </div>
-                <div class="flex items-center gap-3">
-                  <Icon name="ph:check-circle" class="w-5 h-5 text-green-500" />
-                  <span class="text-gray-600">Respuesta rápida garantizada</span>
-                </div>
-              </div>
-              
-              <Button variant="outline" size="sm" href="https://wa.me/593956324598" class="w-fit border-green-500 text-green-600 hover:bg-green-500 hover:text-white" iconPosition="left" icon="ph:chat-circle-text">
-                Escribir en WhatsApp
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Email Contact -->
-        <div class="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-gray-200/50 hover:border-brand-secondary/30 transition-all duration-300 hover:shadow-lg hover:shadow-brand-secondary/10">
-          <div class="flex items-start gap-6">
-            <div class="w-16 h-16 bg-gradient-to-br from-brand-secondary to-brand-secondary/80 rounded-2xl flex items-center justify-center shadow-lg shadow-brand-secondary/30 group-hover:scale-110 transition-transform duration-300">
-              <Icon name="ph:envelope-fill" class="w-8 h-8 text-white" />
-            </div>
-            
-            <div class="flex-1 space-y-3">
-              <h3 class="text-2xl font-bold text-gray-900">Correo Electrónico</h3>
-              <p class="text-gray-600">Para consultas detalladas y documentación</p>
-              
-              <div class="space-y-2">
-                <div class="flex items-center gap-3">
-                  <Icon name="ph:envelope" class="w-5 h-5 text-brand-secondary" />
-                  <a href="mailto:hola@constructoracarpio.com" class="text-lg font-semibold text-gray-900 hover:text-brand-secondary transition-colors">
-                    hola@constructoracarpio.com
-                  </a>
-                </div>
-                <div class="flex items-center gap-3">
-                  <Icon name="ph:timer" class="w-5 h-5 text-gray-500" />
-                  <span class="text-gray-600">Respuesta en menos de 24 horas</span>
-                </div>
-              </div>
-              
-              <Button variant="outline" size="sm" href="mailto:hola@constructoracarpio.com" class="w-fit border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white" iconPosition="left" icon="ph:paper-plane-tilt">
-                Enviar Email
-              </Button>
-            </div>
+            <p class="text-xs text-gray-500 pt-1">Conecta con nosotros</p>
           </div>
         </div>
       </div>
 
-      <!-- Interactive Contact Card -->
-      <div class="relative" data-aos="fade-left" data-aos-delay="200">
-        <div class="bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 rounded-3xl p-8 text-white relative overflow-hidden">
-          <!-- Background Pattern -->
-          <div class="absolute inset-0 opacity-10">
-            <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-brand-primary/20 to-transparent"></div>
-            <div class="absolute bottom-0 right-0 w-32 h-32 bg-brand-secondary/20 rounded-full blur-2xl"></div>
+      <!-- WhatsApp Contact -->
+      <div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 hover:border-green-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10">
+        <div class="text-center space-y-3">
+          <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mx-auto shadow-lg shadow-green-500/30 group-hover:scale-110 transition-transform duration-300">
+            <Icon name="ph:whatsapp-logo-fill" class="w-6 h-6 text-white" />
           </div>
-
-          <div class="relative z-10 space-y-8">
-            <!-- Header -->
-            <div class="text-center space-y-4">
-              <div class="w-20 h-20 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-2xl flex items-center justify-center mx-auto shadow-2xl">
-                <Icon name="ph:building-office-fill" class="w-10 h-10 text-white" />
-              </div>
-              <h3 class="text-3xl font-bold">¿Necesitas Ayuda Inmediata?</h3>
-              <p class="text-gray-300">Contáctanos por el medio que prefieras</p>
+          
+          <div class="space-y-2">
+            <h3 class="text-lg font-bold text-gray-900">WhatsApp</h3>
+            <p class="text-sm text-gray-600">Chat rápido y conveniente</p>
+            
+            <div class="space-y-1">
+              <span class="block text-base font-semibold text-gray-900">+593 95 632 4598</span>
+              <p class="text-xs text-gray-500">Respuesta rápida garantizada</p>
             </div>
+            
+            <Button variant="outline" size="sm" href="https://wa.me/593956324598" class="w-full mt-3 border-green-500 text-green-600 hover:bg-green-500 hover:text-white" iconPosition="left" icon="ph:chat-circle-text">
+              Escribir
+            </Button>
+          </div>
+        </div>
+      </div>
 
-            <!-- Quick Actions -->
-            <div class="space-y-4">
-              <a href="tel:+593956324598" class="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-200 group">
-                <div class="w-12 h-12 bg-brand-primary/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Icon name="ph:phone-fill" class="w-6 h-6 text-brand-primary" />
-                </div>
-                <div class="flex-1">
-                  <div class="font-semibold">Llamada Inmediata</div>
-                  <div class="text-sm text-gray-300">+593 95 632 4598</div>
-                </div>
-                <Icon name="ph:arrow-up-right" class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
+      <!-- Email Contact -->
+      <div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-gray-200/50 hover:border-brand-secondary/30 transition-all duration-300 hover:shadow-lg hover:shadow-brand-secondary/10">
+        <div class="text-center space-y-3">
+          <div class="w-12 h-12 bg-gradient-to-br from-brand-secondary to-brand-secondary/80 rounded-xl flex items-center justify-center mx-auto shadow-lg shadow-brand-secondary/30 group-hover:scale-110 transition-transform duration-300">
+            <Icon name="ph:envelope-fill" class="w-6 h-6 text-white" />
+          </div>
+          
+          <div class="space-y-2">
+            <h3 class="text-lg font-bold text-gray-900">Email</h3>
+            <p class="text-sm text-gray-600">Consultas detalladas</p>
+            
+            <div class="space-y-1">
+              <a href="mailto:hola@constructoracarpio.com" class="block text-sm font-semibold text-brand-secondary hover:text-brand-secondary/80 transition-colors break-all">
+                hola@constructoracarpio.com
               </a>
-
-              <a href="https://wa.me/593956324598" class="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-200 group">
-                <div class="w-12 h-12 bg-green-500/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Icon name="ph:whatsapp-logo-fill" class="w-6 h-6 text-green-400" />
-                </div>
-                <div class="flex-1">
-                  <div class="font-semibold">Chat por WhatsApp</div>
-                  <div class="text-sm text-gray-300">Respuesta rápida</div>
-                </div>
-                <Icon name="ph:arrow-up-right" class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
-              </a>
-
-              <a href="mailto:hola@constructoracarpio.com" class="flex items-center gap-4 p-4 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-200 group">
-                <div class="w-12 h-12 bg-brand-secondary/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Icon name="ph:envelope-fill" class="w-6 h-6 text-brand-secondary" />
-                </div>
-                <div class="flex-1">
-                  <div class="font-semibold">Enviar Email</div>
-                  <div class="text-sm text-gray-300">Consulta detallada</div>
-                </div>
-                <Icon name="ph:arrow-up-right" class="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" />
-              </a>
+              <p class="text-xs text-gray-500">Respuesta en 24 horas</p>
             </div>
-
-            <!-- Business Hours -->
-            <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-              <h4 class="font-bold mb-4 flex items-center gap-2">
-                <Icon name="ph:clock-fill" class="w-5 h-5 text-brand-primary" />
-                Horarios de Atención
-              </h4>
-              
-              <div class="space-y-2 text-sm">
-                <div class="flex justify-between">
-                  <span class="text-gray-300">Lunes - Viernes:</span>
-                  <span class="font-semibold">8:00 AM - 6:00 PM</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-300">Sábados:</span>
-                  <span class="font-semibold">9:00 AM - 4:00 PM</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-300">Domingos:</span>
-                  <span class="font-semibold">Solo emergencias</span>
-                </div>
-              </div>
-
-              <!-- Status Indicator -->
-              <div class="flex items-center gap-2 mt-4 pt-4 border-t border-white/10">
-                <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                <span class="text-sm font-semibold text-green-400">Actualmente disponible</span>
-              </div>
-            </div>
+            
+            <Button variant="outline" size="sm" href="mailto:hola@constructoracarpio.com" class="w-full mt-3 border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white" iconPosition="left" icon="ph:paper-plane-tilt">
+              Enviar Email
+            </Button>
           </div>
         </div>
       </div>

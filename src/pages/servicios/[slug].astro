@@ -206,93 +206,92 @@ export function getStaticPaths() {
       }
     },
     {
-      params: { slug: 'mantenimiento' },
+      params: { slug: 'diseno-arquitectonico' },
       props: {
-        title: 'Mantenimiento Preventivo',
-        subtitle: 'Mantenimiento',
-        description: 'Servicios de mantenimiento preventivo y correctivo para conservar tus espacios en perfecto estado.',
-        backgroundImage: '/images/mantenimiento-hero.jpg',
+        title: 'Diseño Arquitectónico',
+        subtitle: 'Diseño Arquitectónico',
+        description: 'Creamos proyectos arquitectónicos personalizados que transforman tus ideas en planos profesionales.',
         service: {
-          name: 'Servicio de Mantenimiento',
-          category: 'Mantenimiento',
-          tagline: 'CUIDADO',
-          featuresTitle: 'Características Destacadas de Nuestro Servicio de Mantenimiento',
-          featuresDescription: 'Nuestro servicio de mantenimiento asegura la longevidad y buen funcionamiento de tus instalaciones.',
+          name: 'Servicio de Diseño Arquitectónico',
+          category: 'Diseño Arquitectónico',
+          tagline: 'DISEÑO',
+          featuresTitle: 'Características Destacadas de Nuestro Servicio de Diseño Arquitectónico',
+          featuresDescription: 'Nuestro servicio de diseño arquitectónico combina creatividad, funcionalidad y experiencia técnica.',
           features: [
             {
-              title: 'Mantenimiento Preventivo Programado',
-              description: 'Planes de mantenimiento para evitar problemas futuros.',
-              icon: 'ph:calendar-check'
+              title: 'Proyectos Personalizados',
+              description: 'Diseños únicos adaptados a tus necesidades específicas.',
+              icon: 'ph:pencil-ruler'
             },
             {
-              title: 'Respuesta Rápida en Emergencias',
-              description: 'Atención inmediata para situaciones urgentes.',
-              icon: 'ph:lightning'
+              title: 'Renderizados 3D Realistas',
+              description: 'Visualiza tu proyecto antes de construirlo.',
+              icon: 'ph:cube'
             },
             {
-              title: 'Diagnóstico Especializado',
-              description: 'Evaluación experta para identificar necesidades específicas.',
-              icon: 'ph:stethoscope'
+              title: 'Asesoría Técnica Profesional',
+              description: 'Acompañamiento experto en cada etapa del diseño.',
+              icon: 'ph:chats-circle'
             }
           ],
           benefits: [
             {
-              title: 'Prevención de Problemas',
-              description: 'Evitamos costosas reparaciones mediante mantenimiento preventivo.',
-              icon: 'ph:shield-check'
+              title: 'Diseño Innovador',
+              description: 'Soluciones arquitectónicas modernas y funcionales.',
+              icon: 'ph:lightbulb'
             },
             {
-              title: 'Disponibilidad 24/7',
-              description: 'Servicio de emergencia disponible cuando lo necesites.',
-              icon: 'ph:clock'
+              title: 'Optimización de Espacios',
+              description: 'Aprovechamiento máximo de cada metro cuadrado.',
+              icon: 'ph:layout'
             }
           ],
           process: [
             {
               number: '01',
-              title: 'Inspección Inicial',
-              description: 'Evaluamos el estado actual de todas las instalaciones.',
-              icon: 'ph:magnifying-glass'
+              title: 'Consulta Inicial',
+              description: 'Conocemos tus ideas, necesidades y expectativas del proyecto.',
+              icon: 'ph:handshake'
             },
             {
               number: '02',
-              title: 'Plan de Mantenimiento',
-              description: 'Desarrollamos un cronograma personalizado de mantenimiento.',
-              icon: 'ph:calendar'
+              title: 'Desarrollo de Diseño',
+              description: 'Creamos propuestas con planos y renderizados detallados.',
+              icon: 'ph:pencil-line'
             },
             {
               number: '03',
-              title: 'Ejecución y Seguimiento',
-              description: 'Realizamos las actividades programadas y monitoreamos resultados.',
-              icon: 'ph:check-circle'
+              title: 'Entrega de Documentación',
+              description: 'Proporcionamos planos técnicos completos listos para construcción.',
+              icon: 'ph:file-text'
             }
           ],
           testimonials: [
             {
-              content: 'Su servicio de mantenimiento nos ha ahorrado mucho dinero en reparaciones.',
-              author: 'Laura Mendoza',
-              position: 'Administradora de Edificio',
+              content: 'El diseño superó todas nuestras expectativas, muy profesional.',
+              author: 'Patricia González',
+              position: 'Propietaria',
               rating: 5
             },
             {
-              content: 'Siempre disponibles cuando los necesitamos, muy confiables.',
-              author: 'Carlos Ruiz',
-              position: 'Propietario, Negocios 123',
+              content: 'Excelente asesoría y atención a nuestras necesidades específicas.',
+              author: 'Miguel Torres',
+              position: 'Director de Proyecto',
               rating: 5
             }
           ],
           faqs: [
             {
-              question: '¿Con qué frecuencia realizan el mantenimiento?',
-              answer: 'La frecuencia depende del tipo de instalación y sus necesidades. Puede ser mensual, trimestral o según lo requiera cada caso específico.'
+              question: '¿Cuánto tiempo toma el proceso de diseño?',
+              answer: 'El tiempo varía según la complejidad del proyecto, generalmente entre 2 a 4 semanas para un diseño completo con renderizados.'
             },
             {
-              question: '¿Qué incluye el mantenimiento preventivo?',
-              answer: 'Incluye inspección, limpieza, lubricación, ajustes, reemplazo de piezas menores y reporte detallado del estado de las instalaciones.'
+              question: '¿Qué incluye el servicio de diseño?',
+              answer: 'Incluye planos arquitectónicos, renderizados 3D, especificaciones técnicas y asesoría durante el proceso de diseño.'
             },
             {
-              question: '¿Tienen servicio de emergencia?',
-              answer: 'Sí, contamos con servicio de emergencia 24/7 para atender situaciones urgentes que requieran atención inmediata.'
+              question: '¿Pueden adaptar diseños existentes?',
+              answer: 'Sí, podemos trabajar sobre diseños previos para mejorarlos o adaptarlos a nuevas necesidades y normativas.'
             }
           ]
         }
@@ -311,7 +310,7 @@ const { title, subtitle, description, backgroundImage, service } = Astro.props;
     tagline={service.tagline}
     title={title}
     description={description}
-    backgroundImage={backgroundImage}
+    serviceType={Astro.params.slug as 'construccion' | 'remodelacion' | 'diseno-arquitectonico'}
   />
   
   <!-- <ServicioFeatures 
