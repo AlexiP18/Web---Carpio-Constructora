@@ -62,8 +62,8 @@ import logoCarpio from '../../assets/LogoCarpioConstructora.svg';
           </div>
         </div>
         
-        <!-- Desktop Navigation - Centered -->
-        <div class="absolute left-1/2 transform -translate-x-1/2">
+        <!-- Desktop Navigation - Right Aligned -->
+        <div class="flex items-center gap-4">
           <nav class="flex gap-8 items-center justify-center relative">
             <a href="/" class="font-montserrat font-medium text-text-regular text-white hover:text-[#D79528] transition-colors duration-200 relative group">
               Inicio
@@ -83,56 +83,59 @@ import logoCarpio from '../../assets/LogoCarpioConstructora.svg';
                   <Icon name="ph:caret-down" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180 text-white" />
                 </a>
                 <!-- Dropdown Menu -->
-                <div class="absolute top-full left-0 mt-2 w-64 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50">
-                <div class="py-3">
-                  <a href="/servicios/construccion" class="block px-4 py-3 font-heebo text-neutral-darkest hover:bg-gray-50 hover:text-gray-900 transition-all duration-200 border-l-4 border-transparent hover:border-gray-300">
-                    <div class="flex items-center gap-3">
-                      <Icon name="ph:hammer" class="w-5 h-5 text-gray-600" />
-                      <div>
-                        <span class="font-medium">Construcción</span>
-                        <p class="text-xs text-gray-500 mt-0.5">Proyectos desde cero</p>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="/servicios/remodelacion" class="block px-4 py-3 font-heebo text-neutral-darkest hover:bg-gray-50 hover:text-gray-900 transition-all duration-200 border-l-4 border-transparent hover:border-gray-300">
-                    <div class="flex items-center gap-3">
-                      <Icon name="ph:wrench" class="w-5 h-5 text-gray-600" />
-                      <div>
-                        <span class="font-medium">Remodelación</span>
-                        <p class="text-xs text-gray-500 mt-0.5">Renovación de espacios</p>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="/servicios/mantenimiento" class="block px-4 py-3 font-heebo text-neutral-darkest hover:bg-gray-50 hover:text-gray-900 transition-all duration-200 border-l-4 border-transparent hover:border-gray-300">
-                    <div class="flex items-center gap-3">
-                      <Icon name="ph:gear" class="w-5 h-5 text-gray-600" />
-                      <div>
-                        <span class="font-medium">Mantenimiento</span>
-                        <p class="text-xs text-gray-500 mt-0.5">Cuidado continuo</p>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="/servicios/diseño-arquitectonico" class="block px-4 py-3 font-heebo text-neutral-darkest hover:bg-gray-50 hover:text-gray-900 transition-all duration-200 border-l-4 border-transparent hover:border-gray-300">
-                    <div class="flex items-center gap-3">
-                      <Icon name="ph:ruler" class="w-5 h-5 text-gray-600" />
-                      <div>
-                        <span class="font-medium">Diseño Arquitectónico</span>
-                        <p class="text-xs text-gray-500 mt-0.5">Planificación profesional</p>
-                      </div>
-                    </div>
-                  </a>
-                  <div class="border-t border-gray-100 mt-2 pt-2">
-                    <a href="/servicios" class="block px-4 py-3 font-heebo text-gray-700 hover:bg-gray-50 transition-all duration-200 rounded-lg mx-2">
-                      <div class="flex items-center justify-center gap-2">
-                        <Icon name="ph:buildings" class="w-4 h-4" />
-                        <span class="font-medium text-sm">Ver todos los servicios</span>
-                        <Icon name="ph:arrow-right" class="w-4 h-4" />
+                <div class="absolute top-full left-0 mt-2 w-72 bg-white backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50 overflow-hidden">
+                  <div class="py-2">
+                    <a href="/servicios/construccion" class="block px-5 py-4 font-heebo text-neutral-darkest hover:bg-gradient-to-r hover:from-[#103646]/5 hover:to-transparent transition-all duration-200 border-l-4 border-transparent hover:border-[#103646] group/item">
+                      <div class="flex items-center gap-4">
+                        <div class="w-11 h-11 bg-gradient-to-br from-[#103646]/10 to-[#103646]/5 rounded-xl flex items-center justify-center group-hover/item:scale-110 group-hover/item:bg-[#103646] transition-all duration-300">
+                          <Icon name="ph:hammer-fill" class="w-6 h-6 text-[#103646] group-hover/item:text-white transition-colors duration-300" />
+                        </div>
+                        <div class="flex-1">
+                          <span class="font-bold text-base block group-hover/item:text-[#103646] transition-colors duration-200">Construcción</span>
+                          <p class="text-xs text-gray-500 mt-1 group-hover/item:text-gray-600">Proyectos desde cero con calidad</p>
+                        </div>
+                        <Icon name="ph:arrow-right" class="w-5 h-5 text-gray-400 opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-1 transition-all duration-200" />
                       </div>
                     </a>
+                    
+                    <a href="/servicios/remodelacion" class="block px-5 py-4 font-heebo text-neutral-darkest hover:bg-gradient-to-r hover:from-[#D79528]/5 hover:to-transparent transition-all duration-200 border-l-4 border-transparent hover:border-[#D79528] group/item">
+                      <div class="flex items-center gap-4">
+                        <div class="w-11 h-11 bg-gradient-to-br from-[#D79528]/10 to-[#D79528]/5 rounded-xl flex items-center justify-center group-hover/item:scale-110 group-hover/item:bg-[#D79528] transition-all duration-300">
+                          <Icon name="ph:paint-roller-fill" class="w-6 h-6 text-[#D79528] group-hover/item:text-white transition-colors duration-300" />
+                        </div>
+                        <div class="flex-1">
+                          <span class="font-bold text-base block group-hover/item:text-[#D79528] transition-colors duration-200">Remodelación</span>
+                          <p class="text-xs text-gray-500 mt-1 group-hover/item:text-gray-600">Renovación de espacios existentes</p>
+                        </div>
+                        <Icon name="ph:arrow-right" class="w-5 h-5 text-gray-400 opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-1 transition-all duration-200" />
+                      </div>
+                    </a>
+                    
+                    <a href="/servicios/diseño-arquitectonico" class="block px-5 py-4 font-heebo text-neutral-darkest hover:bg-gradient-to-r hover:from-[#103646]/5 hover:to-transparent transition-all duration-200 border-l-4 border-transparent hover:border-[#103646] group/item">
+                      <div class="flex items-center gap-4">
+                        <div class="w-11 h-11 bg-gradient-to-br from-[#103646]/10 to-[#103646]/5 rounded-xl flex items-center justify-center group-hover/item:scale-110 group-hover/item:bg-[#103646] transition-all duration-300">
+                          <Icon name="ph:blueprint-fill" class="w-6 h-6 text-[#103646] group-hover/item:text-white transition-colors duration-300" />
+                        </div>
+                        <div class="flex-1">
+                          <span class="font-bold text-base block group-hover/item:text-[#103646] transition-colors duration-200">Diseño Arquitectónico</span>
+                          <p class="text-xs text-gray-500 mt-1 group-hover/item:text-gray-600">Planificación profesional y creativa</p>
+                        </div>
+                        <Icon name="ph:arrow-right" class="w-5 h-5 text-gray-400 opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-1 transition-all duration-200" />
+                      </div>
+                    </a>
+                    
+                    <div class="border-t border-gray-100 mt-2 pt-2 px-2">
+                      <a href="/servicios" class="block px-4 py-3.5 font-heebo text-gray-700 hover:bg-gradient-to-r hover:from-[#D79528]/10 hover:to-transparent transition-all duration-200 rounded-xl group/all">
+                        <div class="flex items-center justify-center gap-2.5">
+                          <Icon name="ph:stack-fill" class="w-5 h-5 text-[#D79528] group-hover/all:scale-110 transition-transform duration-200" />
+                          <span class="font-bold text-sm group-hover/all:text-[#D79528] transition-colors duration-200">Ver todos los servicios</span>
+                          <Icon name="ph:arrow-right" class="w-4 h-4 text-[#D79528] group-hover/all:translate-x-1 transition-transform duration-200" />
+                        </div>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
             
             <!-- Projects Dropdown -->
             <div class="relative group">
@@ -143,41 +146,53 @@ import logoCarpio from '../../assets/LogoCarpioConstructora.svg';
                 <Icon name="ph:caret-down" class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180 text-white" />
               </a>
               <!-- Dropdown Menu -->
-              <div class="absolute top-full left-0 mt-2 w-72 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50">
-                <div class="py-3">
-                  <a href="/proyecto/proyecto-residencial-moderno" class="block px-4 py-3 font-heebo text-neutral-darkest hover:bg-gray-50 hover:text-gray-900 transition-all duration-200 border-l-4 border-transparent hover:border-gray-300">
-                    <div class="flex items-center gap-3">
-                      <Icon name="ph:house" class="w-5 h-5 text-gray-600" />
-                      <div>
-                        <span class="font-medium">Residencial Moderna Vista</span>
-                        <p class="text-xs text-gray-500 mt-0.5">Complejo habitacional moderno</p>
+              <div class="absolute top-full left-0 mt-2 w-72 bg-white backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50 overflow-hidden">
+                <div class="py-2">
+                  <a href="/proyecto/proyecto-residencial-moderno" class="block px-5 py-4 font-heebo text-neutral-darkest hover:bg-gradient-to-r hover:from-[#103646]/5 hover:to-transparent transition-all duration-200 border-l-4 border-transparent hover:border-[#103646] group/item">
+                    <div class="flex items-center gap-4">
+                      <div class="w-11 h-11 bg-gradient-to-br from-[#103646]/10 to-[#103646]/5 rounded-xl flex items-center justify-center group-hover/item:scale-110 group-hover/item:bg-[#103646] transition-all duration-300">
+                        <Icon name="ph:house-fill" class="w-6 h-6 text-[#103646] group-hover/item:text-white transition-colors duration-300" />
                       </div>
+                      <div class="flex-1">
+                        <span class="font-bold text-base block group-hover/item:text-[#103646] transition-colors duration-200">Residencial Moderna Vista</span>
+                        <p class="text-xs text-gray-500 mt-1 group-hover/item:text-gray-600">Complejo habitacional moderno</p>
+                      </div>
+                      <Icon name="ph:arrow-right" class="w-5 h-5 text-gray-400 opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-1 transition-all duration-200" />
                     </div>
                   </a>
-                  <a href="/proyecto/centro-comercial-innovador" class="block px-4 py-3 font-heebo text-neutral-darkest hover:bg-gray-50 hover:text-gray-900 transition-all duration-200 border-l-4 border-transparent hover:border-gray-300">
-                    <div class="flex items-center gap-3">
-                      <Icon name="ph:storefront" class="w-5 h-5 text-gray-600" />
-                      <div>
-                        <span class="font-medium">Centro Comercial Plaza</span>
-                        <p class="text-xs text-gray-500 mt-0.5">Espacio comercial innovador</p>
+                  
+                  <a href="/proyecto/centro-comercial-innovador" class="block px-5 py-4 font-heebo text-neutral-darkest hover:bg-gradient-to-r hover:from-[#D79528]/5 hover:to-transparent transition-all duration-200 border-l-4 border-transparent hover:border-[#D79528] group/item">
+                    <div class="flex items-center gap-4">
+                      <div class="w-11 h-11 bg-gradient-to-br from-[#D79528]/10 to-[#D79528]/5 rounded-xl flex items-center justify-center group-hover/item:scale-110 group-hover/item:bg-[#D79528] transition-all duration-300">
+                        <Icon name="ph:storefront-fill" class="w-6 h-6 text-[#D79528] group-hover/item:text-white transition-colors duration-300" />
                       </div>
+                      <div class="flex-1">
+                        <span class="font-bold text-base block group-hover/item:text-[#D79528] transition-colors duration-200">Centro Comercial Plaza</span>
+                        <p class="text-xs text-gray-500 mt-1 group-hover/item:text-gray-600">Espacio comercial innovador</p>
+                      </div>
+                      <Icon name="ph:arrow-right" class="w-5 h-5 text-gray-400 opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-1 transition-all duration-200" />
                     </div>
                   </a>
-                  <a href="/proyecto/parque-recreativo-familiar" class="block px-4 py-3 font-heebo text-neutral-darkest hover:bg-gray-50 hover:text-gray-900 transition-all duration-200 border-l-4 border-transparent hover:border-gray-300">
-                    <div class="flex items-center gap-3">
-                      <Icon name="ph:tree" class="w-5 h-5 text-gray-600" />
-                      <div>
-                        <span class="font-medium">Parque Recreativo Familiar</span>
-                        <p class="text-xs text-gray-500 mt-0.5">Área de esparcimiento</p>
+                  
+                  <a href="/proyecto/parque-recreativo-familiar" class="block px-5 py-4 font-heebo text-neutral-darkest hover:bg-gradient-to-r hover:from-[#103646]/5 hover:to-transparent transition-all duration-200 border-l-4 border-transparent hover:border-[#103646] group/item">
+                    <div class="flex items-center gap-4">
+                      <div class="w-11 h-11 bg-gradient-to-br from-[#103646]/10 to-[#103646]/5 rounded-xl flex items-center justify-center group-hover/item:scale-110 group-hover/item:bg-[#103646] transition-all duration-300">
+                        <Icon name="ph:tree-fill" class="w-6 h-6 text-[#103646] group-hover/item:text-white transition-colors duration-300" />
                       </div>
+                      <div class="flex-1">
+                        <span class="font-bold text-base block group-hover/item:text-[#103646] transition-colors duration-200">Parque Recreativo Familiar</span>
+                        <p class="text-xs text-gray-500 mt-1 group-hover/item:text-gray-600">Área de esparcimiento comunitario</p>
+                      </div>
+                      <Icon name="ph:arrow-right" class="w-5 h-5 text-gray-400 opacity-0 group-hover/item:opacity-100 group-hover/item:translate-x-1 transition-all duration-200" />
                     </div>
                   </a>
-                  <div class="border-t border-gray-100 mt-2 pt-2">
-                    <a href="/proyectos" class="block px-4 py-3 font-heebo text-gray-700 hover:bg-gray-50 transition-all duration-200 rounded-lg mx-2">
-                      <div class="flex items-center justify-center gap-2">
-                        <Icon name="ph:folder-open" class="w-4 h-4" />
-                        <span class="font-medium text-sm">Ver todos los proyectos</span>
-                        <Icon name="ph:arrow-right" class="w-4 h-4" />
+                  
+                  <div class="border-t border-gray-100 mt-2 pt-2 px-2">
+                    <a href="/proyectos" class="block px-4 py-3.5 font-heebo text-gray-700 hover:bg-gradient-to-r hover:from-[#D79528]/10 hover:to-transparent transition-all duration-200 rounded-xl group/all">
+                      <div class="flex items-center justify-center gap-2.5">
+                        <Icon name="ph:folder-open-fill" class="w-5 h-5 text-[#D79528] group-hover/all:scale-110 transition-transform duration-200" />
+                        <span class="font-bold text-sm group-hover/all:text-[#D79528] transition-colors duration-200">Ver todos los proyectos</span>
+                        <Icon name="ph:arrow-right" class="w-4 h-4 text-[#D79528] group-hover/all:translate-x-1 transition-transform duration-200" />
                       </div>
                     </a>
                   </div>
@@ -185,11 +200,10 @@ import logoCarpio from '../../assets/LogoCarpioConstructora.svg';
               </div>
             </nav>
           </div>
-        </div>
-        
-        <!-- Action Buttons - Right Aligned -->
-        <div class="flex gap-3 items-center justify-end relative">
-          <!-- Phone Button -->
+          
+          <!-- Action Buttons -->
+          <div class="flex gap-3 items-center">
+            <!-- Phone Button -->
             <Button 
               variant="outline" 
               size="sm"
@@ -276,39 +290,48 @@ import logoCarpio from '../../assets/LogoCarpioConstructora.svg';
                 
                 <!-- Services Section -->
                 <div class="py-4">
-                  <a href="/servicios" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gray-50 transition-all duration-200 group mb-4">
-                    <div class="w-10 h-10 bg-gray-100 rounded-xl flex items-center justify-center group-hover:bg-gray-300 group-hover:scale-110 transition-all duration-200">
-                      <Icon name="ph:buildings" class="w-5 h-5 text-gray-600 group-hover:text-gray-800 transition-colors duration-200" />
+                  <a href="/servicios" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-gradient-to-r hover:from-[#103646]/5 hover:to-transparent transition-all duration-200 group mb-4 border-l-4 border-transparent hover:border-[#103646]">
+                    <div class="w-10 h-10 bg-gradient-to-br from-[#103646]/10 to-[#103646]/5 rounded-xl flex items-center justify-center group-hover:bg-[#103646] group-hover:scale-110 transition-all duration-200">
+                      <Icon name="ph:stack-fill" class="w-5 h-5 text-[#103646] group-hover:text-white transition-colors duration-200" />
                     </div>
                     <div class="flex-1">
-                      <span class="font-bold text-gray-900 group-hover:text-gray-700 transition-colors duration-200">Servicios</span>
-                      <p class="text-xs text-gray-500 mt-0.5">Ver todos nuestros servicios</p>
+                      <span class="font-bold text-gray-900 group-hover:text-[#103646] transition-colors duration-200">Servicios</span>
+                      <p class="text-xs text-gray-500 mt-0.5">Nuestras soluciones</p>
                     </div>
-                    <Icon name="ph:caret-right" class="w-5 h-5 text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1 transition-all duration-200" />
+                    <Icon name="ph:arrow-right" class="w-5 h-5 text-gray-400 group-hover:text-[#103646] group-hover:translate-x-1 transition-all duration-200" />
                   </a>
                   <div class="space-y-2 pl-4">
-                    <a href="/servicios/construccion" class="mobile-nav-link group sub-item">
+                    <a href="/servicios/construccion" class="mobile-nav-link group sub-item border-l-4 border-transparent hover:border-[#103646]">
                       <div class="flex items-center gap-3">
-                        <Icon name="ph:hammer" class="w-4 h-4 text-gray-500" />
-                        <span>Construcción</span>
+                        <div class="w-8 h-8 bg-[#103646]/5 rounded-lg flex items-center justify-center group-hover:bg-[#103646]/10 transition-all duration-200">
+                          <Icon name="ph:hammer-fill" class="w-4 h-4 text-[#103646]" />
+                        </div>
+                        <div class="flex-1">
+                          <span class="font-medium text-sm">Construcción</span>
+                          <p class="text-xs text-gray-500">Proyectos desde cero</p>
+                        </div>
                       </div>
                     </a>
-                    <a href="/servicios/remodelacion" class="mobile-nav-link group sub-item">
+                    <a href="/servicios/remodelacion" class="mobile-nav-link group sub-item border-l-4 border-transparent hover:border-[#D79528]">
                       <div class="flex items-center gap-3">
-                        <Icon name="ph:wrench" class="w-4 h-4 text-gray-500" />
-                        <span>Remodelación</span>
+                        <div class="w-8 h-8 bg-[#D79528]/5 rounded-lg flex items-center justify-center group-hover:bg-[#D79528]/10 transition-all duration-200">
+                          <Icon name="ph:paint-roller-fill" class="w-4 h-4 text-[#D79528]" />
+                        </div>
+                        <div class="flex-1">
+                          <span class="font-medium text-sm">Remodelación</span>
+                          <p class="text-xs text-gray-500">Renovación de espacios</p>
+                        </div>
                       </div>
                     </a>
-                    <a href="/servicios/mantenimiento" class="mobile-nav-link group sub-item">
+                    <a href="/servicios/diseño-arquitectonico" class="mobile-nav-link group sub-item border-l-4 border-transparent hover:border-[#103646]">
                       <div class="flex items-center gap-3">
-                        <Icon name="ph:gear" class="w-4 h-4 text-gray-500" />
-                        <span>Mantenimiento</span>
-                      </div>
-                    </a>
-                    <a href="/servicios/diseño-arquitectonico" class="mobile-nav-link group sub-item">
-                      <div class="flex items-center gap-3">
-                        <Icon name="ph:ruler" class="w-4 h-4 text-gray-500" />
-                        <span>Diseño Arquitectónico</span>
+                        <div class="w-8 h-8 bg-[#103646]/5 rounded-lg flex items-center justify-center group-hover:bg-[#103646]/10 transition-all duration-200">
+                          <Icon name="ph:blueprint-fill" class="w-4 h-4 text-[#103646]" />
+                        </div>
+                        <div class="flex-1">
+                          <span class="font-medium text-sm">Diseño Arquitectónico</span>
+                          <p class="text-xs text-gray-500">Planificación profesional</p>
+                        </div>
                       </div>
                     </a>
                   </div>

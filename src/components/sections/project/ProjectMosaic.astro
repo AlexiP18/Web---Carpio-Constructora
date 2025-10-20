@@ -1,0 +1,266 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  images: (string | ImageMetadata)[];
+  title?: string;
+}
+
+const { images, title = "Explora Cada Detalle" } = Astro.props;
+
+// Helper function to get image src
+function getImageSrc(image: string | ImageMetadata): string {
+  return typeof image === 'string' ? image : image.src;
+}
+
+// Use more images for a richer mosaic - repeat if needed to fill the layout
+const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...images].slice(0, 9);
+---
+
+<section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 right-0 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-secondary/5 rounded-full blur-3xl"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:grid-four-fill" class="w-5 h-5 text-brand-primary" />
+        <span class="text-brand-primary font-semibold text-sm">Mosaico Visual</span>
+      </div>
+      
+      <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        {title}
+      </h2>
+      
+      <p class="text-xl text-gray-600 leading-relaxed">
+        Una vista completa del proyecto en diferentes ángulos y perspectivas
+      </p>
+    </div>
+
+    <!-- Mosaic Grid - Estructura específica según imagen de referencia -->
+    <div class="grid grid-cols-12 gap-4 lg:gap-6 auto-rows-[180px]" data-aos="fade-up" data-aos-delay="200">
+      
+      <!-- Fila 1: Grande izquierda + Mediano superior derecho + Pequeño esquina -->
+      {mosaicImages[0] && (
+        <div class="col-span-12 md:col-span-6 lg:col-span-4 row-span-3 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
+          <img
+            src={getImageSrc(mosaicImages[0])}
+            alt="Vista principal"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-primary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="flex items-center gap-3 text-white">
+                <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                  <Icon name="ph:eye-fill" class="w-5 h-5" />
+                </div>
+                <span class="font-bold text-lg">Vista Principal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {mosaicImages[1] && (
+        <div class="col-span-12 md:col-span-6 lg:col-span-5 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
+          <img
+            src={getImageSrc(mosaicImages[1])}
+            alt="Detalle arquitectónico"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="flex items-center gap-2 text-white">
+                <div class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <Icon name="ph:buildings" class="w-4 h-4" />
+                </div>
+                <span class="font-semibold text-sm">Arquitectura</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {mosaicImages[2] && (
+        <div class="col-span-12 md:col-span-6 lg:col-span-3 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
+          <img
+            src={getImageSrc(mosaicImages[2])}
+            alt="Vista destacada"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-secondary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="flex items-center gap-2 text-white">
+                <div class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <Icon name="ph:sparkle" class="w-4 h-4" />
+                </div>
+                <span class="font-semibold text-sm">Destacada</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <!-- Fila 2: Mediano izquierda inferior + Grande derecho -->
+      {mosaicImages[3] && (
+        <div class="col-span-12 md:col-span-6 lg:col-span-4 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
+          <img
+            src={getImageSrc(mosaicImages[3])}
+            alt="Espacio interior"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-primary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="flex items-center gap-2 text-white">
+                <div class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <Icon name="ph:door-open" class="w-4 h-4" />
+                </div>
+                <span class="font-semibold text-sm">Interior</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {mosaicImages[4] && (
+        <div class="col-span-12 md:col-span-6 lg:col-span-5 row-span-3 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
+          <img
+            src={getImageSrc(mosaicImages[4])}
+            alt="Vista panorámica"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-secondary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="flex items-center gap-3 text-white">
+                <div class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                  <Icon name="ph:image-square" class="w-5 h-5" />
+                </div>
+                <span class="font-bold text-lg">Panorámica</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <!-- Fila 3: Tres pequeñas en la parte inferior -->
+      {mosaicImages[5] && (
+        <div class="col-span-12 md:col-span-4 lg:col-span-3 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
+          <img
+            src={getImageSrc(mosaicImages[5])}
+            alt="Detalles finales"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="flex items-center gap-2 text-white">
+                <div class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <Icon name="ph:camera" class="w-4 h-4" />
+                </div>
+                <span class="font-semibold text-sm">Detalles</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {mosaicImages[6] && (
+        <div class="col-span-12 md:col-span-4 lg:col-span-3 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
+          <img
+            src={getImageSrc(mosaicImages[6])}
+            alt="Vista exterior"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-primary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="flex items-center gap-2 text-white">
+                <div class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <Icon name="ph:house-line" class="w-4 h-4" />
+                </div>
+                <span class="font-semibold text-sm">Exterior</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {mosaicImages[7] && (
+        <div class="col-span-12 md:col-span-4 lg:col-span-6 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
+          <img
+            src={getImageSrc(mosaicImages[7])}
+            alt="Acabados"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-secondary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="flex items-center gap-2 text-white">
+                <div class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <Icon name="ph:paint-brush" class="w-4 h-4" />
+                </div>
+                <span class="font-semibold text-sm">Acabados</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {mosaicImages[8] && (
+        <div class="col-span-12 md:col-span-6 lg:col-span-9 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
+          <img
+            src={getImageSrc(mosaicImages[8])}
+            alt="Vista complementaria"
+            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="flex items-center gap-2 text-white">
+                <div class="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                  <Icon name="ph:compass" class="w-4 h-4" />
+                </div>
+                <span class="font-semibold text-sm">Espacios</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="mt-16 bg-white rounded-3xl shadow-2xl border border-gray-100 p-8" data-aos="fade-up" data-aos-delay="400">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Icon name="ph:images-square-fill" class="w-8 h-8 text-brand-primary" />
+          </div>
+          <div class="text-3xl font-bold text-gray-900 mb-2">{images.length}+</div>
+          <div class="text-sm text-gray-600">Imágenes</div>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Icon name="ph:eye-fill" class="w-8 h-8 text-brand-secondary" />
+          </div>
+          <div class="text-3xl font-bold text-gray-900 mb-2">360°</div>
+          <div class="text-sm text-gray-600">Vista Completa</div>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Icon name="ph:camera-fill" class="w-8 h-8 text-brand-primary" />
+          </div>
+          <div class="text-3xl font-bold text-gray-900 mb-2">HD</div>
+          <div class="text-sm text-gray-600">Alta Calidad</div>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Icon name="ph:check-circle-fill" class="w-8 h-8 text-brand-secondary" />
+          </div>
+          <div class="text-3xl font-bold text-gray-900 mb-2">100%</div>
+          <div class="text-sm text-gray-600">Detallado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

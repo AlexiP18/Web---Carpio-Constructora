@@ -1,5 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components';
+
+// Import background image
+import serviciosBeneficiosImage from '../../../assets/img/ServiciosBeneficios.png';
 ---
 
 <section class="py-20 bg-gradient-to-br from-white via-gray-50 to-white">
@@ -82,7 +85,7 @@ import { Icon } from 'astro-icon/components';
         <!-- Main image container -->
         <div class="relative rounded-3xl overflow-hidden shadow-2xl">
           <img 
-            src="/images/placeholder-image-1.png" 
+            src={serviciosBeneficiosImage.src}
             alt="Servicios de construcción de alta calidad"
             class="w-full h-[600px] object-cover"
           />

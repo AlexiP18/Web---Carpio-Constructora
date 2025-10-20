@@ -1,0 +1,201 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  images: (string | ImageMetadata)[];
+  title?: string;
+}
+
+const { images, title = "Explora Cada Detalle" } = Astro.props;
+
+// Helper function to get image src
+function getImageSrc(image: string | ImageMetadata): string {
+  return typeof image === 'string' ? image : image.src;
+}
+
+// Ensure we have at least 9 images for the mosaic (repeat if needed)
+const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...images].slice(0, 9);
+
+// Define multiple solid layouts without blank spaces - Based on provided designs
+// Each layout is an array of blocks with: imageIndex, cols, rows, label, icon
+// All layouts match the exact structure from the reference images
+const layouts = [
+  // Layout 1 (Imagen 1): Bloque grande izquierda + grid derecha
+  // Row 1: 5 + 4 + 3 = 12
+  // Row 2: 5 (continúa) + 4 + 3 = 12
+  // Row 3: 4 + 4 + 4 = 12
+  [
+    { idx: 0, cols: 5, rows: 3, label: "Vista Principal", desc: "Perspectiva completa", icon: "ph:eye-fill" },
+    { idx: 1, cols: 4, rows: 1, label: "Arquitectura", desc: "", icon: "ph:buildings" },
+    { idx: 2, cols: 3, rows: 1, label: "Interior", desc: "", icon: "ph:door-open" },
+    { idx: 3, cols: 4, rows: 1, label: "Espacios", desc: "", icon: "ph:compass" },
+    { idx: 4, cols: 3, rows: 1, label: "Detalles", desc: "", icon: "ph:sparkle" },
+    { idx: 5, cols: 4, rows: 1, label: "Fachada", desc: "", icon: "ph:house-line" },
+    { idx: 6, cols: 4, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush" },
+    { idx: 7, cols: 4, rows: 1, label: "Panorámica", desc: "", icon: "ph:image-square" }
+  ],
+  
+  // Layout 2 (Imagen 2): Bloque grande izquierda + variación derecha
+  // Row 1: 5 + 4 + 3 = 12
+  // Row 2: 5 (continúa) + 3 + 4 = 12
+  // Row 3: 3 + 3 + 6 = 12
+  [
+    { idx: 0, cols: 5, rows: 3, label: "Vista Principal", desc: "Perspectiva completa", icon: "ph:eye-fill" },
+    { idx: 1, cols: 4, rows: 1, label: "Arquitectura", desc: "", icon: "ph:buildings" },
+    { idx: 2, cols: 3, rows: 1, label: "Interior", desc: "", icon: "ph:door-open" },
+    { idx: 3, cols: 3, rows: 1, label: "Detalles", desc: "", icon: "ph:sparkle" },
+    { idx: 4, cols: 4, rows: 2, label: "Espacios", desc: "Vista amplia", icon: "ph:compass" },
+    { idx: 5, cols: 3, rows: 1, label: "Exterior", desc: "", icon: "ph:house-line" },
+    { idx: 6, cols: 3, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush" },
+    { idx: 7, cols: 6, rows: 1, label: "Panorámica", desc: "", icon: "ph:image-square" }
+  ],
+  
+  // Layout 3 (Imagen 3): Bloque grande izquierda + torre vertical + detalles
+  // Row 1: 5 + 3 + 2 + 2 = 12
+  // Row 2: 5 (continúa) + 3 (continúa) + 2 + 2 = 12
+  // Row 3: 4 + 3 (continúa) + 5 = 12
+  [
+    { idx: 0, cols: 5, rows: 3, label: "Vista Principal", desc: "Perspectiva completa", icon: "ph:eye-fill" },
+    { idx: 1, cols: 3, rows: 3, label: "Arquitectura", desc: "Torre vertical", icon: "ph:buildings" },
+    { idx: 2, cols: 2, rows: 1, label: "Interior", desc: "", icon: "ph:door-open" },
+    { idx: 3, cols: 2, rows: 1, label: "Detalles", desc: "", icon: "ph:sparkle" },
+    { idx: 4, cols: 2, rows: 1, label: "Espacios", desc: "", icon: "ph:compass" },
+    { idx: 5, cols: 2, rows: 1, label: "Fachada", desc: "", icon: "ph:house-line" },
+    { idx: 6, cols: 4, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush" },
+    { idx: 7, cols: 5, rows: 1, label: "Panorámica", desc: "", icon: "ph:image-square" }
+  ],
+  
+  // Layout 4 (Imagen 4): Tres bloques grandes arriba + mosaico abajo
+  // Row 1: 4 + 5 + 3 = 12
+  // Row 2: 4 (continúa) + 5 (continúa) + 3 (continúa) = 12
+  // Row 3: 4 + 3 + 2 + 3 = 12
+  [
+    { idx: 0, cols: 4, rows: 2, label: "Vista Principal", desc: "", icon: "ph:eye-fill" },
+    { idx: 1, cols: 5, rows: 2, label: "Arquitectura", desc: "", icon: "ph:buildings" },
+    { idx: 2, cols: 3, rows: 2, label: "Interior", desc: "", icon: "ph:door-open" },
+    { idx: 3, cols: 4, rows: 1, label: "Espacios", desc: "", icon: "ph:compass" },
+    { idx: 4, cols: 3, rows: 1, label: "Detalles", desc: "", icon: "ph:sparkle" },
+    { idx: 5, cols: 2, rows: 1, label: "Fachada", desc: "", icon: "ph:house-line" },
+    { idx: 6, cols: 3, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush" }
+  ],
+  
+  // Layout 5 (Imagen 5): Dos grandes arriba + tres medios + dos grandes abajo
+  // Row 1: 6 + 6 = 12
+  // Row 2: 4 + 4 + 4 = 12
+  // Row 3: 6 + 6 = 12
+  [
+    { idx: 0, cols: 6, rows: 1, label: "Vista Principal", desc: "", icon: "ph:eye-fill" },
+    { idx: 1, cols: 6, rows: 1, label: "Arquitectura", desc: "", icon: "ph:buildings" },
+    { idx: 2, cols: 4, rows: 2, label: "Interior", desc: "", icon: "ph:door-open" },
+    { idx: 3, cols: 4, rows: 2, label: "Espacios", desc: "", icon: "ph:compass" },
+    { idx: 4, cols: 4, rows: 2, label: "Detalles", desc: "", icon: "ph:sparkle" },
+    { idx: 5, cols: 6, rows: 3, label: "Panorámica", desc: "", icon: "ph:image-square" },
+    { idx: 6, cols: 6, rows: 3, label: "Fachada", desc: "", icon: "ph:house-line" }
+  ]
+];
+
+// Select random layout
+const selectedLayout = layouts[Math.floor(Math.random() * layouts.length)];
+
+// Gradient colors for variety
+const gradients = [
+  "from-brand-primary/80 via-brand-primary/20",
+  "from-brand-secondary/80 via-brand-secondary/20",
+  "from-gray-900/80 via-gray-900/20"
+];
+---
+
+<section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute top-0 right-0 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 bg-brand-secondary/5 rounded-full blur-3xl"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Section Header -->
+    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+      <div class="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-4 py-2 mb-6">
+        <Icon name="ph:grid-four-fill" class="w-5 h-5 text-brand-primary" />
+        <span class="text-brand-primary font-semibold text-sm">Mosaico Visual</span>
+      </div>
+      
+      <h2 class="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+        {title}
+      </h2>
+      
+      <p class="text-xl text-gray-600 leading-relaxed">
+        Una vista completa del proyecto en diferentes ángulos y perspectivas
+      </p>
+    </div>
+
+    <!-- Mosaic Grid - Estructura aleatoria pero siempre sólida sin espacios -->
+    <div class="grid grid-cols-12 gap-4 lg:gap-6 auto-rows-[200px]" data-aos="fade-up" data-aos-delay="200">
+      
+      {selectedLayout.map((block, index) => {
+        const image = mosaicImages[block.idx];
+        const gradient = gradients[index % gradients.length];
+        
+        return image && (
+          <div 
+            class={`col-span-12 md:col-span-6 lg:col-span-${block.cols} row-span-${block.rows} group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500`}
+          >
+            <img
+              src={getImageSrc(image)}
+              alt={block.label}
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            />
+            <div class={`absolute inset-0 bg-gradient-to-t ${gradient} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}>
+              <div class="absolute bottom-4 left-4 right-4">
+                <div class="flex items-center gap-3 text-white">
+                  <div class={`${block.rows >= 3 ? 'w-12 h-12' : 'w-10 h-10'} bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center`}>
+                    <Icon name={block.icon} class={`${block.rows >= 3 ? 'w-6 h-6' : 'w-5 h-5'}`} />
+                  </div>
+                  <div>
+                    <span class={`font-bold ${block.rows >= 3 ? 'text-lg' : 'text-base'} block`}>{block.label}</span>
+                    {block.desc && <span class="text-sm text-white/90">{block.desc}</span>}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Stats Bar -->
+    <!-- <div class="mt-16 bg-white rounded-3xl shadow-2xl border border-gray-100 p-8" data-aos="fade-up" data-aos-delay="400">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Icon name="ph:images-square-fill" class="w-8 h-8 text-brand-primary" />
+          </div>
+          <div class="text-3xl font-bold text-gray-900 mb-2">{images.length}+</div>
+          <div class="text-sm text-gray-600">Imágenes</div>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Icon name="ph:eye-fill" class="w-8 h-8 text-brand-secondary" />
+          </div>
+          <div class="text-3xl font-bold text-gray-900 mb-2">360°</div>
+          <div class="text-sm text-gray-600">Vista Completa</div>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Icon name="ph:camera-fill" class="w-8 h-8 text-brand-primary" />
+          </div>
+          <div class="text-3xl font-bold text-gray-900 mb-2">HD</div>
+          <div class="text-sm text-gray-600">Alta Calidad</div>
+        </div>
+        
+        <div class="text-center">
+          <div class="w-16 h-16 bg-brand-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <Icon name="ph:check-circle-fill" class="w-8 h-8 text-brand-secondary" />
+          </div>
+          <div class="text-3xl font-bold text-gray-900 mb-2">100%</div>
+          <div class="text-sm text-gray-600">Detallado</div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</section>

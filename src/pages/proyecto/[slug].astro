@@ -5,6 +5,7 @@ import Footer from "../../components/sections/Footer.astro";
 import ProjectHero from "../../components/sections/project/ProjectHero.astro";
 import ProjectContent from "../../components/sections/project/ProjectContent.astro";
 import ProjectImageSlider from "../../components/sections/project/ProjectImageSlider.astro";
+import ProjectMosaicNew from "../../components/sections/project/ProjectMosaicNew.astro";
 import ProjectTestimonials from "../../components/sections/project/ProjectTestimonials.astro";
 
 // Import project images
@@ -203,6 +204,11 @@ const { title, description, tags, content, images, testimonial, testimonials } =
     <ProjectImageSlider 
       images={images}
       title="Galería del Proyecto"
+    />
+    
+    <ProjectMosaicNew 
+      images={images}
+      title="Explora Cada Detalle"
     />
     
     <!-- <ProjectTestimonials 

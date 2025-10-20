@@ -2,15 +2,15 @@
 import { Icon } from 'astro-icon/components';
 
 // Asset constants - Corporate Logo
-const logoImage = "/src/assets/LogoCarpio.svg";
+import logoCarpio from '../../assets/LogoCarpioConstructora.svg';
 ---
 
-<footer class="bg-gradient-to-br from-[#103646] via-[#103646]/90 to-[#103646]/80 relative overflow-hidden py-4">
+<footer class="bg-gradient-to-br from-[#0d2d3a] via-[#103646] to-[#14424f] relative overflow-hidden py-4">
   <!-- Background decoration -->
   <div class="absolute inset-0">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#D79528]/10 rounded-full blur-2xl"></div>
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white/8 rounded-full blur-xl"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-[#D79528]/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#D79528]/15 rounded-full blur-2xl"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-6">
@@ -21,7 +21,7 @@ const logoImage = "/src/assets/LogoCarpio.svg";
         <div class="lg:col-span-1">
           <div class="mb-6">
             <img
-              src={logoImage}
+              src={logoCarpio.src}
               alt="Constructora Carpio"
               class="h-10 mb-6 filter brightness-0 invert"
             />
@@ -167,17 +167,6 @@ const logoImage = "/src/assets/LogoCarpio.svg";
                 />
               </a>
               <a 
-                href="https://linkedin.com" 
-                target="_blank"
-                class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center hover:bg-[#0A66C2] hover:border-[#0A66C2] group transition-all duration-300 hover:scale-110"
-                aria-label="Síguenos en LinkedIn"
-              >
-                <Icon 
-                  name="ph:linkedin-logo" 
-                  class="w-5 h-5 text-white/70 group-hover:text-white transition-colors duration-300" 
-                />
-              </a>
-              <a 
                 href="https://youtube.com" 
                 target="_blank"
                 class="w-10 h-10 bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl flex items-center justify-center hover:bg-[#FF0000] hover:border-[#FF0000] group transition-all duration-300 hover:scale-110"
@@ -235,14 +224,10 @@ const logoImage = "/src/assets/LogoCarpio.svg";
     <div class="border-t border-white/10 pt-6 pb-4">
       <div class="flex flex-col lg:flex-row justify-between items-center gap-6">
         <!-- Copyright -->
-        <div class="flex flex-col sm:flex-row items-center gap-4 text-center lg:text-left">
+        <div class="text-center lg:text-left">
           <p class="text-gray-400 text-sm">
             © 2025 Constructora Carpio. Todos los derechos reservados.
           </p>
-          <div class="flex items-center gap-2 text-gray-400 text-sm">
-            <Icon name="ph:shield-check" class="w-4 h-4 text-[#D79528]" />
-            <span>Empresa certificada CFIA</span>
-          </div>
         </div>
 
         <!-- Legal Links -->
