@@ -20,14 +20,16 @@ import logoCarpio from '../../assets/LogoCarpioConstructora.svg';
         <!-- Company Info -->
         <div class="lg:col-span-1">
           <div class="mb-6">
-            <img
-              src={logoCarpio.src}
-              alt="Constructora Carpio"
-              class="h-10 mb-6 filter brightness-0 invert"
-            />
+            <a href="/" class="inline-block footer-logo-link">
+              <img
+                src={logoCarpio.src}
+                alt="Constructora Carpio"
+                class="h-10 mb-6 filter brightness-0 invert transition-all duration-300"
+              />
+            </a>
             <p class="text-gray-300 leading-relaxed mb-6">
-              Construyendo sueños con calidad, innovación y compromiso. Más de 15 años de experiencia 
-              en proyectos residenciales y comerciales en Costa Rica.
+              Construyendo sueños con calidad, innovación y compromiso. Más de 8 años de experiencia 
+              en proyectos residenciales y comerciales en Ecuador.
             </p>
           </div>
           
@@ -64,25 +66,19 @@ import logoCarpio from '../../assets/LogoCarpioConstructora.svg';
             <li>
               <a href="/servicios/construccion" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
                 <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
-                Construcción Residencial
-              </a>
-            </li>
-            <li>
-              <a href="/servicios/construccion" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
-                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
-                Construcción Comercial
+                Construcción
               </a>
             </li>
             <li>
               <a href="/servicios/remodelacion" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
                 <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
-                Remodelaciones
+                Remodelación
               </a>
             </li>
             <li>
-              <a href="/servicios/mantenimiento" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
+              <a href="/servicios/diseno-arquitectonico" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
                 <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
-                Mantenimiento
+                Diseño Arquitectónico
               </a>
             </li>
             <li>
@@ -104,7 +100,7 @@ import logoCarpio from '../../assets/LogoCarpioConstructora.svg';
             <li>
               <a href="/quienes-somos" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
                 <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
-                Quiénes Somos
+                Nosotros
               </a>
             </li>
             <li>
@@ -117,18 +113,6 @@ import logoCarpio from '../../assets/LogoCarpioConstructora.svg';
               <a href="/contacto" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
                 <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
                 Contacto
-              </a>
-            </li>
-            <li>
-              <a href="/blog" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
-                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
-                Blog y Noticias
-              </a>
-            </li>
-            <li>
-              <a href="/testimonios" class="text-gray-300 hover:text-[#D79528] transition-colors duration-200 text-sm flex items-center gap-2 group">
-                <Icon name="ph:caret-right" class="w-4 h-4 text-gray-500 group-hover:text-[#D79528] transition-colors duration-200" />
-                Testimonios
               </a>
             </li>
           </ul>
@@ -255,3 +239,11 @@ import logoCarpio from '../../assets/LogoCarpioConstructora.svg';
     </div>
   </div>
 </footer>
+
+<style>
+  /* Footer logo hover effect - Change to secondary color */
+  .footer-logo-link:hover img {
+    filter: brightness(0) saturate(100%) invert(63%) sepia(89%) saturate(503%) hue-rotate(359deg) brightness(91%) contrast(91%);
+    transform: scale(1.05);
+  }
+</style>

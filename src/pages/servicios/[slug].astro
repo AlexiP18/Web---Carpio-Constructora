@@ -59,17 +59,23 @@ export function getStaticPaths() {
             {
               number: '01',
               title: 'Evaluación Inicial',
-              description: 'Analizamos el terreno y definimos los requisitos del proyecto.',
+              description: 'Comenzamos con una reunión inicial para conocer las necesidades y expectativas del cliente.',
               icon: 'ph:magnifying-glass'
             },
             {
               number: '02',
+              title: 'Reconocimiento del espacio',
+              description: 'Analizamos el sitio y definimos los requisitos del proyecto.',
+              icon: 'ph:blueprint'
+            },
+            {
+              number: '03',
               title: 'Diseño y Planificación',
               description: 'Creamos planos detallados y cronogramas de trabajo.',
               icon: 'ph:blueprint'
             },
             {
-              number: '03',
+              number: '04',
               title: 'Construcción',
               description: 'Ejecutamos el proyecto con supervisión constante de calidad.',
               icon: 'ph:hammer'
@@ -341,7 +347,7 @@ const { title, subtitle, description, backgroundImage, service } = Astro.props;
   /> -->
   
   <ServicioCTA 
-    title="Solicita tu cotización hoy"
+    title="Solicita tu asesoría hoy"
     description={`Contáctanos para obtener más información sobre nuestro ${service.name.toLowerCase()} y cómo podemos ayudarte.`}
     primaryButtonText="Solicitar Cotización"
     primaryButtonHref="/contacto"

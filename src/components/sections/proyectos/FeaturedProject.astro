@@ -2,22 +2,28 @@
 import { Icon } from 'astro-icon/components';
 import Button from '../../ui/Button.astro';
 
+// Import project images
+import projectImage1 from '../../../assets/img/projects/PROJECT_Hero_Slider_1.webp';
+import projectImage2 from '../../../assets/img/projects/PROJECT_Hero_Slider_2.webp';
+import projectImage3 from '../../../assets/img/projects/PROJECT_Hero_Slider_3.webp';
+import projectImage4 from '../../../assets/img/projects/PROJECT_Hero_Slider_4.webp';
+
 // Proyecto destacado principal
 const featuredProject = {
-  title: "Residencial Las Palmas",
+  title: "Los Arrayanes de Izamba",
   subtitle: "Nuestro Proyecto Insignia",
   description: "Un desarrollo residencial de lujo que redefine el concepto de vivienda moderna en Ecuador. Con arquitectura contemporánea, espacios amplios y acabados de primera calidad, Las Palmas representa la excelencia en construcción residencial.",
   images: [
-    "/images/placeholder-image-1.png",
-    "/images/placeholder-image-2.png",
-    "/images/placeholder-image.png",
-    "/images/layout-355.png"
+    projectImage1,
+    projectImage2,
+    projectImage3,
+    projectImage4
   ],
   stats: [
     { icon: "ph:buildings", label: "Área Total", value: "12,500 m²" },
     { icon: "ph:house-line", label: "Unidades", value: "85 Casas" },
     { icon: "ph:calendar-check", label: "Completado", value: "2024" },
-    { icon: "ph:map-pin", label: "Ubicación", value: "Quito, Ecuador" }
+    { icon: "ph:map-pin", label: "Ubicación", value: "Ambato, Ecuador" }
   ],
   features: [
     "Diseño arquitectónico contemporáneo",
@@ -73,7 +79,7 @@ const featuredProject = {
                 data-slide-index={index}
               >
                 <img 
-                  src={image} 
+                  src={image.src} 
                   alt={`${featuredProject.title} - Imagen ${index + 1}`}
                   class="w-full h-full object-cover"
                 />
@@ -89,7 +95,7 @@ const featuredProject = {
             <h3 class="text-3xl font-bold mb-2">{featuredProject.title}</h3>
             <div class="flex items-center gap-2 text-white/90">
               <Icon name="ph:map-pin-fill" class="w-5 h-5" />
-              <span>Quito, Ecuador</span>
+              <span>Ambato, Ecuador</span>
             </div>
           </div>
 
