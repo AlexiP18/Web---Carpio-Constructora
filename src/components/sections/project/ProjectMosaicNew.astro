@@ -17,7 +17,7 @@ function getImageSrc(image: string | ImageMetadata): string {
 const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...images].slice(0, 9);
 
 // Define multiple solid layouts without blank spaces - Based on provided designs
-// Each layout is an array of blocks with: imageIndex, cols, rows, label, icon
+// Each layout is an array of blocks with: imageIndex, cols, rows, label, icon, fullDesc, materials, features
 // All layouts match the exact structure from the reference images
 const layouts = [
   // Layout 1 (Imagen 1): Bloque grande izquierda + grid derecha
@@ -25,14 +25,14 @@ const layouts = [
   // Row 2: 5 (continúa) + 4 + 3 = 12
   // Row 3: 4 + 4 + 4 = 12
   [
-    { idx: 0, cols: 5, rows: 3, label: "Vista Principal", desc: "Perspectiva completa", icon: "ph:eye-fill" },
-    { idx: 1, cols: 4, rows: 1, label: "Arquitectura", desc: "", icon: "ph:buildings" },
-    { idx: 2, cols: 3, rows: 1, label: "Interior", desc: "", icon: "ph:door-open" },
-    { idx: 3, cols: 4, rows: 1, label: "Espacios", desc: "", icon: "ph:compass" },
-    { idx: 4, cols: 3, rows: 1, label: "Detalles", desc: "", icon: "ph:sparkle" },
-    { idx: 5, cols: 4, rows: 1, label: "Fachada", desc: "", icon: "ph:house-line" },
-    { idx: 6, cols: 4, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush" },
-    { idx: 7, cols: 4, rows: 1, label: "Panorámica", desc: "", icon: "ph:image-square" }
+    { idx: 0, cols: 5, rows: 3, label: "Vista Principal", desc: "Perspectiva completa", icon: "ph:eye-fill", fullDesc: "Vista panorámica del proyecto que muestra la arquitectura completa y el entorno circundante", materials: "Concreto armado, Vidrio templado, Acabados premium", features: "Diseño moderno, Iluminación natural, Espacios amplios" },
+    { idx: 1, cols: 4, rows: 1, label: "Arquitectura", desc: "", icon: "ph:buildings", fullDesc: "Detalles arquitectónicos que destacan el diseño único y funcional del proyecto", materials: "Estructura de acero, Mampostería reforzada, Impermeabilización", features: "Diseño antisísmico, Ventilación cruzada, Eficiencia energética" },
+    { idx: 2, cols: 3, rows: 1, label: "Interior", desc: "", icon: "ph:door-open", fullDesc: "Espacios interiores diseñados para máximo confort y funcionalidad", materials: "Pisos de porcelanato, Puertas de madera, Pintura lavable", features: "Espacios abiertos, Iluminación LED, Climatización" },
+    { idx: 3, cols: 4, rows: 1, label: "Espacios", desc: "", icon: "ph:compass", fullDesc: "Distribución inteligente de áreas para aprovechamiento óptimo del espacio", materials: "Divisiones ligeras, Cancelería de aluminio, Acabados finos", features: "Flexibilidad espacial, Privacidad acústica, Áreas multifuncionales" },
+    { idx: 4, cols: 3, rows: 1, label: "Detalles", desc: "", icon: "ph:sparkle", fullDesc: "Acabados de primera calidad que reflejan la excelencia del proyecto", materials: "Herrajes importados, Grifería de lujo, Accesorios premium", features: "Atención al detalle, Durabilidad garantizada, Mantenimiento mínimo" },
+    { idx: 5, cols: 4, rows: 1, label: "Fachada", desc: "", icon: "ph:house-line", fullDesc: "Fachada moderna con materiales de alta durabilidad y estética contemporánea", materials: "Revestimiento cerámico, Aluminio anodizado, Cristal de seguridad", features: "Aislamiento térmico, Resistente a intemperie, Bajo mantenimiento" },
+    { idx: 6, cols: 4, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush", fullDesc: "Acabados premium que garantizan calidad y elegancia en cada detalle", materials: "Pintura ecológica, Molduras decorativas, Zócalos de madera", features: "Fácil limpieza, Resistente a humedad, Acabado impecable" },
+    { idx: 7, cols: 4, rows: 1, label: "Panorámica", desc: "", icon: "ph:image-square", fullDesc: "Vista completa que muestra la integración del proyecto con su entorno", materials: "Paisajismo profesional, Áreas verdes, Iluminación exterior", features: "Vistas despejadas, Orientación solar, Privacidad visual" }
   ],
   
   // Layout 2 (Imagen 2): Bloque grande izquierda + variación derecha
@@ -40,14 +40,14 @@ const layouts = [
   // Row 2: 5 (continúa) + 3 + 4 = 12
   // Row 3: 3 + 3 + 6 = 12
   [
-    { idx: 0, cols: 5, rows: 3, label: "Vista Principal", desc: "Perspectiva completa", icon: "ph:eye-fill" },
-    { idx: 1, cols: 4, rows: 1, label: "Arquitectura", desc: "", icon: "ph:buildings" },
-    { idx: 2, cols: 3, rows: 1, label: "Interior", desc: "", icon: "ph:door-open" },
-    { idx: 3, cols: 3, rows: 1, label: "Detalles", desc: "", icon: "ph:sparkle" },
-    { idx: 4, cols: 4, rows: 2, label: "Espacios", desc: "Vista amplia", icon: "ph:compass" },
-    { idx: 5, cols: 3, rows: 1, label: "Exterior", desc: "", icon: "ph:house-line" },
-    { idx: 6, cols: 3, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush" },
-    { idx: 7, cols: 6, rows: 1, label: "Panorámica", desc: "", icon: "ph:image-square" }
+    { idx: 0, cols: 5, rows: 3, label: "Vista Principal", desc: "Perspectiva completa", icon: "ph:eye-fill", fullDesc: "Vista panorámica del proyecto que muestra la arquitectura completa y el entorno circundante", materials: "Concreto armado, Vidrio templado, Acabados premium", features: "Diseño moderno, Iluminación natural, Espacios amplios" },
+    { idx: 1, cols: 4, rows: 1, label: "Arquitectura", desc: "", icon: "ph:buildings", fullDesc: "Detalles arquitectónicos que destacan el diseño único y funcional del proyecto", materials: "Estructura de acero, Mampostería reforzada, Impermeabilización", features: "Diseño antisísmico, Ventilación cruzada, Eficiencia energética" },
+    { idx: 2, cols: 3, rows: 1, label: "Interior", desc: "", icon: "ph:door-open", fullDesc: "Espacios interiores diseñados para máximo confort y funcionalidad", materials: "Pisos de porcelanato, Puertas de madera, Pintura lavable", features: "Espacios abiertos, Iluminación LED, Climatización" },
+    { idx: 3, cols: 3, rows: 1, label: "Detalles", desc: "", icon: "ph:sparkle", fullDesc: "Acabados de primera calidad que reflejan la excelencia del proyecto", materials: "Herrajes importados, Grifería de lujo, Accesorios premium", features: "Atención al detalle, Durabilidad garantizada, Mantenimiento mínimo" },
+    { idx: 4, cols: 4, rows: 2, label: "Espacios", desc: "Vista amplia", icon: "ph:compass", fullDesc: "Distribución inteligente de áreas para aprovechamiento óptimo del espacio", materials: "Divisiones ligeras, Cancelería de aluminio, Acabados finos", features: "Flexibilidad espacial, Privacidad acústica, Áreas multifuncionales" },
+    { idx: 5, cols: 3, rows: 1, label: "Exterior", desc: "", icon: "ph:house-line", fullDesc: "Fachada moderna con materiales de alta durabilidad y estética contemporánea", materials: "Revestimiento cerámico, Aluminio anodizado, Cristal de seguridad", features: "Aislamiento térmico, Resistente a intemperie, Bajo mantenimiento" },
+    { idx: 6, cols: 3, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush", fullDesc: "Acabados premium que garantizan calidad y elegancia en cada detalle", materials: "Pintura ecológica, Molduras decorativas, Zócalos de madera", features: "Fácil limpieza, Resistente a humedad, Acabado impecable" },
+    { idx: 7, cols: 6, rows: 1, label: "Panorámica", desc: "", icon: "ph:image-square", fullDesc: "Vista completa que muestra la integración del proyecto con su entorno", materials: "Paisajismo profesional, Áreas verdes, Iluminación exterior", features: "Vistas despejadas, Orientación solar, Privacidad visual" }
   ],
   
   // Layout 3 (Imagen 3): Bloque grande izquierda + torre vertical + detalles
@@ -55,14 +55,14 @@ const layouts = [
   // Row 2: 5 (continúa) + 3 (continúa) + 2 + 2 = 12
   // Row 3: 4 + 3 (continúa) + 5 = 12
   [
-    { idx: 0, cols: 5, rows: 3, label: "Vista Principal", desc: "Perspectiva completa", icon: "ph:eye-fill" },
-    { idx: 1, cols: 3, rows: 3, label: "Arquitectura", desc: "Torre vertical", icon: "ph:buildings" },
-    { idx: 2, cols: 2, rows: 1, label: "Interior", desc: "", icon: "ph:door-open" },
-    { idx: 3, cols: 2, rows: 1, label: "Detalles", desc: "", icon: "ph:sparkle" },
-    { idx: 4, cols: 2, rows: 1, label: "Espacios", desc: "", icon: "ph:compass" },
-    { idx: 5, cols: 2, rows: 1, label: "Fachada", desc: "", icon: "ph:house-line" },
-    { idx: 6, cols: 4, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush" },
-    { idx: 7, cols: 5, rows: 1, label: "Panorámica", desc: "", icon: "ph:image-square" }
+    { idx: 0, cols: 5, rows: 3, label: "Vista Principal", desc: "Perspectiva completa", icon: "ph:eye-fill", fullDesc: "Vista panorámica del proyecto que muestra la arquitectura completa y el entorno circundante", materials: "Concreto armado, Vidrio templado, Acabados premium", features: "Diseño moderno, Iluminación natural, Espacios amplios" },
+    { idx: 1, cols: 3, rows: 3, label: "Arquitectura", desc: "Torre vertical", icon: "ph:buildings", fullDesc: "Detalles arquitectónicos que destacan el diseño único y funcional del proyecto", materials: "Estructura de acero, Mampostería reforzada, Impermeabilización", features: "Diseño antisísmico, Ventilación cruzada, Eficiencia energética" },
+    { idx: 2, cols: 2, rows: 1, label: "Interior", desc: "", icon: "ph:door-open", fullDesc: "Espacios interiores diseñados para máximo confort y funcionalidad", materials: "Pisos de porcelanato, Puertas de madera, Pintura lavable", features: "Espacios abiertos, Iluminación LED, Climatización" },
+    { idx: 3, cols: 2, rows: 1, label: "Detalles", desc: "", icon: "ph:sparkle", fullDesc: "Acabados de primera calidad que reflejan la excelencia del proyecto", materials: "Herrajes importados, Grifería de lujo, Accesorios premium", features: "Atención al detalle, Durabilidad garantizada, Mantenimiento mínimo" },
+    { idx: 4, cols: 2, rows: 1, label: "Espacios", desc: "", icon: "ph:compass", fullDesc: "Distribución inteligente de áreas para aprovechamiento óptimo del espacio", materials: "Divisiones ligeras, Cancelería de aluminio, Acabados finos", features: "Flexibilidad espacial, Privacidad acústica, Áreas multifuncionales" },
+    { idx: 5, cols: 2, rows: 1, label: "Fachada", desc: "", icon: "ph:house-line", fullDesc: "Fachada moderna con materiales de alta durabilidad y estética contemporánea", materials: "Revestimiento cerámico, Aluminio anodizado, Cristal de seguridad", features: "Aislamiento térmico, Resistente a intemperie, Bajo mantenimiento" },
+    { idx: 6, cols: 4, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush", fullDesc: "Acabados premium que garantizan calidad y elegancia en cada detalle", materials: "Pintura ecológica, Molduras decorativas, Zócalos de madera", features: "Fácil limpieza, Resistente a humedad, Acabado impecable" },
+    { idx: 7, cols: 5, rows: 1, label: "Panorámica", desc: "", icon: "ph:image-square", fullDesc: "Vista completa que muestra la integración del proyecto con su entorno", materials: "Paisajismo profesional, Áreas verdes, Iluminación exterior", features: "Vistas despejadas, Orientación solar, Privacidad visual" }
   ],
   
   // Layout 4 (Imagen 4): Tres bloques grandes arriba + mosaico abajo
@@ -70,13 +70,13 @@ const layouts = [
   // Row 2: 4 (continúa) + 5 (continúa) + 3 (continúa) = 12
   // Row 3: 4 + 3 + 2 + 3 = 12
   [
-    { idx: 0, cols: 4, rows: 2, label: "Vista Principal", desc: "", icon: "ph:eye-fill" },
-    { idx: 1, cols: 5, rows: 2, label: "Arquitectura", desc: "", icon: "ph:buildings" },
-    { idx: 2, cols: 3, rows: 2, label: "Interior", desc: "", icon: "ph:door-open" },
-    { idx: 3, cols: 4, rows: 1, label: "Espacios", desc: "", icon: "ph:compass" },
-    { idx: 4, cols: 3, rows: 1, label: "Detalles", desc: "", icon: "ph:sparkle" },
-    { idx: 5, cols: 2, rows: 1, label: "Fachada", desc: "", icon: "ph:house-line" },
-    { idx: 6, cols: 3, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush" }
+    { idx: 0, cols: 4, rows: 2, label: "Vista Principal", desc: "", icon: "ph:eye-fill", fullDesc: "Vista panorámica del proyecto que muestra la arquitectura completa y el entorno circundante", materials: "Concreto armado, Vidrio templado, Acabados premium", features: "Diseño moderno, Iluminación natural, Espacios amplios" },
+    { idx: 1, cols: 5, rows: 2, label: "Arquitectura", desc: "", icon: "ph:buildings", fullDesc: "Detalles arquitectónicos que destacan el diseño único y funcional del proyecto", materials: "Estructura de acero, Mampostería reforzada, Impermeabilización", features: "Diseño antisísmico, Ventilación cruzada, Eficiencia energética" },
+    { idx: 2, cols: 3, rows: 2, label: "Interior", desc: "", icon: "ph:door-open", fullDesc: "Espacios interiores diseñados para máximo confort y funcionalidad", materials: "Pisos de porcelanato, Puertas de madera, Pintura lavable", features: "Espacios abiertos, Iluminación LED, Climatización" },
+    { idx: 3, cols: 4, rows: 1, label: "Espacios", desc: "", icon: "ph:compass", fullDesc: "Distribución inteligente de áreas para aprovechamiento óptimo del espacio", materials: "Divisiones ligeras, Cancelería de aluminio, Acabados finos", features: "Flexibilidad espacial, Privacidad acústica, Áreas multifuncionales" },
+    { idx: 4, cols: 3, rows: 1, label: "Detalles", desc: "", icon: "ph:sparkle", fullDesc: "Acabados de primera calidad que reflejan la excelencia del proyecto", materials: "Herrajes importados, Grifería de lujo, Accesorios premium", features: "Atención al detalle, Durabilidad garantizada, Mantenimiento mínimo" },
+    { idx: 5, cols: 2, rows: 1, label: "Fachada", desc: "", icon: "ph:house-line", fullDesc: "Fachada moderna con materiales de alta durabilidad y estética contemporánea", materials: "Revestimiento cerámico, Aluminio anodizado, Cristal de seguridad", features: "Aislamiento térmico, Resistente a intemperie, Bajo mantenimiento" },
+    { idx: 6, cols: 3, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush", fullDesc: "Acabados premium que garantizan calidad y elegancia en cada detalle", materials: "Pintura ecológica, Molduras decorativas, Zócalos de madera", features: "Fácil limpieza, Resistente a humedad, Acabado impecable" }
   ],
   
   // Layout 5 (Imagen 5): Dos grandes arriba + tres medios + dos grandes abajo
@@ -84,13 +84,13 @@ const layouts = [
   // Row 2: 4 + 4 + 4 = 12
   // Row 3: 6 + 6 = 12
   [
-    { idx: 0, cols: 6, rows: 1, label: "Vista Principal", desc: "", icon: "ph:eye-fill" },
-    { idx: 1, cols: 6, rows: 1, label: "Arquitectura", desc: "", icon: "ph:buildings" },
-    { idx: 2, cols: 4, rows: 2, label: "Interior", desc: "", icon: "ph:door-open" },
-    { idx: 3, cols: 4, rows: 2, label: "Espacios", desc: "", icon: "ph:compass" },
-    { idx: 4, cols: 4, rows: 2, label: "Detalles", desc: "", icon: "ph:sparkle" },
-    { idx: 5, cols: 6, rows: 3, label: "Panorámica", desc: "", icon: "ph:image-square" },
-    { idx: 6, cols: 6, rows: 3, label: "Fachada", desc: "", icon: "ph:house-line" }
+    { idx: 0, cols: 6, rows: 1, label: "Vista Principal", desc: "", icon: "ph:eye-fill", fullDesc: "Vista panorámica del proyecto que muestra la arquitectura completa y el entorno circundante", materials: "Concreto armado, Vidrio templado, Acabados premium", features: "Diseño moderno, Iluminación natural, Espacios amplios" },
+    { idx: 1, cols: 6, rows: 1, label: "Arquitectura", desc: "", icon: "ph:buildings", fullDesc: "Detalles arquitectónicos que destacan el diseño único y funcional del proyecto", materials: "Estructura de acero, Mampostería reforzada, Impermeabilización", features: "Diseño antisísmico, Ventilación cruzada, Eficiencia energética" },
+    { idx: 2, cols: 4, rows: 2, label: "Interior", desc: "", icon: "ph:door-open", fullDesc: "Espacios interiores diseñados para máximo confort y funcionalidad", materials: "Pisos de porcelanato, Puertas de madera, Pintura lavable", features: "Espacios abiertos, Iluminación LED, Climatización" },
+    { idx: 3, cols: 4, rows: 2, label: "Espacios", desc: "", icon: "ph:compass", fullDesc: "Distribución inteligente de áreas para aprovechamiento óptimo del espacio", materials: "Divisiones ligeras, Cancelería de aluminio, Acabados finos", features: "Flexibilidad espacial, Privacidad acústica, Áreas multifuncionales" },
+    { idx: 4, cols: 4, rows: 2, label: "Detalles", desc: "", icon: "ph:sparkle", fullDesc: "Acabados de primera calidad que reflejan la excelencia del proyecto", materials: "Herrajes importados, Grifería de lujo, Accesorios premium", features: "Atención al detalle, Durabilidad garantizada, Mantenimiento mínimo" },
+    { idx: 5, cols: 6, rows: 3, label: "Panorámica", desc: "", icon: "ph:image-square", fullDesc: "Vista completa que muestra la integración del proyecto con su entorno", materials: "Paisajismo profesional, Áreas verdes, Iluminación exterior", features: "Vistas despejadas, Orientación solar, Privacidad visual" },
+    { idx: 6, cols: 6, rows: 3, label: "Fachada", desc: "", icon: "ph:house-line", fullDesc: "Fachada moderna con materiales de alta durabilidad y estética contemporánea", materials: "Revestimiento cerámico, Aluminio anodizado, Cristal de seguridad", features: "Aislamiento térmico, Resistente a intemperie, Bajo mantenimiento" }
   ]
 ];
 
@@ -135,8 +135,15 @@ const gradients = [
         const gradient = gradients[index % gradients.length];
         
         return image && (
-          <div 
-            class={`col-span-12 md:col-span-6 lg:col-span-${block.cols} row-span-${block.rows} group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500`}
+          <button 
+            class={`col-span-12 md:col-span-6 lg:col-span-${block.cols} row-span-${block.rows} group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer mosaic-image`}
+            data-image={getImageSrc(image)}
+            data-label={block.label}
+            data-desc={block.desc}
+            data-icon={block.icon}
+            data-full-desc={block.fullDesc}
+            data-materials={block.materials}
+            data-features={block.features}
           >
             <img
               src={getImageSrc(image)}
@@ -156,9 +163,87 @@ const gradients = [
                 </div>
               </div>
             </div>
-          </div>
+            <!-- Click indicator -->
+            <div class="absolute top-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Icon name="ph:magnifying-glass-plus" class="w-5 h-5 text-white" />
+            </div>
+          </button>
         );
       })}
+    </div>
+
+    <!-- Modal -->
+    <div id="imageModal" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 invisible transition-all duration-300">
+      <div class="relative max-w-7xl w-full mx-4 bg-white rounded-3xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300" id="modalContent">
+        <!-- Close Button -->
+        <button id="closeModal" class="absolute top-4 right-4 z-10 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group">
+          <Icon name="ph:x" class="w-6 h-6 text-gray-900 group-hover:text-red-600" />
+        </button>
+
+        <!-- Modal Content -->
+        <div class="grid lg:grid-cols-3 gap-0">
+          <!-- Image Section -->
+          <div class="lg:col-span-2 relative bg-gray-900 flex items-center justify-center p-8">
+            <img id="modalImage" src="" alt="" class="w-full h-auto max-h-[70vh] object-contain rounded-2xl shadow-2xl" />
+          </div>
+
+          <!-- Info Section -->
+          <div class="bg-gradient-to-br from-gray-50 to-white p-8 flex flex-col justify-center">
+            <div class="mb-6">
+              <div id="modalIconContainer" class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-primary/80 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+                <!-- Icon will be inserted here -->
+              </div>
+              <h3 id="modalLabel" class="text-3xl font-bold text-gray-900 mb-2">Vista Principal</h3>
+              <p id="modalFullDesc" class="text-base text-gray-600 leading-relaxed">Descripción detallada de la imagen</p>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="space-y-4 border-t border-gray-200 pt-6">
+              <div class="flex items-start gap-3 text-gray-700">
+                <div class="w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                  <Icon name="ph:hammer" class="w-5 h-5 text-brand-primary" />
+                </div>
+                <div>
+                  <div class="text-sm text-gray-500 mb-1">Materiales</div>
+                  <div class="font-semibold text-sm leading-relaxed" id="modalMaterials">Concreto, Vidrio, Acero</div>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 text-gray-700">
+                <div class="w-10 h-10 bg-brand-secondary/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
+                  <Icon name="ph:star" class="w-5 h-5 text-brand-secondary" />
+                </div>
+                <div>
+                  <div class="text-sm text-gray-500 mb-1">Características</div>
+                  <div class="font-semibold text-sm leading-relaxed" id="modalFeatures">Diseño moderno, Funcional</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 text-gray-700">
+                <div class="w-10 h-10 bg-brand-primary/10 rounded-xl flex items-center justify-center">
+                  <Icon name="ph:check-circle" class="w-5 h-5 text-brand-primary" />
+                </div>
+                <div>
+                  <div class="text-sm text-gray-500">Verificado</div>
+                  <div class="font-semibold">Proyecto Real</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-8 space-y-3">
+              <button class="w-full bg-gradient-to-r from-brand-primary to-brand-primary-dark text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2">
+                <Icon name="ph:download-simple" class="w-5 h-5" />
+                Descargar Imagen
+              </button>
+              <button class="w-full bg-white border border-gray-200 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:bg-gray-50 hover:border-brand-primary transition-all duration-300 flex items-center justify-center gap-2">
+                <Icon name="ph:share-network" class="w-5 h-5" />
+                Compartir
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Stats Bar -->
@@ -199,3 +284,125 @@ const gradients = [
     </div> -->
   </div>
 </section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('imageModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeModalBtn = document.getElementById('closeModal');
+    const modalImage = document.getElementById('modalImage') as HTMLImageElement;
+    const modalLabel = document.getElementById('modalLabel');
+    const modalFullDesc = document.getElementById('modalFullDesc');
+    const modalMaterials = document.getElementById('modalMaterials');
+    const modalFeatures = document.getElementById('modalFeatures');
+    const modalIconContainer = document.getElementById('modalIconContainer');
+    const mosaicImages = document.querySelectorAll('.mosaic-image');
+
+    // Icon map for Phosphor icons
+    const iconMap: { [key: string]: string } = {
+      'ph:eye-fill': '<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 256 256"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.46,133.46,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z"></path></svg>',
+      'ph:buildings': '<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 256 256"><path d="M240,208H224V96a16,16,0,0,0-16-16H164.94L139.58,51.58A16,16,0,0,0,128,48H48A16,16,0,0,0,32,64V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM208,80V208H48V64H128l26.42,32Z"></path></svg>',
+      'ph:door-open': '<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 256 256"><path d="M232,216H208V40a16,16,0,0,0-16-16H64A16,16,0,0,0,48,40V216H24a8,8,0,0,0,0,16H232a8,8,0,0,0,0-16ZM64,40H192V216H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v64H64Zm80,176H112V160h32ZM136,112a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h16A8,8,0,0,1,136,112Z"></path></svg>',
+      'ph:compass': '<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,83.16,183.58l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64A8,8,0,0,0,172.42,72.84ZM138,138,97.89,158.11,118,118l40.15-20.07Z"></path></svg>',
+      'ph:sparkle': '<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 256 256"><path d="M197.58,129.06,146,110.13,127.06,58.42a8,8,0,0,0-15.12,0L93,110.13,41.42,129.06a8,8,0,0,0,0,15.12L93,163.07l18.94,51.71a8,8,0,0,0,15.12,0L146,163.07l51.71-18.89a8,8,0,0,0,0-15.12ZM120,153.46,107.25,122.75a8,8,0,0,0-4.79-4.79L71.75,105,102.46,92.29a8,8,0,0,0,4.79-4.79L120,56.72l12.71,30.78a8,8,0,0,0,4.79,4.79L168.25,105,137.54,117.71a8,8,0,0,0-4.79,4.79ZM144,40a8,8,0,0,1,8-8h16V16a8,8,0,0,1,16,0V32h16a8,8,0,0,1,0,16H184V64a8,8,0,0,1-16,0V48H152A8,8,0,0,1,144,40ZM248,88a8,8,0,0,1-8,8h-8v8a8,8,0,0,1-16,0V96h-8a8,8,0,0,1,0-16h8V72a8,8,0,0,1,16,0v8h8A8,8,0,0,1,248,88Z"></path></svg>',
+      'ph:house-line': '<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 256 256"><path d="M240,208H224V136l2.34,2.34A8,8,0,0,0,237.66,127L139.31,28.68a16,16,0,0,0-22.62,0L18.34,127a8,8,0,0,0,11.32,11.31L32,136v72H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM48,120l80-80,80,80v88H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48Zm96,88H112V160h32Z"></path></svg>',
+      'ph:paint-brush': '<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 256 256"><path d="M232,32a8,8,0,0,0-8-8c-44.08,0-89.31,49.71-114.43,82.63A60,60,0,0,0,32,164c0,30.88-19.54,44.73-20.47,45.37A8,8,0,0,0,16,224H92a60,60,0,0,0,57.37-77.57C182.3,121.31,232,76.08,232,32ZM92,208H34.63C41.38,198.41,48,183.92,48,164a44,44,0,1,1,44,44Zm32-63.13a76.17,76.17,0,0,1,13.44-32.42C159.32,84.83,185.22,60,210.92,48.36,199.3,74.06,174.45,99.94,146.87,121.81A76.13,76.13,0,0,1,124,144.87Z"></path></svg>',
+      'ph:image-square': '<svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 256 256"><path d="M208,32H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM48,48H208v77.38l-24.69-24.7a16,16,0,0,0-22.62,0L53.37,208H48ZM208,208H76l96-96,36,36v60ZM96,120A16,16,0,1,1,112,136,16,16,0,0,1,96,120Z"></path></svg>'
+    };
+
+    // Open modal
+    function openModal(imageSrc: string, label: string, fullDesc: string, materials: string, features: string, icon: string) {
+      if (modalImage) modalImage.src = imageSrc;
+      if (modalLabel) modalLabel.textContent = label;
+      if (modalFullDesc) {
+        modalFullDesc.textContent = fullDesc || 'Vista detallada del proyecto';
+      }
+      if (modalMaterials) {
+        modalMaterials.textContent = materials || 'Materiales de primera calidad';
+      }
+      if (modalFeatures) {
+        modalFeatures.textContent = features || 'Diseño funcional y moderno';
+      }
+      
+      // Update icon
+      if (modalIconContainer) {
+        const iconSvg = iconMap[icon] || iconMap['ph:eye-fill'];
+        modalIconContainer.innerHTML = iconSvg;
+      }
+
+      if (modal) {
+        modal.classList.remove('invisible', 'opacity-0');
+        modal.classList.add('opacity-100');
+        document.body.style.overflow = 'hidden';
+      }
+      
+      if (modalContent) {
+        setTimeout(() => {
+          modalContent.classList.remove('scale-95');
+          modalContent.classList.add('scale-100');
+        }, 10);
+      }
+    }
+
+    // Close modal
+    function closeModal() {
+      if (modalContent) {
+        modalContent.classList.remove('scale-100');
+        modalContent.classList.add('scale-95');
+      }
+      
+      setTimeout(() => {
+        if (modal) {
+          modal.classList.remove('opacity-100');
+          modal.classList.add('opacity-0', 'invisible');
+          document.body.style.overflow = '';
+        }
+      }, 300);
+    }
+
+    // Add click event to all mosaic images
+    mosaicImages.forEach((img) => {
+      img.addEventListener('click', function(this: HTMLElement) {
+        const imageSrc = this.getAttribute('data-image') || '';
+        const label = this.getAttribute('data-label') || '';
+        const fullDesc = this.getAttribute('data-full-desc') || '';
+        const materials = this.getAttribute('data-materials') || '';
+        const features = this.getAttribute('data-features') || '';
+        const icon = this.getAttribute('data-icon') || '';
+        openModal(imageSrc, label, fullDesc, materials, features, icon);
+      });
+    });
+
+    // Close modal events
+    closeModalBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal && !modal.classList.contains('invisible')) {
+        closeModal();
+      }
+    });
+  });
+</script>
+
+<style>
+  #imageModal {
+    backdrop-filter: blur(8px);
+  }
+
+  #modalContent {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  @media (max-width: 1023px) {
+    #modalContent {
+      max-height: 95vh;
+    }
+  }
+</style>
