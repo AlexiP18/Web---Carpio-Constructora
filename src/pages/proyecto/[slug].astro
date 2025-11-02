@@ -8,68 +8,96 @@ import ProjectImageSlider from "../../components/sections/project/ProjectImageSl
 import ProjectMosaicNew from "../../components/sections/project/ProjectMosaicNew.astro";
 import ProjectTestimonials from "../../components/sections/project/ProjectTestimonials.astro";
 
-// Import project images
-import projectImage1 from '../../assets/img/projects/PROJECT_Hero_Slider_1.webp';
-import projectImage2 from '../../assets/img/projects/PROJECT_Hero_Slider_2.webp';
-import projectImage3 from '../../assets/img/projects/PROJECT_Hero_Slider_3.webp';
-import projectImage4 from '../../assets/img/projects/PROJECT_Hero_Slider_4.webp';
+// Import Los Arrayanes de Ficoa images
+import ficoaImage1 from '../../assets/projects/arrayanes_ficoa/0_Vista_Exterior.jpg';
+import ficoaImage2 from '../../assets/projects/arrayanes_ficoa/1_Vista_Entrada.jpg';
+import ficoaImage3 from '../../assets/projects/arrayanes_ficoa/2_Sala.jpg';
+import ficoaImage4 from '../../assets/projects/arrayanes_ficoa/3_Comedor.jpg';
+import ficoaImage5 from '../../assets/projects/arrayanes_ficoa/4_Sala_de_Estar.jpg';
+import ficoaImage6 from '../../assets/projects/arrayanes_ficoa/5_Area_Recreacional.jpg';
+import ficoaImage7 from '../../assets/projects/arrayanes_ficoa/6_Segundo_Piso.jpg';
+import ficoaImage8 from '../../assets/projects/arrayanes_ficoa/7_Habitacion_Master.jpg';
+import ficoaImage9 from '../../assets/projects/arrayanes_ficoa/8_Habitacion_Simple.jpg';
+
+// Import Los Arrayanes de Izamba images
+import izambaImage1 from '../../assets/projects/arrayanes_izamba/vista.png';
+import izambaImage2 from '../../assets/projects/arrayanes_izamba/sala1.png';
+import izambaImage3 from '../../assets/projects/arrayanes_izamba/sala2.png';
+import izambaImage4 from '../../assets/projects/arrayanes_izamba/comedor.png';
+import izambaImage5 from '../../assets/projects/arrayanes_izamba/cocina.png';
+import izambaImage6 from '../../assets/projects/arrayanes_izamba/habitacion1.png';
+import izambaImage7 from '../../assets/projects/arrayanes_izamba/habitacion2.png';
+import izambaImage8 from '../../assets/projects/arrayanes_izamba/bano.png';
+import izambaImage9 from '../../assets/projects/arrayanes_izamba/jardin.png';
+
+// Import KEOPs images
+import keopsImage1 from '../../assets/projects/keops/0. Principal_Vertical.jpg';
+import keopsImage2 from '../../assets/projects/keops/1. Principal.jpg';
+import keopsImage3 from '../../assets/projects/keops/2. Lobby_Exterior.jpg';
+import keopsImage4 from '../../assets/projects/keops/3. Lobby_Interior.jpg';
+import keopsImage5 from '../../assets/projects/keops/4. Lobby_Panoramica.jpg';
+import keopsImage6 from '../../assets/projects/keops/5. Merchandising.jpg';
+import keopsImage7 from '../../assets/projects/keops/6. Vista_Merchandising.jpg';
+import keopsImage8 from '../../assets/projects/keops/7. Vista_Completa.jpg';
+import keopsVideo from '../../assets/projects/keops/KEOPS_VIDEOWEB.mov';
 
 export async function getStaticPaths() {
-  // Create image arrays for projects inside getStaticPaths
-  const projectImages = [
-    projectImage1,
-    projectImage2,
-    projectImage3,
-    projectImage4
+  // Create image arrays for each project
+  const ficoaImages = [
+    ficoaImage1, ficoaImage2, ficoaImage3, ficoaImage4, ficoaImage5,
+    ficoaImage6, ficoaImage7, ficoaImage8, ficoaImage9
+  ];
+
+  const izambaImages = [
+    izambaImage1, izambaImage2, izambaImage3, izambaImage4, izambaImage5,
+    izambaImage6, izambaImage7, izambaImage8, izambaImage9
+  ];
+
+  const keopsImages = [
+    keopsImage1, keopsImage2, keopsImage3, keopsImage4,
+    keopsImage5, keopsImage6, keopsImage7, keopsImage8
   ];
 
   return [
     {
-      params: { slug: "proyecto-residencial-moderno" },
+      params: { slug: "los-arrayanes-de-ficoa" },
       props: {
-        title: "Residencial Moderna Vista",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-        tags: ["Residencial Urbano", "Sostenibilidad", "Innovación"],
-        content: `Descubre la esencia de nuestro Proyecto 1, donde la modernidad se encuentra con la funcionalidad. Esta construcción ha sido diseñada para ofrecer un ambiente acogedor y práctico, ideal para disfrutar de cada rincón de tu hogar.
+        title: "Los Arrayanes de Ficoa",
+        description: "Diseños de vivienda unifamiliar y multifamiliar que combinan funcionalidad y estética moderna.",
+        tags: ["Residencial", "Vivienda Unifamiliar", "Vivienda Multifamiliar"],
+        backgroundImage: ficoaImage1.src,
+        content: `Los Arrayanes de Ficoa es un desarrollo residencial integral que ofrece diseños personalizados para viviendas unifamiliares y multifamiliares, adaptándose a las necesidades específicas de cada familia.
 
-Con un enfoque en la sostenibilidad, hemos implementado materiales de alta calidad que garantizan durabilidad y eficiencia energética. Cada detalle ha sido cuidadosamente pensado para maximizar la comodidad y el estilo, desde la distribución de los espacios hasta la elección de acabados.
+Este proyecto combina la funcionalidad moderna con espacios diseñados para el confort y la convivencia familiar. Cada vivienda ha sido cuidadosamente planificada para maximizar el uso del espacio, la iluminación natural y la ventilación.
 
-Nuestro equipo de expertos ha trabajado arduamente para crear un espacio que no solo cumpla con tus expectativas, sino que las supere. La combinación de diseño contemporáneo y tecnología avanzada se traduce en un hogar que se adapta a tus necesidades.
+Con un enfoque en la calidad de vida, Los Arrayanes de Ficoa incluye áreas recreacionales, zonas verdes y espacios comunes que fomentan la interacción entre vecinos. La ubicación estratégica en Ficoa proporciona fácil acceso a servicios, comercios y vías principales.
 
-Además, el Proyecto 1 está ubicado en una zona privilegiada, rodeada de servicios y naturaleza, lo que lo convierte en el lugar perfecto para vivir. Aquí, cada día es una nueva oportunidad para disfrutar de la vida en un entorno armonioso.
+Los materiales de construcción son de primera calidad, garantizando durabilidad y bajo mantenimiento. El diseño arquitectónico contemporáneo se integra armoniosamente con el entorno, creando un ambiente residencial atractivo y funcional.
 
-Te invitamos a explorar más sobre este proyecto y descubrir cómo podemos hacer realidad la casa de tus sueños. ¡Contáctanos para más información!`,
-        images: projectImages,
+Este proyecto representa la evolución del concepto de vivienda moderna en Ecuador, donde cada detalle ha sido pensado para ofrecer la mejor experiencia de vida a sus residentes.`,
+        images: ficoaImages,
         testimonial: {
           rating: 5,
-          quote: "La calidad de la construcción superó nuestras expectativas y el equipo fue excepcional en su atención al detalle.",
-          name: "Juan Pérez",
-          position: "Director, Constructora XYZ",
+          quote: "La calidad de construcción y atención al detalle en Los Arrayanes de Ficoa es excepcional.",
+          name: "María Rodríguez",
+          position: "Propietaria, Los Arrayanes",
           logo: "/images/logo-placeholder.svg",
           image: "/images/placeholder-image.jpg"
         },
         testimonials: [
           {
             rating: 5,
-            quote: "La calidad de la construcción superó nuestras expectativas y el equipo fue excepcional en su atención al detalle.",
-            name: "Juan Pérez",
-            position: "Director, Constructora XYZ",
+            quote: "La calidad de construcción y atención al detalle en Los Arrayanes de Ficoa es excepcional.",
+            name: "María Rodríguez",
+            position: "Propietaria, Los Arrayanes",
             logo: "/images/logo-placeholder.svg",
             image: "/images/placeholder-image.jpg"
           },
           {
             rating: 5,
-            quote: "Profesionalismo excepcional desde el primer día. El proyecto se completó a tiempo y dentro del presupuesto.",
-            name: "María González",
-            position: "Gerente de Proyectos, Inmobiliaria del Norte",
-            logo: "/images/logo-placeholder.svg",
-            image: "/images/placeholder-image.jpg"
-          },
-          {
-            rating: 4,
-            quote: "Trabajo de alta calidad y atención a cada detalle. Definitivamente recomendaríamos sus servicios.",
-            name: "Carlos Rodríguez",
-            position: "CEO, Desarrollos Urbanos SA",
+            quote: "Un desarrollo residencial que supera las expectativas. Diseño funcional y moderno.",
+            name: "Jorge Pérez",
+            position: "Residente, Los Arrayanes de Ficoa",
             logo: "/images/logo-placeholder.svg",
             image: "/images/placeholder-image.jpg"
           }
@@ -77,103 +105,90 @@ Te invitamos a explorar más sobre este proyecto y descubrir cómo podemos hacer
       }
     },
     {
-      params: { slug: "centro-comercial-innovador" },
+      params: { slug: "los-arrayanes-de-izamba" },
       props: {
-        title: "Centro Comercial Plaza",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-        tags: ["Comercio Local", "Espacios Abiertos", "Accesibilidad"],
-        content: `Este centro comercial está diseñado para la comunidad. Fomenta el comercio local y ofrece espacios accesibles para todos.
+        title: "Los Arrayanes de Izamba",
+        description: "Conjunto habitacional diseñado para ofrecer calidad de vida y espacios funcionales para toda la familia.",
+        tags: ["Conjunto Habitacional", "Residencial", "Áreas Comunes"],
+        backgroundImage: izambaImage1.src,
+        content: `Los Arrayanes de Izamba es un conjunto habitacional moderno que redefine el concepto de comunidad residencial en Ecuador. Este proyecto ofrece viviendas diseñadas con espacios amplios y funcionales para el disfrute de toda la familia.
 
-Con una arquitectura moderna y funcional, el proyecto integra áreas comerciales con espacios de recreación y servicios comunitarios. Cada elemento ha sido planificado para crear un ambiente vibrante y acogedor.
+El conjunto habitacional cuenta con áreas recreacionales, zonas verdes, y espacios comunes que promueven la convivencia y el bienestar de sus residentes. Cada unidad ha sido diseñada pensando en la comodidad y la eficiencia espacial.
 
-La sostenibilidad es una prioridad en este desarrollo, implementando tecnologías verdes y materiales eco-amigables. El diseño maximiza la luz natural y promueve la ventilación cruzada para crear espacios cómodos y eficientes.
+Ubicado en Izamba, este proyecto combina la tranquilidad de una zona residencial con la cercanía a servicios esenciales, centros educativos y comerciales. La seguridad es una prioridad, con sistemas de control de acceso y vigilancia.
 
-El proyecto incluye amplias áreas de estacionamiento, accesos para personas con discapacidad y zonas verdes que mejoran la calidad del entorno urbano.
+Los materiales de construcción utilizados garantizan durabilidad y confort térmico, mientras que el diseño arquitectónico contemporáneo crea un ambiente armonioso y acogedor. Las áreas comunes incluyen jardines, parques infantiles y espacios para eventos sociales.
 
-¡Descubre cómo este proyecto está transformando la experiencia comercial en la comunidad!`,
-        images: projectImages,
+Los Arrayanes de Izamba es más que un lugar para vivir, es una comunidad donde las familias pueden crecer y crear recuerdos duraderos en un entorno seguro y agradable.`,
+        images: izambaImages,
         testimonial: {
           rating: 5,
-          quote: "Un proyecto excepcional que ha revitalizado nuestra comunidad comercial.",
-          name: "María García",
-          position: "Directora, Inmobiliaria ABC",
+          quote: "Un conjunto habitacional excepcional con excelentes áreas comunes y seguridad.",
+          name: "Carlos Martínez",
+          position: "Propietario, Los Arrayanes de Izamba",
           logo: "/images/logo-placeholder.svg",
           image: "/images/placeholder-image.jpg"
         },
         testimonials: [
           {
             rating: 5,
-            quote: "Un proyecto excepcional que ha revitalizado nuestra comunidad comercial.",
-            name: "María García",
-            position: "Directora, Inmobiliaria ABC",
+            quote: "Un conjunto habitacional excepcional con excelentes áreas comunes y seguridad.",
+            name: "Carlos Martínez",
+            position: "Propietario, Los Arrayanes de Izamba",
             logo: "/images/logo-placeholder.svg",
             image: "/images/placeholder-image.jpg"
           },
           {
             rating: 5,
-            quote: "La integración de espacios comerciales y recreativos es brillante. Un diseño muy funcional.",
+            quote: "La mejor decisión fue elegir Los Arrayanes de Izamba. Calidad y confort garantizados.",
+            name: "Ana González",
+            position: "Residente, Los Arrayanes de Izamba",
+            logo: "/images/logo-placeholder.svg",
+            image: "/images/placeholder-image.jpg"
+          }
+        ]
+      }
+    },
+    {
+      params: { slug: "keops" },
+      props: {
+        title: "KEOPs",
+        description: "Diseños Retail innovadores que maximizan la experiencia de compra y el flujo de clientes.",
+        tags: ["Retail", "Comercial", "Diseño Innovador"],
+        backgroundImage: keopsImage2.src,
+        virtualTourVideo: typeof keopsVideo === 'string' ? keopsVideo : keopsVideo,
+        content: `KEOPs es un proyecto de diseño retail que revoluciona la experiencia comercial en Ecuador. Este desarrollo combina arquitectura moderna con funcionalidad estratégica para crear espacios comerciales que potencian las ventas y mejoran la experiencia del cliente.
+
+El diseño de KEOPs se centra en la optimización del flujo de clientes, la maximización de espacios de exhibición y la creación de ambientes atractivos que invitan a la compra. Cada área ha sido planificada considerando las mejores prácticas del retail moderno.
+
+Los espacios incluyen áreas de merchandising estratégicamente ubicadas, lobby amplios y funcionales, y diseños flexibles que se adaptan a diferentes tipos de comercio. La iluminación, los acabados y la distribución espacial crean un ambiente comercial premium.
+
+KEOPs incorpora tecnología y diseño sostenible para reducir costos operativos y crear espacios eficientes energéticamente. El proyecto se destaca por su versatilidad, permitiendo adaptarse a las necesidades específicas de cada marca o comercio.
+
+Este proyecto representa el futuro del retail en Ecuador, donde el diseño inteligente y la funcionalidad se combinan para crear espacios comerciales exitosos y rentables.`,
+        images: keopsImages,
+        testimonial: {
+          rating: 5,
+          quote: "KEOPs transformó nuestra visión de espacio comercial. Diseño excepcional y funcional.",
+          name: "Roberto Silva",
+          position: "Gerente General, Retail Group",
+          logo: "/images/logo-placeholder.svg",
+          image: "/images/placeholder-image.jpg"
+        },
+        testimonials: [
+          {
+            rating: 5,
+            quote: "KEOPs transformó nuestra visión de espacio comercial. Diseño excepcional y funcional.",
             name: "Roberto Silva",
-            position: "Arquitecto Principal, Estudio Moderno",
-            logo: "/images/logo-placeholder.svg",
-            image: "/images/placeholder-image.jpg"
-          },
-          {
-            rating: 4,
-            quote: "Excelente trabajo en la planificación y ejecución. El resultado final es impresionante.",
-            name: "Ana Martínez",
-            position: "Coordinadora de Desarrollo, Ciudad Nueva",
-            logo: "/images/logo-placeholder.svg",
-            image: "/images/placeholder-image.jpg"
-          }
-        ]
-      }
-    },
-    {
-      params: { slug: "parque-recreativo-familiar" },
-      props: {
-        title: "Parque Recreativo Familiar",
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
-        tags: ["Naturaleza", "Familia", "Diversión"],
-        content: `Este parque recreativo es un espacio para disfrutar en familia. Ofrece áreas verdes y actividades para todas las edades.
-
-El diseño del parque incluye senderos naturales, áreas de juegos infantiles, espacios para ejercicio al aire libre y zonas de picnic familiares. Cada área ha sido cuidadosamente planificada para integrarse con el entorno natural.
-
-La seguridad y accesibilidad son fundamentales en este proyecto, con iluminación adecuada, señalización clara y accesos universales para personas con diferentes capacidades.
-
-El proyecto preserva la flora nativa y crea nuevos ecosistemas que benefician la biodiversidad local. Los materiales utilizados son duraderos y de bajo mantenimiento.
-
-¡Un espacio donde la naturaleza y la diversión se combinan para crear momentos inolvidables en familia!`,
-        images: projectImages,
-        testimonial: {
-          rating: 5,
-          quote: "Un espacio maravilloso donde nuestras familias pueden conectar con la naturaleza.",
-          name: "Carlos López",
-          position: "CEO, Desarrollo Urbano",
-          logo: "/images/logo-placeholder.svg",
-          image: "/images/placeholder-image.jpg"
-        },
-        testimonials: [
-          {
-            rating: 5,
-            quote: "Un espacio maravilloso donde nuestras familias pueden conectar con la naturaleza.",
-            name: "Carlos López",
-            position: "CEO, Desarrollo Urbano",
+            position: "Gerente General, Retail Group",
             logo: "/images/logo-placeholder.svg",
             image: "/images/placeholder-image.jpg"
           },
           {
             rating: 5,
-            quote: "El diseño del parque es excepcional. Perfecto equilibrio entre naturaleza y funcionalidad.",
-            name: "Laura Fernández",
-            position: "Directora de Parques, Municipio Central",
-            logo: "/images/logo-placeholder.svg",
-            image: "/images/placeholder-image.jpg"
-          },
-          {
-            rating: 4,
-            quote: "Un proyecto que realmente mejora la calidad de vida de la comunidad. Muy bien ejecutado.",
-            name: "Diego Herrera",
-            position: "Planificador Urbano, Consultora Verde",
+            quote: "Un proyecto retail que entiende las necesidades del comercio moderno. Altamente recomendado.",
+            name: "Patricia Vega",
+            position: "Directora de Operaciones, Comercial Ecuador",
             logo: "/images/logo-placeholder.svg",
             image: "/images/placeholder-image.jpg"
           }
@@ -183,7 +198,7 @@ El proyecto preserva la flora nativa y crea nuevos ecosistemas que benefician la
   ];
 }
 
-const { title, description, tags, content, images, testimonial, testimonials } = Astro.props;
+const { title, description, tags, content, images, testimonial, testimonials, backgroundImage, virtualTourVideo } = Astro.props;
 ---
 
 <Layout title={`${title} - Constructora Carpio`}>
@@ -193,12 +208,14 @@ const { title, description, tags, content, images, testimonial, testimonials } =
       title={title}
       description={description}
       tags={tags}
+      backgroundImage={backgroundImage}
     />
     
     <ProjectContent 
       title={title}
       content={content}
       images={images}
+      virtualTourVideo={virtualTourVideo}
     />
     
     <!-- <ProjectImageSlider 

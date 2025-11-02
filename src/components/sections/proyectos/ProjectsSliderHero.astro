@@ -2,30 +2,34 @@
 import { Icon } from "astro-icon/components";
 import Button from '../../ui/Button.astro';
 
+// Import project images
+import arrayanesFicoaImage from '../../../assets/projects/arrayanes_ficoa/0_Vista_Exterior.jpg';
+import keopsImage from '../../../assets/projects/keops/0. Principal_Vertical.jpg';
+
 // Datos de proyectos - estos podrían venir de una colección o API
 const projects = [
   {
     id: 1,
-    title: "Residencial Moderna Vista",
-    subtitle: "Complejo Habitacional",
-    description: "Un innovador desarrollo residencial que combina diseño contemporáneo con espacios verdes, creando un ambiente ideal para familias modernas.",
-    image: "/images/placeholder-image-1.png",
+    title: "Los Arrayanes de Ficoa",
+    subtitle: "Diseños de vivienda unifamiliar y multifamiliar",
+    description: "Desarrollo residencial integral con diseños personalizados que se adaptan a las necesidades de cada familia, combinando funcionalidad y estética moderna.",
+    image: arrayanesFicoaImage.src,
     category: "Residencial",
-    area: "2,500 m²",
+    area: "3,200 m²",
     year: "2024",
-    location: "San José, Costa Rica",
-    status: "Completado"
+    location: "Ficoa, Ecuador",
+    status: "En construcción"
   },
   {
     id: 2,
-    title: "Centro Comercial Plaza",
-    subtitle: "Espacio Comercial",
-    description: "Centro comercial de última generación con diseño sustentable, espacios flexibles y tecnología inteligente para una experiencia de compra única.",
-    image: "/images/placeholder-image-2.png",
+    title: "KEOPs",
+    subtitle: "Diseños Retail",
+    description: "Espacios comerciales innovadores diseñados para potenciar la experiencia de compra con layouts modernos y funcionales que maximizan el flujo de clientes.",
+    image: keopsImage.src,
     category: "Comercial",
-    area: "4,800 m²",
-    year: "2023",
-    location: "Cartago, Costa Rica",
+    area: "2,800 m²",
+    year: "2024",
+    location: "Ecuador",
     status: "Completado"
   },
   {
@@ -79,14 +83,15 @@ const projects = [
 ];
 ---
 
-<section id="projects-slider-hero" class="relative min-h-screen overflow-hidden">
+<section id="projects-slider-hero" class="relative overflow-hidden">
   <!-- Projects Grid Container -->
-  <div class="grid grid-cols-1 lg:grid-cols-2 w-full h-full min-h-screen">
+  <div class="grid grid-cols-1 lg:grid-cols-2 w-full h-full">
     {/* Show only first 2 projects in a static grid */}
     {projects.slice(0, 2).map((project, index) => (
       <div 
-        class="relative flex-shrink-0 w-full h-screen bg-cover bg-center bg-no-repeat group cursor-pointer overflow-hidden"
+        class="relative flex-shrink-0 w-full h-[calc(100vh-72px)] lg:h-[calc(100vh-72px)] bg-cover bg-center bg-no-repeat group cursor-pointer overflow-hidden project-card"
         style={`background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('${project.image}');`}
+        data-project-url={`/proyecto/${project.title.toLowerCase().replace(/\s+/g, '-')}`}
       >
         <!-- Content Overlay -->
         <div class="absolute inset-0 flex flex-col justify-end p-8 lg:p-12 text-white z-10">
@@ -148,21 +153,21 @@ const projects = [
             <div class="flex flex-col sm:flex-row gap-3">
               <Button 
                 variant="outline" 
-                size="sm"
+                size="md"
                 href={`/proyecto/${project.title.toLowerCase().replace(/\s+/g, '-')}`}
                 iconPosition="left" 
                 icon="ph:eye"
-                class="bg-white/20 border-white/30 text-white hover:bg-white hover:text-gray-900 backdrop-blur-sm"
+                class="bg-white/20 border-white/30 text-white hover:bg-white hover:text-[#D79528] hover:border-[#D79528] backdrop-blur-sm transition-all duration-300 font-semibold"
               >
                 Ver Proyecto
               </Button>
               <Button 
                 variant="outline" 
-                size="sm"
+                size="md"
                 href="/contacto"
                 iconPosition="left" 
                 icon="ph:chat-circle"
-                class="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-sm"
+                class="bg-white/10 border-white/20 text-white hover:bg-[#25D366] hover:text-[#25D366] hover:border-[#25D366] backdrop-blur-sm transition-all duration-300 font-semibold"
               >
                 Consultar
               </Button>
@@ -183,6 +188,28 @@ const projects = [
     </div>
   </div>
 </section>
+
+<script>
+  // Handle project card clicks
+  document.addEventListener('DOMContentLoaded', () => {
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        // Don't redirect if clicking on buttons
+        const target = e.target as HTMLElement;
+        if (target.closest('a') || target.closest('button')) {
+          return;
+        }
+        
+        const projectUrl = card.getAttribute('data-project-url');
+        if (projectUrl) {
+          window.location.href = projectUrl;
+        }
+      });
+    });
+  });
+</script>
 
 <!-- 
 <script>
@@ -429,6 +456,13 @@ const projects = [
   /* Smooth hover transitions */
   .slide:hover .slide-basic-info {
     transform: translateY(-20px);
+  }
+
+  /* Adjust height for mobile header (56px) */
+  @media (max-width: 1023px) {
+    #projects-slider-hero > div > div {
+      height: calc(100vh - 56px) !important;
+    }
   }
 
   /* Responsive adjustments */

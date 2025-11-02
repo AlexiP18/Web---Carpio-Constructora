@@ -20,9 +20,10 @@ export interface Props {
     label: string;
     images: (string | ImageMetadata)[];
   }[];
+  virtualTourVideo?: string;
 }
 
-const { title, content, images, imageCategories } = Astro.props;
+const { title, content, images, imageCategories, virtualTourVideo } = Astro.props;
 
 // Helper function to get image src
 function getImageSrc(image: string | ImageMetadata): string {
@@ -335,7 +336,13 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
               </div>
               
               <div class="text-center">
-                <button class="w-full flex flex-col items-center gap-2 p-4 rounded-2xl bg-white hover:bg-gray-50 border border-gray-200 hover:border-brand-primary/30 transition-all duration-300 group">
+                <button 
+                  id="virtualTourBtn"
+                  class="w-full flex flex-col items-center gap-2 p-4 rounded-2xl bg-white hover:bg-gray-50 border border-gray-200 hover:border-brand-primary/30 transition-all duration-300 group"
+                  data-video-url={virtualTourVideo}
+                  disabled={!virtualTourVideo}
+                  style={!virtualTourVideo ? 'opacity: 0.5; cursor: not-allowed;' : ''}
+                >
                   <div class="w-12 h-12 bg-gray-100 group-hover:bg-brand-primary/10 rounded-xl flex items-center justify-center transition-colors duration-300">
                     <Icon name="ph:video" class="w-6 h-6 text-gray-600 group-hover:text-brand-primary" />
                   </div>
@@ -354,6 +361,32 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+    <div class="relative w-full max-w-5xl bg-gray-900 rounded-3xl overflow-hidden shadow-2xl">
+      <!-- Close Button -->
+      <button 
+        id="closeVideoModal"
+        class="absolute top-4 right-4 z-10 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 group"
+      >
+        <Icon name="ph:x" class="w-6 h-6 text-white" />
+      </button>
+      
+      <!-- Video Container -->
+      <div class="relative w-full" style="padding-bottom: 56.25%;">
+        <video 
+          id="virtualTourVideo"
+          class="absolute inset-0 w-full h-full"
+          controls
+          controlslist="nodownload"
+          preload="metadata"
+        >
+          Tu navegador no soporta el elemento de video.
+        </video>
       </div>
     </div>
   </div>
@@ -646,6 +679,69 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
     
     // Initialize
     updateSlide(0);
+  });
+</script>
+
+<script>
+  // Video Modal Handler
+  document.addEventListener('DOMContentLoaded', function() {
+    const virtualTourBtn = document.getElementById('virtualTourBtn') as HTMLButtonElement;
+    const videoModal = document.getElementById('videoModal') as HTMLElement;
+    const closeVideoModal = document.getElementById('closeVideoModal') as HTMLButtonElement;
+    const video = document.getElementById('virtualTourVideo') as HTMLVideoElement;
+    
+    if (virtualTourBtn && videoModal && closeVideoModal && video) {
+      // Open modal
+      virtualTourBtn.addEventListener('click', function() {
+        const videoUrl = virtualTourBtn.getAttribute('data-video-url');
+        
+        console.log('Video URL:', videoUrl); // Debug
+        
+        if (videoUrl && videoUrl !== 'undefined') {
+          // Set video source directly on video element
+          video.src = videoUrl;
+          
+          // Show modal
+          videoModal.classList.remove('hidden');
+          videoModal.classList.add('flex');
+          
+          // Load and play video
+          video.load();
+          video.play().catch(err => {
+            console.error('Error playing video:', err);
+          });
+        } else {
+          console.error('No video URL provided');
+        }
+      });
+      
+      // Close modal function
+      function closeModal() {
+        videoModal.classList.add('hidden');
+        videoModal.classList.remove('flex');
+        
+        // Pause and reset video
+        video.pause();
+        video.currentTime = 0;
+      }
+      
+      // Close button click
+      closeVideoModal.addEventListener('click', closeModal);
+      
+      // Close on background click
+      videoModal.addEventListener('click', function(e) {
+        if (e.target === videoModal) {
+          closeModal();
+        }
+      });
+      
+      // Close on ESC key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) {
+          closeModal();
+        }
+      });
+    }
   });
 </script>
 
