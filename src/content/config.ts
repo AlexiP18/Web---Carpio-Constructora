@@ -5,7 +5,7 @@ const proyectosCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    slug: z.string(),
+    slug: z.string().optional(), // Slug es opcional, Astro usa el nombre del archivo
     description: z.string(),
     tags: z.array(z.string()),
     backgroundImage: z.string(),
@@ -34,7 +34,7 @@ const proyectosCollection = defineCollection({
 const serviciosCollection = defineCollection({
   type: 'content',
   schema: z.object({
-    slug: z.string(),
+    slug: z.string().optional(), // Slug es opcional, Astro usa el nombre del archivo
     title: z.string(),
     subtitle: z.string(),
     description: z.string(),
