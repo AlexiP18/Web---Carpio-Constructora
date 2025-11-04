@@ -26,7 +26,7 @@ npm run dev
 1. Ve a: `https://constructora-carpio.netlify.app/admin/`
 2. Haz clic en "Login with Netlify Identity"
 3. Ingresa con tu email invitado
-4. ¡Listo! Ya puedes editar el contenido
+4. ¡Listo! Ya puedes editar el contenido.
 
 ### Qué puedes editar:
 
