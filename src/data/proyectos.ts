@@ -1,37 +1,5 @@
-import type { ImageMetadata } from 'astro';
-
-// Import Los Arrayanes de Ficoa images
-import ficoaImage1 from '../assets/projects/arrayanes_ficoa/0_Vista_Exterior.jpg';
-import ficoaImage2 from '../assets/projects/arrayanes_ficoa/1_Vista_Entrada.jpg';
-import ficoaImage3 from '../assets/projects/arrayanes_ficoa/2_Sala.jpg';
-import ficoaImage4 from '../assets/projects/arrayanes_ficoa/3_Comedor.jpg';
-import ficoaImage5 from '../assets/projects/arrayanes_ficoa/4_Sala_de_Estar.jpg';
-import ficoaImage6 from '../assets/projects/arrayanes_ficoa/5_Area_Recreacional.jpg';
-import ficoaImage7 from '../assets/projects/arrayanes_ficoa/6_Segundo_Piso.jpg';
-import ficoaImage8 from '../assets/projects/arrayanes_ficoa/7_Habitacion_Master.jpg';
-import ficoaImage9 from '../assets/projects/arrayanes_ficoa/8_Habitacion_Simple.jpg';
-
-// Import Los Arrayanes de Izamba images
-import izambaImage1 from '../assets/projects/arrayanes_izamba/vista.png';
-import izambaImage2 from '../assets/projects/arrayanes_izamba/sala1.png';
-import izambaImage3 from '../assets/projects/arrayanes_izamba/sala2.png';
-import izambaImage4 from '../assets/projects/arrayanes_izamba/comedor.png';
-import izambaImage5 from '../assets/projects/arrayanes_izamba/cocina.png';
-import izambaImage6 from '../assets/projects/arrayanes_izamba/habitacion1.png';
-import izambaImage7 from '../assets/projects/arrayanes_izamba/habitacion2.png';
-import izambaImage8 from '../assets/projects/arrayanes_izamba/bano.png';
-import izambaImage9 from '../assets/projects/arrayanes_izamba/jardin.png';
-
-// Import KEOPs images
-import keopsImage1 from '../assets/projects/keops/0. Principal_Vertical.jpg';
-import keopsImage2 from '../assets/projects/keops/1. Principal.jpg';
-import keopsImage3 from '../assets/projects/keops/2. Lobby_Exterior.jpg';
-import keopsImage4 from '../assets/projects/keops/3. Lobby_Interior.jpg';
-import keopsImage5 from '../assets/projects/keops/4. Lobby_Panoramica.jpg';
-import keopsImage6 from '../assets/projects/keops/5. Merchandising.jpg';
-import keopsImage7 from '../assets/projects/keops/6. Vista_Merchandising.jpg';
-import keopsImage8 from '../assets/projects/keops/7. Vista_Completa.jpg';
-import keopsVideo from '../assets/projects/keops/KEOPS_VIDEOWEB.mov';
+// Project images are now served from public folder for better Netlify compatibility
+// Public paths don't require imports and work consistently across environments
 
 // Tipos para los datos de proyectos
 export interface ProjectTestimonial {
@@ -50,26 +18,46 @@ export interface ProjectData {
   tags: string[];
   backgroundImage: string;
   content: string;
-  images: ImageMetadata[];
+  images: string[]; // Changed to string[] for public paths
   testimonial: ProjectTestimonial;
   testimonials: ProjectTestimonial[];
   virtualTourVideo?: string;
 }
 
-// Create image arrays for each project
+// Image arrays now use public paths
 const ficoaImages = [
-  ficoaImage1, ficoaImage2, ficoaImage3, ficoaImage4, ficoaImage5,
-  ficoaImage6, ficoaImage7, ficoaImage8, ficoaImage9
+  '/images/projects/arrayanes_ficoa/0_Vista_Exterior.jpg',
+  '/images/projects/arrayanes_ficoa/1_Vista_Entrada.jpg',
+  '/images/projects/arrayanes_ficoa/2_Sala.jpg',
+  '/images/projects/arrayanes_ficoa/3_Comedor.jpg',
+  '/images/projects/arrayanes_ficoa/4_Sala_de_Estar.jpg',
+  '/images/projects/arrayanes_ficoa/5_Area_Recreacional.jpg',
+  '/images/projects/arrayanes_ficoa/6_Segundo_Piso.jpg',
+  '/images/projects/arrayanes_ficoa/7_Habitacion_Master.jpg',
+  '/images/projects/arrayanes_ficoa/8_Habitacion_Simple.jpg'
 ];
 
 const izambaImages = [
-  izambaImage1, izambaImage2, izambaImage3, izambaImage4, izambaImage5,
-  izambaImage6, izambaImage7, izambaImage8, izambaImage9
+  '/images/projects/arrayanes_izamba/vista.png',
+  '/images/projects/arrayanes_izamba/sala1.png',
+  '/images/projects/arrayanes_izamba/sala2.png',
+  '/images/projects/arrayanes_izamba/comedor.png',
+  '/images/projects/arrayanes_izamba/cocina.png',
+  '/images/projects/arrayanes_izamba/habitacion1.png',
+  '/images/projects/arrayanes_izamba/habitacion2.png',
+  '/images/projects/arrayanes_izamba/bano.png',
+  '/images/projects/arrayanes_izamba/jardin.png'
 ];
 
 const keopsImages = [
-  keopsImage1, keopsImage2, keopsImage3, keopsImage4,
-  keopsImage5, keopsImage6, keopsImage7, keopsImage8
+  '/images/projects/keops/0. Principal_Vertical.jpg',
+  '/images/projects/keops/1. Principal.jpg',
+  '/images/projects/keops/2. Lobby_Exterior.jpg',
+  '/images/projects/keops/3. Lobby_Interior.jpg',
+  '/images/projects/keops/4. Lobby_Panoramica.jpg',
+  '/images/projects/keops/5. Merchandising.jpg',
+  '/images/projects/keops/6. Vista_Merchandising.jpg',
+  '/images/projects/keops/7. Vista_Completa.jpg'
 ];
 
 // Datos de proyectos
@@ -79,7 +67,7 @@ export const proyectosData: ProjectData[] = [
     title: "Los Arrayanes de Ficoa",
     description: "Diseños de vivienda unifamiliar y multifamiliar que combinan funcionalidad y estética moderna.",
     tags: ["Residencial", "Vivienda Unifamiliar", "Vivienda Multifamiliar"],
-    backgroundImage: ficoaImage1.src,
+    backgroundImage: '/images/projects/arrayanes_ficoa/0_Vista_Exterior.jpg',
     content: `Los Arrayanes de Ficoa es un desarrollo residencial integral que ofrece diseños personalizados para viviendas unifamiliares y multifamiliares, adaptándose a las necesidades específicas de cada familia.
 
 Este proyecto combina la funcionalidad moderna con espacios diseñados para el confort y la convivencia familiar. Cada vivienda ha sido cuidadosamente planificada para maximizar el uso del espacio, la iluminación natural y la ventilación.
@@ -122,7 +110,7 @@ Este proyecto representa la evolución del concepto de vivienda moderna en Ecuad
     title: "Los Arrayanes de Izamba",
     description: "Conjunto habitacional diseñado para ofrecer calidad de vida y espacios funcionales para toda la familia.",
     tags: ["Conjunto Habitacional", "Residencial", "Áreas Comunes"],
-    backgroundImage: izambaImage1.src,
+    backgroundImage: '/images/projects/arrayanes_izamba/vista.png',
     content: `Los Arrayanes de Izamba es un conjunto habitacional moderno que redefine el concepto de comunidad residencial en Ecuador. Este proyecto ofrece viviendas diseñadas con espacios amplios y funcionales para el disfrute de toda la familia.
 
 El conjunto habitacional cuenta con áreas recreacionales, zonas verdes, y espacios comunes que promueven la convivencia y el bienestar de sus residentes. Cada unidad ha sido diseñada pensando en la comodidad y la eficiencia espacial.
@@ -165,8 +153,8 @@ Los Arrayanes de Izamba es más que un lugar para vivir, es una comunidad donde 
     title: "KEOPs",
     description: "Diseños Retail innovadores que maximizan la experiencia de compra y el flujo de clientes.",
     tags: ["Retail", "Comercial", "Diseño Innovador"],
-    backgroundImage: keopsImage2.src,
-    virtualTourVideo: typeof keopsVideo === 'string' ? keopsVideo : keopsVideo,
+    backgroundImage: '/images/projects/keops/1. Principal.jpg',
+    virtualTourVideo: '/images/projects/keops/KEOPS_VIDEOWEB.mov',
     content: `KEOPs es un proyecto de diseño retail que revoluciona la experiencia comercial en Ecuador. Este desarrollo combina arquitectura moderna con funcionalidad estratégica para crear espacios comerciales que potencian las ventas y mejoran la experiencia del cliente.
 
 El diseño de KEOPs se centra en la optimización del flujo de clientes, la maximización de espacios de exhibición y la creación de ambientes atractivos que invitan a la compra. Cada área ha sido planificada considerando las mejores prácticas del retail moderno.
