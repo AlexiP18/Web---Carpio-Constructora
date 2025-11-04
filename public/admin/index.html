@@ -3,22 +3,299 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex" />
+    <meta name="robots" content="noindex, nofollow" />
     <title>Panel de Administración | Constructora Carpio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
     <!-- Widget de identidad de Netlify -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     
-    <!-- Estilos personalizados opcionales -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Estilos personalizados del CMS -->
     <style>
+      /* Variables de color personalizadas */
+      :root {
+        --primary-color: #103646;
+        --primary-hover: #0d2a35;
+        --secondary-color: #2d8659;
+        --accent-color: #f59e0b;
+        --background: #f8fafc;
+        --surface: #ffffff;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --border-color: #e2e8f0;
+        --success: #10b981;
+        --error: #ef4444;
+        --warning: #f59e0b;
+      }
+      
+      /* Reset y estilos base */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        background: var(--background);
+        color: var(--text-primary);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Loader personalizado */
+      #nc-root::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+        background-size: 200% 100%;
+        animation: loading 2s ease-in-out infinite;
+        z-index: 9999;
+      }
+      
+      @keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+      
+      /* Personalización del header del CMS */
+      [class*="AppHeader"] {
+        background: var(--surface) !important;
+        border-bottom: 1px solid var(--border-color) !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+      }
+      
+      [class*="AppHeader"] h1 {
+        color: var(--primary-color) !important;
+        font-weight: 700 !important;
+      }
+      
+      /* Sidebar personalizada */
+      [class*="SidebarContainer"] {
+        background: var(--surface) !important;
+        border-right: 1px solid var(--border-color) !important;
+      }
+      
+      [class*="SidebarNav"] a {
+        color: var(--text-secondary) !important;
+        transition: all 0.2s ease !important;
+        border-radius: 8px !important;
+        margin: 4px 8px !important;
+      }
+      
+      [class*="SidebarNav"] a:hover,
+      [class*="SidebarNav"] a[class*="active"] {
+        background: var(--primary-color) !important;
+        color: white !important;
+      }
+      
+      /* Botones personalizados */
+      button[class*="Button"],
+      [class*="StyledButton"] {
+        border-radius: 8px !important;
+        font-weight: 500 !important;
+        transition: all 0.2s ease !important;
+        text-transform: none !important;
+      }
+      
+      button[class*="Button-primary"],
+      button[class*="primary"] {
+        background: var(--primary-color) !important;
+        border-color: var(--primary-color) !important;
+      }
+      
+      button[class*="Button-primary"]:hover,
+      button[class*="primary"]:hover {
+        background: var(--primary-hover) !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+      }
+      
+      button[class*="Button-success"] {
+        background: var(--success) !important;
+      }
+      
+      /* Cards y contenedores */
+      [class*="Card"],
+      [class*="ListCard"] {
+        border-radius: 12px !important;
+        border: 1px solid var(--border-color) !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+        transition: all 0.2s ease !important;
+      }
+      
+      [class*="Card"]:hover,
+      [class*="ListCard"]:hover {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+        transform: translateY(-2px);
+      }
+      
+      /* Inputs personalizados */
+      input[type="text"],
+      input[type="email"],
+      input[type="number"],
+      textarea,
+      select {
+        border-radius: 8px !important;
+        border: 1px solid var(--border-color) !important;
+        transition: all 0.2s ease !important;
+      }
+      
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: var(--primary-color) !important;
+        box-shadow: 0 0 0 3px rgba(16, 54, 70, 0.1) !important;
+        outline: none !important;
+      }
+      
+      /* Editor de markdown */
+      [class*="MarkdownControl"] {
+        border-radius: 8px !important;
+        overflow: hidden !important;
+      }
+      
+      [class*="EditorControlBar"] {
+        background: var(--surface) !important;
+        border-bottom: 1px solid var(--border-color) !important;
+      }
+      
+      /* Tabs personalizadas */
+      [class*="Tab"] {
+        border-radius: 8px 8px 0 0 !important;
+        transition: all 0.2s ease !important;
+      }
+      
+      [class*="Tab"][class*="active"] {
+        background: var(--primary-color) !important;
+        color: white !important;
+      }
+      
+      /* Badges y etiquetas */
+      [class*="Badge"],
+      [class*="Tag"] {
+        border-radius: 6px !important;
+        font-weight: 500 !important;
+      }
+      
+      /* Lista de colecciones */
+      [class*="CollectionTop"] {
+        background: var(--surface) !important;
+        border-radius: 12px !important;
+        margin-bottom: 20px !important;
+        padding: 20px !important;
+        border: 1px solid var(--border-color) !important;
+      }
+      
+      /* Mensajes de estado */
+      [class*="toast"],
+      [class*="notification"] {
+        border-radius: 8px !important;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+      }
+      
+      /* Widget de imágenes */
+      [class*="ImagePreview"] {
+        border-radius: 8px !important;
+        overflow: hidden !important;
+      }
+      
+      /* Scrollbar personalizada */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        background: var(--background);
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background: var(--text-secondary);
+        border-radius: 4px;
+      }
+      
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-color);
+      }
+      
+      /* Loading spinner */
+      [class*="Loader"] {
+        color: var(--primary-color) !important;
+      }
+      
+      /* Modal personalizado */
+      [class*="Modal"] {
+        border-radius: 12px !important;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1) !important;
+      }
+      
+      /* Animaciones suaves */
+      * {
+        transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      }
+      
+      /* Dark mode para NetlifyCMS (opcional) */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --background: #0f172a;
+          --surface: #1e293b;
+          --text-primary: #f1f5f9;
+          --text-secondary: #94a3b8;
+          --border-color: #334155;
+        }
+      }
+      
+      /* Responsive improvements */
+      @media (max-width: 768px) {
+        [class*="SidebarContainer"] {
+          transform: translateX(-100%);
+          transition: transform 0.3s ease;
+        }
+        
+        [class*="SidebarContainer"][class*="open"] {
+          transform: translateX(0);
+        }
+      }
+      
+      /* Custom branding */
+      [class*="AppHeader"] h1::before {
+        content: '🏗️ ';
+      }
+      
+      /* Mejoras de accesibilidad */
+      button:focus-visible,
+      a:focus-visible,
+      input:focus-visible {
+        outline: 2px solid var(--primary-color) !important;
+        outline-offset: 2px !important;
       }
     </style>
   </head>
   <body>
     <!-- Script de Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
+    <!-- Configuración personalizada del CMS -->
+    <script>
+      // Personalización adicional del CMS
+      CMS.registerPreviewStyle('/admin/preview.css');
+      
+      // Mensaje de bienvenida en consola
+      console.log('%c🏗️ Constructora Carpio - Panel de Administración', 'font-size: 20px; font-weight: bold; color: #103646;');
+      console.log('%cSistema de gestión de contenido powered by Decap CMS', 'font-size: 12px; color: #64748b;');
+    </script>
     
     <!-- Script para manejar redirección después de login -->
     <script>

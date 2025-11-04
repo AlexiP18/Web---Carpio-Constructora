@@ -1,11 +1,22 @@
-# ✅ Configuración Completa de Decap CMS - Resumen
+# ✅ Configuración Completa de Decap CMS - Constructora Carpio
+
+## 🎨 Diseño Mejorado del Panel de Administración
+
+El panel de administración cuenta con:
+- ✨ Interfaz moderna y profesional
+- 🎨 Colores corporativos de Constructora Carpio
+- 📱 Diseño responsive y adaptable
+- ⚡ Animaciones suaves y transiciones
+- 🌙 Soporte para modo oscuro
+- ♿ Mejoras de accesibilidad
 
 ## 📦 Archivos Creados/Modificados
 
 ### Configuración Principal
 - ✅ `netlify.toml` - Configuración de Netlify
-- ✅ `public/admin/config.yml` - Configuración completa de Decap CMS
-- ✅ `public/admin/index.html` - Panel de administración mejorado
+- ✅ `public/admin/config.yml` - Configuración basada en estructura real del proyecto
+- ✅ `public/admin/index.html` - Panel con diseño personalizado
+- ✅ `public/admin/preview.css` - Estilos para vista previa
 - ✅ `tsconfig.json` - Actualizado para soportar JSON imports
 
 ### Archivos de Datos (Editables desde el CMS)
@@ -22,50 +33,67 @@
 
 ## 🎯 Características Implementadas
 
-### Colecciones Configuradas
+### Colecciones Configuradas (Basadas en Estructura Real)
 
-#### 1. **Proyectos** (`src/content/proyectos/`)
-- Título, descripción, imagen principal
-- Categoría (Residencial, Comercial, Industrial, etc.)
-- Estado del proyecto (En Progreso, Completado, Planificación)
-- Ubicación, fechas, cliente, área construida, presupuesto
-- Galería de imágenes
-- Lista de características
-- Publicado y destacado (featured)
-- Contenido markdown completo
+#### 1. **🏗️ Proyectos** (`src/content/proyectos/`)
+Estructura basada en `src/data/proyectos.ts`:
+- **Información básica**: slug, título, descripción, etiquetas
+- **Imágenes**: imagen principal + galería completa
+- **Contenido**: descripción detallada en markdown
+- **Video**: tour virtual opcional
+- **Testimonios**: testimonio principal + testimonios adicionales
+- **Filtros**: por tipo (Residencial, Comercial, Industrial, Retail)
+- **Vista previa**: `/proyecto/[slug]`
 
-#### 2. **Servicios** (`src/content/services/`)
-- Título, descripción, imagen
-- Icono (Phosphor Icons)
-- Orden de aparición
-- Características y beneficios
-- Publicado y destacado
+**Campos principales**:
+- `slug`, `title`, `description`
+- `tags` (múltiple selección)
+- `backgroundImage` (imagen hero)
+- `images` (array de imágenes)
+- `content` (markdown)
+- `virtualTourVideo`
+- `testimonial` (objeto)
+- `testimonials` (array)
 
-#### 3. **Páginas Configurables**
+#### 2. **🛠️ Servicios** (`src/content/servicios/`)
+Estructura basada en `src/data/servicios.ts`:
+- **Información del servicio**: nombre, categoría, tagline
+- **Características**: título, descripción, iconos Phosphor
+- **Beneficios**: con descripciones e iconos
+- **Proceso**: pasos numerados del flujo de trabajo
+- **Testimonios**: opiniones de clientes
+- **FAQs**: preguntas frecuentes
+- **Vista previa**: `/servicios/[slug]`
 
-**Página Principal:**
-- Hero section (título, subtítulo, botones)
-- Sección sobre nosotros
-- Misión y visión
-- Testimonios con ratings
+**Campos principales**:
+- `slug`, `title`, `subtitle`, `description`
+- `service.name`, `service.category`, `service.tagline`
+- `service.features` (array con iconos)
+- `service.benefits` (array)
+- `service.process` (pasos numerados)
+- `service.testimonials` (array)
+- `service.faqs` (array)
 
-**Quiénes Somos:**
-- Información de la empresa
-- Valores corporativos (con iconos)
-- Equipo de trabajo (con fotos y bio)
+#### 3. **📄 Configuración de Páginas**
 
-**Contacto:**
-- Múltiples teléfonos y emails
-- Dirección completa
+**📞 Información de Contacto** (`src/data/contact.json`):
+- Teléfonos (principal y secundario)
+- Emails (principal y secundario)
+- Dirección física completa
 - Horarios de atención
-- Redes sociales
-- Múltiples ubicaciones
+- Redes sociales (Facebook, Instagram, LinkedIn, Twitter, YouTube)
+- Múltiples ubicaciones/sucursales con mapas
 
-**Configuración General:**
-- Información del sitio
+**⚙️ Configuración General** (`src/data/settings.json`):
+- Información del sitio (nombre, descripción)
 - Logo y favicon
-- SEO (meta tags, keywords, OG image)
-- Analíticas (Google Analytics, Facebook Pixel)
+- Configuración SEO:
+  - Meta título y descripción
+  - Palabras clave
+  - Imagen Open Graph
+- Analíticas:
+  - Google Analytics ID
+  - Facebook Pixel ID
 
 ## 🚀 Próximos Pasos
 
