@@ -1,0 +1,24 @@
+{
+  "phone": "+593 99 123 4567",
+  "phoneSecondary": "+593 99 765 4321",
+  "email": "info@constructoracarpio.com",
+  "emailSecondary": "ventas@constructoracarpio.com",
+  "address": "Av. Principal #123 y Secundaria",
+  "city": "Ambato",
+  "country": "Ecuador",
+  "zipCode": "180101",
+  "businessHours": "Lunes a Viernes: 8:00 AM - 6:00 PM\nSábados: 9:00 AM - 1:00 PM",
+  "social": {
+    "facebook": "https://facebook.com/constructoracarpio",
+    "instagram": "https://instagram.com/constructoracarpio",
+    "linkedin": "https://linkedin.com/company/constructoracarpio"
+  },
+  "locations": [
+    {
+      "name": "Oficina Principal",
+      "address": "Av. Principal #123, Ambato, Ecuador",
+      "phone": "+593 99 123 4567",
+      "email": "info@constructoracarpio.com"
+    }
+  ]
+}

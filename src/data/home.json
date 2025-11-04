@@ -1,0 +1,36 @@
+{
+  "hero": {
+    "title": "Constructora Carpio",
+    "subtitle": "Construyendo el futuro con calidad y compromiso",
+    "primaryButtonText": "Ver Proyectos",
+    "primaryButtonUrl": "/proyectos",
+    "secondaryButtonText": "Ver Servicios",
+    "secondaryButtonUrl": "/servicios"
+  },
+  "about": {
+    "title": "Sobre Nosotros",
+    "description": "Con más de 20 años de experiencia en el sector de la construcción, **Constructora Carpio** se ha consolidado como una empresa líder en proyectos residenciales, comerciales e industriales.",
+    "yearsExperience": 20,
+    "projectsCompleted": 150
+  },
+  "missionVision": {
+    "mission": "Proporcionar soluciones de construcción de alta calidad que superen las expectativas de nuestros clientes, manteniendo los más altos estándares de seguridad y sostenibilidad.",
+    "vision": "Ser reconocidos como la constructora líder en innovación y excelencia, transformando espacios y mejorando la calidad de vida de las comunidades donde operamos."
+  },
+  "testimonials": [
+    {
+      "name": "Juan Pérez",
+      "position": "Propietario",
+      "company": "Residencial Las Palmas",
+      "content": "Excelente trabajo, cumplieron con todos los plazos y la calidad superó nuestras expectativas.",
+      "rating": 5
+    },
+    {
+      "name": "María González",
+      "position": "Gerente",
+      "company": "Centro Comercial Everest",
+      "content": "Profesionalismo y dedicación en cada etapa del proyecto. Altamente recomendados.",
+      "rating": 5
+    }
+  ]
+}

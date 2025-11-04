@@ -1,32 +1,226 @@
 backend:
   name: git-gateway
   branch: main
+  # Permitir vista previa local durante desarrollo
+  local_backend: true
 
+# Configuración de medios
 media_folder: "public/images"
 public_folder: "/images"
 
+# Configuración de idioma
+locale: "es"
+
+# Configuración de vista previa
+site_url: https://constructora-carpio.netlify.app
+display_url: https://constructora-carpio.netlify.app
+logo_url: /images/logo.png
+
+# Slug config
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
+
+# Colecciones
 collections:
   - name: "proyectos"
     label: "Proyectos"
+    label_singular: "Proyecto"
     folder: "src/content/proyectos"
     create: true
     slug: "{{slug}}"
+    preview_path: "proyecto/{{slug}}"
+    identifier_field: "title"
+    editor:
+      preview: false
     fields:
-      - {label: "Título", name: "title", widget: "string"}
-      - {label: "Descripción", name: "description", widget: "text"}
-      - {label: "Imagen", name: "image", widget: "image"}
-      - {label: "Categoría", name: "category", widget: "select", options: ["Residencial", "Comercial", "Industrial"]}
-      - {label: "Fecha", name: "date", widget: "datetime"}
-      - {label: "Contenido", name: "body", widget: "markdown"}
+      - {label: "Título", name: "title", widget: "string", required: true}
+      - {label: "Descripción Corta", name: "description", widget: "text", required: true, hint: "Máximo 160 caracteres para SEO", pattern: [".{1,160}", "Debe tener máximo 160 caracteres"]}
+      - {label: "Imagen Principal", name: "image", widget: "image", required: true, hint: "Imagen destacada del proyecto"}
+      - {label: "Categoría", name: "category", widget: "select", required: true, options: ["Residencial", "Comercial", "Industrial", "Infraestructura", "Remodelación"]}
+      - {label: "Estado", name: "status", widget: "select", required: true, default: "Completado", options: ["En Progreso", "Completado", "Planificación"]}
+      - {label: "Ubicación", name: "location", widget: "string", required: false, hint: "Ciudad o sector"}
+      - {label: "Fecha de Inicio", name: "startDate", widget: "datetime", required: false, format: "YYYY-MM-DD"}
+      - {label: "Fecha de Finalización", name: "date", widget: "datetime", required: true, format: "YYYY-MM-DD"}
+      - {label: "Cliente", name: "client", widget: "string", required: false}
+      - {label: "Área Construida (m²)", name: "area", widget: "number", required: false, value_type: "float", min: 0}
+      - {label: "Presupuesto", name: "budget", widget: "string", required: false, hint: "Ejemplo: $500,000"}
+      - label: "Galería de Imágenes"
+        name: "gallery"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Imagen", name: "image", widget: "image"}
+          - {label: "Descripción", name: "alt", widget: "string", required: false}
+      - label: "Características"
+        name: "features"
+        widget: "list"
+        required: false
+        field: {label: "Característica", name: "feature", widget: "string"}
+      - {label: "Publicado", name: "published", widget: "boolean", default: true}
+      - {label: "Destacado", name: "featured", widget: "boolean", default: false, hint: "Mostrar en página principal"}
+      - {label: "Contenido", name: "body", widget: "markdown", required: true, hint: "Descripción detallada del proyecto"}
 
   - name: "servicios"
     label: "Servicios"
-    folder: "src/content/servicios"
+    label_singular: "Servicio"
+    folder: "src/content/services"
     create: true
     slug: "{{slug}}"
+    preview_path: "servicios/{{slug}}"
+    identifier_field: "title"
+    editor:
+      preview: false
     fields:
-      - {label: "Título", name: "title", widget: "string"}
-      - {label: "Descripción", name: "description", widget: "text"}
-      - {label: "Imagen", name: "image", widget: "image"}
-      - {label: "Icono", name: "icon", widget: "image"}
-      - {label: "Contenido", name: "body", widget: "markdown"}
+      - {label: "Título", name: "title", widget: "string", required: true}
+      - {label: "Descripción Corta", name: "description", widget: "text", required: true, hint: "Máximo 160 caracteres"}
+      - {label: "Imagen Principal", name: "image", widget: "image", required: true}
+      - {label: "Icono", name: "icon", widget: "string", required: false, hint: "Nombre del icono de Phosphor (ej: ph:house)"}
+      - {label: "Orden", name: "order", widget: "number", required: false, default: 0, value_type: "int", hint: "Orden de aparición en el sitio"}
+      - label: "Características"
+        name: "features"
+        widget: "list"
+        required: false
+        field: {label: "Característica", name: "feature", widget: "string"}
+      - label: "Beneficios"
+        name: "benefits"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Título", name: "title", widget: "string"}
+          - {label: "Descripción", name: "description", widget: "text"}
+      - {label: "Publicado", name: "published", widget: "boolean", default: true}
+      - {label: "Destacado", name: "featured", widget: "boolean", default: false}
+      - {label: "Contenido", name: "body", widget: "markdown", required: true}
+
+  - name: "pages"
+    label: "Páginas"
+    label_singular: "Página"
+    editor:
+      preview: false
+    files:
+      - label: "Página Principal"
+        name: "home"
+        file: "src/data/home.json"
+        fields:
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Subtítulo", name: "subtitle", widget: "text"}
+              - {label: "Botón Primario Texto", name: "primaryButtonText", widget: "string"}
+              - {label: "Botón Primario URL", name: "primaryButtonUrl", widget: "string"}
+              - {label: "Botón Secundario Texto", name: "secondaryButtonText", widget: "string"}
+              - {label: "Botón Secundario URL", name: "secondaryButtonUrl", widget: "string"}
+          
+          - label: "Sección Nosotros"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "markdown"}
+              - {label: "Años de Experiencia", name: "yearsExperience", widget: "number"}
+              - {label: "Proyectos Completados", name: "projectsCompleted", widget: "number"}
+          
+          - label: "Misión y Visión"
+            name: "missionVision"
+            widget: "object"
+            fields:
+              - {label: "Misión", name: "mission", widget: "text"}
+              - {label: "Visión", name: "vision", widget: "text"}
+          
+          - label: "Testimonios"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - {label: "Nombre", name: "name", widget: "string"}
+              - {label: "Cargo", name: "position", widget: "string"}
+              - {label: "Empresa", name: "company", widget: "string", required: false}
+              - {label: "Testimonio", name: "content", widget: "text"}
+              - {label: "Foto", name: "image", widget: "image", required: false}
+              - {label: "Calificación", name: "rating", widget: "number", min: 1, max: 5, default: 5}
+      
+      - label: "Quiénes Somos"
+        name: "about"
+        file: "src/data/about.json"
+        fields:
+          - {label: "Título Principal", name: "title", widget: "string"}
+          - {label: "Descripción", name: "description", widget: "markdown"}
+          - {label: "Imagen Hero", name: "heroImage", widget: "image"}
+          - label: "Valores"
+            name: "values"
+            widget: "list"
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Icono", name: "icon", widget: "string"}
+          - label: "Equipo"
+            name: "team"
+            widget: "list"
+            fields:
+              - {label: "Nombre", name: "name", widget: "string"}
+              - {label: "Cargo", name: "position", widget: "string"}
+              - {label: "Foto", name: "image", widget: "image"}
+              - {label: "Bio", name: "bio", widget: "text", required: false}
+              - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+      
+      - label: "Información de Contacto"
+        name: "contact"
+        file: "src/data/contact.json"
+        fields:
+          - {label: "Teléfono Principal", name: "phone", widget: "string"}
+          - {label: "Teléfono Secundario", name: "phoneSecondary", widget: "string", required: false}
+          - {label: "Email", name: "email", widget: "string"}
+          - {label: "Email Secundario", name: "emailSecondary", widget: "string", required: false}
+          - {label: "Dirección", name: "address", widget: "text"}
+          - {label: "Ciudad", name: "city", widget: "string"}
+          - {label: "País", name: "country", widget: "string"}
+          - {label: "Código Postal", name: "zipCode", widget: "string", required: false}
+          - {label: "Horario de Atención", name: "businessHours", widget: "text"}
+          - label: "Redes Sociales"
+            name: "social"
+            widget: "object"
+            fields:
+              - {label: "Facebook", name: "facebook", widget: "string", required: false}
+              - {label: "Instagram", name: "instagram", widget: "string", required: false}
+              - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+              - {label: "Twitter", name: "twitter", widget: "string", required: false}
+              - {label: "YouTube", name: "youtube", widget: "string", required: false}
+          - label: "Ubicaciones"
+            name: "locations"
+            widget: "list"
+            required: false
+            fields:
+              - {label: "Nombre", name: "name", widget: "string"}
+              - {label: "Dirección", name: "address", widget: "text"}
+              - {label: "Teléfono", name: "phone", widget: "string"}
+              - {label: "Email", name: "email", widget: "string", required: false}
+              - {label: "Mapa (URL)", name: "mapUrl", widget: "string", required: false}
+      
+      - label: "Configuración General"
+        name: "settings"
+        file: "src/data/settings.json"
+        fields:
+          - {label: "Nombre del Sitio", name: "siteName", widget: "string"}
+          - {label: "Descripción del Sitio", name: "siteDescription", widget: "text"}
+          - {label: "Logo", name: "logo", widget: "image"}
+          - {label: "Favicon", name: "favicon", widget: "image"}
+          - {label: "Idioma", name: "language", widget: "string", default: "es"}
+          - {label: "Zona Horaria", name: "timezone", widget: "string", default: "America/Guayaquil"}
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - {label: "Meta Título", name: "metaTitle", widget: "string"}
+              - {label: "Meta Descripción", name: "metaDescription", widget: "text"}
+              - {label: "Palabras Clave", name: "keywords", widget: "list", field: {label: "Palabra Clave", name: "keyword", widget: "string"}}
+              - {label: "Imagen OG", name: "ogImage", widget: "image"}
+          - label: "Analíticas"
+            name: "analytics"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Google Analytics ID", name: "googleAnalyticsId", widget: "string", required: false}
+              - {label: "Facebook Pixel ID", name: "facebookPixelId", widget: "string", required: false}

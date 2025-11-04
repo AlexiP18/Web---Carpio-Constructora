@@ -1,0 +1,151 @@
+---
+/**
+ * Ejemplo de cómo usar los datos del CMS en un componente Astro
+ * Este archivo es solo un ejemplo y puede ser eliminado
+ */
+
+import { getHomeData, getContactData, getSettingsData } from '@/lib/cms';
+
+// Cargar los datos
+const homeData = await getHomeData();
+const contactData = await getContactData();
+const settingsData = await getSettingsData();
+
+// Extraer valores específicos
+const { hero, testimonials } = homeData || {};
+const { phone, email, social } = contactData || {};
+const { siteName, seo } = settingsData || {};
+---
+
+<div class="example-container">
+  <h1>Ejemplo de Uso de Datos del CMS</h1>
+  
+  <!-- Ejemplo 1: Datos del Hero -->
+  {hero && (
+    <section class="hero-example">
+      <h2>{hero.title}</h2>
+      <p>{hero.subtitle}</p>
+      <div class="buttons">
+        <a href={hero.primaryButtonUrl}>{hero.primaryButtonText}</a>
+        <a href={hero.secondaryButtonUrl}>{hero.secondaryButtonText}</a>
+      </div>
+    </section>
+  )}
+
+  <!-- Ejemplo 2: Información de Contacto -->
+  {contactData && (
+    <section class="contact-example">
+      <h3>Contacto</h3>
+      <p>Teléfono: <a href={`tel:${phone}`}>{phone}</a></p>
+      <p>Email: <a href={`mailto:${email}`}>{email}</a></p>
+      
+      {social && (
+        <div class="social-links">
+          {social.facebook && <a href={social.facebook}>Facebook</a>}
+          {social.instagram && <a href={social.instagram}>Instagram</a>}
+          {social.linkedin && <a href={social.linkedin}>LinkedIn</a>}
+        </div>
+      )}
+    </section>
+  )}
+
+  <!-- Ejemplo 3: Testimonios -->
+  {testimonials && testimonials.length > 0 && (
+    <section class="testimonials-example">
+      <h3>Testimonios</h3>
+      {testimonials.map((testimonial) => (
+        <div class="testimonial">
+          <p class="content">"{testimonial.content}"</p>
+          <p class="author">
+            - {testimonial.name}, {testimonial.position}
+            {testimonial.company && ` en ${testimonial.company}`}
+          </p>
+          <div class="rating">
+            {Array.from({ length: testimonial.rating }).map(() => (
+              <span>⭐</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+  )}
+
+  <!-- Ejemplo 4: SEO Metadata -->
+  {seo && (
+    <section class="seo-example">
+      <h3>Configuración SEO</h3>
+      <p><strong>Meta Título:</strong> {seo.metaTitle}</p>
+      <p><strong>Meta Descripción:</strong> {seo.metaDescription}</p>
+      <p><strong>Palabras Clave:</strong> {seo.keywords?.join(', ')}</p>
+    </section>
+  )}
+</div>
+
+<style>
+  .example-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  section {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: #f5f5f5;
+    border-radius: 8px;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .buttons a {
+    padding: 0.75rem 1.5rem;
+    background: #103646;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+
+  .testimonial {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 4px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .social-links a {
+    color: #103646;
+    text-decoration: none;
+  }
+</style>
+
+<!--
+  INSTRUCCIONES DE USO:
+  
+  1. En cualquier componente Astro, importa las funciones de cms.ts:
+     import { getHomeData } from '@/lib/cms';
+  
+  2. Carga los datos en la sección de script:
+     const homeData = await getHomeData();
+  
+  3. Usa los datos en tu template:
+     {homeData.hero.title}
+  
+  4. Para editar estos datos, ve a:
+     https://tu-sitio.netlify.app/admin/
+  
+  5. Los archivos JSON se encuentran en:
+     src/data/home.json
+     src/data/about.json
+     src/data/contact.json
+     src/data/settings.json
+-->

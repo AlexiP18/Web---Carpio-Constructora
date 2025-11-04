@@ -1,0 +1,26 @@
+{
+  "siteName": "Constructora Carpio",
+  "siteDescription": "Empresa constructora ecuatoriana especializada en proyectos residenciales, comerciales e industriales de alta calidad.",
+  "logo": "/images/logo.png",
+  "favicon": "/favicon.ico",
+  "language": "es",
+  "timezone": "America/Guayaquil",
+  "seo": {
+    "metaTitle": "Constructora Carpio - Construcción de Calidad en Ecuador",
+    "metaDescription": "Empresa constructora líder en Ecuador con más de 20 años de experiencia. Especialistas en proyectos residenciales, comerciales e industriales.",
+    "keywords": [
+      "constructora",
+      "construcción",
+      "Ecuador",
+      "Ambato",
+      "proyectos residenciales",
+      "construcción comercial",
+      "obra civil"
+    ],
+    "ogImage": "/images/og-image.jpg"
+  },
+  "analytics": {
+    "googleAnalyticsId": "",
+    "facebookPixelId": ""
+  }
+}

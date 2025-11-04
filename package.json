@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cms:dev": "npx decap-server",
+    "cms:help": "echo 'Ejecuta npm run cms:dev en una terminal y npm run dev en otra para usar el CMS localmente'"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.9",
@@ -39,6 +41,8 @@
     "swiper": "^12.0.1",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
+    "three": "^0.170.0",
+    "vanta": "^0.5.24",
     "zod": "^3.25.76"
   },
   "devDependencies": {

@@ -1,0 +1,25 @@
+# Configuración de Netlify para Constructora Carpio
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Configuración de Netlify Identity para Decap CMS
+[build.environment]
+  NODE_VERSION = "20"
+
+# Redirecciones para el admin de Decap CMS
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+# Habilitar Git Gateway para Decap CMS
+[context.production]
+  command = "npm run build"
+
+[context.deploy-preview]
+  command = "npm run build"
+
+[context.branch-deploy]
+  command = "npm run build"

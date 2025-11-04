@@ -1,0 +1,41 @@
+{
+  "title": "Quiénes Somos",
+  "description": "**Constructora Carpio** es una empresa ecuatoriana dedicada a la construcción de proyectos residenciales, comerciales e industriales de alta calidad.\n\nDesde nuestros inicios, hemos trabajado con un compromiso inquebrantable hacia la excelencia, la innovación y la satisfacción del cliente.",
+  "heroImage": "/images/about-hero.jpg",
+  "values": [
+    {
+      "title": "Calidad",
+      "description": "Nos comprometemos a entregar proyectos que superen los estándares de la industria.",
+      "icon": "ph:seal-check"
+    },
+    {
+      "title": "Innovación",
+      "description": "Utilizamos las últimas tecnologías y metodologías en cada proyecto.",
+      "icon": "ph:lightbulb"
+    },
+    {
+      "title": "Compromiso",
+      "description": "Cumplimos nuestras promesas y mantenemos relaciones duraderas con nuestros clientes.",
+      "icon": "ph:handshake"
+    },
+    {
+      "title": "Sostenibilidad",
+      "description": "Construimos pensando en el futuro y el impacto ambiental.",
+      "icon": "ph:leaf"
+    }
+  ],
+  "team": [
+    {
+      "name": "Ing. Carlos Carpio",
+      "position": "Director General",
+      "image": "/images/team/carlos-carpio.jpg",
+      "bio": "Ingeniero Civil con más de 25 años de experiencia en proyectos de construcción de gran envergadura."
+    },
+    {
+      "name": "Arq. Ana Martínez",
+      "position": "Directora de Diseño",
+      "image": "/images/team/ana-martinez.jpg",
+      "bio": "Arquitecta especializada en diseño sostenible y espacios funcionales."
+    }
+  ]
+}
