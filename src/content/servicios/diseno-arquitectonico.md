@@ -1,0 +1,58 @@
+---
+slug: "diseno-arquitectonico"
+title: "Diseño Arquitectónico"
+subtitle: "Diseño Arquitectónico"
+description: "Creamos proyectos arquitectónicos personalizados que transforman tus ideas en planos profesionales."
+service:
+  name: "Servicio de Diseño Arquitectónico"
+  category: "Diseño Arquitectónico"
+  tagline: "DISEÑO"
+  featuresTitle: "Características Destacadas de Nuestro Servicio de Diseño Arquitectónico"
+  featuresDescription: "Nuestro servicio de diseño arquitectónico combina creatividad, funcionalidad y experiencia técnica."
+  features:
+    - title: "Proyectos Personalizados"
+      description: "Diseños únicos adaptados a tus necesidades específicas."
+      icon: "ph:pencil-ruler"
+    - title: "Renderizados 3D Realistas"
+      description: "Visualiza tu proyecto antes de construirlo."
+      icon: "ph:cube"
+    - title: "Asesoría Técnica Profesional"
+      description: "Acompañamiento experto en cada etapa del diseño."
+      icon: "ph:chats-circle"
+  benefits:
+    - title: "Diseño Innovador"
+      description: "Soluciones arquitectónicas modernas y funcionales."
+      icon: "ph:lightbulb"
+    - title: "Optimización de Espacios"
+      description: "Aprovechamiento máximo de cada metro cuadrado."
+      icon: "ph:layout"
+  process:
+    - number: "01"
+      title: "Consulta Inicial"
+      description: "Conocemos tus ideas, necesidades y expectativas del proyecto."
+      icon: "ph:handshake"
+    - number: "02"
+      title: "Desarrollo de Diseño"
+      description: "Creamos propuestas con planos y renderizados detallados."
+      icon: "ph:pencil-line"
+    - number: "03"
+      title: "Entrega de Documentación"
+      description: "Proporcionamos planos técnicos completos listos para construcción."
+      icon: "ph:file-text"
+  testimonials:
+    - content: "El diseño superó todas nuestras expectativas, muy profesional."
+      author: "Patricia González"
+      position: "Propietaria"
+      rating: 5
+    - content: "Excelente asesoría y atención a nuestras necesidades específicas."
+      author: "Miguel Torres"
+      position: "Director de Proyecto"
+      rating: 5
+  faqs:
+    - question: "¿Cuánto tiempo toma el proceso de diseño?"
+      answer: "El tiempo varía según la complejidad del proyecto, generalmente entre 2 a 4 semanas para un diseño completo con renderizados."
+    - question: "¿Qué incluye el servicio de diseño?"
+      answer: "Incluye planos arquitectónicos, renderizados 3D, especificaciones técnicas y asesoría durante el proceso de diseño."
+    - question: "¿Pueden adaptar diseños existentes?"
+      answer: "Sí, podemos trabajar sobre diseños previos para mejorarlos o adaptarlos a nuevas necesidades y normativas."
+---
