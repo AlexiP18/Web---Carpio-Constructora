@@ -1,12 +1,13 @@
 ---
-title: "Los Arrayanes de Ficoa"
-slug: "los-arrayanes-de-ficoa"
-description: "Diseños de vivienda unifamiliar y multifamiliar que combinan funcionalidad y estética moderna."
+title: Los Arrayanes de Ficoa
+slug: los-arrayanes-de-ficoa
+description: Diseños de vivienda unifamiliar y multifamiliar que combinan
+  funcionalidad y estética moderna.
 tags:
   - Residencial
   - Vivienda Unifamiliar
   - Vivienda Multifamiliar
-backgroundImage: "/images/projects/arrayanes_ficoa/0_Vista_Exterior.jpg"
+backgroundImage: /images/projects/nosotroshero.png
 images:
   - /images/projects/arrayanes_ficoa/0_Vista_Exterior.jpg
   - /images/projects/arrayanes_ficoa/1_Vista_Entrada.jpg
@@ -17,26 +18,30 @@ images:
   - /images/projects/arrayanes_ficoa/6_Segundo_Piso.jpg
   - /images/projects/arrayanes_ficoa/7_Habitacion_Master.jpg
   - /images/projects/arrayanes_ficoa/8_Habitacion_Simple.jpg
+content: Los Arrayanes de Ficoa
 testimonial:
   rating: 5
-  quote: "La calidad de construcción y atención al detalle en Los Arrayanes de Ficoa es excepcional."
-  name: "María Rodríguez"
-  position: "Propietaria, Los Arrayanes"
-  logo: "/images/logo-placeholder.svg"
-  image: "/images/placeholder-image.jpg"
+  quote: La calidad de construcción y atención al detalle en Los Arrayanes de
+    Ficoa es excepcional.
+  name: María Rodríguez
+  position: Propietaria, Los Arrayanes
+  logo: /images/logo-placeholder.svg
+  image: /images/placeholder-image.jpg
 testimonials:
   - rating: 5
-    quote: "La calidad de construcción y atención al detalle en Los Arrayanes de Ficoa es excepcional."
-    name: "María Rodríguez"
-    position: "Propietaria, Los Arrayanes"
-    logo: "/images/logo-placeholder.svg"
-    image: "/images/placeholder-image.jpg"
+    quote: La calidad de construcción y atención al detalle en Los Arrayanes de
+      Ficoa es excepcional.
+    name: María Rodríguez
+    position: Propietaria, Los Arrayanes
+    logo: /images/logo-placeholder.svg
+    image: /images/placeholder-image.jpg
   - rating: 5
-    quote: "Un desarrollo residencial que supera las expectativas. Diseño funcional y moderno."
-    name: "Jorge Pérez"
-    position: "Residente, Los Arrayanes de Ficoa"
-    logo: "/images/logo-placeholder.svg"
-    image: "/images/placeholder-image.jpg"
+    quote: Un desarrollo residencial que supera las expectativas. Diseño funcional y
+      moderno.
+    name: Jorge Pérez
+    position: Residente, Los Arrayanes de Ficoa
+    logo: /images/logo-placeholder.svg
+    image: /images/placeholder-image.jpg
 ---
 
 Los Arrayanes de Ficoa es un desarrollo residencial integral que ofrece diseños personalizados para viviendas unifamiliares y multifamiliares, adaptándose a las necesidades específicas de cada familia.
