@@ -88,6 +88,21 @@ const serviciosCollection = defineCollection({
       name: z.string(),
       category: z.string(),
       tagline: z.string(),
+      // Configuración del Hero
+      heroConfig: z.object({
+        chips: z.array(z.object({
+          title: z.string(),
+          description: z.string(),
+          icon: z.string(),
+          colorScheme: z.enum(['primary', 'secondary']).optional(),
+        })).optional(),
+        ctaButton: z.object({
+          text: z.string().optional(),
+          whatsappNumber: z.string().optional(),
+          url: z.string().optional(),
+          actionType: z.enum(['page', 'whatsapp']).optional(),
+        }).optional(),
+      }).optional(),
       featuresTitle: z.string(),
       featuresDescription: z.string(),
       features: z.array(z.object({
@@ -106,12 +121,37 @@ const serviciosCollection = defineCollection({
         description: z.string(),
         icon: z.string(),
       })),
+      // Sección de Testimonios con control de activación
+      testimonialsSection: z.object({
+        enabled: z.boolean().optional(),
+        title: z.string().optional(),
+        tagline: z.string().optional(),
+        items: z.array(z.object({
+          content: z.string(),
+          author: z.string(),
+          position: z.string(),
+          rating: z.number(),
+        })).optional(),
+      }).optional(),
+      // Mantener retrocompatibilidad con estructura anterior
       testimonials: z.array(z.object({
         content: z.string(),
         author: z.string(),
         position: z.string(),
         rating: z.number(),
       })).optional(),
+      // Sección de FAQs con control de activación
+      faqsSection: z.object({
+        enabled: z.boolean().optional(),
+        title: z.string().optional(),
+        tagline: z.string().optional(),
+        description: z.string().optional(),
+        items: z.array(z.object({
+          question: z.string(),
+          answer: z.string(),
+        })).optional(),
+      }).optional(),
+      // Mantener retrocompatibilidad con estructura anterior
       faqs: z.array(z.object({
         question: z.string(),
         answer: z.string(),

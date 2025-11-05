@@ -7,7 +7,22 @@ description: Transformamos tus ideas en realidad con soluciones constructivas de
 backgroundImage: /images/construccion-hero.jpg
 service:
   name: Servicio de Construcción
+  category: Construcción
   tagline: CALIDAD
+  heroConfig:
+    chips:
+      - title: Calidad Premium
+        description: Materiales de primera y acabados impecables
+        icon: ph:star-fill
+        colorScheme: primary
+      - title: Equipo Profesional
+        description: Especialistas con años de experiencia
+        icon: ph:users-fill
+        colorScheme: secondary
+    ctaButton:
+      text: Solicitar Cotización
+      actionType: page
+      url: /contacto
   process:
     - number: "01"
       title: Evaluación Inicial
@@ -30,19 +45,23 @@ service:
       number: "05"
       title: Fin
       description: Establecemos todo el analisis
-  testimonials:
-    - content: Excelente trabajo, cumplieron con todos nuestros requisitos.
-      author: Juan Pérez
-      position: Propietario
-      rating: 5
-    - content: Un equipo profesional que cumplió con los plazos acordados.
-      author: María López
-      position: Directora, Inmobiliaria ABC
-      rating: 5
-    - content: Recomiendo sus servicios sin dudarlo.
-      author: Carlos Ruiz
-      position: Propietario, Negocios 123
-      rating: 5
+  testimonialsSection:
+    enabled: true
+    title: Lo que Dicen Nuestros Clientes
+    tagline: TESTIMONIOS
+    items:
+      - content: Excelente trabajo, cumplieron con todos nuestros requisitos.
+        author: Juan Pérez
+        position: Propietario
+        rating: 5
+      - content: Un equipo profesional que cumplió con los plazos acordados.
+        author: María López
+        position: Directora, Inmobiliaria ABC
+        rating: 5
+      - content: Recomiendo sus servicios sin dudarlo.
+        author: Carlos Ruiz
+        position: Propietario, Negocios 123
+        rating: 5
   featuresTitle: Características Destacadas de Nuestro Servicio de Construcción
   benefits:
     - title: Construcción Sostenible
@@ -51,18 +70,23 @@ service:
     - title: Eficiencia Energética
       description: Diseños que optimizan el consumo energético y reducen costos.
       icon: ph:lightning
-  faqs:
-    - question: ¿Cuánto tiempo toma un proyecto de construcción?
-      answer: El tiempo de ejecución depende del tipo de proyecto. Generalmente, un
-        proyecto puede tardar entre 3 a 6 meses. Sin embargo, siempre trabajamos
-        para cumplir con los plazos establecidos.
-    - question: ¿Qué materiales utilizan?
-      answer: Utilizamos materiales de alta calidad que cumplen con las normativas de
-        seguridad. Nuestros proveedores son seleccionados cuidadosamente para
-        garantizar durabilidad y sostenibilidad.
-    - question: ¿Ofrecen garantía en sus proyectos?
-      answer: Sí, ofrecemos garantía en todos nuestros proyectos. La duración y
-        condiciones de la garantía varían según el tipo de trabajo realizado.
+  faqsSection:
+    enabled: true
+    title: Preguntas Frecuentes
+    tagline: PREGUNTAS FRECUENTES
+    description: Aquí encontrarás respuestas a las preguntas más comunes sobre nuestro servicio de construcción.
+    items:
+      - question: ¿Cuánto tiempo toma un proyecto de construcción?
+        answer: El tiempo de ejecución depende del tipo de proyecto. Generalmente, un
+          proyecto puede tardar entre 3 a 6 meses. Sin embargo, siempre trabajamos
+          para cumplir con los plazos establecidos.
+      - question: ¿Qué materiales utilizan?
+        answer: Utilizamos materiales de alta calidad que cumplen con las normativas de
+          seguridad. Nuestros proveedores son seleccionados cuidadosamente para
+          garantizar durabilidad y sostenibilidad.
+      - question: ¿Ofrecen garantía en sus proyectos?
+        answer: Sí, ofrecemos garantía en todos nuestros proyectos. La duración y
+          condiciones de la garantía varían según el tipo de trabajo realizado.
   features:
     - title: Compromiso con la Sostenibilidad
       description: Implementamos prácticas sostenibles en cada etapa del proceso.

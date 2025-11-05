@@ -41,6 +41,7 @@ const {
     title={title}
     description={description}
     serviceType={Astro.params.slug as 'construccion' | 'remodelacion' | 'diseno-arquitectonico'}
+    heroConfig={service.heroConfig}
   />
   
   <!-- <ServicioFeatures 
@@ -64,11 +65,22 @@ const {
     steps={service.process}
   />
   
-  <!-- <ServicioTestimonials 
-    tagline="TESTIMONIOS"
-    title="Lo que Dicen Nuestros Clientes"
-    testimonials={service.testimonials}
-  /> -->
+  <!-- Testimonials Section - Conditional rendering based on new structure or legacy -->
+  {(() => {
+    const testimonialsSection = service.testimonialsSection;
+    const showTestimonials = testimonialsSection?.enabled !== false;
+    const testimonials = testimonialsSection?.items || service.testimonials || [];
+    const tagline = testimonialsSection?.tagline || "TESTIMONIOS";
+    const title = testimonialsSection?.title || "Lo que Dicen Nuestros Clientes";
+    
+    return showTestimonials && testimonials.length > 0 && (
+      <ServicioTestimonials 
+        tagline={tagline}
+        title={title}
+        testimonials={testimonials}
+      />
+    );
+  })()}
   
   <ServicioCTA 
     title="Solicita tu asesoría hoy"
@@ -80,12 +92,24 @@ const {
     backgroundImage="/images/cta-background.jpg"
   />
   
-  <!-- <ServicioFAQ 
-    tagline="PREGUNTAS FRECUENTES"
-    title="Preguntas"
-    description={`Aquí encontrarás respuestas a las preguntas más comunes sobre nuestro ${service.name.toLowerCase()}.`}
-    faqs={service.faqs}
-  /> -->
+  <!-- FAQs Section - Conditional rendering based on new structure or legacy -->
+  {(() => {
+    const faqsSection = service.faqsSection;
+    const showFAQs = faqsSection?.enabled !== false;
+    const faqs = faqsSection?.items || service.faqs || [];
+    const tagline = faqsSection?.tagline || "PREGUNTAS FRECUENTES";
+    const title = faqsSection?.title || "Preguntas";
+    const description = faqsSection?.description || `Aquí encontrarás respuestas a las preguntas más comunes sobre nuestro ${service.name.toLowerCase()}.`;
+    
+    return showFAQs && faqs.length > 0 && (
+      <ServicioFAQ 
+        tagline={tagline}
+        title={title}
+        description={description}
+        faqs={faqs}
+      />
+    );
+  })()}
 
   <Footer />
 </Layout>

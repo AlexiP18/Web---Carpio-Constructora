@@ -211,6 +211,51 @@ collections:
           - {label: "Categoría", name: "category", widget: "string", required: true}
           - {label: "Tagline", name: "tagline", widget: "string", required: true, hint: "Palabra clave (ej: CALIDAD, INNOVACIÓN)"}
           
+          # Configuración del Hero
+          - label: "⚙️ Configuración del Hero"
+            name: "heroConfig"
+            widget: "object"
+            collapsed: true
+            required: false
+            hint: "Personaliza el hero banner del servicio"
+            fields:
+              - label: "Chips de Información"
+                name: "chips"
+                widget: "list"
+                required: false
+                max: 4
+                min: 0
+                hint: "Máximo 4 chips (tarjetas informativas)"
+                summary: "{{fields.title}}"
+                fields:
+                  - {label: "Título", name: "title", widget: "string", required: true, hint: "Ej: Calidad Premium"}
+                  - {label: "Descripción", name: "description", widget: "string", required: true, hint: "Ej: Materiales de primera"}
+                  - {label: "Icono", name: "icon", widget: "string", required: true, default: "ph:star-fill", hint: "Icono de Phosphor"}
+                  - label: "Color de Fondo"
+                    name: "colorScheme"
+                    widget: "select"
+                    default: "primary"
+                    options:
+                      - {label: "Primario (Azul)", value: "primary"}
+                      - {label: "Secundario (Verde)", value: "secondary"}
+              
+              - label: "Botón de Cotización"
+                name: "ctaButton"
+                widget: "object"
+                required: false
+                fields:
+                  - {label: "Texto del Botón", name: "text", widget: "string", default: "Solicitar Cotización"}
+                  - {label: "Número de WhatsApp", name: "whatsappNumber", widget: "string", required: false, hint: "Formato: +593991234567 (con código de país, sin espacios)", pattern: ['^\+[0-9]{10,15}$', "Formato: +593991234567"]}
+                  - {label: "URL Alternativa", name: "url", widget: "string", default: "/contacto", hint: "Si no usas WhatsApp, ingresa URL (ej: /contacto)"}
+                  - label: "Tipo de Acción"
+                    name: "actionType"
+                    widget: "select"
+                    default: "page"
+                    options:
+                      - {label: "Ir a Página de Contacto", value: "page"}
+                      - {label: "Abrir WhatsApp", value: "whatsapp"}
+                    hint: "Elige si el botón abre WhatsApp o va a una página"
+          
           # Características
           - {label: "Título de Características", name: "featuresTitle", widget: "string", required: true}
           - {label: "Descripción de Características", name: "featuresDescription", widget: "text", required: true}
@@ -248,28 +293,47 @@ collections:
               - {label: "Icono", name: "icon", widget: "string", required: true, default: "ph:circle"}
           
           # Testimonios
-          - label: "Testimonios"
-            name: "testimonials"
-            widget: "list"
-            required: false
+          - label: "📢 Sección de Testimonios"
+            name: "testimonialsSection"
+            widget: "object"
             collapsed: true
-            summary: "{{fields.author}} - {{fields.rating}}⭐"
+            required: false
             fields:
-              - {label: "Contenido", name: "content", widget: "text", required: true}
-              - {label: "Autor", name: "author", widget: "string", required: true}
-              - {label: "Cargo", name: "position", widget: "string", required: true}
-              - {label: "Calificación", name: "rating", widget: "number", required: true, default: 5, min: 1, max: 5, value_type: "int"}
+              - {label: "Mostrar Sección de Testimonios", name: "enabled", widget: "boolean", default: true, hint: "Activa/desactiva la sección completa"}
+              - {label: "Título de la Sección", name: "title", widget: "string", default: "Lo que Dicen Nuestros Clientes", required: false}
+              - {label: "Tagline", name: "tagline", widget: "string", default: "TESTIMONIOS", required: false}
+              - label: "Testimonios"
+                name: "items"
+                widget: "list"
+                required: false
+                collapsed: true
+                summary: "{{fields.author}} - {{fields.rating}}⭐"
+                fields:
+                  - {label: "Contenido", name: "content", widget: "text", required: true}
+                  - {label: "Autor", name: "author", widget: "string", required: true}
+                  - {label: "Cargo", name: "position", widget: "string", required: true}
+                  - {label: "Calificación", name: "rating", widget: "number", required: true, default: 5, min: 1, max: 5, value_type: "int"}
           
           # Preguntas Frecuentes
-          - label: "Preguntas Frecuentes"
-            name: "faqs"
-            widget: "list"
-            required: false
+          - label: "❓ Sección de Preguntas Frecuentes"
+            name: "faqsSection"
+            widget: "object"
             collapsed: true
-            summary: "{{fields.question}}"
+            required: false
             fields:
-              - {label: "Pregunta", name: "question", widget: "string", required: true}
-              - {label: "Respuesta", name: "answer", widget: "text", required: true}
+              - {label: "Mostrar Sección de FAQs", name: "enabled", widget: "boolean", default: true, hint: "Activa/desactiva la sección completa"}
+              - {label: "Título de la Sección", name: "title", widget: "string", default: "Preguntas Frecuentes", required: false}
+              - {label: "Tagline", name: "tagline", widget: "string", default: "PREGUNTAS FRECUENTES", required: false}
+              - {label: "Descripción", name: "description", widget: "text", required: false}
+              - label: "Preguntas"
+                name: "items"
+                widget: "list"
+                required: false
+                collapsed: true
+                summary: "{{fields.question}}"
+                fields:
+                  - {label: "Pregunta", name: "question", widget: "string", required: true}
+                  - {label: "Respuesta", name: "answer", widget: "text", required: true}
 
   # Configuración de Páginas
   - name: "pages"

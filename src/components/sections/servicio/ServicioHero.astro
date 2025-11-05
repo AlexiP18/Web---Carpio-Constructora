@@ -7,14 +7,34 @@ import construccionBg from '../../../assets/img/ServicioConstruccion.png';
 import remodelacionBg from '../../../assets/img/ServiciosRemodelacion.png';
 import disenoArquitectonicoBg from '../../../assets/img/ServiciosDiseñoArquitectonico.png';
 
+export interface HeroChip {
+  title: string;
+  description: string;
+  icon: string;
+  colorScheme?: 'primary' | 'secondary';
+}
+
+export interface HeroCtaButton {
+  text?: string;
+  whatsappNumber?: string;
+  url?: string;
+  actionType?: 'page' | 'whatsapp';
+}
+
+export interface HeroConfig {
+  chips?: HeroChip[];
+  ctaButton?: HeroCtaButton;
+}
+
 export interface Props {
   tagline: string;
   title: string;
   description: string;
   serviceType?: 'construccion' | 'remodelacion' | 'diseno-arquitectonico';
+  heroConfig?: HeroConfig;
 }
 
-const { tagline, title, description, serviceType = 'construccion' } = Astro.props;
+const { tagline, title, description, serviceType = 'construccion', heroConfig } = Astro.props;
 
 // Select background image based on service type
 const backgroundImages = {
@@ -55,45 +75,86 @@ const backgroundImage = backgroundImages[serviceType];
         {description}
       </p>
       
-      <!-- Service highlights - Modern cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12" data-aos="fade-up" data-aos-delay="300">
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-          <div class="flex items-center gap-4">
-            <div class="w-14 h-14 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
-              <Icon name="ph:star-fill" class="w-7 h-7 text-white" />
+      <!-- Service highlights - Modern cards (dynamic) -->
+      {(heroConfig?.chips && heroConfig.chips.length > 0) ? (
+        <div class={`grid gap-4 mb-12 ${heroConfig.chips.length === 1 ? 'grid-cols-1 max-w-md' : heroConfig.chips.length === 2 ? 'grid-cols-1 md:grid-cols-2' : heroConfig.chips.length === 3 ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'}`} data-aos="fade-up" data-aos-delay="300">
+          {heroConfig.chips.map((chip) => {
+            const colorScheme = chip.colorScheme || 'primary';
+            const bgGradient = colorScheme === 'primary' 
+              ? 'from-brand-primary to-brand-primary-dark' 
+              : 'from-brand-secondary to-brand-secondary-dark';
+            
+            return (
+              <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+                <div class="flex items-center gap-4">
+                  <div class={`w-14 h-14 bg-gradient-to-br ${bgGradient} rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0`}>
+                    <Icon name={chip.icon} class="w-7 h-7 text-white" />
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-white mb-1">{chip.title}</h3>
+                    <p class="text-white/70 text-sm leading-relaxed">{chip.description}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <!-- Default chips if none configured -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12" data-aos="fade-up" data-aos-delay="300">
+          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
+                <Icon name="ph:star-fill" class="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white mb-1">Calidad Premium</h3>
+                <p class="text-white/70 text-sm leading-relaxed">Materiales de primera y acabados impecables</p>
+              </div>
             </div>
-            <div>
-              <h3 class="text-lg font-bold text-white mb-1">Calidad Premium</h3>
-              <p class="text-white/70 text-sm leading-relaxed">Materiales de primera y acabados impecables</p>
+          </div>
+          
+          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 bg-gradient-to-br from-brand-secondary to-brand-secondary-dark rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
+                <Icon name="ph:users-fill" class="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-white mb-1">Equipo Profesional</h3>
+                <p class="text-white/70 text-sm leading-relaxed">Especialistas con años de experiencia</p>
+              </div>
             </div>
           </div>
         </div>
-        
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-          <div class="flex items-center gap-4">
-            <div class="w-14 h-14 bg-gradient-to-br from-brand-secondary to-brand-secondary-dark rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
-              <Icon name="ph:users-fill" class="w-7 h-7 text-white" />
-            </div>
-            <div>
-              <h3 class="text-lg font-bold text-white mb-1">Equipo Profesional</h3>
-              <p class="text-white/70 text-sm leading-relaxed">Especialistas con años de experiencia</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      )}
       
-      <!-- CTA Button -->
-      <div class="inline-block" data-aos="fade-up">
-        <Button 
-          variant="secondary"
-          size="lg"
-          href="/contacto"
-          icon="ph:phone-fill"
-          class="shadow-xl hover:shadow-2xl"
-        >
-          Solicitar Cotización
-        </Button>
-      </div>
+      <!-- CTA Button (dynamic) -->
+      {(() => {
+        const ctaConfig = heroConfig?.ctaButton;
+        const buttonText = ctaConfig?.text || 'Solicitar Cotización';
+        const actionType = ctaConfig?.actionType || 'page';
+        
+        let buttonHref = '/contacto';
+        if (actionType === 'whatsapp' && ctaConfig?.whatsappNumber) {
+          buttonHref = `https://wa.me/${ctaConfig.whatsappNumber.replace(/\+/g, '')}?text=Hola,%20me%20interesa%20obtener%20información%20sobre%20sus%20servicios`;
+        } else if (ctaConfig?.url) {
+          buttonHref = ctaConfig.url;
+        }
+        
+        return (
+          <div class="inline-block" data-aos="fade-up">
+            <Button 
+              variant="secondary"
+              size="lg"
+              href={buttonHref}
+              icon={actionType === 'whatsapp' ? 'ph:whatsapp-logo-fill' : 'ph:phone-fill'}
+              class="shadow-xl hover:shadow-2xl"
+            >
+              {buttonText}
+            </Button>
+          </div>
+        );
+      })()}
     </div>
   </div>
 </section>
