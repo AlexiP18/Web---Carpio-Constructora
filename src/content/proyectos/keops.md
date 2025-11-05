@@ -37,6 +37,41 @@ testimonials:
     position: "Directora de Operaciones, Comercial Ecuador"
     logo: "/images/logo-placeholder.svg"
     image: "/images/placeholder-image.jpg"
+specifications:
+  area:
+    enabled: true
+    value: 500
+    label: m²
+    sublabel: Área comercial
+  deliveryDate:
+    enabled: true
+    value: Entregado
+    label: Estado del proyecto
+  customSpecs:
+    - enabled: true
+      icon: ph:storefront
+      label: Locales Comerciales
+      value: 8 espacios
+      sublabel: Diseño flexible
+      colorScheme: primary
+    - enabled: true
+      icon: ph:users
+      label: Capacidad
+      value: 200+ personas
+      sublabel: Aforo máximo
+      colorScheme: secondary
+    - enabled: true
+      icon: ph:lightning
+      label: Iluminación LED
+      value: Sistema inteligente
+      sublabel: Eficiencia energética
+      colorScheme: primary
+    - enabled: true
+      icon: ph:shield-check
+      label: Seguridad
+      value: 24/7
+      sublabel: Monitoreo completo
+      colorScheme: secondary
 ---
 
 KEOPs es un proyecto de diseño retail que revoluciona la experiencia comercial en Ecuador. Este desarrollo combina arquitectura moderna con funcionalidad estratégica para crear espacios comerciales que potencian las ventas y mejoran la experiencia del cliente.

@@ -36,12 +36,42 @@ testimonials:
     logo: /images/logo-placeholder.svg
     image: /images/placeholder-image.jpg
   - rating: 5
-    quote: Un desarrollo residencial que supera las expectativas. Diseño funcional y
-      moderno.
+    quote: Un desarrollo residencial que supera las expectativas. Diseño
+      funcional y moderno.
     name: Jorge Pérez
     position: Residente, Los Arrayanes de Ficoa
     logo: /images/logo-placeholder.svg
     image: /images/placeholder-image.jpg
+specifications:
+  bedrooms:
+    enabled: true
+    value: 3
+    label: Dormitorios
+    sublabel: Habitaciones
+  bathrooms:
+    enabled: true
+    value: 2
+    label: Baños
+    sublabel: Completos
+  area:
+    enabled: true
+    value: 150
+    label: m²
+    sublabel: Área construida
+  garden:
+    enabled: true
+    value: true
+    label: Jardín
+    sublabel: Área verde privada
+  petFriendly:
+    enabled: true
+    value: true
+    label: Pet Friendly
+    sublabel: Mascotas bienvenidas
+  deliveryDate:
+    enabled: true
+    value: Julio 2025
+    label: Fecha de entrega
 ---
 
 Los Arrayanes de Ficoa es un desarrollo residencial integral que ofrece diseños personalizados para viviendas unifamiliares y multifamiliares, adaptándose a las necesidades específicas de cada familia.

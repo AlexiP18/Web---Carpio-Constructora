@@ -31,7 +31,8 @@ const {
   images = [], 
   testimonial, 
   testimonials, 
-  virtualTourVideo 
+  virtualTourVideo,
+  specifications 
 } = proyecto.data;
 
 // Renderizar el contenido markdown como string
@@ -53,6 +54,7 @@ const contentHtml = proyecto.body;
       content={contentHtml}
       images={images}
       virtualTourVideo={virtualTourVideo}
+      specifications={specifications}
     />
     
     <!-- <ProjectImageSlider 

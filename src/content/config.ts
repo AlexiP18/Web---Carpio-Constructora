@@ -27,6 +27,51 @@ const proyectosCollection = defineCollection({
       logo: z.string(),
       image: z.string(),
     })).optional(),
+    specifications: z.object({
+      bedrooms: z.object({
+        enabled: z.boolean().optional(),
+        value: z.number().optional(),
+        label: z.string().optional(),
+        sublabel: z.string().optional(),
+      }).optional(),
+      bathrooms: z.object({
+        enabled: z.boolean().optional(),
+        value: z.number().optional(),
+        label: z.string().optional(),
+        sublabel: z.string().optional(),
+      }).optional(),
+      area: z.object({
+        enabled: z.boolean().optional(),
+        value: z.number().optional(),
+        label: z.string().optional(),
+        sublabel: z.string().optional(),
+      }).optional(),
+      garden: z.object({
+        enabled: z.boolean().optional(),
+        value: z.boolean().optional(),
+        label: z.string().optional(),
+        sublabel: z.string().optional(),
+      }).optional(),
+      petFriendly: z.object({
+        enabled: z.boolean().optional(),
+        value: z.boolean().optional(),
+        label: z.string().optional(),
+        sublabel: z.string().optional(),
+      }).optional(),
+      deliveryDate: z.object({
+        enabled: z.boolean().optional(),
+        value: z.string().optional(),
+        label: z.string().optional(),
+      }).optional(),
+      customSpecs: z.array(z.object({
+        enabled: z.boolean().optional(),
+        icon: z.string().optional(),
+        label: z.string(),
+        value: z.string(),
+        sublabel: z.string().optional(),
+        colorScheme: z.enum(['primary', 'secondary']).optional(),
+      })).optional(),
+    }).optional(),
   })
 });
 

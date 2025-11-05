@@ -37,6 +37,49 @@ testimonials:
     position: "Residente, Los Arrayanes de Izamba"
     logo: "/images/logo-placeholder.svg"
     image: "/images/placeholder-image.jpg"
+specifications:
+  bedrooms:
+    enabled: true
+    value: 4
+    label: Dormitorios
+    sublabel: Habitaciones amplias
+  bathrooms:
+    enabled: true
+    value: 3
+    label: Baños
+    sublabel: Completos
+  area:
+    enabled: true
+    value: 180
+    label: m²
+    sublabel: Área construida
+  garden:
+    enabled: true
+    value: true
+    label: Jardín
+    sublabel: Espacio verde común
+  petFriendly:
+    enabled: true
+    value: true
+    label: Pet Friendly
+    sublabel: Mascotas bienvenidas
+  deliveryDate:
+    enabled: true
+    value: Diciembre 2025
+    label: Fecha de entrega
+  customSpecs:
+    - enabled: true
+      icon: ph:car
+      label: Parqueadero
+      value: 2 vehículos
+      sublabel: Cubierto
+      colorScheme: primary
+    - enabled: true
+      icon: ph:users-three
+      label: Áreas Comunes
+      value: Salón de eventos
+      sublabel: Completamente equipado
+      colorScheme: secondary
 ---
 
 Los Arrayanes de Izamba es un conjunto habitacional moderno que redefine el concepto de comunidad residencial en Ecuador. Este proyecto ofrece viviendas diseñadas con espacios amplios y funcionales para el disfrute de toda la familia.

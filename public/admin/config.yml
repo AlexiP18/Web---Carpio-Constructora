@@ -117,6 +117,95 @@ collections:
           - {label: "Cargo/Posición", name: "position", widget: "string", required: true}
           - {label: "Logo de Empresa", name: "logo", widget: "string", default: "/images/logo-placeholder.svg"}
           - {label: "Foto", name: "image", widget: "string", default: "/images/placeholder-image.jpg"}
+      
+      # Especificaciones del Proyecto
+      - label: "📊 Especificaciones del Proyecto"
+        name: "specifications"
+        widget: "object"
+        required: false
+        collapsed: false
+        hint: "Configura las especificaciones técnicas del proyecto que aparecen en la página"
+        fields:
+          - label: "Dormitorios"
+            name: "bedrooms"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Mostrar", name: "enabled", widget: "boolean", default: true, hint: "Mostrar/ocultar esta especificación"}
+              - {label: "Cantidad", name: "value", widget: "number", default: 3, min: 1, max: 10, value_type: "int", hint: "Número de dormitorios"}
+              - {label: "Etiqueta", name: "label", widget: "string", default: "Dormitorios", hint: "Texto a mostrar"}
+              - {label: "Subtexto", name: "sublabel", widget: "string", default: "Habitaciones", required: false}
+          
+          - label: "Baños"
+            name: "bathrooms"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Mostrar", name: "enabled", widget: "boolean", default: true}
+              - {label: "Cantidad", name: "value", widget: "number", default: 2, min: 1, max: 10, value_type: "int"}
+              - {label: "Etiqueta", name: "label", widget: "string", default: "Baños"}
+              - {label: "Subtexto", name: "sublabel", widget: "string", default: "Completos", required: false}
+          
+          - label: "Área Construida"
+            name: "area"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Mostrar", name: "enabled", widget: "boolean", default: true}
+              - {label: "Valor (m²)", name: "value", widget: "number", default: 150, min: 1, max: 10000, value_type: "int"}
+              - {label: "Etiqueta", name: "label", widget: "string", default: "m²"}
+              - {label: "Subtexto", name: "sublabel", widget: "string", default: "Área construida", required: false}
+          
+          - label: "Jardín"
+            name: "garden"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Mostrar", name: "enabled", widget: "boolean", default: true}
+              - {label: "Tiene Jardín", name: "value", widget: "boolean", default: true, hint: "¿El proyecto incluye jardín?"}
+              - {label: "Etiqueta", name: "label", widget: "string", default: "Jardín"}
+              - {label: "Subtexto", name: "sublabel", widget: "string", default: "Área verde privada", required: false}
+          
+          - label: "Pet Friendly"
+            name: "petFriendly"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Mostrar", name: "enabled", widget: "boolean", default: true}
+              - {label: "Admite Mascotas", name: "value", widget: "boolean", default: true}
+              - {label: "Etiqueta", name: "label", widget: "string", default: "Pet Friendly"}
+              - {label: "Subtexto", name: "sublabel", widget: "string", default: "Mascotas bienvenidas", required: false}
+          
+          - label: "Fecha de Entrega"
+            name: "deliveryDate"
+            widget: "object"
+            required: false
+            fields:
+              - {label: "Mostrar", name: "enabled", widget: "boolean", default: true}
+              - {label: "Fecha", name: "value", widget: "string", default: "Julio 2025", hint: "Ej: Julio 2025, Q2 2025"}
+              - {label: "Etiqueta", name: "label", widget: "string", default: "Fecha de entrega"}
+          
+          - label: "Especificaciones Adicionales"
+            name: "customSpecs"
+            widget: "list"
+            required: false
+            collapsed: true
+            hint: "Agrega especificaciones personalizadas (ej: Parqueadero, Terraza, Piscina, etc.)"
+            summary: "{{fields.label}} - {{fields.value}}"
+            fields:
+              - {label: "Mostrar", name: "enabled", widget: "boolean", default: true}
+              - {label: "Icono", name: "icon", widget: "string", default: "ph:check-circle", hint: "Icono de Phosphor (ej: ph:car, ph:swimming-pool)"}
+              - {label: "Etiqueta Principal", name: "label", widget: "string", required: true, hint: "Ej: Parqueadero, Terraza"}
+              - {label: "Valor", name: "value", widget: "string", required: true, hint: "Ej: 2 vehículos, 20 m²"}
+              - {label: "Subtexto", name: "sublabel", widget: "string", required: false, hint: "Texto descriptivo adicional"}
+              - label: "Estilo de Color"
+                name: "colorScheme"
+                widget: "select"
+                default: "primary"
+                options:
+                  - {label: "Primario (Azul)", value: "primary"}
+                  - {label: "Secundario (Verde)", value: "secondary"}
+                hint: "Color de fondo de la especificación"
 
   # Servicios - Basado en src/data/servicios.ts
   - name: "servicios_data"
