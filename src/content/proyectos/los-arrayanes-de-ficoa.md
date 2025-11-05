@@ -36,8 +36,8 @@ testimonials:
     logo: /images/logo-placeholder.svg
     image: /images/placeholder-image.jpg
   - rating: 5
-    quote: Un desarrollo residencial que supera las expectativas. Diseño
-      funcional y moderno.
+    quote: Un desarrollo residencial que supera las expectativas. Diseño funcional y
+      moderno.
     name: Jorge Pérez
     position: Residente, Los Arrayanes de Ficoa
     logo: /images/logo-placeholder.svg
@@ -54,17 +54,17 @@ specifications:
     label: Baños
     sublabel: Completos
   area:
-    enabled: true
+    enabled: false
     value: 150
     label: m²
     sublabel: Área construida
   garden:
-    enabled: true
+    enabled: false
     value: true
     label: Jardín
     sublabel: Área verde privada
   petFriendly:
-    enabled: true
+    enabled: false
     value: true
     label: Pet Friendly
     sublabel: Mascotas bienvenidas
