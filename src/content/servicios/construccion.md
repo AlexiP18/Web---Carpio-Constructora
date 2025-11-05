@@ -45,6 +45,27 @@ service:
       number: "05"
       title: Fin
       description: Establecemos todo el analisis
+  featuresTitle: Características Destacadas de Nuestro Servicio de Construcción
+  featuresDescription: Nuestro servicio de construcción se distingue por su
+    enfoque en la calidad y la atención al detalle. Nos aseguramos de que cada
+    proyecto cumpla con los más altos estándares de excelencia.
+  features:
+    - title: Compromiso con la Sostenibilidad
+      description: Implementamos prácticas sostenibles en cada etapa del proceso.
+      icon: ph:leaf
+    - title: Equipo de Profesionales Altamente Capacitados
+      description: Nuestro equipo está compuesto por expertos en la industria.
+      icon: ph:users
+    - title: Atención Personalizada para Cada Cliente
+      description: Nos adaptamos a las necesidades específicas de nuestros clientes.
+      icon: ph:handshake
+  benefits:
+    - title: Construcción Sostenible
+      description: Materiales eco-friendly y técnicas que respetan el medio ambiente.
+      icon: ph:leaf
+    - title: Eficiencia Energética
+      description: Diseños que optimizan el consumo energético y reducen costos.
+      icon: ph:lightning
   testimonialsSection:
     enabled: true
     title: Lo que Dicen Nuestros Clientes
@@ -62,14 +83,6 @@ service:
         author: Carlos Ruiz
         position: Propietario, Negocios 123
         rating: 5
-  featuresTitle: Características Destacadas de Nuestro Servicio de Construcción
-  benefits:
-    - title: Construcción Sostenible
-      description: Materiales eco-friendly y técnicas que respetan el medio ambiente.
-      icon: ph:leaf
-    - title: Eficiencia Energética
-      description: Diseños que optimizan el consumo energético y reducen costos.
-      icon: ph:lightning
   faqsSection:
     enabled: true
     title: Preguntas Frecuentes
@@ -87,18 +100,4 @@ service:
       - question: ¿Ofrecen garantía en sus proyectos?
         answer: Sí, ofrecemos garantía en todos nuestros proyectos. La duración y
           condiciones de la garantía varían según el tipo de trabajo realizado.
-  features:
-    - title: Compromiso con la Sostenibilidad
-      description: Implementamos prácticas sostenibles en cada etapa del proceso.
-      icon: ph:leaf
-    - title: Equipo de Profesionales Altamente Capacitados
-      description: Nuestro equipo está compuesto por expertos en la industria.
-      icon: ph:users
-    - title: Atención Personalizada para Cada Cliente
-      description: Nos adaptamos a las necesidades específicas de nuestros clientes.
-      icon: ph:handshake
-  category: Construcción
-  featuresDescription: Nuestro servicio de construcción se distingue por su
-    enfoque en la calidad y la atención al detalle. Nos aseguramos de que cada
-    proyecto cumpla con los más altos estándares de excelencia.
 ---
