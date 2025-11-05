@@ -47,15 +47,15 @@ specifications:
     enabled: true
     value: 3
     label: Dormitorios
-    sublabel: Habitaciones
+    sublabel: Habitaciones grandes
   bathrooms:
     enabled: true
     value: 2
     label: Baños
-    sublabel: Completos
+    sublabel: Completos y grandes
   area:
     enabled: false
-    value: 150
+    value: 1500
     label: m²
     sublabel: Área construida
   garden:
@@ -72,6 +72,13 @@ specifications:
     enabled: true
     value: Julio 2025
     label: Fecha de entrega
+  customSpecs:
+    - enabled: true
+      icon: ph:swimming-pool
+      colorScheme: secondary
+      label: Piscina
+      value: "100"
+      sublabel: m²
 ---
 
 Los Arrayanes de Ficoa es un desarrollo residencial integral que ofrece diseños personalizados para viviendas unifamiliares y multifamiliares, adaptándose a las necesidades específicas de cada familia.
