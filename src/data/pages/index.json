@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "subtitle": "Construimos tus sueños con calidad y confianza. Proyectos residenciales y comerciales con más de 15 años de experiencia en el sector.",
+    "primaryButtonText": "Ver Proyectos",
+    "primaryButtonUrl": "/proyectos",
+    "secondaryButtonText": "Ver Servicios",
+    "secondaryButtonUrl": "/servicios",
+    "images": [
+      "/images/hero-1.jpg",
+      "/images/hero-2.jpg",
+      "/images/hero-3.jpg"
+    ]
+  },
+  "portfolio": {
+    "enabled": true,
+    "tagline": "PROYECTOS",
+    "title": "Nuestro Portafolio",
+    "description": "Conoce los proyectos en los que hemos trabajado",
+    "showAllButtonText": "Ver Todos los Proyectos",
+    "projectsToShow": 6
+  },
+  "contact": {
+    "enabled": true,
+    "tagline": "CONTACTO",
+    "title": "¿Listo para empezar tu proyecto?",
+    "description": "Contáctanos hoy y transforma tus ideas en realidad",
+    "showContactForm": true,
+    "showMap": true,
+    "showContactInfo": true
+  }
+}

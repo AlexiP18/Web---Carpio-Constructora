@@ -1,0 +1,102 @@
+{
+  "hero": {
+    "tagline": "CONTACTO",
+    "title": "Hablemos de Tu Proyecto",
+    "description": "Estamos aquí para ayudarte a hacer realidad tus ideas. Contáctanos y te responderemos a la brevedad.",
+    "backgroundImage": "/images/contact-hero.jpg"
+  },
+  "contactInfo": {
+    "enabled": true,
+    "tagline": "INFORMACIÓN DE CONTACTO",
+    "title": "Encuéntranos",
+    "items": [
+      {
+        "icon": "ph:phone",
+        "title": "Teléfono",
+        "value": "+593 99 123 4567",
+        "link": "tel:+593991234567"
+      },
+      {
+        "icon": "ph:envelope",
+        "title": "Email",
+        "value": "info@constructoracarpio.com",
+        "link": "mailto:info@constructoracarpio.com"
+      },
+      {
+        "icon": "ph:map-pin",
+        "title": "Dirección",
+        "value": "Av. Principal 123, Ambato, Ecuador",
+        "link": "https://maps.google.com"
+      },
+      {
+        "icon": "ph:clock",
+        "title": "Horario",
+        "value": "Lun - Vie: 8:00 AM - 6:00 PM",
+        "link": null
+      }
+    ]
+  },
+  "contactForm": {
+    "enabled": true,
+    "tagline": "ENVÍANOS UN MENSAJE",
+    "title": "Cotiza Tu Proyecto",
+    "description": "Completa el formulario y nos pondremos en contacto contigo",
+    "submitButtonText": "Enviar Mensaje",
+    "successMessage": "¡Gracias por contactarnos! Te responderemos pronto.",
+    "errorMessage": "Hubo un error al enviar el mensaje. Por favor intenta nuevamente.",
+    "fields": {
+      "name": {
+        "label": "Nombre Completo",
+        "placeholder": "Juan Pérez",
+        "required": true
+      },
+      "email": {
+        "label": "Correo Electrónico",
+        "placeholder": "juan@ejemplo.com",
+        "required": true
+      },
+      "phone": {
+        "label": "Teléfono",
+        "placeholder": "+593 99 123 4567",
+        "required": false
+      },
+      "subject": {
+        "label": "Asunto",
+        "placeholder": "Cotización de proyecto",
+        "required": true
+      },
+      "message": {
+        "label": "Mensaje",
+        "placeholder": "Cuéntanos sobre tu proyecto...",
+        "required": true
+      }
+    }
+  },
+  "map": {
+    "enabled": true,
+    "latitude": -1.254910,
+    "longitude": -78.617103,
+    "zoom": 15,
+    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.8!2d-78.617!3d-1.254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMTUnMTcuNyJTIDc4wrAzNycwMS42Ilc!5e0!3m2!1ses!2sec!4v1234567890"
+  },
+  "faqs": {
+    "enabled": true,
+    "tagline": "PREGUNTAS FRECUENTES",
+    "title": "¿Tienes Preguntas?",
+    "description": "Aquí encontrarás respuestas a las dudas más comunes",
+    "items": [
+      {
+        "question": "¿Cuánto tiempo toma un proyecto de construcción?",
+        "answer": "El tiempo depende del tipo y tamaño del proyecto. Una casa residencial puede tomar entre 6 a 12 meses, mientras que proyectos comerciales pueden variar."
+      },
+      {
+        "question": "¿Ofrecen financiamiento?",
+        "answer": "Trabajamos con varias instituciones financieras que pueden ofrecer opciones de financiamiento. Consulta con nuestro equipo para más información."
+      },
+      {
+        "question": "¿Qué garantía ofrecen?",
+        "answer": "Todos nuestros proyectos cuentan con garantía estructural y de acabados. Los términos específicos se detallan en el contrato de cada proyecto."
+      }
+    ]
+  }
+}

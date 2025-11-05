@@ -416,3 +416,271 @@ collections:
             fields:
               - {label: "Google Analytics ID", name: "googleAnalyticsId", widget: "string", required: false, hint: "G-XXXXXXXXXX"}
               - {label: "Facebook Pixel ID", name: "facebookPixelId", widget: "string", required: false}
+      
+      # Página de Inicio
+      - label: "🏠 Página de Inicio"
+        name: "index"
+        file: "src/data/pages/index.json"
+        fields:
+          - label: "🎯 Hero Principal"
+            name: "hero"
+            widget: "object"
+            collapsed: false
+            fields:
+              - {label: "Subtítulo", name: "subtitle", widget: "text", hint: "Texto descriptivo debajo del logo"}
+              - {label: "Texto Botón Principal", name: "primaryButtonText", widget: "string", default: "Ver Proyectos"}
+              - {label: "URL Botón Principal", name: "primaryButtonUrl", widget: "string", default: "/proyectos"}
+              - {label: "Texto Botón Secundario", name: "secondaryButtonText", widget: "string", default: "Ver Servicios"}
+              - {label: "URL Botón Secundario", name: "secondaryButtonUrl", widget: "string", default: "/servicios"}
+              - label: "Imágenes del Slider"
+                name: "images"
+                widget: "list"
+                hint: "Imágenes de fondo del hero (mínimo 3 recomendado)"
+                field: {label: "URL de Imagen", name: "image", widget: "image", media_folder: "/public/images/hero", public_folder: "/images/hero"}
+          
+          - label: "💼 Sección de Portafolio"
+            name: "portfolio"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Mostrar Sección", name: "enabled", widget: "boolean", default: true}
+              - {label: "Tagline", name: "tagline", widget: "string", default: "PROYECTOS"}
+              - {label: "Título", name: "title", widget: "string", default: "Nuestro Portafolio"}
+              - {label: "Descripción", name: "description", widget: "text", default: "Conoce los proyectos en los que hemos trabajado"}
+              - {label: "Texto Botón Ver Todos", name: "showAllButtonText", widget: "string", default: "Ver Todos los Proyectos"}
+              - {label: "Número de Proyectos a Mostrar", name: "projectsToShow", widget: "number", default: 6, min: 3, max: 12, value_type: "int"}
+          
+          - label: "📞 Sección de Contacto"
+            name: "contact"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Mostrar Sección", name: "enabled", widget: "boolean", default: true}
+              - {label: "Tagline", name: "tagline", widget: "string", default: "CONTACTO"}
+              - {label: "Título", name: "title", widget: "string", default: "¿Listo para empezar tu proyecto?"}
+              - {label: "Descripción", name: "description", widget: "text", default: "Contáctanos hoy y transforma tus ideas en realidad"}
+              - {label: "Mostrar Formulario", name: "showContactForm", widget: "boolean", default: true}
+              - {label: "Mostrar Mapa", name: "showMap", widget: "boolean", default: true}
+              - {label: "Mostrar Info de Contacto", name: "showContactInfo", widget: "boolean", default: true}
+      
+      # Página Quiénes Somos
+      - label: "👥 Página Quiénes Somos"
+        name: "quienes-somos"
+        file: "src/data/pages/quienes-somos.json"
+        fields:
+          - label: "🎯 Hero"
+            name: "hero"
+            widget: "object"
+            collapsed: false
+            fields:
+              - {label: "Tagline", name: "tagline", widget: "string", default: "SOBRE NOSOTROS"}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Imagen de Fondo", name: "backgroundImage", widget: "image", media_folder: "/public/images", public_folder: "/images", required: false}
+          
+          - label: "🏢 Resumen de la Empresa"
+            name: "companyOverview"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Mostrar Sección", name: "enabled", widget: "boolean", default: true}
+              - {label: "Tagline", name: "tagline", widget: "string", default: "NUESTRA EMPRESA"}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Imagen", name: "image", widget: "image", media_folder: "/public/images", public_folder: "/images", required: false}
+              - label: "Estadísticas"
+                name: "stats"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - {label: "Valor", name: "value", widget: "string", hint: "Ej: 15+, 200+, 100%"}
+                  - {label: "Etiqueta", name: "label", widget: "string", hint: "Ej: Años de Experiencia"}
+                  - {label: "Icono", name: "icon", widget: "string", default: "ph:trophy", hint: "Icono de Phosphor"}
+          
+          - label: "👨‍💼 Equipo"
+            name: "team"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Mostrar Sección", name: "enabled", widget: "boolean", default: true}
+              - {label: "Tagline", name: "tagline", widget: "string", default: "NUESTRO EQUIPO"}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text", required: false}
+              - label: "Miembros del Equipo"
+                name: "members"
+                widget: "list"
+                summary: "{{fields.name}} - {{fields.position}}"
+                fields:
+                  - {label: "Nombre", name: "name", widget: "string"}
+                  - {label: "Cargo", name: "position", widget: "string"}
+                  - {label: "Foto", name: "image", widget: "image", media_folder: "/public/images/team", public_folder: "/images/team", required: false}
+                  - {label: "Biografía", name: "bio", widget: "text", required: false}
+                  - label: "Redes Sociales"
+                    name: "social"
+                    widget: "object"
+                    required: false
+                    fields:
+                      - {label: "LinkedIn", name: "linkedin", widget: "string", required: false}
+                      - {label: "Email", name: "email", widget: "string", required: false}
+          
+          - label: "💎 Valores"
+            name: "values"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Mostrar Sección", name: "enabled", widget: "boolean", default: true}
+              - {label: "Tagline", name: "tagline", widget: "string", default: "NUESTROS VALORES"}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text", required: false}
+              - label: "Lista de Valores"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - {label: "Título", name: "title", widget: "string"}
+                  - {label: "Descripción", name: "description", widget: "text"}
+                  - {label: "Icono", name: "icon", widget: "string", default: "ph:star", hint: "Icono de Phosphor"}
+          
+          - label: "💬 Testimonios"
+            name: "testimonials"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Mostrar Sección", name: "enabled", widget: "boolean", default: true}
+              - {label: "Tagline", name: "tagline", widget: "string", default: "TESTIMONIOS"}
+              - {label: "Título", name: "title", widget: "string"}
+              - label: "Lista de Testimonios"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.author}}"
+                fields:
+                  - {label: "Contenido", name: "content", widget: "text"}
+                  - {label: "Autor", name: "author", widget: "string"}
+                  - {label: "Cargo/Empresa", name: "position", widget: "string"}
+                  - {label: "Calificación", name: "rating", widget: "number", default: 5, min: 1, max: 5, value_type: "int"}
+                  - {label: "Foto", name: "image", widget: "image", media_folder: "/public/images/testimonials", public_folder: "/images/testimonials", required: false}
+          
+          - label: "📢 Call to Action"
+            name: "cta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Mostrar Sección", name: "enabled", widget: "boolean", default: true}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Texto del Botón", name: "buttonText", widget: "string"}
+              - {label: "URL del Botón", name: "buttonUrl", widget: "string", default: "/contacto"}
+              - {label: "Imagen de Fondo", name: "backgroundImage", widget: "image", media_folder: "/public/images", public_folder: "/images", required: false}
+      
+      # Página de Contacto
+      - label: "📧 Página de Contacto"
+        name: "contacto"
+        file: "src/data/pages/contacto.json"
+        fields:
+          - label: "🎯 Hero"
+            name: "hero"
+            widget: "object"
+            collapsed: false
+            fields:
+              - {label: "Tagline", name: "tagline", widget: "string", default: "CONTACTO"}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text"}
+              - {label: "Imagen de Fondo", name: "backgroundImage", widget: "image", media_folder: "/public/images", public_folder: "/images", required: false}
+          
+          - label: "📍 Información de Contacto"
+            name: "contactInfo"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Mostrar Sección", name: "enabled", widget: "boolean", default: true}
+              - {label: "Tagline", name: "tagline", widget: "string", default: "INFORMACIÓN DE CONTACTO"}
+              - {label: "Título", name: "title", widget: "string"}
+              - label: "Items de Contacto"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - {label: "Icono", name: "icon", widget: "string", default: "ph:phone", hint: "Icono de Phosphor"}
+                  - {label: "Título", name: "title", widget: "string", hint: "Ej: Teléfono, Email, Dirección"}
+                  - {label: "Valor", name: "value", widget: "string", hint: "Información a mostrar"}
+                  - {label: "Enlace", name: "link", widget: "string", required: false, hint: "URL o tel: o mailto:"}
+          
+          - label: "✉️ Formulario de Contacto"
+            name: "contactForm"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Mostrar Formulario", name: "enabled", widget: "boolean", default: true}
+              - {label: "Tagline", name: "tagline", widget: "string", default: "ENVÍANOS UN MENSAJE"}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text", required: false}
+              - {label: "Texto Botón Enviar", name: "submitButtonText", widget: "string", default: "Enviar Mensaje"}
+              - {label: "Mensaje de Éxito", name: "successMessage", widget: "text"}
+              - {label: "Mensaje de Error", name: "errorMessage", widget: "text"}
+              - label: "Configuración de Campos"
+                name: "fields"
+                widget: "object"
+                fields:
+                  - label: "Campo Nombre"
+                    name: "name"
+                    widget: "object"
+                    fields:
+                      - {label: "Etiqueta", name: "label", widget: "string"}
+                      - {label: "Placeholder", name: "placeholder", widget: "string"}
+                      - {label: "Requerido", name: "required", widget: "boolean", default: true}
+                  - label: "Campo Email"
+                    name: "email"
+                    widget: "object"
+                    fields:
+                      - {label: "Etiqueta", name: "label", widget: "string"}
+                      - {label: "Placeholder", name: "placeholder", widget: "string"}
+                      - {label: "Requerido", name: "required", widget: "boolean", default: true}
+                  - label: "Campo Teléfono"
+                    name: "phone"
+                    widget: "object"
+                    fields:
+                      - {label: "Etiqueta", name: "label", widget: "string"}
+                      - {label: "Placeholder", name: "placeholder", widget: "string"}
+                      - {label: "Requerido", name: "required", widget: "boolean", default: false}
+                  - label: "Campo Asunto"
+                    name: "subject"
+                    widget: "object"
+                    fields:
+                      - {label: "Etiqueta", name: "label", widget: "string"}
+                      - {label: "Placeholder", name: "placeholder", widget: "string"}
+                      - {label: "Requerido", name: "required", widget: "boolean", default: true}
+                  - label: "Campo Mensaje"
+                    name: "message"
+                    widget: "object"
+                    fields:
+                      - {label: "Etiqueta", name: "label", widget: "string"}
+                      - {label: "Placeholder", name: "placeholder", widget: "string"}
+                      - {label: "Requerido", name: "required", widget: "boolean", default: true}
+          
+          - label: "🗺️ Mapa"
+            name: "map"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Mostrar Mapa", name: "enabled", widget: "boolean", default: true}
+              - {label: "Latitud", name: "latitude", widget: "number", value_type: "float", hint: "Coordenada de latitud"}
+              - {label: "Longitud", name: "longitude", widget: "number", value_type: "float", hint: "Coordenada de longitud"}
+              - {label: "Zoom", name: "zoom", widget: "number", default: 15, min: 1, max: 20, value_type: "int"}
+              - {label: "URL del Mapa (Embed)", name: "mapUrl", widget: "text", hint: "URL de Google Maps Embed"}
+          
+          - label: "❓ Preguntas Frecuentes"
+            name: "faqs"
+            widget: "object"
+            collapsed: true
+            fields:
+              - {label: "Mostrar Sección", name: "enabled", widget: "boolean", default: true}
+              - {label: "Tagline", name: "tagline", widget: "string", default: "PREGUNTAS FRECUENTES"}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Descripción", name: "description", widget: "text", required: false}
+              - label: "Lista de Preguntas"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.question}}"
+                fields:
+                  - {label: "Pregunta", name: "question", widget: "string"}
+                  - {label: "Respuesta", name: "answer", widget: "text"}

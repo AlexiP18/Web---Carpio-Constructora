@@ -1,0 +1,115 @@
+{
+  "hero": {
+    "tagline": "SOBRE NOSOTROS",
+    "title": "Construyendo Sueños, Creando Realidades",
+    "description": "Con más de 15 años de experiencia en el sector de la construcción, transformamos visiones en proyectos exitosos.",
+    "backgroundImage": "/images/about-hero.jpg"
+  },
+  "companyOverview": {
+    "enabled": true,
+    "tagline": "NUESTRA EMPRESA",
+    "title": "¿Quiénes Somos?",
+    "description": "Somos una empresa constructora con amplia trayectoria en proyectos residenciales y comerciales. Nos especializamos en ofrecer soluciones integrales de construcción con los más altos estándares de calidad.",
+    "image": "/images/company-overview.jpg",
+    "stats": [
+      {
+        "value": "15+",
+        "label": "Años de Experiencia",
+        "icon": "ph:trophy"
+      },
+      {
+        "value": "200+",
+        "label": "Proyectos Completados",
+        "icon": "ph:buildings"
+      },
+      {
+        "value": "100%",
+        "label": "Clientes Satisfechos",
+        "icon": "ph:smiley"
+      },
+      {
+        "value": "50+",
+        "label": "Profesionales",
+        "icon": "ph:users"
+      }
+    ]
+  },
+  "team": {
+    "enabled": true,
+    "tagline": "NUESTRO EQUIPO",
+    "title": "Conoce a Nuestros Profesionales",
+    "description": "Un equipo comprometido con la excelencia en cada proyecto",
+    "members": [
+      {
+        "name": "Ing. Juan Carpio",
+        "position": "Director General",
+        "image": "/images/team/juan-carpio.jpg",
+        "bio": "Ingeniero Civil con más de 20 años de experiencia",
+        "social": {
+          "linkedin": "#",
+          "email": "juan@constructoracarpio.com"
+        }
+      },
+      {
+        "name": "Arq. María Pérez",
+        "position": "Arquitecta Principal",
+        "image": "/images/team/maria-perez.jpg",
+        "bio": "Especialista en diseño arquitectónico moderno",
+        "social": {
+          "linkedin": "#",
+          "email": "maria@constructoracarpio.com"
+        }
+      }
+    ]
+  },
+  "values": {
+    "enabled": true,
+    "tagline": "NUESTROS VALORES",
+    "title": "Lo Que Nos Define",
+    "description": "Principios que guían nuestro trabajo diario",
+    "items": [
+      {
+        "title": "Calidad",
+        "description": "Compromiso con la excelencia en cada detalle",
+        "icon": "ph:star"
+      },
+      {
+        "title": "Confianza",
+        "description": "Transparencia y honestidad en todas nuestras relaciones",
+        "icon": "ph:handshake"
+      },
+      {
+        "title": "Innovación",
+        "description": "Incorporamos las últimas tecnologías y metodologías",
+        "icon": "ph:lightbulb"
+      },
+      {
+        "title": "Compromiso",
+        "description": "Cumplimiento de plazos y presupuestos acordados",
+        "icon": "ph:clock"
+      }
+    ]
+  },
+  "testimonials": {
+    "enabled": true,
+    "tagline": "TESTIMONIOS",
+    "title": "Lo Que Dicen Nuestros Clientes",
+    "items": [
+      {
+        "content": "Excelente trabajo, profesionalismo de primera. Cumplieron con todos los tiempos establecidos.",
+        "author": "Carlos Rodríguez",
+        "position": "Propietario",
+        "rating": 5,
+        "image": "/images/testimonials/carlos.jpg"
+      }
+    ]
+  },
+  "cta": {
+    "enabled": true,
+    "title": "¿Listo para iniciar tu proyecto?",
+    "description": "Contáctanos hoy y recibe una cotización sin compromiso",
+    "buttonText": "Contactar Ahora",
+    "buttonUrl": "/contacto",
+    "backgroundImage": "/images/cta-background.jpg"
+  }
+}
