@@ -9,23 +9,28 @@ import ServicioProcess from '../../components/sections/servicio/ServicioProcess.
 import ServicioTestimonials from '../../components/sections/servicio/ServicioTestimonials.astro';
 import ServicioCTA from '../../components/sections/servicio/ServicioCTA.astro';
 import ServicioFAQ from '../../components/sections/servicio/ServicioFAQ.astro';
-import { serviciosData } from '../../data/servicios';
+import { getCollection } from 'astro:content';
 
-// Generar las rutas estáticas desde los datos importados
-export function getStaticPaths() {
-  return serviciosData.map(servicio => ({
+// Generar las rutas estáticas desde Astro Content Collections
+export async function getStaticPaths() {
+  const servicios = await getCollection('servicios');
+  
+  return servicios.map(servicio => ({
     params: { slug: servicio.slug },
-    props: {
-      title: servicio.title,
-      subtitle: servicio.subtitle,
-      description: servicio.description,
-      backgroundImage: servicio.backgroundImage,
-      service: servicio.service
-    }
+    props: { servicio }
   }));
 }
 
-const { title, subtitle, description, backgroundImage, service } = Astro.props;
+const { servicio } = Astro.props;
+
+// Extraer datos del frontmatter
+const { 
+  title, 
+  subtitle, 
+  description, 
+  backgroundImage, 
+  service 
+} = servicio.data;
 ---
 
 <Layout title={`${title} | Constructora Carpio`}>

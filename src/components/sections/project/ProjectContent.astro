@@ -13,8 +13,8 @@ import petfriendlyIcon from '../../../assets/icons/projects/petfriendlyICONO.svg
 
 export interface Props {
   title: string;
-  content: string;
-  images: (string | ImageMetadata)[];
+  content?: string; // Ahora es opcional, puede venir del slot
+  images?: (string | ImageMetadata)[]; // Ahora opcional
   imageCategories?: {
     name: string;
     label: string;
@@ -23,7 +23,7 @@ export interface Props {
   virtualTourVideo?: string;
 }
 
-const { title, content, images, imageCategories, virtualTourVideo } = Astro.props;
+const { title, content = '', images = [], imageCategories, virtualTourVideo } = Astro.props;
 
 // Helper function to get image src
 function getImageSrc(image: string | ImageMetadata): string {
@@ -35,7 +35,7 @@ const defaultCategories = [
   {
     name: 'general',
     label: 'General',
-    images: images.length > 0 ? images : [
+    images: images && images.length > 0 ? images : [
       '/images/placeholder-image.png',
       '/images/placeholder-image-1.png',
       '/images/placeholder-image-2.png',
@@ -49,7 +49,7 @@ const defaultCategories = [
   {
     name: 'exterior',
     label: 'Vista Exterior',
-    images: images.length > 0 ? images : [
+    images: images && images.length > 0 ? images : [
       '/images/placeholder-image.png',
       '/images/placeholder-image-1.png',
       '/images/placeholder-image-2.png',
@@ -61,7 +61,7 @@ const defaultCategories = [
   {
     name: 'interior',
     label: 'Vista Interior',
-    images: images.length > 0 ? images : [
+    images: images && images.length > 0 ? images : [
       '/images/layout-355.png',
       '/images/layout-85.png',
       '/images/tab-pane-1.png',
@@ -74,7 +74,7 @@ const defaultCategories = [
   {
     name: 'planos',
     label: 'Planos',
-    images: images.length > 0 ? images : [
+    images: images && images.length > 0 ? images : [
       '/images/tab-pane-1.png',
       '/images/layout-355.png',
       '/images/placeholder-image.png',

@@ -7,27 +7,35 @@ import ProjectContent from "../../components/sections/project/ProjectContent.ast
 import ProjectImageSlider from "../../components/sections/project/ProjectImageSlider.astro";
 import ProjectMosaicNew from "../../components/sections/project/ProjectMosaicNew.astro";
 import ProjectTestimonials from "../../components/sections/project/ProjectTestimonials.astro";
-import { proyectosData } from '../../data/proyectos';
+import { getCollection } from 'astro:content';
 
-// Generar las rutas estáticas desde los datos importados
+// Generar las rutas estáticas desde Astro Content Collections
 export async function getStaticPaths() {
-  return proyectosData.map(proyecto => ({
+  const proyectos = await getCollection('proyectos');
+  
+  return proyectos.map(proyecto => ({
     params: { slug: proyecto.slug },
-    props: {
-      title: proyecto.title,
-      description: proyecto.description,
-      tags: proyecto.tags,
-      backgroundImage: proyecto.backgroundImage,
-      content: proyecto.content,
-      images: proyecto.images,
-      testimonial: proyecto.testimonial,
-      testimonials: proyecto.testimonials,
-      virtualTourVideo: proyecto.virtualTourVideo
-    }
+    props: { proyecto }
   }));
 }
 
-const { title, description, tags, content, images, testimonial, testimonials, backgroundImage, virtualTourVideo } = Astro.props;
+const { proyecto } = Astro.props;
+const { Content } = await proyecto.render();
+
+// Extraer datos del frontmatter
+const { 
+  title, 
+  description, 
+  tags, 
+  backgroundImage, 
+  images = [], 
+  testimonial, 
+  testimonials, 
+  virtualTourVideo 
+} = proyecto.data;
+
+// Renderizar el contenido markdown como string
+const contentHtml = proyecto.body;
 ---
 
 <Layout title={`${title} - Constructora Carpio`}>
@@ -42,7 +50,7 @@ const { title, description, tags, content, images, testimonial, testimonials, ba
     
     <ProjectContent 
       title={title}
-      content={content}
+      content={contentHtml}
       images={images}
       virtualTourVideo={virtualTourVideo}
     />
