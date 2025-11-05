@@ -7,7 +7,7 @@ tags:
   - Residencial
   - Vivienda Unifamiliar
   - Vivienda Multifamiliar
-backgroundImage: /images/projects/nosotroshero.png
+backgroundImage: /images/projects/0_vista_exterior.jpg
 images:
   - /images/projects/arrayanes_ficoa/0_Vista_Exterior.jpg
   - /images/projects/arrayanes_ficoa/1_Vista_Entrada.jpg
