@@ -1,13 +1,65 @@
 ---
-title: Los Arrayanes de Ficoa
 slug: los-arrayanes-de-ficoa
+backgroundImage: /images/projects/0_vista_exterior.jpg
+specifications:
+  bedrooms:
+    enabled: true
+    value: 3
+    label: Dormitorios
+    sublabel: Habitaciones grandes
+  bathrooms:
+    enabled: true
+    value: 2
+    label: Baños
+    sublabel: Completos y grandes
+  area:
+    enabled: true
+    value: 1500
+    label: m²
+    sublabel: Área construida
+  garden:
+    enabled: true
+    value: true
+    label: Jardín
+    sublabel: Área verde privada
+  petFriendly:
+    enabled: true
+    value: true
+    label: Pet Friendly
+    sublabel: Mascotas bienvenidas
+  deliveryDate:
+    enabled: true
+    value: Julio 2025
+    label: Fecha de entrega
+  customSpecs:
+    - enabled: true
+      icon: ph:swimming-pool
+      colorScheme: secondary
+      label: Piscina
+      value: Piscina
+      sublabel: 100 m²
+testimonials:
+  - rating: 5
+    quote: La calidad de construcción y atención al detalle en Los Arrayanes de
+      Ficoa es excepcional.
+    name: María Rodríguez
+    position: Propietaria, Los Arrayanes
+    logo: /images/logo-placeholder.svg
+    image: /images/placeholder-image.jpg
+  - rating: 5
+    quote: Un desarrollo residencial que supera las expectativas. Diseño funcional y
+      moderno.
+    name: Jorge Pérez
+    position: Residente, Los Arrayanes de Ficoa
+    logo: /images/logo-placeholder.svg
+    image: /images/placeholder-image.jpg
+title: Los Arrayanes de Ficoa
 description: Diseños de vivienda unifamiliar y multifamiliar que combinan
   funcionalidad y estética moderna.
 tags:
   - Residencial
   - Vivienda Unifamiliar
   - Conjunto Habitacional
-backgroundImage: /images/projects/0_vista_exterior.jpg
 images:
   - /images/projects/arrayanes_ficoa/0_Vista_Exterior.jpg
   - /images/projects/arrayanes_ficoa/1_Vista_Entrada.jpg
@@ -27,58 +79,6 @@ testimonial:
   position: Propietaria, Los Arrayanes
   logo: /images/logo-placeholder.svg
   image: /images/placeholder-image.jpg
-testimonials:
-  - rating: 5
-    quote: La calidad de construcción y atención al detalle en Los Arrayanes de
-      Ficoa es excepcional.
-    name: María Rodríguez
-    position: Propietaria, Los Arrayanes
-    logo: /images/logo-placeholder.svg
-    image: /images/placeholder-image.jpg
-  - rating: 5
-    quote: Un desarrollo residencial que supera las expectativas. Diseño funcional y
-      moderno.
-    name: Jorge Pérez
-    position: Residente, Los Arrayanes de Ficoa
-    logo: /images/logo-placeholder.svg
-    image: /images/placeholder-image.jpg
-specifications:
-  bedrooms:
-    enabled: true
-    value: 3
-    label: Dormitorios
-    sublabel: Habitaciones grandes
-  bathrooms:
-    enabled: true
-    value: 2
-    label: Baños
-    sublabel: Completos y grandes
-  area:
-    enabled: false
-    value: 1500
-    label: m²
-    sublabel: Área construida
-  garden:
-    enabled: false
-    value: true
-    label: Jardín
-    sublabel: Área verde privada
-  petFriendly:
-    enabled: false
-    value: true
-    label: Pet Friendly
-    sublabel: Mascotas bienvenidas
-  deliveryDate:
-    enabled: true
-    value: Julio 2025
-    label: Fecha de entrega
-  customSpecs:
-    - enabled: true
-      icon: ph:swimming-pool
-      colorScheme: secondary
-      label: Piscina
-      value: Piscina
-      sublabel: 100 m²
 ---
 
 Los Arrayanes de Ficoa es un desarrollo residencial integral que ofrece diseños personalizados para viviendas unifamiliares y multifamiliares, adaptándose a las necesidades específicas de cada familia.
