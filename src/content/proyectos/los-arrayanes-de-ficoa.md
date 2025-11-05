@@ -1,5 +1,5 @@
 ---
-title: Los Arrayanes de Ficoa
+title: "Los Arrayanes de Ficoa : )"
 slug: los-arrayanes-de-ficoa
 description: Diseños de vivienda unifamiliar y multifamiliar que combinan
   funcionalidad y estética moderna.
