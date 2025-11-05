@@ -18,7 +18,7 @@ const proyectosCollection = defineCollection({
       position: z.string(),
       logo: z.string(),
       image: z.string(),
-    }),
+    }).optional(),
     testimonials: z.array(z.object({
       rating: z.number(),
       quote: z.string(),

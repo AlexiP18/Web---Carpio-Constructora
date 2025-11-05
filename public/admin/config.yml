@@ -92,32 +92,6 @@ collections:
       
       - {label: "Video de Tour Virtual", name: "virtualTourVideo", widget: "string", required: false, hint: "URL del video (ej: /images/projects/proyecto/video.mov)"}
       
-      - label: "Testimonio Principal"
-        name: "testimonial"
-        widget: "object"
-        collapsed: true
-        fields:
-          - {label: "Calificación", name: "rating", widget: "number", required: true, default: 5, min: 1, max: 5, value_type: "int"}
-          - {label: "Cita", name: "quote", widget: "text", required: true}
-          - {label: "Nombre", name: "name", widget: "string", required: true}
-          - {label: "Cargo/Posición", name: "position", widget: "string", required: true}
-          - {label: "Logo de Empresa", name: "logo", widget: "string", default: "/images/logo-placeholder.svg"}
-          - {label: "Foto", name: "image", widget: "string", default: "/images/placeholder-image.jpg"}
-      
-      - label: "Testimonios Adicionales"
-        name: "testimonials"
-        widget: "list"
-        required: false
-        collapsed: true
-        summary: "{{fields.name}} - {{fields.rating}}⭐"
-        fields:
-          - {label: "Calificación", name: "rating", widget: "number", required: true, default: 5, min: 1, max: 5, value_type: "int"}
-          - {label: "Cita", name: "quote", widget: "text", required: true}
-          - {label: "Nombre", name: "name", widget: "string", required: true}
-          - {label: "Cargo/Posición", name: "position", widget: "string", required: true}
-          - {label: "Logo de Empresa", name: "logo", widget: "string", default: "/images/logo-placeholder.svg"}
-          - {label: "Foto", name: "image", widget: "string", default: "/images/placeholder-image.jpg"}
-      
       # Especificaciones del Proyecto
       - label: "📊 Especificaciones del Proyecto"
         name: "specifications"
