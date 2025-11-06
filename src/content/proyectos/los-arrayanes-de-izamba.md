@@ -1,42 +1,6 @@
 ---
-title: "Los Arrayanes de Izamba"
-slug: "los-arrayanes-de-izamba"
-description: "Conjunto habitacional diseñado para ofrecer calidad de vida y espacios funcionales para toda la familia."
-tags:
-  - Conjunto Habitacional
-  - Residencial
-  - Áreas Comunes
-backgroundImage: "/images/projects/arrayanes_izamba/vista.png"
-images:
-  - /images/projects/arrayanes_izamba/vista.png
-  - /images/projects/arrayanes_izamba/sala1.png
-  - /images/projects/arrayanes_izamba/sala2.png
-  - /images/projects/arrayanes_izamba/comedor.png
-  - /images/projects/arrayanes_izamba/cocina.png
-  - /images/projects/arrayanes_izamba/habitacion1.png
-  - /images/projects/arrayanes_izamba/habitacion2.png
-  - /images/projects/arrayanes_izamba/bano.png
-  - /images/projects/arrayanes_izamba/jardin.png
-testimonial:
-  rating: 5
-  quote: "Un conjunto habitacional excepcional con excelentes áreas comunes y seguridad."
-  name: "Carlos Martínez"
-  position: "Propietario, Los Arrayanes de Izamba"
-  logo: "/images/logo-placeholder.svg"
-  image: "/images/placeholder-image.jpg"
-testimonials:
-  - rating: 5
-    quote: "Un conjunto habitacional excepcional con excelentes áreas comunes y seguridad."
-    name: "Carlos Martínez"
-    position: "Propietario, Los Arrayanes de Izamba"
-    logo: "/images/logo-placeholder.svg"
-    image: "/images/placeholder-image.jpg"
-  - rating: 5
-    quote: "La mejor decisión fue elegir Los Arrayanes de Izamba. Calidad y confort garantizados."
-    name: "Ana González"
-    position: "Residente, Los Arrayanes de Izamba"
-    logo: "/images/logo-placeholder.svg"
-    image: "/images/placeholder-image.jpg"
+slug: los-arrayanes-de-izamba
+backgroundImage: /images/projects/arrayanes_izamba/vista.png
 specifications:
   bedrooms:
     enabled: true
@@ -50,7 +14,7 @@ specifications:
     sublabel: Completos
   area:
     enabled: true
-    value: 180
+    value: 200
     label: m²
     sublabel: Área construida
   garden:
@@ -68,18 +32,59 @@ specifications:
     value: Diciembre 2025
     label: Fecha de entrega
   customSpecs:
-    - enabled: true
+    - enabled: false
       icon: ph:car
       label: Parqueadero
       value: 2 vehículos
       sublabel: Cubierto
       colorScheme: primary
-    - enabled: true
+    - enabled: false
       icon: ph:users-three
       label: Áreas Comunes
       value: Salón de eventos
       sublabel: Completamente equipado
       colorScheme: secondary
+testimonials:
+  - rating: 5
+    quote: Un conjunto habitacional excepcional con excelentes áreas comunes y
+      seguridad.
+    name: Carlos Martínez
+    position: Propietario, Los Arrayanes de Izamba
+    logo: /images/logo-placeholder.svg
+    image: /images/placeholder-image.jpg
+  - rating: 5
+    quote: La mejor decisión fue elegir Los Arrayanes de Izamba. Calidad y confort
+      garantizados.
+    name: Ana González
+    position: Residente, Los Arrayanes de Izamba
+    logo: /images/logo-placeholder.svg
+    image: /images/placeholder-image.jpg
+title: Los Arrayanes de Izamba :)
+description: Conjunto habitacional diseñado para ofrecer calidad de vida y
+  espacios funcionales para toda la familia.
+tags:
+  - Conjunto Habitacional
+  - Residencial
+  - Vivienda Multifamiliar
+images:
+  - /images/projects/arrayanes_izamba/vista.png
+  - /images/projects/arrayanes_izamba/sala1.png
+  - /images/projects/arrayanes_izamba/sala2.png
+  - /images/projects/arrayanes_izamba/comedor.png
+  - /images/projects/arrayanes_izamba/cocina.png
+  - /images/projects/arrayanes_izamba/habitacion1.png
+  - /images/projects/arrayanes_izamba/habitacion2.png
+  - /images/projects/arrayanes_izamba/bano.png
+  - /images/projects/arrayanes_izamba/jardin.png
+content: dasdsadas
+testimonial:
+  rating: 5
+  quote: Un conjunto habitacional excepcional con excelentes áreas comunes y
+    seguridad.
+  name: Carlos Martínez
+  position: Propietario, Los Arrayanes de Izamba
+  logo: /images/logo-placeholder.svg
+  image: /images/placeholder-image.jpg
 ---
 
 Los Arrayanes de Izamba es un conjunto habitacional moderno que redefine el concepto de comunidad residencial en Ecuador. Este proyecto ofrece viviendas diseñadas con espacios amplios y funcionales para el disfrute de toda la familia.
