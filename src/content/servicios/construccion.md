@@ -7,7 +7,7 @@ description: Transformamos tus ideas en realidad con soluciones constructivas de
 backgroundImage: /images/construccion-hero.jpg
 service:
   faqsSection:
-    enabled: true
+    enabled: false
     title: Preguntas Frecuentes
     tagline: PREGUNTAS FRECUENTES
     description: Aquí encontrarás respuestas a las preguntas más comunes sobre
@@ -49,7 +49,7 @@ service:
       title: Fin
       description: Establecemos todo el analisis
   testimonialsSection:
-    enabled: false
+    enabled: true
     title: Lo que Dicen Nuestros Clientes
     tagline: TESTIMONIOS
     items:
