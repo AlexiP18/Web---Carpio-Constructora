@@ -44,10 +44,6 @@ service:
       title: Construcción
       description: Ejecutamos el proyecto con supervisión constante de calidad.
       icon: ph:hammer
-    - icon: ph:circle
-      number: "05"
-      title: Fin
-      description: Establecemos todo el analisis
   testimonialsSection:
     enabled: false
     title: Lo que Dicen Nuestros Clientes
