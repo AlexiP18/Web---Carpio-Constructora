@@ -49,7 +49,7 @@ service:
       title: Fin
       description: Establecemos todo el analisis
   testimonialsSection:
-    enabled: true
+    enabled: false
     title: Lo que Dicen Nuestros Clientes
     tagline: TESTIMONIOS
     items:
