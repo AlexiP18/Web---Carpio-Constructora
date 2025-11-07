@@ -21,6 +21,10 @@ pnpm-debug.log*
 .env.local
 .env.*.local
 
+# Tina CMS
+.tina/__generated__
+admin/
+
 # Caché
 .cache
 .mf

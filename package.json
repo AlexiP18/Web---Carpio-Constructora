@@ -3,12 +3,15 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "tinacms dev -c \"astro dev\"",
+    "build": "tinacms build && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "tina:dev": "tinacms dev",
+    "tina:build": "tinacms build",
+    "tina:cloud": "tinacms cloud",
     "cms:dev": "npx decap-server",
-    "cms:help": "echo 'Ejecuta npm run cms:dev en una terminal y npm run dev en otra para usar el CMS localmente'"
+    "cms:help": "echo 'DEPRECADO: Ahora usa Tina CMS. Ejecuta: npm run dev'"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.9",
