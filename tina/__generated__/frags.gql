@@ -1,0 +1,10 @@
+fragment ProyectosParts on Proyectos {
+  __typename
+  title
+  slug
+  description
+  tags
+  backgroundImage
+  images
+  body
+}
