@@ -1,6 +1,6 @@
 # 📋 RESUMEN EJECUTIVO - MIGRACIÓN A TINA CMS
 
-## ✅ ESTADO ACTUAL
+## ✅ ESTADO ACTUAL.
 
 ### Archivos Creados:
 1. ✅ **MIGRACION_TINA_CMS.md** - Guía completa (teoría y contexto)
