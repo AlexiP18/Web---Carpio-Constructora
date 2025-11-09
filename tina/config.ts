@@ -2,8 +2,8 @@
 
 export default defineConfig({
   branch: process.env.TINA_BRANCH || 'main',
-  clientId: process.env.TINA_PUBLIC_CLIENT_ID || null,
-  token: process.env.TINA_TOKEN || null,
+  clientId: process.env.TINA_PUBLIC_CLIENT_ID,
+  token: process.env.TINA_TOKEN,
   build: {
     outputFolder: 'admin',
     publicFolder: 'public',
