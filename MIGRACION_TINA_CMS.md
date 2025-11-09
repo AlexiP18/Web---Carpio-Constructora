@@ -7,7 +7,7 @@
 
 ---
 
-## 📚 ÍNDICE
+## 📚 ÍNDICE.
 
 1. [Por Qué Migrar](#por-qué-migrar)
 2. [Preparación](#preparación)
