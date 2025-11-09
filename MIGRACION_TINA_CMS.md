@@ -20,7 +20,7 @@
 
 ---
 
-## 🎯 POR QUÉ MIGRAR
+## 🎯 POR QUÉ MIGRAR.
 
 ### Ventajas de Tina CMS sobre Decap CMS:
 
