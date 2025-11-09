@@ -21,9 +21,15 @@ pnpm-debug.log*
 .env.local
 .env.*.local
 
-# Tina CMS
+# Tina CMS - Archivos generados (NUNCA commitear)
 .tina/__generated__
+.tina/__generated__/
+tina/__generated__
+tina/__generated__/
+tina/generated
+tina/generated/
 admin/
+public/admin/index.html
 
 # Caché
 .cache
