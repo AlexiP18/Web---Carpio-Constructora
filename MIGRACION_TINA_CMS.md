@@ -1,4 +1,4 @@
-# 🚀 GUÍA DE MIGRACIÓN: DECAP CMS → TINA CMS
+# 🚀 GUÍA DE MIGRACIÓN: DECAP CMS → TINA CMS.
 
 **Proyecto:** Constructora Carpio  
 **Fecha:** Noviembre 2025  
