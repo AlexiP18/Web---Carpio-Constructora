@@ -70,12 +70,32 @@ images:
   - /images/projects/arrayanes_izamba/vista.webp
   - /images/projects/arrayanes_izamba/sala1.webp
   - /images/projects/arrayanes_izamba/sala2.webp
+  - /images/projects/arrayanes_izamba/saladeestar.webp
+  - /images/projects/arrayanes_izamba/salastar3.webp
+  - /images/projects/arrayanes_izamba/salastar3-1.webp
   - /images/projects/arrayanes_izamba/comedor.webp
+  - /images/projects/arrayanes_izamba/comedorcocina.webp
   - /images/projects/arrayanes_izamba/cocina.webp
+  - /images/projects/arrayanes_izamba/cocina1.webp
+  - /images/projects/arrayanes_izamba/cocina3.webp
+  - /images/projects/arrayanes_izamba/cocinadetalle.webp
+  - /images/projects/arrayanes_izamba/cocinaog.webp
+  - /images/projects/arrayanes_izamba/coffee.webp
   - /images/projects/arrayanes_izamba/habitacion1.webp
   - /images/projects/arrayanes_izamba/habitacion2.webp
+  - /images/projects/arrayanes_izamba/habi33.webp
   - /images/projects/arrayanes_izamba/bano.webp
+  - /images/projects/arrayanes_izamba/baño.webp
+  - /images/projects/arrayanes_izamba/baño3.webp
+  - /images/projects/arrayanes_izamba/lavamanos.webp
+  - /images/projects/arrayanes_izamba/closet.webp
+  - /images/projects/arrayanes_izamba/walkingcloset.webp
+  - /images/projects/arrayanes_izamba/lavanderia.webp
+  - /images/projects/arrayanes_izamba/lavanderiav.webp
   - /images/projects/arrayanes_izamba/jardin.webp
+  - /images/projects/arrayanes_izamba/jardin2.webp
+  - /images/projects/arrayanes_izamba/terraza.webp
+  - /images/projects/arrayanes_izamba/luz.webp
 content: dasdsadas
 testimonial:
   rating: 5

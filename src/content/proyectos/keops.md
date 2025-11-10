@@ -7,7 +7,7 @@ tags:
   - Comercial
   - Diseño Innovador
 backgroundImage: "/images/projects/keops/1. Principal.webp"
-virtualTourVideo: "/images/projects/keops/KEOPS_VIDEOWEB.mov"
+virtualTourVideo: "/images/projects/keops/KEOPS_VIDEOWEB.mp4"
 images:
   - /images/projects/keops/0. Principal_Vertical.webp
   - /images/projects/keops/1. Principal.webp
