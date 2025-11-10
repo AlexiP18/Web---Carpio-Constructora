@@ -39,29 +39,18 @@ const {
             class="absolute top-0 left-0 w-full h-full object-cover"
             controls
             preload="metadata"
-            controlsList="nodownload"
           >
             <source src={videoUrl} type="video/mp4">
             <source src={videoUrl} type="video/quicktime">
             <source src={videoUrl.replace('.mov', '.webm')} type="video/webm">
             
-            <!-- Fallback para navegadores que no soportan el formato -->
-            <div class="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 text-gray-600 p-8">
-              <svg class="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-              </svg>
-              <p class="text-center mb-4">Tu navegador no soporta la reproducción de este formato de video.</p>
-              <a 
-                href={videoUrl} 
-                download 
-                class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all"
-              >
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Descargar Video
+            <!-- Fallback simple de texto para navegadores antiguos -->
+            <p>
+              Tu navegador no soporta la reproducción de video. 
+              <a href={videoUrl} download style="color: #2563eb; text-decoration: underline;">
+                Descarga el video aquí
               </a>
-            </div>
+            </p>
           </video>
         </div>
 
