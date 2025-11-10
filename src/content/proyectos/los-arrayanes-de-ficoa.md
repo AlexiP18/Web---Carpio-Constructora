@@ -1,6 +1,6 @@
 ---
 slug: los-arrayanes-de-ficoa
-backgroundImage: /images/projects/0_vista_exterior.jpg
+backgroundImage: /images/projects/0_vista_exterior.webp
 specifications:
   bedrooms:
     enabled: true
@@ -45,14 +45,14 @@ testimonials:
     name: María Rodríguez
     position: Propietaria, Los Arrayanes
     logo: /images/logo-placeholder.svg
-    image: /images/placeholder-image.jpg
+    image: /images/placeholder-image.webp
   - rating: 5
     quote: Un desarrollo residencial que supera las expectativas. Diseño funcional y
       moderno.
     name: Jorge Pérez
     position: Residente, Los Arrayanes de Ficoa
     logo: /images/logo-placeholder.svg
-    image: /images/placeholder-image.jpg
+    image: /images/placeholder-image.webp
 title: Los Arrayanes de Ficoa
 description: Diseños de vivienda unifamiliar y multifamiliar que combinan
   funcionalidad y estética moderna.
@@ -61,15 +61,15 @@ tags:
   - Vivienda Unifamiliar
   - Conjunto Habitacional
 images:
-  - /images/projects/arrayanes_ficoa/0_Vista_Exterior.jpg
-  - /images/projects/arrayanes_ficoa/1_Vista_Entrada.jpg
-  - /images/projects/arrayanes_ficoa/2_Sala.jpg
-  - /images/projects/arrayanes_ficoa/3_Comedor.jpg
-  - /images/projects/arrayanes_ficoa/4_Sala_de_Estar.jpg
-  - /images/projects/arrayanes_ficoa/5_Area_Recreacional.jpg
-  - /images/projects/arrayanes_ficoa/6_Segundo_Piso.jpg
-  - /images/projects/arrayanes_ficoa/7_Habitacion_Master.jpg
-  - /images/projects/arrayanes_ficoa/8_Habitacion_Simple.jpg
+  - /images/projects/arrayanes_ficoa/0_Vista_Exterior.webp
+  - /images/projects/arrayanes_ficoa/1_Vista_Entrada.webp
+  - /images/projects/arrayanes_ficoa/2_Sala.webp
+  - /images/projects/arrayanes_ficoa/3_Comedor.webp
+  - /images/projects/arrayanes_ficoa/4_Sala_de_Estar.webp
+  - /images/projects/arrayanes_ficoa/5_Area_Recreacional.webp
+  - /images/projects/arrayanes_ficoa/6_Segundo_Piso.webp
+  - /images/projects/arrayanes_ficoa/7_Habitacion_Master.webp
+  - /images/projects/arrayanes_ficoa/8_Habitacion_Simple.webp
 content: Los Arrayanes de Ficoa
 testimonial:
   rating: 5
@@ -78,7 +78,7 @@ testimonial:
   name: María Rodríguez
   position: Propietaria, Los Arrayanes
   logo: /images/logo-placeholder.svg
-  image: /images/placeholder-image.jpg
+  image: /images/placeholder-image.webp
 ---
 
 Los Arrayanes de Ficoa es un desarrollo residencial integral que ofrece diseños personalizados para viviendas unifamiliares y multifamiliares, adaptándose a las necesidades específicas de cada familia.
@@ -96,3 +96,4 @@ Los materiales de construcción son de primera calidad, garantizando durabilidad
 ## Visión del Proyecto
 
 Este proyecto representa la evolución del concepto de vivienda moderna en Ecuador, donde cada detalle ha sido pensado para ofrecer la mejor experiencia de vida a sus residentes.
+

@@ -6,17 +6,17 @@ tags:
   - Retail
   - Comercial
   - Diseño Innovador
-backgroundImage: "/images/projects/keops/1. Principal.jpg"
+backgroundImage: "/images/projects/keops/1. Principal.webp"
 virtualTourVideo: "/images/projects/keops/KEOPS_VIDEOWEB.mov"
 images:
-  - /images/projects/keops/0. Principal_Vertical.jpg
-  - /images/projects/keops/1. Principal.jpg
-  - /images/projects/keops/2. Lobby_Exterior.jpg
-  - /images/projects/keops/3. Lobby_Interior.jpg
-  - /images/projects/keops/4. Lobby_Panoramica.jpg
-  - /images/projects/keops/5. Merchandising.jpg
-  - /images/projects/keops/6. Vista_Merchandising.jpg
-  - /images/projects/keops/7. Vista_Completa.jpg
+  - /images/projects/keops/0. Principal_Vertical.webp
+  - /images/projects/keops/1. Principal.webp
+  - /images/projects/keops/2. Lobby_Exterior.webp
+  - /images/projects/keops/3. Lobby_Interior.webp
+  - /images/projects/keops/4. Lobby_Panoramica.webp
+  - /images/projects/keops/5. Merchandising.webp
+  - /images/projects/keops/6. Vista_Merchandising.webp
+  - /images/projects/keops/7. Vista_Completa.webp
 testimonial:
   rating: 5
   quote: "KEOPs transformó nuestra visión de espacio comercial. Diseño excepcional y funcional."

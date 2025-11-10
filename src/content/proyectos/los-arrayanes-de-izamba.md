@@ -1,6 +1,6 @@
 ---
 slug: los-arrayanes-de-izamba
-backgroundImage: /images/projects/arrayanes_izamba/vista.png
+backgroundImage: /images/projects/arrayanes_izamba/vista.webp
 specifications:
   bedrooms:
     enabled: true
@@ -51,14 +51,14 @@ testimonials:
     name: Carlos Martínez
     position: Propietario, Los Arrayanes de Izamba
     logo: /images/logo-placeholder.svg
-    image: /images/placeholder-image.jpg
+    image: /images/placeholder-image.webp
   - rating: 5
     quote: La mejor decisión fue elegir Los Arrayanes de Izamba. Calidad y confort
       garantizados.
     name: Ana González
     position: Residente, Los Arrayanes de Izamba
     logo: /images/logo-placeholder.svg
-    image: /images/placeholder-image.jpg
+    image: /images/placeholder-image.webp
 title: Los Arrayanes de Izamba :)
 description: Conjunto habitacional diseñado para ofrecer calidad de vida y
   espacios funcionales para toda la familia.
@@ -67,15 +67,15 @@ tags:
   - Residencial
   - Vivienda Multifamiliar
 images:
-  - /images/projects/arrayanes_izamba/vista.png
-  - /images/projects/arrayanes_izamba/sala1.png
-  - /images/projects/arrayanes_izamba/sala2.png
-  - /images/projects/arrayanes_izamba/comedor.png
-  - /images/projects/arrayanes_izamba/cocina.png
-  - /images/projects/arrayanes_izamba/habitacion1.png
-  - /images/projects/arrayanes_izamba/habitacion2.png
-  - /images/projects/arrayanes_izamba/bano.png
-  - /images/projects/arrayanes_izamba/jardin.png
+  - /images/projects/arrayanes_izamba/vista.webp
+  - /images/projects/arrayanes_izamba/sala1.webp
+  - /images/projects/arrayanes_izamba/sala2.webp
+  - /images/projects/arrayanes_izamba/comedor.webp
+  - /images/projects/arrayanes_izamba/cocina.webp
+  - /images/projects/arrayanes_izamba/habitacion1.webp
+  - /images/projects/arrayanes_izamba/habitacion2.webp
+  - /images/projects/arrayanes_izamba/bano.webp
+  - /images/projects/arrayanes_izamba/jardin.webp
 content: dasdsadas
 testimonial:
   rating: 5
