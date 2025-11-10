@@ -1,6 +1,6 @@
 ---
 slug: los-arrayanes-de-ficoa
-backgroundImage: /images/projects/0_vista_exterior.webp
+backgroundImage: /images/projects/arrayanes_ficoa/0_Vista_Exterior.webp
 specifications:
   bedrooms:
     enabled: true
