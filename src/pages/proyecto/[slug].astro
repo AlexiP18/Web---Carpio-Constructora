@@ -41,6 +41,8 @@ const contentHtml = proyecto.body;
 
 // Verificar si es el proyecto Keops
 const isKeops = proyecto.slug === 'keops';
+// Verificar si es el proyecto Arrayanes de Ficoa (sin especificaciones)
+const isFicoa = proyecto.slug === 'los-arrayanes-de-ficoa';
 ---
 
 <Layout title={`${title} - Constructora Carpio`}>
@@ -66,7 +68,7 @@ const isKeops = proyecto.slug === 'keops';
         content={contentHtml}
         images={images}
         virtualTourVideo={virtualTourVideo}
-        specifications={specifications}
+        specifications={isFicoa ? undefined : specifications}
       />
     )}
     

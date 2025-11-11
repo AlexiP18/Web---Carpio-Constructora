@@ -109,6 +109,13 @@ images:
   - /images/projects/arrayanes_izamba/jardin2.webp
   - /images/projects/arrayanes_izamba/terraza.webp
   - /images/projects/arrayanes_izamba/luz.webp
+  - /images/projects/arrayanes_izamba/planos-05.webp
+  - /images/projects/arrayanes_izamba/planos-07.webp
+  - /images/projects/arrayanes_izamba/planos-08.webp
+  - /images/projects/arrayanes_izamba/planos-09.webp
+  - /images/projects/arrayanes_izamba/planos-11.webp
+  - /images/projects/arrayanes_izamba/planos-12.webp
+  - /images/projects/arrayanes_izamba/planos-13.webp
 ---
 
 Los Arrayanes de Izamba es un conjunto habitacional moderno que redefine el concepto de comunidad residencial en Ecuador. Este proyecto ofrece viviendas diseñadas con espacios amplios y funcionales para el disfrute de toda la familia.

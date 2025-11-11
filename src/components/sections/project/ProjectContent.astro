@@ -61,61 +61,162 @@ function getImageSrc(image: string | ImageMetadata): string {
   return typeof image === 'string' ? image : image.src;
 }
 
-// Default categories if none provided
+// Function to organize images by category based on their path OR filename
+function organizeImagesByCategory(imageList: (string | ImageMetadata)[]) {
+  const categorizedImages: {
+    general: (string | ImageMetadata)[],
+    exterior: (string | ImageMetadata)[],
+    interior: (string | ImageMetadata)[],
+    planos: (string | ImageMetadata)[],
+    multimedia: (string | ImageMetadata)[]
+  } = {
+    general: [],
+    exterior: [],
+    interior: [],
+    planos: [],
+    multimedia: []
+  };
+
+  imageList.forEach(image => {
+    const src = getImageSrc(image);
+    const lowerSrc = src.toLowerCase();
+    
+    // Extract filename without extension
+    const pathParts = src.split('/');
+    const filename = pathParts[pathParts.length - 1].replace(/\.(jpg|jpeg|png|webp)$/i, '').toLowerCase();
+    
+    // Categorize based on folder path OR filename patterns
+    let categorized = false;
+    let category = '';
+    
+    // Check folder path first
+    if (lowerSrc.includes('/1. exterior/') || lowerSrc.includes('/exterior/')) {
+      categorizedImages.exterior.push(image);
+      category = 'exterior';
+      categorized = true;
+    } else if (lowerSrc.includes('/2. interior/') || lowerSrc.includes('/interior/')) {
+      categorizedImages.interior.push(image);
+      category = 'interior';
+      categorized = true;
+    } else if (lowerSrc.includes('/3. planos/') || lowerSrc.includes('/planos/')) {
+      categorizedImages.planos.push(image);
+      category = 'planos';
+      categorized = true;
+    } else if (lowerSrc.includes('/0. multimedia/') || lowerSrc.includes('/multimedia/')) {
+      categorizedImages.multimedia.push(image);
+      category = 'multimedia';
+      categorized = true;
+    }
+    
+    // If not categorized by folder, try by filename patterns
+    if (!categorized) {
+      // Planos keywords - Check first to avoid false positives
+      // Match: plano, planos, planos-XX, plan, layout, blueprint, arquitectonico
+      if (filename.includes('plano') || filename.includes('planos') || filename.includes('plan') || 
+          filename.includes('layout') || filename.includes('blueprint') || filename.includes('arquitectonico') || 
+          /planos-\d+/.test(filename) || /plano-\d+/.test(filename)) {
+        categorizedImages.planos.push(image);
+        category = 'planos';
+        categorized = true;
+      }
+      // Exterior keywords
+      else if (filename.includes('vista') || filename.includes('exterior') || filename.includes('fachada') || 
+               filename.includes('entrada') || filename.includes('jardin') || filename.includes('terraza') ||
+               filename.includes('area_recreacional') || filename.includes('piscina') || filename.includes('parqueadero')) {
+        categorizedImages.exterior.push(image);
+        category = 'exterior';
+        categorized = true;
+      }
+      // Interior keywords - Expanded list
+      else if (filename.includes('sala') || filename.includes('comedor') || filename.includes('cocina') ||
+               filename.includes('habitacion') || filename.includes('dormitorio') || filename.includes('bano') ||
+               filename.includes('baño') || filename.includes('escalera') || filename.includes('segundo_piso') || 
+               filename.includes('piso') || filename.includes('estar') || filename.includes('living') || 
+               filename.includes('estudio') || filename.includes('vestidor') || filename.includes('master') || 
+               filename.includes('simple') || filename.includes('closet') || filename.includes('lavanderia') ||
+               filename.includes('lavamanos') || filename.includes('coffee') || filename.includes('luz') ||
+               filename.includes('habi') || filename.includes('salastar') || filename.includes('lobby') ||
+               filename.includes('merchandising') || filename.includes('panoramica') || filename.includes('principal')) {
+        categorizedImages.interior.push(image);
+        category = 'interior';
+        categorized = true;
+      }
+    }
+    
+    // Add to general category ONLY if it's exterior or interior (NOT planos or multimedia)
+    if (category === 'exterior' || category === 'interior') {
+      categorizedImages.general.push(image);
+    }
+  });
+
+  return categorizedImages;
+}
+
+// Organize images by category
+const categorizedImages = organizeImagesByCategory(images);
+
+// Build dynamic categories array based on available images
+const dynamicCategories = [];
+
+// General always first (all images)
+if (categorizedImages.general.length > 0) {
+  dynamicCategories.push({
+    name: 'general',
+    label: 'General',
+    images: categorizedImages.general
+  });
+}
+
+// Add multimedia if exists
+if (categorizedImages.multimedia.length > 0) {
+  dynamicCategories.push({
+    name: 'multimedia',
+    label: 'Multimedia',
+    images: categorizedImages.multimedia
+  });
+}
+
+// Add exterior if exists
+if (categorizedImages.exterior.length > 0) {
+  dynamicCategories.push({
+    name: 'exterior',
+    label: 'Vista Exterior',
+    images: categorizedImages.exterior
+  });
+}
+
+// Add interior if exists
+if (categorizedImages.interior.length > 0) {
+  dynamicCategories.push({
+    name: 'interior',
+    label: 'Vista Interior',
+    images: categorizedImages.interior
+  });
+}
+
+// Add planos if exists
+if (categorizedImages.planos.length > 0) {
+  dynamicCategories.push({
+    name: 'planos',
+    label: 'Planos',
+    images: categorizedImages.planos
+  });
+}
+
+// Default categories if no images provided
 const defaultCategories = [
   {
     name: 'general',
     label: 'General',
-    images: images && images.length > 0 ? images : [
-      '/images/placeholder-image.png',
-      '/images/placeholder-image-1.png',
-      '/images/placeholder-image-2.png',
-      '/images/header-30.png',
-      '/images/header-50.png',
-      '/images/layout-355.png',
-      '/images/layout-85.png',
-      '/images/tab-pane-1.png'
-    ]
-  },
-  {
-    name: 'exterior',
-    label: 'Vista Exterior',
-    images: images && images.length > 0 ? images : [
-      '/images/placeholder-image.png',
-      '/images/placeholder-image-1.png',
-      '/images/placeholder-image-2.png',
-      '/images/header-30.png',
-      '/images/header-50.png',
-      '/images/layout-355.png'
-    ]
-  },
-  {
-    name: 'interior',
-    label: 'Vista Interior',
-    images: images && images.length > 0 ? images : [
-      '/images/layout-355.png',
-      '/images/layout-85.png',
-      '/images/tab-pane-1.png',
-      '/images/header-50.png',
+    images: [
       '/images/placeholder-image.png',
       '/images/placeholder-image-1.png',
       '/images/placeholder-image-2.png'
     ]
-  },
-  {
-    name: 'planos',
-    label: 'Planos',
-    images: images && images.length > 0 ? images : [
-      '/images/tab-pane-1.png',
-      '/images/layout-355.png',
-      '/images/placeholder-image.png',
-      '/images/layout-85.png',
-      '/images/header-30.png'
-    ]
   }
 ];
 
-const categories = imageCategories || defaultCategories;
+const categories = imageCategories || (dynamicCategories.length > 0 ? dynamicCategories : defaultCategories);
 
 // Split content into paragraphs
 const paragraphs = content.split('\n\n').filter(p => p.trim());
@@ -144,10 +245,10 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
     </div>
 
     <!-- Main Layout Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 w-full">
+    <div class={`grid grid-cols-1 gap-12 w-full ${specifications ? 'lg:grid-cols-3' : 'lg:grid-cols-1'}`}>
       
       <!-- Gallery Section -->
-      <div class="lg:col-span-2 bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden" data-aos="fade-right" data-aos-duration="800">
+      <div class={`bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden ${specifications ? 'lg:col-span-2' : 'lg:col-span-1'}`} data-aos="fade-right" data-aos-duration="800">
         
         <!-- Gallery Header with Category Selector -->
         <div class="bg-gradient-to-r from-gray-50 to-white p-6 border-b border-gray-100">
@@ -266,6 +367,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
       <!-- Project Info Column -->
       <div class="h-full space-y-8" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
         <!-- Project Stats Card -->
+        {specifications && (
         <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8">
           <div class="flex items-center gap-3 mb-6">
             <div class="w-12 h-12 bg-gradient-to-br from-brand-primary to-brand-primary/80 rounded-2xl flex items-center justify-center">
@@ -421,6 +523,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
             </div>
           </div>
         </div>
+        )}
       </div>
     </div>
   </div>

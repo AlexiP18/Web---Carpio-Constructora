@@ -1,4 +1,18 @@
 ---
+/**
+ * ProjectMosaicNew Component
+ * 
+ * Este componente crea un mosaico visual dinámico con las imágenes del proyecto.
+ * 
+ * Características:
+ * - Selecciona aleatoriamente hasta 10 imágenes del stack de imágenes disponibles
+ * - Aplica un layout aleatorio de una colección de 5 diseños predefinidos
+ * - Cada vez que se carga la página, muestra diferentes imágenes en diferente disposición
+ * - Funciona con cualquier cantidad de imágenes (mínimo recomendado: 8 imágenes)
+ * 
+ * Uso:
+ * <ProjectMosaicNew images={todasLasImagenesDelProyecto} title="Explora Cada Detalle" />
+ */
 import { Icon } from "astro-icon/components";
 
 export interface Props {
@@ -13,14 +27,148 @@ function getImageSrc(image: string | ImageMetadata): string {
   return typeof image === 'string' ? image : image.src;
 }
 
-// Ensure we have at least 9 images for the mosaic (repeat if needed)
-const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...images].slice(0, 9);
+// Function to generate contextual label based on image path and name
+function generateImageLabel(image: string | ImageMetadata): string {
+  const src = getImageSrc(image);
+  
+  // Extract folder and filename
+  const pathParts = src.split('/');
+  const filename = pathParts[pathParts.length - 1].replace(/\.(jpg|jpeg|png|webp)$/i, '');
+  const folder = pathParts[pathParts.length - 2] || '';
+  
+  // Determine category based on folder
+  let category = '';
+  if (folder.toLowerCase().includes('exterior')) {
+    category = 'Exterior';
+  } else if (folder.toLowerCase().includes('interior')) {
+    category = 'Interior';
+  } else if (folder.toLowerCase().includes('plano')) {
+    category = 'Planos';
+  }
+  
+  // Generate label based on filename
+  const filenameLower = filename.toLowerCase();
+  let specificLabel = '';
+  
+  // Common exterior terms
+  if (filenameLower.includes('fachada') || filenameLower.includes('facade')) {
+    specificLabel = 'Fachada';
+  } else if (filenameLower.includes('entrada') || filenameLower.includes('entry')) {
+    specificLabel = 'Entrada Principal';
+  } else if (filenameLower.includes('jardin') || filenameLower.includes('garden')) {
+    specificLabel = 'Jardín';
+  } else if (filenameLower.includes('terraza') || filenameLower.includes('terrace')) {
+    specificLabel = 'Terraza';
+  } else if (filenameLower.includes('balcon') || filenameLower.includes('balcony')) {
+    specificLabel = 'Balcón';
+  } else if (filenameLower.includes('vista') || filenameLower.includes('view')) {
+    specificLabel = 'Vista General';
+  } else if (filenameLower.includes('piscina') || filenameLower.includes('pool')) {
+    specificLabel = 'Piscina';
+  } else if (filenameLower.includes('parqueadero') || filenameLower.includes('parking')) {
+    specificLabel = 'Parqueadero';
+  }
+  // Common interior terms
+  else if (filenameLower.includes('sala') || filenameLower.includes('living')) {
+    specificLabel = 'Sala';
+  } else if (filenameLower.includes('cocina') || filenameLower.includes('kitchen')) {
+    specificLabel = 'Cocina';
+  } else if (filenameLower.includes('comedor') || filenameLower.includes('dining')) {
+    specificLabel = 'Comedor';
+  } else if (filenameLower.includes('dormitorio') || filenameLower.includes('bedroom') || filenameLower.includes('habitacion')) {
+    specificLabel = 'Dormitorio';
+  } else if (filenameLower.includes('bano') || filenameLower.includes('bathroom')) {
+    specificLabel = 'Baño';
+  } else if (filenameLower.includes('principal') || filenameLower.includes('master')) {
+    specificLabel = 'Habitación Principal';
+  } else if (filenameLower.includes('estudio') || filenameLower.includes('study')) {
+    specificLabel = 'Estudio';
+  } else if (filenameLower.includes('closet') || filenameLower.includes('vestidor')) {
+    specificLabel = 'Vestidor';
+  } else if (filenameLower.includes('pasillo') || filenameLower.includes('hallway')) {
+    specificLabel = 'Pasillo';
+  } else if (filenameLower.includes('escalera') || filenameLower.includes('stairs')) {
+    specificLabel = 'Escaleras';
+  }
+  // Number patterns for multiple rooms
+  else if (filenameLower.match(/\d+/)) {
+    const number = filenameLower.match(/\d+/)?.[0];
+    if (category === 'Interior') {
+      specificLabel = `Espacio ${number}`;
+    } else {
+      specificLabel = `Vista ${number}`;
+    }
+  }
+  // Default labels
+  else if (category === 'Exterior') {
+    specificLabel = 'Vista Exterior';
+  } else if (category === 'Interior') {
+    specificLabel = 'Vista Interior';
+  } else if (category === 'Planos') {
+    specificLabel = 'Plano Arquitectónico';
+  } else {
+    specificLabel = 'Detalle del Proyecto';
+  }
+  
+  // Combine category and specific label
+  return specificLabel;
+}
+
+// Function to generate description based on label
+function generateImageDescription(label: string): string {
+  const descriptions: { [key: string]: string } = {
+    'Fachada': 'Diseño arquitectónico exterior',
+    'Entrada Principal': 'Acceso al proyecto',
+    'Jardín': 'Áreas verdes y paisajismo',
+    'Terraza': 'Espacio exterior privado',
+    'Balcón': 'Vista panorámica',
+    'Vista General': 'Perspectiva completa',
+    'Piscina': 'Área recreativa',
+    'Parqueadero': 'Espacio de estacionamiento',
+    'Sala': 'Espacio social',
+    'Cocina': 'Área de preparación',
+    'Comedor': 'Espacio para compartir',
+    'Dormitorio': 'Área de descanso',
+    'Baño': 'Acabados premium',
+    'Habitación Principal': 'Suite principal',
+    'Estudio': 'Espacio de trabajo',
+    'Vestidor': 'Organización inteligente',
+    'Pasillo': 'Distribución funcional',
+    'Escaleras': 'Diseño vertical',
+    'Vista Exterior': 'Arquitectura moderna',
+    'Vista Interior': 'Espacios amplios',
+    'Plano Arquitectónico': 'Distribución del proyecto',
+    'Detalle del Proyecto': 'Calidad en cada aspecto'
+  };
+  
+  return descriptions[label] || 'Vista detallada';
+}
+
+// Function to shuffle array randomly (Fisher-Yates algorithm)
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+// Seleccionar aleatoriamente hasta 10 imágenes del stack disponible
+const maxImages = 10;
+const shuffledImages = shuffleArray(images);
+const selectedImages = shuffledImages.slice(0, Math.min(maxImages, images.length));
+
+// Ensure we have at least 8 images for the mosaic (repeat if needed)
+const mosaicImages = selectedImages.length >= 8 
+  ? selectedImages 
+  : [...selectedImages, ...selectedImages].slice(0, 8);
 
 // Define multiple solid layouts without blank spaces - Based on provided designs
 // Each layout is an array of blocks with: imageIndex, cols, rows, label, icon, fullDesc, materials, features
 // All layouts match the exact structure from the reference images
 const layouts = [
-  // Layout 1 (Imagen 1): Bloque grande izquierda + grid derecha
+  // Layout 1 (Imagen 1): Bloque grande izquierda + grid derecha - 8 imágenes
   // Row 1: 5 + 4 + 3 = 12
   // Row 2: 5 (continúa) + 4 + 3 = 12
   // Row 3: 4 + 4 + 4 = 12
@@ -35,7 +183,7 @@ const layouts = [
     { idx: 7, cols: 4, rows: 1, label: "Panorámica", desc: "", icon: "ph:image-square", fullDesc: "Vista completa que muestra la integración del proyecto con su entorno", materials: "Paisajismo profesional, Áreas verdes, Iluminación exterior", features: "Vistas despejadas, Orientación solar, Privacidad visual" }
   ],
   
-  // Layout 2 (Imagen 2): Bloque grande izquierda + variación derecha
+  // Layout 2 (Imagen 2): Bloque grande izquierda + variación derecha - 8 imágenes
   // Row 1: 5 + 4 + 3 = 12
   // Row 2: 5 (continúa) + 3 + 4 = 12
   // Row 3: 3 + 3 + 6 = 12
@@ -50,7 +198,7 @@ const layouts = [
     { idx: 7, cols: 6, rows: 1, label: "Panorámica", desc: "", icon: "ph:image-square", fullDesc: "Vista completa que muestra la integración del proyecto con su entorno", materials: "Paisajismo profesional, Áreas verdes, Iluminación exterior", features: "Vistas despejadas, Orientación solar, Privacidad visual" }
   ],
   
-  // Layout 3 (Imagen 3): Bloque grande izquierda + torre vertical + detalles
+  // Layout 3 (Imagen 3): Bloque grande izquierda + torre vertical + detalles - 8 imágenes
   // Row 1: 5 + 3 + 2 + 2 = 12
   // Row 2: 5 (continúa) + 3 (continúa) + 2 + 2 = 12
   // Row 3: 4 + 3 (continúa) + 5 = 12
@@ -65,7 +213,7 @@ const layouts = [
     { idx: 7, cols: 5, rows: 1, label: "Panorámica", desc: "", icon: "ph:image-square", fullDesc: "Vista completa que muestra la integración del proyecto con su entorno", materials: "Paisajismo profesional, Áreas verdes, Iluminación exterior", features: "Vistas despejadas, Orientación solar, Privacidad visual" }
   ],
   
-  // Layout 4 (Imagen 4): Tres bloques grandes arriba + mosaico abajo
+  // Layout 4 (Imagen 4): Tres bloques grandes arriba + mosaico abajo - 7 imágenes
   // Row 1: 4 + 5 + 3 = 12
   // Row 2: 4 (continúa) + 5 (continúa) + 3 (continúa) = 12
   // Row 3: 4 + 3 + 2 + 3 = 12
@@ -79,7 +227,7 @@ const layouts = [
     { idx: 6, cols: 3, rows: 1, label: "Acabados", desc: "", icon: "ph:paint-brush", fullDesc: "Acabados premium que garantizan calidad y elegancia en cada detalle", materials: "Pintura ecológica, Molduras decorativas, Zócalos de madera", features: "Fácil limpieza, Resistente a humedad, Acabado impecable" }
   ],
   
-  // Layout 5 (Imagen 5): Dos grandes arriba + tres medios + dos grandes abajo
+  // Layout 5 (Imagen 5): Dos grandes arriba + tres medios + dos grandes abajo - 7 imágenes
   // Row 1: 6 + 6 = 12
   // Row 2: 4 + 4 + 4 = 12
   // Row 3: 6 + 6 = 12
@@ -96,6 +244,21 @@ const layouts = [
 
 // Select random layout
 const selectedLayout = layouts[Math.floor(Math.random() * layouts.length)];
+
+// Filtrar el layout seleccionado para solo usar las imágenes que realmente tenemos disponibles
+const availableImagesCount = mosaicImages.length;
+const filteredLayout = selectedLayout.filter(block => block.idx < availableImagesCount);
+
+// Generate contextual labels for each image
+const imageLabels = mosaicImages.map(img => ({
+  label: generateImageLabel(img),
+  description: ''
+}));
+
+// Update descriptions based on labels
+imageLabels.forEach(item => {
+  item.description = generateImageDescription(item.label);
+});
 
 // Gradient colors for variety
 const gradients = [
@@ -130,16 +293,17 @@ const gradients = [
     <!-- Mosaic Grid - Estructura aleatoria pero siempre sólida sin espacios -->
     <div class="grid grid-cols-12 gap-4 lg:gap-6 auto-rows-[200px]" data-aos="fade-up" data-aos-delay="200">
       
-      {selectedLayout.map((block, index) => {
+      {filteredLayout.map((block, index) => {
         const image = mosaicImages[block.idx];
         const gradient = gradients[index % gradients.length];
+        const contextualLabel = imageLabels[block.idx];
         
         return image && (
           <button 
             class={`col-span-12 md:col-span-6 lg:col-span-${block.cols} row-span-${block.rows} group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer mosaic-image`}
             data-image={getImageSrc(image)}
-            data-label={block.label}
-            data-desc={block.desc}
+            data-label={contextualLabel.label}
+            data-desc={contextualLabel.description}
             data-icon={block.icon}
             data-full-desc={block.fullDesc}
             data-materials={block.materials}
@@ -147,7 +311,7 @@ const gradients = [
           >
             <img
               src={getImageSrc(image)}
-              alt={block.label}
+              alt={contextualLabel.label}
               class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             />
             <div class={`absolute inset-0 bg-gradient-to-t ${gradient} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}>
@@ -157,8 +321,8 @@ const gradients = [
                     <Icon name={block.icon} class={`${block.rows >= 3 ? 'w-6 h-6' : 'w-5 h-5'}`} />
                   </div>
                   <div>
-                    <span class={`font-bold ${block.rows >= 3 ? 'text-lg' : 'text-base'} block`}>{block.label}</span>
-                    {block.desc && <span class="text-sm text-white/90">{block.desc}</span>}
+                    <span class={`font-bold ${block.rows >= 3 ? 'text-lg' : 'text-base'} block`}>{contextualLabel.label}</span>
+                    {contextualLabel.description && <span class="text-sm text-white/90">{contextualLabel.description}</span>}
                   </div>
                 </div>
               </div>
@@ -173,20 +337,33 @@ const gradients = [
     </div>
 
     <!-- Modal -->
-    <div id="imageModal" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm opacity-0 invisible transition-all duration-300 p-4">
-      <div class="relative max-w-7xl w-full h-[90vh] bg-white rounded-3xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300 flex flex-col lg:flex-row" id="modalContent">
+    <div id="imageModal" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm opacity-0 invisible transition-all duration-300 p-4">
+      <div class="relative w-full h-full max-w-[95vw] max-h-[95vh] transform scale-95 transition-transform duration-300" id="modalContent">
         <!-- Close Button -->
         <button id="closeModal" class="absolute top-4 right-4 z-10 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group">
           <Icon name="ph:x" class="w-6 h-6 text-gray-900 group-hover:text-red-600" />
         </button>
 
-        <!-- Image Section (No scroll, fixed) -->
-        <div class="lg:w-2/3 relative bg-gray-900 flex items-center justify-center p-4 lg:p-6">
-          <img id="modalImage" src="" alt="" class="w-full h-full max-h-full object-contain rounded-xl" />
+        <!-- Zoom Controls -->
+        <div class="absolute bottom-4 right-4 z-10 flex gap-2">
+          <button id="zoomOut" class="w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group">
+            <Icon name="ph:minus" class="w-6 h-6 text-gray-900" />
+          </button>
+          <button id="zoomReset" class="w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group">
+            <Icon name="ph:arrows-in" class="w-6 h-6 text-gray-900" />
+          </button>
+          <button id="zoomIn" class="w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-300 shadow-lg group">
+            <Icon name="ph:plus" class="w-6 h-6 text-gray-900" />
+          </button>
         </div>
 
-        <!-- Info Section (Scrollable) -->
-        <div class="lg:w-1/3 bg-gradient-to-br from-gray-50 to-white overflow-y-auto">
+        <!-- Image Section Full Screen with zoom capability -->
+        <div id="imageContainer" class="relative w-full h-full flex items-center justify-center overflow-hidden cursor-zoom-in">
+          <img id="modalImage" src="" alt="" class="max-w-full max-h-full object-contain rounded-2xl shadow-2xl transition-transform duration-300" />
+        </div>
+
+        <!-- Info Section (Hidden) -->
+        <div class="hidden lg:w-1/3 bg-gradient-to-br from-gray-50 to-white overflow-y-auto">
           <div class="p-6 lg:p-8">
             <div class="mb-6">
               <div id="modalIconContainer" class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-primary/80 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
@@ -290,12 +467,22 @@ const gradients = [
     const modalContent = document.getElementById('modalContent');
     const closeModalBtn = document.getElementById('closeModal');
     const modalImage = document.getElementById('modalImage') as HTMLImageElement;
+    const imageContainer = document.getElementById('imageContainer');
+    const zoomInBtn = document.getElementById('zoomIn');
+    const zoomOutBtn = document.getElementById('zoomOut');
+    const zoomResetBtn = document.getElementById('zoomReset');
     const modalLabel = document.getElementById('modalLabel');
     const modalFullDesc = document.getElementById('modalFullDesc');
     const modalMaterials = document.getElementById('modalMaterials');
     const modalFeatures = document.getElementById('modalFeatures');
     const modalIconContainer = document.getElementById('modalIconContainer');
     const mosaicImages = document.querySelectorAll('.mosaic-image');
+
+    // Zoom state
+    let currentZoom = 1;
+    const zoomStep = 0.3;
+    const minZoom = 1;
+    const maxZoom = 3;
 
     // Icon map for Phosphor icons
     const iconMap: { [key: string]: string } = {
@@ -356,7 +543,50 @@ const gradients = [
           modal.classList.add('opacity-0', 'invisible');
           document.body.style.overflow = '';
         }
+        // Reset zoom when closing
+        resetZoom();
       }, 300);
+    }
+
+    // Zoom functions
+    function applyZoom(zoom: number) {
+      if (modalImage) {
+        modalImage.style.transform = `scale(${zoom})`;
+        currentZoom = zoom;
+        
+        // Update cursor
+        if (imageContainer) {
+          if (zoom > 1) {
+            imageContainer.style.cursor = 'zoom-out';
+            imageContainer.style.overflow = 'auto';
+          } else {
+            imageContainer.style.cursor = 'zoom-in';
+            imageContainer.style.overflow = 'hidden';
+          }
+        }
+      }
+    }
+
+    function zoomIn() {
+      const newZoom = Math.min(currentZoom + zoomStep, maxZoom);
+      applyZoom(newZoom);
+    }
+
+    function zoomOut() {
+      const newZoom = Math.max(currentZoom - zoomStep, minZoom);
+      applyZoom(newZoom);
+    }
+
+    function resetZoom() {
+      applyZoom(minZoom);
+    }
+
+    function toggleZoom() {
+      if (currentZoom > 1) {
+        resetZoom();
+      } else {
+        zoomIn();
+      }
     }
 
     // Add click event to all mosaic images
@@ -370,6 +600,17 @@ const gradients = [
         const icon = this.getAttribute('data-icon') || '';
         openModal(imageSrc, label, fullDesc, materials, features, icon);
       });
+    });
+
+    // Zoom button events
+    zoomInBtn?.addEventListener('click', zoomIn);
+    zoomOutBtn?.addEventListener('click', zoomOut);
+    zoomResetBtn?.addEventListener('click', resetZoom);
+
+    // Click on image to toggle zoom
+    modalImage?.addEventListener('click', function(e) {
+      e.stopPropagation();
+      toggleZoom();
     });
 
     // Close modal events
@@ -394,31 +635,47 @@ const gradients = [
     backdrop-filter: blur(8px);
   }
 
-  /* Modal content sin scroll - el scroll está en el panel de info */
+  /* Modal content sin scroll */
   #modalContent {
     overflow: hidden;
   }
 
-  /* Scroll suave en el panel de información */
-  #modalContent > div:last-child {
+  /* Image container with smooth scroll when zoomed */
+  #imageContainer {
     scrollbar-width: thin;
-    scrollbar-color: rgba(59, 130, 246, 0.3) transparent;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
   }
 
-  #modalContent > div:last-child::-webkit-scrollbar {
-    width: 6px;
+  #imageContainer::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
   }
 
-  #modalContent > div:last-child::-webkit-scrollbar-track {
+  #imageContainer::-webkit-scrollbar-track {
     background: transparent;
   }
 
-  #modalContent > div:last-child::-webkit-scrollbar-thumb {
-    background-color: rgba(59, 130, 246, 0.3);
+  #imageContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
   }
 
-  #modalContent > div:last-child::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(59, 130, 246, 0.5);
+  #imageContainer::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Smooth zoom transition */
+  #modalImage {
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Cursor styles */
+  .cursor-zoom-in {
+    cursor: zoom-in;
+  }
+
+  .cursor-zoom-out {
+    cursor: zoom-out;
   }
 </style>
