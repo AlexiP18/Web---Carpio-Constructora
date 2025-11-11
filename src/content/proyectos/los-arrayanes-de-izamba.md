@@ -2,17 +2,17 @@
 specifications:
   bedrooms:
     enabled: true
-    value: 4
+    value: 3
     label: Dormitorios
     sublabel: Habitaciones amplias
   bathrooms:
     enabled: true
-    value: 3
+    value: 3 1/2
     label: Baños
-    sublabel: Completos
+    sublabel: Habitaciones con baño privado o baño social
   area:
     enabled: true
-    value: 200
+    value: 166
     label: m²
     sublabel: Área construida
   garden:
@@ -28,7 +28,7 @@ specifications:
   deliveryDate:
     enabled: true
     value: Diciembre 2025
-    label: Fecha de entrega
+    label: Estrena hoy
   customSpecs:
     - enabled: false
       icon: 'ph:car'
