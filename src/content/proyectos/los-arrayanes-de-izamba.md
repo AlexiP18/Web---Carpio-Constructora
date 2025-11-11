@@ -7,9 +7,9 @@ specifications:
     sublabel: Habitaciones amplias
   bathrooms:
     enabled: true
-    value: 3 1/2
+    value: 3
     label: Baños
-    sublabel: Habitaciones con baño privado o baño social
+    sublabel: Completos
   area:
     enabled: true
     value: 166
