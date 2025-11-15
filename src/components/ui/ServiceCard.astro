@@ -1,0 +1,88 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface Props {
+  title: string;
+  description: string;
+  category: string;
+  imageUrl: string;
+  serviceSlug: string;
+  delay?: number;
+}
+
+const { title, description, category, imageUrl, serviceSlug, delay = 0 } = Astro.props;
+---
+
+<div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-[#D79528]/20 hover:-translate-y-2" data-aos="fade-up" data-aos-delay={delay}>
+  <!-- Image Section -->
+  <div class="relative overflow-hidden">
+    <img 
+      src={imageUrl} 
+      alt={title}
+      class="w-full h-64 lg:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+    />
+    
+    <!-- Overlay with gradient -->
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    
+    <!-- Floating Badge -->
+    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-gray-900">
+      Servicio Profesional
+    </div>
+  </div>
+
+  <!-- Content Section -->
+  <div class="p-8 space-y-6">
+    <!-- Category Tag -->
+    <div class="flex flex-wrap gap-2">
+      <span class="bg-[#103646]/10 border border-[#103646]/20 rounded-full px-3 py-1 text-[#103646] text-sm font-semibold">
+        {category}
+      </span>
+    </div>
+
+    <!-- Title -->
+    <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-[#103646] transition-colors leading-tight">
+      {title}
+    </h3>
+
+    <!-- Description -->
+    <p class="text-gray-600 leading-relaxed text-lg">
+      {description}
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+      <a 
+        href={`/servicios/${serviceSlug}`}
+        class="flex-1 inline-flex items-center justify-center gap-2 bg-[#103646] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#103646]/90 transition-all duration-200 shadow-lg hover:shadow-xl"
+      >
+        <Icon name="ph:arrow-right" class="w-5 h-5" />
+        Ver Servicio
+      </a>
+      <a 
+        href={`https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20su%20servicio%20de%20${encodeURIComponent(title)}.%20Estoy%20interesad%40%20en%20contratar%20este%20servicio.`}
+        target="_blank"
+        class="flex-1 inline-flex items-center justify-center gap-2 bg-white text-[#103646] border-2 border-[#103646] px-6 py-3 rounded-xl font-semibold hover:bg-[#103646] hover:text-white transition-all duration-200"
+      >
+        <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5" />
+        Consultar
+      </a>
+    </div>
+
+    <!-- Service Features -->
+    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-gray-100">
+      <div class="text-center">
+        <Icon name="ph:clock-fill" class="w-5 h-5 text-[#D79528] mx-auto mb-1" />
+        <div class="text-gray-600 text-sm">Rápido</div>
+      </div>
+      <div class="text-center">
+        <Icon name="ph:shield-check-fill" class="w-5 h-5 text-[#D79528] mx-auto mb-1" />
+        <div class="text-gray-600 text-sm">Confiable</div>
+      </div>
+      <div class="text-center">
+        <Icon name="ph:medal-fill" class="w-5 h-5 text-[#D79528] mx-auto mb-1" />
+        <div class="text-gray-600 text-sm">Premium</div>
+      </div>
+    </div>
+  </div>
+</div>

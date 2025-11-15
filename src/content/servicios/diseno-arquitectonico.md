@@ -3,6 +3,7 @@ slug: "diseno-arquitectonico"
 title: "Diseño Arquitectónico"
 subtitle: "Diseño Arquitectónico"
 description: "Creamos proyectos arquitectónicos personalizados que transforman tus ideas en planos profesionales."
+backgroundImage: "/images/diseno-hero.png"
 service:
   name: "Servicio de Diseño Arquitectónico"
   category: "Diseño Arquitectónico"

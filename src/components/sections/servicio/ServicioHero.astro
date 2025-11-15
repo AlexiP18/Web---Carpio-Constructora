@@ -136,7 +136,8 @@ const backgroundImage = backgroundImages[serviceType];
         
         let buttonHref = '/contacto';
         if (actionType === 'whatsapp' && ctaConfig?.whatsappNumber) {
-          buttonHref = `https://wa.me/${ctaConfig.whatsappNumber.replace(/\+/g, '')}?text=Hola,%20me%20interesa%20obtener%20información%20sobre%20sus%20servicios`;
+          const serviceName = title || 'sus servicios';
+          buttonHref = `https://wa.me/${ctaConfig.whatsappNumber.replace(/\+/g, '')}?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20${encodeURIComponent(serviceName)}.%20Estoy%20interesad%40%20en%20contratar%20este%20servicio.`;
         } else if (ctaConfig?.url) {
           buttonHref = ctaConfig.url;
         }

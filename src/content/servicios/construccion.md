@@ -4,7 +4,7 @@ title: Innovación en Construcción
 subtitle: Construcción
 description: Transformamos tus ideas en realidad con soluciones constructivas de
   alta calidad y eficiencia.
-backgroundImage: /images/construccion-hero.jpg
+backgroundImage: /images/construccion-hero.png
 service:
   faqsSection:
     enabled: false

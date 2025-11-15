@@ -3,7 +3,7 @@ slug: "remodelacion"
 title: "Remodelación Integral"
 subtitle: "Remodelación"
 description: "Renovamos y transformamos espacios existentes con diseños modernos y funcionales."
-backgroundImage: "/images/remodelacion-hero.jpg"
+backgroundImage: "/images/remodelacion-hero.png"
 service:
   name: "Servicio de Remodelación"
   category: "Remodelación"

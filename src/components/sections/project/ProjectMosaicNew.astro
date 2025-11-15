@@ -17,10 +17,10 @@ import { Icon } from "astro-icon/components";
 
 export interface Props {
   images: (string | ImageMetadata)[];
-  title?: string;
+  title: string;
 }
 
-const { images, title = "Explora Cada Detalle" } = Astro.props;
+const { images, title } = Astro.props;
 
 // Helper function to get image src
 function getImageSrc(image: string | ImageMetadata): string {

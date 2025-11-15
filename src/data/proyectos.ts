@@ -64,7 +64,7 @@ const keopsImages = [
 export const proyectosData: ProjectData[] = [
   {
     slug: "los-arrayanes-de-ficoa",
-    title: "Los Arrayanes de Ficoa",
+    title: "Diseños Arquitectónicos Residenciales",
     description: "Diseños de vivienda unifamiliar y multifamiliar que combinan funcionalidad y estética moderna.",
     tags: ["Residencial", "Vivienda Unifamiliar", "Vivienda Multifamiliar"],
     backgroundImage: '/images/projects/arrayanes_ficoa/0_Vista_Exterior.webp',

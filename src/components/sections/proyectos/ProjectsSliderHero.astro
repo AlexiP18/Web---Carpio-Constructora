@@ -90,57 +90,69 @@ const projects = [
     {projects.slice(0, 2).map((project, index) => (
       <div 
         class="relative flex-shrink-0 w-full h-[calc(100vh-72px)] lg:h-[calc(100vh-72px)] bg-cover bg-center bg-no-repeat group cursor-pointer overflow-hidden project-card"
-        style={`background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('${project.image}');`}
+        style={`background-image: linear-gradient(180deg, rgba(16,54,70,0.4) 0%, rgba(16,54,70,0.8) 100%), url('${project.image}');`}
         data-project-url={`/proyecto/${project.title.toLowerCase().replace(/\s+/g, '-')}`}
       >
         <!-- Content Overlay -->
         <div class="absolute inset-0 flex flex-col justify-end p-8 lg:p-12 text-white z-10">
           <!-- Basic Info - Always visible -->
           <div class="slide-basic-info transform transition-all duration-500 ease-out">
-            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1 mb-4">
+            <div class="inline-flex items-center gap-2 bg-[#D79528] backdrop-blur-sm rounded-full px-4 py-2 mb-4 shadow-lg">
               <Icon 
                 name={
-                  project.category === 'Residencial' ? 'ph:house' :
-                  project.category === 'Comercial' ? 'ph:storefront' :
-                  project.category === 'Recreativo' ? 'ph:tree' :
-                  project.category === 'Corporativo' ? 'ph:buildings' :
-                  project.category === 'Salud' ? 'ph:first-aid-kit' :
-                  'ph:buildings'
+                  project.category === 'Residencial' ? 'ph:house-fill' :
+                  project.category === 'Comercial' ? 'ph:storefront-fill' :
+                  project.category === 'Recreativo' ? 'ph:tree-fill' :
+                  project.category === 'Corporativo' ? 'ph:buildings-fill' :
+                  project.category === 'Salud' ? 'ph:first-aid-kit-fill' :
+                  'ph:buildings-fill'
                 } 
-                class="w-4 h-4" 
+                class="w-5 h-5 text-white" 
               />
-              <span class="text-sm font-medium">{project.category}</span>
+              <span class="text-sm font-bold text-white">{project.category}</span>
             </div>
             
-            <h2 class="text-3xl lg:text-4xl xl:text-5xl font-bold mb-2 leading-tight">
+            <h2 class="text-3xl lg:text-4xl xl:text-5xl font-extrabold mb-2 leading-tight text-white drop-shadow-lg">
               {project.title}
             </h2>
             
-            <p class="text-lg lg:text-xl text-white/90 mb-6">
+            <p class="text-lg lg:text-xl text-white font-medium mb-4 drop-shadow-md">
               {project.subtitle}
             </p>
           </div>
 
           <!-- Extended Info - Appears on hover -->
-          <div class="slide-extended-info opacity-0 max-h-0 overflow-hidden transform translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:max-h-96 group-hover:translate-y-0">
-            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 mb-6">
+          <div class="slide-extended-info opacity-0 max-h-0 overflow-hidden transform translate-y-4 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:max-h-[500px] group-hover:translate-y-0">
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 mb-6 shadow-lg">
               <!-- Project Details Grid -->
-              <div class="grid grid-cols-2 gap-4 mb-6">
-                <div>
-                  <div class="text-white/70 text-sm font-medium mb-1">Área</div>
-                  <div class="text-white font-semibold">{project.area}</div>
+              <div class="grid grid-cols-2 gap-6">
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2 text-white text-sm font-bold mb-1">
+                    <Icon name="ph:ruler-fill" class="w-4 h-4 text-[#D79528]" />
+                    Área
+                  </div>
+                  <div class="text-white font-bold text-lg">{project.area}</div>
                 </div>
-                <div>
-                  <div class="text-white/70 text-sm font-medium mb-1">Año</div>
-                  <div class="text-white font-semibold">{project.year}</div>
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2 text-white text-sm font-bold mb-1">
+                    <Icon name="ph:calendar-fill" class="w-4 h-4 text-[#D79528]" />
+                    Año
+                  </div>
+                  <div class="text-white font-bold text-lg">{project.year}</div>
                 </div>
-                <div>
-                  <div class="text-white/70 text-sm font-medium mb-1">Ubicación</div>
-                  <div class="text-white font-semibold">{project.location}</div>
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2 text-white text-sm font-bold mb-1">
+                    <Icon name="ph:map-pin-fill" class="w-4 h-4 text-[#D79528]" />
+                    Ubicación
+                  </div>
+                  <div class="text-white font-bold text-lg">{project.location}</div>
                 </div>
-                <div>
-                  <div class="text-white/70 text-sm font-medium mb-1">Estado</div>
-                  <div class={`font-semibold ${project.status === 'Completado' ? 'text-green-400' : 'text-yellow-400'}`}>
+                <div class="space-y-1">
+                  <div class="flex items-center gap-2 text-white text-sm font-bold mb-1">
+                    <Icon name="ph:check-circle-fill" class="w-4 h-4 text-[#D79528]" />
+                    Estado
+                  </div>
+                  <div class={`font-bold text-lg ${project.status === 'Completado' ? 'text-green-600' : 'text-[#D79528]'}`}>
                     {project.status}
                   </div>
                 </div>
@@ -149,28 +161,23 @@ const projects = [
           </div>
 
           <!-- CTA Buttons - Always visible -->
-          <div class="mt-4">
-            <div class="flex flex-col sm:flex-row gap-3">
-              <Button 
-                variant="outline" 
-                size="md"
+          <div class="mt-6">
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a 
                 href={`/proyecto/${project.title.toLowerCase().replace(/\s+/g, '-')}`}
-                iconPosition="left" 
-                icon="ph:eye"
-                class="bg-white/20 border-white/30 text-white hover:bg-white hover:text-[#D79528] hover:border-[#D79528] backdrop-blur-sm transition-all duration-300 font-semibold"
+                class="flex items-center justify-center gap-2 px-8 py-4 bg-[#D79528] hover:bg-[#c08520] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-2xl group"
               >
+                <Icon name="ph:arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 Ver Proyecto
-              </Button>
-              <Button 
-                variant="outline" 
-                size="md"
-                href="/contacto"
-                iconPosition="left" 
-                icon="ph:chat-circle"
-                class="bg-white/10 border-white/20 text-white hover:bg-[#25D366] hover:text-[#25D366] hover:border-[#25D366] backdrop-blur-sm transition-all duration-300 font-semibold"
+              </a>
+              <a 
+                href={`https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20su%20${encodeURIComponent(project.title)}.%20Estoy%20interesad%40%20en%20este%20proyecto.`}
+                target="_blank"
+                class="flex items-center justify-center gap-2 px-8 py-4 bg-[#103646] hover:bg-[#1a4a5a] text-white font-bold rounded-xl transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-2xl border-2 border-white/20 group"
               >
+                <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5 group-hover:scale-110 transition-transform" />
                 Consultar
-              </Button>
+              </a>
             </div>
           </div>
         </div>
