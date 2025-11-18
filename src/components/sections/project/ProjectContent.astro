@@ -245,10 +245,10 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
     </div>
 
     <!-- Main Layout Grid -->
-    <div class={`grid grid-cols-1 gap-12 w-full ${specifications ? 'lg:grid-cols-3' : 'lg:grid-cols-1'}`}>
+    <div class={`grid grid-cols-1 gap-12 w-full ${specifications ? 'lg:grid-cols-3' : 'lg:grid-cols-1'} items-start`}>
       
       <!-- Gallery Section -->
-      <div class={`bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden ${specifications ? 'lg:col-span-2' : 'lg:col-span-1'}`} data-aos="fade-right" data-aos-duration="800">
+      <div class={`bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden ${specifications ? 'lg:col-span-2' : 'lg:col-span-1'} self-start`} data-aos="fade-right" data-aos-duration="800">
         
         <!-- Gallery Header with Category Selector -->
         <div class="bg-gradient-to-r from-gray-50 to-white p-6 border-b border-gray-100">
@@ -365,7 +365,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
       </div>
 
       <!-- Project Info Column -->
-      <div class="h-full space-y-8" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+      <div class="space-y-8 self-start" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
         <!-- Project Stats Card -->
         {specifications && (
         <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8">
