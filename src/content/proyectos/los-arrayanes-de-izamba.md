@@ -76,8 +76,8 @@ description: >-
   funcionales para toda la familia.
 tags:
   - Conjunto Habitacional
-  - Residencial
   - Vivienda Multifamiliar
+  - Proyecto completado
 backgroundImage: /images/projects/arrayanes_izamba/vista.webp
 images:
   - /images/projects/arrayanes_izamba/vista.webp

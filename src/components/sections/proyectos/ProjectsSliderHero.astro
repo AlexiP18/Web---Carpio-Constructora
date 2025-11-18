@@ -18,7 +18,7 @@ const projects = [
     area: "166 m²",
     year: "2025",
     location: "Izamba, Ecuador",
-    status: "En construcción"
+    status: "Completado"
   },
   {
     id: 2,
@@ -28,9 +28,10 @@ const projects = [
     image: keopsImage.src,
     category: "Comercial",
     area: "2,800 m²",
-    year: "2024",
+    year: "2025",
     location: "Ecuador",
-    status: "Completado"
+    status: "Completado",
+    hideArea: true
   },
   {
     id: 3,
@@ -126,13 +127,15 @@ const projects = [
             <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 mb-6 shadow-lg">
               <!-- Project Details Grid -->
               <div class="grid grid-cols-2 gap-6">
-                <div class="space-y-1">
-                  <div class="flex items-center gap-2 text-white text-sm font-bold mb-1">
-                    <Icon name="ph:ruler-fill" class="w-4 h-4 text-[#D79528]" />
-                    Área
+                {!project.hideArea && (
+                  <div class="space-y-1">
+                    <div class="flex items-center gap-2 text-white text-sm font-bold mb-1">
+                      <Icon name="ph:ruler-fill" class="w-4 h-4 text-[#D79528]" />
+                      Área
+                    </div>
+                    <div class="text-white font-bold text-lg">{project.area}</div>
                   </div>
-                  <div class="text-white font-bold text-lg">{project.area}</div>
-                </div>
+                )}
                 <div class="space-y-1">
                   <div class="flex items-center gap-2 text-white text-sm font-bold mb-1">
                     <Icon name="ph:calendar-fill" class="w-4 h-4 text-[#D79528]" />

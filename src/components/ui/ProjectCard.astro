@@ -26,30 +26,36 @@ const { title, description, tags, imageUrl, projectSlug, delay = 0 } = Astro.pro
     <!-- Overlay with gradient -->
     <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     
-    <!-- Floating Badge -->
-    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-gray-900">
-      Proyecto Destacado
+    <!-- Floating Badge - Categoría del Proyecto -->
+    <div class="absolute top-4 left-4">
+      {tags.includes('Conjunto Habitacional') ? (
+        <span class="inline-flex items-center gap-2 bg-[#103646]/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-white">
+          <Icon name="ph:buildings-fill" class="w-4 h-4" />
+          Conjunto Habitacional
+        </span>
+      ) : tags.includes('Diseño Residencial') ? (
+        <span class="inline-flex items-center gap-2 bg-[#D79528]/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-white">
+          <Icon name="ph:house-line-fill" class="w-4 h-4" />
+          Diseño Residencial
+        </span>
+      ) : tags.includes('Diseño Retail') ? (
+        <span class="inline-flex items-center gap-2 bg-[#103646]/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-white">
+          <Icon name="ph:storefront-fill" class="w-4 h-4" />
+          Diseño Retail
+        </span>
+      ) : null}
     </div>
   </div>
 
   <!-- Content Section -->
   <div class="p-8 space-y-6">
-    <!-- Tags -->
-    <div class="flex flex-wrap gap-2">
-      {tags.map((tag) => (
-        <span class="bg-primary-green/10 border border-primary-green/20 rounded-full px-3 py-1 text-primary-green text-sm font-semibold">
-          {tag}
-        </span>
-      ))}
-    </div>
-
     <!-- Title -->
-    <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-primary-green transition-colors leading-tight">
+    <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-primary-green transition-colors leading-tight line-clamp-1">
       {title}
     </h3>
 
     <!-- Description -->
-    <p class="text-gray-600 leading-relaxed text-lg">
+    <p class="text-gray-600 leading-relaxed text-lg line-clamp-2">
       {description}
     </p>
 

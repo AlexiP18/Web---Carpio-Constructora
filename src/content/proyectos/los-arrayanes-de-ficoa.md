@@ -57,9 +57,9 @@ title: Los Arrayanes de Ficoa
 description: Diseños de vivienda unifamiliar y multifamiliar que combinan
   funcionalidad y estética moderna.
 tags:
-  - Residencial
+  - Diseño Residencial
   - Vivienda Unifamiliar
-  - Conjunto Habitacional
+  - Proyecto completado
 images:
   - /images/projects/arrayanes_ficoa/0_Vista_Exterior.webp
   - /images/projects/arrayanes_ficoa/1_Vista_Entrada.webp

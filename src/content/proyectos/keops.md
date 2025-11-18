@@ -3,9 +3,9 @@ title: "KEOPs"
 slug: "keops"
 description: "Diseños Retail innovadores que maximizan la experiencia de compra y el flujo de clientes."
 tags:
-  - Retail
+  - Diseño Retail
   - Comercial
-  - Diseño Innovador
+  - Proyecto completado
 backgroundImage: "/images/projects/keops/1. Principal.webp"
 virtualTourVideo: "/images/projects/keops/KEOPS_VIDEOWEB.mp4"
 images:

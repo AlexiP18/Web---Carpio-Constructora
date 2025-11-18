@@ -1,0 +1,117 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/ui/Header.astro";
+import Footer from "../../components/sections/Footer.astro";
+import ProjectCard from "../../components/ui/ProjectCard.astro";
+import { getCollection } from 'astro:content';
+import { Icon } from "astro-icon/components";
+
+// Obtener todos los proyectos de Diseño Residencial
+const allProyectos = await getCollection('proyectos');
+const proyectosDisenoResidencial = allProyectos.filter(proyecto => 
+  proyecto.data.tags?.some(tag => tag.toLowerCase().includes('diseño residencial'))
+);
+---
+
+<Layout title="Diseño Residencial - Constructora Carpio">
+  <Header />
+  <main>
+    <!-- Hero Section -->
+    <section class="relative py-32 bg-gradient-to-br from-[#103646] via-[#103646]/95 to-[#103646] overflow-hidden">
+      <!-- Decorative elements -->
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#D79528] rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center max-w-4xl mx-auto" data-aos="fade-up">
+          <!-- Badge -->
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+            <Icon name="ph:house-line-fill" class="w-5 h-5 text-[#D79528]" />
+            <span class="text-white font-semibold text-sm uppercase tracking-wider">Diseño Residencial</span>
+          </div>
+
+          <!-- Title -->
+          <h1 class="text-5xl lg:text-7xl font-bold text-white leading-tight mb-6">
+            Diseño Residencial
+          </h1>
+
+          <!-- Description -->
+          <p class="text-xl text-gray-200 leading-relaxed mb-8">
+            Diseños arquitectónicos personalizados para viviendas unifamiliares 
+            y multifamiliares que reflejan tu estilo de vida.
+          </p>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12">
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+              <div class="text-4xl font-bold text-[#D79528] mb-2">{proyectosDisenoResidencial.length}</div>
+              <div class="text-white text-sm">Proyectos</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
+              <div class="text-4xl font-bold text-[#D79528] mb-2">50+</div>
+              <div class="text-white text-sm">Diseños Únicos</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 col-span-2 md:col-span-1">
+              <div class="text-4xl font-bold text-[#D79528] mb-2">8+</div>
+              <div class="text-white text-sm">Años de Experiencia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+      <div class="max-w-7xl mx-auto px-6">
+        {proyectosDisenoResidencial.length > 0 ? (
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {proyectosDisenoResidencial.map((proyecto) => (
+              <div data-aos="fade-up" data-aos-duration="800">
+                <ProjectCard
+                  title={proyecto.data.title}
+                  description={proyecto.data.description}
+                  imageUrl={proyecto.data.backgroundImage}
+                  tags={proyecto.data.tags || []}
+                  projectSlug={proyecto.slug}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div class="text-center py-20">
+            <Icon name="ph:house" class="w-24 h-24 text-gray-300 mx-auto mb-4" />
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">No hay diseños residenciales disponibles</h3>
+            <p class="text-gray-600">Pronto agregaremos nuevos proyectos.</p>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-[#103646] to-[#103646]/90 relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D79528] rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="max-w-4xl mx-auto px-6 text-center relative z-10" data-aos="fade-up">
+        <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+          ¿Necesitas un Diseño Personalizado?
+        </h2>
+        <p class="text-xl text-gray-200 mb-8">
+          Contáctanos y creemos juntos el diseño perfecto para tu hogar.
+        </p>
+        <a 
+          href="https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20dise%C3%B1os%20residenciales."
+          target="_blank"
+          class="inline-flex items-center gap-2 bg-[#D79528] hover:bg-[#c08520] text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg"
+        >
+          <Icon name="ph:whatsapp-logo-fill" class="w-6 h-6" />
+          Contactar por WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

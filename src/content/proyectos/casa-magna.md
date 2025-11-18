@@ -82,10 +82,10 @@ description: >-
   Residencia de lujo con diseño arquitectónico moderno, amplios espacios y 
   acabados de primera calidad para una experiencia de vida excepcional.
 tags:
-  - Residencial
+  - Diseño Residencial
   - Vivienda Unifamiliar
-  - Diseño Moderno
   - Lujo
+  - Proyecto disponible
 backgroundImage: /images/projects/casa_magna/0_Vista_Principal.jpg
 images:
   - /images/projects/casa_magna/0_Vista_Principal(Atardecer).jpg

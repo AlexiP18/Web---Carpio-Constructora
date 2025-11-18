@@ -10,7 +10,7 @@ import { getCollection } from 'astro:content';
 const proyectos = await getCollection('proyectos');
 
 // Definir categorías fijas
-const uniqueCategories = ['Todos', 'Residencial', 'Departamentos', 'Comercial'];
+const uniqueCategories = ['Todos', 'Conjunto Habitacional', 'Diseño Residencial', 'Diseño Retail'];
 ---
 
 <Layout title="Todos los Proyectos - Constructora Carpio">
@@ -48,22 +48,6 @@ const uniqueCategories = ['Todos', 'Residencial', 'Departamentos', 'Comercial'];
           Descubre nuestra colección de proyectos exitosos donde la innovación, calidad y diseño se unen para crear espacios extraordinarios.
         </p>
 
-        <!-- Stats -->
-        <div class="grid grid-cols-3 gap-6 max-w-3xl mx-auto mt-12" data-aos="fade-up" data-aos-delay="200">
-          <div class="text-center">
-            <div class="text-3xl lg:text-4xl font-bold text-[#D79528] mb-2">{proyectos.length}+</div>
-            <div class="text-sm text-white/70">Proyectos Completados</div>
-          </div>
-          <div class="text-center border-x border-white/20">
-            <div class="text-3xl lg:text-4xl font-bold text-[#D79528] mb-2">100%</div>
-            <div class="text-sm text-white/70">Satisfacción Cliente</div>
-          </div>
-          <div class="text-center">
-            <div class="text-3xl lg:text-4xl font-bold text-[#D79528] mb-2">+8</div>
-            <div class="text-sm text-white/70">Años Experiencia</div>
-          </div>
-        </div>
-
         <!-- Scroll Indicator -->
         <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
           <Icon name="ph:caret-down" class="w-8 h-8 text-white/50" />
@@ -88,9 +72,9 @@ const uniqueCategories = ['Todos', 'Residencial', 'Departamentos', 'Comercial'];
               // Asignar iconos según la categoría
               let iconName = 'ph:squares-four-fill';
               if (category === 'Todos') iconName = 'ph:squares-four-fill';
-              else if (category === 'Residencial') iconName = 'ph:house-fill';
-              else if (category === 'Departamentos') iconName = 'ph:buildings-fill';
-              else if (category === 'Comercial') iconName = 'ph:storefront-fill';
+              else if (category === 'Conjunto Habitacional') iconName = 'ph:buildings-fill';
+              else if (category === 'Diseño Residencial') iconName = 'ph:house-fill';
+              else if (category === 'Diseño Retail') iconName = 'ph:storefront-fill';
               
               return (
                 <button
