@@ -1,14 +1,15 @@
 ---
 import { Icon } from "astro-icon/components";
 import Button from '../../ui/Button.astro';
-import heroBackground from '../../../assets/img/nosotros/NosotrosHero.png';
+
+const heroBackground = '/images/pages/NosotrosHero.webp';
 ---
 
 <section class="relative min-h-screen bg-slate-800 overflow-hidden flex items-center">
   <!-- Background Image -->
   <div class="absolute inset-0">
     <img 
-      src={heroBackground.src} 
+      src={heroBackground} 
       alt="Constructora Carpio - Nuestra Empresa" 
       class="w-full h-full object-cover"
     />

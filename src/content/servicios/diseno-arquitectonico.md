@@ -3,7 +3,7 @@ slug: "diseno-arquitectonico"
 title: "Diseño Arquitectónico"
 subtitle: "Diseño Arquitectónico"
 description: "Creamos proyectos arquitectónicos personalizados que transforman tus ideas en planos profesionales."
-backgroundImage: "/images/diseno-hero.png"
+backgroundImage: "/images/services/disenio_arquitectonico/diseno-hero.webp"
 service:
   name: "Servicio de Diseño Arquitectónico"
   category: "Diseño Arquitectónico"
@@ -27,6 +27,9 @@ service:
     - title: "Optimización de Espacios"
       description: "Aprovechamiento máximo de cada metro cuadrado."
       icon: "ph:layout"
+  heroConfig:
+    ctaButton:
+      text: Solicitar Cotización
   process:
     - number: "01"
       title: "Consulta Inicial"

@@ -1,8 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Button from './Button.astro';
-// Logo de Constructora Carpio
-import logoCarpio from '../../assets/icons/LogoCarpioConstructora.svg';
+// Logo de Constructora Carpio desde public
+const logoCarpio = '/icons/LogoCarpioConstructora.svg';
 ---
 
 <header class="fixed top-0 left-0 right-0 bg-[#103646]/95 backdrop-blur-md w-full z-50 border-b border-[#103646] shadow-sm transition-all duration-300" id="header">
@@ -12,7 +12,7 @@ import logoCarpio from '../../assets/icons/LogoCarpioConstructora.svg';
       <!-- Logo -->
       <a href="/" class="flex items-center justify-start logo-link transition-all duration-300">
         <div class="h-9 sm:h-11 w-[100px] sm:w-[120px] overflow-clip relative">
-          <img src={logoCarpio.src} alt="Constructora Carpio" class="block max-w-none size-full transition-all duration-300" />
+          <img src={logoCarpio} alt="Constructora Carpio" class="block max-w-none size-full transition-all duration-300" />
         </div>
       </a>
       
@@ -58,7 +58,7 @@ import logoCarpio from '../../assets/icons/LogoCarpioConstructora.svg';
         <!-- Logo -->
         <a href="/" class="flex h-10 items-center justify-start relative w-40 logo-link transition-all duration-300">
           <div class="h-12 overflow-clip relative w-[140px]">
-            <img src={logoCarpio.src} alt="Constructora Carpio" class="block max-w-none size-full transition-all duration-300" />
+            <img src={logoCarpio} alt="Constructora Carpio" class="block max-w-none size-full transition-all duration-300" />
           </div>
         </a>
         
@@ -247,7 +247,7 @@ import logoCarpio from '../../assets/icons/LogoCarpioConstructora.svg';
           <!-- Mobile Menu Header -->
           <div class="flex h-16 items-center justify-between px-6 py-0 border-b border-gray-100 bg-gradient-to-r from-[#103646]/5 to-transparent flex-shrink-0">
             <a href="/" class="flex items-center gap-3 logo-link transition-all duration-300">
-              <img src={logoCarpio.src} alt="Constructora Carpio" class="h-11 flex-shrink-0 transition-all duration-300" />
+              <img src={logoCarpio} alt="Constructora Carpio" class="h-11 flex-shrink-0 transition-all duration-300" />
             </a>
             <button 
               id="mobile-menu-close"

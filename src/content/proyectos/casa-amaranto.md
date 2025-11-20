@@ -1,6 +1,6 @@
 ---
 slug: casa-amaranto
-backgroundImage: /images/projects/casa_amaranto/0_Exterior_Cerramiento.webp
+backgroundImage: /images/projects/casa_amaranto/1. exterior/0_Exterior_Cerramiento.webp
 specifications:
   bedrooms:
     enabled: true
@@ -64,16 +64,16 @@ tags:
   - Vivienda Unifamiliar
   - Proyecto disponible
 images:
-  - /images/projects/casa_amaranto/0_Exterior_Cerramiento.webp
-  - /images/projects/casa_amaranto/1_Exterior_Panoramica.webp
-  - /images/projects/casa_amaranto/2_Exterior_Lateral(1).webp
-  - /images/projects/casa_amaranto/2_Exterior_Lateral(2).webp
-  - /images/projects/casa_amaranto/3._Exterior_Frontal.webp
-  - /images/projects/casa_amaranto/4_Exterior_Trasera.webp
-  - /images/projects/casa_amaranto/5_Interior_jardin.webp
-  - /images/projects/casa_amaranto/6_Interior_jardin.webp
-  - /images/projects/casa_amaranto/7_interior_bbq.webp
-  - /images/projects/casa_amaranto/8_interior_bbq.webp
+  - /images/projects/casa_amaranto/1. exterior/0_Exterior_Cerramiento.webp
+  - /images/projects/casa_amaranto/1. exterior/1_Exterior_Panoramica.webp
+  - /images/projects/casa_amaranto/1. exterior/2_Exterior_Lateral(1).webp
+  - /images/projects/casa_amaranto/1. exterior/2_Exterior_Lateral(2).webp
+  - /images/projects/casa_amaranto/1. exterior/3._Exterior_Frontal.webp
+  - /images/projects/casa_amaranto/1. exterior/4_Exterior_Trasera.webp
+  - /images/projects/casa_amaranto/2. interior/5_Interior_jardin.webp
+  - /images/projects/casa_amaranto/2. interior/6_Interior_jardin.webp
+  - /images/projects/casa_amaranto/2. interior/7_interior_bbq.webp
+  - /images/projects/casa_amaranto/2. interior/8_interior_bbq.webp
 virtualTourVideo: ""
 category: Residencial
 featured: true

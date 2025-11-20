@@ -4,7 +4,7 @@ title: Innovación en Construcción
 subtitle: Construcción
 description: Transformamos tus ideas en realidad con soluciones constructivas de
   alta calidad y eficiencia.
-backgroundImage: /images/construccion-hero.png
+backgroundImage: /images/services/construccion/construccion-hero.webp
 service:
   faqsSection:
     enabled: false
@@ -81,8 +81,6 @@ service:
         colorScheme: secondary
     ctaButton:
       text: Solicitar Cotización
-      actionType: page
-      url: /contacto
   features:
     - title: Compromiso con la Sostenibilidad
       description: Implementamos prácticas sostenibles en cada etapa del proceso.

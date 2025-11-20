@@ -1,6 +1,6 @@
 ---
 slug: los-arrayanes-de-ficoa
-backgroundImage: /images/projects/arrayanes_ficoa/0_Vista_Exterior.webp
+backgroundImage: /images/projects/arrayanes_ficoa/1. exterior/0_Vista_Exterior.webp
 specifications:
   bedrooms:
     enabled: true
@@ -61,15 +61,15 @@ tags:
   - Vivienda Multifamiliar
   - Proyecto completado
 images:
-  - /images/projects/arrayanes_ficoa/0_Vista_Exterior.webp
-  - /images/projects/arrayanes_ficoa/1_Vista_Entrada.webp
-  - /images/projects/arrayanes_ficoa/2_Sala.webp
-  - /images/projects/arrayanes_ficoa/3_Comedor.webp
-  - /images/projects/arrayanes_ficoa/4_Sala_de_Estar.webp
-  - /images/projects/arrayanes_ficoa/5_Area_Recreacional.webp
-  - /images/projects/arrayanes_ficoa/6_Segundo_Piso.webp
-  - /images/projects/arrayanes_ficoa/7_Habitacion_Master.webp
-  - /images/projects/arrayanes_ficoa/8_Habitacion_Simple.webp
+  - /images/projects/arrayanes_ficoa/1. exterior/0_Vista_Exterior.webp
+  - /images/projects/arrayanes_ficoa/1. exterior/1_Vista_Entrada.webp
+  - /images/projects/arrayanes_ficoa/2. interior/2_Sala.webp
+  - /images/projects/arrayanes_ficoa/2. interior/3_Comedor.webp
+  - /images/projects/arrayanes_ficoa/2. interior/4_Sala_de_Estar.webp
+  - /images/projects/arrayanes_ficoa/1. exterior/5_Area_Recreacional.webp
+  - /images/projects/arrayanes_ficoa/2. interior/6_Segundo_Piso.webp
+  - /images/projects/arrayanes_ficoa/2. interior/7_Habitacion_Master.webp
+  - /images/projects/arrayanes_ficoa/2. interior/8_Habitacion_Simple.webp
 content: Los Arrayanes de Ficoa
 testimonial:
   rating: 5

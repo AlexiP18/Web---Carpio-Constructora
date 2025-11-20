@@ -1,8 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-// Import background image
-import serviciosBeneficiosImage from '../../../assets/img/services/ServiciosBeneficios.png';
+// Background image from public folder
+const serviciosBeneficiosImage = '/images/services/ServiciosBeneficios.webp';
 ---
 
 <section class="py-20 bg-gradient-to-br from-white via-gray-50 to-white">
@@ -82,7 +82,7 @@ import serviciosBeneficiosImage from '../../../assets/img/services/ServiciosBene
         <!-- Main image container -->
         <div class="relative rounded-3xl overflow-hidden shadow-2xl">
           <img 
-            src={serviciosBeneficiosImage.src}
+            src={serviciosBeneficiosImage}
             alt="Servicios de construcción de alta calidad"
             class="w-full h-[600px] object-cover"
           />

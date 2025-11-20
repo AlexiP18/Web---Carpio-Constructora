@@ -3,8 +3,7 @@ import { getCollection } from 'astro:content';
 import Card from '../../base/Card.astro';
 import Button from '../../ui/Button.astro';
 
-// Import the specific project image
-import projectImage from '../../../assets/img/projects/PROJECT_Hero_Slider_1.webp';
+const projectImage = '/images/pages/project/PROJECT_Hero_Slider_1.webp';
 
 const projects = (await getCollection('proyectos')).slice(0, 3);
 ---
@@ -42,7 +41,7 @@ const projects = (await getCollection('proyectos')).slice(0, 3);
         <!-- Image Section -->
         <div class="relative h-64 lg:h-72 overflow-hidden">
           <img 
-            src={projectImage.src}
+            src={projectImage}
             alt="Imagen del proyecto Los Arrayanes de Izamba"
             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
             loading="eager"

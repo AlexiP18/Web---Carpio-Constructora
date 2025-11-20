@@ -2,11 +2,6 @@
 import { Icon } from "astro-icon/components";
 import Button from '../../ui/Button.astro';
 
-// Import background images
-import construccionBg from '../../../assets/img/services/construccion/ServicioConstruccion.png';
-import remodelacionBg from '../../../assets/img/services/remodelacion/ServiciosRemodelacion.png';
-import disenoArquitectonicoBg from '../../../assets/img/services/disenio_arquitectonico/ServiciosDiseñoArquitectonico.png';
-
 export interface HeroChip {
   title: string;
   description: string;
@@ -36,11 +31,11 @@ export interface Props {
 
 const { tagline, title, description, serviceType = 'construccion', heroConfig } = Astro.props;
 
-// Select background image based on service type
+// Select background image based on service type from public folder
 const backgroundImages = {
-  'construccion': construccionBg,
-  'remodelacion': remodelacionBg,
-  'diseno-arquitectonico': disenoArquitectonicoBg
+  'construccion': '/images/services/construccion/construccion-hero.webp',
+  'remodelacion': '/images/services/remodelacion/remodelacion-hero.webp',
+  'diseno-arquitectonico': '/images/services/disenio_arquitectonico/diseno-hero.webp'
 };
 
 const backgroundImage = backgroundImages[serviceType];
@@ -50,7 +45,7 @@ const backgroundImage = backgroundImages[serviceType];
   <!-- Background Image -->
   <div class="absolute inset-0 w-full h-full">
     <img 
-      src={backgroundImage.src} 
+      src={backgroundImage} 
       alt={`${title} Hero Background`}
       class="w-full h-full object-cover opacity-40"
     />
@@ -129,33 +124,37 @@ const backgroundImage = backgroundImages[serviceType];
       )}
       
       <!-- CTA Button (dynamic) -->
-      {(() => {
-        const ctaConfig = heroConfig?.ctaButton;
-        const buttonText = ctaConfig?.text || 'Solicitar Cotización';
-        const actionType = ctaConfig?.actionType || 'page';
-        
-        let buttonHref = '/contacto';
-        if (actionType === 'whatsapp' && ctaConfig?.whatsappNumber) {
-          const serviceName = title || 'sus servicios';
-          buttonHref = `https://wa.me/${ctaConfig.whatsappNumber.replace(/\+/g, '')}?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20${encodeURIComponent(serviceName)}.%20Estoy%20interesad%40%20en%20contratar%20este%20servicio.`;
-        } else if (ctaConfig?.url) {
-          buttonHref = ctaConfig.url;
-        }
-        
-        return (
-          <div class="inline-block" data-aos="fade-up">
-            <Button 
-              variant="secondary"
-              size="lg"
-              href={buttonHref}
-              icon={actionType === 'whatsapp' ? 'ph:whatsapp-logo-fill' : 'ph:phone-fill'}
-              class="shadow-xl hover:shadow-2xl"
-            >
-              {buttonText}
-            </Button>
-          </div>
-        );
-      })()}
+      <div class="inline-block" data-aos="fade-up">
+        <Button 
+          variant="secondary"
+          size="lg"
+          href={(() => {
+            const ctaConfig = heroConfig?.ctaButton;
+            const whatsappNumber = ctaConfig?.whatsappNumber || '593998323304';
+            
+            // Si hay URL personalizada, usarla
+            if (ctaConfig?.url) {
+              return ctaConfig.url;
+            }
+            
+            // Mapeo de tipos de servicio a nombres formateados
+            const serviceNames = {
+              'construccion': 'Construcción Integral',
+              'remodelacion': 'Remodelación',
+              'diseno-arquitectonico': 'Diseño Arquitectónico'
+            };
+            
+            const serviceName = serviceNames[serviceType] || title || 'sus servicios';
+            const mensaje = `¡Hola Carpio Constructora! 🤩 Me encantaría solicitar una cotización para su servicio de ${serviceName}. Estoy interesad@ en conocer más detalles sobre los costos y el proceso.`;
+            
+            return `https://wa.me/${whatsappNumber.replace(/\+/g, '')}?text=${encodeURIComponent(mensaje)}`;
+          })()}
+          icon="ph:whatsapp-logo-fill"
+          class="shadow-xl hover:shadow-2xl"
+        >
+          {heroConfig?.ctaButton?.text || 'Solicitar Cotización'}
+        </Button>
+      </div>
     </div>
   </div>
 </section>

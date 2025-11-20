@@ -2,15 +2,15 @@
 import { Icon } from "astro-icon/components";
 import ServiciosLista from './ServiciosLista.astro';
 
-// Import background image
-import serviciosHeroImage from '../../../assets/img/services/ServiciosHero.png';
+// Background image from public folder
+const serviciosHeroImage = '/images/services/ServiciosHero.webp';
 ---
 
 <section class="relative py-16 lg:py-20 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 overflow-hidden">
   <!-- Background Image -->
   <div class="absolute inset-0 w-full h-full">
     <img 
-      src={serviciosHeroImage.src} 
+      src={serviciosHeroImage} 
       alt="Servicios Hero Background" 
       class="w-full h-full object-cover opacity-40"
     />

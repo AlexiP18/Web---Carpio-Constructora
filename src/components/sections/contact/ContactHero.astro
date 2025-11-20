@@ -2,15 +2,14 @@
 import { Icon } from "astro-icon/components";
 import Button from '../../ui/Button.astro';
 
-// Import background image
-import contactHeroImage from '../../../assets/img/contacto/ContactHero.png';
+const contactHeroImage = '/images/pages/ContactHero.webp';
 ---
 
 <section class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
   <!-- Background Image -->
   <div class="absolute inset-0 w-full h-full">
     <img 
-      src={contactHeroImage.src} 
+      src={contactHeroImage} 
       alt="Contact Hero Background" 
       class="w-full h-full object-cover opacity-40"
     />

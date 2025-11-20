@@ -2,22 +2,16 @@
 import { Icon } from 'astro-icon/components';
 import Button from '../../ui/Button.astro';
 
-// Import project images
-import projectImage1 from '../../../assets/img/projects/PROJECT_Hero_Slider_1.webp';
-import projectImage2 from '../../../assets/img/projects/PROJECT_Hero_Slider_2.webp';
-import projectImage3 from '../../../assets/img/projects/PROJECT_Hero_Slider_3.webp';
-import projectImage4 from '../../../assets/img/projects/PROJECT_Hero_Slider_4.webp';
-
 // Proyecto destacado principal
 const featuredProject = {
   title: "Los Arrayanes de Izamba",
   subtitle: "La casa de tus sueños te espera",
   description: "Un desarrollo residencial de lujo que redefine el concepto de vivienda moderna en Ecuador. Con arquitectura contemporánea, espacios amplios y acabados de primera calidad, Las Palmas representa la excelencia en construcción residencial.",
   images: [
-    projectImage1,
-    projectImage2,
-    projectImage3,
-    projectImage4
+    '/images/pages/project/PROJECT_Hero_Slider_1.webp',
+    '/images/pages/project/PROJECT_Hero_Slider_2.webp',
+    '/images/pages/project/PROJECT_Hero_Slider_3.webp',
+    '/images/pages/project/PROJECT_Hero_Slider_4.webp'
   ],
   stats: [
     { icon: "ph:buildings", label: "Área Total", value: "166 m²" },
@@ -79,7 +73,7 @@ const featuredProject = {
                 data-slide-index={index}
               >
                 <img 
-                  src={image.src} 
+                  src={image} 
                   alt={`${featuredProject.title} - Imagen ${index + 1}`}
                   class="w-full h-full object-cover"
                 />

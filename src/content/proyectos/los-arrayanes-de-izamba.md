@@ -78,44 +78,44 @@ tags:
   - Conjunto Habitacional
   - Vivienda Multifamiliar
   - Proyecto completado
-backgroundImage: /images/projects/arrayanes_izamba/vista.webp
+backgroundImage: /images/projects/arrayanes_izamba/1. exterior/vista.webp
 images:
-  - /images/projects/arrayanes_izamba/vista.webp
-  - /images/projects/arrayanes_izamba/sala1.webp
-  - /images/projects/arrayanes_izamba/sala2.webp
-  - /images/projects/arrayanes_izamba/saladeestar.webp
-  - /images/projects/arrayanes_izamba/salastar3.webp
-  - /images/projects/arrayanes_izamba/salastar3-1.webp
-  - /images/projects/arrayanes_izamba/comedor.webp
-  - /images/projects/arrayanes_izamba/comedorcocina.webp
-  - /images/projects/arrayanes_izamba/cocina.webp
-  - /images/projects/arrayanes_izamba/cocina1.webp
-  - /images/projects/arrayanes_izamba/cocina3.webp
-  - /images/projects/arrayanes_izamba/cocinadetalle.webp
-  - /images/projects/arrayanes_izamba/cocinaog.webp
-  - /images/projects/arrayanes_izamba/coffee.webp
-  - /images/projects/arrayanes_izamba/habitacion1.webp
-  - /images/projects/arrayanes_izamba/habitacion2.webp
-  - /images/projects/arrayanes_izamba/habi33.webp
-  - /images/projects/arrayanes_izamba/bano.webp
-  - /images/projects/arrayanes_izamba/baño.webp
-  - /images/projects/arrayanes_izamba/baño3.webp
-  - /images/projects/arrayanes_izamba/lavamanos.webp
-  - /images/projects/arrayanes_izamba/closet.webp
-  - /images/projects/arrayanes_izamba/walkingcloset.webp
-  - /images/projects/arrayanes_izamba/lavanderia.webp
-  - /images/projects/arrayanes_izamba/lavanderiav.webp
-  - /images/projects/arrayanes_izamba/jardin.webp
-  - /images/projects/arrayanes_izamba/jardin2.webp
-  - /images/projects/arrayanes_izamba/terraza.webp
-  - /images/projects/arrayanes_izamba/luz.webp
-  - /images/projects/arrayanes_izamba/planos-05.webp
-  - /images/projects/arrayanes_izamba/planos-07.webp
-  - /images/projects/arrayanes_izamba/planos-08.webp
-  - /images/projects/arrayanes_izamba/planos-09.webp
-  - /images/projects/arrayanes_izamba/planos-11.webp
-  - /images/projects/arrayanes_izamba/planos-12.webp
-  - /images/projects/arrayanes_izamba/planos-13.webp
+  - /images/projects/arrayanes_izamba/1. exterior/vista.webp
+  - /images/projects/arrayanes_izamba/2. interior/sala1.webp
+  - /images/projects/arrayanes_izamba/2. interior/sala2.webp
+  - /images/projects/arrayanes_izamba/2. interior/saladeestar.webp
+  - /images/projects/arrayanes_izamba/2. interior/salastar3.webp
+  - /images/projects/arrayanes_izamba/2. interior/salastar3-1.webp
+  - /images/projects/arrayanes_izamba/2. interior/comedor.webp
+  - /images/projects/arrayanes_izamba/2. interior/comedorcocina.webp
+  - /images/projects/arrayanes_izamba/2. interior/cocina.webp
+  - /images/projects/arrayanes_izamba/2. interior/cocina1.webp
+  - /images/projects/arrayanes_izamba/2. interior/cocina3.webp
+  - /images/projects/arrayanes_izamba/2. interior/cocinadetalle.webp
+  - /images/projects/arrayanes_izamba/2. interior/cocinaog.webp
+  - /images/projects/arrayanes_izamba/2. interior/coffee.webp
+  - /images/projects/arrayanes_izamba/2. interior/habitacion1.webp
+  - /images/projects/arrayanes_izamba/2. interior/habitacion2.webp
+  - /images/projects/arrayanes_izamba/2. interior/habi33.webp
+  - /images/projects/arrayanes_izamba/2. interior/bano.webp
+  - /images/projects/arrayanes_izamba/2. interior/baño.webp
+  - /images/projects/arrayanes_izamba/2. interior/baño3.webp
+  - /images/projects/arrayanes_izamba/2. interior/lavamanos.webp
+  - /images/projects/arrayanes_izamba/2. interior/closet.webp
+  - /images/projects/arrayanes_izamba/2. interior/walkingcloset.webp
+  - /images/projects/arrayanes_izamba/2. interior/lavanderia.webp
+  - /images/projects/arrayanes_izamba/2. interior/lavanderiav.webp
+  - /images/projects/arrayanes_izamba/1. exterior/jardin.webp
+  - /images/projects/arrayanes_izamba/1. exterior/jardin2.webp
+  - /images/projects/arrayanes_izamba/1. exterior/terraza.webp
+  - /images/projects/arrayanes_izamba/2. interior/luz.webp
+  - /images/projects/arrayanes_izamba/3. planos/planos-05.webp
+  - /images/projects/arrayanes_izamba/3. planos/planos-07.webp
+  - /images/projects/arrayanes_izamba/3. planos/planos-08.webp
+  - /images/projects/arrayanes_izamba/3. planos/planos-09.webp
+  - /images/projects/arrayanes_izamba/3. planos/planos-11.webp
+  - /images/projects/arrayanes_izamba/3. planos/planos-12.webp
+  - /images/projects/arrayanes_izamba/3. planos/planos-13.webp
 ---
 
 Los Arrayanes de Izamba es un conjunto habitacional moderno que redefine el concepto de comunidad residencial en Ecuador. Este proyecto ofrece viviendas diseñadas con espacios amplios y funcionales para el disfrute de toda la familia.

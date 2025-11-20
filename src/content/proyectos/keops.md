@@ -1,22 +1,22 @@
 ---
-title: "KEOPs"
+title: "KEOPS"
 slug: "keops"
 description: "Diseños Retail innovadores que maximizan la experiencia de compra y el flujo de clientes."
 tags:
   - Diseño Retail
   - Comercial
   - Proyecto completado
-backgroundImage: "/images/projects/keops/1. Principal.webp"
-virtualTourVideo: "/images/projects/keops/KEOPS_VIDEOWEB.mp4"
+backgroundImage: "/images/projects/keops/2. interior/1. Principal.webp"
+virtualTourVideo: "/images/projects/keops/0. multimedia/KEOPS-VIDEOWEB.mp4"
 images:
-  - /images/projects/keops/0. Principal_Vertical.webp
-  - /images/projects/keops/1. Principal.webp
-  - /images/projects/keops/2. Lobby_Exterior.webp
-  - /images/projects/keops/3. Lobby_Interior.webp
-  - /images/projects/keops/4. Lobby_Panoramica.webp
-  - /images/projects/keops/5. Merchandising.webp
-  - /images/projects/keops/6. Vista_Merchandising.webp
-  - /images/projects/keops/7. Vista_Completa.webp
+  - /images/projects/keops/2. interior/0. Principal_Vertical.webp
+  - /images/projects/keops/2. interior/1. Principal.webp
+  - /images/projects/keops/2. interior/2. Lobby_Exterior.webp
+  - /images/projects/keops/2. interior/3. Lobby_Interior.webp
+  - /images/projects/keops/2. interior/4. Lobby_Panoramica.webp
+  - /images/projects/keops/2. interior/5. Merchandising.webp
+  - /images/projects/keops/2. interior/6. Vista_Merchandising.webp
+  - /images/projects/keops/2. interior/7. Vista_Completa.webp
 testimonial:
   rating: 5
   quote: "KEOPs transformó nuestra visión de espacio comercial. Diseño excepcional y funcional."

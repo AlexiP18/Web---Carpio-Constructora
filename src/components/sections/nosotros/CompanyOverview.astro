@@ -2,8 +2,7 @@
 import Button from '../../ui/Button.astro';
 import { Icon } from 'astro-icon/components';
 
-// Import background image
-import valoresImage from '../../../assets/img/nosotros/ValoresInstitucionales.png';
+const valoresImage = '/images/pages/ValoresInstitucionales.webp';
 ---
 
 <section class="bg-gray-50 py-20 relative overflow-hidden">
@@ -66,7 +65,7 @@ import valoresImage from '../../../assets/img/nosotros/ValoresInstitucionales.pn
       <div class="relative" data-aos="zoom-in" data-aos-delay="300">
         <div class="h-[600px] rounded-3xl overflow-hidden shadow-2xl relative">
           <img 
-            src={valoresImage.src} 
+            src={valoresImage} 
             alt="Valores Institucionales" 
             class="w-full h-full object-cover"
           />

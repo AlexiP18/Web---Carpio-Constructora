@@ -3,7 +3,7 @@ slug: "remodelacion"
 title: "Remodelación Integral"
 subtitle: "Remodelación"
 description: "Renovamos y transformamos espacios existentes con diseños modernos y funcionales."
-backgroundImage: "/images/remodelacion-hero.png"
+backgroundImage: "/images/services/remodelacion/remodelacion-hero.webp"
 service:
   name: "Servicio de Remodelación"
   category: "Remodelación"
@@ -27,6 +27,9 @@ service:
     - title: "Optimización Funcional"
       description: "Mejoramos la funcionalidad y flujo de tus espacios."
       icon: "ph:arrows-clockwise"
+  heroConfig:
+    ctaButton:
+      text: Solicitar Cotización
   process:
     - number: "01"
       title: "Evaluación del Espacio"

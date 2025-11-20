@@ -3,13 +3,13 @@ import { Icon } from "astro-icon/components";
 import Button from '../../ui/Button.astro';
 import SectionLayout from '../../ui/SectionLayout.astro';
 
-// Import project specification icons - Using ?url to get the path as string
-import bathroomIcon from '../../../assets/icons/projects/bathroomICONO.svg?url';
-import bedroomIcon from '../../../assets/icons/projects/bedroomICONO.svg?url';
-import deliveryIcon from '../../../assets/icons/projects/deliveryICONO.svg?url';
-import gardenIcon from '../../../assets/icons/projects/gardenICONO.svg?url';
-import homeIcon from '../../../assets/icons/projects/homeICONO.svg?url';
-import petfriendlyIcon from '../../../assets/icons/projects/petfriendlyICONO.svg?url';
+// Project specification icons from public folder
+const bathroomIcon = '/icons/projects/bathroomICONO.svg';
+const bedroomIcon = '/icons/projects/bedroomICONO.svg';
+const deliveryIcon = '/icons/projects/deliveryICONO.svg';
+const gardenIcon = '/icons/projects/gardenICONO.svg';
+const homeIcon = '/icons/projects/homeICONO.svg';
+const petfriendlyIcon = '/icons/projects/petfriendlyICONO.svg';
 
 interface SpecificationItem {
   enabled?: boolean;

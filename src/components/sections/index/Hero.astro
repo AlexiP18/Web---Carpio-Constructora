@@ -3,20 +3,13 @@ import { Icon } from 'astro-icon/components';
 import Button from '../../ui/Button.astro';
 import OptimizedImage from '../../media/OptimizedImage.astro';
 
-// Import slider images
-import sliderImage1 from '../../../assets/img/index/Hero_Slider/INDEX_Hero_Slider_1.webp';
-import sliderImage2 from '../../../assets/img/index/Hero_Slider/INDEX_Hero_Slider_2.webp';
-import sliderImage3 from '../../../assets/img/index/Hero_Slider/INDEX_Hero_Slider_3.webp';
-import sliderImage4 from '../../../assets/img/index/Hero_Slider/INDEX_Hero_Slider_4.webp';
-
-// Import logo
-import logoCarpioConstructora from '../../../assets/icons/LogoCarpioConstructora.svg';
+const logoCarpioConstructora = '/icons/LogoCarpioConstructora.svg';
 
 const sliderImages = [
-  { src: sliderImage1, alt: "Proyecto Constructora Carpio 1" },
-  { src: sliderImage2, alt: "Proyecto Constructora Carpio 2" },
-  { src: sliderImage3, alt: "Proyecto Constructora Carpio 3" },
-  { src: sliderImage4, alt: "Proyecto Constructora Carpio 4" }
+  { src: '/images/pages/index/INDEX_Hero_Slider_1.webp', alt: "Proyecto Constructora Carpio 1" },
+  { src: '/images/pages/index/INDEX_Hero_Slider_2.webp', alt: "Proyecto Constructora Carpio 2" },
+  { src: '/images/pages/index/INDEX_Hero_Slider_3.webp', alt: "Proyecto Constructora Carpio 3" },
+  { src: '/images/pages/index/INDEX_Hero_Slider_4.webp', alt: "Proyecto Constructora Carpio 4" }
 ];
 ---
 
@@ -30,7 +23,7 @@ const sliderImages = [
         style={index === 0 ? 'opacity: 1; z-index: 2;' : 'opacity: 0; z-index: 1;'}
       >
         <img
-          src={image.src.src}
+          src={image.src}
           alt={image.alt}
           class="absolute inset-0 w-full h-full object-cover slider-bg"
           loading={index === 0 ? 'eager' : 'lazy'}
@@ -61,7 +54,7 @@ const sliderImages = [
       <!-- Main Heading - Logo SVG -->
       <div class="flex justify-center items-center mb-6" data-aos="fade-up" data-aos-duration="1200">
         <img 
-          src={logoCarpioConstructora.src} 
+          src={logoCarpioConstructora} 
           alt="Constructora Carpio" 
           class="h-20 sm:h-24 md:h-28 lg:h-32 xl:h-36 w-auto"
           style="filter: brightness(0) invert(1);"
