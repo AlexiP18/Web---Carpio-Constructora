@@ -119,15 +119,27 @@ function organizeImagesByCategory(imageList: (string | ImageMetadata)[]) {
         category = 'planos';
         categorized = true;
       }
-      // Exterior keywords
-      else if (filename.includes('vista') || filename.includes('exterior') || filename.includes('fachada') || 
+      // Check for explicit "exterior" in filename first (e.g., 0_Exterior_Cerramiento.webp)
+      else if (filename.includes('exterior')) {
+        categorizedImages.exterior.push(image);
+        category = 'exterior';
+        categorized = true;
+      }
+      // Check for explicit "interior" in filename first (e.g., 5_Interior_jardin.webp)
+      else if (filename.includes('interior')) {
+        categorizedImages.interior.push(image);
+        category = 'interior';
+        categorized = true;
+      }
+      // Exterior keywords - Only if "exterior" not explicitly in filename
+      else if (filename.includes('vista') || filename.includes('fachada') || 
                filename.includes('entrada') || filename.includes('jardin') || filename.includes('terraza') ||
                filename.includes('area_recreacional') || filename.includes('piscina') || filename.includes('parqueadero')) {
         categorizedImages.exterior.push(image);
         category = 'exterior';
         categorized = true;
       }
-      // Interior keywords - Expanded list
+      // Interior keywords - Only if "interior" not explicitly in filename - Expanded list
       else if (filename.includes('sala') || filename.includes('comedor') || filename.includes('cocina') ||
                filename.includes('habitacion') || filename.includes('dormitorio') || filename.includes('bano') ||
                filename.includes('baño') || filename.includes('escalera') || filename.includes('segundo_piso') || 

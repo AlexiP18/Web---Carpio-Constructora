@@ -356,9 +356,22 @@ const gradients = [
           </button>
         </div>
 
-        <!-- Image Section Full Screen with zoom capability -->
-        <div id="imageContainer" class="relative w-full h-full flex items-center justify-center overflow-hidden cursor-zoom-in">
-          <img id="modalImage" src="" alt="" class="max-w-full max-h-full object-contain rounded-2xl shadow-2xl transition-transform duration-300" />
+        <!-- Main Content Wrapper -->
+        <div class="flex w-full h-full gap-4">
+          <!-- Vertical Label Section -->
+          <div class="w-24 bg-gradient-to-b from-gray-50 via-white to-gray-100 rounded-2xl shadow-xl flex flex-col items-center justify-center gap-6 py-8">
+            <div id="modalIconContainer" class="w-16 h-16 bg-gradient-to-br from-[#103646] to-[#103646]/80 rounded-2xl flex items-center justify-center shadow-lg">
+              <!-- Icon will be inserted here -->
+            </div>
+            <div class="flex flex-col items-center gap-2 flex-1 justify-center">
+              <h3 id="modalLabel" class="text-lg font-bold text-gray-900 [writing-mode:vertical-rl] text-center tracking-wide rotate-180">Vista Principal</h3>
+            </div>
+          </div>
+
+          <!-- Image Section Full Screen with zoom capability -->
+          <div id="imageContainer" class="relative flex-1 flex items-center justify-center overflow-hidden cursor-zoom-in">
+            <img id="modalImage" src="" alt="" class="max-w-full max-h-full object-contain rounded-2xl shadow-2xl transition-transform duration-300" />
+          </div>
         </div>
 
         <!-- Info Section (Hidden) -->
@@ -509,7 +522,7 @@ const gradients = [
         modalFeatures.textContent = features || 'Diseño funcional y moderno';
       }
       
-      // Update icon
+      // Update icon with white color
       if (modalIconContainer) {
         const iconSvg = iconMap[icon] || iconMap['ph:eye-fill'];
         modalIconContainer.innerHTML = iconSvg;
@@ -605,6 +618,31 @@ const gradients = [
     zoomInBtn?.addEventListener('click', zoomIn);
     zoomOutBtn?.addEventListener('click', zoomOut);
     zoomResetBtn?.addEventListener('click', resetZoom);
+
+    // Smooth pan on mouse move for zoomed images
+    imageContainer?.addEventListener('mousemove', function(e) {
+      if (currentZoom > 1 && imageContainer && modalImage) {
+        const rect = imageContainer.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Calcular el porcentaje de posición del cursor (0 a 1)
+        const xPercent = x / rect.width;
+        const yPercent = y / rect.height;
+        
+        // Calcular el desplazamiento máximo
+        const maxScrollLeft = imageContainer.scrollWidth - imageContainer.clientWidth;
+        const maxScrollTop = imageContainer.scrollHeight - imageContainer.clientHeight;
+        
+        // Aplicar desplazamiento suave basado en la posición del cursor
+        const targetScrollLeft = maxScrollLeft * xPercent;
+        const targetScrollTop = maxScrollTop * yPercent;
+        
+        // Animación suave con lerp (interpolación lineal)
+        imageContainer.scrollLeft += (targetScrollLeft - imageContainer.scrollLeft) * 0.1;
+        imageContainer.scrollTop += (targetScrollTop - imageContainer.scrollTop) * 0.1;
+      }
+    });
 
     // Click on image to toggle zoom
     modalImage?.addEventListener('click', function(e) {
