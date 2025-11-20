@@ -3,6 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/ui/Header.astro";
 import Footer from "../../components/sections/Footer.astro";
 import ProjectCard from "../../components/ui/ProjectCard.astro";
+import ProjectContent from "../../components/sections/project/ProjectContent.astro";
+import ProjectMosaicNew from "../../components/sections/project/ProjectMosaicNew.astro";
 import { getCollection } from 'astro:content';
 import { Icon } from "astro-icon/components";
 
@@ -11,20 +13,51 @@ const allProyectos = await getCollection('proyectos');
 const proyectosConjuntoHabitacional = allProyectos.filter(proyecto => 
   proyecto.data.tags?.some(tag => tag.toLowerCase().includes('conjunto habitacional'))
 );
+
+// Obtener proyectos específicos
+const arrayanesIzamba = allProyectos.find(p => p.slug === 'los-arrayanes-de-izamba');
+const arrayanesFicoa = allProyectos.find(p => p.slug === 'los-arrayanes-de-ficoa');
 ---
 
 <Layout title="Conjunto Habitacional - Constructora Carpio">
   <Header />
   <main>
-    <!-- Hero Section -->
-    <section class="relative py-32 bg-gradient-to-br from-[#103646] via-[#103646]/95 to-[#103646] overflow-hidden">
+    <!-- Hero Section with Background Slider -->
+    <section class="relative py-32 overflow-hidden hero-slider">
+      <!-- Background Image Slider -->
+      <div class="absolute inset-0 hero-slider-container z-0">
+        {arrayanesIzamba?.data.backgroundImage && (
+          <div class="hero-slide active">
+            <img 
+              src={arrayanesIzamba.data.backgroundImage} 
+              alt={arrayanesIzamba.data.title}
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+        )}
+        {arrayanesFicoa?.data.backgroundImage && (
+          <div class="hero-slide">
+            <img 
+              src={arrayanesFicoa.data.backgroundImage} 
+              alt={arrayanesFicoa.data.title}
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+        )}
+      </div>
+
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-br from-[#103646]/90 via-[#103646]/85 to-[#103646]/90 z-10"></div>
+
       <!-- Decorative elements -->
-      <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0 opacity-10 z-20">
         <div class="absolute top-0 left-1/4 w-96 h-96 bg-[#D79528] rounded-full blur-3xl"></div>
         <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl"></div>
       </div>
 
-      <div class="max-w-7xl mx-auto px-6 relative z-10">
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
         <div class="text-center max-w-4xl mx-auto" data-aos="fade-up">
           <!-- Badge -->
           <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
@@ -42,29 +75,112 @@ const proyectosConjuntoHabitacional = allProyectos.filter(proyecto =>
             Desarrollos multifamiliares diseñados para crear comunidades vibrantes 
             con espacios compartidos y comodidades modernas.
           </p>
-
-          <!-- Stats -->
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12">
-            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
-              <div class="text-4xl font-bold text-[#D79528] mb-2">{proyectosConjuntoHabitacional.length}</div>
-              <div class="text-white text-sm">Proyectos</div>
-            </div>
-            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6">
-              <div class="text-4xl font-bold text-[#D79528] mb-2">100+</div>
-              <div class="text-white text-sm">Familias</div>
-            </div>
-            <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 col-span-2 md:col-span-1">
-              <div class="text-4xl font-bold text-[#D79528] mb-2">100%</div>
-              <div class="text-white text-sm">Calidad</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
 
+    <style>
+      .hero-slider {
+        min-height: 600px;
+      }
+
+      .hero-slider-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+      }
+
+      .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+        will-change: opacity;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+        z-index: 1;
+      }
+
+      .hero-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        animation: kenburns 20s ease-in-out infinite;
+      }
+
+      @keyframes kenburns {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const slides = document.querySelectorAll('.hero-slide');
+        if (slides.length <= 1) return;
+
+        let currentSlide = 0;
+
+        function nextSlide() {
+          slides[currentSlide].classList.remove('active');
+          currentSlide = (currentSlide + 1) % slides.length;
+          slides[currentSlide].classList.add('active');
+        }
+
+        // Change slide every 5 seconds
+        setInterval(nextSlide, 5000);
+      });
+    </script>
+
+    <!-- Los Arrayanes de Izamba - Contenido Completo -->
+    {arrayanesIzamba && (
+      <>
+        <ProjectContent 
+          title={arrayanesIzamba.data.title}
+          content={arrayanesIzamba.body}
+          images={arrayanesIzamba.data.images || []}
+          virtualTourVideo={arrayanesIzamba.data.virtualTourVideo}
+          specifications={arrayanesIzamba.data.specifications}
+        />
+        <ProjectMosaicNew 
+          images={arrayanesIzamba.data.images || []}
+          title={arrayanesIzamba.data.title}
+        />
+      </>
+    )}
+
+    <!-- Los Arrayanes de Ficoa - Solo Mosaico -->
+    {arrayanesFicoa && (
+      <ProjectMosaicNew 
+        images={arrayanesFicoa.data.images || []}
+        title={arrayanesFicoa.data.title}
+      />
+    )}
+
     <!-- Projects Grid -->
     <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50">
       <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12" data-aos="fade-up">
+          <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            Nuestros Proyectos
+          </h2>
+          <p class="text-lg text-gray-600">
+            Explora todos nuestros conjuntos habitacionales
+          </p>
+        </div>
+
         {proyectosConjuntoHabitacional.length > 0 ? (
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {proyectosConjuntoHabitacional.map((proyecto) => (
