@@ -86,13 +86,13 @@ tags:
   - Vivienda Unifamiliar
   - Lujo
   - Proyecto disponible
-backgroundImage: /images/projects/casa_magna/1. exterior/0_Vista_Principal.jpg
+backgroundImage: /images/projects/casa_magna/1. exterior/0_Vista_Principal.webp
 images:
-  - /images/projects/casa_magna/1. exterior/0_Vista_Principal(Atardecer).jpg
-  - /images/projects/casa_magna/1. exterior/0_Vista_Principal.jpg
-  - /images/projects/casa_magna/1. exterior/1_Vista_Lateral.jpg
-  - /images/projects/casa_magna/1. exterior/2_Vista_Frontal.jpg
-  - /images/projects/casa_magna/1. exterior/3_Entrada_Principal.jpg
+  - /images/projects/casa_magna/1. exterior/0_Vista_Principal(Atardecer).webp
+  - /images/projects/casa_magna/1. exterior/0_Vista_Principal.webp
+  - /images/projects/casa_magna/1. exterior/1_Vista_Lateral.webp
+  - /images/projects/casa_magna/1. exterior/2_Vista_Frontal.webp
+  - /images/projects/casa_magna/1. exterior/3_Entrada_Principal.webp
 virtualTourVideo: ''
 category: Residencial
 featured: true
