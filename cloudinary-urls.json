@@ -1,0 +1,652 @@
+{
+  "timestamp": "2025-12-15T00:09:57.551Z",
+  "cloudName": "dt5y4fsst",
+  "projects": {
+    "arrayanes_ficoa": {
+      "images": [
+        {
+          "localPath": "images/projects/arrayanes_ficoa/1. exterior/0_Vista_Exterior.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_ficoa/1. exterior/0_Vista_Exterior",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757412/carpio-constructora/projects/arrayanes_ficoa/1.%20exterior/0_Vista_Exterior.jpg",
+          "width": 1063,
+          "height": 620,
+          "format": "jpg",
+          "bytes": 74799
+        },
+        {
+          "localPath": "images/projects/arrayanes_ficoa/1. exterior/1_Vista_Entrada.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_ficoa/1. exterior/1_Vista_Entrada",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757413/carpio-constructora/projects/arrayanes_ficoa/1.%20exterior/1_Vista_Entrada.jpg",
+          "width": 930,
+          "height": 620,
+          "format": "jpg",
+          "bytes": 115417
+        },
+        {
+          "localPath": "images/projects/arrayanes_ficoa/1. exterior/5_Area_Recreacional.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_ficoa/1. exterior/5_Area_Recreacional",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757414/carpio-constructora/projects/arrayanes_ficoa/1.%20exterior/5_Area_Recreacional.jpg",
+          "width": 1034,
+          "height": 862,
+          "format": "jpg",
+          "bytes": 164085
+        },
+        {
+          "localPath": "images/projects/arrayanes_ficoa/2. interior/2_Sala.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_ficoa/2. interior/2_Sala",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757415/carpio-constructora/projects/arrayanes_ficoa/2.%20interior/2_Sala.jpg",
+          "width": 1200,
+          "height": 800,
+          "format": "jpg",
+          "bytes": 115787
+        },
+        {
+          "localPath": "images/projects/arrayanes_ficoa/2. interior/3_Comedor.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_ficoa/2. interior/3_Comedor",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757416/carpio-constructora/projects/arrayanes_ficoa/2.%20interior/3_Comedor.jpg",
+          "width": 1149,
+          "height": 862,
+          "format": "jpg",
+          "bytes": 81821
+        },
+        {
+          "localPath": "images/projects/arrayanes_ficoa/2. interior/4_Sala_de_Estar.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_ficoa/2. interior/4_Sala_de_Estar",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757418/carpio-constructora/projects/arrayanes_ficoa/2.%20interior/4_Sala_de_Estar.jpg",
+          "width": 1149,
+          "height": 862,
+          "format": "jpg",
+          "bytes": 104655
+        },
+        {
+          "localPath": "images/projects/arrayanes_ficoa/2. interior/6_Segundo_Piso.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_ficoa/2. interior/6_Segundo_Piso",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757419/carpio-constructora/projects/arrayanes_ficoa/2.%20interior/6_Segundo_Piso.jpg",
+          "width": 1200,
+          "height": 800,
+          "format": "jpg",
+          "bytes": 117815
+        },
+        {
+          "localPath": "images/projects/arrayanes_ficoa/2. interior/7_Habitacion_Master.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_ficoa/2. interior/7_Habitacion_Master",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757420/carpio-constructora/projects/arrayanes_ficoa/2.%20interior/7_Habitacion_Master.jpg",
+          "width": 1200,
+          "height": 800,
+          "format": "jpg",
+          "bytes": 120758
+        },
+        {
+          "localPath": "images/projects/arrayanes_ficoa/2. interior/8_Habitacion_Simple.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_ficoa/2. interior/8_Habitacion_Simple",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757421/carpio-constructora/projects/arrayanes_ficoa/2.%20interior/8_Habitacion_Simple.jpg",
+          "width": 1149,
+          "height": 862,
+          "format": "jpg",
+          "bytes": 131677
+        }
+      ],
+      "videos": []
+    },
+    "arrayanes_izamba": {
+      "images": [
+        {
+          "localPath": "images/projects/arrayanes_izamba/1. exterior/jardin.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/1. exterior/jardin",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757422/carpio-constructora/projects/arrayanes_izamba/1.%20exterior/jardin.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 421700
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/1. exterior/jardin2.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/1. exterior/jardin2",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757424/carpio-constructora/projects/arrayanes_izamba/1.%20exterior/jardin2.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 318717
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/1. exterior/terraza.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/1. exterior/terraza",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757426/carpio-constructora/projects/arrayanes_izamba/1.%20exterior/terraza.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 236633
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/1. exterior/vista.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/1. exterior/vista",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757428/carpio-constructora/projects/arrayanes_izamba/1.%20exterior/vista.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 266278
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/bano.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/bano",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757429/carpio-constructora/projects/arrayanes_izamba/2.%20interior/bano.jpg",
+          "width": 1440,
+          "height": 1920,
+          "format": "jpg",
+          "bytes": 260224
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/baño.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/bano",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757431/carpio-constructora/projects/arrayanes_izamba/2.%20interior/bano.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 305550
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/baño3.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/baño3",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757432/carpio-constructora/projects/arrayanes_izamba/2.%20interior/ba%C3%B1o3.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 233013
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/closet.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/closet",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757435/carpio-constructora/projects/arrayanes_izamba/2.%20interior/closet.jpg",
+          "width": 1440,
+          "height": 1920,
+          "format": "jpg",
+          "bytes": 134349
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/cocina.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/cocina",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757436/carpio-constructora/projects/arrayanes_izamba/2.%20interior/cocina.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 256829
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/cocina1.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/cocina1",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757438/carpio-constructora/projects/arrayanes_izamba/2.%20interior/cocina1.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 236632
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/cocina3.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/cocina3",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757440/carpio-constructora/projects/arrayanes_izamba/2.%20interior/cocina3.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 242890
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/cocinadetalle.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/cocinadetalle",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757441/carpio-constructora/projects/arrayanes_izamba/2.%20interior/cocinadetalle.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 201711
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/cocinaog.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/cocinaog",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757443/carpio-constructora/projects/arrayanes_izamba/2.%20interior/cocinaog.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 229545
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/coffee.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/coffee",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757444/carpio-constructora/projects/arrayanes_izamba/2.%20interior/coffee.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 285738
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/comedor.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/comedor",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757446/carpio-constructora/projects/arrayanes_izamba/2.%20interior/comedor.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 269958
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/comedorcocina.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/comedorcocina",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757447/carpio-constructora/projects/arrayanes_izamba/2.%20interior/comedorcocina.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 310834
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/habi33.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/habi33",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757449/carpio-constructora/projects/arrayanes_izamba/2.%20interior/habi33.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 264446
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/habitacion1.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/habitacion1",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757451/carpio-constructora/projects/arrayanes_izamba/2.%20interior/habitacion1.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 240254
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/habitacion2.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/habitacion2",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757453/carpio-constructora/projects/arrayanes_izamba/2.%20interior/habitacion2.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 249211
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/lavamanos.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/lavamanos",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757454/carpio-constructora/projects/arrayanes_izamba/2.%20interior/lavamanos.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 250516
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/lavanderia.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/lavanderia",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757456/carpio-constructora/projects/arrayanes_izamba/2.%20interior/lavanderia.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 142721
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/lavanderiav.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/lavanderiav",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757457/carpio-constructora/projects/arrayanes_izamba/2.%20interior/lavanderiav.jpg",
+          "width": 1440,
+          "height": 1920,
+          "format": "jpg",
+          "bytes": 246745
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/luz.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/luz",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757459/carpio-constructora/projects/arrayanes_izamba/2.%20interior/luz.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 250397
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/sala1.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/sala1",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757461/carpio-constructora/projects/arrayanes_izamba/2.%20interior/sala1.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 250352
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/sala2.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/sala2",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757464/carpio-constructora/projects/arrayanes_izamba/2.%20interior/sala2.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 217109
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/saladeestar.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/saladeestar",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757466/carpio-constructora/projects/arrayanes_izamba/2.%20interior/saladeestar.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 233027
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/salastar3-1.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/salastar3-1",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757467/carpio-constructora/projects/arrayanes_izamba/2.%20interior/salastar3-1.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 281259
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/salastar3.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/salastar3",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757469/carpio-constructora/projects/arrayanes_izamba/2.%20interior/salastar3.jpg",
+          "width": 1920,
+          "height": 1440,
+          "format": "jpg",
+          "bytes": 250298
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/2. interior/walkingcloset.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/2. interior/walkingcloset",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757471/carpio-constructora/projects/arrayanes_izamba/2.%20interior/walkingcloset.jpg",
+          "width": 1440,
+          "height": 1920,
+          "format": "jpg",
+          "bytes": 227365
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/3. planos/planos-05.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/3. planos/planos-05",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757472/carpio-constructora/projects/arrayanes_izamba/3.%20planos/planos-05.png",
+          "width": 1920,
+          "height": 1358,
+          "format": "png",
+          "bytes": 809448
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/3. planos/planos-07.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/3. planos/planos-07",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757474/carpio-constructora/projects/arrayanes_izamba/3.%20planos/planos-07.png",
+          "width": 1920,
+          "height": 1358,
+          "format": "png",
+          "bytes": 701523
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/3. planos/planos-08.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/3. planos/planos-08",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757476/carpio-constructora/projects/arrayanes_izamba/3.%20planos/planos-08.png",
+          "width": 1920,
+          "height": 1358,
+          "format": "png",
+          "bytes": 721604
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/3. planos/planos-09.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/3. planos/planos-09",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757479/carpio-constructora/projects/arrayanes_izamba/3.%20planos/planos-09.png",
+          "width": 1920,
+          "height": 1358,
+          "format": "png",
+          "bytes": 669409
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/3. planos/planos-11.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/3. planos/planos-11",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757481/carpio-constructora/projects/arrayanes_izamba/3.%20planos/planos-11.png",
+          "width": 1920,
+          "height": 1358,
+          "format": "png",
+          "bytes": 703921
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/3. planos/planos-12.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/3. planos/planos-12",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757483/carpio-constructora/projects/arrayanes_izamba/3.%20planos/planos-12.png",
+          "width": 1920,
+          "height": 1358,
+          "format": "png",
+          "bytes": 710012
+        },
+        {
+          "localPath": "images/projects/arrayanes_izamba/3. planos/planos-13.webp",
+          "publicId": "carpio-constructora/projects/arrayanes_izamba/3. planos/planos-13",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757486/carpio-constructora/projects/arrayanes_izamba/3.%20planos/planos-13.png",
+          "width": 1920,
+          "height": 1358,
+          "format": "png",
+          "bytes": 661034
+        }
+      ],
+      "videos": []
+    },
+    "casa_amaranto": {
+      "images": [
+        {
+          "localPath": "images/projects/casa_amaranto/1. exterior/0_Exterior_Cerramiento.webp",
+          "publicId": "carpio-constructora/projects/casa_amaranto/1. exterior/0_Exterior_Cerramiento",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757488/carpio-constructora/projects/casa_amaranto/1.%20exterior/0_Exterior_Cerramiento.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 248563
+        },
+        {
+          "localPath": "images/projects/casa_amaranto/1. exterior/1_Exterior_Panoramica.webp",
+          "publicId": "carpio-constructora/projects/casa_amaranto/1. exterior/1_Exterior_Panoramica",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757489/carpio-constructora/projects/casa_amaranto/1.%20exterior/1_Exterior_Panoramica.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 176654
+        },
+        {
+          "localPath": "images/projects/casa_amaranto/1. exterior/2_Exterior_Lateral(1).webp",
+          "publicId": "carpio-constructora/projects/casa_amaranto/1. exterior/2_Exterior_Lateral(1)",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757491/carpio-constructora/projects/casa_amaranto/1.%20exterior/2_Exterior_Lateral%281%29.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 272239
+        },
+        {
+          "localPath": "images/projects/casa_amaranto/1. exterior/2_Exterior_Lateral(2).webp",
+          "publicId": "carpio-constructora/projects/casa_amaranto/1. exterior/2_Exterior_Lateral(2)",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757493/carpio-constructora/projects/casa_amaranto/1.%20exterior/2_Exterior_Lateral%282%29.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 323889
+        },
+        {
+          "localPath": "images/projects/casa_amaranto/1. exterior/3._Exterior_Frontal.webp",
+          "publicId": "carpio-constructora/projects/casa_amaranto/1. exterior/3._Exterior_Frontal",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757494/carpio-constructora/projects/casa_amaranto/1.%20exterior/3._Exterior_Frontal.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 408649
+        },
+        {
+          "localPath": "images/projects/casa_amaranto/1. exterior/4_Exterior_Trasera.webp",
+          "publicId": "carpio-constructora/projects/casa_amaranto/1. exterior/4_Exterior_Trasera",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757495/carpio-constructora/projects/casa_amaranto/1.%20exterior/4_Exterior_Trasera.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 201083
+        },
+        {
+          "localPath": "images/projects/casa_amaranto/2. interior/5_Interior_jardin.webp",
+          "publicId": "carpio-constructora/projects/casa_amaranto/2. interior/5_Interior_jardin",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757497/carpio-constructora/projects/casa_amaranto/2.%20interior/5_Interior_jardin.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 246652
+        },
+        {
+          "localPath": "images/projects/casa_amaranto/2. interior/6_Interior_jardin.webp",
+          "publicId": "carpio-constructora/projects/casa_amaranto/2. interior/6_Interior_jardin",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757499/carpio-constructora/projects/casa_amaranto/2.%20interior/6_Interior_jardin.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 318854
+        },
+        {
+          "localPath": "images/projects/casa_amaranto/2. interior/7_interior_bbq.webp",
+          "publicId": "carpio-constructora/projects/casa_amaranto/2. interior/7_interior_bbq",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757501/carpio-constructora/projects/casa_amaranto/2.%20interior/7_interior_bbq.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 226747
+        },
+        {
+          "localPath": "images/projects/casa_amaranto/2. interior/8_interior_bbq.webp",
+          "publicId": "carpio-constructora/projects/casa_amaranto/2. interior/8_interior_bbq",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757502/carpio-constructora/projects/casa_amaranto/2.%20interior/8_interior_bbq.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 253957
+        }
+      ],
+      "videos": []
+    },
+    "casa_magna": {
+      "images": [
+        {
+          "localPath": "images/projects/casa_magna/1. exterior/0_Vista_Principal(Atardecer).webp",
+          "publicId": "carpio-constructora/projects/casa_magna/1. exterior/0_Vista_Principal(Atardecer)",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757503/carpio-constructora/projects/casa_magna/1.%20exterior/0_Vista_Principal%28Atardecer%29.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 235225
+        },
+        {
+          "localPath": "images/projects/casa_magna/1. exterior/0_Vista_Principal.webp",
+          "publicId": "carpio-constructora/projects/casa_magna/1. exterior/0_Vista_Principal",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757505/carpio-constructora/projects/casa_magna/1.%20exterior/0_Vista_Principal.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 342414
+        },
+        {
+          "localPath": "images/projects/casa_magna/1. exterior/1_Vista_Lateral.webp",
+          "publicId": "carpio-constructora/projects/casa_magna/1. exterior/1_Vista_Lateral",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757506/carpio-constructora/projects/casa_magna/1.%20exterior/1_Vista_Lateral.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 211944
+        },
+        {
+          "localPath": "images/projects/casa_magna/1. exterior/2_Vista_Frontal.webp",
+          "publicId": "carpio-constructora/projects/casa_magna/1. exterior/2_Vista_Frontal",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757508/carpio-constructora/projects/casa_magna/1.%20exterior/2_Vista_Frontal.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 317944
+        },
+        {
+          "localPath": "images/projects/casa_magna/1. exterior/3_Entrada_Principal.webp",
+          "publicId": "carpio-constructora/projects/casa_magna/1. exterior/3_Entrada_Principal",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757509/carpio-constructora/projects/casa_magna/1.%20exterior/3_Entrada_Principal.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 338033
+        }
+      ],
+      "videos": []
+    },
+    "keops": {
+      "images": [
+        {
+          "localPath": "images/projects/keops/2. interior/0. Principal_Vertical.webp",
+          "publicId": "carpio-constructora/projects/keops/2. interior/0. Principal_Vertical",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757511/carpio-constructora/projects/keops/2.%20interior/0.%20Principal_Vertical.jpg",
+          "width": 1080,
+          "height": 1920,
+          "format": "jpg",
+          "bytes": 162472
+        },
+        {
+          "localPath": "images/projects/keops/2. interior/1. Principal.webp",
+          "publicId": "carpio-constructora/projects/keops/2. interior/1. Principal",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757512/carpio-constructora/projects/keops/2.%20interior/1.%20Principal.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 197958
+        },
+        {
+          "localPath": "images/projects/keops/2. interior/2. Lobby_Exterior.webp",
+          "publicId": "carpio-constructora/projects/keops/2. interior/2. Lobby_Exterior",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757513/carpio-constructora/projects/keops/2.%20interior/2.%20Lobby_Exterior.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 209316
+        },
+        {
+          "localPath": "images/projects/keops/2. interior/3. Lobby_Interior.webp",
+          "publicId": "carpio-constructora/projects/keops/2. interior/3. Lobby_Interior",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757516/carpio-constructora/projects/keops/2.%20interior/3.%20Lobby_Interior.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 156120
+        },
+        {
+          "localPath": "images/projects/keops/2. interior/4. Lobby_Panoramica.webp",
+          "publicId": "carpio-constructora/projects/keops/2. interior/4. Lobby_Panoramica",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757518/carpio-constructora/projects/keops/2.%20interior/4.%20Lobby_Panoramica.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 238304
+        },
+        {
+          "localPath": "images/projects/keops/2. interior/5. Merchandising.webp",
+          "publicId": "carpio-constructora/projects/keops/2. interior/5. Merchandising",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757519/carpio-constructora/projects/keops/2.%20interior/5.%20Merchandising.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 244711
+        },
+        {
+          "localPath": "images/projects/keops/2. interior/6. Vista_Merchandising.webp",
+          "publicId": "carpio-constructora/projects/keops/2. interior/6. Vista_Merchandising",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757521/carpio-constructora/projects/keops/2.%20interior/6.%20Vista_Merchandising.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 236752
+        },
+        {
+          "localPath": "images/projects/keops/2. interior/7. Vista_Completa.webp",
+          "publicId": "carpio-constructora/projects/keops/2. interior/7. Vista_Completa",
+          "url": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1765757522/carpio-constructora/projects/keops/2.%20interior/7.%20Vista_Completa.jpg",
+          "width": 1920,
+          "height": 1080,
+          "format": "jpg",
+          "bytes": 225753
+        }
+      ],
+      "videos": [
+        {
+          "localPath": "images/projects/keops/0. multimedia/KEOPS-VIDEOWEB.mp4",
+          "publicId": "carpio-constructora/projects/keops/0. multimedia/KEOPS-VIDEOWEB",
+          "url": "https://res.cloudinary.com/dt5y4fsst/video/upload/v1765757531/carpio-constructora/projects/keops/0.%20multimedia/KEOPS-VIDEOWEB.mp4",
+          "duration": 28.511995,
+          "format": "mp4",
+          "bytes": 34838600
+        }
+      ]
+    }
+  }
+}

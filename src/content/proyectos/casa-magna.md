@@ -86,13 +86,13 @@ tags:
   - Vivienda Unifamiliar
   - Lujo
   - Proyecto disponible
-backgroundImage: /images/projects/casa_magna/1. exterior/0_Vista_Principal.webp
+backgroundImage: https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_magna/1. exterior/0_Vista_Principal
 images:
-  - /images/projects/casa_magna/1. exterior/0_Vista_Principal(Atardecer).webp
-  - /images/projects/casa_magna/1. exterior/0_Vista_Principal.webp
-  - /images/projects/casa_magna/1. exterior/1_Vista_Lateral.webp
-  - /images/projects/casa_magna/1. exterior/2_Vista_Frontal.webp
-  - /images/projects/casa_magna/1. exterior/3_Entrada_Principal.webp
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_magna/1. exterior/0_Vista_Principal(Atardecer)
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_magna/1. exterior/0_Vista_Principal
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_magna/1. exterior/1_Vista_Lateral
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_magna/1. exterior/2_Vista_Frontal
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_magna/1. exterior/3_Entrada_Principal
 virtualTourVideo: ''
 category: Residencial
 featured: true

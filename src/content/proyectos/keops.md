@@ -6,17 +6,17 @@ tags:
   - Diseño Retail
   - Comercial
   - Proyecto completado
-backgroundImage: "/images/projects/keops/2. interior/1. Principal.webp"
+backgroundImage: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/1. Principal"
 virtualTourVideo: "/images/projects/keops/0. multimedia/KEOPS-VIDEOWEB.mp4"
 images:
-  - /images/projects/keops/2. interior/0. Principal_Vertical.webp
-  - /images/projects/keops/2. interior/1. Principal.webp
-  - /images/projects/keops/2. interior/2. Lobby_Exterior.webp
-  - /images/projects/keops/2. interior/3. Lobby_Interior.webp
-  - /images/projects/keops/2. interior/4. Lobby_Panoramica.webp
-  - /images/projects/keops/2. interior/5. Merchandising.webp
-  - /images/projects/keops/2. interior/6. Vista_Merchandising.webp
-  - /images/projects/keops/2. interior/7. Vista_Completa.webp
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/0. Principal_Vertical
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/1. Principal
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/2. Lobby_Exterior
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/3. Lobby_Interior
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/4. Lobby_Panoramica
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/5. Merchandising
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/6. Vista_Merchandising
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/7. Vista_Completa
 testimonial:
   rating: 5
   quote: "KEOPs transformó nuestra visión de espacio comercial. Diseño excepcional y funcional."

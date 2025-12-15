@@ -20,5 +20,11 @@ export default defineConfig({
   // Habilitar content collections
   experimental: {
     liveContentCollections: true
+  },
+  // Variables de entorno públicas
+  vite: {
+    define: {
+      'import.meta.env.CLOUDINARY_CLOUD_NAME': JSON.stringify(process.env.CLOUDINARY_CLOUD_NAME || 'dt5y4fsst'),
+    }
   }
 });

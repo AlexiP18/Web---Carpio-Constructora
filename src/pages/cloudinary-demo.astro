@@ -1,0 +1,185 @@
+---
+/**
+ * Página de prueba para Cloudinary
+ * Visita: /cloudinary-demo para probar la integración
+ */
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/ui/Header.astro';
+import Footer from '../components/sections/Footer.astro';
+import CloudinaryImage from '../components/ui/CloudinaryImage.astro';
+import CloudinaryVideo from '../components/ui/CloudinaryVideo.astro';
+
+// Ejemplos de uso
+const cloudinaryExamples = [
+  {
+    title: 'Imagen con Public ID',
+    description: 'Usando public_id directo de Cloudinary',
+    type: 'image',
+    src: 'sample', // Este es un public_id de ejemplo de Cloudinary
+  },
+  {
+    title: 'Imagen Local',
+    description: 'Las imágenes locales siguen funcionando',
+    type: 'local',
+    src: '/images/projects/casa_amaranto/1. exterior/0_Exterior_Cerramiento.webp',
+  },
+];
+---
+
+<Layout title="Demo Cloudinary | Constructora Carpio">
+  <Header />
+  
+  <main class="min-h-screen bg-gray-50 py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          ☁️ Demo Cloudinary
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Prueba de integración de Cloudinary con el proyecto Constructora Carpio.
+          Las imágenes se optimizan automáticamente.
+        </p>
+      </div>
+      
+      <!-- Sección: Cloud Name -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">📋 Configuración</h2>
+        <div class="bg-gray-100 rounded-lg p-4 font-mono text-sm">
+          <p><span class="text-blue-600">CLOUDINARY_CLOUD_NAME:</span> dt5y4fsst</p>
+          <p class="text-green-600 mt-2">✅ Configurado correctamente</p>
+        </div>
+      </div>
+      
+      <!-- Sección: Imagen de prueba con Cloudinary Sample -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">🖼️ Imagen de Cloudinary (sample)</h2>
+        <p class="text-gray-600 mb-6">
+          Esta imagen usa el public_id "sample" que viene por defecto en todas las cuentas de Cloudinary.
+        </p>
+        
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Original -->
+          <div>
+            <p class="font-semibold mb-2">Original (800px)</p>
+            <CloudinaryImage
+              src="sample"
+              alt="Sample image"
+              width={800}
+              class="rounded-lg"
+            />
+          </div>
+          
+          <!-- Thumbnail -->
+          <div>
+            <p class="font-semibold mb-2">Thumbnail (400px)</p>
+            <CloudinaryImage
+              src="sample"
+              alt="Sample thumbnail"
+              width={400}
+              height={300}
+              crop="thumb"
+              class="rounded-lg"
+            />
+          </div>
+          
+          <!-- Grayscale effect -->
+          <div>
+            <p class="font-semibold mb-2">Blanco y Negro</p>
+            <img 
+              src="https://res.cloudinary.com/dt5y4fsst/image/upload/w_400,e_grayscale,q_auto,f_auto/sample"
+              alt="Sample grayscale"
+              class="rounded-lg w-full"
+            />
+          </div>
+        </div>
+      </div>
+      
+      <!-- Sección: Imagen Local -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">📁 Imagen Local</h2>
+        <p class="text-gray-600 mb-6">
+          Las imágenes locales (en /public) siguen funcionando normalmente.
+          Esto permite una migración gradual.
+        </p>
+        
+        <div class="max-w-md">
+          <CloudinaryImage
+            src="/images/projects/casa_amaranto/1. exterior/0_Exterior_Cerramiento.webp"
+            alt="Casa Amaranto - Local"
+            width={600}
+            class="rounded-lg"
+          />
+          <p class="text-sm text-gray-500 mt-2">
+            Ruta: /images/projects/casa_amaranto/1. exterior/0_Exterior_Cerramiento.webp
+          </p>
+        </div>
+      </div>
+      
+      <!-- Sección: Cómo usar -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">💻 Cómo Usar</h2>
+        
+        <div class="space-y-6">
+          <!-- Ejemplo 1 -->
+          <div class="bg-gray-900 rounded-lg p-4 text-sm overflow-x-auto">
+            <p class="text-green-400 mb-2">// Imagen de Cloudinary con public_id</p>
+            <pre class="text-gray-100"><code>{`<CloudinaryImage
+  src="projects/keops/lobby"
+  alt="Lobby Keops"
+  width={1200}
+  quality="auto"
+/>`}</code></pre>
+          </div>
+          
+          <!-- Ejemplo 2 -->
+          <div class="bg-gray-900 rounded-lg p-4 text-sm overflow-x-auto">
+            <p class="text-green-400 mb-2">// Imagen local (sigue funcionando)</p>
+            <pre class="text-gray-100"><code>{`<CloudinaryImage
+  src="/images/projects/casa_amaranto/hero.webp"
+  alt="Casa Amaranto"
+  width={800}
+/>`}</code></pre>
+          </div>
+          
+          <!-- Ejemplo 3 -->
+          <div class="bg-gray-900 rounded-lg p-4 text-sm overflow-x-auto">
+            <p class="text-green-400 mb-2">// Video de Cloudinary</p>
+            <pre class="text-gray-100"><code>{`<CloudinaryVideo
+  src="videos/keops_tour"
+  title="Tour KEOPS"
+  controls={true}
+/>`}</code></pre>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Próximos pasos -->
+      <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-lg p-8 text-white">
+        <h2 class="text-2xl font-bold mb-4">🚀 Próximos Pasos</h2>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="text-2xl">1️⃣</span>
+            <span>Subir imágenes a Cloudinary (Media Library)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-2xl">2️⃣</span>
+            <span>Subir el video de KEOPS (33 MB → streaming optimizado)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-2xl">3️⃣</span>
+            <span>Actualizar los archivos .md con las nuevas URLs</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-2xl">4️⃣</span>
+            <span>Configurar TinaCMS para subir directamente a Cloudinary</span>
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>

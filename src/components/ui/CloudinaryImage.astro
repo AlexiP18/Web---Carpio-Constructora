@@ -1,0 +1,140 @@
+---
+/**
+ * CloudinaryImage Component
+ * 
+ * Componente para mostrar imágenes optimizadas de Cloudinary
+ * con soporte para lazy loading, responsive y blur placeholder
+ */
+
+import { 
+  getCloudinaryUrl, 
+  getResponsiveSrcset, 
+  getBlurPlaceholder,
+  isCloudinaryUrl,
+  isLocalUrl 
+} from '../../lib/cloudinary';
+
+export interface Props {
+  /** URL de Cloudinary, public_id, o URL local */
+  src: string;
+  /** Texto alternativo para accesibilidad */
+  alt: string;
+  /** Ancho de la imagen */
+  width?: number;
+  /** Alto de la imagen */
+  height?: number;
+  /** Clases CSS adicionales */
+  class?: string;
+  /** Estrategia de carga */
+  loading?: 'lazy' | 'eager';
+  /** Calidad de imagen */
+  quality?: 'auto' | 'auto:low' | 'auto:eco' | 'auto:good' | 'auto:best' | number;
+  /** Formato de imagen */
+  format?: 'auto' | 'webp' | 'avif' | 'jpg' | 'png';
+  /** Tipo de recorte */
+  crop?: 'fill' | 'fit' | 'scale' | 'crop' | 'thumb' | 'auto';
+  /** Mostrar placeholder blur mientras carga */
+  blur?: boolean;
+  /** Tamaños para srcset responsivo */
+  sizes?: string;
+  /** Tamaños de ancho para srcset */
+  srcsetWidths?: number[];
+}
+
+const {
+  src,
+  alt,
+  width = 800,
+  height,
+  class: className = '',
+  loading = 'lazy',
+  quality = 'auto',
+  format = 'auto',
+  crop = 'fill',
+  blur = true,
+  sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
+  srcsetWidths = [400, 640, 800, 1024, 1280, 1600],
+} = Astro.props;
+
+// Determinar tipo de URL y generar URL optimizada
+let optimizedSrc = src;
+let srcset: string | undefined;
+let blurPlaceholder: string | undefined;
+
+if (isCloudinaryUrl(src)) {
+  // Ya es URL de Cloudinary - extraer public_id
+  const match = src.match(/\/upload\/(?:v\d+\/)?(.+?)(?:\.\w+)?$/);
+  const publicId = match ? match[1] : src;
+  
+  optimizedSrc = getCloudinaryUrl(publicId, { width, height, crop, quality, format });
+  srcset = getResponsiveSrcset(publicId, srcsetWidths);
+  if (blur) blurPlaceholder = getBlurPlaceholder(publicId);
+  
+} else if (isLocalUrl(src)) {
+  // URL local - mantener sin cambios (para imágenes críticas locales)
+  optimizedSrc = src;
+  srcset = undefined;
+  blurPlaceholder = undefined;
+  
+} else {
+  // Asumir que es un public_id de Cloudinary
+  optimizedSrc = getCloudinaryUrl(src, { width, height, crop, quality, format });
+  srcset = getResponsiveSrcset(src, srcsetWidths);
+  if (blur) blurPlaceholder = getBlurPlaceholder(src);
+}
+---
+
+<div class={`cloudinary-image-wrapper ${className}`} style={blur && blurPlaceholder ? `background-image: url('${blurPlaceholder}'); background-size: cover;` : ''}>
+  <img
+    src={optimizedSrc}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding="async"
+    srcset={srcset}
+    sizes={sizes}
+    class="cloudinary-image"
+    data-src={optimizedSrc}
+  />
+</div>
+
+<style>
+  .cloudinary-image-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cloudinary-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Fade in cuando la imagen carga */
+  .cloudinary-image[loading="lazy"] {
+    opacity: 0;
+  }
+  
+  .cloudinary-image.loaded {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  // Marcar imágenes como cargadas para el efecto fade-in
+  document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('.cloudinary-image');
+    
+    images.forEach((img) => {
+      if ((img as HTMLImageElement).complete) {
+        img.classList.add('loaded');
+      } else {
+        img.addEventListener('load', () => {
+          img.classList.add('loaded');
+        });
+      }
+    });
+  });
+</script>

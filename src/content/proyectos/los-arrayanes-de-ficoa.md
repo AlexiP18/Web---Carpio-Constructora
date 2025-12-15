@@ -1,6 +1,6 @@
 ---
 slug: los-arrayanes-de-ficoa
-backgroundImage: /images/projects/arrayanes_ficoa/1. exterior/0_Vista_Exterior.webp
+backgroundImage: https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_ficoa/1. exterior/0_Vista_Exterior
 specifications:
   bedrooms:
     enabled: true
@@ -61,15 +61,15 @@ tags:
   - Vivienda Multifamiliar
   - Proyecto completado
 images:
-  - /images/projects/arrayanes_ficoa/1. exterior/0_Vista_Exterior.webp
-  - /images/projects/arrayanes_ficoa/1. exterior/1_Vista_Entrada.webp
-  - /images/projects/arrayanes_ficoa/2. interior/2_Sala.webp
-  - /images/projects/arrayanes_ficoa/2. interior/3_Comedor.webp
-  - /images/projects/arrayanes_ficoa/2. interior/4_Sala_de_Estar.webp
-  - /images/projects/arrayanes_ficoa/1. exterior/5_Area_Recreacional.webp
-  - /images/projects/arrayanes_ficoa/2. interior/6_Segundo_Piso.webp
-  - /images/projects/arrayanes_ficoa/2. interior/7_Habitacion_Master.webp
-  - /images/projects/arrayanes_ficoa/2. interior/8_Habitacion_Simple.webp
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_ficoa/1. exterior/0_Vista_Exterior
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_ficoa/1. exterior/1_Vista_Entrada
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_ficoa/2. interior/2_Sala
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_ficoa/2. interior/3_Comedor
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_ficoa/2. interior/4_Sala_de_Estar
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_ficoa/1. exterior/5_Area_Recreacional
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_ficoa/2. interior/6_Segundo_Piso
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_ficoa/2. interior/7_Habitacion_Master
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_ficoa/2. interior/8_Habitacion_Simple
 content: Los Arrayanes de Ficoa
 testimonial:
   rating: 5

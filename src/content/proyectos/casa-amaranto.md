@@ -1,6 +1,6 @@
 ---
 slug: casa-amaranto
-backgroundImage: /images/projects/casa_amaranto/1. exterior/0_Exterior_Cerramiento.webp
+backgroundImage: https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_amaranto/1. exterior/0_Exterior_Cerramiento
 specifications:
   bedrooms:
     enabled: true
@@ -64,16 +64,16 @@ tags:
   - Vivienda Unifamiliar
   - Proyecto disponible
 images:
-  - /images/projects/casa_amaranto/1. exterior/0_Exterior_Cerramiento.webp
-  - /images/projects/casa_amaranto/1. exterior/1_Exterior_Panoramica.webp
-  - /images/projects/casa_amaranto/1. exterior/2_Exterior_Lateral(1).webp
-  - /images/projects/casa_amaranto/1. exterior/2_Exterior_Lateral(2).webp
-  - /images/projects/casa_amaranto/1. exterior/3._Exterior_Frontal.webp
-  - /images/projects/casa_amaranto/1. exterior/4_Exterior_Trasera.webp
-  - /images/projects/casa_amaranto/2. interior/5_Interior_jardin.webp
-  - /images/projects/casa_amaranto/2. interior/6_Interior_jardin.webp
-  - /images/projects/casa_amaranto/2. interior/7_interior_bbq.webp
-  - /images/projects/casa_amaranto/2. interior/8_interior_bbq.webp
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_amaranto/1. exterior/0_Exterior_Cerramiento
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_amaranto/1. exterior/1_Exterior_Panoramica
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_amaranto/1. exterior/2_Exterior_Lateral(1)
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_amaranto/1. exterior/2_Exterior_Lateral(2)
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_amaranto/1. exterior/3._Exterior_Frontal
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_amaranto/1. exterior/4_Exterior_Trasera
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_amaranto/2. interior/5_Interior_jardin
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_amaranto/2. interior/6_Interior_jardin
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_amaranto/2. interior/7_interior_bbq
+  - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_amaranto/2. interior/8_interior_bbq
 virtualTourVideo: ""
 category: Residencial
 featured: true

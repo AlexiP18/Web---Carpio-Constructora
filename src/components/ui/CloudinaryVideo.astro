@@ -1,0 +1,201 @@
+---
+/**
+ * CloudinaryVideo Component
+ * 
+ * Componente para mostrar videos optimizados de Cloudinary
+ * con streaming adaptativo y poster automático
+ */
+
+import { getCloudinaryVideoUrl, getVideoPosterUrl } from '../../lib/cloudinary';
+
+export interface Props {
+  /** Public ID del video en Cloudinary */
+  src: string;
+  /** Título del video para accesibilidad */
+  title?: string;
+  /** URL personalizada del poster (o se genera automáticamente) */
+  poster?: string;
+  /** Clases CSS adicionales */
+  class?: string;
+  /** Mostrar controles */
+  controls?: boolean;
+  /** Auto reproducir (muted requerido) */
+  autoplay?: boolean;
+  /** Reproducir en bucle */
+  loop?: boolean;
+  /** Silenciado (requerido para autoplay) */
+  muted?: boolean;
+  /** Preload strategy */
+  preload?: 'none' | 'metadata' | 'auto';
+  /** Ancho máximo del video */
+  width?: number;
+}
+
+const {
+  src,
+  title = 'Video',
+  poster,
+  class: className = '',
+  controls = true,
+  autoplay = false,
+  loop = false,
+  muted = true,
+  preload = 'metadata',
+  width = 1280,
+} = Astro.props;
+
+// Detectar si es URL completa o public_id
+const isFullUrl = src.startsWith('http') || src.startsWith('/');
+
+// Generar URLs para diferentes formatos
+let videoMp4: string;
+let videoWebm: string;
+let videoPoster: string;
+
+if (isFullUrl) {
+  // URL local o externa
+  videoMp4 = src;
+  videoWebm = src.replace('.mp4', '.webm');
+  videoPoster = poster || src.replace('.mp4', '.jpg');
+} else {
+  // Public ID de Cloudinary
+  videoMp4 = getCloudinaryVideoUrl(src, { width, quality: 'auto' });
+  videoWebm = getCloudinaryVideoUrl(src, { width, quality: 'auto', format: 'webm' as any });
+  videoPoster = poster || getVideoPosterUrl(src, { width });
+}
+---
+
+<div class={`cloudinary-video-wrapper ${className}`}>
+  <video
+    class="cloudinary-video"
+    controls={controls}
+    autoplay={autoplay}
+    loop={loop}
+    muted={muted}
+    preload={preload}
+    poster={videoPoster}
+    playsinline
+    title={title}
+  >
+    <!-- WebM para mejor compresión (navegadores modernos) -->
+    <source src={videoWebm} type="video/webm" />
+    <!-- MP4 fallback (compatibilidad universal) -->
+    <source src={videoMp4} type="video/mp4" />
+    
+    <p>
+      Tu navegador no soporta la reproducción de video.
+      <a href={videoMp4} download>Descarga el video aquí</a>
+    </p>
+  </video>
+  
+  <!-- Botón de play personalizado (opcional) -->
+  <button 
+    class="play-button" 
+    aria-label="Reproducir video"
+    type="button"
+  >
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+  </button>
+</div>
+
+<style>
+  .cloudinary-video-wrapper {
+    position: relative;
+    width: 100%;
+    background-color: #000;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  
+  .cloudinary-video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .cloudinary-video-wrapper:hover .play-button,
+  .cloudinary-video-wrapper.paused .play-button {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .play-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: rgba(255, 255, 255, 1);
+  }
+  
+  .play-button svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 4px;
+    color: #103646;
+  }
+  
+  /* Ocultar botón cuando el video está reproduciéndose */
+  .cloudinary-video-wrapper.playing .play-button {
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const wrappers = document.querySelectorAll('.cloudinary-video-wrapper');
+    
+    wrappers.forEach((wrapper) => {
+      const video = wrapper.querySelector('video') as HTMLVideoElement;
+      const playButton = wrapper.querySelector('.play-button') as HTMLButtonElement;
+      
+      if (!video || !playButton) return;
+      
+      // Actualizar estado visual
+      const updateState = () => {
+        if (video.paused) {
+          wrapper.classList.remove('playing');
+          wrapper.classList.add('paused');
+        } else {
+          wrapper.classList.add('playing');
+          wrapper.classList.remove('paused');
+        }
+      };
+      
+      // Toggle play/pause
+      const togglePlay = () => {
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      };
+      
+      playButton.addEventListener('click', togglePlay);
+      video.addEventListener('click', togglePlay);
+      video.addEventListener('play', updateState);
+      video.addEventListener('pause', updateState);
+      
+      // Estado inicial
+      updateState();
+    });
+  });
+</script>
