@@ -14,6 +14,7 @@
  * <ProjectMosaicNew images={todasLasImagenesDelProyecto} title="Explora Cada Detalle" />
  */
 import { Icon } from "astro-icon/components";
+import CloudinaryImage from '../../ui/CloudinaryImage.astro';
 
 export interface Props {
   images: (string | ImageMetadata)[];
@@ -309,10 +310,13 @@ const gradients = [
             data-materials={block.materials}
             data-features={block.features}
           >
-            <img
+            <CloudinaryImage
               src={getImageSrc(image)}
               alt={contextualLabel.label}
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              width={block.cols >= 5 ? 800 : block.cols >= 4 ? 600 : 400}
+              class="w-full h-full group-hover:scale-110 transition-transform duration-700"
+              loading={index === 0 ? "eager" : "lazy"}
+              blur={true}
             />
             <div class={`absolute inset-0 bg-gradient-to-t ${gradient} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}>
               <div class="absolute bottom-4 left-4 right-4">

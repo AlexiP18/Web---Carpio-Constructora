@@ -7,7 +7,7 @@ tags:
   - Comercial
   - Proyecto completado
 backgroundImage: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/1. Principal"
-virtualTourVideo: "/images/projects/keops/0. multimedia/KEOPS-VIDEOWEB.mp4"
+virtualTourVideo: "https://res.cloudinary.com/dt5y4fsst/video/upload/v1766173772/KEOPS_VIDEOWEB_pt0zcu.mov"
 images:
   - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/0. Principal_Vertical
   - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/1. Principal

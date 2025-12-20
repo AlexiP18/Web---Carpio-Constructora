@@ -1,4 +1,6 @@
 ---
+import CloudinaryImage from "./CloudinaryImage.astro";
+
 interface Props {
   title: string;
   description: string;
@@ -15,10 +17,14 @@ const { title, description, image, tags, isMobile = false, slug } = Astro.props;
   <!-- Mobile Layout -->
   <div class="bg-[#dad9d8] rounded-[32px] border-2 border-[#0c0801] p-6">
     <div class="mb-6">
-      <img
+      <CloudinaryImage
         src={image}
         alt={title}
-        class="w-full h-48 object-cover rounded-[32px]"
+        width={400}
+        class="w-full h-48 rounded-[32px]"
+        loading="lazy"
+        blur={true}
+        sizes="100vw"
       />
     </div>
     <div class="mb-4">
@@ -97,10 +103,14 @@ const { title, description, image, tags, isMobile = false, slug } = Astro.props;
         </div>
       </div>
       <div class="flex-1 h-[368px]">
-        <img
+        <CloudinaryImage
           src={image}
           alt={title}
-          class="w-full h-full object-cover rounded-[32px]"
+          width={800}
+          class="w-full h-full rounded-[32px]"
+          loading="lazy"
+          blur={true}
+          sizes="50vw"
         />
       </div>
     </div>

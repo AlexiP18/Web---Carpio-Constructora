@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import CloudinaryImage from '../../ui/CloudinaryImage.astro';
 
 interface Props {
   images: (string | ImageMetadata)[];
@@ -40,12 +41,17 @@ const dotsContainerId = `dots-container-${sliderId}`;
       <div class="relative overflow-hidden rounded-2xl shadow-2xl">
         <!-- Main Image Display -->
         <div class="relative aspect-video bg-gray-100" id={`main-image-container-${sliderId}`}>
-          <img 
-            id={mainImageId}
-            src={getImageSrc(images[0])}
-            alt="Imagen principal del proyecto"
-            class="w-full h-full object-cover transition-all duration-500 ease-in-out"
-          />
+          <div id={mainImageId} class="w-full h-full">
+            <CloudinaryImage 
+              src={getImageSrc(images[0])}
+              alt="Imagen principal del proyecto"
+              width={1200}
+              class="w-full h-full transition-all duration-500 ease-in-out"
+              loading="eager"
+              blur={true}
+              sizes="(max-width: 768px) 100vw, 80vw"
+            />
+          </div>
           
           <!-- Navigation Arrows -->
           <button 
@@ -79,10 +85,13 @@ const dotsContainerId = `dots-container-${sliderId}`;
                 data-index={index}
                 aria-label={`Ver imagen ${index + 1}`}
               >
-                <img
+                <CloudinaryImage
                   src={getImageSrc(image)}
                   alt={`Thumbnail ${index + 1}`}
-                  class="w-full h-full object-cover"
+                  width={160}
+                  class="w-full h-full"
+                  loading="lazy"
+                  blur={false}
                 />
               </button>
             ))}

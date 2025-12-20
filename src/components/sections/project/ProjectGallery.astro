@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import CloudinaryImage from "../../ui/CloudinaryImage.astro";
 
 export interface Props {
   images: string[];
@@ -43,10 +44,14 @@ const { images, title } = Astro.props;
               class={`gallery-slide absolute inset-0 transition-all duration-700 ease-in-out ${index === 0 ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
               data-slide={index}
             >
-              <img
+              <CloudinaryImage
                 src={image}
                 alt={`${title} - Imagen ${index + 1}`}
-                class="w-full h-full object-cover"
+                width={1200}
+                class="w-full h-full"
+                loading={index === 0 ? "eager" : "lazy"}
+                blur={true}
+                sizes="(max-width: 768px) 100vw, 80vw"
               />
               <!-- Overlay gradient -->
               <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -92,10 +97,13 @@ const { images, title } = Astro.props;
           class={`gallery-thumb group relative h-24 lg:h-32 rounded-2xl overflow-hidden transition-all duration-300 ${index === 0 ? 'ring-4 ring-brand-primary scale-105' : 'ring-2 ring-gray-200 hover:ring-brand-primary/50 hover:scale-105'}`}
           data-slide={index}
         >
-          <img
+          <CloudinaryImage
             src={image}
             alt={`Thumbnail ${index + 1}`}
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            width={200}
+            class="w-full h-full group-hover:scale-110 transition-transform duration-300"
+            loading="lazy"
+            blur={false}
           />
           <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
           <div class="absolute inset-0 flex items-center justify-center">

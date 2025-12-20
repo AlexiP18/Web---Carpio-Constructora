@@ -1,0 +1,8 @@
+{
+  "name": "Diseño Residencial",
+  "slug": "diseno-residencial",
+  "description": "Proyectos de viviendas unifamiliares con diseño personalizado",
+  "icon": "home",
+  "order": 2,
+  "cloudinaryFolder": "constructora-carpio/proyectos/diseno-residencial"
+}

@@ -16,6 +16,29 @@ const projectTagOptions = [
   'entrega-inmediata',
 ];
 
+// Categorías de proyectos
+const projectCategories = [
+  { value: 'conjunto-habitacional', label: 'Conjunto Habitacional' },
+  { value: 'diseno-residencial', label: 'Diseño Residencial' },
+  { value: 'diseno-retail', label: 'Diseño Retail' },
+  { value: 'edificio-comercial', label: 'Edificio Comercial' },
+  { value: 'proyecto-mixto', label: 'Proyecto Mixto' },
+];
+
+// Categorías de servicios
+const serviceCategories = [
+  { value: 'construccion', label: 'Construcción' },
+  { value: 'diseno-arquitectonico', label: 'Diseño Arquitectónico' },
+  { value: 'remodelacion', label: 'Remodelación' },
+  { value: 'consultoria', label: 'Consultoría' },
+  { value: 'gestion-proyectos', label: 'Gestión de Proyectos' },
+];
+
+// Helper para generar URL de Cloudinary
+const cloudinaryBaseUrl = 'https://res.cloudinary.com/dt5y4fsst';
+const cloudinaryUploadPath = `${cloudinaryBaseUrl}/image/upload`;
+const cloudinaryVideoPath = `${cloudinaryBaseUrl}/video/upload`;
+
 export default defineConfig({
   branch: process.env.TINA_BRANCH || 'main',
   clientId: process.env.TINA_PUBLIC_CLIENT_ID,
@@ -89,26 +112,37 @@ export default defineConfig({
               { value: 'planificacion', label: 'En Planificación' },
             ],
           },
+          {
+            type: 'string',
+            name: 'category',
+            label: 'Categoría del Proyecto',
+            description: 'Selecciona la categoría principal del proyecto',
+            options: projectCategories,
+            required: true,
+          },
           
           // --- Imágenes (compatibles con Cloudinary y locales) ---
           {
             type: 'string',
             name: 'backgroundImage',
-            label: 'Imagen Principal',
-            description: 'URL de Cloudinary o ruta local (ej: /images/proyecto.webp)',
+            label: 'Imagen Principal (Hero)',
+            description: `Sube la imagen a Cloudinary y pega la URL aquí. Ruta sugerida: constructora-carpio/proyectos/[categoria]/[proyecto]/galeria/`,
           },
           {
             type: 'string',
             name: 'images',
             label: 'Galería de Imágenes',
-            description: 'URLs de Cloudinary o rutas locales',
+            description: 'URLs de imágenes de Cloudinary (una por línea)',
             list: true,
+            ui: {
+              component: 'tags',
+            },
           },
           {
             type: 'string',
-            name: 'videoUrl',
-            label: 'Video del Proyecto',
-            description: 'URL de Cloudinary para video o YouTube',
+            name: 'virtualTourVideo',
+            label: 'Video Tour Virtual',
+            description: `URL de video de Cloudinary. Ruta sugerida: constructora-carpio/proyectos/[categoria]/[proyecto]/videos/`,
           },
           
           // --- Ubicación ---
@@ -346,6 +380,13 @@ export default defineConfig({
             label: 'Icono del Servicio',
             description: 'Nombre del icono (ej: building, hammer, blueprint)',
           },
+          {
+            type: 'string',
+            name: 'category',
+            label: 'Categoría del Servicio',
+            description: 'Selecciona la categoría principal',
+            options: serviceCategories,
+          },
           
           // --- Configuración del Hero ---
           {
@@ -357,7 +398,7 @@ export default defineConfig({
                 type: 'string',
                 name: 'backgroundImage',
                 label: 'Imagen de Fondo',
-                description: 'URL de Cloudinary o ruta local',
+                description: `Sube a Cloudinary: constructora-carpio/servicios/[categoria]/`,
               },
               {
                 type: 'string',
@@ -383,7 +424,10 @@ export default defineConfig({
             name: 'gallery',
             label: 'Galería de Imágenes',
             list: true,
-            description: 'URLs de Cloudinary o rutas locales',
+            description: `URLs de Cloudinary. Ruta: constructora-carpio/servicios/[categoria]/`,
+            ui: {
+              component: 'tags',
+            },
           },
           
           // --- Beneficios ---
@@ -566,6 +610,203 @@ export default defineConfig({
             name: 'body',
             label: 'Contenido Detallado',
             isBody: true,
+          },
+        ],
+      },
+      
+      // ==========================================
+      // COLECCIÓN: CATEGORÍAS DE PROYECTOS
+      // ==========================================
+      {
+        name: 'categoriasProyectos',
+        label: 'Categorías de Proyectos',
+        path: 'src/content/categorias-proyectos',
+        format: 'json',
+        ui: {
+          allowedActions: {
+            create: true,
+            delete: true,
+          },
+        },
+        fields: [
+          {
+            type: 'string',
+            name: 'name',
+            label: 'Nombre de la Categoría',
+            required: true,
+          },
+          {
+            type: 'string',
+            name: 'slug',
+            label: 'Slug (identificador)',
+            description: 'Ej: conjunto-habitacional, diseno-retail',
+            required: true,
+          },
+          {
+            type: 'string',
+            name: 'description',
+            label: 'Descripción',
+            ui: {
+              component: 'textarea',
+            },
+          },
+          {
+            type: 'string',
+            name: 'icon',
+            label: 'Icono',
+            description: 'Nombre del icono para esta categoría',
+          },
+          {
+            type: 'string',
+            name: 'image',
+            label: 'Imagen de la Categoría',
+            description: 'URL de Cloudinary para imagen representativa',
+          },
+          {
+            type: 'number',
+            name: 'order',
+            label: 'Orden de Visualización',
+            description: 'Número para ordenar las categorías (menor = primero)',
+          },
+          {
+            type: 'string',
+            name: 'cloudinaryFolder',
+            label: 'Carpeta en Cloudinary',
+            description: 'Ruta de la carpeta para nuevos proyectos de esta categoría. Ej: constructora-carpio/proyectos/conjunto-habitacional',
+          },
+        ],
+      },
+      
+      // ==========================================
+      // COLECCIÓN: CATEGORÍAS DE SERVICIOS
+      // ==========================================
+      {
+        name: 'categoriasServicios',
+        label: 'Categorías de Servicios',
+        path: 'src/content/categorias-servicios',
+        format: 'json',
+        fields: [
+          {
+            type: 'string',
+            name: 'name',
+            label: 'Nombre de la Categoría',
+            required: true,
+          },
+          {
+            type: 'string',
+            name: 'slug',
+            label: 'Slug (identificador)',
+            required: true,
+          },
+          {
+            type: 'string',
+            name: 'description',
+            label: 'Descripción',
+            ui: {
+              component: 'textarea',
+            },
+          },
+          {
+            type: 'string',
+            name: 'icon',
+            label: 'Icono',
+          },
+          {
+            type: 'string',
+            name: 'image',
+            label: 'Imagen de la Categoría',
+          },
+          {
+            type: 'number',
+            name: 'order',
+            label: 'Orden de Visualización',
+          },
+          {
+            type: 'string',
+            name: 'cloudinaryFolder',
+            label: 'Carpeta en Cloudinary',
+            description: 'Ej: constructora-carpio/servicios/construccion',
+          },
+        ],
+      },
+      
+      // ==========================================
+      // COLECCIÓN: CONFIGURACIÓN DE CLOUDINARY
+      // ==========================================
+      {
+        name: 'cloudinaryConfig',
+        label: 'Configuración Cloudinary',
+        path: 'src/content/config',
+        format: 'json',
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+          global: true,
+        },
+        fields: [
+          {
+            type: 'string',
+            name: 'cloudName',
+            label: 'Cloud Name',
+            description: 'Tu cloud name de Cloudinary (ej: dt5y4fsst)',
+          },
+          {
+            type: 'string',
+            name: 'baseFolder',
+            label: 'Carpeta Base',
+            description: 'Carpeta raíz para todos los assets (ej: constructora-carpio)',
+          },
+          {
+            type: 'object',
+            name: 'defaultTransformations',
+            label: 'Transformaciones por Defecto',
+            fields: [
+              {
+                type: 'number',
+                name: 'imageWidth',
+                label: 'Ancho de Imágenes',
+                description: 'Ancho máximo para imágenes (ej: 1200)',
+              },
+              {
+                type: 'string',
+                name: 'imageQuality',
+                label: 'Calidad de Imagen',
+                options: ['auto', 'auto:low', 'auto:eco', 'auto:good', 'auto:best'],
+              },
+              {
+                type: 'string',
+                name: 'imageFormat',
+                label: 'Formato de Imagen',
+                options: ['auto', 'webp', 'avif', 'jpg', 'png'],
+              },
+            ],
+          },
+          {
+            type: 'object',
+            name: 'folders',
+            label: 'Estructura de Carpetas',
+            fields: [
+              {
+                type: 'string',
+                name: 'proyectos',
+                label: 'Carpeta de Proyectos',
+                description: 'Ej: constructora-carpio/proyectos',
+              },
+              {
+                type: 'string',
+                name: 'servicios',
+                label: 'Carpeta de Servicios',
+                description: 'Ej: constructora-carpio/servicios',
+              },
+              {
+                type: 'string',
+                name: 'general',
+                label: 'Carpeta General',
+                description: 'Ej: constructora-carpio/general',
+              },
+            ],
           },
         ],
       },

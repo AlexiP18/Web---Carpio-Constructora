@@ -47,16 +47,34 @@ const {
 // Detectar si es URL completa o public_id
 const isFullUrl = src.startsWith('http') || src.startsWith('/');
 
+// Detectar si es URL de Cloudinary
+const isCloudinaryFullUrl = src.includes('cloudinary.com') || src.includes('res.cloudinary');
+
 // Generar URLs para diferentes formatos
 let videoMp4: string;
 let videoWebm: string;
 let videoPoster: string;
 
-if (isFullUrl) {
-  // URL local o externa
+if (isCloudinaryFullUrl) {
+  // URL completa de Cloudinary - usar transformaciones
+  // Extraer la base URL y agregar transformaciones
+  const baseUrl = src;
+  // Para Cloudinary, podemos agregar f_mp4 o f_webm para conversión automática
+  videoMp4 = baseUrl.includes('/upload/') 
+    ? baseUrl.replace('/upload/', '/upload/f_mp4,vc_h264/') 
+    : baseUrl;
+  videoWebm = baseUrl.includes('/upload/') 
+    ? baseUrl.replace('/upload/', '/upload/f_webm,vc_vp9/') 
+    : baseUrl;
+  // Poster: usar el primer frame del video
+  videoPoster = poster || (baseUrl.includes('/upload/') 
+    ? baseUrl.replace('/upload/', '/upload/so_0,f_jpg,w_1280/').replace(/\.(mov|mp4|webm|avi)$/i, '.jpg')
+    : '');
+} else if (isFullUrl) {
+  // URL local o externa (no Cloudinary)
   videoMp4 = src;
-  videoWebm = src.replace('.mp4', '.webm');
-  videoPoster = poster || src.replace('.mp4', '.jpg');
+  videoWebm = src.replace(/\.(mp4|mov)$/i, '.webm');
+  videoPoster = poster || src.replace(/\.(mp4|mov|webm)$/i, '.jpg');
 } else {
   // Public ID de Cloudinary
   videoMp4 = getCloudinaryVideoUrl(src, { width, quality: 'auto' });

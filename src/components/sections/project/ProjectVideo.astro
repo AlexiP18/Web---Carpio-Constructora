@@ -3,13 +3,33 @@ interface Props {
   videoUrl: string;
   title?: string;
   description?: string;
+  poster?: string;
 }
 
 const { 
   videoUrl, 
   title = "Tour Virtual del Proyecto",
-  description = "Explora cada detalle de este proyecto a través de nuestro tour virtual"
+  description = "Explora cada detalle de este proyecto a través de nuestro tour virtual",
+  poster
 } = Astro.props;
+
+// Detectar si es URL de Cloudinary o local
+const isCloudinaryUrl = videoUrl.includes('cloudinary.com') || videoUrl.includes('res.cloudinary');
+
+// Generar URLs optimizadas para Cloudinary
+let videoMp4 = videoUrl;
+let videoWebm = videoUrl;
+let videoPoster = poster || '';
+
+if (isCloudinaryUrl && videoUrl.includes('/upload/')) {
+  // Transformaciones de Cloudinary para optimización
+  videoMp4 = videoUrl.replace('/upload/', '/upload/f_mp4,vc_h264/');
+  videoWebm = videoUrl.replace('/upload/', '/upload/f_webm,vc_vp9/');
+  // Poster del primer frame
+  if (!poster) {
+    videoPoster = videoUrl.replace('/upload/', '/upload/so_0,f_jpg,w_1280/').replace(/\.(mov|mp4|webm|avi)$/i, '.jpg');
+  }
+}
 ---
 
 <section class="relative w-full py-16 md:py-24 bg-gradient-to-b from-gray-50 to-white">
@@ -35,25 +55,47 @@ const {
       <div class="relative bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200 group">
         <!-- Aspect ratio container -->
         <div class="relative w-full video-container" style="padding-bottom: 56.25%;"> <!-- 16:9 aspect ratio -->
-          <video 
-            id="project-video"
-            class="absolute top-0 left-0 w-full h-full object-cover"
-            controls
-            preload="metadata"
-            muted
-          >
-            <source src={videoUrl} type="video/mp4">
-            <source src={videoUrl} type="video/quicktime">
-            <source src={videoUrl.replace('.mov', '.webm')} type="video/webm">
-            
-            <!-- Fallback simple de texto para navegadores antiguos -->
-            <p>
-              Tu navegador no soporta la reproducción de video. 
-              <a href={videoUrl} download style="color: #2563eb; text-decoration: underline;">
-                Descarga el video aquí
-              </a>
-            </p>
-          </video>
+          {isCloudinaryUrl ? (
+            <video 
+              id="project-video"
+              class="absolute top-0 left-0 w-full h-full object-cover"
+              controls
+              autoplay
+              muted
+              playsinline
+              preload="metadata"
+              poster={videoPoster}
+            >
+              <source src={videoWebm} type="video/webm">
+              <source src={videoMp4} type="video/mp4">
+              <p>
+                Tu navegador no soporta la reproducción de video. 
+                <a href={videoMp4} download style="color: #2563eb; text-decoration: underline;">
+                  Descarga el video aquí
+                </a>
+              </p>
+            </video>
+          ) : (
+            <video 
+              id="project-video"
+              class="absolute top-0 left-0 w-full h-full object-cover"
+              controls
+              preload="metadata"
+              muted
+            >
+              <source src={videoUrl} type="video/mp4">
+              <source src={videoUrl} type="video/quicktime">
+              <source src={videoUrl.replace('.mov', '.webm')} type="video/webm">
+              
+              <!-- Fallback simple de texto para navegadores antiguos -->
+              <p>
+                Tu navegador no soporta la reproducción de video. 
+                <a href={videoUrl} download style="color: #2563eb; text-decoration: underline;">
+                  Descarga el video aquí
+                </a>
+              </p>
+            </video>
+          )}
 
           <!-- Botón Play/Pause grande en el centro -->
           <button 
@@ -80,14 +122,6 @@ const {
               <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
             </svg>
           </button>
-        </div>
-
-        <!-- Video controls overlay (opcional) -->
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 opacity-0 hover:opacity-100 transition-opacity duration-300">
-          <div class="flex items-center justify-between text-white text-sm">
-            <span>Tour Virtual</span>
-            <span>HD</span>
-          </div>
         </div>
       </div>
     </div>

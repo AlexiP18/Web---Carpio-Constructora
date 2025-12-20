@@ -1,0 +1,8 @@
+{
+  "name": "Diseño Retail",
+  "slug": "diseno-retail",
+  "description": "Proyectos comerciales y espacios retail innovadores",
+  "icon": "store",
+  "order": 3,
+  "cloudinaryFolder": "constructora-carpio/proyectos/diseno-retail"
+}

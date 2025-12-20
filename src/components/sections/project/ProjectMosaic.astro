@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import CloudinaryImage from "../../ui/CloudinaryImage.astro";
 
 export interface Props {
   images: (string | ImageMetadata)[];
@@ -45,10 +46,13 @@ const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...im
       <!-- Fila 1: Grande izquierda + Mediano superior derecho + Pequeño esquina -->
       {mosaicImages[0] && (
         <div class="col-span-12 md:col-span-6 lg:col-span-4 row-span-3 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
-          <img
+          <CloudinaryImage
             src={getImageSrc(mosaicImages[0])}
             alt="Vista principal"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            width={600}
+            class="w-full h-full group-hover:scale-110 transition-transform duration-700"
+            loading="eager"
+            blur={true}
           />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-primary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div class="absolute bottom-6 left-6 right-6">
@@ -65,10 +69,13 @@ const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...im
 
       {mosaicImages[1] && (
         <div class="col-span-12 md:col-span-6 lg:col-span-5 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
-          <img
+          <CloudinaryImage
             src={getImageSrc(mosaicImages[1])}
             alt="Detalle arquitectónico"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            width={600}
+            class="w-full h-full group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+            blur={true}
           />
           <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div class="absolute bottom-4 left-4 right-4">
@@ -85,10 +92,13 @@ const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...im
 
       {mosaicImages[2] && (
         <div class="col-span-12 md:col-span-6 lg:col-span-3 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
-          <img
+          <CloudinaryImage
             src={getImageSrc(mosaicImages[2])}
             alt="Vista destacada"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            width={400}
+            class="w-full h-full group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+            blur={true}
           />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-secondary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div class="absolute bottom-4 left-4 right-4">
@@ -106,10 +116,13 @@ const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...im
       <!-- Fila 2: Mediano izquierda inferior + Grande derecho -->
       {mosaicImages[3] && (
         <div class="col-span-12 md:col-span-6 lg:col-span-4 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
-          <img
+          <CloudinaryImage
             src={getImageSrc(mosaicImages[3])}
             alt="Espacio interior"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            width={500}
+            class="w-full h-full group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+            blur={true}
           />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-primary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div class="absolute bottom-4 left-4 right-4">
@@ -126,10 +139,13 @@ const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...im
 
       {mosaicImages[4] && (
         <div class="col-span-12 md:col-span-6 lg:col-span-5 row-span-3 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
-          <img
+          <CloudinaryImage
             src={getImageSrc(mosaicImages[4])}
             alt="Vista panorámica"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            width={700}
+            class="w-full h-full group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+            blur={true}
           />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-secondary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div class="absolute bottom-6 left-6 right-6">
@@ -147,10 +163,13 @@ const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...im
       <!-- Fila 3: Tres pequeñas en la parte inferior -->
       {mosaicImages[5] && (
         <div class="col-span-12 md:col-span-4 lg:col-span-3 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
-          <img
+          <CloudinaryImage
             src={getImageSrc(mosaicImages[5])}
             alt="Detalles finales"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            width={400}
+            class="w-full h-full group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+            blur={true}
           />
           <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div class="absolute bottom-4 left-4 right-4">
@@ -167,10 +186,13 @@ const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...im
 
       {mosaicImages[6] && (
         <div class="col-span-12 md:col-span-4 lg:col-span-3 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
-          <img
+          <CloudinaryImage
             src={getImageSrc(mosaicImages[6])}
             alt="Vista exterior"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            width={400}
+            class="w-full h-full group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+            blur={true}
           />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-primary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div class="absolute bottom-4 left-4 right-4">
@@ -187,10 +209,13 @@ const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...im
 
       {mosaicImages[7] && (
         <div class="col-span-12 md:col-span-4 lg:col-span-6 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
-          <img
+          <CloudinaryImage
             src={getImageSrc(mosaicImages[7])}
             alt="Acabados"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            width={600}
+            class="w-full h-full group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+            blur={true}
           />
           <div class="absolute inset-0 bg-gradient-to-t from-brand-secondary/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div class="absolute bottom-4 left-4 right-4">
@@ -207,10 +232,13 @@ const mosaicImages = images.length >= 9 ? images.slice(0, 9) : [...images, ...im
 
       {mosaicImages[8] && (
         <div class="col-span-12 md:col-span-6 lg:col-span-9 row-span-2 group relative overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500">
-          <img
+          <CloudinaryImage
             src={getImageSrc(mosaicImages[8])}
             alt="Vista complementaria"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+            width={900}
+            class="w-full h-full group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+            blur={true}
           />
           <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             <div class="absolute bottom-4 left-4 right-4">

@@ -1,0 +1,14 @@
+{
+  "cloudName": "dt5y4fsst",
+  "baseFolder": "constructora-carpio",
+  "defaultTransformations": {
+    "imageWidth": 1200,
+    "imageQuality": "auto",
+    "imageFormat": "auto"
+  },
+  "folders": {
+    "proyectos": "constructora-carpio/proyectos",
+    "servicios": "constructora-carpio/servicios",
+    "general": "constructora-carpio/general"
+  }
+}

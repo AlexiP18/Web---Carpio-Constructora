@@ -1,0 +1,8 @@
+{
+  "name": "Conjunto Habitacional",
+  "slug": "conjunto-habitacional",
+  "description": "Proyectos de vivienda multifamiliar con áreas comunes y amenidades compartidas",
+  "icon": "building",
+  "order": 1,
+  "cloudinaryFolder": "constructora-carpio/proyectos/conjunto-habitacional"
+}

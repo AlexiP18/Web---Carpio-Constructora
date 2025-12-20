@@ -1,0 +1,8 @@
+{
+  "name": "Construcción",
+  "slug": "construccion",
+  "description": "Servicios de construcción de obras civiles",
+  "icon": "hammer",
+  "order": 1,
+  "cloudinaryFolder": "constructora-carpio/servicios/construccion"
+}

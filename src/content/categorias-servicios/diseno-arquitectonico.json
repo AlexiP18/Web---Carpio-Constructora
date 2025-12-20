@@ -1,0 +1,8 @@
+{
+  "name": "Diseño Arquitectónico",
+  "slug": "diseno-arquitectonico",
+  "description": "Servicios de diseño y planificación arquitectónica",
+  "icon": "blueprint",
+  "order": 2,
+  "cloudinaryFolder": "constructora-carpio/servicios/diseno-arquitectonico"
+}
