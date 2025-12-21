@@ -1,0 +1,116 @@
+{
+  "title": "Inicio",
+  "slug": "inicio",
+  "published": true,
+  "seo": {
+    "metaTitle": "Constructora Carpio | Construcción de Calidad",
+    "metaDescription": "Constructora Carpio - Expertos en construcción residencial y comercial. Más de 20 años de experiencia creando espacios que transforman vidas.",
+    "ogImage": ""
+  },
+  "sections": [
+    {
+      "_template": "hero",
+      "title": "Construimos tus sueños con excelencia",
+      "subtitle": "Más de 20 años de experiencia transformando espacios en hogares y proyectos comerciales de primer nivel.",
+      "backgroundImage": "",
+      "ctaText": "Ver Proyectos",
+      "ctaLink": "/proyectos",
+      "secondaryCtaText": "Contáctanos",
+      "secondaryCtaLink": "/contacto",
+      "alignment": "center",
+      "overlay": true
+    },
+    {
+      "_template": "about",
+      "title": "Sobre Nosotros",
+      "subtitle": "Una empresa comprometida con la excelencia",
+      "content": "En Constructora Carpio nos dedicamos a hacer realidad los sueños de nuestros clientes a través de proyectos de construcción de alta calidad. Nuestro equipo de profesionales está comprometido con la innovación, la puntualidad y la satisfacción total del cliente.",
+      "image": "",
+      "imagePosition": "right",
+      "showStats": true,
+      "stats": [
+        { "value": "+20", "label": "Años de Experiencia" },
+        { "value": "+150", "label": "Proyectos Completados" },
+        { "value": "+500", "label": "Familias Felices" },
+        { "value": "100%", "label": "Compromiso" }
+      ],
+      "ctaText": "Conoce más",
+      "ctaLink": "/quienes-somos"
+    },
+    {
+      "_template": "services",
+      "title": "Nuestros Servicios",
+      "subtitle": "Ofrecemos soluciones integrales en construcción para todos tus proyectos.",
+      "layout": "grid",
+      "items": [
+        {
+          "title": "Construcción Residencial",
+          "description": "Construimos casas y departamentos con los más altos estándares de calidad.",
+          "icon": "home",
+          "image": "",
+          "link": "/servicios/construccion-residencial"
+        },
+        {
+          "title": "Diseño Arquitectónico",
+          "description": "Diseños innovadores que combinan funcionalidad y estética.",
+          "icon": "blueprint",
+          "image": "",
+          "link": "/servicios/diseno-arquitectonico"
+        },
+        {
+          "title": "Remodelación",
+          "description": "Transformamos espacios existentes en ambientes modernos y funcionales.",
+          "icon": "hammer",
+          "image": "",
+          "link": "/servicios/remodelacion"
+        }
+      ],
+      "ctaText": "Ver todos los servicios",
+      "ctaLink": "/servicios"
+    },
+    {
+      "_template": "projects",
+      "title": "Proyectos Destacados",
+      "subtitle": "Conoce algunos de nuestros proyectos más recientes y exitosos.",
+      "layout": "grid",
+      "limit": 6,
+      "showFilters": false,
+      "filterCategories": [],
+      "ctaText": "Ver todos los proyectos",
+      "ctaLink": "/proyectos"
+    },
+    {
+      "_template": "testimonials",
+      "title": "Lo que dicen nuestros clientes",
+      "subtitle": "La satisfacción de nuestros clientes es nuestra mayor recompensa.",
+      "layout": "carousel",
+      "items": [
+        {
+          "quote": "Excelente trabajo y atención personalizada. Superaron todas nuestras expectativas.",
+          "author": "María García",
+          "position": "Propietaria en Arrayanes",
+          "avatar": "",
+          "rating": 5
+        },
+        {
+          "quote": "Profesionalismo y puntualidad. Recomendamos completamente a Constructora Carpio.",
+          "author": "Carlos Rodríguez",
+          "position": "Inversionista",
+          "avatar": "",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "_template": "cta",
+      "title": "¿Listo para comenzar tu proyecto?",
+      "description": "Contáctanos hoy y hagamos realidad tu próximo proyecto de construcción.",
+      "backgroundImage": "",
+      "buttonText": "Solicitar Cotización",
+      "buttonLink": "/contacto",
+      "secondaryButtonText": "Llamar Ahora",
+      "secondaryButtonLink": "tel:+593999999999",
+      "style": "gradient"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+---
+/**
+ * CTABlock.astro
+ * Bloque de Llamado a la Acción
+ */
+import CloudinaryImage from '@/components/ui/CloudinaryImage.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  backgroundImage?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  secondaryButtonText?: string;
+  secondaryButtonLink?: string;
+  style?: 'default' | 'gradient' | 'dark' | 'light';
+}
+
+const {
+  title,
+  description,
+  backgroundImage,
+  buttonText,
+  buttonLink,
+  secondaryButtonText,
+  secondaryButtonLink,
+  style = 'default',
+} = Astro.props;
+
+const styleClasses = {
+  default: 'bg-primary-500 text-white',
+  gradient: 'bg-gradient-to-r from-primary-600 to-primary-400 text-white',
+  dark: 'bg-gray-900 text-white',
+  light: 'bg-gray-100 text-gray-900',
+};
+
+const buttonClasses = {
+  default: 'bg-white text-primary-500 hover:bg-gray-100',
+  gradient: 'bg-white text-primary-600 hover:bg-gray-100',
+  dark: 'bg-primary-500 text-white hover:bg-primary-600',
+  light: 'bg-primary-500 text-white hover:bg-primary-600',
+};
+
+const secondaryButtonClasses = {
+  default: 'border-white text-white hover:bg-white/10',
+  gradient: 'border-white text-white hover:bg-white/10',
+  dark: 'border-white text-white hover:bg-white/10',
+  light: 'border-gray-900 text-gray-900 hover:bg-gray-900/10',
+};
+---
+
+<section class={`py-16 md:py-20 relative overflow-hidden ${backgroundImage ? '' : styleClasses[style]}`}>
+  {/* Background Image */}
+  {backgroundImage && (
+    <>
+      <CloudinaryImage
+        src={backgroundImage}
+        alt=""
+        width={1920}
+        height={600}
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/60" />
+    </>
+  )}
+  
+  <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+    <h2 class={`text-3xl md:text-4xl font-bold mb-4 ${backgroundImage ? 'text-white' : ''}`}>
+      {title}
+    </h2>
+    
+    {description && (
+      <p class={`text-lg mb-8 opacity-90 ${backgroundImage ? 'text-white' : ''}`}>
+        {description}
+      </p>
+    )}
+    
+    {(buttonText || secondaryButtonText) && (
+      <div class="flex flex-wrap justify-center gap-4">
+        {buttonText && buttonLink && (
+          <a
+            href={buttonLink}
+            class={`inline-flex items-center px-6 py-3 font-semibold rounded-lg transition-colors ${
+              backgroundImage ? 'bg-white text-gray-900 hover:bg-gray-100' : buttonClasses[style]
+            }`}
+          >
+            {buttonText}
+          </a>
+        )}
+        
+        {secondaryButtonText && secondaryButtonLink && (
+          <a
+            href={secondaryButtonLink}
+            class={`inline-flex items-center px-6 py-3 font-semibold rounded-lg border-2 transition-colors ${
+              backgroundImage ? 'border-white text-white hover:bg-white/10' : secondaryButtonClasses[style]
+            }`}
+          >
+            {secondaryButtonText}
+          </a>
+        )}
+      </div>
+    )}
+  </div>
+</section>

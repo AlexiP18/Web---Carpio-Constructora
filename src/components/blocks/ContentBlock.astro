@@ -1,0 +1,97 @@
+---
+/**
+ * ContentBlock.astro
+ * Bloque de Contenido Libre (Rich Text)
+ */
+
+interface Props {
+  title?: string;
+  body?: any; // TinaMarkdown content
+  backgroundColor?: 'white' | 'gray' | 'dark' | 'primary';
+  maxWidth?: 'sm' | 'md' | 'lg' | 'full';
+}
+
+const {
+  title,
+  body,
+  backgroundColor = 'white',
+  maxWidth = 'lg',
+} = Astro.props;
+
+const bgClasses = {
+  white: 'bg-white text-gray-900',
+  gray: 'bg-gray-50 text-gray-900',
+  dark: 'bg-gray-900 text-white',
+  primary: 'bg-primary-500 text-white',
+};
+
+const maxWidthClasses = {
+  sm: 'max-w-2xl',
+  md: 'max-w-4xl',
+  lg: 'max-w-6xl',
+  full: 'max-w-7xl',
+};
+
+// Helper para renderizar contenido de TinaCMS
+function renderContent(content: any): string {
+  if (!content) return '';
+  
+  if (typeof content === 'string') return content;
+  
+  if (content.children) {
+    return content.children.map((child: any) => {
+      if (child.type === 'p') {
+        const text = child.children?.map((c: any) => c.text || '').join('') || '';
+        return `<p class="mb-4">${text}</p>`;
+      }
+      if (child.type === 'h2') {
+        const text = child.children?.map((c: any) => c.text || '').join('') || '';
+        return `<h2 class="text-2xl font-bold mb-4">${text}</h2>`;
+      }
+      if (child.type === 'h3') {
+        const text = child.children?.map((c: any) => c.text || '').join('') || '';
+        return `<h3 class="text-xl font-semibold mb-3">${text}</h3>`;
+      }
+      if (child.type === 'ul') {
+        const items = child.children?.map((li: any) => {
+          const text = li.children?.map((c: any) => c.children?.map((t: any) => t.text || '').join('') || c.text || '').join('') || '';
+          return `<li class="mb-2">${text}</li>`;
+        }).join('') || '';
+        return `<ul class="list-disc list-inside mb-4">${items}</ul>`;
+      }
+      if (child.type === 'ol') {
+        const items = child.children?.map((li: any) => {
+          const text = li.children?.map((c: any) => c.children?.map((t: any) => t.text || '').join('') || c.text || '').join('') || '';
+          return `<li class="mb-2">${text}</li>`;
+        }).join('') || '';
+        return `<ol class="list-decimal list-inside mb-4">${items}</ol>`;
+      }
+      return '';
+    }).join('');
+  }
+  
+  return '';
+}
+
+const renderedContent = renderContent(body);
+---
+
+<section class={`py-16 md:py-24 ${bgClasses[backgroundColor]}`}>
+  <div class={`${maxWidthClasses[maxWidth]} mx-auto px-4`}>
+    {title && (
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
+        {title}
+      </h2>
+    )}
+    
+    {renderedContent && (
+      <div class="prose prose-lg max-w-none" set:html={renderedContent} />
+    )}
+    
+    {!renderedContent && !title && (
+      <div class="text-center py-8 opacity-50">
+        <p>Bloque de contenido vacío. Agrega contenido desde el editor.</p>
+      </div>
+    )}
+  </div>
+</section>

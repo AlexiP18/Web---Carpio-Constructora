@@ -1,0 +1,145 @@
+{
+  "title": "Servicios",
+  "slug": "servicios",
+  "published": true,
+  "seo": {
+    "metaTitle": "Servicios | Constructora Carpio",
+    "metaDescription": "Descubre todos los servicios que ofrece Constructora Carpio: construcción residencial, comercial, diseño arquitectónico, remodelación y más.",
+    "ogImage": ""
+  },
+  "sections": [
+    {
+      "_template": "hero",
+      "title": "Nuestros Servicios",
+      "subtitle": "Soluciones integrales en construcción para todos tus proyectos",
+      "backgroundImage": "",
+      "alignment": "center",
+      "overlay": true
+    },
+    {
+      "_template": "content",
+      "title": "",
+      "body": {
+        "type": "root",
+        "children": [
+          {
+            "type": "p",
+            "children": [
+              {
+                "type": "text",
+                "text": "En Constructora Carpio ofrecemos una amplia gama de servicios diseñados para satisfacer todas tus necesidades de construcción. Desde el diseño inicial hasta la entrega final, nuestro equipo de profesionales te acompañará en cada paso del proceso."
+              }
+            ]
+          }
+        ]
+      },
+      "backgroundColor": "gray",
+      "maxWidth": "lg"
+    },
+    {
+      "_template": "services",
+      "title": "Servicios Principales",
+      "subtitle": "",
+      "layout": "grid",
+      "items": [
+        {
+          "title": "Construcción Residencial",
+          "description": "Construimos casas, departamentos y conjuntos habitacionales con los más altos estándares de calidad y diseño.",
+          "icon": "home",
+          "link": "/servicios/construccion-residencial"
+        },
+        {
+          "title": "Construcción Comercial",
+          "description": "Desarrollamos proyectos comerciales, oficinas y locales adaptados a las necesidades de cada negocio.",
+          "icon": "building",
+          "link": "/servicios/construccion-comercial"
+        },
+        {
+          "title": "Diseño Arquitectónico",
+          "description": "Creamos diseños innovadores que combinan funcionalidad, estética y sostenibilidad.",
+          "icon": "blueprint",
+          "link": "/servicios/diseno-arquitectonico"
+        },
+        {
+          "title": "Remodelación",
+          "description": "Transformamos espacios existentes en ambientes modernos, funcionales y renovados.",
+          "icon": "hammer",
+          "link": "/servicios/remodelacion"
+        },
+        {
+          "title": "Consultoría",
+          "description": "Asesoramiento profesional para optimizar tus proyectos de construcción.",
+          "icon": "clipboard",
+          "link": "/servicios/consultoria"
+        },
+        {
+          "title": "Gestión de Proyectos",
+          "description": "Administración integral de proyectos desde la planificación hasta la entrega.",
+          "icon": "chart",
+          "link": "/servicios/gestion-proyectos"
+        }
+      ],
+      "ctaText": "",
+      "ctaLink": ""
+    },
+    {
+      "_template": "features",
+      "title": "¿Por qué elegirnos?",
+      "subtitle": "Características que nos distinguen",
+      "layout": "grid",
+      "items": [
+        {
+          "title": "Calidad Garantizada",
+          "description": "Utilizamos los mejores materiales y técnicas de construcción.",
+          "icon": "check-circle"
+        },
+        {
+          "title": "Equipo Profesional",
+          "description": "Arquitectos, ingenieros y técnicos altamente capacitados.",
+          "icon": "users"
+        },
+        {
+          "title": "Cumplimiento",
+          "description": "Entregamos en tiempo y forma, respetando los presupuestos acordados.",
+          "icon": "clock"
+        },
+        {
+          "title": "Garantía Post-Venta",
+          "description": "Te acompañamos después de la entrega con servicio de garantía.",
+          "icon": "shield"
+        }
+      ]
+    },
+    {
+      "_template": "faq",
+      "title": "Preguntas Frecuentes",
+      "subtitle": "Resolvemos tus dudas más comunes",
+      "items": [
+        {
+          "question": "¿Cuánto tiempo toma construir una casa?",
+          "answer": "El tiempo de construcción varía según el proyecto. Una casa promedio puede tomar entre 6 y 12 meses, dependiendo del tamaño y complejidad del diseño."
+        },
+        {
+          "question": "¿Ofrecen financiamiento?",
+          "answer": "Sí, trabajamos con varias instituciones financieras para ofrecer opciones de financiamiento adaptadas a las necesidades de cada cliente."
+        },
+        {
+          "question": "¿Qué incluye el servicio de diseño arquitectónico?",
+          "answer": "Incluye planos arquitectónicos, renders 3D, especificaciones técnicas y asesoría durante todo el proceso de construcción."
+        },
+        {
+          "question": "¿Trabajan en todas las ciudades?",
+          "answer": "Actualmente operamos en Ambato, Quito, Guayaquil, Cuenca y Riobamba. Consulta disponibilidad para otras ubicaciones."
+        }
+      ]
+    },
+    {
+      "_template": "cta",
+      "title": "¿Necesitas un servicio personalizado?",
+      "description": "Contáctanos y te asesoraremos sobre la mejor solución para tu proyecto.",
+      "buttonText": "Solicitar Cotización",
+      "buttonLink": "/contacto",
+      "style": "gradient"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+---
+/**
+ * SpacerBlock.astro
+ * Bloque Espaciador/Separador
+ */
+
+interface Props {
+  size?: 'sm' | 'md' | 'lg' | 'xl';
+  showDivider?: boolean;
+}
+
+const {
+  size = 'md',
+  showDivider = false,
+} = Astro.props;
+
+const sizeClasses = {
+  sm: 'py-4',      // 32px
+  md: 'py-8',      // 64px
+  lg: 'py-12',     // 96px
+  xl: 'py-16',     // 128px
+};
+---
+
+<div class={sizeClasses[size]}>
+  {showDivider && (
+    <div class="max-w-7xl mx-auto px-4">
+      <hr class="border-gray-200" />
+    </div>
+  )}
+</div>

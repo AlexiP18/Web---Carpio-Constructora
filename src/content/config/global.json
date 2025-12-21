@@ -1,0 +1,90 @@
+{
+  "company": {
+    "name": "Constructora Carpio",
+    "slogan": "Construimos tus sueños",
+    "logo": "",
+    "logoWhite": "",
+    "favicon": "/favicon.ico"
+  },
+  "contact": {
+    "phone": "+593 99 999 9999",
+    "whatsapp": "+593 99 999 9999",
+    "email": "info@constructoracarpio.com",
+    "address": "Av. Principal 123, Ambato, Tungurahua, Ecuador",
+    "hours": "Lunes a Viernes: 8:00 - 18:00"
+  },
+  "social": {
+    "facebook": "https://facebook.com/constructoracarpio",
+    "instagram": "https://instagram.com/constructoracarpio",
+    "linkedin": "https://linkedin.com/company/constructoracarpio",
+    "youtube": "",
+    "tiktok": ""
+  },
+  "header": {
+    "sticky": true,
+    "transparent": true,
+    "navigation": [
+      {
+        "label": "Inicio",
+        "href": "/",
+        "children": []
+      },
+      {
+        "label": "Quiénes Somos",
+        "href": "/quienes-somos",
+        "children": []
+      },
+      {
+        "label": "Servicios",
+        "href": "/servicios",
+        "children": [
+          { "label": "Construcción Residencial", "href": "/servicios/construccion-residencial" },
+          { "label": "Diseño Arquitectónico", "href": "/servicios/diseno-arquitectonico" },
+          { "label": "Remodelación", "href": "/servicios/remodelacion" }
+        ]
+      },
+      {
+        "label": "Proyectos",
+        "href": "/proyectos",
+        "children": []
+      },
+      {
+        "label": "Contacto",
+        "href": "/contacto",
+        "children": []
+      }
+    ],
+    "ctaText": "Cotizar",
+    "ctaLink": "/contacto"
+  },
+  "footer": {
+    "copyright": "© 2024 Constructora Carpio. Todos los derechos reservados.",
+    "showNewsletter": true,
+    "newsletterTitle": "Suscríbete a nuestro boletín",
+    "columns": [
+      {
+        "title": "Empresa",
+        "links": [
+          { "label": "Quiénes Somos", "href": "/quienes-somos" },
+          { "label": "Nuestro Equipo", "href": "/quienes-somos#equipo" },
+          { "label": "Trabaja con Nosotros", "href": "/contacto" }
+        ]
+      },
+      {
+        "title": "Servicios",
+        "links": [
+          { "label": "Construcción", "href": "/servicios/construccion" },
+          { "label": "Diseño", "href": "/servicios/diseno-arquitectonico" },
+          { "label": "Remodelación", "href": "/servicios/remodelacion" }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          { "label": "Términos y Condiciones", "href": "/terminos" },
+          { "label": "Política de Privacidad", "href": "/privacidad" }
+        ]
+      }
+    ]
+  }
+}

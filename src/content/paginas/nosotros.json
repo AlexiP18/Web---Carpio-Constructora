@@ -1,0 +1,107 @@
+{
+  "title": "Quiénes Somos",
+  "slug": "nosotros",
+  "published": true,
+  "seo": {
+    "metaTitle": "Quiénes Somos | Constructora Carpio",
+    "metaDescription": "Conoce a Constructora Carpio, nuestra historia, misión, visión y el equipo de profesionales que hace posible cada proyecto.",
+    "ogImage": ""
+  },
+  "sections": [
+    {
+      "_template": "hero",
+      "title": "Quiénes Somos",
+      "subtitle": "Conoce la historia y el equipo detrás de Constructora Carpio",
+      "backgroundImage": "",
+      "alignment": "center",
+      "overlay": true
+    },
+    {
+      "_template": "about",
+      "title": "Nuestra Historia",
+      "content": "Constructora Carpio nació hace más de 20 años con la visión de transformar la industria de la construcción en Ecuador. Desde nuestros inicios, nos hemos comprometido con la excelencia, la innovación y la satisfacción de nuestros clientes. Hoy somos una empresa consolidada que ha dejado huella en cientos de proyectos residenciales y comerciales.",
+      "image": "",
+      "imagePosition": "left",
+      "showStats": true,
+      "stats": [
+        { "value": "2003", "label": "Año de Fundación" },
+        { "value": "+150", "label": "Proyectos" },
+        { "value": "+80", "label": "Colaboradores" },
+        { "value": "5", "label": "Ciudades" }
+      ]
+    },
+    {
+      "_template": "features",
+      "title": "Misión, Visión y Valores",
+      "layout": "cards",
+      "items": [
+        {
+          "title": "Misión",
+          "description": "Construir proyectos de alta calidad que superen las expectativas de nuestros clientes, contribuyendo al desarrollo sostenible de la comunidad.",
+          "icon": "target"
+        },
+        {
+          "title": "Visión",
+          "description": "Ser la constructora líder en Ecuador, reconocida por nuestra innovación, calidad y compromiso con el bienestar de las familias.",
+          "icon": "eye"
+        },
+        {
+          "title": "Valores",
+          "description": "Integridad, excelencia, innovación, trabajo en equipo y responsabilidad social guían cada una de nuestras acciones.",
+          "icon": "heart"
+        }
+      ]
+    },
+    {
+      "_template": "team",
+      "title": "Nuestro Equipo",
+      "subtitle": "Profesionales comprometidos con hacer realidad tus sueños",
+      "layout": "grid",
+      "members": [
+        {
+          "name": "Ing. Roberto Carpio",
+          "position": "Director General",
+          "bio": "Más de 25 años de experiencia en el sector de la construcción.",
+          "photo": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Arq. María López",
+          "position": "Directora de Diseño",
+          "bio": "Especialista en diseño arquitectónico sostenible.",
+          "photo": "",
+          "linkedin": ""
+        },
+        {
+          "name": "Ing. Carlos Mendoza",
+          "position": "Director de Operaciones",
+          "bio": "Experto en gestión de proyectos de construcción.",
+          "photo": "",
+          "linkedin": ""
+        }
+      ]
+    },
+    {
+      "_template": "testimonials",
+      "title": "Testimonios",
+      "subtitle": "Lo que dicen quienes han trabajado con nosotros",
+      "layout": "carousel",
+      "items": [
+        {
+          "quote": "Trabajar con Constructora Carpio fue una experiencia excepcional. Su profesionalismo y dedicación son incomparables.",
+          "author": "Ana Martínez",
+          "position": "Cliente desde 2018",
+          "rating": 5
+        }
+      ]
+    },
+    {
+      "_template": "cta",
+      "title": "¿Quieres ser parte de nuestro equipo?",
+      "description": "Estamos siempre en búsqueda de talento que comparta nuestra pasión por la construcción.",
+      "buttonText": "Trabaja con Nosotros",
+      "buttonLink": "/contacto",
+      "style": "dark"
+    }
+  ]
+}

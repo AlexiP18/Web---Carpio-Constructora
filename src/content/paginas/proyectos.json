@@ -1,0 +1,44 @@
+{
+  "title": "Proyectos",
+  "slug": "proyectos",
+  "published": true,
+  "seo": {
+    "metaTitle": "Proyectos | Constructora Carpio",
+    "metaDescription": "Explora el portafolio de proyectos de Constructora Carpio. Conjuntos habitacionales, edificios comerciales y más.",
+    "ogImage": ""
+  },
+  "sections": [
+    {
+      "_template": "hero",
+      "title": "Nuestros Proyectos",
+      "subtitle": "Descubre los proyectos que hemos realizado y los que están en desarrollo",
+      "backgroundImage": "",
+      "alignment": "center",
+      "overlay": true
+    },
+    {
+      "_template": "projects",
+      "title": "",
+      "subtitle": "Explora nuestro portafolio completo de proyectos residenciales y comerciales.",
+      "layout": "grid",
+      "limit": 12,
+      "showFilters": true,
+      "filterCategories": [
+        "conjunto-habitacional",
+        "diseno-residencial",
+        "diseno-retail",
+        "edificio-comercial"
+      ],
+      "ctaText": "",
+      "ctaLink": ""
+    },
+    {
+      "_template": "cta",
+      "title": "¿Interesado en algún proyecto?",
+      "description": "Contáctanos para más información sobre disponibilidad y precios.",
+      "buttonText": "Consultar Disponibilidad",
+      "buttonLink": "/contacto",
+      "style": "default"
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+---
+/**
+ * AboutBlock.astro
+ * Bloque Sobre Nosotros con estadísticas opcionales
+ */
+import CloudinaryImage from '@/components/ui/CloudinaryImage.astro';
+
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  content?: string;
+  image?: string;
+  imagePosition?: 'left' | 'right';
+  showStats?: boolean;
+  stats?: Stat[];
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const {
+  title,
+  subtitle,
+  content,
+  image,
+  imagePosition = 'right',
+  showStats = false,
+  stats = [],
+  ctaText,
+  ctaLink,
+} = Astro.props;
+
+const isImageLeft = imagePosition === 'left';
+---
+
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    {/* Title Section */}
+    {(title || subtitle) && (
+      <div class="text-center mb-12">
+        {title && (
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            {title}
+          </h2>
+        )}
+        {subtitle && (
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            {subtitle}
+          </p>
+        )}
+      </div>
+    )}
+    
+    {/* Content with Image */}
+    <div class={`grid md:grid-cols-2 gap-12 items-center ${isImageLeft ? 'md:flex-row-reverse' : ''}`}>
+      {/* Image */}
+      {image && (
+        <div class={`${isImageLeft ? 'md:order-1' : 'md:order-2'}`}>
+          <CloudinaryImage
+            src={image}
+            alt={title || 'Imagen'}
+            width={600}
+            height={400}
+            class="w-full h-auto rounded-xl shadow-lg"
+          />
+        </div>
+      )}
+      
+      {/* Content */}
+      <div class={`${isImageLeft ? 'md:order-2' : 'md:order-1'}`}>
+        {content && (
+          <p class="text-gray-600 text-lg leading-relaxed mb-6">
+            {content}
+          </p>
+        )}
+        
+        {ctaText && ctaLink && (
+          <a
+            href={ctaLink}
+            class="inline-flex items-center px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-lg transition-colors"
+          >
+            {ctaText}
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        )}
+      </div>
+    </div>
+    
+    {/* Stats */}
+    {showStats && stats.length > 0 && (
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <div class="text-4xl md:text-5xl font-bold text-primary-500 mb-2">
+              {stat.value}
+            </div>
+            <div class="text-gray-600">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>

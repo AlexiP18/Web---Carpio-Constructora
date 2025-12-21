@@ -1,0 +1,105 @@
+---
+/**
+ * FAQBlock.astro
+ * Bloque de Preguntas Frecuentes con acordeón
+ */
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  items?: FAQItem[];
+}
+
+const {
+  title,
+  subtitle,
+  items = [],
+} = Astro.props;
+---
+
+<section class="py-16 md:py-24 bg-gray-50">
+  <div class="max-w-3xl mx-auto px-4">
+    {/* Header */}
+    {(title || subtitle) && (
+      <div class="text-center mb-12">
+        {title && (
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            {title}
+          </h2>
+        )}
+        {subtitle && (
+          <p class="text-lg text-gray-600">
+            {subtitle}
+          </p>
+        )}
+      </div>
+    )}
+    
+    {/* FAQ Accordion */}
+    <div class="space-y-4" id="faq-accordion">
+      {items.map((item, index) => (
+        <div class="bg-white rounded-xl shadow-sm overflow-hidden faq-item">
+          <button
+            class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-gray-900 hover:bg-gray-50 transition-colors faq-trigger"
+            data-index={index}
+            aria-expanded="false"
+          >
+            <span>{item.question}</span>
+            <svg class="w-5 h-5 text-gray-500 transition-transform faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="faq-content hidden" data-index={index}>
+            <div class="px-6 pb-4 text-gray-600">
+              {item.answer}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    {items.length === 0 && (
+      <div class="text-center py-12">
+        <p class="text-gray-500">No hay preguntas frecuentes configuradas.</p>
+      </div>
+    )}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const triggers = document.querySelectorAll('.faq-trigger');
+    
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const index = trigger.getAttribute('data-index');
+        const content = document.querySelector(`.faq-content[data-index="${index}"]`);
+        const icon = trigger.querySelector('.faq-icon');
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        
+        // Toggle current
+        trigger.setAttribute('aria-expanded', (!isExpanded).toString());
+        content?.classList.toggle('hidden');
+        icon?.classList.toggle('rotate-180');
+        
+        // Optionally close others (accordion behavior)
+        triggers.forEach(otherTrigger => {
+          if (otherTrigger !== trigger) {
+            const otherIndex = otherTrigger.getAttribute('data-index');
+            const otherContent = document.querySelector(`.faq-content[data-index="${otherIndex}"]`);
+            const otherIcon = otherTrigger.querySelector('.faq-icon');
+            
+            otherTrigger.setAttribute('aria-expanded', 'false');
+            otherContent?.classList.add('hidden');
+            otherIcon?.classList.remove('rotate-180');
+          }
+        });
+      });
+    });
+  });
+</script>

@@ -1,0 +1,146 @@
+---
+/**
+ * ServicesBlock.astro
+ * Bloque de Servicios con múltiples layouts
+ */
+import CloudinaryImage from '@/components/ui/CloudinaryImage.astro';
+
+interface ServiceItem {
+  title: string;
+  description?: string;
+  icon?: string;
+  image?: string;
+  link?: string;
+}
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  layout?: 'grid' | 'carousel' | 'list' | 'accordion';
+  items?: ServiceItem[];
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const {
+  title,
+  subtitle,
+  layout = 'grid',
+  items = [],
+  ctaText,
+  ctaLink,
+} = Astro.props;
+
+// Iconos básicos SVG
+const icons: Record<string, string> = {
+  home: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />',
+  building: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />',
+  blueprint: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />',
+  hammer: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />',
+  clipboard: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />',
+  chart: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />',
+};
+
+const getIcon = (iconName?: string) => icons[iconName || ''] || icons.building;
+---
+
+<section class="py-16 md:py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    {/* Header */}
+    {(title || subtitle) && (
+      <div class="text-center mb-12">
+        {title && (
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            {title}
+          </h2>
+        )}
+        {subtitle && (
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            {subtitle}
+          </p>
+        )}
+      </div>
+    )}
+    
+    {/* Grid Layout */}
+    {layout === 'grid' && (
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {items.map((item) => (
+          <article class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 group">
+            {item.image ? (
+              <div class="mb-4 overflow-hidden rounded-lg">
+                <CloudinaryImage
+                  src={item.image}
+                  alt={item.title}
+                  width={400}
+                  height={250}
+                  class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            ) : (
+              <div class="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-7 h-7 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={getIcon(item.icon)} />
+              </div>
+            )}
+            
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              {item.title}
+            </h3>
+            
+            {item.description && (
+              <p class="text-gray-600 mb-4">
+                {item.description}
+              </p>
+            )}
+            
+            {item.link && (
+              <a
+                href={item.link}
+                class="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium"
+              >
+                Ver más
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    )}
+    
+    {/* List Layout */}
+    {layout === 'list' && (
+      <div class="space-y-6">
+        {items.map((item) => (
+          <article class="bg-white rounded-xl shadow-md p-6 flex gap-6 items-start">
+            <div class="w-14 h-14 bg-primary-100 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-7 h-7 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={getIcon(item.icon)} />
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+              {item.description && <p class="text-gray-600">{item.description}</p>}
+              {item.link && (
+                <a href={item.link} class="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium mt-2">
+                  Ver más →
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    )}
+    
+    {/* CTA */}
+    {ctaText && ctaLink && (
+      <div class="text-center mt-12">
+        <a
+          href={ctaLink}
+          class="inline-flex items-center px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-lg transition-colors"
+        >
+          {ctaText}
+        </a>
+      </div>
+    )}
+  </div>
+</section>

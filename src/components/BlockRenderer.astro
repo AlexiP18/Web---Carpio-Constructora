@@ -1,0 +1,61 @@
+---
+/**
+ * BlockRenderer.astro
+ * Componente que renderiza secciones/bloques dinámicamente basado en el tipo de bloque
+ * 
+ * Uso:
+ * <BlockRenderer sections={page.sections} />
+ */
+
+// Importar todos los componentes de bloques
+import HeroBlock from './blocks/HeroBlock.astro';
+import AboutBlock from './blocks/AboutBlock.astro';
+import ServicesBlock from './blocks/ServicesBlock.astro';
+import ProjectsBlock from './blocks/ProjectsBlock.astro';
+import TestimonialsBlock from './blocks/TestimonialsBlock.astro';
+import CTABlock from './blocks/CTABlock.astro';
+import ContactBlock from './blocks/ContactBlock.astro';
+import TeamBlock from './blocks/TeamBlock.astro';
+import FAQBlock from './blocks/FAQBlock.astro';
+import GalleryBlock from './blocks/GalleryBlock.astro';
+import FeaturesBlock from './blocks/FeaturesBlock.astro';
+import ContentBlock from './blocks/ContentBlock.astro';
+import SpacerBlock from './blocks/SpacerBlock.astro';
+
+// Mapeo de tipos de bloque a componentes
+const blockComponents: Record<string, any> = {
+  hero: HeroBlock,
+  about: AboutBlock,
+  services: ServicesBlock,
+  projects: ProjectsBlock,
+  testimonials: TestimonialsBlock,
+  cta: CTABlock,
+  contact: ContactBlock,
+  team: TeamBlock,
+  faq: FAQBlock,
+  gallery: GalleryBlock,
+  features: FeaturesBlock,
+  content: ContentBlock,
+  spacer: SpacerBlock,
+};
+
+interface Props {
+  sections: any[];
+}
+
+const { sections = [] } = Astro.props;
+---
+
+{sections.map((section, index) => {
+  const blockType = section._template || section.__typename?.replace('PaginasSections', '').toLowerCase();
+  const BlockComponent = blockComponents[blockType];
+  
+  if (!BlockComponent) {
+    console.warn(`Block type "${blockType}" not found. Available types: ${Object.keys(blockComponents).join(', ')}`);
+    return null;
+  }
+  
+  return (
+    <BlockComponent {...section} key={index} />
+  );
+})}

@@ -1,0 +1,204 @@
+---
+/**
+ * ProjectsBlock.astro
+ * Bloque de Proyectos con filtros y múltiples layouts
+ */
+import { getCollection } from 'astro:content';
+import CloudinaryImage from '@/components/ui/CloudinaryImage.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  layout?: 'grid' | 'masonry' | 'carousel' | 'slider';
+  limit?: number;
+  showFilters?: boolean;
+  filterCategories?: string[];
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+const {
+  title,
+  subtitle,
+  layout = 'grid',
+  limit = 6,
+  showFilters = false,
+  filterCategories = [],
+  ctaText,
+  ctaLink,
+} = Astro.props;
+
+// Obtener proyectos de la colección
+const allProjects = await getCollection('proyectos');
+
+// Filtrar por categorías si se especifican
+let projects = filterCategories.length > 0
+  ? allProjects.filter(p => filterCategories.includes((p.data as any).category || ''))
+  : allProjects;
+
+// Limitar cantidad
+projects = projects.slice(0, limit);
+
+// Obtener categorías únicas para filtros
+const uniqueCategories = [...new Set(allProjects.map(p => (p.data as any).category).filter(Boolean))] as string[];
+---
+
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    {/* Header */}
+    {(title || subtitle) && (
+      <div class="text-center mb-12">
+        {title && (
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            {title}
+          </h2>
+        )}
+        {subtitle && (
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            {subtitle}
+          </p>
+        )}
+      </div>
+    )}
+    
+    {/* Filters */}
+    {showFilters && uniqueCategories.length > 0 && (
+      <div class="flex flex-wrap justify-center gap-2 mb-8" id="project-filters">
+        <button
+          class="px-4 py-2 rounded-full bg-primary-500 text-white font-medium transition-colors filter-btn active"
+          data-filter="all"
+        >
+          Todos
+        </button>
+        {uniqueCategories.map((category) => (
+          <button
+            class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-primary-100 font-medium transition-colors filter-btn"
+            data-filter={category}
+          >
+            {category?.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}
+          </button>
+        ))}
+      </div>
+    )}
+    
+    {/* Projects Grid */}
+    <div class={`grid gap-8 ${layout === 'grid' ? 'md:grid-cols-2 lg:grid-cols-3' : ''}`} id="projects-grid">
+      {projects.map((project) => {
+        const projectData = project.data as any;
+        return (
+        <article
+          class="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow project-card"
+          data-category={projectData.category || ''}
+        >
+          <a href={`/proyecto/${project.slug}`} class="block">
+            {/* Image */}
+            <div class="relative overflow-hidden aspect-video">
+              {projectData.backgroundImage ? (
+                <CloudinaryImage
+                  src={projectData.backgroundImage}
+                  alt={projectData.title}
+                  width={400}
+                  height={250}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              ) : (
+                <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                  <span class="text-gray-400">Sin imagen</span>
+                </div>
+              )}
+              
+              {/* Status Badge */}
+              {projectData.status && (
+                <span class={`absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full ${
+                  projectData.status === 'completado' ? 'bg-green-500 text-white' :
+                  projectData.status === 'en-construccion' ? 'bg-yellow-500 text-white' :
+                  projectData.status === 'preventa' ? 'bg-blue-500 text-white' :
+                  'bg-gray-500 text-white'
+                }`}>
+                  {projectData.status.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}
+                </span>
+              )}
+            </div>
+            
+            {/* Content */}
+            <div class="p-5">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary-500 transition-colors">
+                {projectData.title}
+              </h3>
+              
+              {projectData.description && (
+                <p class="text-gray-600 text-sm line-clamp-2 mb-3">
+                  {projectData.description}
+                </p>
+              )}
+              
+              {/* Location */}
+              {projectData.location?.city && (
+                <div class="flex items-center text-gray-500 text-sm">
+                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  {projectData.location.city}
+                  {projectData.location.sector && `, ${projectData.location.sector}`}
+                </div>
+              )}
+            </div>
+          </a>
+        </article>
+      )})}
+    </div>
+    
+    {/* Empty State */}
+    {projects.length === 0 && (
+      <div class="text-center py-12">
+        <p class="text-gray-500">No hay proyectos disponibles.</p>
+      </div>
+    )}
+    
+    {/* CTA */}
+    {ctaText && ctaLink && (
+      <div class="text-center mt-12">
+        <a
+          href={ctaLink}
+          class="inline-flex items-center px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-lg transition-colors"
+        >
+          {ctaText}
+        </a>
+      </div>
+    )}
+  </div>
+</section>
+
+{showFilters && (
+  <script>
+    // Simple filter functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+      
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const filter = btn.getAttribute('data-filter');
+          
+          // Update active button
+          filterBtns.forEach(b => b.classList.remove('bg-primary-500', 'text-white', 'active'));
+          filterBtns.forEach(b => b.classList.add('bg-gray-100', 'text-gray-700'));
+          btn.classList.remove('bg-gray-100', 'text-gray-700');
+          btn.classList.add('bg-primary-500', 'text-white', 'active');
+          
+          // Filter cards
+          projectCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            const htmlCard = card as HTMLElement;
+            if (filter === 'all' || category === filter) {
+              htmlCard.style.display = '';
+            } else {
+              htmlCard.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  </script>
+)}

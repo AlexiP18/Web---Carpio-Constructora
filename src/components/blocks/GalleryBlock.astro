@@ -1,0 +1,224 @@
+---
+/**
+ * GalleryBlock.astro
+ * Bloque de Galería de Imágenes
+ */
+import CloudinaryImage from '@/components/ui/CloudinaryImage.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  layout?: 'grid' | 'masonry' | 'slider';
+  columns?: number;
+  images?: string[];
+}
+
+const {
+  title,
+  subtitle,
+  layout = 'grid',
+  columns = 3,
+  images = [],
+} = Astro.props;
+
+const gridCols = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-2 lg:grid-cols-3',
+  4: 'md:grid-cols-2 lg:grid-cols-4',
+};
+---
+
+<section class="py-16 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4">
+    {/* Header */}
+    {(title || subtitle) && (
+      <div class="text-center mb-12">
+        {title && (
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            {title}
+          </h2>
+        )}
+        {subtitle && (
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            {subtitle}
+          </p>
+        )}
+      </div>
+    )}
+    
+    {/* Grid Layout */}
+    {layout === 'grid' && (
+      <div class={`grid gap-4 ${gridCols[columns as keyof typeof gridCols] || gridCols[3]}`}>
+        {images.map((image, index) => (
+          <button
+            class="overflow-hidden rounded-xl aspect-square group cursor-pointer gallery-item"
+            data-index={index}
+            data-src={image}
+          >
+            <CloudinaryImage
+              src={image}
+              alt={`Imagen ${index + 1}`}
+              width={400}
+              height={400}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </button>
+        ))}
+      </div>
+    )}
+    
+    {/* Masonry Layout */}
+    {layout === 'masonry' && (
+      <div class="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
+        {images.map((image, index) => (
+          <button
+            class="overflow-hidden rounded-xl w-full group cursor-pointer gallery-item break-inside-avoid"
+            data-index={index}
+            data-src={image}
+          >
+            <CloudinaryImage
+              src={image}
+              alt={`Imagen ${index + 1}`}
+              width={400}
+              height={0}
+              class="w-full h-auto group-hover:scale-105 transition-transform duration-300"
+            />
+          </button>
+        ))}
+      </div>
+    )}
+    
+    {/* Slider Layout */}
+    {layout === 'slider' && (
+      <div class="relative overflow-hidden" id="gallery-slider">
+        <div class="flex transition-transform duration-300" id="gallery-track">
+          {images.map((image, index) => (
+            <div class="w-full flex-shrink-0 px-2">
+              <CloudinaryImage
+                src={image}
+                alt={`Imagen ${index + 1}`}
+                width={1200}
+                height={600}
+                class="w-full h-auto rounded-xl"
+              />
+            </div>
+          ))}
+        </div>
+        
+        {/* Navigation */}
+        {images.length > 1 && (
+          <>
+            <button
+              class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-lg"
+              id="gallery-prev"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow-lg"
+              id="gallery-next"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </>
+        )}
+      </div>
+    )}
+    
+    {images.length === 0 && (
+      <div class="text-center py-12">
+        <p class="text-gray-500">No hay imágenes en la galería.</p>
+      </div>
+    )}
+  </div>
+</section>
+
+{/* Lightbox */}
+<div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center">
+  <button id="lightbox-close" class="absolute top-4 right-4 text-white hover:text-gray-300">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+  <button id="lightbox-prev" class="absolute left-4 text-white hover:text-gray-300">
+    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+    </svg>
+  </button>
+  <button id="lightbox-next" class="absolute right-4 text-white hover:text-gray-300">
+    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+  <img id="lightbox-img" src="" alt="" class="max-w-[90vw] max-h-[90vh] object-contain" />
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
+    
+    let currentIndex = 0;
+    const images = Array.from(galleryItems).map(item => item.getAttribute('data-src') || '');
+    
+    const showImage = (index: number) => {
+      currentIndex = (index + images.length) % images.length;
+      if (lightboxImg && images[currentIndex]) {
+        lightboxImg.src = images[currentIndex];
+      }
+    };
+    
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        showImage(index);
+        lightbox?.classList.remove('hidden');
+        lightbox?.classList.add('flex');
+      });
+    });
+    
+    closeBtn?.addEventListener('click', () => {
+      lightbox?.classList.add('hidden');
+      lightbox?.classList.remove('flex');
+    });
+    
+    prevBtn?.addEventListener('click', () => showImage(currentIndex - 1));
+    nextBtn?.addEventListener('click', () => showImage(currentIndex + 1));
+    
+    lightbox?.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.add('hidden');
+        lightbox.classList.remove('flex');
+      }
+    });
+    
+    // Slider navigation
+    const sliderTrack = document.getElementById('gallery-track');
+    const sliderPrev = document.getElementById('gallery-prev');
+    const sliderNext = document.getElementById('gallery-next');
+    let sliderIndex = 0;
+    
+    const updateSlider = () => {
+      if (sliderTrack) {
+        sliderTrack.style.transform = `translateX(-${sliderIndex * 100}%)`;
+      }
+    };
+    
+    sliderPrev?.addEventListener('click', () => {
+      sliderIndex = Math.max(0, sliderIndex - 1);
+      updateSlider();
+    });
+    
+    sliderNext?.addEventListener('click', () => {
+      sliderIndex = Math.min(images.length - 1, sliderIndex + 1);
+      updateSlider();
+    });
+  });
+</script>

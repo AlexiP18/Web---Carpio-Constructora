@@ -1,5 +1,6 @@
 ﻿import { defineConfig } from 'tinacms';
 import { ImagePreviewField, ImageGalleryField } from './fields/cloudinary-fields';
+import { pageBlockTemplates } from './fields/page-blocks';
 
 // Opciones predefinidas para tags de proyectos
 const projectTagOptions = [
@@ -749,6 +750,9 @@ export default defineConfig({
         label: 'Configuración Cloudinary',
         path: 'src/content/config',
         format: 'json',
+        match: {
+          include: 'cloudinary',
+        },
         ui: {
           allowedActions: {
             create: false,
@@ -816,6 +820,349 @@ export default defineConfig({
                 name: 'general',
                 label: 'Carpeta General',
                 description: 'Ej: constructora-carpio/general',
+              },
+            ],
+          },
+        ],
+      },
+      
+      // ==========================================
+      // COLECCIÓN: PÁGINAS DEL SITIO
+      // ==========================================
+      {
+        name: 'paginas',
+        label: 'Páginas del Sitio',
+        path: 'src/content/paginas',
+        format: 'json',
+        ui: {
+          allowedActions: {
+            create: true,
+            delete: false, // Proteger páginas principales
+          },
+          router: ({ document }) => {
+            // Mapeo de slugs a rutas
+            const routes: Record<string, string> = {
+              'inicio': '/',
+              'nosotros': '/quienes-somos',
+              'servicios': '/servicios',
+              'proyectos': '/proyectos',
+              'contacto': '/contacto',
+            };
+            return routes[document._sys.filename] || `/${document._sys.filename}`;
+          },
+        },
+        fields: [
+          // --- Información de la Página ---
+          {
+            type: 'string',
+            name: 'title',
+            label: 'Título de la Página',
+            required: true,
+          },
+          {
+            type: 'string',
+            name: 'slug',
+            label: 'Slug (URL)',
+            description: 'Se usa para la URL de la página',
+            required: true,
+          },
+          {
+            type: 'boolean',
+            name: 'published',
+            label: 'Publicada',
+            description: 'Si está desactivada, la página no será visible',
+          },
+          
+          // --- SEO de la Página ---
+          {
+            type: 'object',
+            name: 'seo',
+            label: 'SEO',
+            fields: [
+              {
+                type: 'string',
+                name: 'metaTitle',
+                label: 'Meta Título',
+                description: 'Título para buscadores (máx 60 caracteres)',
+              },
+              {
+                type: 'string',
+                name: 'metaDescription',
+                label: 'Meta Descripción',
+                description: 'Descripción para buscadores (máx 160 caracteres)',
+                ui: { component: 'textarea' },
+              },
+              {
+                type: 'string',
+                name: 'ogImage',
+                label: 'Imagen para Redes Sociales',
+                description: 'URL de imagen para compartir',
+                ui: {
+                  // @ts-ignore
+                  component: ImagePreviewField,
+                },
+              },
+            ],
+          },
+          
+          // --- Secciones de la Página (Bloques) ---
+          {
+            type: 'object',
+            name: 'sections',
+            label: 'Secciones de la Página',
+            list: true,
+            // @ts-ignore - templates requires Template[]
+            templates: pageBlockTemplates,
+          },
+        ],
+      },
+      
+      // ==========================================
+      // COLECCIÓN: CONFIGURACIÓN GLOBAL
+      // ==========================================
+      {
+        name: 'configuracionGlobal',
+        label: 'Configuración Global',
+        path: 'src/content/config',
+        format: 'json',
+        ui: {
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+          global: true,
+        },
+        match: {
+          include: 'global',
+        },
+        fields: [
+          // --- Información de la Empresa ---
+          {
+            type: 'object',
+            name: 'company',
+            label: 'Información de la Empresa',
+            fields: [
+              {
+                type: 'string',
+                name: 'name',
+                label: 'Nombre de la Empresa',
+              },
+              {
+                type: 'string',
+                name: 'slogan',
+                label: 'Eslogan',
+              },
+              {
+                type: 'string',
+                name: 'logo',
+                label: 'Logo',
+                ui: {
+                  // @ts-ignore
+                  component: ImagePreviewField,
+                },
+              },
+              {
+                type: 'string',
+                name: 'logoWhite',
+                label: 'Logo Blanco (para fondos oscuros)',
+                ui: {
+                  // @ts-ignore
+                  component: ImagePreviewField,
+                },
+              },
+              {
+                type: 'string',
+                name: 'favicon',
+                label: 'Favicon',
+              },
+            ],
+          },
+          
+          // --- Contacto ---
+          {
+            type: 'object',
+            name: 'contact',
+            label: 'Información de Contacto',
+            fields: [
+              {
+                type: 'string',
+                name: 'phone',
+                label: 'Teléfono Principal',
+              },
+              {
+                type: 'string',
+                name: 'whatsapp',
+                label: 'WhatsApp',
+              },
+              {
+                type: 'string',
+                name: 'email',
+                label: 'Email Principal',
+              },
+              {
+                type: 'string',
+                name: 'address',
+                label: 'Dirección',
+                ui: { component: 'textarea' },
+              },
+              {
+                type: 'string',
+                name: 'hours',
+                label: 'Horario de Atención',
+              },
+            ],
+          },
+          
+          // --- Redes Sociales ---
+          {
+            type: 'object',
+            name: 'social',
+            label: 'Redes Sociales',
+            fields: [
+              {
+                type: 'string',
+                name: 'facebook',
+                label: 'Facebook URL',
+              },
+              {
+                type: 'string',
+                name: 'instagram',
+                label: 'Instagram URL',
+              },
+              {
+                type: 'string',
+                name: 'linkedin',
+                label: 'LinkedIn URL',
+              },
+              {
+                type: 'string',
+                name: 'youtube',
+                label: 'YouTube URL',
+              },
+              {
+                type: 'string',
+                name: 'tiktok',
+                label: 'TikTok URL',
+              },
+            ],
+          },
+          
+          // --- Header ---
+          {
+            type: 'object',
+            name: 'header',
+            label: 'Configuración del Header',
+            fields: [
+              {
+                type: 'boolean',
+                name: 'sticky',
+                label: 'Header Sticky (fijo al hacer scroll)',
+              },
+              {
+                type: 'boolean',
+                name: 'transparent',
+                label: 'Header Transparente en Hero',
+              },
+              {
+                type: 'object',
+                name: 'navigation',
+                label: 'Menú de Navegación',
+                list: true,
+                fields: [
+                  {
+                    type: 'string',
+                    name: 'label',
+                    label: 'Texto del Enlace',
+                  },
+                  {
+                    type: 'string',
+                    name: 'href',
+                    label: 'URL',
+                  },
+                  {
+                    type: 'object',
+                    name: 'children',
+                    label: 'Submenú',
+                    list: true,
+                    fields: [
+                      {
+                        type: 'string',
+                        name: 'label',
+                        label: 'Texto',
+                      },
+                      {
+                        type: 'string',
+                        name: 'href',
+                        label: 'URL',
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: 'string',
+                name: 'ctaText',
+                label: 'Texto del Botón CTA',
+              },
+              {
+                type: 'string',
+                name: 'ctaLink',
+                label: 'Enlace del Botón CTA',
+              },
+            ],
+          },
+          
+          // --- Footer ---
+          {
+            type: 'object',
+            name: 'footer',
+            label: 'Configuración del Footer',
+            fields: [
+              {
+                type: 'string',
+                name: 'copyright',
+                label: 'Texto de Copyright',
+              },
+              {
+                type: 'boolean',
+                name: 'showNewsletter',
+                label: 'Mostrar Newsletter',
+              },
+              {
+                type: 'string',
+                name: 'newsletterTitle',
+                label: 'Título del Newsletter',
+              },
+              {
+                type: 'object',
+                name: 'columns',
+                label: 'Columnas del Footer',
+                list: true,
+                fields: [
+                  {
+                    type: 'string',
+                    name: 'title',
+                    label: 'Título de la Columna',
+                  },
+                  {
+                    type: 'object',
+                    name: 'links',
+                    label: 'Enlaces',
+                    list: true,
+                    fields: [
+                      {
+                        type: 'string',
+                        name: 'label',
+                        label: 'Texto',
+                      },
+                      {
+                        type: 'string',
+                        name: 'href',
+                        label: 'URL',
+                      },
+                    ],
+                  },
+                ],
               },
             ],
           },
