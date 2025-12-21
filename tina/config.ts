@@ -1,4 +1,5 @@
 ﻿import { defineConfig } from 'tinacms';
+import { ImagePreviewField, ImageGalleryField } from './fields/cloudinary-fields';
 
 // Opciones predefinidas para tags de proyectos
 const projectTagOptions = [
@@ -126,23 +127,28 @@ export default defineConfig({
             type: 'string',
             name: 'backgroundImage',
             label: 'Imagen Principal (Hero)',
-            description: `Sube la imagen a Cloudinary y pega la URL aquí. Ruta sugerida: constructora-carpio/proyectos/[categoria]/[proyecto]/galeria/`,
+            description: `Sube la imagen a Cloudinary y pega la URL aquí`,
+            ui: {
+              // @ts-ignore - Custom component
+              component: ImagePreviewField,
+            },
           },
           {
             type: 'string',
             name: 'images',
             label: 'Galería de Imágenes',
-            description: 'URLs de imágenes de Cloudinary (una por línea)',
+            description: 'URLs de imágenes de Cloudinary',
             list: true,
             ui: {
-              component: 'tags',
+              // @ts-ignore - Custom component
+              component: ImageGalleryField,
             },
           },
           {
             type: 'string',
             name: 'virtualTourVideo',
             label: 'Video Tour Virtual',
-            description: `URL de video de Cloudinary. Ruta sugerida: constructora-carpio/proyectos/[categoria]/[proyecto]/videos/`,
+            description: `URL de video de Cloudinary`,
           },
           
           // --- Ubicación ---
@@ -398,7 +404,11 @@ export default defineConfig({
                 type: 'string',
                 name: 'backgroundImage',
                 label: 'Imagen de Fondo',
-                description: `Sube a Cloudinary: constructora-carpio/servicios/[categoria]/`,
+                description: `Sube a Cloudinary y pega la URL`,
+                ui: {
+                  // @ts-ignore - Custom component
+                  component: ImagePreviewField,
+                },
               },
               {
                 type: 'string',
@@ -424,9 +434,10 @@ export default defineConfig({
             name: 'gallery',
             label: 'Galería de Imágenes',
             list: true,
-            description: `URLs de Cloudinary. Ruta: constructora-carpio/servicios/[categoria]/`,
+            description: `URLs de Cloudinary`,
             ui: {
-              component: 'tags',
+              // @ts-ignore - Custom component
+              component: ImageGalleryField,
             },
           },
           
