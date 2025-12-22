@@ -839,6 +839,16 @@ export default defineConfig({
             create: true,
             delete: false,
           },
+          router: ({ document }) => {
+            const routes: Record<string, string> = {
+              'inicio': '/',
+              'nosotros': '/quienes-somos',
+              'servicios': '/servicios',
+              'proyectos': '/proyectos',
+              'contacto': '/contacto',
+            };
+            return routes[document._sys.filename] || `/${document._sys.filename}`;
+          },
         },
         fields: [
           {
