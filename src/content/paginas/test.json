@@ -1,0 +1,11 @@
+{
+  "title": "Página de Prueba",
+  "slug": "test",
+  "published": true,
+  "seo": {
+    "metaTitle": "Prueba",
+    "metaDescription": "Esta es una página de prueba",
+    "ogImage": ""
+  },
+  "sections": []
+}

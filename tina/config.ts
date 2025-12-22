@@ -911,7 +911,20 @@ export default defineConfig({
             name: 'sections',
             label: 'Secciones de la Página',
             list: true,
-            // @ts-ignore - templates requires Template[]
+            ui: {
+              visualSelector: true,
+              defaultItem: {
+                _template: 'hero',
+                title: 'Nueva Sección',
+              },
+              itemProps: (item: any) => {
+                const templateName = item?._template || 'Sección';
+                const title = item?.title || 'Sin título';
+                return { 
+                  label: `${templateName.charAt(0).toUpperCase() + templateName.slice(1)} - ${title}` 
+                };
+              },
+            },
             templates: pageBlockTemplates,
           },
         ],
