@@ -839,16 +839,8 @@ export default defineConfig({
             create: true,
             delete: false,
           },
-          router: ({ document }) => {
-            const routes: Record<string, string> = {
-              'inicio': '/',
-              'nosotros': '/quienes-somos',
-              'servicios': '/servicios',
-              'proyectos': '/proyectos',
-              'contacto': '/contacto',
-            };
-            return routes[document._sys.filename] || `/${document._sys.filename}`;
-          },
+          // Router deshabilitado temporalmente - causa problemas con el formulario
+          // Para vista previa, usar el botón "View" después de guardar
         },
         fields: [
           {
