@@ -837,22 +837,10 @@ export default defineConfig({
         ui: {
           allowedActions: {
             create: true,
-            delete: false, // Proteger páginas principales
-          },
-          router: ({ document }) => {
-            // Mapeo de slugs a rutas
-            const routes: Record<string, string> = {
-              'inicio': '/',
-              'nosotros': '/quienes-somos',
-              'servicios': '/servicios',
-              'proyectos': '/proyectos',
-              'contacto': '/contacto',
-            };
-            return routes[document._sys.filename] || `/${document._sys.filename}`;
+            delete: false,
           },
         },
         fields: [
-          // --- Información de la Página ---
           {
             type: 'string',
             name: 'title',
@@ -863,17 +851,13 @@ export default defineConfig({
             type: 'string',
             name: 'slug',
             label: 'Slug (URL)',
-            description: 'Se usa para la URL de la página',
             required: true,
           },
           {
             type: 'boolean',
             name: 'published',
             label: 'Publicada',
-            description: 'Si está desactivada, la página no será visible',
           },
-          
-          // --- SEO de la Página ---
           {
             type: 'object',
             name: 'seo',
@@ -883,48 +867,25 @@ export default defineConfig({
                 type: 'string',
                 name: 'metaTitle',
                 label: 'Meta Título',
-                description: 'Título para buscadores (máx 60 caracteres)',
               },
               {
                 type: 'string',
                 name: 'metaDescription',
                 label: 'Meta Descripción',
-                description: 'Descripción para buscadores (máx 160 caracteres)',
                 ui: { component: 'textarea' },
               },
               {
                 type: 'string',
                 name: 'ogImage',
-                label: 'Imagen para Redes Sociales',
-                description: 'URL de imagen para compartir',
-                ui: {
-                  // @ts-ignore
-                  component: ImagePreviewField,
-                },
+                label: 'Imagen OG',
               },
             ],
           },
-          
-          // --- Secciones de la Página (Bloques) ---
           {
             type: 'object',
             name: 'sections',
-            label: 'Secciones de la Página',
+            label: 'Secciones',
             list: true,
-            ui: {
-              visualSelector: true,
-              defaultItem: {
-                _template: 'hero',
-                title: 'Nueva Sección',
-              },
-              itemProps: (item: any) => {
-                const templateName = item?._template || 'Sección';
-                const title = item?.title || 'Sin título';
-                return { 
-                  label: `${templateName.charAt(0).toUpperCase() + templateName.slice(1)} - ${title}` 
-                };
-              },
-            },
             templates: pageBlockTemplates,
           },
         ],
