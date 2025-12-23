@@ -1766,19 +1766,11 @@ var config_default = defineConfig2({
           filename: {
             readonly: true,
             slugify: (values) => values?.slug || values?.title?.toLowerCase().replace(/\s+/g, "-") || ""
-          },
-          // Router para vista previa en iframe
-          router: (args) => {
-            const filename = args.document._sys.filename;
-            const routeMap = {
-              "inicio": "/",
-              "nosotros": "/quienes-somos",
-              "servicios": "/servicios",
-              "proyectos": "/proyectos",
-              "contacto": "/contacto"
-            };
-            return routeMap[filename] ?? `/${filename}`;
           }
+          // NOTA: Visual Editing con router requiere React + useTina hook
+          // Astro usa SSG/SSR sin React por defecto, por lo que usamos el 
+          // editor de página completa (full-page editor) en lugar de visual editing
+          // Más info: https://tina.io/docs/frameworks/astro/#enabling-visual-editing-optional
         },
         fields: [
           {
