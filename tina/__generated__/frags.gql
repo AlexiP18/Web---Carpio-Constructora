@@ -224,6 +224,24 @@ fragment PaginasParts on Paginas {
       secondaryCtaLink
       alignment
       overlay
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsAbout {
       title
@@ -239,6 +257,24 @@ fragment PaginasParts on Paginas {
       }
       ctaText
       ctaLink
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsServices {
       title
@@ -254,6 +290,24 @@ fragment PaginasParts on Paginas {
       }
       ctaText
       ctaLink
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsProjects {
       title
@@ -264,6 +318,24 @@ fragment PaginasParts on Paginas {
       filterCategories
       ctaText
       ctaLink
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsTestimonials {
       title
@@ -277,6 +349,24 @@ fragment PaginasParts on Paginas {
         avatar
         rating
       }
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsCta {
       title
@@ -287,6 +377,24 @@ fragment PaginasParts on Paginas {
       secondaryButtonText
       secondaryButtonLink
       style
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsContact {
       title
@@ -302,6 +410,24 @@ fragment PaginasParts on Paginas {
         hours
       }
       mapUrl
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsTeam {
       title
@@ -316,6 +442,24 @@ fragment PaginasParts on Paginas {
         linkedin
         email
       }
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsFaq {
       title
@@ -325,6 +469,24 @@ fragment PaginasParts on Paginas {
         question
         answer
       }
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsGallery {
       title
@@ -332,6 +494,24 @@ fragment PaginasParts on Paginas {
       layout
       columns
       images
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsFeatures {
       title
@@ -344,16 +524,70 @@ fragment PaginasParts on Paginas {
         icon
         image
       }
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsContent {
       title
       body
       backgroundColor
       maxWidth
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsSpacer {
       size
       showDivider
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
   }
 }
@@ -366,36 +600,85 @@ fragment ConfiguracionGlobalParts on ConfiguracionGlobal {
     slogan
     logo
     logoWhite
+    logoIcon
     favicon
+  }
+  colors {
+    __typename
+    primary
+    secondary
+    accent
+    background
+    text
   }
   contact {
     __typename
     phone
+    phoneSecondary
     whatsapp
     email
-    address
+    emailSecondary
     hours
   }
-  social {
+  locations {
     __typename
-    facebook
-    instagram
-    linkedin
-    youtube
-    tiktok
+    main {
+      __typename
+      name
+      address
+      city
+      province
+      country
+      postalCode
+      phone
+      email
+      mapUrl
+      mapEmbed
+      lat
+      lng
+    }
+    offices {
+      __typename
+      name
+      address
+      city
+      province
+      phone
+      email
+      hours
+      mapUrl
+      lat
+      lng
+      order
+    }
+  }
+  socialNetworks {
+    __typename
+    name
+    icon
+    url
+    showInHeader
+    showInFooter
+    order
   }
   header {
     __typename
     sticky
     transparent
+    showTopBar
     navigation {
       __typename
       label
       href
+      order
+      highlight
+      type
+      dropdownLimit
       children {
         __typename
         label
         href
+        order
       }
     }
     ctaText
@@ -406,14 +689,57 @@ fragment ConfiguracionGlobalParts on ConfiguracionGlobal {
     copyright
     showNewsletter
     newsletterTitle
+    newsletterSubtitle
     columns {
       __typename
       title
+      order
       links {
         __typename
         label
         href
+        order
       }
     }
+  }
+  legal {
+    __typename
+    privacyPolicy {
+      __typename
+      enabled
+      title
+      slug
+      lastUpdated
+      content
+    }
+    termsOfService {
+      __typename
+      enabled
+      title
+      slug
+      lastUpdated
+      content
+    }
+    cookies {
+      __typename
+      enabled
+      showBanner
+      title
+      slug
+      bannerText
+      acceptButtonText
+      rejectButtonText
+      settingsButtonText
+      content
+    }
+  }
+  seo {
+    __typename
+    defaultTitle
+    titleTemplate
+    defaultDescription
+    defaultOgImage
+    googleAnalyticsId
+    googleTagManagerId
   }
 }

@@ -662,6 +662,24 @@ type PaginasSeo {
   ogImage: String
 }
 
+type PaginasSectionsHeroAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsHeroSectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
+}
+
 type PaginasSectionsHero {
   title: String
   subtitle: String
@@ -673,11 +691,31 @@ type PaginasSectionsHero {
   secondaryCtaLink: String
   alignment: String
   overlay: Boolean
+  animation: PaginasSectionsHeroAnimation
+  sectionConfig: PaginasSectionsHeroSectionConfig
 }
 
 type PaginasSectionsAboutStats {
   value: String
   label: String
+}
+
+type PaginasSectionsAboutAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsAboutSectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 type PaginasSectionsAbout {
@@ -690,6 +728,8 @@ type PaginasSectionsAbout {
   stats: [PaginasSectionsAboutStats]
   ctaText: String
   ctaLink: String
+  animation: PaginasSectionsAboutAnimation
+  sectionConfig: PaginasSectionsAboutSectionConfig
 }
 
 type PaginasSectionsServicesItems {
@@ -700,6 +740,24 @@ type PaginasSectionsServicesItems {
   link: String
 }
 
+type PaginasSectionsServicesAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsServicesSectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
+}
+
 type PaginasSectionsServices {
   title: String
   subtitle: String
@@ -707,6 +765,26 @@ type PaginasSectionsServices {
   items: [PaginasSectionsServicesItems]
   ctaText: String
   ctaLink: String
+  animation: PaginasSectionsServicesAnimation
+  sectionConfig: PaginasSectionsServicesSectionConfig
+}
+
+type PaginasSectionsProjectsAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsProjectsSectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 type PaginasSectionsProjects {
@@ -718,6 +796,8 @@ type PaginasSectionsProjects {
   filterCategories: [String]
   ctaText: String
   ctaLink: String
+  animation: PaginasSectionsProjectsAnimation
+  sectionConfig: PaginasSectionsProjectsSectionConfig
 }
 
 type PaginasSectionsTestimonialsItems {
@@ -728,11 +808,49 @@ type PaginasSectionsTestimonialsItems {
   rating: Float
 }
 
+type PaginasSectionsTestimonialsAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsTestimonialsSectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
+}
+
 type PaginasSectionsTestimonials {
   title: String
   subtitle: String
   layout: String
   items: [PaginasSectionsTestimonialsItems]
+  animation: PaginasSectionsTestimonialsAnimation
+  sectionConfig: PaginasSectionsTestimonialsSectionConfig
+}
+
+type PaginasSectionsCtaAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsCtaSectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 type PaginasSectionsCta {
@@ -744,6 +862,8 @@ type PaginasSectionsCta {
   secondaryButtonText: String
   secondaryButtonLink: String
   style: String
+  animation: PaginasSectionsCtaAnimation
+  sectionConfig: PaginasSectionsCtaSectionConfig
 }
 
 type PaginasSectionsContactInfo {
@@ -751,6 +871,24 @@ type PaginasSectionsContactInfo {
   phone: String
   email: String
   hours: String
+}
+
+type PaginasSectionsContactAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsContactSectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 type PaginasSectionsContact {
@@ -761,6 +899,8 @@ type PaginasSectionsContact {
   showInfo: Boolean
   info: PaginasSectionsContactInfo
   mapUrl: String
+  animation: PaginasSectionsContactAnimation
+  sectionConfig: PaginasSectionsContactSectionConfig
 }
 
 type PaginasSectionsTeamMembers {
@@ -772,11 +912,31 @@ type PaginasSectionsTeamMembers {
   email: String
 }
 
+type PaginasSectionsTeamAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsTeamSectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
+}
+
 type PaginasSectionsTeam {
   title: String
   subtitle: String
   layout: String
   members: [PaginasSectionsTeamMembers]
+  animation: PaginasSectionsTeamAnimation
+  sectionConfig: PaginasSectionsTeamSectionConfig
 }
 
 type PaginasSectionsFaqItems {
@@ -784,10 +944,48 @@ type PaginasSectionsFaqItems {
   answer: String!
 }
 
+type PaginasSectionsFaqAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsFaqSectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
+}
+
 type PaginasSectionsFaq {
   title: String
   subtitle: String
   items: [PaginasSectionsFaqItems]
+  animation: PaginasSectionsFaqAnimation
+  sectionConfig: PaginasSectionsFaqSectionConfig
+}
+
+type PaginasSectionsGalleryAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsGallerySectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 type PaginasSectionsGallery {
@@ -796,6 +994,8 @@ type PaginasSectionsGallery {
   layout: String
   columns: Float
   images: [String]
+  animation: PaginasSectionsGalleryAnimation
+  sectionConfig: PaginasSectionsGallerySectionConfig
 }
 
 type PaginasSectionsFeaturesItems {
@@ -805,11 +1005,49 @@ type PaginasSectionsFeaturesItems {
   image: String
 }
 
+type PaginasSectionsFeaturesAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsFeaturesSectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
+}
+
 type PaginasSectionsFeatures {
   title: String
   subtitle: String
   layout: String
   items: [PaginasSectionsFeaturesItems]
+  animation: PaginasSectionsFeaturesAnimation
+  sectionConfig: PaginasSectionsFeaturesSectionConfig
+}
+
+type PaginasSectionsContentAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsContentSectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 type PaginasSectionsContent {
@@ -817,11 +1055,33 @@ type PaginasSectionsContent {
   body: JSON
   backgroundColor: String
   maxWidth: String
+  animation: PaginasSectionsContentAnimation
+  sectionConfig: PaginasSectionsContentSectionConfig
+}
+
+type PaginasSectionsSpacerAnimation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+type PaginasSectionsSpacerSectionConfig {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 type PaginasSectionsSpacer {
   size: String
   showDivider: Boolean
+  animation: PaginasSectionsSpacerAnimation
+  sectionConfig: PaginasSectionsSpacerSectionConfig
 }
 
 union PaginasSections = PaginasSectionsHero | PaginasSectionsAbout | PaginasSectionsServices | PaginasSectionsProjects | PaginasSectionsTestimonials | PaginasSectionsCta | PaginasSectionsContact | PaginasSectionsTeam | PaginasSectionsFaq | PaginasSectionsGallery | PaginasSectionsFeatures | PaginasSectionsContent | PaginasSectionsSpacer
@@ -843,6 +1103,24 @@ input PaginasSeoFilter {
   ogImage: StringFilter
 }
 
+input PaginasSectionsHeroAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsHeroSectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
+}
+
 input PaginasSectionsHeroFilter {
   title: StringFilter
   subtitle: StringFilter
@@ -854,11 +1132,31 @@ input PaginasSectionsHeroFilter {
   secondaryCtaLink: StringFilter
   alignment: StringFilter
   overlay: BooleanFilter
+  animation: PaginasSectionsHeroAnimationFilter
+  sectionConfig: PaginasSectionsHeroSectionConfigFilter
 }
 
 input PaginasSectionsAboutStatsFilter {
   value: StringFilter
   label: StringFilter
+}
+
+input PaginasSectionsAboutAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsAboutSectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
 }
 
 input PaginasSectionsAboutFilter {
@@ -871,6 +1169,8 @@ input PaginasSectionsAboutFilter {
   stats: PaginasSectionsAboutStatsFilter
   ctaText: StringFilter
   ctaLink: StringFilter
+  animation: PaginasSectionsAboutAnimationFilter
+  sectionConfig: PaginasSectionsAboutSectionConfigFilter
 }
 
 input PaginasSectionsServicesItemsFilter {
@@ -881,6 +1181,24 @@ input PaginasSectionsServicesItemsFilter {
   link: StringFilter
 }
 
+input PaginasSectionsServicesAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsServicesSectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
+}
+
 input PaginasSectionsServicesFilter {
   title: StringFilter
   subtitle: StringFilter
@@ -888,6 +1206,26 @@ input PaginasSectionsServicesFilter {
   items: PaginasSectionsServicesItemsFilter
   ctaText: StringFilter
   ctaLink: StringFilter
+  animation: PaginasSectionsServicesAnimationFilter
+  sectionConfig: PaginasSectionsServicesSectionConfigFilter
+}
+
+input PaginasSectionsProjectsAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsProjectsSectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
 }
 
 input PaginasSectionsProjectsFilter {
@@ -899,6 +1237,8 @@ input PaginasSectionsProjectsFilter {
   filterCategories: StringFilter
   ctaText: StringFilter
   ctaLink: StringFilter
+  animation: PaginasSectionsProjectsAnimationFilter
+  sectionConfig: PaginasSectionsProjectsSectionConfigFilter
 }
 
 input PaginasSectionsTestimonialsItemsFilter {
@@ -909,11 +1249,49 @@ input PaginasSectionsTestimonialsItemsFilter {
   rating: NumberFilter
 }
 
+input PaginasSectionsTestimonialsAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsTestimonialsSectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
+}
+
 input PaginasSectionsTestimonialsFilter {
   title: StringFilter
   subtitle: StringFilter
   layout: StringFilter
   items: PaginasSectionsTestimonialsItemsFilter
+  animation: PaginasSectionsTestimonialsAnimationFilter
+  sectionConfig: PaginasSectionsTestimonialsSectionConfigFilter
+}
+
+input PaginasSectionsCtaAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsCtaSectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
 }
 
 input PaginasSectionsCtaFilter {
@@ -925,6 +1303,8 @@ input PaginasSectionsCtaFilter {
   secondaryButtonText: StringFilter
   secondaryButtonLink: StringFilter
   style: StringFilter
+  animation: PaginasSectionsCtaAnimationFilter
+  sectionConfig: PaginasSectionsCtaSectionConfigFilter
 }
 
 input PaginasSectionsContactInfoFilter {
@@ -932,6 +1312,24 @@ input PaginasSectionsContactInfoFilter {
   phone: StringFilter
   email: StringFilter
   hours: StringFilter
+}
+
+input PaginasSectionsContactAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsContactSectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
 }
 
 input PaginasSectionsContactFilter {
@@ -942,6 +1340,8 @@ input PaginasSectionsContactFilter {
   showInfo: BooleanFilter
   info: PaginasSectionsContactInfoFilter
   mapUrl: StringFilter
+  animation: PaginasSectionsContactAnimationFilter
+  sectionConfig: PaginasSectionsContactSectionConfigFilter
 }
 
 input PaginasSectionsTeamMembersFilter {
@@ -953,11 +1353,31 @@ input PaginasSectionsTeamMembersFilter {
   email: StringFilter
 }
 
+input PaginasSectionsTeamAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsTeamSectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
+}
+
 input PaginasSectionsTeamFilter {
   title: StringFilter
   subtitle: StringFilter
   layout: StringFilter
   members: PaginasSectionsTeamMembersFilter
+  animation: PaginasSectionsTeamAnimationFilter
+  sectionConfig: PaginasSectionsTeamSectionConfigFilter
 }
 
 input PaginasSectionsFaqItemsFilter {
@@ -965,10 +1385,48 @@ input PaginasSectionsFaqItemsFilter {
   answer: StringFilter
 }
 
+input PaginasSectionsFaqAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsFaqSectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
+}
+
 input PaginasSectionsFaqFilter {
   title: StringFilter
   subtitle: StringFilter
   items: PaginasSectionsFaqItemsFilter
+  animation: PaginasSectionsFaqAnimationFilter
+  sectionConfig: PaginasSectionsFaqSectionConfigFilter
+}
+
+input PaginasSectionsGalleryAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsGallerySectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
 }
 
 input PaginasSectionsGalleryFilter {
@@ -977,6 +1435,8 @@ input PaginasSectionsGalleryFilter {
   layout: StringFilter
   columns: NumberFilter
   images: StringFilter
+  animation: PaginasSectionsGalleryAnimationFilter
+  sectionConfig: PaginasSectionsGallerySectionConfigFilter
 }
 
 input PaginasSectionsFeaturesItemsFilter {
@@ -986,11 +1446,49 @@ input PaginasSectionsFeaturesItemsFilter {
   image: StringFilter
 }
 
+input PaginasSectionsFeaturesAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsFeaturesSectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
+}
+
 input PaginasSectionsFeaturesFilter {
   title: StringFilter
   subtitle: StringFilter
   layout: StringFilter
   items: PaginasSectionsFeaturesItemsFilter
+  animation: PaginasSectionsFeaturesAnimationFilter
+  sectionConfig: PaginasSectionsFeaturesSectionConfigFilter
+}
+
+input PaginasSectionsContentAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsContentSectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
 }
 
 input PaginasSectionsContentFilter {
@@ -998,11 +1496,33 @@ input PaginasSectionsContentFilter {
   body: RichTextFilter
   backgroundColor: StringFilter
   maxWidth: StringFilter
+  animation: PaginasSectionsContentAnimationFilter
+  sectionConfig: PaginasSectionsContentSectionConfigFilter
+}
+
+input PaginasSectionsSpacerAnimationFilter {
+  enabled: BooleanFilter
+  type: StringFilter
+  duration: StringFilter
+  delay: StringFilter
+  easing: StringFilter
+  stagger: BooleanFilter
+}
+
+input PaginasSectionsSpacerSectionConfigFilter {
+  id: StringFilter
+  backgroundColor: StringFilter
+  paddingTop: StringFilter
+  paddingBottom: StringFilter
+  fullWidth: BooleanFilter
+  visible: BooleanFilter
 }
 
 input PaginasSectionsSpacerFilter {
   size: StringFilter
   showDivider: BooleanFilter
+  animation: PaginasSectionsSpacerAnimationFilter
+  sectionConfig: PaginasSectionsSpacerSectionConfigFilter
 }
 
 input PaginasSectionsFilter {
@@ -1045,39 +1565,90 @@ type ConfiguracionGlobalCompany {
   slogan: String
   logo: String
   logoWhite: String
+  logoIcon: String
   favicon: String
+}
+
+type ConfiguracionGlobalColors {
+  primary: String
+  secondary: String
+  accent: String
+  background: String
+  text: String
 }
 
 type ConfiguracionGlobalContact {
   phone: String
+  phoneSecondary: String
   whatsapp: String
   email: String
-  address: String
+  emailSecondary: String
   hours: String
 }
 
-type ConfiguracionGlobalSocial {
-  facebook: String
-  instagram: String
-  linkedin: String
-  youtube: String
-  tiktok: String
+type ConfiguracionGlobalLocationsMain {
+  name: String
+  address: String
+  city: String
+  province: String
+  country: String
+  postalCode: String
+  phone: String
+  email: String
+  mapUrl: String
+  mapEmbed: String
+  lat: Float
+  lng: Float
+}
+
+type ConfiguracionGlobalLocationsOffices {
+  name: String
+  address: String
+  city: String
+  province: String
+  phone: String
+  email: String
+  hours: String
+  mapUrl: String
+  lat: Float
+  lng: Float
+  order: Float
+}
+
+type ConfiguracionGlobalLocations {
+  main: ConfiguracionGlobalLocationsMain
+  offices: [ConfiguracionGlobalLocationsOffices]
+}
+
+type ConfiguracionGlobalSocialNetworks {
+  name: String
+  icon: String
+  url: String
+  showInHeader: Boolean
+  showInFooter: Boolean
+  order: Float
 }
 
 type ConfiguracionGlobalHeaderNavigationChildren {
   label: String
   href: String
+  order: Float
 }
 
 type ConfiguracionGlobalHeaderNavigation {
   label: String
   href: String
+  order: Float
+  highlight: Boolean
+  type: String
+  dropdownLimit: Float
   children: [ConfiguracionGlobalHeaderNavigationChildren]
 }
 
 type ConfiguracionGlobalHeader {
   sticky: Boolean
   transparent: Boolean
+  showTopBar: Boolean
   navigation: [ConfiguracionGlobalHeaderNavigation]
   ctaText: String
   ctaLink: String
@@ -1086,10 +1657,12 @@ type ConfiguracionGlobalHeader {
 type ConfiguracionGlobalFooterColumnsLinks {
   label: String
   href: String
+  order: Float
 }
 
 type ConfiguracionGlobalFooterColumns {
   title: String
+  order: Float
   links: [ConfiguracionGlobalFooterColumnsLinks]
 }
 
@@ -1097,15 +1670,63 @@ type ConfiguracionGlobalFooter {
   copyright: String
   showNewsletter: Boolean
   newsletterTitle: String
+  newsletterSubtitle: String
   columns: [ConfiguracionGlobalFooterColumns]
+}
+
+type ConfiguracionGlobalLegalPrivacyPolicy {
+  enabled: Boolean
+  title: String
+  slug: String
+  lastUpdated: String
+  content: JSON
+}
+
+type ConfiguracionGlobalLegalTermsOfService {
+  enabled: Boolean
+  title: String
+  slug: String
+  lastUpdated: String
+  content: JSON
+}
+
+type ConfiguracionGlobalLegalCookies {
+  enabled: Boolean
+  showBanner: Boolean
+  title: String
+  slug: String
+  bannerText: String
+  acceptButtonText: String
+  rejectButtonText: String
+  settingsButtonText: String
+  content: JSON
+}
+
+type ConfiguracionGlobalLegal {
+  privacyPolicy: ConfiguracionGlobalLegalPrivacyPolicy
+  termsOfService: ConfiguracionGlobalLegalTermsOfService
+  cookies: ConfiguracionGlobalLegalCookies
+}
+
+type ConfiguracionGlobalSeo {
+  defaultTitle: String
+  titleTemplate: String
+  defaultDescription: String
+  defaultOgImage: String
+  googleAnalyticsId: String
+  googleTagManagerId: String
 }
 
 type ConfiguracionGlobal implements Node & Document {
   company: ConfiguracionGlobalCompany
+  colors: ConfiguracionGlobalColors
   contact: ConfiguracionGlobalContact
-  social: ConfiguracionGlobalSocial
+  locations: ConfiguracionGlobalLocations
+  socialNetworks: [ConfiguracionGlobalSocialNetworks]
   header: ConfiguracionGlobalHeader
   footer: ConfiguracionGlobalFooter
+  legal: ConfiguracionGlobalLegal
+  seo: ConfiguracionGlobalSeo
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -1116,39 +1737,90 @@ input ConfiguracionGlobalCompanyFilter {
   slogan: StringFilter
   logo: StringFilter
   logoWhite: StringFilter
+  logoIcon: StringFilter
   favicon: StringFilter
+}
+
+input ConfiguracionGlobalColorsFilter {
+  primary: StringFilter
+  secondary: StringFilter
+  accent: StringFilter
+  background: StringFilter
+  text: StringFilter
 }
 
 input ConfiguracionGlobalContactFilter {
   phone: StringFilter
+  phoneSecondary: StringFilter
   whatsapp: StringFilter
   email: StringFilter
-  address: StringFilter
+  emailSecondary: StringFilter
   hours: StringFilter
 }
 
-input ConfiguracionGlobalSocialFilter {
-  facebook: StringFilter
-  instagram: StringFilter
-  linkedin: StringFilter
-  youtube: StringFilter
-  tiktok: StringFilter
+input ConfiguracionGlobalLocationsMainFilter {
+  name: StringFilter
+  address: StringFilter
+  city: StringFilter
+  province: StringFilter
+  country: StringFilter
+  postalCode: StringFilter
+  phone: StringFilter
+  email: StringFilter
+  mapUrl: StringFilter
+  mapEmbed: StringFilter
+  lat: NumberFilter
+  lng: NumberFilter
+}
+
+input ConfiguracionGlobalLocationsOfficesFilter {
+  name: StringFilter
+  address: StringFilter
+  city: StringFilter
+  province: StringFilter
+  phone: StringFilter
+  email: StringFilter
+  hours: StringFilter
+  mapUrl: StringFilter
+  lat: NumberFilter
+  lng: NumberFilter
+  order: NumberFilter
+}
+
+input ConfiguracionGlobalLocationsFilter {
+  main: ConfiguracionGlobalLocationsMainFilter
+  offices: ConfiguracionGlobalLocationsOfficesFilter
+}
+
+input ConfiguracionGlobalSocialNetworksFilter {
+  name: StringFilter
+  icon: StringFilter
+  url: StringFilter
+  showInHeader: BooleanFilter
+  showInFooter: BooleanFilter
+  order: NumberFilter
 }
 
 input ConfiguracionGlobalHeaderNavigationChildrenFilter {
   label: StringFilter
   href: StringFilter
+  order: NumberFilter
 }
 
 input ConfiguracionGlobalHeaderNavigationFilter {
   label: StringFilter
   href: StringFilter
+  order: NumberFilter
+  highlight: BooleanFilter
+  type: StringFilter
+  dropdownLimit: NumberFilter
   children: ConfiguracionGlobalHeaderNavigationChildrenFilter
 }
 
 input ConfiguracionGlobalHeaderFilter {
   sticky: BooleanFilter
   transparent: BooleanFilter
+  showTopBar: BooleanFilter
   navigation: ConfiguracionGlobalHeaderNavigationFilter
   ctaText: StringFilter
   ctaLink: StringFilter
@@ -1157,10 +1829,12 @@ input ConfiguracionGlobalHeaderFilter {
 input ConfiguracionGlobalFooterColumnsLinksFilter {
   label: StringFilter
   href: StringFilter
+  order: NumberFilter
 }
 
 input ConfiguracionGlobalFooterColumnsFilter {
   title: StringFilter
+  order: NumberFilter
   links: ConfiguracionGlobalFooterColumnsLinksFilter
 }
 
@@ -1168,15 +1842,71 @@ input ConfiguracionGlobalFooterFilter {
   copyright: StringFilter
   showNewsletter: BooleanFilter
   newsletterTitle: StringFilter
+  newsletterSubtitle: StringFilter
   columns: ConfiguracionGlobalFooterColumnsFilter
+}
+
+input DatetimeFilter {
+  after: String
+  before: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
+input ConfiguracionGlobalLegalPrivacyPolicyFilter {
+  enabled: BooleanFilter
+  title: StringFilter
+  slug: StringFilter
+  lastUpdated: DatetimeFilter
+  content: RichTextFilter
+}
+
+input ConfiguracionGlobalLegalTermsOfServiceFilter {
+  enabled: BooleanFilter
+  title: StringFilter
+  slug: StringFilter
+  lastUpdated: DatetimeFilter
+  content: RichTextFilter
+}
+
+input ConfiguracionGlobalLegalCookiesFilter {
+  enabled: BooleanFilter
+  showBanner: BooleanFilter
+  title: StringFilter
+  slug: StringFilter
+  bannerText: StringFilter
+  acceptButtonText: StringFilter
+  rejectButtonText: StringFilter
+  settingsButtonText: StringFilter
+  content: RichTextFilter
+}
+
+input ConfiguracionGlobalLegalFilter {
+  privacyPolicy: ConfiguracionGlobalLegalPrivacyPolicyFilter
+  termsOfService: ConfiguracionGlobalLegalTermsOfServiceFilter
+  cookies: ConfiguracionGlobalLegalCookiesFilter
+}
+
+input ConfiguracionGlobalSeoFilter {
+  defaultTitle: StringFilter
+  titleTemplate: StringFilter
+  defaultDescription: StringFilter
+  defaultOgImage: StringFilter
+  googleAnalyticsId: StringFilter
+  googleTagManagerId: StringFilter
 }
 
 input ConfiguracionGlobalFilter {
   company: ConfiguracionGlobalCompanyFilter
+  colors: ConfiguracionGlobalColorsFilter
   contact: ConfiguracionGlobalContactFilter
-  social: ConfiguracionGlobalSocialFilter
+  locations: ConfiguracionGlobalLocationsFilter
+  socialNetworks: ConfiguracionGlobalSocialNetworksFilter
   header: ConfiguracionGlobalHeaderFilter
   footer: ConfiguracionGlobalFooterFilter
+  legal: ConfiguracionGlobalLegalFilter
+  seo: ConfiguracionGlobalSeoFilter
 }
 
 type ConfiguracionGlobalConnectionEdges {
@@ -1461,6 +2191,24 @@ input PaginasSeoMutation {
   ogImage: String
 }
 
+input PaginasSectionsHeroAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsHeroSectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
+}
+
 input PaginasSectionsHeroMutation {
   title: String
   subtitle: String
@@ -1472,11 +2220,31 @@ input PaginasSectionsHeroMutation {
   secondaryCtaLink: String
   alignment: String
   overlay: Boolean
+  animation: PaginasSectionsHeroAnimationMutation
+  sectionConfig: PaginasSectionsHeroSectionConfigMutation
 }
 
 input PaginasSectionsAboutStatsMutation {
   value: String
   label: String
+}
+
+input PaginasSectionsAboutAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsAboutSectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 input PaginasSectionsAboutMutation {
@@ -1489,6 +2257,8 @@ input PaginasSectionsAboutMutation {
   stats: [PaginasSectionsAboutStatsMutation]
   ctaText: String
   ctaLink: String
+  animation: PaginasSectionsAboutAnimationMutation
+  sectionConfig: PaginasSectionsAboutSectionConfigMutation
 }
 
 input PaginasSectionsServicesItemsMutation {
@@ -1499,6 +2269,24 @@ input PaginasSectionsServicesItemsMutation {
   link: String
 }
 
+input PaginasSectionsServicesAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsServicesSectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
+}
+
 input PaginasSectionsServicesMutation {
   title: String
   subtitle: String
@@ -1506,6 +2294,26 @@ input PaginasSectionsServicesMutation {
   items: [PaginasSectionsServicesItemsMutation]
   ctaText: String
   ctaLink: String
+  animation: PaginasSectionsServicesAnimationMutation
+  sectionConfig: PaginasSectionsServicesSectionConfigMutation
+}
+
+input PaginasSectionsProjectsAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsProjectsSectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 input PaginasSectionsProjectsMutation {
@@ -1517,6 +2325,8 @@ input PaginasSectionsProjectsMutation {
   filterCategories: [String]
   ctaText: String
   ctaLink: String
+  animation: PaginasSectionsProjectsAnimationMutation
+  sectionConfig: PaginasSectionsProjectsSectionConfigMutation
 }
 
 input PaginasSectionsTestimonialsItemsMutation {
@@ -1527,11 +2337,49 @@ input PaginasSectionsTestimonialsItemsMutation {
   rating: Float
 }
 
+input PaginasSectionsTestimonialsAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsTestimonialsSectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
+}
+
 input PaginasSectionsTestimonialsMutation {
   title: String
   subtitle: String
   layout: String
   items: [PaginasSectionsTestimonialsItemsMutation]
+  animation: PaginasSectionsTestimonialsAnimationMutation
+  sectionConfig: PaginasSectionsTestimonialsSectionConfigMutation
+}
+
+input PaginasSectionsCtaAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsCtaSectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 input PaginasSectionsCtaMutation {
@@ -1543,6 +2391,8 @@ input PaginasSectionsCtaMutation {
   secondaryButtonText: String
   secondaryButtonLink: String
   style: String
+  animation: PaginasSectionsCtaAnimationMutation
+  sectionConfig: PaginasSectionsCtaSectionConfigMutation
 }
 
 input PaginasSectionsContactInfoMutation {
@@ -1550,6 +2400,24 @@ input PaginasSectionsContactInfoMutation {
   phone: String
   email: String
   hours: String
+}
+
+input PaginasSectionsContactAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsContactSectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 input PaginasSectionsContactMutation {
@@ -1560,6 +2428,8 @@ input PaginasSectionsContactMutation {
   showInfo: Boolean
   info: PaginasSectionsContactInfoMutation
   mapUrl: String
+  animation: PaginasSectionsContactAnimationMutation
+  sectionConfig: PaginasSectionsContactSectionConfigMutation
 }
 
 input PaginasSectionsTeamMembersMutation {
@@ -1571,11 +2441,31 @@ input PaginasSectionsTeamMembersMutation {
   email: String
 }
 
+input PaginasSectionsTeamAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsTeamSectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
+}
+
 input PaginasSectionsTeamMutation {
   title: String
   subtitle: String
   layout: String
   members: [PaginasSectionsTeamMembersMutation]
+  animation: PaginasSectionsTeamAnimationMutation
+  sectionConfig: PaginasSectionsTeamSectionConfigMutation
 }
 
 input PaginasSectionsFaqItemsMutation {
@@ -1583,10 +2473,48 @@ input PaginasSectionsFaqItemsMutation {
   answer: String
 }
 
+input PaginasSectionsFaqAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsFaqSectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
+}
+
 input PaginasSectionsFaqMutation {
   title: String
   subtitle: String
   items: [PaginasSectionsFaqItemsMutation]
+  animation: PaginasSectionsFaqAnimationMutation
+  sectionConfig: PaginasSectionsFaqSectionConfigMutation
+}
+
+input PaginasSectionsGalleryAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsGallerySectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 input PaginasSectionsGalleryMutation {
@@ -1595,6 +2523,8 @@ input PaginasSectionsGalleryMutation {
   layout: String
   columns: Float
   images: [String]
+  animation: PaginasSectionsGalleryAnimationMutation
+  sectionConfig: PaginasSectionsGallerySectionConfigMutation
 }
 
 input PaginasSectionsFeaturesItemsMutation {
@@ -1604,11 +2534,49 @@ input PaginasSectionsFeaturesItemsMutation {
   image: String
 }
 
+input PaginasSectionsFeaturesAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsFeaturesSectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
+}
+
 input PaginasSectionsFeaturesMutation {
   title: String
   subtitle: String
   layout: String
   items: [PaginasSectionsFeaturesItemsMutation]
+  animation: PaginasSectionsFeaturesAnimationMutation
+  sectionConfig: PaginasSectionsFeaturesSectionConfigMutation
+}
+
+input PaginasSectionsContentAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsContentSectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 input PaginasSectionsContentMutation {
@@ -1616,11 +2584,33 @@ input PaginasSectionsContentMutation {
   body: JSON
   backgroundColor: String
   maxWidth: String
+  animation: PaginasSectionsContentAnimationMutation
+  sectionConfig: PaginasSectionsContentSectionConfigMutation
+}
+
+input PaginasSectionsSpacerAnimationMutation {
+  enabled: Boolean
+  type: String
+  duration: String
+  delay: String
+  easing: String
+  stagger: Boolean
+}
+
+input PaginasSectionsSpacerSectionConfigMutation {
+  id: String
+  backgroundColor: String
+  paddingTop: String
+  paddingBottom: String
+  fullWidth: Boolean
+  visible: Boolean
 }
 
 input PaginasSectionsSpacerMutation {
   size: String
   showDivider: Boolean
+  animation: PaginasSectionsSpacerAnimationMutation
+  sectionConfig: PaginasSectionsSpacerSectionConfigMutation
 }
 
 input PaginasSectionsMutation {
@@ -1652,39 +2642,90 @@ input ConfiguracionGlobalCompanyMutation {
   slogan: String
   logo: String
   logoWhite: String
+  logoIcon: String
   favicon: String
+}
+
+input ConfiguracionGlobalColorsMutation {
+  primary: String
+  secondary: String
+  accent: String
+  background: String
+  text: String
 }
 
 input ConfiguracionGlobalContactMutation {
   phone: String
+  phoneSecondary: String
   whatsapp: String
   email: String
-  address: String
+  emailSecondary: String
   hours: String
 }
 
-input ConfiguracionGlobalSocialMutation {
-  facebook: String
-  instagram: String
-  linkedin: String
-  youtube: String
-  tiktok: String
+input ConfiguracionGlobalLocationsMainMutation {
+  name: String
+  address: String
+  city: String
+  province: String
+  country: String
+  postalCode: String
+  phone: String
+  email: String
+  mapUrl: String
+  mapEmbed: String
+  lat: Float
+  lng: Float
+}
+
+input ConfiguracionGlobalLocationsOfficesMutation {
+  name: String
+  address: String
+  city: String
+  province: String
+  phone: String
+  email: String
+  hours: String
+  mapUrl: String
+  lat: Float
+  lng: Float
+  order: Float
+}
+
+input ConfiguracionGlobalLocationsMutation {
+  main: ConfiguracionGlobalLocationsMainMutation
+  offices: [ConfiguracionGlobalLocationsOfficesMutation]
+}
+
+input ConfiguracionGlobalSocialNetworksMutation {
+  name: String
+  icon: String
+  url: String
+  showInHeader: Boolean
+  showInFooter: Boolean
+  order: Float
 }
 
 input ConfiguracionGlobalHeaderNavigationChildrenMutation {
   label: String
   href: String
+  order: Float
 }
 
 input ConfiguracionGlobalHeaderNavigationMutation {
   label: String
   href: String
+  order: Float
+  highlight: Boolean
+  type: String
+  dropdownLimit: Float
   children: [ConfiguracionGlobalHeaderNavigationChildrenMutation]
 }
 
 input ConfiguracionGlobalHeaderMutation {
   sticky: Boolean
   transparent: Boolean
+  showTopBar: Boolean
   navigation: [ConfiguracionGlobalHeaderNavigationMutation]
   ctaText: String
   ctaLink: String
@@ -1693,10 +2734,12 @@ input ConfiguracionGlobalHeaderMutation {
 input ConfiguracionGlobalFooterColumnsLinksMutation {
   label: String
   href: String
+  order: Float
 }
 
 input ConfiguracionGlobalFooterColumnsMutation {
   title: String
+  order: Float
   links: [ConfiguracionGlobalFooterColumnsLinksMutation]
 }
 
@@ -1704,15 +2747,63 @@ input ConfiguracionGlobalFooterMutation {
   copyright: String
   showNewsletter: Boolean
   newsletterTitle: String
+  newsletterSubtitle: String
   columns: [ConfiguracionGlobalFooterColumnsMutation]
+}
+
+input ConfiguracionGlobalLegalPrivacyPolicyMutation {
+  enabled: Boolean
+  title: String
+  slug: String
+  lastUpdated: String
+  content: JSON
+}
+
+input ConfiguracionGlobalLegalTermsOfServiceMutation {
+  enabled: Boolean
+  title: String
+  slug: String
+  lastUpdated: String
+  content: JSON
+}
+
+input ConfiguracionGlobalLegalCookiesMutation {
+  enabled: Boolean
+  showBanner: Boolean
+  title: String
+  slug: String
+  bannerText: String
+  acceptButtonText: String
+  rejectButtonText: String
+  settingsButtonText: String
+  content: JSON
+}
+
+input ConfiguracionGlobalLegalMutation {
+  privacyPolicy: ConfiguracionGlobalLegalPrivacyPolicyMutation
+  termsOfService: ConfiguracionGlobalLegalTermsOfServiceMutation
+  cookies: ConfiguracionGlobalLegalCookiesMutation
+}
+
+input ConfiguracionGlobalSeoMutation {
+  defaultTitle: String
+  titleTemplate: String
+  defaultDescription: String
+  defaultOgImage: String
+  googleAnalyticsId: String
+  googleTagManagerId: String
 }
 
 input ConfiguracionGlobalMutation {
   company: ConfiguracionGlobalCompanyMutation
+  colors: ConfiguracionGlobalColorsMutation
   contact: ConfiguracionGlobalContactMutation
-  social: ConfiguracionGlobalSocialMutation
+  locations: ConfiguracionGlobalLocationsMutation
+  socialNetworks: [ConfiguracionGlobalSocialNetworksMutation]
   header: ConfiguracionGlobalHeaderMutation
   footer: ConfiguracionGlobalFooterMutation
+  legal: ConfiguracionGlobalLegalMutation
+  seo: ConfiguracionGlobalSeoMutation
 }
 
 schema {

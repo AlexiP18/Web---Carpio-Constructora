@@ -886,6 +886,26 @@ export type PaginasSeo = {
   ogImage?: Maybe<Scalars['String']['output']>;
 };
 
+export type PaginasSectionsHeroAnimation = {
+  __typename?: 'PaginasSectionsHeroAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsHeroSectionConfig = {
+  __typename?: 'PaginasSectionsHeroSectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type PaginasSectionsHero = {
   __typename?: 'PaginasSectionsHero';
   title?: Maybe<Scalars['String']['output']>;
@@ -898,12 +918,34 @@ export type PaginasSectionsHero = {
   secondaryCtaLink?: Maybe<Scalars['String']['output']>;
   alignment?: Maybe<Scalars['String']['output']>;
   overlay?: Maybe<Scalars['Boolean']['output']>;
+  animation?: Maybe<PaginasSectionsHeroAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsHeroSectionConfig>;
 };
 
 export type PaginasSectionsAboutStats = {
   __typename?: 'PaginasSectionsAboutStats';
   value?: Maybe<Scalars['String']['output']>;
   label?: Maybe<Scalars['String']['output']>;
+};
+
+export type PaginasSectionsAboutAnimation = {
+  __typename?: 'PaginasSectionsAboutAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsAboutSectionConfig = {
+  __typename?: 'PaginasSectionsAboutSectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type PaginasSectionsAbout = {
@@ -917,6 +959,8 @@ export type PaginasSectionsAbout = {
   stats?: Maybe<Array<Maybe<PaginasSectionsAboutStats>>>;
   ctaText?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
+  animation?: Maybe<PaginasSectionsAboutAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsAboutSectionConfig>;
 };
 
 export type PaginasSectionsServicesItems = {
@@ -928,6 +972,26 @@ export type PaginasSectionsServicesItems = {
   link?: Maybe<Scalars['String']['output']>;
 };
 
+export type PaginasSectionsServicesAnimation = {
+  __typename?: 'PaginasSectionsServicesAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsServicesSectionConfig = {
+  __typename?: 'PaginasSectionsServicesSectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type PaginasSectionsServices = {
   __typename?: 'PaginasSectionsServices';
   title?: Maybe<Scalars['String']['output']>;
@@ -936,6 +1000,28 @@ export type PaginasSectionsServices = {
   items?: Maybe<Array<Maybe<PaginasSectionsServicesItems>>>;
   ctaText?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
+  animation?: Maybe<PaginasSectionsServicesAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsServicesSectionConfig>;
+};
+
+export type PaginasSectionsProjectsAnimation = {
+  __typename?: 'PaginasSectionsProjectsAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsProjectsSectionConfig = {
+  __typename?: 'PaginasSectionsProjectsSectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type PaginasSectionsProjects = {
@@ -948,6 +1034,8 @@ export type PaginasSectionsProjects = {
   filterCategories?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   ctaText?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
+  animation?: Maybe<PaginasSectionsProjectsAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsProjectsSectionConfig>;
 };
 
 export type PaginasSectionsTestimonialsItems = {
@@ -959,12 +1047,54 @@ export type PaginasSectionsTestimonialsItems = {
   rating?: Maybe<Scalars['Float']['output']>;
 };
 
+export type PaginasSectionsTestimonialsAnimation = {
+  __typename?: 'PaginasSectionsTestimonialsAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsTestimonialsSectionConfig = {
+  __typename?: 'PaginasSectionsTestimonialsSectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type PaginasSectionsTestimonials = {
   __typename?: 'PaginasSectionsTestimonials';
   title?: Maybe<Scalars['String']['output']>;
   subtitle?: Maybe<Scalars['String']['output']>;
   layout?: Maybe<Scalars['String']['output']>;
   items?: Maybe<Array<Maybe<PaginasSectionsTestimonialsItems>>>;
+  animation?: Maybe<PaginasSectionsTestimonialsAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsTestimonialsSectionConfig>;
+};
+
+export type PaginasSectionsCtaAnimation = {
+  __typename?: 'PaginasSectionsCtaAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsCtaSectionConfig = {
+  __typename?: 'PaginasSectionsCtaSectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type PaginasSectionsCta = {
@@ -977,6 +1107,8 @@ export type PaginasSectionsCta = {
   secondaryButtonText?: Maybe<Scalars['String']['output']>;
   secondaryButtonLink?: Maybe<Scalars['String']['output']>;
   style?: Maybe<Scalars['String']['output']>;
+  animation?: Maybe<PaginasSectionsCtaAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsCtaSectionConfig>;
 };
 
 export type PaginasSectionsContactInfo = {
@@ -985,6 +1117,26 @@ export type PaginasSectionsContactInfo = {
   phone?: Maybe<Scalars['String']['output']>;
   email?: Maybe<Scalars['String']['output']>;
   hours?: Maybe<Scalars['String']['output']>;
+};
+
+export type PaginasSectionsContactAnimation = {
+  __typename?: 'PaginasSectionsContactAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsContactSectionConfig = {
+  __typename?: 'PaginasSectionsContactSectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type PaginasSectionsContact = {
@@ -996,6 +1148,8 @@ export type PaginasSectionsContact = {
   showInfo?: Maybe<Scalars['Boolean']['output']>;
   info?: Maybe<PaginasSectionsContactInfo>;
   mapUrl?: Maybe<Scalars['String']['output']>;
+  animation?: Maybe<PaginasSectionsContactAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsContactSectionConfig>;
 };
 
 export type PaginasSectionsTeamMembers = {
@@ -1008,12 +1162,34 @@ export type PaginasSectionsTeamMembers = {
   email?: Maybe<Scalars['String']['output']>;
 };
 
+export type PaginasSectionsTeamAnimation = {
+  __typename?: 'PaginasSectionsTeamAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsTeamSectionConfig = {
+  __typename?: 'PaginasSectionsTeamSectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type PaginasSectionsTeam = {
   __typename?: 'PaginasSectionsTeam';
   title?: Maybe<Scalars['String']['output']>;
   subtitle?: Maybe<Scalars['String']['output']>;
   layout?: Maybe<Scalars['String']['output']>;
   members?: Maybe<Array<Maybe<PaginasSectionsTeamMembers>>>;
+  animation?: Maybe<PaginasSectionsTeamAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsTeamSectionConfig>;
 };
 
 export type PaginasSectionsFaqItems = {
@@ -1022,11 +1198,53 @@ export type PaginasSectionsFaqItems = {
   answer: Scalars['String']['output'];
 };
 
+export type PaginasSectionsFaqAnimation = {
+  __typename?: 'PaginasSectionsFaqAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsFaqSectionConfig = {
+  __typename?: 'PaginasSectionsFaqSectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type PaginasSectionsFaq = {
   __typename?: 'PaginasSectionsFaq';
   title?: Maybe<Scalars['String']['output']>;
   subtitle?: Maybe<Scalars['String']['output']>;
   items?: Maybe<Array<Maybe<PaginasSectionsFaqItems>>>;
+  animation?: Maybe<PaginasSectionsFaqAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsFaqSectionConfig>;
+};
+
+export type PaginasSectionsGalleryAnimation = {
+  __typename?: 'PaginasSectionsGalleryAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsGallerySectionConfig = {
+  __typename?: 'PaginasSectionsGallerySectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type PaginasSectionsGallery = {
@@ -1036,6 +1254,8 @@ export type PaginasSectionsGallery = {
   layout?: Maybe<Scalars['String']['output']>;
   columns?: Maybe<Scalars['Float']['output']>;
   images?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  animation?: Maybe<PaginasSectionsGalleryAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsGallerySectionConfig>;
 };
 
 export type PaginasSectionsFeaturesItems = {
@@ -1046,12 +1266,54 @@ export type PaginasSectionsFeaturesItems = {
   image?: Maybe<Scalars['String']['output']>;
 };
 
+export type PaginasSectionsFeaturesAnimation = {
+  __typename?: 'PaginasSectionsFeaturesAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsFeaturesSectionConfig = {
+  __typename?: 'PaginasSectionsFeaturesSectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type PaginasSectionsFeatures = {
   __typename?: 'PaginasSectionsFeatures';
   title?: Maybe<Scalars['String']['output']>;
   subtitle?: Maybe<Scalars['String']['output']>;
   layout?: Maybe<Scalars['String']['output']>;
   items?: Maybe<Array<Maybe<PaginasSectionsFeaturesItems>>>;
+  animation?: Maybe<PaginasSectionsFeaturesAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsFeaturesSectionConfig>;
+};
+
+export type PaginasSectionsContentAnimation = {
+  __typename?: 'PaginasSectionsContentAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsContentSectionConfig = {
+  __typename?: 'PaginasSectionsContentSectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type PaginasSectionsContent = {
@@ -1060,12 +1322,36 @@ export type PaginasSectionsContent = {
   body?: Maybe<Scalars['JSON']['output']>;
   backgroundColor?: Maybe<Scalars['String']['output']>;
   maxWidth?: Maybe<Scalars['String']['output']>;
+  animation?: Maybe<PaginasSectionsContentAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsContentSectionConfig>;
+};
+
+export type PaginasSectionsSpacerAnimation = {
+  __typename?: 'PaginasSectionsSpacerAnimation';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  duration?: Maybe<Scalars['String']['output']>;
+  delay?: Maybe<Scalars['String']['output']>;
+  easing?: Maybe<Scalars['String']['output']>;
+  stagger?: Maybe<Scalars['Boolean']['output']>;
+};
+
+export type PaginasSectionsSpacerSectionConfig = {
+  __typename?: 'PaginasSectionsSpacerSectionConfig';
+  id?: Maybe<Scalars['String']['output']>;
+  backgroundColor?: Maybe<Scalars['String']['output']>;
+  paddingTop?: Maybe<Scalars['String']['output']>;
+  paddingBottom?: Maybe<Scalars['String']['output']>;
+  fullWidth?: Maybe<Scalars['Boolean']['output']>;
+  visible?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type PaginasSectionsSpacer = {
   __typename?: 'PaginasSectionsSpacer';
   size?: Maybe<Scalars['String']['output']>;
   showDivider?: Maybe<Scalars['Boolean']['output']>;
+  animation?: Maybe<PaginasSectionsSpacerAnimation>;
+  sectionConfig?: Maybe<PaginasSectionsSpacerSectionConfig>;
 };
 
 export type PaginasSections = PaginasSectionsHero | PaginasSectionsAbout | PaginasSectionsServices | PaginasSectionsProjects | PaginasSectionsTestimonials | PaginasSectionsCta | PaginasSectionsContact | PaginasSectionsTeam | PaginasSectionsFaq | PaginasSectionsGallery | PaginasSectionsFeatures | PaginasSectionsContent | PaginasSectionsSpacer;
@@ -1088,6 +1374,24 @@ export type PaginasSeoFilter = {
   ogImage?: InputMaybe<StringFilter>;
 };
 
+export type PaginasSectionsHeroAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsHeroSectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
+};
+
 export type PaginasSectionsHeroFilter = {
   title?: InputMaybe<StringFilter>;
   subtitle?: InputMaybe<StringFilter>;
@@ -1099,11 +1403,31 @@ export type PaginasSectionsHeroFilter = {
   secondaryCtaLink?: InputMaybe<StringFilter>;
   alignment?: InputMaybe<StringFilter>;
   overlay?: InputMaybe<BooleanFilter>;
+  animation?: InputMaybe<PaginasSectionsHeroAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsHeroSectionConfigFilter>;
 };
 
 export type PaginasSectionsAboutStatsFilter = {
   value?: InputMaybe<StringFilter>;
   label?: InputMaybe<StringFilter>;
+};
+
+export type PaginasSectionsAboutAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsAboutSectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
 };
 
 export type PaginasSectionsAboutFilter = {
@@ -1116,6 +1440,8 @@ export type PaginasSectionsAboutFilter = {
   stats?: InputMaybe<PaginasSectionsAboutStatsFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
+  animation?: InputMaybe<PaginasSectionsAboutAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsAboutSectionConfigFilter>;
 };
 
 export type PaginasSectionsServicesItemsFilter = {
@@ -1126,6 +1452,24 @@ export type PaginasSectionsServicesItemsFilter = {
   link?: InputMaybe<StringFilter>;
 };
 
+export type PaginasSectionsServicesAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsServicesSectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
+};
+
 export type PaginasSectionsServicesFilter = {
   title?: InputMaybe<StringFilter>;
   subtitle?: InputMaybe<StringFilter>;
@@ -1133,6 +1477,26 @@ export type PaginasSectionsServicesFilter = {
   items?: InputMaybe<PaginasSectionsServicesItemsFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
+  animation?: InputMaybe<PaginasSectionsServicesAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsServicesSectionConfigFilter>;
+};
+
+export type PaginasSectionsProjectsAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsProjectsSectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
 };
 
 export type PaginasSectionsProjectsFilter = {
@@ -1144,6 +1508,8 @@ export type PaginasSectionsProjectsFilter = {
   filterCategories?: InputMaybe<StringFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
+  animation?: InputMaybe<PaginasSectionsProjectsAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsProjectsSectionConfigFilter>;
 };
 
 export type PaginasSectionsTestimonialsItemsFilter = {
@@ -1154,11 +1520,49 @@ export type PaginasSectionsTestimonialsItemsFilter = {
   rating?: InputMaybe<NumberFilter>;
 };
 
+export type PaginasSectionsTestimonialsAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsTestimonialsSectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
+};
+
 export type PaginasSectionsTestimonialsFilter = {
   title?: InputMaybe<StringFilter>;
   subtitle?: InputMaybe<StringFilter>;
   layout?: InputMaybe<StringFilter>;
   items?: InputMaybe<PaginasSectionsTestimonialsItemsFilter>;
+  animation?: InputMaybe<PaginasSectionsTestimonialsAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsTestimonialsSectionConfigFilter>;
+};
+
+export type PaginasSectionsCtaAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsCtaSectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
 };
 
 export type PaginasSectionsCtaFilter = {
@@ -1170,6 +1574,8 @@ export type PaginasSectionsCtaFilter = {
   secondaryButtonText?: InputMaybe<StringFilter>;
   secondaryButtonLink?: InputMaybe<StringFilter>;
   style?: InputMaybe<StringFilter>;
+  animation?: InputMaybe<PaginasSectionsCtaAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsCtaSectionConfigFilter>;
 };
 
 export type PaginasSectionsContactInfoFilter = {
@@ -1177,6 +1583,24 @@ export type PaginasSectionsContactInfoFilter = {
   phone?: InputMaybe<StringFilter>;
   email?: InputMaybe<StringFilter>;
   hours?: InputMaybe<StringFilter>;
+};
+
+export type PaginasSectionsContactAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsContactSectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
 };
 
 export type PaginasSectionsContactFilter = {
@@ -1187,6 +1611,8 @@ export type PaginasSectionsContactFilter = {
   showInfo?: InputMaybe<BooleanFilter>;
   info?: InputMaybe<PaginasSectionsContactInfoFilter>;
   mapUrl?: InputMaybe<StringFilter>;
+  animation?: InputMaybe<PaginasSectionsContactAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsContactSectionConfigFilter>;
 };
 
 export type PaginasSectionsTeamMembersFilter = {
@@ -1198,11 +1624,31 @@ export type PaginasSectionsTeamMembersFilter = {
   email?: InputMaybe<StringFilter>;
 };
 
+export type PaginasSectionsTeamAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsTeamSectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
+};
+
 export type PaginasSectionsTeamFilter = {
   title?: InputMaybe<StringFilter>;
   subtitle?: InputMaybe<StringFilter>;
   layout?: InputMaybe<StringFilter>;
   members?: InputMaybe<PaginasSectionsTeamMembersFilter>;
+  animation?: InputMaybe<PaginasSectionsTeamAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsTeamSectionConfigFilter>;
 };
 
 export type PaginasSectionsFaqItemsFilter = {
@@ -1210,10 +1656,48 @@ export type PaginasSectionsFaqItemsFilter = {
   answer?: InputMaybe<StringFilter>;
 };
 
+export type PaginasSectionsFaqAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsFaqSectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
+};
+
 export type PaginasSectionsFaqFilter = {
   title?: InputMaybe<StringFilter>;
   subtitle?: InputMaybe<StringFilter>;
   items?: InputMaybe<PaginasSectionsFaqItemsFilter>;
+  animation?: InputMaybe<PaginasSectionsFaqAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsFaqSectionConfigFilter>;
+};
+
+export type PaginasSectionsGalleryAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsGallerySectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
 };
 
 export type PaginasSectionsGalleryFilter = {
@@ -1222,6 +1706,8 @@ export type PaginasSectionsGalleryFilter = {
   layout?: InputMaybe<StringFilter>;
   columns?: InputMaybe<NumberFilter>;
   images?: InputMaybe<StringFilter>;
+  animation?: InputMaybe<PaginasSectionsGalleryAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsGallerySectionConfigFilter>;
 };
 
 export type PaginasSectionsFeaturesItemsFilter = {
@@ -1231,11 +1717,49 @@ export type PaginasSectionsFeaturesItemsFilter = {
   image?: InputMaybe<StringFilter>;
 };
 
+export type PaginasSectionsFeaturesAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsFeaturesSectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
+};
+
 export type PaginasSectionsFeaturesFilter = {
   title?: InputMaybe<StringFilter>;
   subtitle?: InputMaybe<StringFilter>;
   layout?: InputMaybe<StringFilter>;
   items?: InputMaybe<PaginasSectionsFeaturesItemsFilter>;
+  animation?: InputMaybe<PaginasSectionsFeaturesAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsFeaturesSectionConfigFilter>;
+};
+
+export type PaginasSectionsContentAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsContentSectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
 };
 
 export type PaginasSectionsContentFilter = {
@@ -1243,11 +1767,33 @@ export type PaginasSectionsContentFilter = {
   body?: InputMaybe<RichTextFilter>;
   backgroundColor?: InputMaybe<StringFilter>;
   maxWidth?: InputMaybe<StringFilter>;
+  animation?: InputMaybe<PaginasSectionsContentAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsContentSectionConfigFilter>;
+};
+
+export type PaginasSectionsSpacerAnimationFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  duration?: InputMaybe<StringFilter>;
+  delay?: InputMaybe<StringFilter>;
+  easing?: InputMaybe<StringFilter>;
+  stagger?: InputMaybe<BooleanFilter>;
+};
+
+export type PaginasSectionsSpacerSectionConfigFilter = {
+  id?: InputMaybe<StringFilter>;
+  backgroundColor?: InputMaybe<StringFilter>;
+  paddingTop?: InputMaybe<StringFilter>;
+  paddingBottom?: InputMaybe<StringFilter>;
+  fullWidth?: InputMaybe<BooleanFilter>;
+  visible?: InputMaybe<BooleanFilter>;
 };
 
 export type PaginasSectionsSpacerFilter = {
   size?: InputMaybe<StringFilter>;
   showDivider?: InputMaybe<BooleanFilter>;
+  animation?: InputMaybe<PaginasSectionsSpacerAnimationFilter>;
+  sectionConfig?: InputMaybe<PaginasSectionsSpacerSectionConfigFilter>;
 };
 
 export type PaginasSectionsFilter = {
@@ -1293,37 +1839,91 @@ export type ConfiguracionGlobalCompany = {
   slogan?: Maybe<Scalars['String']['output']>;
   logo?: Maybe<Scalars['String']['output']>;
   logoWhite?: Maybe<Scalars['String']['output']>;
+  logoIcon?: Maybe<Scalars['String']['output']>;
   favicon?: Maybe<Scalars['String']['output']>;
+};
+
+export type ConfiguracionGlobalColors = {
+  __typename?: 'ConfiguracionGlobalColors';
+  primary?: Maybe<Scalars['String']['output']>;
+  secondary?: Maybe<Scalars['String']['output']>;
+  accent?: Maybe<Scalars['String']['output']>;
+  background?: Maybe<Scalars['String']['output']>;
+  text?: Maybe<Scalars['String']['output']>;
 };
 
 export type ConfiguracionGlobalContact = {
   __typename?: 'ConfiguracionGlobalContact';
   phone?: Maybe<Scalars['String']['output']>;
+  phoneSecondary?: Maybe<Scalars['String']['output']>;
   whatsapp?: Maybe<Scalars['String']['output']>;
   email?: Maybe<Scalars['String']['output']>;
-  address?: Maybe<Scalars['String']['output']>;
+  emailSecondary?: Maybe<Scalars['String']['output']>;
   hours?: Maybe<Scalars['String']['output']>;
 };
 
-export type ConfiguracionGlobalSocial = {
-  __typename?: 'ConfiguracionGlobalSocial';
-  facebook?: Maybe<Scalars['String']['output']>;
-  instagram?: Maybe<Scalars['String']['output']>;
-  linkedin?: Maybe<Scalars['String']['output']>;
-  youtube?: Maybe<Scalars['String']['output']>;
-  tiktok?: Maybe<Scalars['String']['output']>;
+export type ConfiguracionGlobalLocationsMain = {
+  __typename?: 'ConfiguracionGlobalLocationsMain';
+  name?: Maybe<Scalars['String']['output']>;
+  address?: Maybe<Scalars['String']['output']>;
+  city?: Maybe<Scalars['String']['output']>;
+  province?: Maybe<Scalars['String']['output']>;
+  country?: Maybe<Scalars['String']['output']>;
+  postalCode?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  mapUrl?: Maybe<Scalars['String']['output']>;
+  mapEmbed?: Maybe<Scalars['String']['output']>;
+  lat?: Maybe<Scalars['Float']['output']>;
+  lng?: Maybe<Scalars['Float']['output']>;
+};
+
+export type ConfiguracionGlobalLocationsOffices = {
+  __typename?: 'ConfiguracionGlobalLocationsOffices';
+  name?: Maybe<Scalars['String']['output']>;
+  address?: Maybe<Scalars['String']['output']>;
+  city?: Maybe<Scalars['String']['output']>;
+  province?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  hours?: Maybe<Scalars['String']['output']>;
+  mapUrl?: Maybe<Scalars['String']['output']>;
+  lat?: Maybe<Scalars['Float']['output']>;
+  lng?: Maybe<Scalars['Float']['output']>;
+  order?: Maybe<Scalars['Float']['output']>;
+};
+
+export type ConfiguracionGlobalLocations = {
+  __typename?: 'ConfiguracionGlobalLocations';
+  main?: Maybe<ConfiguracionGlobalLocationsMain>;
+  offices?: Maybe<Array<Maybe<ConfiguracionGlobalLocationsOffices>>>;
+};
+
+export type ConfiguracionGlobalSocialNetworks = {
+  __typename?: 'ConfiguracionGlobalSocialNetworks';
+  name?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+  showInHeader?: Maybe<Scalars['Boolean']['output']>;
+  showInFooter?: Maybe<Scalars['Boolean']['output']>;
+  order?: Maybe<Scalars['Float']['output']>;
 };
 
 export type ConfiguracionGlobalHeaderNavigationChildren = {
   __typename?: 'ConfiguracionGlobalHeaderNavigationChildren';
   label?: Maybe<Scalars['String']['output']>;
   href?: Maybe<Scalars['String']['output']>;
+  order?: Maybe<Scalars['Float']['output']>;
 };
 
 export type ConfiguracionGlobalHeaderNavigation = {
   __typename?: 'ConfiguracionGlobalHeaderNavigation';
   label?: Maybe<Scalars['String']['output']>;
   href?: Maybe<Scalars['String']['output']>;
+  order?: Maybe<Scalars['Float']['output']>;
+  highlight?: Maybe<Scalars['Boolean']['output']>;
+  type?: Maybe<Scalars['String']['output']>;
+  dropdownLimit?: Maybe<Scalars['Float']['output']>;
   children?: Maybe<Array<Maybe<ConfiguracionGlobalHeaderNavigationChildren>>>;
 };
 
@@ -1331,6 +1931,7 @@ export type ConfiguracionGlobalHeader = {
   __typename?: 'ConfiguracionGlobalHeader';
   sticky?: Maybe<Scalars['Boolean']['output']>;
   transparent?: Maybe<Scalars['Boolean']['output']>;
+  showTopBar?: Maybe<Scalars['Boolean']['output']>;
   navigation?: Maybe<Array<Maybe<ConfiguracionGlobalHeaderNavigation>>>;
   ctaText?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
@@ -1340,11 +1941,13 @@ export type ConfiguracionGlobalFooterColumnsLinks = {
   __typename?: 'ConfiguracionGlobalFooterColumnsLinks';
   label?: Maybe<Scalars['String']['output']>;
   href?: Maybe<Scalars['String']['output']>;
+  order?: Maybe<Scalars['Float']['output']>;
 };
 
 export type ConfiguracionGlobalFooterColumns = {
   __typename?: 'ConfiguracionGlobalFooterColumns';
   title?: Maybe<Scalars['String']['output']>;
+  order?: Maybe<Scalars['Float']['output']>;
   links?: Maybe<Array<Maybe<ConfiguracionGlobalFooterColumnsLinks>>>;
 };
 
@@ -1353,16 +1956,69 @@ export type ConfiguracionGlobalFooter = {
   copyright?: Maybe<Scalars['String']['output']>;
   showNewsletter?: Maybe<Scalars['Boolean']['output']>;
   newsletterTitle?: Maybe<Scalars['String']['output']>;
+  newsletterSubtitle?: Maybe<Scalars['String']['output']>;
   columns?: Maybe<Array<Maybe<ConfiguracionGlobalFooterColumns>>>;
+};
+
+export type ConfiguracionGlobalLegalPrivacyPolicy = {
+  __typename?: 'ConfiguracionGlobalLegalPrivacyPolicy';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  lastUpdated?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type ConfiguracionGlobalLegalTermsOfService = {
+  __typename?: 'ConfiguracionGlobalLegalTermsOfService';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  lastUpdated?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type ConfiguracionGlobalLegalCookies = {
+  __typename?: 'ConfiguracionGlobalLegalCookies';
+  enabled?: Maybe<Scalars['Boolean']['output']>;
+  showBanner?: Maybe<Scalars['Boolean']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  slug?: Maybe<Scalars['String']['output']>;
+  bannerText?: Maybe<Scalars['String']['output']>;
+  acceptButtonText?: Maybe<Scalars['String']['output']>;
+  rejectButtonText?: Maybe<Scalars['String']['output']>;
+  settingsButtonText?: Maybe<Scalars['String']['output']>;
+  content?: Maybe<Scalars['JSON']['output']>;
+};
+
+export type ConfiguracionGlobalLegal = {
+  __typename?: 'ConfiguracionGlobalLegal';
+  privacyPolicy?: Maybe<ConfiguracionGlobalLegalPrivacyPolicy>;
+  termsOfService?: Maybe<ConfiguracionGlobalLegalTermsOfService>;
+  cookies?: Maybe<ConfiguracionGlobalLegalCookies>;
+};
+
+export type ConfiguracionGlobalSeo = {
+  __typename?: 'ConfiguracionGlobalSeo';
+  defaultTitle?: Maybe<Scalars['String']['output']>;
+  titleTemplate?: Maybe<Scalars['String']['output']>;
+  defaultDescription?: Maybe<Scalars['String']['output']>;
+  defaultOgImage?: Maybe<Scalars['String']['output']>;
+  googleAnalyticsId?: Maybe<Scalars['String']['output']>;
+  googleTagManagerId?: Maybe<Scalars['String']['output']>;
 };
 
 export type ConfiguracionGlobal = Node & Document & {
   __typename?: 'ConfiguracionGlobal';
   company?: Maybe<ConfiguracionGlobalCompany>;
+  colors?: Maybe<ConfiguracionGlobalColors>;
   contact?: Maybe<ConfiguracionGlobalContact>;
-  social?: Maybe<ConfiguracionGlobalSocial>;
+  locations?: Maybe<ConfiguracionGlobalLocations>;
+  socialNetworks?: Maybe<Array<Maybe<ConfiguracionGlobalSocialNetworks>>>;
   header?: Maybe<ConfiguracionGlobalHeader>;
   footer?: Maybe<ConfiguracionGlobalFooter>;
+  legal?: Maybe<ConfiguracionGlobalLegal>;
+  seo?: Maybe<ConfiguracionGlobalSeo>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -1373,39 +2029,90 @@ export type ConfiguracionGlobalCompanyFilter = {
   slogan?: InputMaybe<StringFilter>;
   logo?: InputMaybe<StringFilter>;
   logoWhite?: InputMaybe<StringFilter>;
+  logoIcon?: InputMaybe<StringFilter>;
   favicon?: InputMaybe<StringFilter>;
+};
+
+export type ConfiguracionGlobalColorsFilter = {
+  primary?: InputMaybe<StringFilter>;
+  secondary?: InputMaybe<StringFilter>;
+  accent?: InputMaybe<StringFilter>;
+  background?: InputMaybe<StringFilter>;
+  text?: InputMaybe<StringFilter>;
 };
 
 export type ConfiguracionGlobalContactFilter = {
   phone?: InputMaybe<StringFilter>;
+  phoneSecondary?: InputMaybe<StringFilter>;
   whatsapp?: InputMaybe<StringFilter>;
   email?: InputMaybe<StringFilter>;
-  address?: InputMaybe<StringFilter>;
+  emailSecondary?: InputMaybe<StringFilter>;
   hours?: InputMaybe<StringFilter>;
 };
 
-export type ConfiguracionGlobalSocialFilter = {
-  facebook?: InputMaybe<StringFilter>;
-  instagram?: InputMaybe<StringFilter>;
-  linkedin?: InputMaybe<StringFilter>;
-  youtube?: InputMaybe<StringFilter>;
-  tiktok?: InputMaybe<StringFilter>;
+export type ConfiguracionGlobalLocationsMainFilter = {
+  name?: InputMaybe<StringFilter>;
+  address?: InputMaybe<StringFilter>;
+  city?: InputMaybe<StringFilter>;
+  province?: InputMaybe<StringFilter>;
+  country?: InputMaybe<StringFilter>;
+  postalCode?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
+  email?: InputMaybe<StringFilter>;
+  mapUrl?: InputMaybe<StringFilter>;
+  mapEmbed?: InputMaybe<StringFilter>;
+  lat?: InputMaybe<NumberFilter>;
+  lng?: InputMaybe<NumberFilter>;
+};
+
+export type ConfiguracionGlobalLocationsOfficesFilter = {
+  name?: InputMaybe<StringFilter>;
+  address?: InputMaybe<StringFilter>;
+  city?: InputMaybe<StringFilter>;
+  province?: InputMaybe<StringFilter>;
+  phone?: InputMaybe<StringFilter>;
+  email?: InputMaybe<StringFilter>;
+  hours?: InputMaybe<StringFilter>;
+  mapUrl?: InputMaybe<StringFilter>;
+  lat?: InputMaybe<NumberFilter>;
+  lng?: InputMaybe<NumberFilter>;
+  order?: InputMaybe<NumberFilter>;
+};
+
+export type ConfiguracionGlobalLocationsFilter = {
+  main?: InputMaybe<ConfiguracionGlobalLocationsMainFilter>;
+  offices?: InputMaybe<ConfiguracionGlobalLocationsOfficesFilter>;
+};
+
+export type ConfiguracionGlobalSocialNetworksFilter = {
+  name?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+  showInHeader?: InputMaybe<BooleanFilter>;
+  showInFooter?: InputMaybe<BooleanFilter>;
+  order?: InputMaybe<NumberFilter>;
 };
 
 export type ConfiguracionGlobalHeaderNavigationChildrenFilter = {
   label?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
+  order?: InputMaybe<NumberFilter>;
 };
 
 export type ConfiguracionGlobalHeaderNavigationFilter = {
   label?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
+  order?: InputMaybe<NumberFilter>;
+  highlight?: InputMaybe<BooleanFilter>;
+  type?: InputMaybe<StringFilter>;
+  dropdownLimit?: InputMaybe<NumberFilter>;
   children?: InputMaybe<ConfiguracionGlobalHeaderNavigationChildrenFilter>;
 };
 
 export type ConfiguracionGlobalHeaderFilter = {
   sticky?: InputMaybe<BooleanFilter>;
   transparent?: InputMaybe<BooleanFilter>;
+  showTopBar?: InputMaybe<BooleanFilter>;
   navigation?: InputMaybe<ConfiguracionGlobalHeaderNavigationFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
@@ -1414,10 +2121,12 @@ export type ConfiguracionGlobalHeaderFilter = {
 export type ConfiguracionGlobalFooterColumnsLinksFilter = {
   label?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
+  order?: InputMaybe<NumberFilter>;
 };
 
 export type ConfiguracionGlobalFooterColumnsFilter = {
   title?: InputMaybe<StringFilter>;
+  order?: InputMaybe<NumberFilter>;
   links?: InputMaybe<ConfiguracionGlobalFooterColumnsLinksFilter>;
 };
 
@@ -1425,15 +2134,71 @@ export type ConfiguracionGlobalFooterFilter = {
   copyright?: InputMaybe<StringFilter>;
   showNewsletter?: InputMaybe<BooleanFilter>;
   newsletterTitle?: InputMaybe<StringFilter>;
+  newsletterSubtitle?: InputMaybe<StringFilter>;
   columns?: InputMaybe<ConfiguracionGlobalFooterColumnsFilter>;
+};
+
+export type DatetimeFilter = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ConfiguracionGlobalLegalPrivacyPolicyFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  title?: InputMaybe<StringFilter>;
+  slug?: InputMaybe<StringFilter>;
+  lastUpdated?: InputMaybe<DatetimeFilter>;
+  content?: InputMaybe<RichTextFilter>;
+};
+
+export type ConfiguracionGlobalLegalTermsOfServiceFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  title?: InputMaybe<StringFilter>;
+  slug?: InputMaybe<StringFilter>;
+  lastUpdated?: InputMaybe<DatetimeFilter>;
+  content?: InputMaybe<RichTextFilter>;
+};
+
+export type ConfiguracionGlobalLegalCookiesFilter = {
+  enabled?: InputMaybe<BooleanFilter>;
+  showBanner?: InputMaybe<BooleanFilter>;
+  title?: InputMaybe<StringFilter>;
+  slug?: InputMaybe<StringFilter>;
+  bannerText?: InputMaybe<StringFilter>;
+  acceptButtonText?: InputMaybe<StringFilter>;
+  rejectButtonText?: InputMaybe<StringFilter>;
+  settingsButtonText?: InputMaybe<StringFilter>;
+  content?: InputMaybe<RichTextFilter>;
+};
+
+export type ConfiguracionGlobalLegalFilter = {
+  privacyPolicy?: InputMaybe<ConfiguracionGlobalLegalPrivacyPolicyFilter>;
+  termsOfService?: InputMaybe<ConfiguracionGlobalLegalTermsOfServiceFilter>;
+  cookies?: InputMaybe<ConfiguracionGlobalLegalCookiesFilter>;
+};
+
+export type ConfiguracionGlobalSeoFilter = {
+  defaultTitle?: InputMaybe<StringFilter>;
+  titleTemplate?: InputMaybe<StringFilter>;
+  defaultDescription?: InputMaybe<StringFilter>;
+  defaultOgImage?: InputMaybe<StringFilter>;
+  googleAnalyticsId?: InputMaybe<StringFilter>;
+  googleTagManagerId?: InputMaybe<StringFilter>;
 };
 
 export type ConfiguracionGlobalFilter = {
   company?: InputMaybe<ConfiguracionGlobalCompanyFilter>;
+  colors?: InputMaybe<ConfiguracionGlobalColorsFilter>;
   contact?: InputMaybe<ConfiguracionGlobalContactFilter>;
-  social?: InputMaybe<ConfiguracionGlobalSocialFilter>;
+  locations?: InputMaybe<ConfiguracionGlobalLocationsFilter>;
+  socialNetworks?: InputMaybe<ConfiguracionGlobalSocialNetworksFilter>;
   header?: InputMaybe<ConfiguracionGlobalHeaderFilter>;
   footer?: InputMaybe<ConfiguracionGlobalFooterFilter>;
+  legal?: InputMaybe<ConfiguracionGlobalLegalFilter>;
+  seo?: InputMaybe<ConfiguracionGlobalSeoFilter>;
 };
 
 export type ConfiguracionGlobalConnectionEdges = {
@@ -1850,6 +2615,24 @@ export type PaginasSeoMutation = {
   ogImage?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type PaginasSectionsHeroAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsHeroSectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type PaginasSectionsHeroMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   subtitle?: InputMaybe<Scalars['String']['input']>;
@@ -1861,11 +2644,31 @@ export type PaginasSectionsHeroMutation = {
   secondaryCtaLink?: InputMaybe<Scalars['String']['input']>;
   alignment?: InputMaybe<Scalars['String']['input']>;
   overlay?: InputMaybe<Scalars['Boolean']['input']>;
+  animation?: InputMaybe<PaginasSectionsHeroAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsHeroSectionConfigMutation>;
 };
 
 export type PaginasSectionsAboutStatsMutation = {
   value?: InputMaybe<Scalars['String']['input']>;
   label?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PaginasSectionsAboutAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsAboutSectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type PaginasSectionsAboutMutation = {
@@ -1878,6 +2681,8 @@ export type PaginasSectionsAboutMutation = {
   stats?: InputMaybe<Array<InputMaybe<PaginasSectionsAboutStatsMutation>>>;
   ctaText?: InputMaybe<Scalars['String']['input']>;
   ctaLink?: InputMaybe<Scalars['String']['input']>;
+  animation?: InputMaybe<PaginasSectionsAboutAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsAboutSectionConfigMutation>;
 };
 
 export type PaginasSectionsServicesItemsMutation = {
@@ -1888,6 +2693,24 @@ export type PaginasSectionsServicesItemsMutation = {
   link?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type PaginasSectionsServicesAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsServicesSectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type PaginasSectionsServicesMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   subtitle?: InputMaybe<Scalars['String']['input']>;
@@ -1895,6 +2718,26 @@ export type PaginasSectionsServicesMutation = {
   items?: InputMaybe<Array<InputMaybe<PaginasSectionsServicesItemsMutation>>>;
   ctaText?: InputMaybe<Scalars['String']['input']>;
   ctaLink?: InputMaybe<Scalars['String']['input']>;
+  animation?: InputMaybe<PaginasSectionsServicesAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsServicesSectionConfigMutation>;
+};
+
+export type PaginasSectionsProjectsAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsProjectsSectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type PaginasSectionsProjectsMutation = {
@@ -1906,6 +2749,8 @@ export type PaginasSectionsProjectsMutation = {
   filterCategories?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   ctaText?: InputMaybe<Scalars['String']['input']>;
   ctaLink?: InputMaybe<Scalars['String']['input']>;
+  animation?: InputMaybe<PaginasSectionsProjectsAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsProjectsSectionConfigMutation>;
 };
 
 export type PaginasSectionsTestimonialsItemsMutation = {
@@ -1916,11 +2761,49 @@ export type PaginasSectionsTestimonialsItemsMutation = {
   rating?: InputMaybe<Scalars['Float']['input']>;
 };
 
+export type PaginasSectionsTestimonialsAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsTestimonialsSectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type PaginasSectionsTestimonialsMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   subtitle?: InputMaybe<Scalars['String']['input']>;
   layout?: InputMaybe<Scalars['String']['input']>;
   items?: InputMaybe<Array<InputMaybe<PaginasSectionsTestimonialsItemsMutation>>>;
+  animation?: InputMaybe<PaginasSectionsTestimonialsAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsTestimonialsSectionConfigMutation>;
+};
+
+export type PaginasSectionsCtaAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsCtaSectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type PaginasSectionsCtaMutation = {
@@ -1932,6 +2815,8 @@ export type PaginasSectionsCtaMutation = {
   secondaryButtonText?: InputMaybe<Scalars['String']['input']>;
   secondaryButtonLink?: InputMaybe<Scalars['String']['input']>;
   style?: InputMaybe<Scalars['String']['input']>;
+  animation?: InputMaybe<PaginasSectionsCtaAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsCtaSectionConfigMutation>;
 };
 
 export type PaginasSectionsContactInfoMutation = {
@@ -1939,6 +2824,24 @@ export type PaginasSectionsContactInfoMutation = {
   phone?: InputMaybe<Scalars['String']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
   hours?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PaginasSectionsContactAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsContactSectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type PaginasSectionsContactMutation = {
@@ -1949,6 +2852,8 @@ export type PaginasSectionsContactMutation = {
   showInfo?: InputMaybe<Scalars['Boolean']['input']>;
   info?: InputMaybe<PaginasSectionsContactInfoMutation>;
   mapUrl?: InputMaybe<Scalars['String']['input']>;
+  animation?: InputMaybe<PaginasSectionsContactAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsContactSectionConfigMutation>;
 };
 
 export type PaginasSectionsTeamMembersMutation = {
@@ -1960,11 +2865,31 @@ export type PaginasSectionsTeamMembersMutation = {
   email?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type PaginasSectionsTeamAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsTeamSectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type PaginasSectionsTeamMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   subtitle?: InputMaybe<Scalars['String']['input']>;
   layout?: InputMaybe<Scalars['String']['input']>;
   members?: InputMaybe<Array<InputMaybe<PaginasSectionsTeamMembersMutation>>>;
+  animation?: InputMaybe<PaginasSectionsTeamAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsTeamSectionConfigMutation>;
 };
 
 export type PaginasSectionsFaqItemsMutation = {
@@ -1972,10 +2897,48 @@ export type PaginasSectionsFaqItemsMutation = {
   answer?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type PaginasSectionsFaqAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsFaqSectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type PaginasSectionsFaqMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   subtitle?: InputMaybe<Scalars['String']['input']>;
   items?: InputMaybe<Array<InputMaybe<PaginasSectionsFaqItemsMutation>>>;
+  animation?: InputMaybe<PaginasSectionsFaqAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsFaqSectionConfigMutation>;
+};
+
+export type PaginasSectionsGalleryAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsGallerySectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type PaginasSectionsGalleryMutation = {
@@ -1984,6 +2947,8 @@ export type PaginasSectionsGalleryMutation = {
   layout?: InputMaybe<Scalars['String']['input']>;
   columns?: InputMaybe<Scalars['Float']['input']>;
   images?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  animation?: InputMaybe<PaginasSectionsGalleryAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsGallerySectionConfigMutation>;
 };
 
 export type PaginasSectionsFeaturesItemsMutation = {
@@ -1993,11 +2958,49 @@ export type PaginasSectionsFeaturesItemsMutation = {
   image?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type PaginasSectionsFeaturesAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsFeaturesSectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type PaginasSectionsFeaturesMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   subtitle?: InputMaybe<Scalars['String']['input']>;
   layout?: InputMaybe<Scalars['String']['input']>;
   items?: InputMaybe<Array<InputMaybe<PaginasSectionsFeaturesItemsMutation>>>;
+  animation?: InputMaybe<PaginasSectionsFeaturesAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsFeaturesSectionConfigMutation>;
+};
+
+export type PaginasSectionsContentAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsContentSectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type PaginasSectionsContentMutation = {
@@ -2005,11 +3008,33 @@ export type PaginasSectionsContentMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
   backgroundColor?: InputMaybe<Scalars['String']['input']>;
   maxWidth?: InputMaybe<Scalars['String']['input']>;
+  animation?: InputMaybe<PaginasSectionsContentAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsContentSectionConfigMutation>;
+};
+
+export type PaginasSectionsSpacerAnimationMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  duration?: InputMaybe<Scalars['String']['input']>;
+  delay?: InputMaybe<Scalars['String']['input']>;
+  easing?: InputMaybe<Scalars['String']['input']>;
+  stagger?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type PaginasSectionsSpacerSectionConfigMutation = {
+  id?: InputMaybe<Scalars['String']['input']>;
+  backgroundColor?: InputMaybe<Scalars['String']['input']>;
+  paddingTop?: InputMaybe<Scalars['String']['input']>;
+  paddingBottom?: InputMaybe<Scalars['String']['input']>;
+  fullWidth?: InputMaybe<Scalars['Boolean']['input']>;
+  visible?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type PaginasSectionsSpacerMutation = {
   size?: InputMaybe<Scalars['String']['input']>;
   showDivider?: InputMaybe<Scalars['Boolean']['input']>;
+  animation?: InputMaybe<PaginasSectionsSpacerAnimationMutation>;
+  sectionConfig?: InputMaybe<PaginasSectionsSpacerSectionConfigMutation>;
 };
 
 export type PaginasSectionsMutation = {
@@ -2041,39 +3066,90 @@ export type ConfiguracionGlobalCompanyMutation = {
   slogan?: InputMaybe<Scalars['String']['input']>;
   logo?: InputMaybe<Scalars['String']['input']>;
   logoWhite?: InputMaybe<Scalars['String']['input']>;
+  logoIcon?: InputMaybe<Scalars['String']['input']>;
   favicon?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ConfiguracionGlobalColorsMutation = {
+  primary?: InputMaybe<Scalars['String']['input']>;
+  secondary?: InputMaybe<Scalars['String']['input']>;
+  accent?: InputMaybe<Scalars['String']['input']>;
+  background?: InputMaybe<Scalars['String']['input']>;
+  text?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ConfiguracionGlobalContactMutation = {
   phone?: InputMaybe<Scalars['String']['input']>;
+  phoneSecondary?: InputMaybe<Scalars['String']['input']>;
   whatsapp?: InputMaybe<Scalars['String']['input']>;
   email?: InputMaybe<Scalars['String']['input']>;
-  address?: InputMaybe<Scalars['String']['input']>;
+  emailSecondary?: InputMaybe<Scalars['String']['input']>;
   hours?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ConfiguracionGlobalSocialMutation = {
-  facebook?: InputMaybe<Scalars['String']['input']>;
-  instagram?: InputMaybe<Scalars['String']['input']>;
-  linkedin?: InputMaybe<Scalars['String']['input']>;
-  youtube?: InputMaybe<Scalars['String']['input']>;
-  tiktok?: InputMaybe<Scalars['String']['input']>;
+export type ConfiguracionGlobalLocationsMainMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  address?: InputMaybe<Scalars['String']['input']>;
+  city?: InputMaybe<Scalars['String']['input']>;
+  province?: InputMaybe<Scalars['String']['input']>;
+  country?: InputMaybe<Scalars['String']['input']>;
+  postalCode?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  mapUrl?: InputMaybe<Scalars['String']['input']>;
+  mapEmbed?: InputMaybe<Scalars['String']['input']>;
+  lat?: InputMaybe<Scalars['Float']['input']>;
+  lng?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type ConfiguracionGlobalLocationsOfficesMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  address?: InputMaybe<Scalars['String']['input']>;
+  city?: InputMaybe<Scalars['String']['input']>;
+  province?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  hours?: InputMaybe<Scalars['String']['input']>;
+  mapUrl?: InputMaybe<Scalars['String']['input']>;
+  lat?: InputMaybe<Scalars['Float']['input']>;
+  lng?: InputMaybe<Scalars['Float']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
+};
+
+export type ConfiguracionGlobalLocationsMutation = {
+  main?: InputMaybe<ConfiguracionGlobalLocationsMainMutation>;
+  offices?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalLocationsOfficesMutation>>>;
+};
+
+export type ConfiguracionGlobalSocialNetworksMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  showInHeader?: InputMaybe<Scalars['Boolean']['input']>;
+  showInFooter?: InputMaybe<Scalars['Boolean']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ConfiguracionGlobalHeaderNavigationChildrenMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ConfiguracionGlobalHeaderNavigationMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
+  highlight?: InputMaybe<Scalars['Boolean']['input']>;
+  type?: InputMaybe<Scalars['String']['input']>;
+  dropdownLimit?: InputMaybe<Scalars['Float']['input']>;
   children?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalHeaderNavigationChildrenMutation>>>;
 };
 
 export type ConfiguracionGlobalHeaderMutation = {
   sticky?: InputMaybe<Scalars['Boolean']['input']>;
   transparent?: InputMaybe<Scalars['Boolean']['input']>;
+  showTopBar?: InputMaybe<Scalars['Boolean']['input']>;
   navigation?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalHeaderNavigationMutation>>>;
   ctaText?: InputMaybe<Scalars['String']['input']>;
   ctaLink?: InputMaybe<Scalars['String']['input']>;
@@ -2082,10 +3158,12 @@ export type ConfiguracionGlobalHeaderMutation = {
 export type ConfiguracionGlobalFooterColumnsLinksMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
 };
 
 export type ConfiguracionGlobalFooterColumnsMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Scalars['Float']['input']>;
   links?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalFooterColumnsLinksMutation>>>;
 };
 
@@ -2093,15 +3171,63 @@ export type ConfiguracionGlobalFooterMutation = {
   copyright?: InputMaybe<Scalars['String']['input']>;
   showNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
   newsletterTitle?: InputMaybe<Scalars['String']['input']>;
+  newsletterSubtitle?: InputMaybe<Scalars['String']['input']>;
   columns?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalFooterColumnsMutation>>>;
+};
+
+export type ConfiguracionGlobalLegalPrivacyPolicyMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  lastUpdated?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type ConfiguracionGlobalLegalTermsOfServiceMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  lastUpdated?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type ConfiguracionGlobalLegalCookiesMutation = {
+  enabled?: InputMaybe<Scalars['Boolean']['input']>;
+  showBanner?: InputMaybe<Scalars['Boolean']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  bannerText?: InputMaybe<Scalars['String']['input']>;
+  acceptButtonText?: InputMaybe<Scalars['String']['input']>;
+  rejectButtonText?: InputMaybe<Scalars['String']['input']>;
+  settingsButtonText?: InputMaybe<Scalars['String']['input']>;
+  content?: InputMaybe<Scalars['JSON']['input']>;
+};
+
+export type ConfiguracionGlobalLegalMutation = {
+  privacyPolicy?: InputMaybe<ConfiguracionGlobalLegalPrivacyPolicyMutation>;
+  termsOfService?: InputMaybe<ConfiguracionGlobalLegalTermsOfServiceMutation>;
+  cookies?: InputMaybe<ConfiguracionGlobalLegalCookiesMutation>;
+};
+
+export type ConfiguracionGlobalSeoMutation = {
+  defaultTitle?: InputMaybe<Scalars['String']['input']>;
+  titleTemplate?: InputMaybe<Scalars['String']['input']>;
+  defaultDescription?: InputMaybe<Scalars['String']['input']>;
+  defaultOgImage?: InputMaybe<Scalars['String']['input']>;
+  googleAnalyticsId?: InputMaybe<Scalars['String']['input']>;
+  googleTagManagerId?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ConfiguracionGlobalMutation = {
   company?: InputMaybe<ConfiguracionGlobalCompanyMutation>;
+  colors?: InputMaybe<ConfiguracionGlobalColorsMutation>;
   contact?: InputMaybe<ConfiguracionGlobalContactMutation>;
-  social?: InputMaybe<ConfiguracionGlobalSocialMutation>;
+  locations?: InputMaybe<ConfiguracionGlobalLocationsMutation>;
+  socialNetworks?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalSocialNetworksMutation>>>;
   header?: InputMaybe<ConfiguracionGlobalHeaderMutation>;
   footer?: InputMaybe<ConfiguracionGlobalFooterMutation>;
+  legal?: InputMaybe<ConfiguracionGlobalLegalMutation>;
+  seo?: InputMaybe<ConfiguracionGlobalSeoMutation>;
 };
 
 export type ProyectosPartsFragment = { __typename: 'Proyectos', title: string, slug?: string | null, description?: string | null, tags?: Array<string | null> | null, status?: string | null, category: string, backgroundImage?: string | null, images?: Array<string | null> | null, virtualTourVideo?: string | null, amenities?: Array<string | null> | null, body?: any | null, location?: { __typename: 'ProyectosLocation', address?: string | null, city?: string | null, sector?: string | null, mapUrl?: string | null, lat?: number | null, lng?: number | null } | null, specifications?: { __typename: 'ProyectosSpecifications', bedrooms?: { __typename: 'ProyectosSpecificationsBedrooms', enabled?: boolean | null, value?: number | null, label?: string | null, sublabel?: string | null } | null, bathrooms?: { __typename: 'ProyectosSpecificationsBathrooms', enabled?: boolean | null, value?: number | null, label?: string | null, sublabel?: string | null } | null, area?: { __typename: 'ProyectosSpecificationsArea', enabled?: boolean | null, value?: number | null, label?: string | null, sublabel?: string | null } | null, garden?: { __typename: 'ProyectosSpecificationsGarden', enabled?: boolean | null, value?: boolean | null, label?: string | null, sublabel?: string | null } | null, petFriendly?: { __typename: 'ProyectosSpecificationsPetFriendly', enabled?: boolean | null, value?: boolean | null, label?: string | null, sublabel?: string | null } | null, deliveryDate?: { __typename: 'ProyectosSpecificationsDeliveryDate', enabled?: boolean | null, value?: string | null, label?: string | null } | null, customSpecs?: Array<{ __typename: 'ProyectosSpecificationsCustomSpecs', enabled?: boolean | null, icon?: string | null, label?: string | null, value?: string | null, sublabel?: string | null, colorScheme?: string | null } | null> | null } | null, features?: Array<{ __typename: 'ProyectosFeatures', icon?: string | null, title?: string | null, description?: string | null } | null> | null, testimonials?: Array<{ __typename: 'ProyectosTestimonials', name?: string | null, quote?: string | null, image?: string | null, unitType?: string | null } | null> | null, seo?: { __typename: 'ProyectosSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null };
@@ -2116,9 +3242,9 @@ export type CloudinaryConfigPartsFragment = { __typename: 'CloudinaryConfig', cl
 
 export type PaginasPruebaPartsFragment = { __typename: 'PaginasPrueba', title?: string | null, content?: string | null };
 
-export type PaginasPartsFragment = { __typename: 'Paginas', title?: string | null, slug?: string | null, published?: boolean | null, seo?: { __typename: 'PaginasSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, sections?: Array<{ __typename: 'PaginasSectionsHero', title?: string | null, subtitle?: string | null, backgroundImage?: string | null, backgroundVideo?: string | null, ctaText?: string | null, ctaLink?: string | null, secondaryCtaText?: string | null, secondaryCtaLink?: string | null, alignment?: string | null, overlay?: boolean | null } | { __typename: 'PaginasSectionsAbout', title?: string | null, subtitle?: string | null, content?: string | null, image?: string | null, imagePosition?: string | null, showStats?: boolean | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'PaginasSectionsAboutStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PaginasSectionsServices', title?: string | null, subtitle?: string | null, layout?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'PaginasSectionsServicesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null, link?: string | null } | null> | null } | { __typename: 'PaginasSectionsProjects', title?: string | null, subtitle?: string | null, layout?: string | null, limit?: number | null, showFilters?: boolean | null, filterCategories?: Array<string | null> | null, ctaText?: string | null, ctaLink?: string | null } | { __typename: 'PaginasSectionsTestimonials', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsTestimonialsItems', quote: string, author?: string | null, position?: string | null, avatar?: string | null, rating?: number | null } | null> | null } | { __typename: 'PaginasSectionsCta', title?: string | null, description?: string | null, backgroundImage?: string | null, buttonText?: string | null, buttonLink?: string | null, secondaryButtonText?: string | null, secondaryButtonLink?: string | null, style?: string | null } | { __typename: 'PaginasSectionsContact', title?: string | null, subtitle?: string | null, showForm?: boolean | null, showMap?: boolean | null, showInfo?: boolean | null, mapUrl?: string | null, info?: { __typename: 'PaginasSectionsContactInfo', address?: string | null, phone?: string | null, email?: string | null, hours?: string | null } | null } | { __typename: 'PaginasSectionsTeam', title?: string | null, subtitle?: string | null, layout?: string | null, members?: Array<{ __typename: 'PaginasSectionsTeamMembers', name: string, position?: string | null, bio?: string | null, photo?: string | null, linkedin?: string | null, email?: string | null } | null> | null } | { __typename: 'PaginasSectionsFaq', title?: string | null, subtitle?: string | null, items?: Array<{ __typename: 'PaginasSectionsFaqItems', question: string, answer: string } | null> | null } | { __typename: 'PaginasSectionsGallery', title?: string | null, subtitle?: string | null, layout?: string | null, columns?: number | null, images?: Array<string | null> | null } | { __typename: 'PaginasSectionsFeatures', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsFeaturesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null } | null> | null } | { __typename: 'PaginasSectionsContent', title?: string | null, body?: any | null, backgroundColor?: string | null, maxWidth?: string | null } | { __typename: 'PaginasSectionsSpacer', size?: string | null, showDivider?: boolean | null } | null> | null };
+export type PaginasPartsFragment = { __typename: 'Paginas', title?: string | null, slug?: string | null, published?: boolean | null, seo?: { __typename: 'PaginasSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, sections?: Array<{ __typename: 'PaginasSectionsHero', title?: string | null, subtitle?: string | null, backgroundImage?: string | null, backgroundVideo?: string | null, ctaText?: string | null, ctaLink?: string | null, secondaryCtaText?: string | null, secondaryCtaLink?: string | null, alignment?: string | null, overlay?: boolean | null, animation?: { __typename: 'PaginasSectionsHeroAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsHeroSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsAbout', title?: string | null, subtitle?: string | null, content?: string | null, image?: string | null, imagePosition?: string | null, showStats?: boolean | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'PaginasSectionsAboutStats', value?: string | null, label?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsAboutAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsAboutSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsServices', title?: string | null, subtitle?: string | null, layout?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'PaginasSectionsServicesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null, link?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsServicesAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsServicesSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsProjects', title?: string | null, subtitle?: string | null, layout?: string | null, limit?: number | null, showFilters?: boolean | null, filterCategories?: Array<string | null> | null, ctaText?: string | null, ctaLink?: string | null, animation?: { __typename: 'PaginasSectionsProjectsAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsProjectsSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsTestimonials', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsTestimonialsItems', quote: string, author?: string | null, position?: string | null, avatar?: string | null, rating?: number | null } | null> | null, animation?: { __typename: 'PaginasSectionsTestimonialsAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsTestimonialsSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsCta', title?: string | null, description?: string | null, backgroundImage?: string | null, buttonText?: string | null, buttonLink?: string | null, secondaryButtonText?: string | null, secondaryButtonLink?: string | null, style?: string | null, animation?: { __typename: 'PaginasSectionsCtaAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsCtaSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsContact', title?: string | null, subtitle?: string | null, showForm?: boolean | null, showMap?: boolean | null, showInfo?: boolean | null, mapUrl?: string | null, info?: { __typename: 'PaginasSectionsContactInfo', address?: string | null, phone?: string | null, email?: string | null, hours?: string | null } | null, animation?: { __typename: 'PaginasSectionsContactAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsContactSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsTeam', title?: string | null, subtitle?: string | null, layout?: string | null, members?: Array<{ __typename: 'PaginasSectionsTeamMembers', name: string, position?: string | null, bio?: string | null, photo?: string | null, linkedin?: string | null, email?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsTeamAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsTeamSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsFaq', title?: string | null, subtitle?: string | null, items?: Array<{ __typename: 'PaginasSectionsFaqItems', question: string, answer: string } | null> | null, animation?: { __typename: 'PaginasSectionsFaqAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsFaqSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsGallery', title?: string | null, subtitle?: string | null, layout?: string | null, columns?: number | null, images?: Array<string | null> | null, animation?: { __typename: 'PaginasSectionsGalleryAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsGallerySectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsFeatures', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsFeaturesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsFeaturesAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsFeaturesSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsContent', title?: string | null, body?: any | null, backgroundColor?: string | null, maxWidth?: string | null, animation?: { __typename: 'PaginasSectionsContentAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsContentSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsSpacer', size?: string | null, showDivider?: boolean | null, animation?: { __typename: 'PaginasSectionsSpacerAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsSpacerSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | null> | null };
 
-export type ConfiguracionGlobalPartsFragment = { __typename: 'ConfiguracionGlobal', company?: { __typename: 'ConfiguracionGlobalCompany', name?: string | null, slogan?: string | null, logo?: string | null, logoWhite?: string | null, favicon?: string | null } | null, contact?: { __typename: 'ConfiguracionGlobalContact', phone?: string | null, whatsapp?: string | null, email?: string | null, address?: string | null, hours?: string | null } | null, social?: { __typename: 'ConfiguracionGlobalSocial', facebook?: string | null, instagram?: string | null, linkedin?: string | null, youtube?: string | null, tiktok?: string | null } | null, header?: { __typename: 'ConfiguracionGlobalHeader', sticky?: boolean | null, transparent?: boolean | null, ctaText?: string | null, ctaLink?: string | null, navigation?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigation', label?: string | null, href?: string | null, children?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigationChildren', label?: string | null, href?: string | null } | null> | null } | null> | null } | null, footer?: { __typename: 'ConfiguracionGlobalFooter', copyright?: string | null, showNewsletter?: boolean | null, newsletterTitle?: string | null, columns?: Array<{ __typename: 'ConfiguracionGlobalFooterColumns', title?: string | null, links?: Array<{ __typename: 'ConfiguracionGlobalFooterColumnsLinks', label?: string | null, href?: string | null } | null> | null } | null> | null } | null };
+export type ConfiguracionGlobalPartsFragment = { __typename: 'ConfiguracionGlobal', company?: { __typename: 'ConfiguracionGlobalCompany', name?: string | null, slogan?: string | null, logo?: string | null, logoWhite?: string | null, logoIcon?: string | null, favicon?: string | null } | null, colors?: { __typename: 'ConfiguracionGlobalColors', primary?: string | null, secondary?: string | null, accent?: string | null, background?: string | null, text?: string | null } | null, contact?: { __typename: 'ConfiguracionGlobalContact', phone?: string | null, phoneSecondary?: string | null, whatsapp?: string | null, email?: string | null, emailSecondary?: string | null, hours?: string | null } | null, locations?: { __typename: 'ConfiguracionGlobalLocations', main?: { __typename: 'ConfiguracionGlobalLocationsMain', name?: string | null, address?: string | null, city?: string | null, province?: string | null, country?: string | null, postalCode?: string | null, phone?: string | null, email?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null } | null, offices?: Array<{ __typename: 'ConfiguracionGlobalLocationsOffices', name?: string | null, address?: string | null, city?: string | null, province?: string | null, phone?: string | null, email?: string | null, hours?: string | null, mapUrl?: string | null, lat?: number | null, lng?: number | null, order?: number | null } | null> | null } | null, socialNetworks?: Array<{ __typename: 'ConfiguracionGlobalSocialNetworks', name?: string | null, icon?: string | null, url?: string | null, showInHeader?: boolean | null, showInFooter?: boolean | null, order?: number | null } | null> | null, header?: { __typename: 'ConfiguracionGlobalHeader', sticky?: boolean | null, transparent?: boolean | null, showTopBar?: boolean | null, ctaText?: string | null, ctaLink?: string | null, navigation?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigation', label?: string | null, href?: string | null, order?: number | null, highlight?: boolean | null, type?: string | null, dropdownLimit?: number | null, children?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigationChildren', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, footer?: { __typename: 'ConfiguracionGlobalFooter', copyright?: string | null, showNewsletter?: boolean | null, newsletterTitle?: string | null, newsletterSubtitle?: string | null, columns?: Array<{ __typename: 'ConfiguracionGlobalFooterColumns', title?: string | null, order?: number | null, links?: Array<{ __typename: 'ConfiguracionGlobalFooterColumnsLinks', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, legal?: { __typename: 'ConfiguracionGlobalLegal', privacyPolicy?: { __typename: 'ConfiguracionGlobalLegalPrivacyPolicy', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, termsOfService?: { __typename: 'ConfiguracionGlobalLegalTermsOfService', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, cookies?: { __typename: 'ConfiguracionGlobalLegalCookies', enabled?: boolean | null, showBanner?: boolean | null, title?: string | null, slug?: string | null, bannerText?: string | null, acceptButtonText?: string | null, rejectButtonText?: string | null, settingsButtonText?: string | null, content?: any | null } | null } | null, seo?: { __typename: 'ConfiguracionGlobalSeo', defaultTitle?: string | null, titleTemplate?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null, googleAnalyticsId?: string | null, googleTagManagerId?: string | null } | null };
 
 export type ProyectosQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -2239,7 +3365,7 @@ export type PaginasQueryVariables = Exact<{
 }>;
 
 
-export type PaginasQuery = { __typename?: 'Query', paginas: { __typename: 'Paginas', id: string, title?: string | null, slug?: string | null, published?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PaginasSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, sections?: Array<{ __typename: 'PaginasSectionsHero', title?: string | null, subtitle?: string | null, backgroundImage?: string | null, backgroundVideo?: string | null, ctaText?: string | null, ctaLink?: string | null, secondaryCtaText?: string | null, secondaryCtaLink?: string | null, alignment?: string | null, overlay?: boolean | null } | { __typename: 'PaginasSectionsAbout', title?: string | null, subtitle?: string | null, content?: string | null, image?: string | null, imagePosition?: string | null, showStats?: boolean | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'PaginasSectionsAboutStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PaginasSectionsServices', title?: string | null, subtitle?: string | null, layout?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'PaginasSectionsServicesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null, link?: string | null } | null> | null } | { __typename: 'PaginasSectionsProjects', title?: string | null, subtitle?: string | null, layout?: string | null, limit?: number | null, showFilters?: boolean | null, filterCategories?: Array<string | null> | null, ctaText?: string | null, ctaLink?: string | null } | { __typename: 'PaginasSectionsTestimonials', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsTestimonialsItems', quote: string, author?: string | null, position?: string | null, avatar?: string | null, rating?: number | null } | null> | null } | { __typename: 'PaginasSectionsCta', title?: string | null, description?: string | null, backgroundImage?: string | null, buttonText?: string | null, buttonLink?: string | null, secondaryButtonText?: string | null, secondaryButtonLink?: string | null, style?: string | null } | { __typename: 'PaginasSectionsContact', title?: string | null, subtitle?: string | null, showForm?: boolean | null, showMap?: boolean | null, showInfo?: boolean | null, mapUrl?: string | null, info?: { __typename: 'PaginasSectionsContactInfo', address?: string | null, phone?: string | null, email?: string | null, hours?: string | null } | null } | { __typename: 'PaginasSectionsTeam', title?: string | null, subtitle?: string | null, layout?: string | null, members?: Array<{ __typename: 'PaginasSectionsTeamMembers', name: string, position?: string | null, bio?: string | null, photo?: string | null, linkedin?: string | null, email?: string | null } | null> | null } | { __typename: 'PaginasSectionsFaq', title?: string | null, subtitle?: string | null, items?: Array<{ __typename: 'PaginasSectionsFaqItems', question: string, answer: string } | null> | null } | { __typename: 'PaginasSectionsGallery', title?: string | null, subtitle?: string | null, layout?: string | null, columns?: number | null, images?: Array<string | null> | null } | { __typename: 'PaginasSectionsFeatures', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsFeaturesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null } | null> | null } | { __typename: 'PaginasSectionsContent', title?: string | null, body?: any | null, backgroundColor?: string | null, maxWidth?: string | null } | { __typename: 'PaginasSectionsSpacer', size?: string | null, showDivider?: boolean | null } | null> | null } };
+export type PaginasQuery = { __typename?: 'Query', paginas: { __typename: 'Paginas', id: string, title?: string | null, slug?: string | null, published?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PaginasSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, sections?: Array<{ __typename: 'PaginasSectionsHero', title?: string | null, subtitle?: string | null, backgroundImage?: string | null, backgroundVideo?: string | null, ctaText?: string | null, ctaLink?: string | null, secondaryCtaText?: string | null, secondaryCtaLink?: string | null, alignment?: string | null, overlay?: boolean | null, animation?: { __typename: 'PaginasSectionsHeroAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsHeroSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsAbout', title?: string | null, subtitle?: string | null, content?: string | null, image?: string | null, imagePosition?: string | null, showStats?: boolean | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'PaginasSectionsAboutStats', value?: string | null, label?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsAboutAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsAboutSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsServices', title?: string | null, subtitle?: string | null, layout?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'PaginasSectionsServicesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null, link?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsServicesAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsServicesSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsProjects', title?: string | null, subtitle?: string | null, layout?: string | null, limit?: number | null, showFilters?: boolean | null, filterCategories?: Array<string | null> | null, ctaText?: string | null, ctaLink?: string | null, animation?: { __typename: 'PaginasSectionsProjectsAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsProjectsSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsTestimonials', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsTestimonialsItems', quote: string, author?: string | null, position?: string | null, avatar?: string | null, rating?: number | null } | null> | null, animation?: { __typename: 'PaginasSectionsTestimonialsAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsTestimonialsSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsCta', title?: string | null, description?: string | null, backgroundImage?: string | null, buttonText?: string | null, buttonLink?: string | null, secondaryButtonText?: string | null, secondaryButtonLink?: string | null, style?: string | null, animation?: { __typename: 'PaginasSectionsCtaAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsCtaSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsContact', title?: string | null, subtitle?: string | null, showForm?: boolean | null, showMap?: boolean | null, showInfo?: boolean | null, mapUrl?: string | null, info?: { __typename: 'PaginasSectionsContactInfo', address?: string | null, phone?: string | null, email?: string | null, hours?: string | null } | null, animation?: { __typename: 'PaginasSectionsContactAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsContactSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsTeam', title?: string | null, subtitle?: string | null, layout?: string | null, members?: Array<{ __typename: 'PaginasSectionsTeamMembers', name: string, position?: string | null, bio?: string | null, photo?: string | null, linkedin?: string | null, email?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsTeamAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsTeamSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsFaq', title?: string | null, subtitle?: string | null, items?: Array<{ __typename: 'PaginasSectionsFaqItems', question: string, answer: string } | null> | null, animation?: { __typename: 'PaginasSectionsFaqAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsFaqSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsGallery', title?: string | null, subtitle?: string | null, layout?: string | null, columns?: number | null, images?: Array<string | null> | null, animation?: { __typename: 'PaginasSectionsGalleryAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsGallerySectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsFeatures', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsFeaturesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsFeaturesAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsFeaturesSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsContent', title?: string | null, body?: any | null, backgroundColor?: string | null, maxWidth?: string | null, animation?: { __typename: 'PaginasSectionsContentAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsContentSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsSpacer', size?: string | null, showDivider?: boolean | null, animation?: { __typename: 'PaginasSectionsSpacerAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsSpacerSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | null> | null } };
 
 export type PaginasConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -2251,14 +3377,14 @@ export type PaginasConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PaginasConnectionQuery = { __typename?: 'Query', paginasConnection: { __typename?: 'PaginasConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginasConnectionEdges', cursor: string, node?: { __typename: 'Paginas', id: string, title?: string | null, slug?: string | null, published?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PaginasSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, sections?: Array<{ __typename: 'PaginasSectionsHero', title?: string | null, subtitle?: string | null, backgroundImage?: string | null, backgroundVideo?: string | null, ctaText?: string | null, ctaLink?: string | null, secondaryCtaText?: string | null, secondaryCtaLink?: string | null, alignment?: string | null, overlay?: boolean | null } | { __typename: 'PaginasSectionsAbout', title?: string | null, subtitle?: string | null, content?: string | null, image?: string | null, imagePosition?: string | null, showStats?: boolean | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'PaginasSectionsAboutStats', value?: string | null, label?: string | null } | null> | null } | { __typename: 'PaginasSectionsServices', title?: string | null, subtitle?: string | null, layout?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'PaginasSectionsServicesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null, link?: string | null } | null> | null } | { __typename: 'PaginasSectionsProjects', title?: string | null, subtitle?: string | null, layout?: string | null, limit?: number | null, showFilters?: boolean | null, filterCategories?: Array<string | null> | null, ctaText?: string | null, ctaLink?: string | null } | { __typename: 'PaginasSectionsTestimonials', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsTestimonialsItems', quote: string, author?: string | null, position?: string | null, avatar?: string | null, rating?: number | null } | null> | null } | { __typename: 'PaginasSectionsCta', title?: string | null, description?: string | null, backgroundImage?: string | null, buttonText?: string | null, buttonLink?: string | null, secondaryButtonText?: string | null, secondaryButtonLink?: string | null, style?: string | null } | { __typename: 'PaginasSectionsContact', title?: string | null, subtitle?: string | null, showForm?: boolean | null, showMap?: boolean | null, showInfo?: boolean | null, mapUrl?: string | null, info?: { __typename: 'PaginasSectionsContactInfo', address?: string | null, phone?: string | null, email?: string | null, hours?: string | null } | null } | { __typename: 'PaginasSectionsTeam', title?: string | null, subtitle?: string | null, layout?: string | null, members?: Array<{ __typename: 'PaginasSectionsTeamMembers', name: string, position?: string | null, bio?: string | null, photo?: string | null, linkedin?: string | null, email?: string | null } | null> | null } | { __typename: 'PaginasSectionsFaq', title?: string | null, subtitle?: string | null, items?: Array<{ __typename: 'PaginasSectionsFaqItems', question: string, answer: string } | null> | null } | { __typename: 'PaginasSectionsGallery', title?: string | null, subtitle?: string | null, layout?: string | null, columns?: number | null, images?: Array<string | null> | null } | { __typename: 'PaginasSectionsFeatures', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsFeaturesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null } | null> | null } | { __typename: 'PaginasSectionsContent', title?: string | null, body?: any | null, backgroundColor?: string | null, maxWidth?: string | null } | { __typename: 'PaginasSectionsSpacer', size?: string | null, showDivider?: boolean | null } | null> | null } | null } | null> | null } };
+export type PaginasConnectionQuery = { __typename?: 'Query', paginasConnection: { __typename?: 'PaginasConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PaginasConnectionEdges', cursor: string, node?: { __typename: 'Paginas', id: string, title?: string | null, slug?: string | null, published?: boolean | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PaginasSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, sections?: Array<{ __typename: 'PaginasSectionsHero', title?: string | null, subtitle?: string | null, backgroundImage?: string | null, backgroundVideo?: string | null, ctaText?: string | null, ctaLink?: string | null, secondaryCtaText?: string | null, secondaryCtaLink?: string | null, alignment?: string | null, overlay?: boolean | null, animation?: { __typename: 'PaginasSectionsHeroAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsHeroSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsAbout', title?: string | null, subtitle?: string | null, content?: string | null, image?: string | null, imagePosition?: string | null, showStats?: boolean | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'PaginasSectionsAboutStats', value?: string | null, label?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsAboutAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsAboutSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsServices', title?: string | null, subtitle?: string | null, layout?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'PaginasSectionsServicesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null, link?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsServicesAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsServicesSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsProjects', title?: string | null, subtitle?: string | null, layout?: string | null, limit?: number | null, showFilters?: boolean | null, filterCategories?: Array<string | null> | null, ctaText?: string | null, ctaLink?: string | null, animation?: { __typename: 'PaginasSectionsProjectsAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsProjectsSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsTestimonials', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsTestimonialsItems', quote: string, author?: string | null, position?: string | null, avatar?: string | null, rating?: number | null } | null> | null, animation?: { __typename: 'PaginasSectionsTestimonialsAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsTestimonialsSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsCta', title?: string | null, description?: string | null, backgroundImage?: string | null, buttonText?: string | null, buttonLink?: string | null, secondaryButtonText?: string | null, secondaryButtonLink?: string | null, style?: string | null, animation?: { __typename: 'PaginasSectionsCtaAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsCtaSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsContact', title?: string | null, subtitle?: string | null, showForm?: boolean | null, showMap?: boolean | null, showInfo?: boolean | null, mapUrl?: string | null, info?: { __typename: 'PaginasSectionsContactInfo', address?: string | null, phone?: string | null, email?: string | null, hours?: string | null } | null, animation?: { __typename: 'PaginasSectionsContactAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsContactSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsTeam', title?: string | null, subtitle?: string | null, layout?: string | null, members?: Array<{ __typename: 'PaginasSectionsTeamMembers', name: string, position?: string | null, bio?: string | null, photo?: string | null, linkedin?: string | null, email?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsTeamAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsTeamSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsFaq', title?: string | null, subtitle?: string | null, items?: Array<{ __typename: 'PaginasSectionsFaqItems', question: string, answer: string } | null> | null, animation?: { __typename: 'PaginasSectionsFaqAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsFaqSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsGallery', title?: string | null, subtitle?: string | null, layout?: string | null, columns?: number | null, images?: Array<string | null> | null, animation?: { __typename: 'PaginasSectionsGalleryAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsGallerySectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsFeatures', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsFeaturesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsFeaturesAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsFeaturesSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsContent', title?: string | null, body?: any | null, backgroundColor?: string | null, maxWidth?: string | null, animation?: { __typename: 'PaginasSectionsContentAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsContentSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsSpacer', size?: string | null, showDivider?: boolean | null, animation?: { __typename: 'PaginasSectionsSpacerAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsSpacerSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | null> | null } | null } | null> | null } };
 
 export type ConfiguracionGlobalQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type ConfiguracionGlobalQuery = { __typename?: 'Query', configuracionGlobal: { __typename: 'ConfiguracionGlobal', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, company?: { __typename: 'ConfiguracionGlobalCompany', name?: string | null, slogan?: string | null, logo?: string | null, logoWhite?: string | null, favicon?: string | null } | null, contact?: { __typename: 'ConfiguracionGlobalContact', phone?: string | null, whatsapp?: string | null, email?: string | null, address?: string | null, hours?: string | null } | null, social?: { __typename: 'ConfiguracionGlobalSocial', facebook?: string | null, instagram?: string | null, linkedin?: string | null, youtube?: string | null, tiktok?: string | null } | null, header?: { __typename: 'ConfiguracionGlobalHeader', sticky?: boolean | null, transparent?: boolean | null, ctaText?: string | null, ctaLink?: string | null, navigation?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigation', label?: string | null, href?: string | null, children?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigationChildren', label?: string | null, href?: string | null } | null> | null } | null> | null } | null, footer?: { __typename: 'ConfiguracionGlobalFooter', copyright?: string | null, showNewsletter?: boolean | null, newsletterTitle?: string | null, columns?: Array<{ __typename: 'ConfiguracionGlobalFooterColumns', title?: string | null, links?: Array<{ __typename: 'ConfiguracionGlobalFooterColumnsLinks', label?: string | null, href?: string | null } | null> | null } | null> | null } | null } };
+export type ConfiguracionGlobalQuery = { __typename?: 'Query', configuracionGlobal: { __typename: 'ConfiguracionGlobal', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, company?: { __typename: 'ConfiguracionGlobalCompany', name?: string | null, slogan?: string | null, logo?: string | null, logoWhite?: string | null, logoIcon?: string | null, favicon?: string | null } | null, colors?: { __typename: 'ConfiguracionGlobalColors', primary?: string | null, secondary?: string | null, accent?: string | null, background?: string | null, text?: string | null } | null, contact?: { __typename: 'ConfiguracionGlobalContact', phone?: string | null, phoneSecondary?: string | null, whatsapp?: string | null, email?: string | null, emailSecondary?: string | null, hours?: string | null } | null, locations?: { __typename: 'ConfiguracionGlobalLocations', main?: { __typename: 'ConfiguracionGlobalLocationsMain', name?: string | null, address?: string | null, city?: string | null, province?: string | null, country?: string | null, postalCode?: string | null, phone?: string | null, email?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null } | null, offices?: Array<{ __typename: 'ConfiguracionGlobalLocationsOffices', name?: string | null, address?: string | null, city?: string | null, province?: string | null, phone?: string | null, email?: string | null, hours?: string | null, mapUrl?: string | null, lat?: number | null, lng?: number | null, order?: number | null } | null> | null } | null, socialNetworks?: Array<{ __typename: 'ConfiguracionGlobalSocialNetworks', name?: string | null, icon?: string | null, url?: string | null, showInHeader?: boolean | null, showInFooter?: boolean | null, order?: number | null } | null> | null, header?: { __typename: 'ConfiguracionGlobalHeader', sticky?: boolean | null, transparent?: boolean | null, showTopBar?: boolean | null, ctaText?: string | null, ctaLink?: string | null, navigation?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigation', label?: string | null, href?: string | null, order?: number | null, highlight?: boolean | null, type?: string | null, dropdownLimit?: number | null, children?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigationChildren', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, footer?: { __typename: 'ConfiguracionGlobalFooter', copyright?: string | null, showNewsletter?: boolean | null, newsletterTitle?: string | null, newsletterSubtitle?: string | null, columns?: Array<{ __typename: 'ConfiguracionGlobalFooterColumns', title?: string | null, order?: number | null, links?: Array<{ __typename: 'ConfiguracionGlobalFooterColumnsLinks', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, legal?: { __typename: 'ConfiguracionGlobalLegal', privacyPolicy?: { __typename: 'ConfiguracionGlobalLegalPrivacyPolicy', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, termsOfService?: { __typename: 'ConfiguracionGlobalLegalTermsOfService', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, cookies?: { __typename: 'ConfiguracionGlobalLegalCookies', enabled?: boolean | null, showBanner?: boolean | null, title?: string | null, slug?: string | null, bannerText?: string | null, acceptButtonText?: string | null, rejectButtonText?: string | null, settingsButtonText?: string | null, content?: any | null } | null } | null, seo?: { __typename: 'ConfiguracionGlobalSeo', defaultTitle?: string | null, titleTemplate?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null, googleAnalyticsId?: string | null, googleTagManagerId?: string | null } | null } };
 
 export type ConfiguracionGlobalConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -2270,7 +3396,7 @@ export type ConfiguracionGlobalConnectionQueryVariables = Exact<{
 }>;
 
 
-export type ConfiguracionGlobalConnectionQuery = { __typename?: 'Query', configuracionGlobalConnection: { __typename?: 'ConfiguracionGlobalConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ConfiguracionGlobalConnectionEdges', cursor: string, node?: { __typename: 'ConfiguracionGlobal', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, company?: { __typename: 'ConfiguracionGlobalCompany', name?: string | null, slogan?: string | null, logo?: string | null, logoWhite?: string | null, favicon?: string | null } | null, contact?: { __typename: 'ConfiguracionGlobalContact', phone?: string | null, whatsapp?: string | null, email?: string | null, address?: string | null, hours?: string | null } | null, social?: { __typename: 'ConfiguracionGlobalSocial', facebook?: string | null, instagram?: string | null, linkedin?: string | null, youtube?: string | null, tiktok?: string | null } | null, header?: { __typename: 'ConfiguracionGlobalHeader', sticky?: boolean | null, transparent?: boolean | null, ctaText?: string | null, ctaLink?: string | null, navigation?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigation', label?: string | null, href?: string | null, children?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigationChildren', label?: string | null, href?: string | null } | null> | null } | null> | null } | null, footer?: { __typename: 'ConfiguracionGlobalFooter', copyright?: string | null, showNewsletter?: boolean | null, newsletterTitle?: string | null, columns?: Array<{ __typename: 'ConfiguracionGlobalFooterColumns', title?: string | null, links?: Array<{ __typename: 'ConfiguracionGlobalFooterColumnsLinks', label?: string | null, href?: string | null } | null> | null } | null> | null } | null } | null } | null> | null } };
+export type ConfiguracionGlobalConnectionQuery = { __typename?: 'Query', configuracionGlobalConnection: { __typename?: 'ConfiguracionGlobalConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ConfiguracionGlobalConnectionEdges', cursor: string, node?: { __typename: 'ConfiguracionGlobal', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, company?: { __typename: 'ConfiguracionGlobalCompany', name?: string | null, slogan?: string | null, logo?: string | null, logoWhite?: string | null, logoIcon?: string | null, favicon?: string | null } | null, colors?: { __typename: 'ConfiguracionGlobalColors', primary?: string | null, secondary?: string | null, accent?: string | null, background?: string | null, text?: string | null } | null, contact?: { __typename: 'ConfiguracionGlobalContact', phone?: string | null, phoneSecondary?: string | null, whatsapp?: string | null, email?: string | null, emailSecondary?: string | null, hours?: string | null } | null, locations?: { __typename: 'ConfiguracionGlobalLocations', main?: { __typename: 'ConfiguracionGlobalLocationsMain', name?: string | null, address?: string | null, city?: string | null, province?: string | null, country?: string | null, postalCode?: string | null, phone?: string | null, email?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null } | null, offices?: Array<{ __typename: 'ConfiguracionGlobalLocationsOffices', name?: string | null, address?: string | null, city?: string | null, province?: string | null, phone?: string | null, email?: string | null, hours?: string | null, mapUrl?: string | null, lat?: number | null, lng?: number | null, order?: number | null } | null> | null } | null, socialNetworks?: Array<{ __typename: 'ConfiguracionGlobalSocialNetworks', name?: string | null, icon?: string | null, url?: string | null, showInHeader?: boolean | null, showInFooter?: boolean | null, order?: number | null } | null> | null, header?: { __typename: 'ConfiguracionGlobalHeader', sticky?: boolean | null, transparent?: boolean | null, showTopBar?: boolean | null, ctaText?: string | null, ctaLink?: string | null, navigation?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigation', label?: string | null, href?: string | null, order?: number | null, highlight?: boolean | null, type?: string | null, dropdownLimit?: number | null, children?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigationChildren', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, footer?: { __typename: 'ConfiguracionGlobalFooter', copyright?: string | null, showNewsletter?: boolean | null, newsletterTitle?: string | null, newsletterSubtitle?: string | null, columns?: Array<{ __typename: 'ConfiguracionGlobalFooterColumns', title?: string | null, order?: number | null, links?: Array<{ __typename: 'ConfiguracionGlobalFooterColumnsLinks', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, legal?: { __typename: 'ConfiguracionGlobalLegal', privacyPolicy?: { __typename: 'ConfiguracionGlobalLegalPrivacyPolicy', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, termsOfService?: { __typename: 'ConfiguracionGlobalLegalTermsOfService', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, cookies?: { __typename: 'ConfiguracionGlobalLegalCookies', enabled?: boolean | null, showBanner?: boolean | null, title?: string | null, slug?: string | null, bannerText?: string | null, acceptButtonText?: string | null, rejectButtonText?: string | null, settingsButtonText?: string | null, content?: any | null } | null } | null, seo?: { __typename: 'ConfiguracionGlobalSeo', defaultTitle?: string | null, titleTemplate?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null, googleAnalyticsId?: string | null, googleTagManagerId?: string | null } | null } | null } | null> | null } };
 
 export const ProyectosPartsFragmentDoc = gql`
     fragment ProyectosParts on Proyectos {
@@ -2505,6 +3631,24 @@ export const PaginasPartsFragmentDoc = gql`
       secondaryCtaLink
       alignment
       overlay
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsAbout {
       title
@@ -2520,6 +3664,24 @@ export const PaginasPartsFragmentDoc = gql`
       }
       ctaText
       ctaLink
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsServices {
       title
@@ -2535,6 +3697,24 @@ export const PaginasPartsFragmentDoc = gql`
       }
       ctaText
       ctaLink
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsProjects {
       title
@@ -2545,6 +3725,24 @@ export const PaginasPartsFragmentDoc = gql`
       filterCategories
       ctaText
       ctaLink
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsTestimonials {
       title
@@ -2558,6 +3756,24 @@ export const PaginasPartsFragmentDoc = gql`
         avatar
         rating
       }
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsCta {
       title
@@ -2568,6 +3784,24 @@ export const PaginasPartsFragmentDoc = gql`
       secondaryButtonText
       secondaryButtonLink
       style
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsContact {
       title
@@ -2583,6 +3817,24 @@ export const PaginasPartsFragmentDoc = gql`
         hours
       }
       mapUrl
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsTeam {
       title
@@ -2597,6 +3849,24 @@ export const PaginasPartsFragmentDoc = gql`
         linkedin
         email
       }
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsFaq {
       title
@@ -2606,6 +3876,24 @@ export const PaginasPartsFragmentDoc = gql`
         question
         answer
       }
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsGallery {
       title
@@ -2613,6 +3901,24 @@ export const PaginasPartsFragmentDoc = gql`
       layout
       columns
       images
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsFeatures {
       title
@@ -2625,16 +3931,70 @@ export const PaginasPartsFragmentDoc = gql`
         icon
         image
       }
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsContent {
       title
       body
       backgroundColor
       maxWidth
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
     ... on PaginasSectionsSpacer {
       size
       showDivider
+      animation {
+        __typename
+        enabled
+        type
+        duration
+        delay
+        easing
+        stagger
+      }
+      sectionConfig {
+        __typename
+        id
+        backgroundColor
+        paddingTop
+        paddingBottom
+        fullWidth
+        visible
+      }
     }
   }
 }
@@ -2648,36 +4008,85 @@ export const ConfiguracionGlobalPartsFragmentDoc = gql`
     slogan
     logo
     logoWhite
+    logoIcon
     favicon
+  }
+  colors {
+    __typename
+    primary
+    secondary
+    accent
+    background
+    text
   }
   contact {
     __typename
     phone
+    phoneSecondary
     whatsapp
     email
-    address
+    emailSecondary
     hours
   }
-  social {
+  locations {
     __typename
-    facebook
-    instagram
-    linkedin
-    youtube
-    tiktok
+    main {
+      __typename
+      name
+      address
+      city
+      province
+      country
+      postalCode
+      phone
+      email
+      mapUrl
+      mapEmbed
+      lat
+      lng
+    }
+    offices {
+      __typename
+      name
+      address
+      city
+      province
+      phone
+      email
+      hours
+      mapUrl
+      lat
+      lng
+      order
+    }
+  }
+  socialNetworks {
+    __typename
+    name
+    icon
+    url
+    showInHeader
+    showInFooter
+    order
   }
   header {
     __typename
     sticky
     transparent
+    showTopBar
     navigation {
       __typename
       label
       href
+      order
+      highlight
+      type
+      dropdownLimit
       children {
         __typename
         label
         href
+        order
       }
     }
     ctaText
@@ -2688,15 +4097,58 @@ export const ConfiguracionGlobalPartsFragmentDoc = gql`
     copyright
     showNewsletter
     newsletterTitle
+    newsletterSubtitle
     columns {
       __typename
       title
+      order
       links {
         __typename
         label
         href
+        order
       }
     }
+  }
+  legal {
+    __typename
+    privacyPolicy {
+      __typename
+      enabled
+      title
+      slug
+      lastUpdated
+      content
+    }
+    termsOfService {
+      __typename
+      enabled
+      title
+      slug
+      lastUpdated
+      content
+    }
+    cookies {
+      __typename
+      enabled
+      showBanner
+      title
+      slug
+      bannerText
+      acceptButtonText
+      rejectButtonText
+      settingsButtonText
+      content
+    }
+  }
+  seo {
+    __typename
+    defaultTitle
+    titleTemplate
+    defaultDescription
+    defaultOgImage
+    googleAnalyticsId
+    googleTagManagerId
   }
 }
     `;

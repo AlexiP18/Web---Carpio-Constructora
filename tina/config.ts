@@ -1005,7 +1005,8 @@ export default defineConfig({
               {
                 type: 'string',
                 name: 'logo',
-                label: 'Logo',
+                label: 'Logo Principal',
+                description: 'Logo para fondos claros',
                 ui: {
                   // @ts-ignore
                   component: ImagePreviewField,
@@ -1014,7 +1015,18 @@ export default defineConfig({
               {
                 type: 'string',
                 name: 'logoWhite',
-                label: 'Logo Blanco (para fondos oscuros)',
+                label: 'Logo Blanco',
+                description: 'Logo para fondos oscuros',
+                ui: {
+                  // @ts-ignore
+                  component: ImagePreviewField,
+                },
+              },
+              {
+                type: 'string',
+                name: 'logoIcon',
+                label: 'Logo Icono/Símbolo',
+                description: 'Versión pequeña del logo (solo símbolo)',
                 ui: {
                   // @ts-ignore
                   component: ImagePreviewField,
@@ -1024,6 +1036,46 @@ export default defineConfig({
                 type: 'string',
                 name: 'favicon',
                 label: 'Favicon',
+              },
+            ],
+          },
+
+          // --- Colores Institucionales ---
+          {
+            type: 'object',
+            name: 'colors',
+            label: 'Colores Institucionales',
+            description: 'Colores principales de la marca',
+            fields: [
+              {
+                type: 'string',
+                name: 'primary',
+                label: 'Color Primario',
+                description: 'Color principal de la marca (ej: #1a365d)',
+              },
+              {
+                type: 'string',
+                name: 'secondary',
+                label: 'Color Secundario',
+                description: 'Color secundario (ej: #2d3748)',
+              },
+              {
+                type: 'string',
+                name: 'accent',
+                label: 'Color de Acento',
+                description: 'Color para destacar elementos (ej: #ed8936)',
+              },
+              {
+                type: 'string',
+                name: 'background',
+                label: 'Color de Fondo',
+                description: 'Color de fondo principal (ej: #ffffff)',
+              },
+              {
+                type: 'string',
+                name: 'text',
+                label: 'Color de Texto',
+                description: 'Color de texto principal (ej: #1a202c)',
               },
             ],
           },
@@ -1041,6 +1093,11 @@ export default defineConfig({
               },
               {
                 type: 'string',
+                name: 'phoneSecondary',
+                label: 'Teléfono Secundario',
+              },
+              {
+                type: 'string',
                 name: 'whatsapp',
                 label: 'WhatsApp',
               },
@@ -1051,9 +1108,8 @@ export default defineConfig({
               },
               {
                 type: 'string',
-                name: 'address',
-                label: 'Dirección',
-                ui: { component: 'textarea' },
+                name: 'emailSecondary',
+                label: 'Email Secundario',
               },
               {
                 type: 'string',
@@ -1062,37 +1118,97 @@ export default defineConfig({
               },
             ],
           },
-          
-          // --- Redes Sociales ---
+
+          // --- Ubicaciones (Principal y Oficinas) ---
           {
             type: 'object',
-            name: 'social',
+            name: 'locations',
+            label: 'Ubicaciones',
+            fields: [
+              {
+                type: 'object',
+                name: 'main',
+                label: 'Ubicación Principal (Oficina Central)',
+                fields: [
+                  { type: 'string', name: 'name', label: 'Nombre de la Ubicación' },
+                  { type: 'string', name: 'address', label: 'Dirección Completa', ui: { component: 'textarea' } },
+                  { type: 'string', name: 'city', label: 'Ciudad' },
+                  { type: 'string', name: 'province', label: 'Provincia/Estado' },
+                  { type: 'string', name: 'country', label: 'País' },
+                  { type: 'string', name: 'postalCode', label: 'Código Postal' },
+                  { type: 'string', name: 'phone', label: 'Teléfono de esta ubicación' },
+                  { type: 'string', name: 'email', label: 'Email de esta ubicación' },
+                  { type: 'string', name: 'mapUrl', label: 'URL de Google Maps' },
+                  { type: 'string', name: 'mapEmbed', label: 'Código Embed de Google Maps', ui: { component: 'textarea' } },
+                  { type: 'number', name: 'lat', label: 'Latitud' },
+                  { type: 'number', name: 'lng', label: 'Longitud' },
+                ],
+              },
+              {
+                type: 'object',
+                name: 'offices',
+                label: 'Otras Oficinas/Sucursales',
+                list: true,
+                fields: [
+                  { type: 'string', name: 'name', label: 'Nombre de la Oficina' },
+                  { type: 'string', name: 'address', label: 'Dirección Completa', ui: { component: 'textarea' } },
+                  { type: 'string', name: 'city', label: 'Ciudad' },
+                  { type: 'string', name: 'province', label: 'Provincia/Estado' },
+                  { type: 'string', name: 'phone', label: 'Teléfono' },
+                  { type: 'string', name: 'email', label: 'Email' },
+                  { type: 'string', name: 'hours', label: 'Horario de Atención' },
+                  { type: 'string', name: 'mapUrl', label: 'URL de Google Maps' },
+                  { type: 'number', name: 'lat', label: 'Latitud' },
+                  { type: 'number', name: 'lng', label: 'Longitud' },
+                  { type: 'number', name: 'order', label: 'Orden de visualización' },
+                ],
+              },
+            ],
+          },
+          
+          // --- Redes Sociales (Dinámicas) ---
+          {
+            type: 'object',
+            name: 'socialNetworks',
             label: 'Redes Sociales',
+            list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: item?.name || 'Nueva Red Social',
+              }),
+            },
             fields: [
               {
                 type: 'string',
-                name: 'facebook',
-                label: 'Facebook URL',
+                name: 'name',
+                label: 'Nombre de la Red',
+                description: 'Ej: Facebook, Instagram, TikTok, X (Twitter)',
               },
               {
                 type: 'string',
-                name: 'instagram',
-                label: 'Instagram URL',
+                name: 'icon',
+                label: 'Icono',
+                description: 'Nombre del icono (ej: facebook, instagram, tiktok, x-twitter)',
               },
               {
                 type: 'string',
-                name: 'linkedin',
-                label: 'LinkedIn URL',
+                name: 'url',
+                label: 'URL del Perfil',
               },
               {
-                type: 'string',
-                name: 'youtube',
-                label: 'YouTube URL',
+                type: 'boolean',
+                name: 'showInHeader',
+                label: 'Mostrar en Header',
               },
               {
-                type: 'string',
-                name: 'tiktok',
-                label: 'TikTok URL',
+                type: 'boolean',
+                name: 'showInFooter',
+                label: 'Mostrar en Footer',
+              },
+              {
+                type: 'number',
+                name: 'order',
+                label: 'Orden',
               },
             ],
           },
@@ -1114,10 +1230,20 @@ export default defineConfig({
                 label: 'Header Transparente en Hero',
               },
               {
+                type: 'boolean',
+                name: 'showTopBar',
+                label: 'Mostrar Barra Superior (con teléfono/email)',
+              },
+              {
                 type: 'object',
                 name: 'navigation',
                 label: 'Menú de Navegación',
                 list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: item?.label || 'Nuevo Enlace',
+                  }),
+                },
                 fields: [
                   {
                     type: 'string',
@@ -1130,21 +1256,42 @@ export default defineConfig({
                     label: 'URL',
                   },
                   {
+                    type: 'number',
+                    name: 'order',
+                    label: 'Orden en el Menú',
+                    description: 'Número para ordenar (menor = primero)',
+                  },
+                  {
+                    type: 'boolean',
+                    name: 'highlight',
+                    label: 'Destacar este enlace',
+                  },
+                  {
+                    type: 'string',
+                    name: 'type',
+                    label: 'Tipo de Menú',
+                    options: [
+                      { value: 'link', label: 'Enlace Normal' },
+                      { value: 'dropdown-services', label: 'Dropdown de Servicios' },
+                      { value: 'dropdown-projects', label: 'Dropdown de Proyectos' },
+                      { value: 'dropdown-custom', label: 'Dropdown Personalizado' },
+                    ],
+                  },
+                  {
+                    type: 'number',
+                    name: 'dropdownLimit',
+                    label: 'Cantidad en Dropdown',
+                    description: 'Para dropdowns de servicios/proyectos, cuántos mostrar',
+                  },
+                  {
                     type: 'object',
                     name: 'children',
-                    label: 'Submenú',
+                    label: 'Submenú (para dropdown personalizado)',
                     list: true,
                     fields: [
-                      {
-                        type: 'string',
-                        name: 'label',
-                        label: 'Texto',
-                      },
-                      {
-                        type: 'string',
-                        name: 'href',
-                        label: 'URL',
-                      },
+                      { type: 'string', name: 'label', label: 'Texto' },
+                      { type: 'string', name: 'href', label: 'URL' },
+                      { type: 'number', name: 'order', label: 'Orden' },
                     ],
                   },
                 ],
@@ -1172,6 +1319,7 @@ export default defineConfig({
                 type: 'string',
                 name: 'copyright',
                 label: 'Texto de Copyright',
+                description: 'Usa {year} para el año actual',
               },
               {
                 type: 'boolean',
@@ -1184,36 +1332,115 @@ export default defineConfig({
                 label: 'Título del Newsletter',
               },
               {
+                type: 'string',
+                name: 'newsletterSubtitle',
+                label: 'Subtítulo del Newsletter',
+              },
+              {
                 type: 'object',
                 name: 'columns',
                 label: 'Columnas del Footer',
                 list: true,
+                ui: {
+                  itemProps: (item) => ({
+                    label: item?.title || 'Nueva Columna',
+                  }),
+                },
                 fields: [
-                  {
-                    type: 'string',
-                    name: 'title',
-                    label: 'Título de la Columna',
-                  },
+                  { type: 'string', name: 'title', label: 'Título de la Columna' },
+                  { type: 'number', name: 'order', label: 'Orden' },
                   {
                     type: 'object',
                     name: 'links',
                     label: 'Enlaces',
                     list: true,
                     fields: [
-                      {
-                        type: 'string',
-                        name: 'label',
-                        label: 'Texto',
-                      },
-                      {
-                        type: 'string',
-                        name: 'href',
-                        label: 'URL',
-                      },
+                      { type: 'string', name: 'label', label: 'Texto' },
+                      { type: 'string', name: 'href', label: 'URL' },
+                      { type: 'number', name: 'order', label: 'Orden' },
                     ],
                   },
                 ],
               },
+            ],
+          },
+
+          // --- Páginas Legales ---
+          {
+            type: 'object',
+            name: 'legal',
+            label: 'Páginas Legales',
+            fields: [
+              {
+                type: 'object',
+                name: 'privacyPolicy',
+                label: 'Política de Privacidad',
+                fields: [
+                  { type: 'boolean', name: 'enabled', label: 'Habilitada' },
+                  { type: 'string', name: 'title', label: 'Título de la Página' },
+                  { type: 'string', name: 'slug', label: 'URL (slug)' },
+                  { type: 'datetime', name: 'lastUpdated', label: 'Última Actualización' },
+                  { 
+                    type: 'rich-text', 
+                    name: 'content', 
+                    label: 'Contenido',
+                    description: 'Texto completo de la política de privacidad',
+                  },
+                ],
+              },
+              {
+                type: 'object',
+                name: 'termsOfService',
+                label: 'Términos de Servicio',
+                fields: [
+                  { type: 'boolean', name: 'enabled', label: 'Habilitados' },
+                  { type: 'string', name: 'title', label: 'Título de la Página' },
+                  { type: 'string', name: 'slug', label: 'URL (slug)' },
+                  { type: 'datetime', name: 'lastUpdated', label: 'Última Actualización' },
+                  { 
+                    type: 'rich-text', 
+                    name: 'content', 
+                    label: 'Contenido',
+                    description: 'Texto completo de los términos de servicio',
+                  },
+                ],
+              },
+              {
+                type: 'object',
+                name: 'cookies',
+                label: 'Política de Cookies',
+                fields: [
+                  { type: 'boolean', name: 'enabled', label: 'Habilitada' },
+                  { type: 'boolean', name: 'showBanner', label: 'Mostrar Banner de Cookies' },
+                  { type: 'string', name: 'title', label: 'Título de la Página' },
+                  { type: 'string', name: 'slug', label: 'URL (slug)' },
+                  { type: 'string', name: 'bannerText', label: 'Texto del Banner', ui: { component: 'textarea' } },
+                  { type: 'string', name: 'acceptButtonText', label: 'Texto Botón Aceptar' },
+                  { type: 'string', name: 'rejectButtonText', label: 'Texto Botón Rechazar' },
+                  { type: 'string', name: 'settingsButtonText', label: 'Texto Botón Configurar' },
+                  { 
+                    type: 'rich-text', 
+                    name: 'content', 
+                    label: 'Contenido',
+                    description: 'Texto completo de la política de cookies',
+                  },
+                ],
+              },
+            ],
+          },
+
+          // --- Configuración SEO Global ---
+          {
+            type: 'object',
+            name: 'seo',
+            label: 'SEO Global',
+            fields: [
+              { type: 'string', name: 'defaultTitle', label: 'Título por Defecto' },
+              { type: 'string', name: 'titleTemplate', label: 'Plantilla de Título', description: 'Usa %s para el título de la página. Ej: %s | Constructora Carpio' },
+              { type: 'string', name: 'defaultDescription', label: 'Descripción por Defecto', ui: { component: 'textarea' } },
+              { type: 'string', name: 'defaultOgImage', label: 'Imagen OG por Defecto', ui: { component: ImagePreviewField } },
+              { type: 'string', name: 'googleAnalyticsId', label: 'Google Analytics ID' },
+              { type: 'string', name: 'googleTagManagerId', label: 'Google Tag Manager ID' },
             ],
           },
         ],

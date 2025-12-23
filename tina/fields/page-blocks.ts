@@ -10,6 +10,152 @@ import { ImagePreviewField, ImageGalleryField } from './cloudinary-fields';
  */
 
 // ============================================
+// CAMPOS COMUNES: Animación y Configuración Visual
+// ============================================
+const animationFields = [
+  {
+    type: 'object' as const,
+    name: 'animation',
+    label: 'Configuración de Animación',
+    fields: [
+      {
+        type: 'boolean' as const,
+        name: 'enabled',
+        label: 'Habilitar Animación',
+      },
+      {
+        type: 'string' as const,
+        name: 'type',
+        label: 'Tipo de Animación',
+        options: [
+          { value: 'none', label: 'Sin animación' },
+          { value: 'fade-in', label: 'Aparecer (Fade In)' },
+          { value: 'fade-up', label: 'Aparecer desde abajo' },
+          { value: 'fade-down', label: 'Aparecer desde arriba' },
+          { value: 'fade-left', label: 'Aparecer desde izquierda' },
+          { value: 'fade-right', label: 'Aparecer desde derecha' },
+          { value: 'zoom-in', label: 'Zoom In' },
+          { value: 'zoom-out', label: 'Zoom Out' },
+          { value: 'flip-up', label: 'Voltear hacia arriba' },
+          { value: 'flip-down', label: 'Voltear hacia abajo' },
+          { value: 'slide-up', label: 'Deslizar hacia arriba' },
+          { value: 'slide-down', label: 'Deslizar hacia abajo' },
+          { value: 'slide-left', label: 'Deslizar hacia izquierda' },
+          { value: 'slide-right', label: 'Deslizar hacia derecha' },
+        ],
+      },
+      {
+        type: 'string' as const,
+        name: 'duration',
+        label: 'Duración',
+        options: [
+          { value: '300', label: 'Rápida (300ms)' },
+          { value: '500', label: 'Normal (500ms)' },
+          { value: '700', label: 'Lenta (700ms)' },
+          { value: '1000', label: 'Muy lenta (1s)' },
+        ],
+      },
+      {
+        type: 'string' as const,
+        name: 'delay',
+        label: 'Retraso',
+        options: [
+          { value: '0', label: 'Sin retraso' },
+          { value: '100', label: '100ms' },
+          { value: '200', label: '200ms' },
+          { value: '300', label: '300ms' },
+          { value: '500', label: '500ms' },
+        ],
+      },
+      {
+        type: 'string' as const,
+        name: 'easing',
+        label: 'Curva de Animación',
+        options: [
+          { value: 'ease', label: 'Ease (suave)' },
+          { value: 'ease-in', label: 'Ease In' },
+          { value: 'ease-out', label: 'Ease Out' },
+          { value: 'ease-in-out', label: 'Ease In-Out' },
+          { value: 'linear', label: 'Lineal' },
+        ],
+      },
+      {
+        type: 'boolean' as const,
+        name: 'stagger',
+        label: 'Animar elementos uno a uno',
+        description: 'Para listas de elementos (servicios, proyectos, etc.)',
+      },
+    ],
+  },
+];
+
+const sectionConfigFields = [
+  {
+    type: 'object' as const,
+    name: 'sectionConfig',
+    label: 'Configuración de Sección',
+    fields: [
+      {
+        type: 'string' as const,
+        name: 'id',
+        label: 'ID de la Sección',
+        description: 'Para navegación interna (sin espacios ni caracteres especiales)',
+      },
+      {
+        type: 'string' as const,
+        name: 'backgroundColor',
+        label: 'Color de Fondo',
+        options: [
+          { value: 'white', label: 'Blanco' },
+          { value: 'gray-50', label: 'Gris muy claro' },
+          { value: 'gray-100', label: 'Gris claro' },
+          { value: 'gray-900', label: 'Gris oscuro' },
+          { value: 'primary', label: 'Color Primario' },
+          { value: 'secondary', label: 'Color Secundario' },
+          { value: 'accent', label: 'Color de Acento' },
+          { value: 'transparent', label: 'Transparente' },
+        ],
+      },
+      {
+        type: 'string' as const,
+        name: 'paddingTop',
+        label: 'Espaciado Superior',
+        options: [
+          { value: 'none', label: 'Sin espaciado' },
+          { value: 'sm', label: 'Pequeño' },
+          { value: 'md', label: 'Mediano' },
+          { value: 'lg', label: 'Grande' },
+          { value: 'xl', label: 'Extra grande' },
+        ],
+      },
+      {
+        type: 'string' as const,
+        name: 'paddingBottom',
+        label: 'Espaciado Inferior',
+        options: [
+          { value: 'none', label: 'Sin espaciado' },
+          { value: 'sm', label: 'Pequeño' },
+          { value: 'md', label: 'Mediano' },
+          { value: 'lg', label: 'Grande' },
+          { value: 'xl', label: 'Extra grande' },
+        ],
+      },
+      {
+        type: 'boolean' as const,
+        name: 'fullWidth',
+        label: 'Ancho Completo',
+      },
+      {
+        type: 'boolean' as const,
+        name: 'visible',
+        label: 'Sección Visible',
+        description: 'Desactiva para ocultar temporalmente esta sección',
+      },
+    ],
+  },
+];
+
+// ============================================
 // SECCIÓN: Hero Principal
 // ============================================
 export const heroSection: Template = {
@@ -758,20 +904,31 @@ export const spacerSection: Template = {
 };
 
 // ============================================
-// Exportar todos los templates
+// Exportar todos los templates con campos comunes
 // ============================================
+
+// Función helper para agregar campos comunes a cada template
+const addCommonFields = (template: Template): Template => ({
+  ...template,
+  fields: [
+    ...template.fields,
+    ...animationFields,
+    ...sectionConfigFields,
+  ],
+});
+
 export const pageBlockTemplates = [
-  heroSection,
-  aboutSection,
-  servicesSection,
-  projectsSection,
-  testimonialsSection,
-  ctaSection,
-  contactSection,
-  teamSection,
-  faqSection,
-  gallerySection,
-  featuresSection,
-  contentSection,
-  spacerSection,
+  addCommonFields(heroSection),
+  addCommonFields(aboutSection),
+  addCommonFields(servicesSection),
+  addCommonFields(projectsSection),
+  addCommonFields(testimonialsSection),
+  addCommonFields(ctaSection),
+  addCommonFields(contactSection),
+  addCommonFields(teamSection),
+  addCommonFields(faqSection),
+  addCommonFields(gallerySection),
+  addCommonFields(featuresSection),
+  addCommonFields(contentSection),
+  addCommonFields(spacerSection),
 ];

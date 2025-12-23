@@ -4,53 +4,131 @@
     "slogan": "Construimos tus sueños",
     "logo": "",
     "logoWhite": "",
+    "logoIcon": "",
     "favicon": "/favicon.ico"
+  },
+  "colors": {
+    "primary": "#1a365d",
+    "secondary": "#2d3748",
+    "accent": "#ed8936",
+    "background": "#ffffff",
+    "text": "#1a202c"
   },
   "contact": {
     "phone": "+593 99 999 9999",
+    "phoneSecondary": "",
     "whatsapp": "+593 99 999 9999",
     "email": "info@constructoracarpio.com",
-    "address": "Av. Principal 123, Ambato, Tungurahua, Ecuador",
+    "emailSecondary": "",
     "hours": "Lunes a Viernes: 8:00 - 18:00"
   },
-  "social": {
-    "facebook": "https://facebook.com/constructoracarpio",
-    "instagram": "https://instagram.com/constructoracarpio",
-    "linkedin": "https://linkedin.com/company/constructoracarpio",
-    "youtube": "",
-    "tiktok": ""
+  "locations": {
+    "main": {
+      "name": "Oficina Central",
+      "address": "Av. Principal 123, Ambato, Tungurahua, Ecuador",
+      "city": "Ambato",
+      "province": "Tungurahua",
+      "country": "Ecuador",
+      "postalCode": "",
+      "phone": "+593 99 999 9999",
+      "email": "info@constructoracarpio.com",
+      "mapUrl": "https://maps.google.com/?q=Ambato,+Ecuador",
+      "mapEmbed": "",
+      "lat": -1.2543,
+      "lng": -78.6228
+    },
+    "offices": []
   },
+  "socialNetworks": [
+    {
+      "name": "Facebook",
+      "icon": "facebook",
+      "url": "https://facebook.com/constructoracarpio",
+      "showInHeader": false,
+      "showInFooter": true,
+      "order": 1
+    },
+    {
+      "name": "Instagram",
+      "icon": "instagram",
+      "url": "https://instagram.com/constructoracarpio",
+      "showInHeader": false,
+      "showInFooter": true,
+      "order": 2
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "linkedin",
+      "url": "https://linkedin.com/company/constructoracarpio",
+      "showInHeader": false,
+      "showInFooter": true,
+      "order": 3
+    },
+    {
+      "name": "YouTube",
+      "icon": "youtube",
+      "url": "",
+      "showInHeader": false,
+      "showInFooter": true,
+      "order": 4
+    },
+    {
+      "name": "TikTok",
+      "icon": "tiktok",
+      "url": "",
+      "showInHeader": false,
+      "showInFooter": true,
+      "order": 5
+    }
+  ],
   "header": {
     "sticky": true,
     "transparent": true,
+    "showTopBar": false,
     "navigation": [
       {
         "label": "Inicio",
         "href": "/",
+        "order": 1,
+        "highlight": false,
+        "type": "link",
+        "dropdownLimit": 0,
         "children": []
       },
       {
         "label": "Quiénes Somos",
         "href": "/quienes-somos",
+        "order": 2,
+        "highlight": false,
+        "type": "link",
+        "dropdownLimit": 0,
         "children": []
       },
       {
         "label": "Servicios",
         "href": "/servicios",
-        "children": [
-          { "label": "Construcción Residencial", "href": "/servicios/construccion-residencial" },
-          { "label": "Diseño Arquitectónico", "href": "/servicios/diseno-arquitectonico" },
-          { "label": "Remodelación", "href": "/servicios/remodelacion" }
-        ]
+        "order": 3,
+        "highlight": false,
+        "type": "dropdown-services",
+        "dropdownLimit": 5,
+        "children": []
       },
       {
         "label": "Proyectos",
         "href": "/proyectos",
+        "order": 4,
+        "highlight": false,
+        "type": "dropdown-projects",
+        "dropdownLimit": 5,
         "children": []
       },
       {
         "label": "Contacto",
         "href": "/contacto",
+        "order": 5,
+        "highlight": true,
+        "type": "link",
+        "dropdownLimit": 0,
         "children": []
       }
     ],
@@ -58,33 +136,109 @@
     "ctaLink": "/contacto"
   },
   "footer": {
-    "copyright": "© 2024 Constructora Carpio. Todos los derechos reservados.",
+    "copyright": "© {year} Constructora Carpio. Todos los derechos reservados.",
     "showNewsletter": true,
     "newsletterTitle": "Suscríbete a nuestro boletín",
+    "newsletterSubtitle": "Recibe las últimas novedades de nuestros proyectos",
     "columns": [
       {
         "title": "Empresa",
+        "order": 1,
         "links": [
-          { "label": "Quiénes Somos", "href": "/quienes-somos" },
-          { "label": "Nuestro Equipo", "href": "/quienes-somos#equipo" },
-          { "label": "Trabaja con Nosotros", "href": "/contacto" }
+          { "label": "Quiénes Somos", "href": "/quienes-somos", "order": 1 },
+          { "label": "Nuestro Equipo", "href": "/quienes-somos#equipo", "order": 2 },
+          { "label": "Trabaja con Nosotros", "href": "/contacto", "order": 3 }
         ]
       },
       {
         "title": "Servicios",
+        "order": 2,
         "links": [
-          { "label": "Construcción", "href": "/servicios/construccion" },
-          { "label": "Diseño", "href": "/servicios/diseno-arquitectonico" },
-          { "label": "Remodelación", "href": "/servicios/remodelacion" }
+          { "label": "Construcción", "href": "/servicios/construccion", "order": 1 },
+          { "label": "Diseño", "href": "/servicios/diseno-arquitectonico", "order": 2 },
+          { "label": "Remodelación", "href": "/servicios/remodelacion", "order": 3 }
         ]
       },
       {
         "title": "Legal",
+        "order": 3,
         "links": [
-          { "label": "Términos y Condiciones", "href": "/terminos" },
-          { "label": "Política de Privacidad", "href": "/privacidad" }
+          { "label": "Términos de Servicio", "href": "/terminos", "order": 1 },
+          { "label": "Política de Privacidad", "href": "/privacidad", "order": 2 },
+          { "label": "Política de Cookies", "href": "/cookies", "order": 3 }
         ]
       }
     ]
+  },
+  "legal": {
+    "privacyPolicy": {
+      "enabled": true,
+      "title": "Política de Privacidad",
+      "slug": "privacidad",
+      "lastUpdated": "2024-01-01T00:00:00.000Z",
+      "content": {
+        "type": "root",
+        "children": [
+          {
+            "type": "h2",
+            "children": [{ "type": "text", "text": "Política de Privacidad" }]
+          },
+          {
+            "type": "p",
+            "children": [{ "type": "text", "text": "Esta política de privacidad describe cómo recopilamos, usamos y protegemos tu información personal." }]
+          }
+        ]
+      }
+    },
+    "termsOfService": {
+      "enabled": true,
+      "title": "Términos de Servicio",
+      "slug": "terminos",
+      "lastUpdated": "2024-01-01T00:00:00.000Z",
+      "content": {
+        "type": "root",
+        "children": [
+          {
+            "type": "h2",
+            "children": [{ "type": "text", "text": "Términos de Servicio" }]
+          },
+          {
+            "type": "p",
+            "children": [{ "type": "text", "text": "Al utilizar nuestros servicios, aceptas estos términos y condiciones." }]
+          }
+        ]
+      }
+    },
+    "cookies": {
+      "enabled": true,
+      "showBanner": true,
+      "title": "Política de Cookies",
+      "slug": "cookies",
+      "bannerText": "Utilizamos cookies para mejorar tu experiencia en nuestro sitio web. Al continuar navegando, aceptas el uso de cookies.",
+      "acceptButtonText": "Aceptar",
+      "rejectButtonText": "Rechazar",
+      "settingsButtonText": "Configurar",
+      "content": {
+        "type": "root",
+        "children": [
+          {
+            "type": "h2",
+            "children": [{ "type": "text", "text": "Política de Cookies" }]
+          },
+          {
+            "type": "p",
+            "children": [{ "type": "text", "text": "Este sitio web utiliza cookies para mejorar tu experiencia de navegación." }]
+          }
+        ]
+      }
+    }
+  },
+  "seo": {
+    "defaultTitle": "Constructora Carpio",
+    "titleTemplate": "%s | Constructora Carpio",
+    "defaultDescription": "Constructora Carpio - Construimos tus sueños. Expertos en construcción residencial, diseño arquitectónico y remodelación en Ecuador.",
+    "defaultOgImage": "",
+    "googleAnalyticsId": "",
+    "googleTagManagerId": ""
   }
 }
