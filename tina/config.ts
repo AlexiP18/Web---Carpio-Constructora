@@ -827,6 +827,28 @@ export default defineConfig({
       },
       
       // ==========================================
+      // COLECCIÓN DE PRUEBA (TEMPORAL)
+      // ==========================================
+      {
+        name: 'paginasPrueba',
+        label: 'Páginas Prueba',
+        path: 'src/content/paginas-test',
+        format: 'json',
+        fields: [
+          {
+            type: 'string',
+            name: 'title',
+            label: 'Título',
+          },
+          {
+            type: 'string',
+            name: 'content',
+            label: 'Contenido',
+          },
+        ],
+      },
+      
+      // ==========================================
       // COLECCIÓN: PÁGINAS DEL SITIO
       // ==========================================
       {
@@ -839,21 +861,17 @@ export default defineConfig({
             create: true,
             delete: false,
           },
-          // Router deshabilitado temporalmente - causa problemas con el formulario
-          // Para vista previa, usar el botón "View" después de guardar
         },
         fields: [
           {
             type: 'string',
             name: 'title',
             label: 'Título de la Página',
-            required: true,
           },
           {
             type: 'string',
             name: 'slug',
             label: 'Slug (URL)',
-            required: true,
           },
           {
             type: 'boolean',
