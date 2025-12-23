@@ -1,0 +1,419 @@
+fragment ProyectosParts on Proyectos {
+  __typename
+  title
+  slug
+  description
+  tags
+  status
+  category
+  backgroundImage
+  images
+  virtualTourVideo
+  location {
+    __typename
+    address
+    city
+    sector
+    mapUrl
+    lat
+    lng
+  }
+  specifications {
+    __typename
+    bedrooms {
+      __typename
+      enabled
+      value
+      label
+      sublabel
+    }
+    bathrooms {
+      __typename
+      enabled
+      value
+      label
+      sublabel
+    }
+    area {
+      __typename
+      enabled
+      value
+      label
+      sublabel
+    }
+    garden {
+      __typename
+      enabled
+      value
+      label
+      sublabel
+    }
+    petFriendly {
+      __typename
+      enabled
+      value
+      label
+      sublabel
+    }
+    deliveryDate {
+      __typename
+      enabled
+      value
+      label
+    }
+    customSpecs {
+      __typename
+      enabled
+      icon
+      label
+      value
+      sublabel
+      colorScheme
+    }
+  }
+  amenities
+  features {
+    __typename
+    icon
+    title
+    description
+  }
+  testimonials {
+    __typename
+    name
+    quote
+    image
+    unitType
+  }
+  seo {
+    __typename
+    metaTitle
+    metaDescription
+    ogImage
+  }
+  body
+}
+
+fragment ServiciosParts on Servicios {
+  __typename
+  title
+  slug
+  shortDescription
+  icon
+  category
+  heroConfig {
+    __typename
+    backgroundImage
+    subtitle
+    ctaText
+    ctaLink
+  }
+  gallery
+  benefits {
+    __typename
+    icon
+    title
+    description
+  }
+  process {
+    __typename
+    step
+    title
+    description
+  }
+  testimonialsSection {
+    __typename
+    enabled
+    title
+    items {
+      __typename
+      name
+      role
+      quote
+      image
+    }
+  }
+  faqsSection {
+    __typename
+    enabled
+    title
+    items {
+      __typename
+      question
+      answer
+    }
+  }
+  ctaSection {
+    __typename
+    title
+    description
+    buttonText
+    buttonLink
+    backgroundImage
+  }
+  body
+}
+
+fragment CategoriasProyectosParts on CategoriasProyectos {
+  __typename
+  name
+  slug
+  description
+  icon
+  image
+  order
+  cloudinaryFolder
+}
+
+fragment CategoriasServiciosParts on CategoriasServicios {
+  __typename
+  name
+  slug
+  description
+  icon
+  image
+  order
+  cloudinaryFolder
+}
+
+fragment CloudinaryConfigParts on CloudinaryConfig {
+  __typename
+  cloudName
+  baseFolder
+  defaultTransformations {
+    __typename
+    imageWidth
+    imageQuality
+    imageFormat
+  }
+  folders {
+    __typename
+    proyectos
+    servicios
+    general
+  }
+}
+
+fragment PaginasPruebaParts on PaginasPrueba {
+  __typename
+  title
+  content
+}
+
+fragment PaginasParts on Paginas {
+  __typename
+  title
+  slug
+  published
+  seo {
+    __typename
+    metaTitle
+    metaDescription
+    ogImage
+  }
+  sections {
+    __typename
+    ... on PaginasSectionsHero {
+      title
+      subtitle
+      backgroundImage
+      backgroundVideo
+      ctaText
+      ctaLink
+      secondaryCtaText
+      secondaryCtaLink
+      alignment
+      overlay
+    }
+    ... on PaginasSectionsAbout {
+      title
+      subtitle
+      content
+      image
+      imagePosition
+      showStats
+      stats {
+        __typename
+        value
+        label
+      }
+      ctaText
+      ctaLink
+    }
+    ... on PaginasSectionsServices {
+      title
+      subtitle
+      layout
+      items {
+        __typename
+        title
+        description
+        icon
+        image
+        link
+      }
+      ctaText
+      ctaLink
+    }
+    ... on PaginasSectionsProjects {
+      title
+      subtitle
+      layout
+      limit
+      showFilters
+      filterCategories
+      ctaText
+      ctaLink
+    }
+    ... on PaginasSectionsTestimonials {
+      title
+      subtitle
+      layout
+      items {
+        __typename
+        quote
+        author
+        position
+        avatar
+        rating
+      }
+    }
+    ... on PaginasSectionsCta {
+      title
+      description
+      backgroundImage
+      buttonText
+      buttonLink
+      secondaryButtonText
+      secondaryButtonLink
+      style
+    }
+    ... on PaginasSectionsContact {
+      title
+      subtitle
+      showForm
+      showMap
+      showInfo
+      info {
+        __typename
+        address
+        phone
+        email
+        hours
+      }
+      mapUrl
+    }
+    ... on PaginasSectionsTeam {
+      title
+      subtitle
+      layout
+      members {
+        __typename
+        name
+        position
+        bio
+        photo
+        linkedin
+        email
+      }
+    }
+    ... on PaginasSectionsFaq {
+      title
+      subtitle
+      items {
+        __typename
+        question
+        answer
+      }
+    }
+    ... on PaginasSectionsGallery {
+      title
+      subtitle
+      layout
+      columns
+      images
+    }
+    ... on PaginasSectionsFeatures {
+      title
+      subtitle
+      layout
+      items {
+        __typename
+        title
+        description
+        icon
+        image
+      }
+    }
+    ... on PaginasSectionsContent {
+      title
+      body
+      backgroundColor
+      maxWidth
+    }
+    ... on PaginasSectionsSpacer {
+      size
+      showDivider
+    }
+  }
+}
+
+fragment ConfiguracionGlobalParts on ConfiguracionGlobal {
+  __typename
+  company {
+    __typename
+    name
+    slogan
+    logo
+    logoWhite
+    favicon
+  }
+  contact {
+    __typename
+    phone
+    whatsapp
+    email
+    address
+    hours
+  }
+  social {
+    __typename
+    facebook
+    instagram
+    linkedin
+    youtube
+    tiktok
+  }
+  header {
+    __typename
+    sticky
+    transparent
+    navigation {
+      __typename
+      label
+      href
+      children {
+        __typename
+        label
+        href
+      }
+    }
+    ctaText
+    ctaLink
+  }
+  footer {
+    __typename
+    copyright
+    showNewsletter
+    newsletterTitle
+    columns {
+      __typename
+      title
+      links {
+        __typename
+        label
+        href
+      }
+    }
+  }
+}
