@@ -1766,6 +1766,18 @@ var config_default = defineConfig2({
           filename: {
             readonly: true,
             slugify: (values) => values?.slug || values?.title?.toLowerCase().replace(/\s+/g, "-") || ""
+          },
+          // Router para vista previa en iframe
+          router: (args) => {
+            const filename = args.document._sys.filename;
+            const routeMap = {
+              "inicio": "/",
+              "nosotros": "/quienes-somos",
+              "servicios": "/servicios",
+              "proyectos": "/proyectos",
+              "contacto": "/contacto"
+            };
+            return routeMap[filename] ?? `/${filename}`;
           }
         },
         fields: [
