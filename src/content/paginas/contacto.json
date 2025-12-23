@@ -9,30 +9,14 @@
   },
   "sections": [
     {
-      "_template": "hero",
       "title": "Contáctanos",
       "subtitle": "Estamos aquí para ayudarte a hacer realidad tu proyecto",
       "backgroundImage": "",
       "alignment": "center",
-      "overlay": true
+      "overlay": true,
+      "_template": "hero"
     },
     {
-      "_template": "contact",
-      "title": "Envíanos un Mensaje",
-      "subtitle": "Completa el formulario y nos pondremos en contacto contigo lo antes posible.",
-      "showForm": true,
-      "showMap": true,
-      "showInfo": true,
-      "info": {
-        "address": "Av. Principal 123, Ambato, Ecuador",
-        "phone": "+593 99 999 9999",
-        "email": "info@constructoracarpio.com",
-        "hours": "Lunes a Viernes: 8:00 - 18:00"
-      },
-      "mapUrl": ""
-    },
-    {
-      "_template": "faq",
       "title": "Preguntas Frecuentes",
       "subtitle": "",
       "items": [
@@ -48,7 +32,23 @@
           "question": "¿Dónde están ubicados?",
           "answer": "Nuestra oficina principal está en Ambato, pero atendemos proyectos en varias ciudades de Ecuador."
         }
-      ]
+      ],
+      "_template": "faq"
+    },
+    {
+      "title": "Envíanos un Mensaje",
+      "subtitle": "Completa el formulario y nos pondremos en contacto contigo lo antes posible.",
+      "showForm": true,
+      "showMap": true,
+      "showInfo": true,
+      "info": {
+        "address": "Av. Principal 123, Ambato, Ecuador",
+        "phone": "+593 99 999 9999",
+        "email": "info@constructoracarpio.com",
+        "hours": "Lunes a Viernes: 8:00 - 18:00"
+      },
+      "mapUrl": "",
+      "_template": "contact"
     }
   ]
 }
