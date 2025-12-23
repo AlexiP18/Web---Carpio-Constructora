@@ -861,15 +861,20 @@ export default defineConfig({
             create: true,
             delete: false,
           },
-          router: ({ document }) => {
+          // Router para vista previa - devuelve undefined si no hay match
+          // para evitar interferir con la navegación de TinaCMS
+          router: (props) => {
+            const filename = props.document._sys.filename;
             const routes: Record<string, string> = {
               'inicio': '/',
               'nosotros': '/quienes-somos',
               'servicios': '/servicios',
               'proyectos': '/proyectos',
               'contacto': '/contacto',
+              'test': '/test',
             };
-            return routes[document._sys.filename] || `/${document._sys.filename}`;
+            // Solo devolver ruta si existe, de lo contrario undefined
+            return routes[filename] !== undefined ? routes[filename] : undefined;
           },
         },
         fields: [
