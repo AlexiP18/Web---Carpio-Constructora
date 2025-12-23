@@ -1766,17 +1766,6 @@ var config_default = defineConfig2({
           filename: {
             readonly: true,
             slugify: (values) => values?.slug || values?.title?.toLowerCase().replace(/\s+/g, "-") || ""
-          },
-          router: ({ document }) => {
-            const routes = {
-              "inicio": "/",
-              "nosotros": "/quienes-somos",
-              "servicios": "/servicios",
-              "proyectos": "/proyectos",
-              "contacto": "/contacto"
-            };
-            const filename = document._sys.filename;
-            return routes[filename] || `/${filename}`;
           }
         },
         fields: [

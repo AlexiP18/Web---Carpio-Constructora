@@ -913,18 +913,6 @@ export default defineConfig({
             readonly: true,
             slugify: (values) => values?.slug || values?.title?.toLowerCase().replace(/\s+/g, '-') || '',
           },
-          router: ({ document }) => {
-            // Mapeo de archivos a rutas del sitio para vista previa
-            const routes: Record<string, string> = {
-              'inicio': '/',
-              'nosotros': '/quienes-somos',
-              'servicios': '/servicios',
-              'proyectos': '/proyectos',
-              'contacto': '/contacto',
-            };
-            const filename = document._sys.filename;
-            return routes[filename] || `/${filename}`;
-          },
         },
         fields: [
           {
