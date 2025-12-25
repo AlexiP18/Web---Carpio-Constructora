@@ -1374,6 +1374,13 @@ export type PaginasSeoFilter = {
   ogImage?: InputMaybe<StringFilter>;
 };
 
+export type ImageFilter = {
+  startsWith?: InputMaybe<Scalars['String']['input']>;
+  eq?: InputMaybe<Scalars['String']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+  in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
 export type PaginasSectionsHeroAnimationFilter = {
   enabled?: InputMaybe<BooleanFilter>;
   type?: InputMaybe<StringFilter>;
@@ -1395,7 +1402,7 @@ export type PaginasSectionsHeroSectionConfigFilter = {
 export type PaginasSectionsHeroFilter = {
   title?: InputMaybe<StringFilter>;
   subtitle?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<StringFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
   backgroundVideo?: InputMaybe<StringFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
@@ -1434,7 +1441,7 @@ export type PaginasSectionsAboutFilter = {
   title?: InputMaybe<StringFilter>;
   subtitle?: InputMaybe<StringFilter>;
   content?: InputMaybe<StringFilter>;
-  image?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
   imagePosition?: InputMaybe<StringFilter>;
   showStats?: InputMaybe<BooleanFilter>;
   stats?: InputMaybe<PaginasSectionsAboutStatsFilter>;
@@ -1448,7 +1455,7 @@ export type PaginasSectionsServicesItemsFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
   icon?: InputMaybe<StringFilter>;
-  image?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
   link?: InputMaybe<StringFilter>;
 };
 
@@ -1516,7 +1523,7 @@ export type PaginasSectionsTestimonialsItemsFilter = {
   quote?: InputMaybe<StringFilter>;
   author?: InputMaybe<StringFilter>;
   position?: InputMaybe<StringFilter>;
-  avatar?: InputMaybe<StringFilter>;
+  avatar?: InputMaybe<ImageFilter>;
   rating?: InputMaybe<NumberFilter>;
 };
 
@@ -1568,7 +1575,7 @@ export type PaginasSectionsCtaSectionConfigFilter = {
 export type PaginasSectionsCtaFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
-  backgroundImage?: InputMaybe<StringFilter>;
+  backgroundImage?: InputMaybe<ImageFilter>;
   buttonText?: InputMaybe<StringFilter>;
   buttonLink?: InputMaybe<StringFilter>;
   secondaryButtonText?: InputMaybe<StringFilter>;
@@ -1619,7 +1626,7 @@ export type PaginasSectionsTeamMembersFilter = {
   name?: InputMaybe<StringFilter>;
   position?: InputMaybe<StringFilter>;
   bio?: InputMaybe<StringFilter>;
-  photo?: InputMaybe<StringFilter>;
+  photo?: InputMaybe<ImageFilter>;
   linkedin?: InputMaybe<StringFilter>;
   email?: InputMaybe<StringFilter>;
 };
@@ -1714,7 +1721,7 @@ export type PaginasSectionsFeaturesItemsFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
   icon?: InputMaybe<StringFilter>;
-  image?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
 };
 
 export type PaginasSectionsFeaturesAnimationFilter = {
@@ -2027,10 +2034,10 @@ export type ConfiguracionGlobal = Node & Document & {
 export type ConfiguracionGlobalCompanyFilter = {
   name?: InputMaybe<StringFilter>;
   slogan?: InputMaybe<StringFilter>;
-  logo?: InputMaybe<StringFilter>;
-  logoWhite?: InputMaybe<StringFilter>;
-  logoIcon?: InputMaybe<StringFilter>;
-  favicon?: InputMaybe<StringFilter>;
+  logo?: InputMaybe<ImageFilter>;
+  logoWhite?: InputMaybe<ImageFilter>;
+  logoIcon?: InputMaybe<ImageFilter>;
+  favicon?: InputMaybe<ImageFilter>;
 };
 
 export type ConfiguracionGlobalColorsFilter = {
@@ -2184,7 +2191,7 @@ export type ConfiguracionGlobalSeoFilter = {
   defaultTitle?: InputMaybe<StringFilter>;
   titleTemplate?: InputMaybe<StringFilter>;
   defaultDescription?: InputMaybe<StringFilter>;
-  defaultOgImage?: InputMaybe<StringFilter>;
+  defaultOgImage?: InputMaybe<ImageFilter>;
   googleAnalyticsId?: InputMaybe<StringFilter>;
   googleTagManagerId?: InputMaybe<StringFilter>;
 };

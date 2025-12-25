@@ -1103,6 +1103,13 @@ input PaginasSeoFilter {
   ogImage: StringFilter
 }
 
+input ImageFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
+}
+
 input PaginasSectionsHeroAnimationFilter {
   enabled: BooleanFilter
   type: StringFilter
@@ -1124,7 +1131,7 @@ input PaginasSectionsHeroSectionConfigFilter {
 input PaginasSectionsHeroFilter {
   title: StringFilter
   subtitle: StringFilter
-  backgroundImage: StringFilter
+  backgroundImage: ImageFilter
   backgroundVideo: StringFilter
   ctaText: StringFilter
   ctaLink: StringFilter
@@ -1163,7 +1170,7 @@ input PaginasSectionsAboutFilter {
   title: StringFilter
   subtitle: StringFilter
   content: StringFilter
-  image: StringFilter
+  image: ImageFilter
   imagePosition: StringFilter
   showStats: BooleanFilter
   stats: PaginasSectionsAboutStatsFilter
@@ -1177,7 +1184,7 @@ input PaginasSectionsServicesItemsFilter {
   title: StringFilter
   description: StringFilter
   icon: StringFilter
-  image: StringFilter
+  image: ImageFilter
   link: StringFilter
 }
 
@@ -1245,7 +1252,7 @@ input PaginasSectionsTestimonialsItemsFilter {
   quote: StringFilter
   author: StringFilter
   position: StringFilter
-  avatar: StringFilter
+  avatar: ImageFilter
   rating: NumberFilter
 }
 
@@ -1297,7 +1304,7 @@ input PaginasSectionsCtaSectionConfigFilter {
 input PaginasSectionsCtaFilter {
   title: StringFilter
   description: StringFilter
-  backgroundImage: StringFilter
+  backgroundImage: ImageFilter
   buttonText: StringFilter
   buttonLink: StringFilter
   secondaryButtonText: StringFilter
@@ -1348,7 +1355,7 @@ input PaginasSectionsTeamMembersFilter {
   name: StringFilter
   position: StringFilter
   bio: StringFilter
-  photo: StringFilter
+  photo: ImageFilter
   linkedin: StringFilter
   email: StringFilter
 }
@@ -1443,7 +1450,7 @@ input PaginasSectionsFeaturesItemsFilter {
   title: StringFilter
   description: StringFilter
   icon: StringFilter
-  image: StringFilter
+  image: ImageFilter
 }
 
 input PaginasSectionsFeaturesAnimationFilter {
@@ -1735,10 +1742,10 @@ type ConfiguracionGlobal implements Node & Document {
 input ConfiguracionGlobalCompanyFilter {
   name: StringFilter
   slogan: StringFilter
-  logo: StringFilter
-  logoWhite: StringFilter
-  logoIcon: StringFilter
-  favicon: StringFilter
+  logo: ImageFilter
+  logoWhite: ImageFilter
+  logoIcon: ImageFilter
+  favicon: ImageFilter
 }
 
 input ConfiguracionGlobalColorsFilter {
@@ -1892,7 +1899,7 @@ input ConfiguracionGlobalSeoFilter {
   defaultTitle: StringFilter
   titleTemplate: StringFilter
   defaultDescription: StringFilter
-  defaultOgImage: StringFilter
+  defaultOgImage: ImageFilter
   googleAnalyticsId: StringFilter
   googleTagManagerId: StringFilter
 }

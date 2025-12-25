@@ -182,13 +182,9 @@ export const heroSection: Template = {
       ui: { component: 'textarea' },
     },
     {
-      type: 'string',
+      type: 'image',
       name: 'backgroundImage',
       label: 'Imagen de Fondo',
-      ui: {
-        // @ts-ignore
-        component: ImagePreviewField,
-      },
     },
     {
       type: 'string',
@@ -264,13 +260,10 @@ export const aboutSection: Template = {
       ui: { component: 'textarea' },
     },
     {
-      type: 'string',
+      type: 'image',
       name: 'image',
       label: 'Imagen',
-      ui: {
-        // @ts-ignore
-        component: ImagePreviewField,
-      },
+      description: 'Se sube a Cloudinary',
     },
     {
       type: 'string',
@@ -353,15 +346,7 @@ export const servicesSection: Template = {
         { type: 'string', name: 'title', label: 'Título' },
         { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
         { type: 'string', name: 'icon', label: 'Icono' },
-        {
-          type: 'string',
-          name: 'image',
-          label: 'Imagen',
-          ui: {
-            // @ts-ignore
-            component: ImagePreviewField,
-          },
-        },
+        { type: 'image', name: 'image', label: 'Imagen' },
         { type: 'string', name: 'link', label: 'Enlace' },
       ],
     },
@@ -492,15 +477,7 @@ export const testimonialsSection: Template = {
         { type: 'string', name: 'quote', label: 'Cita', ui: { component: 'textarea' }, required: true },
         { type: 'string', name: 'author', label: 'Nombre del Autor' },
         { type: 'string', name: 'position', label: 'Cargo/Empresa' },
-        {
-          type: 'string',
-          name: 'avatar',
-          label: 'Foto del Autor',
-          ui: {
-            // @ts-ignore
-            component: ImagePreviewField,
-          },
-        },
+        { type: 'image', name: 'avatar', label: 'Foto del Autor' },
         { type: 'number', name: 'rating', label: 'Calificación (1-5)' },
       ],
     },
@@ -534,13 +511,9 @@ export const ctaSection: Template = {
       ui: { component: 'textarea' },
     },
     {
-      type: 'string',
+      type: 'image',
       name: 'backgroundImage',
       label: 'Imagen de Fondo',
-      ui: {
-        // @ts-ignore
-        component: ImagePreviewField,
-      },
     },
     {
       type: 'string',
@@ -676,15 +649,7 @@ export const teamSection: Template = {
         { type: 'string', name: 'name', label: 'Nombre', required: true },
         { type: 'string', name: 'position', label: 'Cargo' },
         { type: 'string', name: 'bio', label: 'Biografía', ui: { component: 'textarea' } },
-        {
-          type: 'string',
-          name: 'photo',
-          label: 'Foto',
-          ui: {
-            // @ts-ignore
-            component: ImagePreviewField,
-          },
-        },
+        { type: 'image', name: 'photo', label: 'Foto' },
         { type: 'string', name: 'linkedin', label: 'LinkedIn' },
         { type: 'string', name: 'email', label: 'Email' },
       ],
@@ -821,15 +786,7 @@ export const featuresSection: Template = {
         { type: 'string', name: 'title', label: 'Título' },
         { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
         { type: 'string', name: 'icon', label: 'Icono' },
-        {
-          type: 'string',
-          name: 'image',
-          label: 'Imagen',
-          ui: {
-            // @ts-ignore
-            component: ImagePreviewField,
-          },
-        },
+        { type: 'image', name: 'image', label: 'Imagen' },
       ],
     },
   ],

@@ -3,6 +3,12 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  functions = "netlify/functions"
+
+# Configuración de Netlify Functions (para TinaCMS + Cloudinary)
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["express"]
 
 # Configuración de Netlify Identity para Decap CMS
 [build.environment]
@@ -12,6 +18,12 @@
 [[redirects]]
   from = "/admin/*"
   to = "/admin/index.html"
+  status = 200
+
+# Redirección para API de Cloudinary Media (TinaCMS)
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
   status = 200
 
 # Habilitar Git Gateway para Decap CMS

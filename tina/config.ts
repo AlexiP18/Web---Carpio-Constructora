@@ -49,10 +49,12 @@ export default defineConfig({
     outputFolder: 'admin',
     publicFolder: 'public',
   },
+  // Configuración de Media con Cloudinary
+  // Las imágenes se suben directamente a Cloudinary desde TinaCMS
   media: {
-    tina: {
-      mediaRoot: 'images',
-      publicFolder: 'public',
+    loadCustomStore: async () => {
+      const pack = await import('next-tinacms-cloudinary');
+      return pack.TinaCloudCloudinaryMediaStore;
     },
   },
   schema: {
@@ -1003,39 +1005,28 @@ export default defineConfig({
                 label: 'Eslogan',
               },
               {
-                type: 'string',
+                type: 'image',
                 name: 'logo',
                 label: 'Logo Principal',
-                description: 'Logo para fondos claros',
-                ui: {
-                  // @ts-ignore
-                  component: ImagePreviewField,
-                },
+                description: 'Logo para fondos claros - Se sube a Cloudinary',
               },
               {
-                type: 'string',
+                type: 'image',
                 name: 'logoWhite',
                 label: 'Logo Blanco',
-                description: 'Logo para fondos oscuros',
-                ui: {
-                  // @ts-ignore
-                  component: ImagePreviewField,
-                },
+                description: 'Logo para fondos oscuros - Se sube a Cloudinary',
               },
               {
-                type: 'string',
+                type: 'image',
                 name: 'logoIcon',
                 label: 'Logo Icono/Símbolo',
-                description: 'Versión pequeña del logo (solo símbolo)',
-                ui: {
-                  // @ts-ignore
-                  component: ImagePreviewField,
-                },
+                description: 'Versión pequeña del logo - Se sube a Cloudinary',
               },
               {
-                type: 'string',
+                type: 'image',
                 name: 'favicon',
                 label: 'Favicon',
+                description: 'Icono del sitio - Se sube a Cloudinary',
               },
             ],
           },
@@ -1438,7 +1429,7 @@ export default defineConfig({
               { type: 'string', name: 'defaultTitle', label: 'Título por Defecto' },
               { type: 'string', name: 'titleTemplate', label: 'Plantilla de Título', description: 'Usa %s para el título de la página. Ej: %s | Constructora Carpio' },
               { type: 'string', name: 'defaultDescription', label: 'Descripción por Defecto', ui: { component: 'textarea' } },
-              { type: 'string', name: 'defaultOgImage', label: 'Imagen OG por Defecto', ui: { component: ImagePreviewField } },
+              { type: 'image', name: 'defaultOgImage', label: 'Imagen OG por Defecto', description: 'Se sube a Cloudinary' },
               { type: 'string', name: 'googleAnalyticsId', label: 'Google Analytics ID' },
               { type: 'string', name: 'googleTagManagerId', label: 'Google Tag Manager ID' },
             ],

@@ -338,13 +338,9 @@ var heroSection = {
       ui: { component: "textarea" }
     },
     {
-      type: "string",
+      type: "image",
       name: "backgroundImage",
-      label: "Imagen de Fondo",
-      ui: {
-        // @ts-ignore
-        component: ImagePreviewField
-      }
+      label: "Imagen de Fondo"
     },
     {
       type: "string",
@@ -416,13 +412,10 @@ var aboutSection = {
       ui: { component: "textarea" }
     },
     {
-      type: "string",
+      type: "image",
       name: "image",
       label: "Imagen",
-      ui: {
-        // @ts-ignore
-        component: ImagePreviewField
-      }
+      description: "Se sube a Cloudinary"
     },
     {
       type: "string",
@@ -501,15 +494,7 @@ var servicesSection = {
         { type: "string", name: "title", label: "T\xEDtulo" },
         { type: "string", name: "description", label: "Descripci\xF3n", ui: { component: "textarea" } },
         { type: "string", name: "icon", label: "Icono" },
-        {
-          type: "string",
-          name: "image",
-          label: "Imagen",
-          ui: {
-            // @ts-ignore
-            component: ImagePreviewField
-          }
-        },
+        { type: "image", name: "image", label: "Imagen" },
         { type: "string", name: "link", label: "Enlace" }
       ]
     },
@@ -632,15 +617,7 @@ var testimonialsSection = {
         { type: "string", name: "quote", label: "Cita", ui: { component: "textarea" }, required: true },
         { type: "string", name: "author", label: "Nombre del Autor" },
         { type: "string", name: "position", label: "Cargo/Empresa" },
-        {
-          type: "string",
-          name: "avatar",
-          label: "Foto del Autor",
-          ui: {
-            // @ts-ignore
-            component: ImagePreviewField
-          }
-        },
+        { type: "image", name: "avatar", label: "Foto del Autor" },
         { type: "number", name: "rating", label: "Calificaci\xF3n (1-5)" }
       ]
     }
@@ -670,13 +647,9 @@ var ctaSection = {
       ui: { component: "textarea" }
     },
     {
-      type: "string",
+      type: "image",
       name: "backgroundImage",
-      label: "Imagen de Fondo",
-      ui: {
-        // @ts-ignore
-        component: ImagePreviewField
-      }
+      label: "Imagen de Fondo"
     },
     {
       type: "string",
@@ -804,15 +777,7 @@ var teamSection = {
         { type: "string", name: "name", label: "Nombre", required: true },
         { type: "string", name: "position", label: "Cargo" },
         { type: "string", name: "bio", label: "Biograf\xEDa", ui: { component: "textarea" } },
-        {
-          type: "string",
-          name: "photo",
-          label: "Foto",
-          ui: {
-            // @ts-ignore
-            component: ImagePreviewField
-          }
-        },
+        { type: "image", name: "photo", label: "Foto" },
         { type: "string", name: "linkedin", label: "LinkedIn" },
         { type: "string", name: "email", label: "Email" }
       ]
@@ -937,15 +902,7 @@ var featuresSection = {
         { type: "string", name: "title", label: "T\xEDtulo" },
         { type: "string", name: "description", label: "Descripci\xF3n", ui: { component: "textarea" } },
         { type: "string", name: "icon", label: "Icono" },
-        {
-          type: "string",
-          name: "image",
-          label: "Imagen",
-          ui: {
-            // @ts-ignore
-            component: ImagePreviewField
-          }
-        }
+        { type: "image", name: "image", label: "Imagen" }
       ]
     }
   ]
@@ -1074,10 +1031,12 @@ var config_default = defineConfig2({
     outputFolder: "admin",
     publicFolder: "public"
   },
+  // Configuración de Media con Cloudinary
+  // Las imágenes se suben directamente a Cloudinary desde TinaCMS
   media: {
-    tina: {
-      mediaRoot: "images",
-      publicFolder: "public"
+    loadCustomStore: async () => {
+      const pack = await import("next-tinacms-cloudinary");
+      return pack.TinaCloudCloudinaryMediaStore;
     }
   },
   schema: {
@@ -2005,39 +1964,28 @@ var config_default = defineConfig2({
                 label: "Eslogan"
               },
               {
-                type: "string",
+                type: "image",
                 name: "logo",
                 label: "Logo Principal",
-                description: "Logo para fondos claros",
-                ui: {
-                  // @ts-ignore
-                  component: ImagePreviewField
-                }
+                description: "Logo para fondos claros - Se sube a Cloudinary"
               },
               {
-                type: "string",
+                type: "image",
                 name: "logoWhite",
                 label: "Logo Blanco",
-                description: "Logo para fondos oscuros",
-                ui: {
-                  // @ts-ignore
-                  component: ImagePreviewField
-                }
+                description: "Logo para fondos oscuros - Se sube a Cloudinary"
               },
               {
-                type: "string",
+                type: "image",
                 name: "logoIcon",
                 label: "Logo Icono/S\xEDmbolo",
-                description: "Versi\xF3n peque\xF1a del logo (solo s\xEDmbolo)",
-                ui: {
-                  // @ts-ignore
-                  component: ImagePreviewField
-                }
+                description: "Versi\xF3n peque\xF1a del logo - Se sube a Cloudinary"
               },
               {
-                type: "string",
+                type: "image",
                 name: "favicon",
-                label: "Favicon"
+                label: "Favicon",
+                description: "Icono del sitio - Se sube a Cloudinary"
               }
             ]
           },
@@ -2432,7 +2380,7 @@ var config_default = defineConfig2({
               { type: "string", name: "defaultTitle", label: "T\xEDtulo por Defecto" },
               { type: "string", name: "titleTemplate", label: "Plantilla de T\xEDtulo", description: "Usa %s para el t\xEDtulo de la p\xE1gina. Ej: %s | Constructora Carpio" },
               { type: "string", name: "defaultDescription", label: "Descripci\xF3n por Defecto", ui: { component: "textarea" } },
-              { type: "string", name: "defaultOgImage", label: "Imagen OG por Defecto", ui: { component: ImagePreviewField } },
+              { type: "image", name: "defaultOgImage", label: "Imagen OG por Defecto", description: "Se sube a Cloudinary" },
               { type: "string", name: "googleAnalyticsId", label: "Google Analytics ID" },
               { type: "string", name: "googleTagManagerId", label: "Google Tag Manager ID" }
             ]
