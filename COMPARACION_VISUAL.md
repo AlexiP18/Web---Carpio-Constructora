@@ -1,5 +1,5 @@
 # 🎨 COMPARACIÓN VISUAL: DECAP vs TINA CMS
-
+#...
 ## 📊 TABLA COMPARATIVA COMPLETA.
 
 | Aspecto | Decap CMS | Tina CMS | Ganador |
