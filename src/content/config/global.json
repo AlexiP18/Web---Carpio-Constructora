@@ -2,9 +2,9 @@
   "company": {
     "name": "Constructora Carpio",
     "slogan": "Construimos tus sueños",
-    "logo": "",
-    "logoWhite": "",
-    "logoIcon": "",
+    "logo": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1766802010/LogoCarpioConstructora_liw1hf.svg",
+    "logoWhite": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1766802019/logoBL_1_dwcaqu.svg",
+    "logoIcon": "https://res.cloudinary.com/dt5y4fsst/image/upload/v1766801999/LogoCarpio_yrsfpa.svg",
     "favicon": "/favicon.ico"
   },
   "colors": {
@@ -145,27 +145,63 @@
         "title": "Empresa",
         "order": 1,
         "links": [
-          { "label": "Quiénes Somos", "href": "/quienes-somos", "order": 1 },
-          { "label": "Nuestro Equipo", "href": "/quienes-somos#equipo", "order": 2 },
-          { "label": "Trabaja con Nosotros", "href": "/contacto", "order": 3 }
+          {
+            "label": "Quiénes Somos",
+            "href": "/quienes-somos",
+            "order": 1
+          },
+          {
+            "label": "Nuestro Equipo",
+            "href": "/quienes-somos#equipo",
+            "order": 2
+          },
+          {
+            "label": "Trabaja con Nosotros",
+            "href": "/contacto",
+            "order": 3
+          }
         ]
       },
       {
         "title": "Servicios",
         "order": 2,
         "links": [
-          { "label": "Construcción", "href": "/servicios/construccion", "order": 1 },
-          { "label": "Diseño", "href": "/servicios/diseno-arquitectonico", "order": 2 },
-          { "label": "Remodelación", "href": "/servicios/remodelacion", "order": 3 }
+          {
+            "label": "Construcción",
+            "href": "/servicios/construccion",
+            "order": 1
+          },
+          {
+            "label": "Diseño",
+            "href": "/servicios/diseno-arquitectonico",
+            "order": 2
+          },
+          {
+            "label": "Remodelación",
+            "href": "/servicios/remodelacion",
+            "order": 3
+          }
         ]
       },
       {
         "title": "Legal",
         "order": 3,
         "links": [
-          { "label": "Términos de Servicio", "href": "/terminos", "order": 1 },
-          { "label": "Política de Privacidad", "href": "/privacidad", "order": 2 },
-          { "label": "Política de Cookies", "href": "/cookies", "order": 3 }
+          {
+            "label": "Términos de Servicio",
+            "href": "/terminos",
+            "order": 1
+          },
+          {
+            "label": "Política de Privacidad",
+            "href": "/privacidad",
+            "order": 2
+          },
+          {
+            "label": "Política de Cookies",
+            "href": "/cookies",
+            "order": 3
+          }
         ]
       }
     ]
@@ -176,38 +212,14 @@
       "title": "Política de Privacidad",
       "slug": "privacidad",
       "lastUpdated": "2024-01-01T00:00:00.000Z",
-      "content": {
-        "type": "root",
-        "children": [
-          {
-            "type": "h2",
-            "children": [{ "type": "text", "text": "Política de Privacidad" }]
-          },
-          {
-            "type": "p",
-            "children": [{ "type": "text", "text": "Esta política de privacidad describe cómo recopilamos, usamos y protegemos tu información personal." }]
-          }
-        ]
-      }
+      "content": "\\[object Object]\n"
     },
     "termsOfService": {
       "enabled": true,
       "title": "Términos de Servicio",
       "slug": "terminos",
       "lastUpdated": "2024-01-01T00:00:00.000Z",
-      "content": {
-        "type": "root",
-        "children": [
-          {
-            "type": "h2",
-            "children": [{ "type": "text", "text": "Términos de Servicio" }]
-          },
-          {
-            "type": "p",
-            "children": [{ "type": "text", "text": "Al utilizar nuestros servicios, aceptas estos términos y condiciones." }]
-          }
-        ]
-      }
+      "content": "\\[object Object]\n"
     },
     "cookies": {
       "enabled": true,
@@ -218,19 +230,7 @@
       "acceptButtonText": "Aceptar",
       "rejectButtonText": "Rechazar",
       "settingsButtonText": "Configurar",
-      "content": {
-        "type": "root",
-        "children": [
-          {
-            "type": "h2",
-            "children": [{ "type": "text", "text": "Política de Cookies" }]
-          },
-          {
-            "type": "p",
-            "children": [{ "type": "text", "text": "Este sitio web utiliza cookies para mejorar tu experiencia de navegación." }]
-          }
-        ]
-      }
+      "content": "\\[object Object]\n"
     }
   },
   "seo": {
