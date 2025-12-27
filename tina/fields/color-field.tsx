@@ -4,6 +4,8 @@ import { wrapFieldsWithMeta } from 'tinacms';
 // Componente de campo de color personalizado
 export const ColorPickerField = wrapFieldsWithMeta(({ input }: any) => {
   const [displayValue, setDisplayValue] = React.useState(input.value || '#000000');
+  // Guardar el color original al montar el componente
+  const [originalColor] = React.useState(input.value || '#000000');
 
   React.useEffect(() => {
     setDisplayValue(input.value || '#000000');
@@ -24,9 +26,11 @@ export const ColorPickerField = wrapFieldsWithMeta(({ input }: any) => {
     }
   };
 
+  const hasChanged = displayValue !== originalColor;
+
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-      {/* Color Picker */}
+      {/* Color Picker - Nuevo color */}
       <input
         type="color"
         value={displayValue.startsWith('#') ? displayValue : '#000000'}
@@ -65,17 +69,30 @@ export const ColorPickerField = wrapFieldsWithMeta(({ input }: any) => {
         }}
       />
       
-      {/* Color Preview Box */}
+      {/* Original Color Preview Box */}
       <div
         style={{
-          width: '48px',
-          height: '48px',
-          backgroundColor: displayValue.startsWith('#') ? displayValue : '#000000',
-          borderRadius: '8px',
-          border: '2px solid #e2e8f0',
-          boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '4px',
         }}
-      />
+      >
+        <div
+          style={{
+            width: '48px',
+            height: '48px',
+            backgroundColor: originalColor.startsWith('#') ? originalColor : '#000000',
+            borderRadius: '8px',
+            border: hasChanged ? '2px solid #3182ce' : '2px solid #e2e8f0',
+            boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)',
+          }}
+          title={`Color original: ${originalColor}`}
+        />
+        {hasChanged && (
+          <span style={{ fontSize: '10px', color: '#718096' }}>Original</span>
+        )}
+      </div>
     </div>
   );
 });

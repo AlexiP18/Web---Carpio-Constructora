@@ -996,6 +996,7 @@ import React2 from "react";
 import { wrapFieldsWithMeta as wrapFieldsWithMeta2 } from "tinacms";
 var ColorPickerField = wrapFieldsWithMeta2(({ input }) => {
   const [displayValue, setDisplayValue] = React2.useState(input.value || "#000000");
+  const [originalColor] = React2.useState(input.value || "#000000");
   React2.useEffect(() => {
     setDisplayValue(input.value || "#000000");
   }, [input.value]);
@@ -1011,6 +1012,7 @@ var ColorPickerField = wrapFieldsWithMeta2(({ input }) => {
       input.onChange(newValue);
     }
   };
+  const hasChanged = displayValue !== originalColor;
   return React2.createElement("div", { style: { display: "flex", alignItems: "center", gap: "12px" } }, React2.createElement(
     "input",
     {
@@ -1053,14 +1055,27 @@ var ColorPickerField = wrapFieldsWithMeta2(({ input }) => {
     "div",
     {
       style: {
-        width: "48px",
-        height: "48px",
-        backgroundColor: displayValue.startsWith("#") ? displayValue : "#000000",
-        borderRadius: "8px",
-        border: "2px solid #e2e8f0",
-        boxShadow: "inset 0 2px 4px rgba(0,0,0,0.1)"
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "4px"
       }
-    }
+    },
+    React2.createElement(
+      "div",
+      {
+        style: {
+          width: "48px",
+          height: "48px",
+          backgroundColor: originalColor.startsWith("#") ? originalColor : "#000000",
+          borderRadius: "8px",
+          border: hasChanged ? "2px solid #3182ce" : "2px solid #e2e8f0",
+          boxShadow: "inset 0 2px 4px rgba(0,0,0,0.1)"
+        },
+        title: `Color original: ${originalColor}`
+      }
+    ),
+    hasChanged && React2.createElement("span", { style: { fontSize: "10px", color: "#718096" } }, "Original")
   ));
 });
 
