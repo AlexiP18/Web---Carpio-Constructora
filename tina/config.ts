@@ -1,6 +1,7 @@
 ﻿import { defineConfig } from 'tinacms';
 import { ImagePreviewField, ImageGalleryField } from './fields/cloudinary-fields';
 import { pageBlockTemplates } from './fields/page-blocks';
+import { ColorPickerField } from './fields/color-field';
 
 // Opciones predefinidas para tags de proyectos
 const projectTagOptions = [
@@ -1042,31 +1043,46 @@ export default defineConfig({
                 type: 'string',
                 name: 'primary',
                 label: 'Color Primario',
-                description: 'Color principal de la marca (ej: #1a365d)',
+                description: 'Color principal de la marca',
+                ui: {
+                  component: ColorPickerField,
+                },
               },
               {
                 type: 'string',
                 name: 'secondary',
                 label: 'Color Secundario',
-                description: 'Color secundario (ej: #2d3748)',
+                description: 'Color secundario de la marca',
+                ui: {
+                  component: ColorPickerField,
+                },
               },
               {
                 type: 'string',
                 name: 'accent',
                 label: 'Color de Acento',
-                description: 'Color para destacar elementos (ej: #ed8936)',
+                description: 'Color para destacar elementos',
+                ui: {
+                  component: ColorPickerField,
+                },
               },
               {
                 type: 'string',
                 name: 'background',
                 label: 'Color de Fondo',
-                description: 'Color de fondo principal (ej: #ffffff)',
+                description: 'Color de fondo principal',
+                ui: {
+                  component: ColorPickerField,
+                },
               },
               {
                 type: 'string',
                 name: 'text',
                 label: 'Color de Texto',
-                description: 'Color de texto principal (ej: #1a202c)',
+                description: 'Color de texto principal',
+                ui: {
+                  component: ColorPickerField,
+                },
               },
             ],
           },

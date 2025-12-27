@@ -991,6 +991,79 @@ var pageBlockTemplates = [
   addCommonFields(spacerSection)
 ];
 
+// tina/fields/color-field.tsx
+import React2 from "react";
+import { wrapFieldsWithMeta as wrapFieldsWithMeta2 } from "tinacms";
+var ColorPickerField = wrapFieldsWithMeta2(({ input }) => {
+  const [displayValue, setDisplayValue] = React2.useState(input.value || "#000000");
+  React2.useEffect(() => {
+    setDisplayValue(input.value || "#000000");
+  }, [input.value]);
+  const handleColorChange = (e) => {
+    const newColor = e.target.value;
+    setDisplayValue(newColor);
+    input.onChange(newColor);
+  };
+  const handleTextChange = (e) => {
+    const newValue = e.target.value;
+    setDisplayValue(newValue);
+    if (/^#[0-9A-Fa-f]{6}$/.test(newValue)) {
+      input.onChange(newValue);
+    }
+  };
+  return React2.createElement("div", { style: { display: "flex", alignItems: "center", gap: "12px" } }, React2.createElement(
+    "input",
+    {
+      type: "color",
+      value: displayValue.startsWith("#") ? displayValue : "#000000",
+      onChange: handleColorChange,
+      style: {
+        width: "48px",
+        height: "48px",
+        padding: "0",
+        border: "2px solid #e2e8f0",
+        borderRadius: "8px",
+        cursor: "pointer",
+        backgroundColor: "transparent"
+      }
+    }
+  ), React2.createElement(
+    "input",
+    {
+      type: "text",
+      value: displayValue,
+      onChange: handleTextChange,
+      onBlur: () => {
+        if (!/^#[0-9A-Fa-f]{6}$/.test(displayValue)) {
+          setDisplayValue(input.value || "#000000");
+        }
+      },
+      placeholder: "#000000",
+      style: {
+        flex: 1,
+        padding: "10px 12px",
+        border: "1px solid #e2e8f0",
+        borderRadius: "6px",
+        fontSize: "14px",
+        fontFamily: "monospace",
+        backgroundColor: "#f7fafc"
+      }
+    }
+  ), React2.createElement(
+    "div",
+    {
+      style: {
+        width: "48px",
+        height: "48px",
+        backgroundColor: displayValue.startsWith("#") ? displayValue : "#000000",
+        borderRadius: "8px",
+        border: "2px solid #e2e8f0",
+        boxShadow: "inset 0 2px 4px rgba(0,0,0,0.1)"
+      }
+    }
+  ));
+});
+
 // tina/config.ts
 var projectTagOptions = [
   "residencial",
@@ -2000,31 +2073,46 @@ var config_default = defineConfig2({
                 type: "string",
                 name: "primary",
                 label: "Color Primario",
-                description: "Color principal de la marca (ej: #1a365d)"
+                description: "Color principal de la marca",
+                ui: {
+                  component: ColorPickerField
+                }
               },
               {
                 type: "string",
                 name: "secondary",
                 label: "Color Secundario",
-                description: "Color secundario (ej: #2d3748)"
+                description: "Color secundario de la marca",
+                ui: {
+                  component: ColorPickerField
+                }
               },
               {
                 type: "string",
                 name: "accent",
                 label: "Color de Acento",
-                description: "Color para destacar elementos (ej: #ed8936)"
+                description: "Color para destacar elementos",
+                ui: {
+                  component: ColorPickerField
+                }
               },
               {
                 type: "string",
                 name: "background",
                 label: "Color de Fondo",
-                description: "Color de fondo principal (ej: #ffffff)"
+                description: "Color de fondo principal",
+                ui: {
+                  component: ColorPickerField
+                }
               },
               {
                 type: "string",
                 name: "text",
                 label: "Color de Texto",
-                description: "Color de texto principal (ej: #1a202c)"
+                description: "Color de texto principal",
+                ui: {
+                  component: ColorPickerField
+                }
               }
             ]
           },
