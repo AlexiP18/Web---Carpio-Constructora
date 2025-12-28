@@ -2,6 +2,7 @@
 import { ImagePreviewField, ImageGalleryField } from './fields/cloudinary-fields';
 import { pageBlockTemplates } from './fields/page-blocks';
 import { ColorPickerField } from './fields/color-field';
+import { PhoneField, EmailField, BusinessHoursField } from './fields/contact-fields';
 
 // Opciones predefinidas para tags de proyectos
 const projectTagOptions = [
@@ -1097,31 +1098,55 @@ export default defineConfig({
                 type: 'string',
                 name: 'phone',
                 label: 'Teléfono Principal',
+                description: 'Número de teléfono con prefijo +593 (Ecuador)',
+                ui: {
+                  component: PhoneField,
+                },
               },
               {
                 type: 'string',
                 name: 'phoneSecondary',
                 label: 'Teléfono Secundario',
+                description: 'Número de teléfono adicional',
+                ui: {
+                  component: PhoneField,
+                },
               },
               {
                 type: 'string',
                 name: 'whatsapp',
                 label: 'WhatsApp',
+                description: 'Número de WhatsApp para contacto directo',
+                ui: {
+                  component: PhoneField,
+                },
               },
               {
                 type: 'string',
                 name: 'email',
                 label: 'Email Principal',
+                description: 'Correo electrónico de contacto',
+                ui: {
+                  component: EmailField,
+                },
               },
               {
                 type: 'string',
                 name: 'emailSecondary',
                 label: 'Email Secundario',
+                description: 'Correo electrónico adicional',
+                ui: {
+                  component: EmailField,
+                },
               },
               {
                 type: 'string',
                 name: 'hours',
                 label: 'Horario de Atención',
+                description: 'Días y horas de atención al público',
+                ui: {
+                  component: BusinessHoursField,
+                },
               },
             ],
           },

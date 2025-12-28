@@ -1079,6 +1079,235 @@ var ColorPickerField = wrapFieldsWithMeta2(({ input }) => {
   ));
 });
 
+// tina/fields/contact-fields.tsx
+import React3 from "react";
+import { wrapFieldsWithMeta as wrapFieldsWithMeta3 } from "tinacms";
+var PhoneField = wrapFieldsWithMeta3(({ input }) => {
+  const extractDigits = (value) => {
+    if (!value) return "";
+    const cleaned = value.replace(/^\+593\s*/, "").replace(/\D/g, "");
+    return cleaned.slice(0, 10);
+  };
+  const [digits, setDigits] = React3.useState(extractDigits(input.value || ""));
+  React3.useEffect(() => {
+    setDigits(extractDigits(input.value || ""));
+  }, [input.value]);
+  const formatDisplay = (value) => {
+    if (!value) return "";
+    const cleaned = value.replace(/\D/g, "").slice(0, 10);
+    if (cleaned.length <= 2) return cleaned;
+    if (cleaned.length <= 5) return `${cleaned.slice(0, 2)} ${cleaned.slice(2)}`;
+    return `${cleaned.slice(0, 2)} ${cleaned.slice(2, 5)} ${cleaned.slice(5)}`;
+  };
+  const handleChange = (e) => {
+    const rawValue = e.target.value;
+    const onlyDigits = rawValue.replace(/\D/g, "").slice(0, 10);
+    setDigits(onlyDigits);
+    input.onChange(onlyDigits ? `+593 ${formatDisplay(onlyDigits)}` : "");
+  };
+  const isValid = digits.length >= 9;
+  const isEmpty = digits.length === 0;
+  return React3.createElement("div", { style: { display: "flex", flexDirection: "column", gap: "4px" } }, React3.createElement("div", { style: { display: "flex", alignItems: "center", gap: "8px" } }, React3.createElement(
+    "div",
+    {
+      style: {
+        padding: "10px 12px",
+        backgroundColor: "#edf2f7",
+        border: "1px solid #e2e8f0",
+        borderRadius: "6px 0 0 6px",
+        fontSize: "14px",
+        fontWeight: "500",
+        color: "#4a5568",
+        whiteSpace: "nowrap"
+      }
+    },
+    "\u{1F1EA}\u{1F1E8} +593"
+  ), React3.createElement(
+    "input",
+    {
+      type: "text",
+      value: formatDisplay(digits),
+      onChange: handleChange,
+      placeholder: "99 999 9999",
+      style: {
+        flex: 1,
+        padding: "10px 12px",
+        border: `1px solid ${!isEmpty && !isValid ? "#fc8181" : "#e2e8f0"}`,
+        borderRadius: "0 6px 6px 0",
+        fontSize: "14px",
+        fontFamily: "monospace",
+        marginLeft: "-1px"
+      }
+    }
+  ), React3.createElement(
+    "span",
+    {
+      style: {
+        fontSize: "12px",
+        color: isValid ? "#38a169" : "#a0aec0",
+        minWidth: "50px"
+      }
+    },
+    digits.length,
+    "/10"
+  )), !isEmpty && !isValid && React3.createElement("span", { style: { fontSize: "12px", color: "#e53e3e" } }, "El n\xFAmero debe tener al menos 9 d\xEDgitos"));
+});
+var EmailField = wrapFieldsWithMeta3(({ input }) => {
+  const [value, setValue] = React3.useState(input.value || "");
+  const [touched, setTouched] = React3.useState(false);
+  React3.useEffect(() => {
+    setValue(input.value || "");
+  }, [input.value]);
+  const isValidEmail = (email) => {
+    if (!email) return true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    setValue(newValue);
+    input.onChange(newValue);
+  };
+  const isValid = isValidEmail(value);
+  const showError = touched && !isValid && value.length > 0;
+  return React3.createElement("div", { style: { display: "flex", flexDirection: "column", gap: "4px" } }, React3.createElement("div", { style: { display: "flex", alignItems: "center", gap: "8px" } }, React3.createElement(
+    "div",
+    {
+      style: {
+        padding: "10px 12px",
+        backgroundColor: "#edf2f7",
+        border: "1px solid #e2e8f0",
+        borderRadius: "6px 0 0 6px",
+        fontSize: "14px"
+      }
+    },
+    "\u2709\uFE0F"
+  ), React3.createElement(
+    "input",
+    {
+      type: "email",
+      value,
+      onChange: handleChange,
+      onBlur: () => setTouched(true),
+      placeholder: "ejemplo@empresa.com",
+      style: {
+        flex: 1,
+        padding: "10px 12px",
+        border: `1px solid ${showError ? "#fc8181" : "#e2e8f0"}`,
+        borderRadius: "0 6px 6px 0",
+        fontSize: "14px",
+        marginLeft: "-1px"
+      }
+    }
+  ), value && React3.createElement("span", { style: { fontSize: "16px" } }, isValid ? "\u2713" : "\u2717")), showError && React3.createElement("span", { style: { fontSize: "12px", color: "#e53e3e" } }, "Por favor ingresa un email v\xE1lido"));
+});
+var DAYS_OPTIONS = [
+  { value: "lunes", label: "Lunes" },
+  { value: "martes", label: "Martes" },
+  { value: "miercoles", label: "Mi\xE9rcoles" },
+  { value: "jueves", label: "Jueves" },
+  { value: "viernes", label: "Viernes" },
+  { value: "sabado", label: "S\xE1bado" },
+  { value: "domingo", label: "Domingo" }
+];
+var HOURS_OPTIONS = Array.from({ length: 24 }, (_, i) => {
+  const hour = i.toString().padStart(2, "0");
+  return { value: `${hour}:00`, label: `${hour}:00` };
+});
+var FULL_HOURS_OPTIONS = HOURS_OPTIONS.flatMap((h) => [
+  h,
+  { value: h.value.replace(":00", ":30"), label: h.label.replace(":00", ":30") }
+]);
+var BusinessHoursField = wrapFieldsWithMeta3(({ input }) => {
+  const parseHours = (value) => {
+    const match = value?.match(/(\w+)\s*a\s*(\w+):\s*(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})/i);
+    if (match) {
+      return {
+        dayFrom: match[1].toLowerCase(),
+        dayTo: match[2].toLowerCase(),
+        hourFrom: match[3],
+        hourTo: match[4]
+      };
+    }
+    return {
+      dayFrom: "lunes",
+      dayTo: "viernes",
+      hourFrom: "08:00",
+      hourTo: "17:00"
+    };
+  };
+  const [schedule, setSchedule] = React3.useState(parseHours(input.value || ""));
+  React3.useEffect(() => {
+    setSchedule(parseHours(input.value || ""));
+  }, [input.value]);
+  const formatOutput = (sched) => {
+    const dayFromLabel = DAYS_OPTIONS.find((d) => d.value === sched.dayFrom)?.label || sched.dayFrom;
+    const dayToLabel = DAYS_OPTIONS.find((d) => d.value === sched.dayTo)?.label || sched.dayTo;
+    return `${dayFromLabel} a ${dayToLabel}: ${sched.hourFrom} - ${sched.hourTo}`;
+  };
+  const handleChange = (field, value) => {
+    const newSchedule = { ...schedule, [field]: value };
+    setSchedule(newSchedule);
+    input.onChange(formatOutput(newSchedule));
+  };
+  const selectStyle = {
+    padding: "8px 12px",
+    border: "1px solid #e2e8f0",
+    borderRadius: "6px",
+    fontSize: "14px",
+    backgroundColor: "white",
+    cursor: "pointer"
+  };
+  return React3.createElement("div", { style: { display: "flex", flexDirection: "column", gap: "12px" } }, React3.createElement("div", { style: { display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" } }, React3.createElement("span", { style: { fontSize: "14px", color: "#4a5568", minWidth: "40px" } }, "\u{1F4C5} D\xEDas:"), React3.createElement(
+    "select",
+    {
+      value: schedule.dayFrom,
+      onChange: (e) => handleChange("dayFrom", e.target.value),
+      style: selectStyle
+    },
+    DAYS_OPTIONS.map((day) => React3.createElement("option", { key: day.value, value: day.value }, day.label))
+  ), React3.createElement("span", { style: { fontSize: "14px", color: "#718096" } }, "a"), React3.createElement(
+    "select",
+    {
+      value: schedule.dayTo,
+      onChange: (e) => handleChange("dayTo", e.target.value),
+      style: selectStyle
+    },
+    DAYS_OPTIONS.map((day) => React3.createElement("option", { key: day.value, value: day.value }, day.label))
+  )), React3.createElement("div", { style: { display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" } }, React3.createElement("span", { style: { fontSize: "14px", color: "#4a5568", minWidth: "40px" } }, "\u{1F550} Hora:"), React3.createElement(
+    "select",
+    {
+      value: schedule.hourFrom,
+      onChange: (e) => handleChange("hourFrom", e.target.value),
+      style: selectStyle
+    },
+    FULL_HOURS_OPTIONS.map((hour) => React3.createElement("option", { key: hour.value, value: hour.value }, hour.label))
+  ), React3.createElement("span", { style: { fontSize: "14px", color: "#718096" } }, "a"), React3.createElement(
+    "select",
+    {
+      value: schedule.hourTo,
+      onChange: (e) => handleChange("hourTo", e.target.value),
+      style: selectStyle
+    },
+    FULL_HOURS_OPTIONS.map((hour) => React3.createElement("option", { key: hour.value, value: hour.value }, hour.label))
+  )), React3.createElement(
+    "div",
+    {
+      style: {
+        padding: "10px 14px",
+        backgroundColor: "#f7fafc",
+        border: "1px solid #e2e8f0",
+        borderRadius: "6px",
+        fontSize: "13px",
+        color: "#4a5568"
+      }
+    },
+    React3.createElement("strong", null, "Vista previa:"),
+    " ",
+    formatOutput(schedule)
+  ));
+});
+
 // tina/config.ts
 var projectTagOptions = [
   "residencial",
@@ -2140,32 +2369,56 @@ var config_default = defineConfig2({
               {
                 type: "string",
                 name: "phone",
-                label: "Tel\xE9fono Principal"
+                label: "Tel\xE9fono Principal",
+                description: "N\xFAmero de tel\xE9fono con prefijo +593 (Ecuador)",
+                ui: {
+                  component: PhoneField
+                }
               },
               {
                 type: "string",
                 name: "phoneSecondary",
-                label: "Tel\xE9fono Secundario"
+                label: "Tel\xE9fono Secundario",
+                description: "N\xFAmero de tel\xE9fono adicional",
+                ui: {
+                  component: PhoneField
+                }
               },
               {
                 type: "string",
                 name: "whatsapp",
-                label: "WhatsApp"
+                label: "WhatsApp",
+                description: "N\xFAmero de WhatsApp para contacto directo",
+                ui: {
+                  component: PhoneField
+                }
               },
               {
                 type: "string",
                 name: "email",
-                label: "Email Principal"
+                label: "Email Principal",
+                description: "Correo electr\xF3nico de contacto",
+                ui: {
+                  component: EmailField
+                }
               },
               {
                 type: "string",
                 name: "emailSecondary",
-                label: "Email Secundario"
+                label: "Email Secundario",
+                description: "Correo electr\xF3nico adicional",
+                ui: {
+                  component: EmailField
+                }
               },
               {
                 type: "string",
                 name: "hours",
-                label: "Horario de Atenci\xF3n"
+                label: "Horario de Atenci\xF3n",
+                description: "D\xEDas y horas de atenci\xF3n al p\xFAblico",
+                ui: {
+                  component: BusinessHoursField
+                }
               }
             ]
           },
