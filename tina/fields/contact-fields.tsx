@@ -8,21 +8,26 @@ export const PhoneField = wrapFieldsWithMeta(({ input }: any) => {
   // Extraer solo los dígitos del valor actual
   const extractDigits = (value: string) => {
     if (!value) return '';
-    // Remover el prefijo +593 si existe y obtener solo dígitos
-    const cleaned = value.replace(/^\+593\s*/, '').replace(/\D/g, '');
-    return cleaned.slice(0, 10); // Máximo 10 dígitos
+    // Remover cualquier prefijo y obtener solo dígitos
+    const cleaned = value.replace(/[^\d]/g, '');
+    // Si empieza con 593, removerlo
+    const withoutCountry = cleaned.startsWith('593') ? cleaned.slice(3) : cleaned;
+    return withoutCountry.slice(0, 10); // Máximo 10 dígitos
   };
 
-  const [digits, setDigits] = React.useState(extractDigits(input.value || ''));
+  const [digits, setDigits] = React.useState(() => extractDigits(input.value || ''));
 
+  // Sincronizar cuando cambia el valor externo
   React.useEffect(() => {
-    setDigits(extractDigits(input.value || ''));
+    const newDigits = extractDigits(input.value || '');
+    if (newDigits !== digits) {
+      setDigits(newDigits);
+    }
   }, [input.value]);
 
-  // Formatear el número para mostrar
+  // Formatear el número para mostrar (XX XXX XXXX)
   const formatDisplay = (value: string) => {
     if (!value) return '';
-    // Formato: XX XXX XXXX (para números de 9-10 dígitos)
     const cleaned = value.replace(/\D/g, '').slice(0, 10);
     if (cleaned.length <= 2) return cleaned;
     if (cleaned.length <= 5) return `${cleaned.slice(0, 2)} ${cleaned.slice(2)}`;
@@ -106,7 +111,9 @@ export const EmailField = wrapFieldsWithMeta(({ input }: any) => {
   const [touched, setTouched] = React.useState(false);
 
   React.useEffect(() => {
-    setValue(input.value || '');
+    if (input.value !== value) {
+      setValue(input.value || '');
+    }
   }, [input.value]);
 
   const isValidEmail = (email: string) => {
@@ -159,7 +166,7 @@ export const EmailField = wrapFieldsWithMeta(({ input }: any) => {
         
         {/* Indicador de validez */}
         {value && (
-          <span style={{ fontSize: '16px' }}>
+          <span style={{ fontSize: '16px', color: isValid ? '#38a169' : '#e53e3e' }}>
             {isValid ? '✓' : '✗'}
           </span>
         )}
@@ -187,6 +194,19 @@ const DAYS_OPTIONS = [
   { value: 'domingo', label: 'Domingo' },
 ];
 
+// Mapeo para normalizar días con/sin tildes
+const normalizeDay = (day: string): string => {
+  if (!day) return 'lunes';
+  const normalized = day.toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, ''); // Remover acentos
+  const found = DAYS_OPTIONS.find(d => 
+    d.value === normalized || 
+    d.label.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') === normalized
+  );
+  return found?.value || 'lunes';
+};
+
 const HOURS_OPTIONS = Array.from({ length: 24 }, (_, i) => {
   const hour = i.toString().padStart(2, '0');
   return { value: `${hour}:00`, label: `${hour}:00` };
@@ -201,16 +221,26 @@ const FULL_HOURS_OPTIONS = HOURS_OPTIONS.flatMap((h) => [
 export const BusinessHoursField = wrapFieldsWithMeta(({ input }: any) => {
   // Parsear el valor existente o usar defaults
   const parseHours = (value: string) => {
+    if (!value) {
+      return {
+        dayFrom: 'lunes',
+        dayTo: 'viernes',
+        hourFrom: '08:00',
+        hourTo: '17:00',
+      };
+    }
+    
     // Intentar parsear formato "Lunes a Viernes: 08:00 - 17:00"
-    const match = value?.match(/(\w+)\s*a\s*(\w+):\s*(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})/i);
+    const match = value.match(/(\S+)\s*a\s*(\S+):\s*(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})/i);
     if (match) {
       return {
-        dayFrom: match[1].toLowerCase(),
-        dayTo: match[2].toLowerCase(),
+        dayFrom: normalizeDay(match[1]),
+        dayTo: normalizeDay(match[2]),
         hourFrom: match[3],
         hourTo: match[4],
       };
     }
+    
     return {
       dayFrom: 'lunes',
       dayTo: 'viernes',
@@ -219,15 +249,24 @@ export const BusinessHoursField = wrapFieldsWithMeta(({ input }: any) => {
     };
   };
 
-  const [schedule, setSchedule] = React.useState(parseHours(input.value || ''));
+  const [schedule, setSchedule] = React.useState(() => parseHours(input.value || ''));
 
+  // Solo actualizar si el valor externo cambia significativamente
   React.useEffect(() => {
-    setSchedule(parseHours(input.value || ''));
+    const parsed = parseHours(input.value || '');
+    if (
+      parsed.dayFrom !== schedule.dayFrom ||
+      parsed.dayTo !== schedule.dayTo ||
+      parsed.hourFrom !== schedule.hourFrom ||
+      parsed.hourTo !== schedule.hourTo
+    ) {
+      setSchedule(parsed);
+    }
   }, [input.value]);
 
   const formatOutput = (sched: typeof schedule) => {
-    const dayFromLabel = DAYS_OPTIONS.find(d => d.value === sched.dayFrom)?.label || sched.dayFrom;
-    const dayToLabel = DAYS_OPTIONS.find(d => d.value === sched.dayTo)?.label || sched.dayTo;
+    const dayFromLabel = DAYS_OPTIONS.find(d => d.value === sched.dayFrom)?.label || 'Lunes';
+    const dayToLabel = DAYS_OPTIONS.find(d => d.value === sched.dayTo)?.label || 'Viernes';
     return `${dayFromLabel} a ${dayToLabel}: ${sched.hourFrom} - ${sched.hourTo}`;
   };
 
@@ -250,7 +289,7 @@ export const BusinessHoursField = wrapFieldsWithMeta(({ input }: any) => {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
       {/* Días */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-        <span style={{ fontSize: '14px', color: '#4a5568', minWidth: '40px' }}>📅 Días:</span>
+        <span style={{ fontSize: '14px', color: '#4a5568', minWidth: '50px' }}>📅 Días:</span>
         <select
           value={schedule.dayFrom}
           onChange={(e) => handleChange('dayFrom', e.target.value)}
@@ -278,7 +317,7 @@ export const BusinessHoursField = wrapFieldsWithMeta(({ input }: any) => {
 
       {/* Horas */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-        <span style={{ fontSize: '14px', color: '#4a5568', minWidth: '40px' }}>🕐 Hora:</span>
+        <span style={{ fontSize: '14px', color: '#4a5568', minWidth: '50px' }}>🕐 Hora:</span>
         <select
           value={schedule.hourFrom}
           onChange={(e) => handleChange('hourFrom', e.target.value)}

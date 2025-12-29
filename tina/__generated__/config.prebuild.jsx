@@ -1085,12 +1085,16 @@ import { wrapFieldsWithMeta as wrapFieldsWithMeta3 } from "tinacms";
 var PhoneField = wrapFieldsWithMeta3(({ input }) => {
   const extractDigits = (value) => {
     if (!value) return "";
-    const cleaned = value.replace(/^\+593\s*/, "").replace(/\D/g, "");
-    return cleaned.slice(0, 10);
+    const cleaned = value.replace(/[^\d]/g, "");
+    const withoutCountry = cleaned.startsWith("593") ? cleaned.slice(3) : cleaned;
+    return withoutCountry.slice(0, 10);
   };
-  const [digits, setDigits] = React3.useState(extractDigits(input.value || ""));
+  const [digits, setDigits] = React3.useState(() => extractDigits(input.value || ""));
   React3.useEffect(() => {
-    setDigits(extractDigits(input.value || ""));
+    const newDigits = extractDigits(input.value || "");
+    if (newDigits !== digits) {
+      setDigits(newDigits);
+    }
   }, [input.value]);
   const formatDisplay = (value) => {
     if (!value) return "";
@@ -1156,7 +1160,9 @@ var EmailField = wrapFieldsWithMeta3(({ input }) => {
   const [value, setValue] = React3.useState(input.value || "");
   const [touched, setTouched] = React3.useState(false);
   React3.useEffect(() => {
-    setValue(input.value || "");
+    if (input.value !== value) {
+      setValue(input.value || "");
+    }
   }, [input.value]);
   const isValidEmail = (email) => {
     if (!email) return true;
@@ -1199,7 +1205,7 @@ var EmailField = wrapFieldsWithMeta3(({ input }) => {
         marginLeft: "-1px"
       }
     }
-  ), value && React3.createElement("span", { style: { fontSize: "16px" } }, isValid ? "\u2713" : "\u2717")), showError && React3.createElement("span", { style: { fontSize: "12px", color: "#e53e3e" } }, "Por favor ingresa un email v\xE1lido"));
+  ), value && React3.createElement("span", { style: { fontSize: "16px", color: isValid ? "#38a169" : "#e53e3e" } }, isValid ? "\u2713" : "\u2717")), showError && React3.createElement("span", { style: { fontSize: "12px", color: "#e53e3e" } }, "Por favor ingresa un email v\xE1lido"));
 });
 var DAYS_OPTIONS = [
   { value: "lunes", label: "Lunes" },
@@ -1210,6 +1216,14 @@ var DAYS_OPTIONS = [
   { value: "sabado", label: "S\xE1bado" },
   { value: "domingo", label: "Domingo" }
 ];
+var normalizeDay = (day) => {
+  if (!day) return "lunes";
+  const normalized = day.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const found = DAYS_OPTIONS.find(
+    (d) => d.value === normalized || d.label.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") === normalized
+  );
+  return found?.value || "lunes";
+};
 var HOURS_OPTIONS = Array.from({ length: 24 }, (_, i) => {
   const hour = i.toString().padStart(2, "0");
   return { value: `${hour}:00`, label: `${hour}:00` };
@@ -1220,11 +1234,19 @@ var FULL_HOURS_OPTIONS = HOURS_OPTIONS.flatMap((h) => [
 ]);
 var BusinessHoursField = wrapFieldsWithMeta3(({ input }) => {
   const parseHours = (value) => {
-    const match = value?.match(/(\w+)\s*a\s*(\w+):\s*(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})/i);
+    if (!value) {
+      return {
+        dayFrom: "lunes",
+        dayTo: "viernes",
+        hourFrom: "08:00",
+        hourTo: "17:00"
+      };
+    }
+    const match = value.match(/(\S+)\s*a\s*(\S+):\s*(\d{2}:\d{2})\s*-\s*(\d{2}:\d{2})/i);
     if (match) {
       return {
-        dayFrom: match[1].toLowerCase(),
-        dayTo: match[2].toLowerCase(),
+        dayFrom: normalizeDay(match[1]),
+        dayTo: normalizeDay(match[2]),
         hourFrom: match[3],
         hourTo: match[4]
       };
@@ -1236,13 +1258,16 @@ var BusinessHoursField = wrapFieldsWithMeta3(({ input }) => {
       hourTo: "17:00"
     };
   };
-  const [schedule, setSchedule] = React3.useState(parseHours(input.value || ""));
+  const [schedule, setSchedule] = React3.useState(() => parseHours(input.value || ""));
   React3.useEffect(() => {
-    setSchedule(parseHours(input.value || ""));
+    const parsed = parseHours(input.value || "");
+    if (parsed.dayFrom !== schedule.dayFrom || parsed.dayTo !== schedule.dayTo || parsed.hourFrom !== schedule.hourFrom || parsed.hourTo !== schedule.hourTo) {
+      setSchedule(parsed);
+    }
   }, [input.value]);
   const formatOutput = (sched) => {
-    const dayFromLabel = DAYS_OPTIONS.find((d) => d.value === sched.dayFrom)?.label || sched.dayFrom;
-    const dayToLabel = DAYS_OPTIONS.find((d) => d.value === sched.dayTo)?.label || sched.dayTo;
+    const dayFromLabel = DAYS_OPTIONS.find((d) => d.value === sched.dayFrom)?.label || "Lunes";
+    const dayToLabel = DAYS_OPTIONS.find((d) => d.value === sched.dayTo)?.label || "Viernes";
     return `${dayFromLabel} a ${dayToLabel}: ${sched.hourFrom} - ${sched.hourTo}`;
   };
   const handleChange = (field, value) => {
@@ -1258,7 +1283,7 @@ var BusinessHoursField = wrapFieldsWithMeta3(({ input }) => {
     backgroundColor: "white",
     cursor: "pointer"
   };
-  return React3.createElement("div", { style: { display: "flex", flexDirection: "column", gap: "12px" } }, React3.createElement("div", { style: { display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" } }, React3.createElement("span", { style: { fontSize: "14px", color: "#4a5568", minWidth: "40px" } }, "\u{1F4C5} D\xEDas:"), React3.createElement(
+  return React3.createElement("div", { style: { display: "flex", flexDirection: "column", gap: "12px" } }, React3.createElement("div", { style: { display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" } }, React3.createElement("span", { style: { fontSize: "14px", color: "#4a5568", minWidth: "50px" } }, "\u{1F4C5} D\xEDas:"), React3.createElement(
     "select",
     {
       value: schedule.dayFrom,
@@ -1274,7 +1299,7 @@ var BusinessHoursField = wrapFieldsWithMeta3(({ input }) => {
       style: selectStyle
     },
     DAYS_OPTIONS.map((day) => React3.createElement("option", { key: day.value, value: day.value }, day.label))
-  )), React3.createElement("div", { style: { display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" } }, React3.createElement("span", { style: { fontSize: "14px", color: "#4a5568", minWidth: "40px" } }, "\u{1F550} Hora:"), React3.createElement(
+  )), React3.createElement("div", { style: { display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" } }, React3.createElement("span", { style: { fontSize: "14px", color: "#4a5568", minWidth: "50px" } }, "\u{1F550} Hora:"), React3.createElement(
     "select",
     {
       value: schedule.hourFrom,
