@@ -3,6 +3,7 @@ import { ImagePreviewField, ImageGalleryField } from './fields/cloudinary-fields
 import { pageBlockTemplates } from './fields/page-blocks';
 import { ColorPickerField } from './fields/color-field';
 import { PhoneField, EmailField, BusinessHoursField } from './fields/contact-fields';
+import { SocialIconSelector } from './fields/social-icon-selector';
 
 // Opciones predefinidas para tags de proyectos
 const projectTagOptions = [
@@ -1220,7 +1221,10 @@ export default defineConfig({
                 type: 'string',
                 name: 'icon',
                 label: 'Icono',
-                description: 'Nombre del icono (ej: facebook, instagram, tiktok, x-twitter)',
+                description: 'Selecciona el icono de la red social',
+                ui: {
+                  component: SocialIconSelector,
+                },
               },
               {
                 type: 'string',
