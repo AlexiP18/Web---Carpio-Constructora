@@ -1,5 +1,162 @@
 import React from 'react';
 import { wrapFieldsWithMeta } from 'tinacms';
+import {
+  FacebookLogo,
+  InstagramLogo,
+  XLogo,
+  TwitterLogo,
+  LinkedinLogo,
+  YoutubeLogo,
+  TiktokLogo,
+  WhatsappLogo,
+  TelegramLogo,
+  MessengerLogo,
+  DiscordLogo,
+  SlackLogo,
+  SkypeLogo,
+  WechatLogo,
+  GithubLogo,
+  GitlabLogo,
+  BehanceLogo,
+  DribbbleLogo,
+  FigmaLogo,
+  MediumLogo,
+  NotionLogo,
+  TwitchLogo,
+  PinterestLogo,
+  SnapchatLogo,
+  SpotifyLogo,
+  SoundcloudLogo,
+  ApplePodcastsLogo,
+  RedditLogo,
+  MastodonLogo,
+  ThreadsLogo,
+  AmazonLogo,
+  PaypalLogo,
+  StripeLogo,
+  GoogleLogo,
+  GooglePlayLogo,
+  AppStoreLogo,
+  AppleLogo,
+  AndroidLogo,
+  Globe,
+  Envelope,
+  Phone,
+  MapPin,
+  Link,
+  ShareNetwork,
+  type Icon as PhosphorIcon,
+} from '@phosphor-icons/react';
+
+// Mapeo de nombres de iconos a componentes de Phosphor
+const ICON_COMPONENTS: Record<string, PhosphorIcon> = {
+  'ph:facebook-logo': FacebookLogo,
+  'ph:facebook-logo-fill': FacebookLogo,
+  'ph:instagram-logo': InstagramLogo,
+  'ph:instagram-logo-fill': InstagramLogo,
+  'ph:x-logo': XLogo,
+  'ph:x-logo-fill': XLogo,
+  'ph:twitter-logo': TwitterLogo,
+  'ph:twitter-logo-fill': TwitterLogo,
+  'ph:linkedin-logo': LinkedinLogo,
+  'ph:linkedin-logo-fill': LinkedinLogo,
+  'ph:youtube-logo': YoutubeLogo,
+  'ph:youtube-logo-fill': YoutubeLogo,
+  'ph:tiktok-logo': TiktokLogo,
+  'ph:tiktok-logo-fill': TiktokLogo,
+  'ph:whatsapp-logo': WhatsappLogo,
+  'ph:whatsapp-logo-fill': WhatsappLogo,
+  'ph:telegram-logo': TelegramLogo,
+  'ph:telegram-logo-fill': TelegramLogo,
+  'ph:messenger-logo': MessengerLogo,
+  'ph:messenger-logo-fill': MessengerLogo,
+  'ph:discord-logo': DiscordLogo,
+  'ph:discord-logo-fill': DiscordLogo,
+  'ph:slack-logo': SlackLogo,
+  'ph:slack-logo-fill': SlackLogo,
+  'ph:skype-logo': SkypeLogo,
+  'ph:skype-logo-fill': SkypeLogo,
+  'ph:wechat-logo': WechatLogo,
+  'ph:wechat-logo-fill': WechatLogo,
+  'ph:github-logo': GithubLogo,
+  'ph:github-logo-fill': GithubLogo,
+  'ph:gitlab-logo': GitlabLogo,
+  'ph:gitlab-logo-fill': GitlabLogo,
+  'ph:behance-logo': BehanceLogo,
+  'ph:behance-logo-fill': BehanceLogo,
+  'ph:dribbble-logo': DribbbleLogo,
+  'ph:dribbble-logo-fill': DribbbleLogo,
+  'ph:figma-logo': FigmaLogo,
+  'ph:figma-logo-fill': FigmaLogo,
+  'ph:medium-logo': MediumLogo,
+  'ph:medium-logo-fill': MediumLogo,
+  'ph:notion-logo': NotionLogo,
+  'ph:notion-logo-fill': NotionLogo,
+  'ph:twitch-logo': TwitchLogo,
+  'ph:twitch-logo-fill': TwitchLogo,
+  'ph:pinterest-logo': PinterestLogo,
+  'ph:pinterest-logo-fill': PinterestLogo,
+  'ph:snapchat-logo': SnapchatLogo,
+  'ph:snapchat-logo-fill': SnapchatLogo,
+  'ph:spotify-logo': SpotifyLogo,
+  'ph:spotify-logo-fill': SpotifyLogo,
+  'ph:soundcloud-logo': SoundcloudLogo,
+  'ph:soundcloud-logo-fill': SoundcloudLogo,
+  'ph:apple-podcasts-logo': ApplePodcastsLogo,
+  'ph:apple-podcasts-logo-fill': ApplePodcastsLogo,
+  'ph:reddit-logo': RedditLogo,
+  'ph:reddit-logo-fill': RedditLogo,
+  'ph:mastodon-logo': MastodonLogo,
+  'ph:mastodon-logo-fill': MastodonLogo,
+  'ph:threads-logo': ThreadsLogo,
+  'ph:threads-logo-fill': ThreadsLogo,
+  'ph:amazon-logo': AmazonLogo,
+  'ph:amazon-logo-fill': AmazonLogo,
+  'ph:paypal-logo': PaypalLogo,
+  'ph:paypal-logo-fill': PaypalLogo,
+  'ph:stripe-logo': StripeLogo,
+  'ph:stripe-logo-fill': StripeLogo,
+  'ph:google-logo': GoogleLogo,
+  'ph:google-logo-fill': GoogleLogo,
+  'ph:google-play-logo': GooglePlayLogo,
+  'ph:google-play-logo-fill': GooglePlayLogo,
+  'ph:app-store-logo': AppStoreLogo,
+  'ph:app-store-logo-fill': AppStoreLogo,
+  'ph:apple-logo': AppleLogo,
+  'ph:apple-logo-fill': AppleLogo,
+  'ph:android-logo': AndroidLogo,
+  'ph:android-logo-fill': AndroidLogo,
+  'ph:globe': Globe,
+  'ph:globe-fill': Globe,
+  'ph:envelope': Envelope,
+  'ph:envelope-fill': Envelope,
+  'ph:phone': Phone,
+  'ph:phone-fill': Phone,
+  'ph:map-pin': MapPin,
+  'ph:map-pin-fill': MapPin,
+  'ph:link': Link,
+  'ph:link-fill': Link,
+  'ph:share-network': ShareNetwork,
+  'ph:share-network-fill': ShareNetwork,
+};
+
+// Función para renderizar el icono de Phosphor
+function PhosphorIconPreview({ iconName, size = 20 }: { iconName: string; size?: number }) {
+  const IconComponent = ICON_COMPONENTS[iconName];
+  const isFill = iconName.includes('-fill');
+  
+  if (!IconComponent) {
+    return <span style={{ fontSize: size, width: size, textAlign: 'center' }}>🔗</span>;
+  }
+  
+  return (
+    <IconComponent 
+      size={size} 
+      weight={isFill ? 'fill' : 'regular'} 
+      style={{ color: '#4a5568' }}
+    />
+  );
+}
 
 // Lista de iconos de redes sociales disponibles en Phosphor Icons
 // Formato: ph:nombre-logo o ph:nombre-logo-fill
@@ -211,12 +368,10 @@ export const SocialIconSelector = wrapFieldsWithMeta(({ input }: any) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           {selectedIcon ? (
             <>
-              <span style={{ fontSize: '18px' }}>
-                {getIconEmoji(selectedIcon.value)}
-              </span>
+              <PhosphorIconPreview iconName={selectedIcon.value} size={20} />
               <span>{selectedIcon.label}</span>
-              <span style={{ fontSize: '12px', color: '#718096' }}>
-                ({selectedIcon.value})
+              <span style={{ fontSize: '11px', color: '#718096', fontFamily: 'monospace' }}>
+                {selectedIcon.value}
               </span>
             </>
           ) : (
@@ -287,12 +442,12 @@ export const SocialIconSelector = wrapFieldsWithMeta(({ input }: any) => {
                     }
                   }}
                 >
-                  <span style={{ fontSize: '20px', width: '28px', textAlign: 'center' }}>
-                    {getIconEmoji(icon.value)}
-                  </span>
+                  <div style={{ width: '28px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <PhosphorIconPreview iconName={icon.value} size={22} />
+                  </div>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontWeight: '500' }}>{icon.label}</div>
-                    <div style={{ fontSize: '12px', color: '#718096' }}>{icon.value}</div>
+                    <div style={{ fontSize: '11px', color: '#718096', fontFamily: 'monospace' }}>{icon.value}</div>
                   </div>
                   {input.value === icon.value && (
                     <span style={{ color: '#38a169' }}>✓</span>
@@ -311,61 +466,4 @@ export const SocialIconSelector = wrapFieldsWithMeta(({ input }: any) => {
   );
 });
 
-// Función para obtener emoji representativo del icono Phosphor
-function getIconEmoji(iconName: string): string {
-  // Extraer el nombre base del icono (sin el prefijo ph: y sin el sufijo -fill)
-  const baseName = iconName
-    .replace('ph:', '')
-    .replace('-logo', '')
-    .replace('-fill', '')
-    .toLowerCase();
 
-  const emojiMap: Record<string, string> = {
-    'facebook': '📘',
-    'instagram': '📸',
-    'x': '✖️',
-    'twitter': '🐦',
-    'linkedin': '💼',
-    'youtube': '▶️',
-    'tiktok': '🎵',
-    'whatsapp': '💬',
-    'telegram': '✈️',
-    'messenger': '💭',
-    'discord': '🎮',
-    'slack': '💬',
-    'skype': '☁️',
-    'wechat': '💚',
-    'github': '🐙',
-    'gitlab': '🦊',
-    'behance': '🎨',
-    'dribbble': '🏀',
-    'figma': '🎨',
-    'medium': '📝',
-    'notion': '📓',
-    'twitch': '🎮',
-    'pinterest': '📌',
-    'snapchat': '👻',
-    'spotify': '🎧',
-    'soundcloud': '☁️',
-    'apple-podcasts': '🎙️',
-    'apple': '🍎',
-    'reddit': '🤖',
-    'mastodon': '🐘',
-    'threads': '🧵',
-    'amazon': '📦',
-    'paypal': '💳',
-    'stripe': '💳',
-    'google': '🔍',
-    'google-play': '▶️',
-    'app-store': '📱',
-    'android': '🤖',
-    'globe': '🌐',
-    'envelope': '✉️',
-    'phone': '📞',
-    'map-pin': '📍',
-    'link': '🔗',
-    'share-network': '🔄',
-  };
-  
-  return emojiMap[baseName] || '🔗';
-}
