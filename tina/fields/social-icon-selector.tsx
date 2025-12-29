@@ -1,80 +1,114 @@
 import React from 'react';
 import { wrapFieldsWithMeta } from 'tinacms';
 
-// Lista completa de iconos de redes sociales disponibles
+// Lista de iconos de redes sociales disponibles en Phosphor Icons
+// Formato: ph:nombre-logo o ph:nombre-logo-fill
 const SOCIAL_ICONS = [
-  // Principales
-  { value: 'facebook', label: 'Facebook', category: 'popular' },
-  { value: 'instagram', label: 'Instagram', category: 'popular' },
-  { value: 'x-twitter', label: 'X (Twitter)', category: 'popular' },
-  { value: 'twitter', label: 'Twitter (antiguo)', category: 'popular' },
-  { value: 'linkedin', label: 'LinkedIn', category: 'popular' },
-  { value: 'youtube', label: 'YouTube', category: 'popular' },
-  { value: 'tiktok', label: 'TikTok', category: 'popular' },
-  { value: 'whatsapp', label: 'WhatsApp', category: 'popular' },
+  // Principales / Populares
+  { value: 'ph:facebook-logo', label: 'Facebook', category: 'popular' },
+  { value: 'ph:facebook-logo-fill', label: 'Facebook (relleno)', category: 'popular' },
+  { value: 'ph:instagram-logo', label: 'Instagram', category: 'popular' },
+  { value: 'ph:instagram-logo-fill', label: 'Instagram (relleno)', category: 'popular' },
+  { value: 'ph:x-logo', label: 'X (Twitter)', category: 'popular' },
+  { value: 'ph:x-logo-fill', label: 'X (relleno)', category: 'popular' },
+  { value: 'ph:twitter-logo', label: 'Twitter (antiguo)', category: 'popular' },
+  { value: 'ph:twitter-logo-fill', label: 'Twitter (relleno)', category: 'popular' },
+  { value: 'ph:linkedin-logo', label: 'LinkedIn', category: 'popular' },
+  { value: 'ph:linkedin-logo-fill', label: 'LinkedIn (relleno)', category: 'popular' },
+  { value: 'ph:youtube-logo', label: 'YouTube', category: 'popular' },
+  { value: 'ph:youtube-logo-fill', label: 'YouTube (relleno)', category: 'popular' },
+  { value: 'ph:tiktok-logo', label: 'TikTok', category: 'popular' },
+  { value: 'ph:tiktok-logo-fill', label: 'TikTok (relleno)', category: 'popular' },
+  { value: 'ph:whatsapp-logo', label: 'WhatsApp', category: 'popular' },
+  { value: 'ph:whatsapp-logo-fill', label: 'WhatsApp (relleno)', category: 'popular' },
   
   // Mensajería
-  { value: 'telegram', label: 'Telegram', category: 'mensajeria' },
-  { value: 'messenger', label: 'Messenger', category: 'mensajeria' },
-  { value: 'discord', label: 'Discord', category: 'mensajeria' },
-  { value: 'slack', label: 'Slack', category: 'mensajeria' },
-  { value: 'skype', label: 'Skype', category: 'mensajeria' },
-  { value: 'viber', label: 'Viber', category: 'mensajeria' },
-  { value: 'wechat', label: 'WeChat', category: 'mensajeria' },
-  { value: 'line', label: 'Line', category: 'mensajeria' },
+  { value: 'ph:telegram-logo', label: 'Telegram', category: 'mensajeria' },
+  { value: 'ph:telegram-logo-fill', label: 'Telegram (relleno)', category: 'mensajeria' },
+  { value: 'ph:messenger-logo', label: 'Messenger', category: 'mensajeria' },
+  { value: 'ph:messenger-logo-fill', label: 'Messenger (relleno)', category: 'mensajeria' },
+  { value: 'ph:discord-logo', label: 'Discord', category: 'mensajeria' },
+  { value: 'ph:discord-logo-fill', label: 'Discord (relleno)', category: 'mensajeria' },
+  { value: 'ph:slack-logo', label: 'Slack', category: 'mensajeria' },
+  { value: 'ph:slack-logo-fill', label: 'Slack (relleno)', category: 'mensajeria' },
+  { value: 'ph:skype-logo', label: 'Skype', category: 'mensajeria' },
+  { value: 'ph:skype-logo-fill', label: 'Skype (relleno)', category: 'mensajeria' },
+  { value: 'ph:wechat-logo', label: 'WeChat', category: 'mensajeria' },
+  { value: 'ph:wechat-logo-fill', label: 'WeChat (relleno)', category: 'mensajeria' },
   
-  // Profesionales / Negocios
-  { value: 'github', label: 'GitHub', category: 'profesional' },
-  { value: 'gitlab', label: 'GitLab', category: 'profesional' },
-  { value: 'bitbucket', label: 'Bitbucket', category: 'profesional' },
-  { value: 'behance', label: 'Behance', category: 'profesional' },
-  { value: 'dribbble', label: 'Dribbble', category: 'profesional' },
-  { value: 'figma', label: 'Figma', category: 'profesional' },
-  { value: 'medium', label: 'Medium', category: 'profesional' },
-  { value: 'dev', label: 'Dev.to', category: 'profesional' },
-  { value: 'stackoverflow', label: 'Stack Overflow', category: 'profesional' },
+  // Profesional / Desarrollo
+  { value: 'ph:github-logo', label: 'GitHub', category: 'profesional' },
+  { value: 'ph:github-logo-fill', label: 'GitHub (relleno)', category: 'profesional' },
+  { value: 'ph:gitlab-logo', label: 'GitLab', category: 'profesional' },
+  { value: 'ph:gitlab-logo-fill', label: 'GitLab (relleno)', category: 'profesional' },
+  { value: 'ph:behance-logo', label: 'Behance', category: 'profesional' },
+  { value: 'ph:behance-logo-fill', label: 'Behance (relleno)', category: 'profesional' },
+  { value: 'ph:dribbble-logo', label: 'Dribbble', category: 'profesional' },
+  { value: 'ph:dribbble-logo-fill', label: 'Dribbble (relleno)', category: 'profesional' },
+  { value: 'ph:figma-logo', label: 'Figma', category: 'profesional' },
+  { value: 'ph:figma-logo-fill', label: 'Figma (relleno)', category: 'profesional' },
+  { value: 'ph:medium-logo', label: 'Medium', category: 'profesional' },
+  { value: 'ph:medium-logo-fill', label: 'Medium (relleno)', category: 'profesional' },
+  { value: 'ph:notion-logo', label: 'Notion', category: 'profesional' },
+  { value: 'ph:notion-logo-fill', label: 'Notion (relleno)', category: 'profesional' },
   
   // Video / Streaming
-  { value: 'twitch', label: 'Twitch', category: 'video' },
-  { value: 'vimeo', label: 'Vimeo', category: 'video' },
-  { value: 'dailymotion', label: 'Dailymotion', category: 'video' },
+  { value: 'ph:twitch-logo', label: 'Twitch', category: 'video' },
+  { value: 'ph:twitch-logo-fill', label: 'Twitch (relleno)', category: 'video' },
   
   // Fotos / Imágenes
-  { value: 'pinterest', label: 'Pinterest', category: 'fotos' },
-  { value: 'flickr', label: 'Flickr', category: 'fotos' },
-  { value: 'unsplash', label: 'Unsplash', category: 'fotos' },
-  { value: '500px', label: '500px', category: 'fotos' },
+  { value: 'ph:pinterest-logo', label: 'Pinterest', category: 'fotos' },
+  { value: 'ph:pinterest-logo-fill', label: 'Pinterest (relleno)', category: 'fotos' },
+  { value: 'ph:snapchat-logo', label: 'Snapchat', category: 'fotos' },
+  { value: 'ph:snapchat-logo-fill', label: 'Snapchat (relleno)', category: 'fotos' },
   
   // Música / Audio
-  { value: 'spotify', label: 'Spotify', category: 'musica' },
-  { value: 'soundcloud', label: 'SoundCloud', category: 'musica' },
-  { value: 'apple', label: 'Apple Music', category: 'musica' },
-  { value: 'deezer', label: 'Deezer', category: 'musica' },
+  { value: 'ph:spotify-logo', label: 'Spotify', category: 'musica' },
+  { value: 'ph:spotify-logo-fill', label: 'Spotify (relleno)', category: 'musica' },
+  { value: 'ph:soundcloud-logo', label: 'SoundCloud', category: 'musica' },
+  { value: 'ph:soundcloud-logo-fill', label: 'SoundCloud (relleno)', category: 'musica' },
+  { value: 'ph:apple-podcasts-logo', label: 'Apple Podcasts', category: 'musica' },
+  { value: 'ph:apple-podcasts-logo-fill', label: 'Apple Podcasts (relleno)', category: 'musica' },
   
   // Social Alternativo
-  { value: 'reddit', label: 'Reddit', category: 'social' },
-  { value: 'tumblr', label: 'Tumblr', category: 'social' },
-  { value: 'snapchat', label: 'Snapchat', category: 'social' },
-  { value: 'mastodon', label: 'Mastodon', category: 'social' },
-  { value: 'threads', label: 'Threads', category: 'social' },
-  { value: 'bluesky', label: 'Bluesky', category: 'social' },
+  { value: 'ph:reddit-logo', label: 'Reddit', category: 'social' },
+  { value: 'ph:reddit-logo-fill', label: 'Reddit (relleno)', category: 'social' },
+  { value: 'ph:mastodon-logo', label: 'Mastodon', category: 'social' },
+  { value: 'ph:mastodon-logo-fill', label: 'Mastodon (relleno)', category: 'social' },
+  { value: 'ph:threads-logo', label: 'Threads', category: 'social' },
+  { value: 'ph:threads-logo-fill', label: 'Threads (relleno)', category: 'social' },
   
   // E-commerce / Negocios
-  { value: 'amazon', label: 'Amazon', category: 'ecommerce' },
-  { value: 'shopify', label: 'Shopify', category: 'ecommerce' },
-  { value: 'etsy', label: 'Etsy', category: 'ecommerce' },
-  { value: 'paypal', label: 'PayPal', category: 'ecommerce' },
+  { value: 'ph:amazon-logo', label: 'Amazon', category: 'ecommerce' },
+  { value: 'ph:amazon-logo-fill', label: 'Amazon (relleno)', category: 'ecommerce' },
+  { value: 'ph:paypal-logo', label: 'PayPal', category: 'ecommerce' },
+  { value: 'ph:paypal-logo-fill', label: 'PayPal (relleno)', category: 'ecommerce' },
+  { value: 'ph:stripe-logo', label: 'Stripe', category: 'ecommerce' },
+  { value: 'ph:stripe-logo-fill', label: 'Stripe (relleno)', category: 'ecommerce' },
   
-  // Otros
-  { value: 'google', label: 'Google', category: 'otros' },
-  { value: 'google-maps', label: 'Google Maps', category: 'otros' },
-  { value: 'tripadvisor', label: 'TripAdvisor', category: 'otros' },
-  { value: 'yelp', label: 'Yelp', category: 'otros' },
-  { value: 'rss', label: 'RSS', category: 'otros' },
-  { value: 'email', label: 'Email', category: 'otros' },
-  { value: 'phone', label: 'Teléfono', category: 'otros' },
-  { value: 'globe', label: 'Sitio Web', category: 'otros' },
-  { value: 'link', label: 'Enlace', category: 'otros' },
+  // Otros / Utilidades
+  { value: 'ph:google-logo', label: 'Google', category: 'otros' },
+  { value: 'ph:google-logo-fill', label: 'Google (relleno)', category: 'otros' },
+  { value: 'ph:google-play-logo', label: 'Google Play', category: 'otros' },
+  { value: 'ph:google-play-logo-fill', label: 'Google Play (relleno)', category: 'otros' },
+  { value: 'ph:app-store-logo', label: 'App Store', category: 'otros' },
+  { value: 'ph:app-store-logo-fill', label: 'App Store (relleno)', category: 'otros' },
+  { value: 'ph:apple-logo', label: 'Apple', category: 'otros' },
+  { value: 'ph:apple-logo-fill', label: 'Apple (relleno)', category: 'otros' },
+  { value: 'ph:android-logo', label: 'Android', category: 'otros' },
+  { value: 'ph:android-logo-fill', label: 'Android (relleno)', category: 'otros' },
+  { value: 'ph:globe', label: 'Sitio Web', category: 'otros' },
+  { value: 'ph:globe-fill', label: 'Sitio Web (relleno)', category: 'otros' },
+  { value: 'ph:envelope', label: 'Email', category: 'otros' },
+  { value: 'ph:envelope-fill', label: 'Email (relleno)', category: 'otros' },
+  { value: 'ph:phone', label: 'Teléfono', category: 'otros' },
+  { value: 'ph:phone-fill', label: 'Teléfono (relleno)', category: 'otros' },
+  { value: 'ph:map-pin', label: 'Ubicación', category: 'otros' },
+  { value: 'ph:map-pin-fill', label: 'Ubicación (relleno)', category: 'otros' },
+  { value: 'ph:link', label: 'Enlace', category: 'otros' },
+  { value: 'ph:link-fill', label: 'Enlace (relleno)', category: 'otros' },
+  { value: 'ph:share-network', label: 'Compartir', category: 'otros' },
+  { value: 'ph:share-network-fill', label: 'Compartir (relleno)', category: 'otros' },
 ];
 
 const CATEGORIES = [
@@ -277,12 +311,19 @@ export const SocialIconSelector = wrapFieldsWithMeta(({ input }: any) => {
   );
 });
 
-// Función para obtener emoji representativo del icono
+// Función para obtener emoji representativo del icono Phosphor
 function getIconEmoji(iconName: string): string {
+  // Extraer el nombre base del icono (sin el prefijo ph: y sin el sufijo -fill)
+  const baseName = iconName
+    .replace('ph:', '')
+    .replace('-logo', '')
+    .replace('-fill', '')
+    .toLowerCase();
+
   const emojiMap: Record<string, string> = {
     'facebook': '📘',
     'instagram': '📸',
-    'x-twitter': '✖️',
+    'x': '✖️',
     'twitter': '🐦',
     'linkedin': '💼',
     'youtube': '▶️',
@@ -293,48 +334,38 @@ function getIconEmoji(iconName: string): string {
     'discord': '🎮',
     'slack': '💬',
     'skype': '☁️',
-    'viber': '📞',
     'wechat': '💚',
-    'line': '💚',
     'github': '🐙',
     'gitlab': '🦊',
-    'bitbucket': '🪣',
     'behance': '🎨',
     'dribbble': '🏀',
     'figma': '🎨',
     'medium': '📝',
-    'dev': '👨‍💻',
-    'stackoverflow': '📚',
+    'notion': '📓',
     'twitch': '🎮',
-    'vimeo': '🎬',
-    'dailymotion': '📺',
     'pinterest': '📌',
-    'flickr': '📷',
-    'unsplash': '📸',
-    '500px': '📷',
+    'snapchat': '👻',
     'spotify': '🎧',
     'soundcloud': '☁️',
+    'apple-podcasts': '🎙️',
     'apple': '🍎',
-    'deezer': '🎵',
     'reddit': '🤖',
-    'tumblr': '📱',
-    'snapchat': '👻',
     'mastodon': '🐘',
     'threads': '🧵',
-    'bluesky': '☁️',
     'amazon': '📦',
-    'shopify': '🛒',
-    'etsy': '🎁',
     'paypal': '💳',
+    'stripe': '💳',
     'google': '🔍',
-    'google-maps': '📍',
-    'tripadvisor': '🦉',
-    'yelp': '⭐',
-    'rss': '📡',
-    'email': '✉️',
-    'phone': '📞',
+    'google-play': '▶️',
+    'app-store': '📱',
+    'android': '🤖',
     'globe': '🌐',
+    'envelope': '✉️',
+    'phone': '📞',
+    'map-pin': '📍',
     'link': '🔗',
+    'share-network': '🔄',
   };
-  return emojiMap[iconName] || '🔗';
+  
+  return emojiMap[baseName] || '🔗';
 }
