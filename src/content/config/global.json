@@ -42,7 +42,7 @@
   "socialNetworks": [
     {
       "name": "Facebook",
-      "icon": "facebook",
+      "icon": "ph:facebook-logo",
       "url": "https://facebook.com/constructoracarpio",
       "showInHeader": false,
       "showInFooter": true,
