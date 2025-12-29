@@ -1727,12 +1727,45 @@ var SocialIconSelector = wrapFieldsWithMeta4(({ input }) => {
 // tina/fields/map-embed-field.tsx
 import React5 from "react";
 import { wrapFieldsWithMeta as wrapFieldsWithMeta5 } from "tinacms";
-var MapEmbedField = wrapFieldsWithMeta5(({ input }) => {
+function extractCoordinates(embedCode) {
+  if (!embedCode) return { lat: null, lng: null };
+  const pbMatch = embedCode.match(/!2d(-?[\d.]+)!3d(-?[\d.]+)/);
+  if (pbMatch) {
+    return {
+      lng: parseFloat(pbMatch[1]),
+      lat: parseFloat(pbMatch[2])
+    };
+  }
+  const qMatch = embedCode.match(/[?&](?:q|center)=(-?[\d.]+),(-?[\d.]+)/);
+  if (qMatch) {
+    return {
+      lat: parseFloat(qMatch[1]),
+      lng: parseFloat(qMatch[2])
+    };
+  }
+  const atMatch = embedCode.match(/@(-?[\d.]+),(-?[\d.]+)/);
+  if (atMatch) {
+    return {
+      lat: parseFloat(atMatch[1]),
+      lng: parseFloat(atMatch[2])
+    };
+  }
+  const llMatch = embedCode.match(/[?&]ll=(-?[\d.]+),(-?[\d.]+)/);
+  if (llMatch) {
+    return {
+      lat: parseFloat(llMatch[1]),
+      lng: parseFloat(llMatch[2])
+    };
+  }
+  return { lat: null, lng: null };
+}
+var MapEmbedField = wrapFieldsWithMeta5(({ input, form }) => {
   const [embedCode, setEmbedCode] = React5.useState(input.value || "");
   const [error, setError] = React5.useState(null);
+  const [coordinates, setCoordinates] = React5.useState({ lat: null, lng: null });
   const extractIframeSrc = (code) => {
     if (!code) return null;
-    if (code.startsWith("https://www.google.com/maps/embed")) {
+    if (code.startsWith("https://www.google.com/maps/embed") || code.startsWith("https://maps.google.com")) {
       return code;
     }
     const srcMatch = code.match(/src=["']([^"']+)["']/);
@@ -1742,6 +1775,19 @@ var MapEmbedField = wrapFieldsWithMeta5(({ input }) => {
     return null;
   };
   const iframeSrc = extractIframeSrc(embedCode);
+  React5.useEffect(() => {
+    const coords = extractCoordinates(embedCode);
+    setCoordinates(coords);
+    if (form && form.change) {
+      const fieldPath = input.name.replace(".mapEmbed", "");
+      if (coords.lat !== null) {
+        form.change(`${fieldPath}.lat`, coords.lat);
+      }
+      if (coords.lng !== null) {
+        form.change(`${fieldPath}.lng`, coords.lng);
+      }
+    }
+  }, [embedCode, form, input.name]);
   const handleChange = (e) => {
     const value = e.target.value;
     setEmbedCode(value);
@@ -1779,7 +1825,7 @@ var MapEmbedField = wrapFieldsWithMeta5(({ input }) => {
     fontWeight: "500",
     display: "flex",
     alignItems: "center",
-    gap: "6px"
+    justifyContent: "space-between"
   };
   const iframeContainerStyle = {
     position: "relative",
@@ -1807,6 +1853,30 @@ var MapEmbedField = wrapFieldsWithMeta5(({ input }) => {
     color: "#718096",
     lineHeight: "1.5"
   };
+  const coordsBoxStyle = {
+    display: "flex",
+    gap: "16px",
+    padding: "10px 12px",
+    backgroundColor: "#f7fafc",
+    borderTop: "1px solid #e2e8f0",
+    fontSize: "12px"
+  };
+  const coordItemStyle = {
+    display: "flex",
+    alignItems: "center",
+    gap: "6px"
+  };
+  const coordLabelStyle = {
+    color: "#718096",
+    fontWeight: "500"
+  };
+  const coordValueStyle = {
+    fontFamily: "monospace",
+    backgroundColor: "#edf2f7",
+    padding: "2px 6px",
+    borderRadius: "4px",
+    color: "#2d3748"
+  };
   return React5.createElement("div", null, React5.createElement(
     "textarea",
     {
@@ -1815,7 +1885,7 @@ var MapEmbedField = wrapFieldsWithMeta5(({ input }) => {
       placeholder: 'Pega aqu\xED el c\xF3digo embed de Google Maps (ej: <iframe src="https://www.google.com/maps/embed?..." ...></iframe>)',
       style: textareaStyle
     }
-  ), error && React5.createElement("div", { style: { color: "#e53e3e", fontSize: "12px", marginTop: "4px" } }, "\u26A0\uFE0F ", error), React5.createElement("div", { style: helpTextStyle }, "\u{1F4A1} ", React5.createElement("strong", null, "C\xF3mo obtener el c\xF3digo:"), ' En Google Maps, busca la ubicaci\xF3n \u2192 clic en "Compartir" \u2192 "Incorporar un mapa" \u2192 copia el c\xF3digo HTML.'), iframeSrc ? React5.createElement("div", { style: previewContainerStyle }, React5.createElement("div", { style: previewHeaderStyle }, React5.createElement("span", null, "\u{1F4CD}"), React5.createElement("span", null, "Vista previa del mapa")), React5.createElement("div", { style: iframeContainerStyle }, React5.createElement(
+  ), error && React5.createElement("div", { style: { color: "#e53e3e", fontSize: "12px", marginTop: "4px" } }, "\u26A0\uFE0F ", error), React5.createElement("div", { style: helpTextStyle }, "\u{1F4A1} ", React5.createElement("strong", null, "C\xF3mo obtener el c\xF3digo:"), ' En Google Maps, busca la ubicaci\xF3n \u2192 clic en "Compartir" \u2192 "Incorporar un mapa" \u2192 copia el c\xF3digo HTML.'), iframeSrc ? React5.createElement("div", { style: previewContainerStyle }, React5.createElement("div", { style: previewHeaderStyle }, React5.createElement("div", { style: { display: "flex", alignItems: "center", gap: "6px" } }, React5.createElement("span", null, "\u{1F4CD}"), React5.createElement("span", null, "Vista previa del mapa")), (coordinates.lat !== null || coordinates.lng !== null) && React5.createElement("div", { style: { fontSize: "11px", opacity: 0.9 } }, "Coordenadas detectadas \u2713")), React5.createElement("div", { style: iframeContainerStyle }, React5.createElement(
     "iframe",
     {
       src: iframeSrc,
@@ -1827,7 +1897,7 @@ var MapEmbedField = wrapFieldsWithMeta5(({ input }) => {
       referrerPolicy: "no-referrer-when-downgrade",
       title: "Vista previa de Google Maps"
     }
-  ))) : embedCode ? React5.createElement("div", { style: placeholderStyle }, React5.createElement("span", { style: { fontSize: "32px", marginBottom: "8px" } }, "\u{1F5FA}\uFE0F"), React5.createElement("span", null, "No se pudo cargar el mapa"), React5.createElement("span", { style: { fontSize: "12px", marginTop: "4px" } }, "Verifica que el c\xF3digo embed sea v\xE1lido")) : React5.createElement("div", { style: placeholderStyle }, React5.createElement("span", { style: { fontSize: "32px", marginBottom: "8px" } }, "\u{1F4CD}"), React5.createElement("span", null, "Pega el c\xF3digo embed para ver el mapa"), React5.createElement("span", { style: { fontSize: "12px", marginTop: "4px" } }, "El mapa aparecer\xE1 aqu\xED autom\xE1ticamente")));
+  )), React5.createElement("div", { style: coordsBoxStyle }, React5.createElement("div", { style: coordItemStyle }, React5.createElement("span", { style: coordLabelStyle }, "\u{1F4CD} Latitud:"), React5.createElement("span", { style: coordValueStyle }, coordinates.lat !== null ? coordinates.lat.toFixed(6) : "No detectada")), React5.createElement("div", { style: coordItemStyle }, React5.createElement("span", { style: coordLabelStyle }, "\u{1F4CD} Longitud:"), React5.createElement("span", { style: coordValueStyle }, coordinates.lng !== null ? coordinates.lng.toFixed(6) : "No detectada")))) : embedCode ? React5.createElement("div", { style: placeholderStyle }, React5.createElement("span", { style: { fontSize: "32px", marginBottom: "8px" } }, "\u{1F5FA}\uFE0F"), React5.createElement("span", null, "No se pudo cargar el mapa"), React5.createElement("span", { style: { fontSize: "12px", marginTop: "4px" } }, "Verifica que el c\xF3digo embed sea v\xE1lido")) : React5.createElement("div", { style: placeholderStyle }, React5.createElement("span", { style: { fontSize: "32px", marginBottom: "8px" } }, "\u{1F4CD}"), React5.createElement("span", null, "Pega el c\xF3digo embed para ver el mapa"), React5.createElement("span", { style: { fontSize: "12px", marginTop: "4px" } }, "Las coordenadas se extraer\xE1n autom\xE1ticamente")));
 });
 
 // tina/config.ts
@@ -2965,8 +3035,8 @@ var config_default = defineConfig2({
                   { type: "string", name: "email", label: "Email de esta ubicaci\xF3n" },
                   { type: "string", name: "mapUrl", label: "URL de Google Maps" },
                   { type: "string", name: "mapEmbed", label: "C\xF3digo Embed de Google Maps", ui: { component: MapEmbedField } },
-                  { type: "number", name: "lat", label: "Latitud" },
-                  { type: "number", name: "lng", label: "Longitud" }
+                  { type: "number", name: "lat", label: "Latitud", description: "Se extrae autom\xE1ticamente del embed", ui: { component: "hidden" } },
+                  { type: "number", name: "lng", label: "Longitud", description: "Se extrae autom\xE1ticamente del embed", ui: { component: "hidden" } }
                 ]
               },
               {
@@ -2984,8 +3054,8 @@ var config_default = defineConfig2({
                   { type: "string", name: "hours", label: "Horario de Atenci\xF3n" },
                   { type: "string", name: "mapUrl", label: "URL de Google Maps" },
                   { type: "string", name: "mapEmbed", label: "C\xF3digo Embed de Google Maps", ui: { component: MapEmbedField } },
-                  { type: "number", name: "lat", label: "Latitud" },
-                  { type: "number", name: "lng", label: "Longitud" },
+                  { type: "number", name: "lat", label: "Latitud", description: "Se extrae autom\xE1ticamente del embed", ui: { component: "hidden" } },
+                  { type: "number", name: "lng", label: "Longitud", description: "Se extrae autom\xE1ticamente del embed", ui: { component: "hidden" } },
                   { type: "number", name: "order", label: "Orden de visualizaci\xF3n" }
                 ]
               }
