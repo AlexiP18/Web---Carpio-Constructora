@@ -1336,71 +1336,255 @@ var BusinessHoursField = wrapFieldsWithMeta3(({ input }) => {
 // tina/fields/social-icon-selector.tsx
 import React4 from "react";
 import { wrapFieldsWithMeta as wrapFieldsWithMeta4 } from "tinacms";
+import {
+  FacebookLogo,
+  InstagramLogo,
+  XLogo,
+  TwitterLogo,
+  LinkedinLogo,
+  YoutubeLogo,
+  TiktokLogo,
+  WhatsappLogo,
+  TelegramLogo,
+  MessengerLogo,
+  DiscordLogo,
+  SlackLogo,
+  SkypeLogo,
+  WechatLogo,
+  GithubLogo,
+  GitlabLogo,
+  BehanceLogo,
+  DribbbleLogo,
+  FigmaLogo,
+  MediumLogo,
+  NotionLogo,
+  TwitchLogo,
+  PinterestLogo,
+  SnapchatLogo,
+  SpotifyLogo,
+  SoundcloudLogo,
+  ApplePodcastsLogo,
+  RedditLogo,
+  MastodonLogo,
+  ThreadsLogo,
+  AmazonLogo,
+  PaypalLogo,
+  StripeLogo,
+  GoogleLogo,
+  GooglePlayLogo,
+  AppStoreLogo,
+  AppleLogo,
+  AndroidLogo,
+  Globe,
+  Envelope,
+  Phone,
+  MapPin,
+  Link,
+  ShareNetwork
+} from "@phosphor-icons/react";
+var ICON_COMPONENTS = {
+  "ph:facebook-logo": FacebookLogo,
+  "ph:facebook-logo-fill": FacebookLogo,
+  "ph:instagram-logo": InstagramLogo,
+  "ph:instagram-logo-fill": InstagramLogo,
+  "ph:x-logo": XLogo,
+  "ph:x-logo-fill": XLogo,
+  "ph:twitter-logo": TwitterLogo,
+  "ph:twitter-logo-fill": TwitterLogo,
+  "ph:linkedin-logo": LinkedinLogo,
+  "ph:linkedin-logo-fill": LinkedinLogo,
+  "ph:youtube-logo": YoutubeLogo,
+  "ph:youtube-logo-fill": YoutubeLogo,
+  "ph:tiktok-logo": TiktokLogo,
+  "ph:tiktok-logo-fill": TiktokLogo,
+  "ph:whatsapp-logo": WhatsappLogo,
+  "ph:whatsapp-logo-fill": WhatsappLogo,
+  "ph:telegram-logo": TelegramLogo,
+  "ph:telegram-logo-fill": TelegramLogo,
+  "ph:messenger-logo": MessengerLogo,
+  "ph:messenger-logo-fill": MessengerLogo,
+  "ph:discord-logo": DiscordLogo,
+  "ph:discord-logo-fill": DiscordLogo,
+  "ph:slack-logo": SlackLogo,
+  "ph:slack-logo-fill": SlackLogo,
+  "ph:skype-logo": SkypeLogo,
+  "ph:skype-logo-fill": SkypeLogo,
+  "ph:wechat-logo": WechatLogo,
+  "ph:wechat-logo-fill": WechatLogo,
+  "ph:github-logo": GithubLogo,
+  "ph:github-logo-fill": GithubLogo,
+  "ph:gitlab-logo": GitlabLogo,
+  "ph:gitlab-logo-fill": GitlabLogo,
+  "ph:behance-logo": BehanceLogo,
+  "ph:behance-logo-fill": BehanceLogo,
+  "ph:dribbble-logo": DribbbleLogo,
+  "ph:dribbble-logo-fill": DribbbleLogo,
+  "ph:figma-logo": FigmaLogo,
+  "ph:figma-logo-fill": FigmaLogo,
+  "ph:medium-logo": MediumLogo,
+  "ph:medium-logo-fill": MediumLogo,
+  "ph:notion-logo": NotionLogo,
+  "ph:notion-logo-fill": NotionLogo,
+  "ph:twitch-logo": TwitchLogo,
+  "ph:twitch-logo-fill": TwitchLogo,
+  "ph:pinterest-logo": PinterestLogo,
+  "ph:pinterest-logo-fill": PinterestLogo,
+  "ph:snapchat-logo": SnapchatLogo,
+  "ph:snapchat-logo-fill": SnapchatLogo,
+  "ph:spotify-logo": SpotifyLogo,
+  "ph:spotify-logo-fill": SpotifyLogo,
+  "ph:soundcloud-logo": SoundcloudLogo,
+  "ph:soundcloud-logo-fill": SoundcloudLogo,
+  "ph:apple-podcasts-logo": ApplePodcastsLogo,
+  "ph:apple-podcasts-logo-fill": ApplePodcastsLogo,
+  "ph:reddit-logo": RedditLogo,
+  "ph:reddit-logo-fill": RedditLogo,
+  "ph:mastodon-logo": MastodonLogo,
+  "ph:mastodon-logo-fill": MastodonLogo,
+  "ph:threads-logo": ThreadsLogo,
+  "ph:threads-logo-fill": ThreadsLogo,
+  "ph:amazon-logo": AmazonLogo,
+  "ph:amazon-logo-fill": AmazonLogo,
+  "ph:paypal-logo": PaypalLogo,
+  "ph:paypal-logo-fill": PaypalLogo,
+  "ph:stripe-logo": StripeLogo,
+  "ph:stripe-logo-fill": StripeLogo,
+  "ph:google-logo": GoogleLogo,
+  "ph:google-logo-fill": GoogleLogo,
+  "ph:google-play-logo": GooglePlayLogo,
+  "ph:google-play-logo-fill": GooglePlayLogo,
+  "ph:app-store-logo": AppStoreLogo,
+  "ph:app-store-logo-fill": AppStoreLogo,
+  "ph:apple-logo": AppleLogo,
+  "ph:apple-logo-fill": AppleLogo,
+  "ph:android-logo": AndroidLogo,
+  "ph:android-logo-fill": AndroidLogo,
+  "ph:globe": Globe,
+  "ph:globe-fill": Globe,
+  "ph:envelope": Envelope,
+  "ph:envelope-fill": Envelope,
+  "ph:phone": Phone,
+  "ph:phone-fill": Phone,
+  "ph:map-pin": MapPin,
+  "ph:map-pin-fill": MapPin,
+  "ph:link": Link,
+  "ph:link-fill": Link,
+  "ph:share-network": ShareNetwork,
+  "ph:share-network-fill": ShareNetwork
+};
+function PhosphorIconPreview({ iconName, size = 20 }) {
+  const IconComponent = ICON_COMPONENTS[iconName];
+  const isFill = iconName.includes("-fill");
+  if (!IconComponent) {
+    return React4.createElement("span", { style: { fontSize: size, width: size, textAlign: "center" } }, "\u{1F517}");
+  }
+  return React4.createElement(
+    IconComponent,
+    {
+      size,
+      weight: isFill ? "fill" : "regular",
+      style: { color: "#4a5568" }
+    }
+  );
+}
 var SOCIAL_ICONS = [
-  // Principales
-  { value: "facebook", label: "Facebook", category: "popular" },
-  { value: "instagram", label: "Instagram", category: "popular" },
-  { value: "x-twitter", label: "X (Twitter)", category: "popular" },
-  { value: "twitter", label: "Twitter (antiguo)", category: "popular" },
-  { value: "linkedin", label: "LinkedIn", category: "popular" },
-  { value: "youtube", label: "YouTube", category: "popular" },
-  { value: "tiktok", label: "TikTok", category: "popular" },
-  { value: "whatsapp", label: "WhatsApp", category: "popular" },
+  // Principales / Populares
+  { value: "ph:facebook-logo", label: "Facebook", category: "popular" },
+  { value: "ph:facebook-logo-fill", label: "Facebook (relleno)", category: "popular" },
+  { value: "ph:instagram-logo", label: "Instagram", category: "popular" },
+  { value: "ph:instagram-logo-fill", label: "Instagram (relleno)", category: "popular" },
+  { value: "ph:x-logo", label: "X (Twitter)", category: "popular" },
+  { value: "ph:x-logo-fill", label: "X (relleno)", category: "popular" },
+  { value: "ph:twitter-logo", label: "Twitter (antiguo)", category: "popular" },
+  { value: "ph:twitter-logo-fill", label: "Twitter (relleno)", category: "popular" },
+  { value: "ph:linkedin-logo", label: "LinkedIn", category: "popular" },
+  { value: "ph:linkedin-logo-fill", label: "LinkedIn (relleno)", category: "popular" },
+  { value: "ph:youtube-logo", label: "YouTube", category: "popular" },
+  { value: "ph:youtube-logo-fill", label: "YouTube (relleno)", category: "popular" },
+  { value: "ph:tiktok-logo", label: "TikTok", category: "popular" },
+  { value: "ph:tiktok-logo-fill", label: "TikTok (relleno)", category: "popular" },
+  { value: "ph:whatsapp-logo", label: "WhatsApp", category: "popular" },
+  { value: "ph:whatsapp-logo-fill", label: "WhatsApp (relleno)", category: "popular" },
   // Mensajería
-  { value: "telegram", label: "Telegram", category: "mensajeria" },
-  { value: "messenger", label: "Messenger", category: "mensajeria" },
-  { value: "discord", label: "Discord", category: "mensajeria" },
-  { value: "slack", label: "Slack", category: "mensajeria" },
-  { value: "skype", label: "Skype", category: "mensajeria" },
-  { value: "viber", label: "Viber", category: "mensajeria" },
-  { value: "wechat", label: "WeChat", category: "mensajeria" },
-  { value: "line", label: "Line", category: "mensajeria" },
-  // Profesionales / Negocios
-  { value: "github", label: "GitHub", category: "profesional" },
-  { value: "gitlab", label: "GitLab", category: "profesional" },
-  { value: "bitbucket", label: "Bitbucket", category: "profesional" },
-  { value: "behance", label: "Behance", category: "profesional" },
-  { value: "dribbble", label: "Dribbble", category: "profesional" },
-  { value: "figma", label: "Figma", category: "profesional" },
-  { value: "medium", label: "Medium", category: "profesional" },
-  { value: "dev", label: "Dev.to", category: "profesional" },
-  { value: "stackoverflow", label: "Stack Overflow", category: "profesional" },
+  { value: "ph:telegram-logo", label: "Telegram", category: "mensajeria" },
+  { value: "ph:telegram-logo-fill", label: "Telegram (relleno)", category: "mensajeria" },
+  { value: "ph:messenger-logo", label: "Messenger", category: "mensajeria" },
+  { value: "ph:messenger-logo-fill", label: "Messenger (relleno)", category: "mensajeria" },
+  { value: "ph:discord-logo", label: "Discord", category: "mensajeria" },
+  { value: "ph:discord-logo-fill", label: "Discord (relleno)", category: "mensajeria" },
+  { value: "ph:slack-logo", label: "Slack", category: "mensajeria" },
+  { value: "ph:slack-logo-fill", label: "Slack (relleno)", category: "mensajeria" },
+  { value: "ph:skype-logo", label: "Skype", category: "mensajeria" },
+  { value: "ph:skype-logo-fill", label: "Skype (relleno)", category: "mensajeria" },
+  { value: "ph:wechat-logo", label: "WeChat", category: "mensajeria" },
+  { value: "ph:wechat-logo-fill", label: "WeChat (relleno)", category: "mensajeria" },
+  // Profesional / Desarrollo
+  { value: "ph:github-logo", label: "GitHub", category: "profesional" },
+  { value: "ph:github-logo-fill", label: "GitHub (relleno)", category: "profesional" },
+  { value: "ph:gitlab-logo", label: "GitLab", category: "profesional" },
+  { value: "ph:gitlab-logo-fill", label: "GitLab (relleno)", category: "profesional" },
+  { value: "ph:behance-logo", label: "Behance", category: "profesional" },
+  { value: "ph:behance-logo-fill", label: "Behance (relleno)", category: "profesional" },
+  { value: "ph:dribbble-logo", label: "Dribbble", category: "profesional" },
+  { value: "ph:dribbble-logo-fill", label: "Dribbble (relleno)", category: "profesional" },
+  { value: "ph:figma-logo", label: "Figma", category: "profesional" },
+  { value: "ph:figma-logo-fill", label: "Figma (relleno)", category: "profesional" },
+  { value: "ph:medium-logo", label: "Medium", category: "profesional" },
+  { value: "ph:medium-logo-fill", label: "Medium (relleno)", category: "profesional" },
+  { value: "ph:notion-logo", label: "Notion", category: "profesional" },
+  { value: "ph:notion-logo-fill", label: "Notion (relleno)", category: "profesional" },
   // Video / Streaming
-  { value: "twitch", label: "Twitch", category: "video" },
-  { value: "vimeo", label: "Vimeo", category: "video" },
-  { value: "dailymotion", label: "Dailymotion", category: "video" },
+  { value: "ph:twitch-logo", label: "Twitch", category: "video" },
+  { value: "ph:twitch-logo-fill", label: "Twitch (relleno)", category: "video" },
   // Fotos / Imágenes
-  { value: "pinterest", label: "Pinterest", category: "fotos" },
-  { value: "flickr", label: "Flickr", category: "fotos" },
-  { value: "unsplash", label: "Unsplash", category: "fotos" },
-  { value: "500px", label: "500px", category: "fotos" },
+  { value: "ph:pinterest-logo", label: "Pinterest", category: "fotos" },
+  { value: "ph:pinterest-logo-fill", label: "Pinterest (relleno)", category: "fotos" },
+  { value: "ph:snapchat-logo", label: "Snapchat", category: "fotos" },
+  { value: "ph:snapchat-logo-fill", label: "Snapchat (relleno)", category: "fotos" },
   // Música / Audio
-  { value: "spotify", label: "Spotify", category: "musica" },
-  { value: "soundcloud", label: "SoundCloud", category: "musica" },
-  { value: "apple", label: "Apple Music", category: "musica" },
-  { value: "deezer", label: "Deezer", category: "musica" },
+  { value: "ph:spotify-logo", label: "Spotify", category: "musica" },
+  { value: "ph:spotify-logo-fill", label: "Spotify (relleno)", category: "musica" },
+  { value: "ph:soundcloud-logo", label: "SoundCloud", category: "musica" },
+  { value: "ph:soundcloud-logo-fill", label: "SoundCloud (relleno)", category: "musica" },
+  { value: "ph:apple-podcasts-logo", label: "Apple Podcasts", category: "musica" },
+  { value: "ph:apple-podcasts-logo-fill", label: "Apple Podcasts (relleno)", category: "musica" },
   // Social Alternativo
-  { value: "reddit", label: "Reddit", category: "social" },
-  { value: "tumblr", label: "Tumblr", category: "social" },
-  { value: "snapchat", label: "Snapchat", category: "social" },
-  { value: "mastodon", label: "Mastodon", category: "social" },
-  { value: "threads", label: "Threads", category: "social" },
-  { value: "bluesky", label: "Bluesky", category: "social" },
+  { value: "ph:reddit-logo", label: "Reddit", category: "social" },
+  { value: "ph:reddit-logo-fill", label: "Reddit (relleno)", category: "social" },
+  { value: "ph:mastodon-logo", label: "Mastodon", category: "social" },
+  { value: "ph:mastodon-logo-fill", label: "Mastodon (relleno)", category: "social" },
+  { value: "ph:threads-logo", label: "Threads", category: "social" },
+  { value: "ph:threads-logo-fill", label: "Threads (relleno)", category: "social" },
   // E-commerce / Negocios
-  { value: "amazon", label: "Amazon", category: "ecommerce" },
-  { value: "shopify", label: "Shopify", category: "ecommerce" },
-  { value: "etsy", label: "Etsy", category: "ecommerce" },
-  { value: "paypal", label: "PayPal", category: "ecommerce" },
-  // Otros
-  { value: "google", label: "Google", category: "otros" },
-  { value: "google-maps", label: "Google Maps", category: "otros" },
-  { value: "tripadvisor", label: "TripAdvisor", category: "otros" },
-  { value: "yelp", label: "Yelp", category: "otros" },
-  { value: "rss", label: "RSS", category: "otros" },
-  { value: "email", label: "Email", category: "otros" },
-  { value: "phone", label: "Tel\xE9fono", category: "otros" },
-  { value: "globe", label: "Sitio Web", category: "otros" },
-  { value: "link", label: "Enlace", category: "otros" }
+  { value: "ph:amazon-logo", label: "Amazon", category: "ecommerce" },
+  { value: "ph:amazon-logo-fill", label: "Amazon (relleno)", category: "ecommerce" },
+  { value: "ph:paypal-logo", label: "PayPal", category: "ecommerce" },
+  { value: "ph:paypal-logo-fill", label: "PayPal (relleno)", category: "ecommerce" },
+  { value: "ph:stripe-logo", label: "Stripe", category: "ecommerce" },
+  { value: "ph:stripe-logo-fill", label: "Stripe (relleno)", category: "ecommerce" },
+  // Otros / Utilidades
+  { value: "ph:google-logo", label: "Google", category: "otros" },
+  { value: "ph:google-logo-fill", label: "Google (relleno)", category: "otros" },
+  { value: "ph:google-play-logo", label: "Google Play", category: "otros" },
+  { value: "ph:google-play-logo-fill", label: "Google Play (relleno)", category: "otros" },
+  { value: "ph:app-store-logo", label: "App Store", category: "otros" },
+  { value: "ph:app-store-logo-fill", label: "App Store (relleno)", category: "otros" },
+  { value: "ph:apple-logo", label: "Apple", category: "otros" },
+  { value: "ph:apple-logo-fill", label: "Apple (relleno)", category: "otros" },
+  { value: "ph:android-logo", label: "Android", category: "otros" },
+  { value: "ph:android-logo-fill", label: "Android (relleno)", category: "otros" },
+  { value: "ph:globe", label: "Sitio Web", category: "otros" },
+  { value: "ph:globe-fill", label: "Sitio Web (relleno)", category: "otros" },
+  { value: "ph:envelope", label: "Email", category: "otros" },
+  { value: "ph:envelope-fill", label: "Email (relleno)", category: "otros" },
+  { value: "ph:phone", label: "Tel\xE9fono", category: "otros" },
+  { value: "ph:phone-fill", label: "Tel\xE9fono (relleno)", category: "otros" },
+  { value: "ph:map-pin", label: "Ubicaci\xF3n", category: "otros" },
+  { value: "ph:map-pin-fill", label: "Ubicaci\xF3n (relleno)", category: "otros" },
+  { value: "ph:link", label: "Enlace", category: "otros" },
+  { value: "ph:link-fill", label: "Enlace (relleno)", category: "otros" },
+  { value: "ph:share-network", label: "Compartir", category: "otros" },
+  { value: "ph:share-network-fill", label: "Compartir (relleno)", category: "otros" }
 ];
 var CATEGORIES = [
   { value: "all", label: "\u{1F4CB} Todos" },
@@ -1483,7 +1667,7 @@ var SocialIconSelector = wrapFieldsWithMeta4(({ input }) => {
         backgroundColor: "#f7fafc"
       }
     },
-    React4.createElement("div", { style: { display: "flex", alignItems: "center", gap: "10px" } }, selectedIcon ? React4.createElement(React4.Fragment, null, React4.createElement("span", { style: { fontSize: "18px" } }, getIconEmoji(selectedIcon.value)), React4.createElement("span", null, selectedIcon.label), React4.createElement("span", { style: { fontSize: "12px", color: "#718096" } }, "(", selectedIcon.value, ")")) : React4.createElement("span", { style: { color: "#a0aec0" } }, "Selecciona un icono...")),
+    React4.createElement("div", { style: { display: "flex", alignItems: "center", gap: "10px" } }, selectedIcon ? React4.createElement(React4.Fragment, null, React4.createElement(PhosphorIconPreview, { iconName: selectedIcon.value, size: 20 }), React4.createElement("span", null, selectedIcon.label), React4.createElement("span", { style: { fontSize: "11px", color: "#718096", fontFamily: "monospace" } }, selectedIcon.value)) : React4.createElement("span", { style: { color: "#a0aec0" } }, "Selecciona un icono...")),
     React4.createElement("span", { style: { color: "#718096" } }, isOpen ? "\u25B2" : "\u25BC")
   ), isOpen && React4.createElement("div", { style: dropdownStyle }, React4.createElement("div", { style: { padding: "10px", borderBottom: "1px solid #e2e8f0" } }, React4.createElement(
     "input",
@@ -1534,71 +1718,117 @@ var SocialIconSelector = wrapFieldsWithMeta4(({ input }) => {
         }
       }
     },
-    React4.createElement("span", { style: { fontSize: "20px", width: "28px", textAlign: "center" } }, getIconEmoji(icon.value)),
-    React4.createElement("div", { style: { flex: 1 } }, React4.createElement("div", { style: { fontWeight: "500" } }, icon.label), React4.createElement("div", { style: { fontSize: "12px", color: "#718096" } }, icon.value)),
+    React4.createElement("div", { style: { width: "28px", display: "flex", justifyContent: "center", alignItems: "center" } }, React4.createElement(PhosphorIconPreview, { iconName: icon.value, size: 22 })),
+    React4.createElement("div", { style: { flex: 1 } }, React4.createElement("div", { style: { fontWeight: "500" } }, icon.label), React4.createElement("div", { style: { fontSize: "11px", color: "#718096", fontFamily: "monospace" } }, icon.value)),
     input.value === icon.value && React4.createElement("span", { style: { color: "#38a169" } }, "\u2713")
   )) : React4.createElement("div", { style: { padding: "20px", textAlign: "center", color: "#718096" } }, "No se encontraron resultados"))));
 });
-function getIconEmoji(iconName) {
-  const emojiMap = {
-    "facebook": "\u{1F4D8}",
-    "instagram": "\u{1F4F8}",
-    "x-twitter": "\u2716\uFE0F",
-    "twitter": "\u{1F426}",
-    "linkedin": "\u{1F4BC}",
-    "youtube": "\u25B6\uFE0F",
-    "tiktok": "\u{1F3B5}",
-    "whatsapp": "\u{1F4AC}",
-    "telegram": "\u2708\uFE0F",
-    "messenger": "\u{1F4AD}",
-    "discord": "\u{1F3AE}",
-    "slack": "\u{1F4AC}",
-    "skype": "\u2601\uFE0F",
-    "viber": "\u{1F4DE}",
-    "wechat": "\u{1F49A}",
-    "line": "\u{1F49A}",
-    "github": "\u{1F419}",
-    "gitlab": "\u{1F98A}",
-    "bitbucket": "\u{1FAA3}",
-    "behance": "\u{1F3A8}",
-    "dribbble": "\u{1F3C0}",
-    "figma": "\u{1F3A8}",
-    "medium": "\u{1F4DD}",
-    "dev": "\u{1F468}\u200D\u{1F4BB}",
-    "stackoverflow": "\u{1F4DA}",
-    "twitch": "\u{1F3AE}",
-    "vimeo": "\u{1F3AC}",
-    "dailymotion": "\u{1F4FA}",
-    "pinterest": "\u{1F4CC}",
-    "flickr": "\u{1F4F7}",
-    "unsplash": "\u{1F4F8}",
-    "500px": "\u{1F4F7}",
-    "spotify": "\u{1F3A7}",
-    "soundcloud": "\u2601\uFE0F",
-    "apple": "\u{1F34E}",
-    "deezer": "\u{1F3B5}",
-    "reddit": "\u{1F916}",
-    "tumblr": "\u{1F4F1}",
-    "snapchat": "\u{1F47B}",
-    "mastodon": "\u{1F418}",
-    "threads": "\u{1F9F5}",
-    "bluesky": "\u2601\uFE0F",
-    "amazon": "\u{1F4E6}",
-    "shopify": "\u{1F6D2}",
-    "etsy": "\u{1F381}",
-    "paypal": "\u{1F4B3}",
-    "google": "\u{1F50D}",
-    "google-maps": "\u{1F4CD}",
-    "tripadvisor": "\u{1F989}",
-    "yelp": "\u2B50",
-    "rss": "\u{1F4E1}",
-    "email": "\u2709\uFE0F",
-    "phone": "\u{1F4DE}",
-    "globe": "\u{1F310}",
-    "link": "\u{1F517}"
+
+// tina/fields/map-embed-field.tsx
+import React5 from "react";
+import { wrapFieldsWithMeta as wrapFieldsWithMeta5 } from "tinacms";
+var MapEmbedField = wrapFieldsWithMeta5(({ input }) => {
+  const [embedCode, setEmbedCode] = React5.useState(input.value || "");
+  const [error, setError] = React5.useState(null);
+  const extractIframeSrc = (code) => {
+    if (!code) return null;
+    if (code.startsWith("https://www.google.com/maps/embed")) {
+      return code;
+    }
+    const srcMatch = code.match(/src=["']([^"']+)["']/);
+    if (srcMatch && srcMatch[1]) {
+      return srcMatch[1];
+    }
+    return null;
   };
-  return emojiMap[iconName] || "\u{1F517}";
-}
+  const iframeSrc = extractIframeSrc(embedCode);
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setEmbedCode(value);
+    input.onChange(value);
+    if (value && !extractIframeSrc(value)) {
+      setError("El c\xF3digo no parece ser un embed v\xE1lido de Google Maps");
+    } else {
+      setError(null);
+    }
+  };
+  const textareaStyle = {
+    width: "100%",
+    minHeight: "100px",
+    padding: "12px",
+    border: error ? "1px solid #e53e3e" : "1px solid #e2e8f0",
+    borderRadius: "6px",
+    fontSize: "13px",
+    fontFamily: "monospace",
+    resize: "vertical",
+    outline: "none",
+    backgroundColor: "#f7fafc"
+  };
+  const previewContainerStyle = {
+    marginTop: "12px",
+    borderRadius: "8px",
+    overflow: "hidden",
+    border: "1px solid #e2e8f0",
+    backgroundColor: "#f0f0f0"
+  };
+  const previewHeaderStyle = {
+    padding: "8px 12px",
+    backgroundColor: "#4a5568",
+    color: "white",
+    fontSize: "12px",
+    fontWeight: "500",
+    display: "flex",
+    alignItems: "center",
+    gap: "6px"
+  };
+  const iframeContainerStyle = {
+    position: "relative",
+    width: "100%",
+    height: "250px",
+    backgroundColor: "#e2e8f0"
+  };
+  const placeholderStyle = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "200px",
+    backgroundColor: "#f7fafc",
+    border: "2px dashed #cbd5e0",
+    borderRadius: "8px",
+    marginTop: "12px",
+    color: "#718096",
+    textAlign: "center",
+    padding: "20px"
+  };
+  const helpTextStyle = {
+    marginTop: "8px",
+    fontSize: "12px",
+    color: "#718096",
+    lineHeight: "1.5"
+  };
+  return React5.createElement("div", null, React5.createElement(
+    "textarea",
+    {
+      value: embedCode,
+      onChange: handleChange,
+      placeholder: 'Pega aqu\xED el c\xF3digo embed de Google Maps (ej: <iframe src="https://www.google.com/maps/embed?..." ...></iframe>)',
+      style: textareaStyle
+    }
+  ), error && React5.createElement("div", { style: { color: "#e53e3e", fontSize: "12px", marginTop: "4px" } }, "\u26A0\uFE0F ", error), React5.createElement("div", { style: helpTextStyle }, "\u{1F4A1} ", React5.createElement("strong", null, "C\xF3mo obtener el c\xF3digo:"), ' En Google Maps, busca la ubicaci\xF3n \u2192 clic en "Compartir" \u2192 "Incorporar un mapa" \u2192 copia el c\xF3digo HTML.'), iframeSrc ? React5.createElement("div", { style: previewContainerStyle }, React5.createElement("div", { style: previewHeaderStyle }, React5.createElement("span", null, "\u{1F4CD}"), React5.createElement("span", null, "Vista previa del mapa")), React5.createElement("div", { style: iframeContainerStyle }, React5.createElement(
+    "iframe",
+    {
+      src: iframeSrc,
+      width: "100%",
+      height: "250",
+      style: { border: 0 },
+      allowFullScreen: true,
+      loading: "lazy",
+      referrerPolicy: "no-referrer-when-downgrade",
+      title: "Vista previa de Google Maps"
+    }
+  ))) : embedCode ? React5.createElement("div", { style: placeholderStyle }, React5.createElement("span", { style: { fontSize: "32px", marginBottom: "8px" } }, "\u{1F5FA}\uFE0F"), React5.createElement("span", null, "No se pudo cargar el mapa"), React5.createElement("span", { style: { fontSize: "12px", marginTop: "4px" } }, "Verifica que el c\xF3digo embed sea v\xE1lido")) : React5.createElement("div", { style: placeholderStyle }, React5.createElement("span", { style: { fontSize: "32px", marginBottom: "8px" } }, "\u{1F4CD}"), React5.createElement("span", null, "Pega el c\xF3digo embed para ver el mapa"), React5.createElement("span", { style: { fontSize: "12px", marginTop: "4px" } }, "El mapa aparecer\xE1 aqu\xED autom\xE1ticamente")));
+});
 
 // tina/config.ts
 var projectTagOptions = [
@@ -2734,7 +2964,7 @@ var config_default = defineConfig2({
                   { type: "string", name: "phone", label: "Tel\xE9fono de esta ubicaci\xF3n" },
                   { type: "string", name: "email", label: "Email de esta ubicaci\xF3n" },
                   { type: "string", name: "mapUrl", label: "URL de Google Maps" },
-                  { type: "string", name: "mapEmbed", label: "C\xF3digo Embed de Google Maps", ui: { component: "textarea" } },
+                  { type: "string", name: "mapEmbed", label: "C\xF3digo Embed de Google Maps", ui: { component: MapEmbedField } },
                   { type: "number", name: "lat", label: "Latitud" },
                   { type: "number", name: "lng", label: "Longitud" }
                 ]
@@ -2753,6 +2983,7 @@ var config_default = defineConfig2({
                   { type: "string", name: "email", label: "Email" },
                   { type: "string", name: "hours", label: "Horario de Atenci\xF3n" },
                   { type: "string", name: "mapUrl", label: "URL de Google Maps" },
+                  { type: "string", name: "mapEmbed", label: "C\xF3digo Embed de Google Maps", ui: { component: MapEmbedField } },
                   { type: "number", name: "lat", label: "Latitud" },
                   { type: "number", name: "lng", label: "Longitud" },
                   { type: "number", name: "order", label: "Orden de visualizaci\xF3n" }

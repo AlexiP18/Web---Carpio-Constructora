@@ -647,6 +647,7 @@ fragment ConfiguracionGlobalParts on ConfiguracionGlobal {
       email
       hours
       mapUrl
+      mapEmbed
       lat
       lng
       order

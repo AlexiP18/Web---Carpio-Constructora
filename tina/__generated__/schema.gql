@@ -1617,6 +1617,7 @@ type ConfiguracionGlobalLocationsOffices {
   email: String
   hours: String
   mapUrl: String
+  mapEmbed: String
   lat: Float
   lng: Float
   order: Float
@@ -1789,6 +1790,7 @@ input ConfiguracionGlobalLocationsOfficesFilter {
   email: StringFilter
   hours: StringFilter
   mapUrl: StringFilter
+  mapEmbed: StringFilter
   lat: NumberFilter
   lng: NumberFilter
   order: NumberFilter
@@ -2694,6 +2696,7 @@ input ConfiguracionGlobalLocationsOfficesMutation {
   email: String
   hours: String
   mapUrl: String
+  mapEmbed: String
   lat: Float
   lng: Float
   order: Float
