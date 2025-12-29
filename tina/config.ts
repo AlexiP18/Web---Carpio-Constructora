@@ -4,6 +4,7 @@ import { pageBlockTemplates } from './fields/page-blocks';
 import { ColorPickerField } from './fields/color-field';
 import { PhoneField, EmailField, BusinessHoursField } from './fields/contact-fields';
 import { SocialIconSelector } from './fields/social-icon-selector';
+import { MapEmbedField } from './fields/map-embed-field';
 
 // Opciones predefinidas para tags de proyectos
 const projectTagOptions = [
@@ -1172,7 +1173,7 @@ export default defineConfig({
                   { type: 'string', name: 'phone', label: 'Teléfono de esta ubicación' },
                   { type: 'string', name: 'email', label: 'Email de esta ubicación' },
                   { type: 'string', name: 'mapUrl', label: 'URL de Google Maps' },
-                  { type: 'string', name: 'mapEmbed', label: 'Código Embed de Google Maps', ui: { component: 'textarea' } },
+                  { type: 'string', name: 'mapEmbed', label: 'Código Embed de Google Maps', ui: { component: MapEmbedField } },
                   { type: 'number', name: 'lat', label: 'Latitud' },
                   { type: 'number', name: 'lng', label: 'Longitud' },
                 ],
@@ -1191,6 +1192,7 @@ export default defineConfig({
                   { type: 'string', name: 'email', label: 'Email' },
                   { type: 'string', name: 'hours', label: 'Horario de Atención' },
                   { type: 'string', name: 'mapUrl', label: 'URL de Google Maps' },
+                  { type: 'string', name: 'mapEmbed', label: 'Código Embed de Google Maps', ui: { component: MapEmbedField } },
                   { type: 'number', name: 'lat', label: 'Latitud' },
                   { type: 'number', name: 'lng', label: 'Longitud' },
                   { type: 'number', name: 'order', label: 'Orden de visualización' },
