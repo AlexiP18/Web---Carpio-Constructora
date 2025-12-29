@@ -34,8 +34,8 @@
       "email": "info@constructoracarpio.com",
       "mapUrl": "https://maps.google.com/?q=Ambato,+Ecuador",
       "mapEmbed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m12!1m8!1m3!1d1994.440330272223!2d-78.629845!3d-1.2422020000000003!3m2!1i1024!2i768!4f13.1!2m1!1sSim%C3%B3n%20Bol%C3%ADvar%20Ambato!5e0!3m2!1ses!2sus!4v1766980843792!5m2!1ses!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
-      "lat": -1.2543,
-      "lng": -78.6228
+      "lat": -1.2422020000000003,
+      "lng": -78.629845
     },
     "offices": []
   },
