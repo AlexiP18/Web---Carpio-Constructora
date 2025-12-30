@@ -969,6 +969,9 @@ export default defineConfig({
             label: 'Secciones',
             list: true,
             templates: pageBlockTemplates,
+            ui: {
+              visualSelector: true,
+            },
           },
         ],
       },

@@ -318,6 +318,7 @@ var heroSection = {
   name: "hero",
   label: "Hero Principal",
   ui: {
+    previewSrc: "/admin/previews/hero.svg",
     defaultItem: {
       title: "T\xEDtulo Principal",
       subtitle: "Subt\xEDtulo descriptivo",
@@ -389,6 +390,7 @@ var aboutSection = {
   name: "about",
   label: "Sobre Nosotros",
   ui: {
+    previewSrc: "/admin/previews/about.svg",
     defaultItem: {
       title: "Sobre Nosotros",
       showStats: true
@@ -457,6 +459,7 @@ var servicesSection = {
   name: "services",
   label: "Servicios",
   ui: {
+    previewSrc: "/admin/previews/services.svg",
     defaultItem: {
       title: "Nuestros Servicios",
       layout: "grid"
@@ -514,6 +517,7 @@ var projectsSection = {
   name: "projects",
   label: "Proyectos / Portafolio",
   ui: {
+    previewSrc: "/admin/previews/projects.svg",
     defaultItem: {
       title: "Nuestros Proyectos",
       layout: "grid",
@@ -582,6 +586,7 @@ var testimonialsSection = {
   name: "testimonials",
   label: "Testimonios",
   ui: {
+    previewSrc: "/admin/previews/testimonials.svg",
     defaultItem: {
       title: "Lo que dicen nuestros clientes",
       layout: "carousel"
@@ -627,6 +632,7 @@ var ctaSection = {
   name: "cta",
   label: "Llamado a la Acci\xF3n (CTA)",
   ui: {
+    previewSrc: "/admin/previews/cta.svg",
     defaultItem: {
       title: "\xBFListo para comenzar tu proyecto?",
       buttonText: "Cont\xE1ctanos",
@@ -688,6 +694,7 @@ var contactSection = {
   name: "contact",
   label: "Formulario de Contacto",
   ui: {
+    previewSrc: "/admin/previews/contact.svg",
     defaultItem: {
       title: "Cont\xE1ctanos",
       showMap: true,
@@ -743,6 +750,7 @@ var teamSection = {
   name: "team",
   label: "Equipo",
   ui: {
+    previewSrc: "/admin/previews/team.svg",
     defaultItem: {
       title: "Nuestro Equipo",
       layout: "grid"
@@ -788,6 +796,7 @@ var faqSection = {
   name: "faq",
   label: "Preguntas Frecuentes",
   ui: {
+    previewSrc: "/admin/previews/faq.svg",
     defaultItem: {
       title: "Preguntas Frecuentes"
     }
@@ -819,6 +828,7 @@ var gallerySection = {
   name: "gallery",
   label: "Galer\xEDa de Im\xE1genes",
   ui: {
+    previewSrc: "/admin/previews/gallery.svg",
     defaultItem: {
       title: "Galer\xEDa",
       layout: "grid",
@@ -867,6 +877,7 @@ var featuresSection = {
   name: "features",
   label: "Valores / Caracter\xEDsticas",
   ui: {
+    previewSrc: "/admin/previews/features.svg",
     defaultItem: {
       title: "Nuestros Valores",
       layout: "grid"
@@ -910,6 +921,9 @@ var featuresSection = {
 var contentSection = {
   name: "content",
   label: "Contenido Libre",
+  ui: {
+    previewSrc: "/admin/previews/content.svg"
+  },
   fields: [
     {
       type: "string",
@@ -948,6 +962,9 @@ var contentSection = {
 var spacerSection = {
   name: "spacer",
   label: "Separador / Espaciador",
+  ui: {
+    previewSrc: "/admin/previews/spacer.svg"
+  },
   fields: [
     {
       type: "string",
@@ -2833,7 +2850,10 @@ var config_default = defineConfig2({
             name: "sections",
             label: "Secciones",
             list: true,
-            templates: pageBlockTemplates
+            templates: pageBlockTemplates,
+            ui: {
+              visualSelector: true
+            }
           }
         ]
       },
