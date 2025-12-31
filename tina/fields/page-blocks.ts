@@ -9,6 +9,15 @@ import { ImagePreviewField, ImageGalleryField } from './cloudinary-fields';
  * para evitar conflictos en GraphQL
  */
 
+// Base URL para las imágenes de preview del selector visual
+// En desarrollo, TinaCMS corre en puerto 4001 y Astro en 4321
+// Usamos URL absoluta para que las imágenes se carguen correctamente
+const PREVIEW_BASE_URL = process.env.NODE_ENV === 'production' 
+  ? '' // En producción, usar rutas relativas
+  : 'http://localhost:4321'; // En desarrollo, apuntar al servidor de Astro
+
+const getPreviewSrc = (filename: string) => `${PREVIEW_BASE_URL}/admin/previews/${filename}`;
+
 // ============================================
 // CAMPOS COMUNES: Animación y Configuración Visual
 // ============================================
@@ -162,7 +171,7 @@ export const heroSection: Template = {
   name: 'hero',
   label: 'Hero Principal',
   ui: {
-    previewSrc: '/admin/previews/hero.svg',
+    previewSrc: getPreviewSrc('hero.svg'),
     defaultItem: {
       title: 'Título Principal',
       subtitle: 'Subtítulo descriptivo',
@@ -238,7 +247,7 @@ export const aboutSection: Template = {
   name: 'about',
   label: 'Sobre Nosotros',
   ui: {
-    previewSrc: '/admin/previews/about.svg',
+    previewSrc: getPreviewSrc('about.svg'),
     defaultItem: {
       title: 'Sobre Nosotros',
       showStats: true,
@@ -311,7 +320,7 @@ export const servicesSection: Template = {
   name: 'services',
   label: 'Servicios',
   ui: {
-    previewSrc: '/admin/previews/services.svg',
+    previewSrc: getPreviewSrc('services.svg'),
     defaultItem: {
       title: 'Nuestros Servicios',
       layout: 'grid',
@@ -373,7 +382,7 @@ export const projectsSection: Template = {
   name: 'projects',
   label: 'Proyectos / Portafolio',
   ui: {
-    previewSrc: '/admin/previews/projects.svg',
+    previewSrc: getPreviewSrc('projects.svg'),
     defaultItem: {
       title: 'Nuestros Proyectos',
       layout: 'grid',
@@ -446,7 +455,7 @@ export const testimonialsSection: Template = {
   name: 'testimonials',
   label: 'Testimonios',
   ui: {
-    previewSrc: '/admin/previews/testimonials.svg',
+    previewSrc: getPreviewSrc('testimonials.svg'),
     defaultItem: {
       title: 'Lo que dicen nuestros clientes',
       layout: 'carousel',
@@ -496,7 +505,7 @@ export const ctaSection: Template = {
   name: 'cta',
   label: 'Llamado a la Acción (CTA)',
   ui: {
-    previewSrc: '/admin/previews/cta.svg',
+    previewSrc: getPreviewSrc('cta.svg'),
     defaultItem: {
       title: '¿Listo para comenzar tu proyecto?',
       buttonText: 'Contáctanos',
@@ -562,7 +571,7 @@ export const contactSection: Template = {
   name: 'contact',
   label: 'Formulario de Contacto',
   ui: {
-    previewSrc: '/admin/previews/contact.svg',
+    previewSrc: getPreviewSrc('contact.svg'),
     defaultItem: {
       title: 'Contáctanos',
       showMap: true,
@@ -622,7 +631,7 @@ export const teamSection: Template = {
   name: 'team',
   label: 'Equipo',
   ui: {
-    previewSrc: '/admin/previews/team.svg',
+    previewSrc: getPreviewSrc('team.svg'),
     defaultItem: {
       title: 'Nuestro Equipo',
       layout: 'grid',
@@ -672,7 +681,7 @@ export const faqSection: Template = {
   name: 'faq',
   label: 'Preguntas Frecuentes',
   ui: {
-    previewSrc: '/admin/previews/faq.svg',
+    previewSrc: getPreviewSrc('faq.svg'),
     defaultItem: {
       title: 'Preguntas Frecuentes',
     },
@@ -708,7 +717,7 @@ export const gallerySection: Template = {
   name: 'gallery',
   label: 'Galería de Imágenes',
   ui: {
-    previewSrc: '/admin/previews/gallery.svg',
+    previewSrc: getPreviewSrc('gallery.svg'),
     defaultItem: {
       title: 'Galería',
       layout: 'grid',
@@ -761,7 +770,7 @@ export const featuresSection: Template = {
   name: 'features',
   label: 'Valores / Características',
   ui: {
-    previewSrc: '/admin/previews/features.svg',
+    previewSrc: getPreviewSrc('features.svg'),
     defaultItem: {
       title: 'Nuestros Valores',
       layout: 'grid',
@@ -810,7 +819,7 @@ export const contentSection: Template = {
   name: 'content',
   label: 'Contenido Libre',
   ui: {
-    previewSrc: '/admin/previews/content.svg',
+    previewSrc: getPreviewSrc('content.svg'),
   },
   fields: [
     {
@@ -855,7 +864,7 @@ export const spacerSection: Template = {
   name: 'spacer',
   label: 'Separador / Espaciador',
   ui: {
-    previewSrc: '/admin/previews/spacer.svg',
+    previewSrc: getPreviewSrc('spacer.svg'),
   },
   fields: [
     {
