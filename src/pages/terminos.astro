@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<Layout title="Términos de Servicio | Constructora Carpio">
+  <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden min-h-screen">
+    <!-- SVG Background -->
+    <div class="absolute inset-0 w-full h-full opacity-40 mix-blend-multiply pointer-events-none">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1243 590" preserveAspectRatio="xMidYMid slice" class="w-full h-full" style="background: rgb(200, 200, 200);">
+        <defs>
+          <filter id="filter-waves-terminos">
+            <feTurbulence stitchTiles="stitch" result="turb" numOctaves="1" baseFrequency="0.008" type="fractalNoise"></feTurbulence>
+            <feColorMatrix result="cloud" values="0" type="hueRotate" in="turb"></feColorMatrix>
+            <feColorMatrix values="1 0 0 0 0
+              0 1 0 0 0
+              0 0 1 0 0
+              10 10 10 10 0" type="matrix" result="wispy" in="cloud"></feColorMatrix>
+            <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+            <feComponentTransfer result="wave">
+              <feFuncR tableValues="0 0 0 0 0 0 0 0 0 0 0.0000 0.0000 1.0000 0.0000 0.0000 0 0 0 0 0 0 0 0 0 0" type="discrete"></feFuncR>
+              <feFuncG tableValues="0 0 0 0 0 0 0 0 0 0 0.0000 0.0000 1.0000 0.0000 0.0000 0 0 0 0 0 0 0 0 0 0" type="discrete"></feFuncG>
+              <feFuncB tableValues="0 0 0 0 0 0 0 0 0 0 0.0000 0.0000 1.0000 0.0000 0.0000 0 0 0 0 0 0 0 0 0 0" type="discrete"></feFuncB>
+            </feComponentTransfer>
+            <feColorMatrix values="0 0 0 0.5 0
+              0 0 0 0.5 0
+              0 0 0 0.5 0
+              0 1 0 0 0" result="r2" in="wave" type="matrix"></feColorMatrix>
+            <feColorMatrix values="0 0 0 0.7 0
+              0 0 0 0.7 0
+              0 0 0 0.7 0
+              0 0 1 0 0" result="r3" in="wave" type="matrix"></feColorMatrix>
+            <feColorMatrix values="0 0 0 0.9 0
+              0 0 0 0.9 0
+              0 0 0 0.9 0
+              1 0 0 0 0" result="r1" in="wave" type="matrix"></feColorMatrix>
+            <feBlend result="b1" mode="screen" in2="r2" in="r1"></feBlend>
+            <feGaussianBlur stdDeviation="0"></feGaussianBlur>
+          </filter>
+        </defs>
+        <rect fill="#c8c8c8" filter="url(#filter-waves-terminos)" height="100%" width="100%" y="0" x="0"></rect>
+      </svg>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 font-urbanist">Términos de Servicio</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Por favor, lea atentamente las condiciones de uso de nuestros servicios.</p>
+        <div class="inline-flex items-center gap-2 mt-6 px-4 py-2 bg-white/50 backdrop-blur-md rounded-full text-sm text-gray-600 border border-gray-200 shadow-sm">
+            <Icon name="ph:calendar-blank" class="w-4 h-4" />
+            <span>Última actualización: {new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        </div>
+      </div>
+      
+      <div class="space-y-8">
+        <!-- Section 1 -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white hover:shadow-lg transition-all duration-300 overflow-hidden">
+          <div class="p-6 border-b border-gray-100/50 bg-white/40 flex items-center gap-4">
+            <div class="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600 flex-shrink-0">
+                <Icon name="ph:check-circle" class="w-6 h-6" />
+            </div>
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 font-urbanist m-0">1. Aceptación de los Términos</h2>
+          </div>
+          <div class="p-6 md:p-8">
+            <div class="prose prose-lg text-gray-600 max-w-none">
+                <p>
+                Al acceder y utilizar el sitio web de Constructora Carpio, usted acepta estar sujeto a estos Términos de Servicio. Si no está de acuerdo con alguna parte de los términos, entonces no podrá acceder al servicio.
+                </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white hover:shadow-lg transition-all duration-300 overflow-hidden">
+          <div class="p-6 border-b border-gray-100/50 bg-white/40 flex items-center gap-4">
+            <div class="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 flex-shrink-0">
+                <Icon name="ph:copyright" class="w-6 h-6" />
+            </div>
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 font-urbanist m-0">2. Propiedad Intelectual</h2>
+          </div>
+          <div class="p-6 md:p-8">
+            <div class="prose prose-lg text-gray-600 max-w-none">
+                <p>
+                El Servicio y su contenido original (excluyendo el Contenido proporcionado por los usuarios), las características y la funcionalidad son y seguirán siendo propiedad exclusiva de Constructora Carpio y sus licenciantes. El Servicio está protegido por derechos de autor, marcas registradas y otras leyes.
+                </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white hover:shadow-lg transition-all duration-300 overflow-hidden">
+          <div class="p-6 border-b border-gray-100/50 bg-white/40 flex items-center gap-4">
+            <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 flex-shrink-0">
+                <Icon name="ph:link" class="w-6 h-6" />
+            </div>
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 font-urbanist m-0">3. Enlaces a Otros Sitios Web</h2>
+          </div>
+          <div class="p-6 md:p-8">
+            <div class="prose prose-lg text-gray-600 max-w-none">
+                <p>
+                Nuestro Servicio puede contener enlaces a sitios web o servicios de terceros que no son propiedad ni están controlados por Constructora Carpio. Constructora Carpio no tiene control ni asume responsabilidad alguna por el contenido, las políticas de privacidad o las prácticas de sitios web o servicios de terceros.
+                </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white hover:shadow-lg transition-all duration-300 overflow-hidden">
+            <div class="p-6 border-b border-gray-100/50 bg-white/40 flex items-center gap-4">
+              <div class="w-10 h-10 bg-red-50 rounded-lg flex items-center justify-center text-red-600 flex-shrink-0">
+                  <Icon name="ph:prohibit" class="w-6 h-6" />
+              </div>
+              <h2 class="text-xl md:text-2xl font-bold text-gray-900 font-urbanist m-0">4. Terminación</h2>
+            </div>
+            <div class="p-6 md:p-8">
+              <div class="prose prose-lg text-gray-600 max-w-none">
+                  <p>
+                    Podemos terminar o suspender su acceso inmediatamente, sin previo aviso ni responsabilidad, por cualquier motivo, incluso, entre otros, si incumple los Términos. Tras la terminación, su derecho a utilizar el Servicio cesará inmediatamente.
+                  </p>
+              </div>
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white hover:shadow-lg transition-all duration-300 overflow-hidden">
+            <div class="p-6 border-b border-gray-100/50 bg-white/40 flex items-center gap-4">
+              <div class="w-10 h-10 bg-amber-50 rounded-lg flex items-center justify-center text-amber-600 flex-shrink-0">
+                  <Icon name="ph:arrows-clockwise" class="w-6 h-6" />
+              </div>
+              <h2 class="text-xl md:text-2xl font-bold text-gray-900 font-urbanist m-0">5. Cambios</h2>
+            </div>
+            <div class="p-6 md:p-8">
+              <div class="prose prose-lg text-gray-600 max-w-none">
+                  <p>
+                     Nos reservamos el derecho, a nuestra entera discreción, de modificar o reemplazar estos Términos en cualquier momento. Al continuar accediendo o utilizando nuestro Servicio después de que esas revisiones entren en vigor, usted acepta estar sujeto a los términos revisados.
+                  </p>
+              </div>
+            </div>
+        </div>
+
+        <!-- Section 6 -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white hover:shadow-lg transition-all duration-300 overflow-hidden">
+            <div class="p-6 border-b border-gray-100/50 bg-white/40 flex items-center gap-4">
+              <div class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 flex-shrink-0">
+                  <Icon name="ph:envelope-simple" class="w-6 h-6" />
+              </div>
+              <h2 class="text-xl md:text-2xl font-bold text-gray-900 font-urbanist m-0">6. Contacto</h2>
+            </div>
+            <div class="p-6 md:p-8">
+              <div class="prose prose-lg text-gray-600 max-w-none">
+                  <p>
+                    Si tiene alguna pregunta sobre estos Términos, por favor contáctenos.
+                  </p>
+              </div>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Layout>

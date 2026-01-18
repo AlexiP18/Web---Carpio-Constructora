@@ -56,8 +56,23 @@ const uniqueCategories = ['Todos', 'Conjunto Habitacional', 'Diseño Residencial
     </section>
 
     <!-- Projects Section -->
-    <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50">
-      <div class="max-w-7xl mx-auto px-6">
+    <section class="py-20 bg-gray-50 relative overflow-hidden">
+      <!-- SVG Background -->
+      <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1243 590" preserveAspectRatio="xMidYMid slice" class="w-full h-full opacity-70" style="min-height: 100%;">
+          <defs>
+            <filter id="waves-filter-proyectos">
+              <feTurbulence result="turb" numOctaves="2" baseFrequency="0.01" type="turbulence"></feTurbulence>
+              <feDiffuseLighting result="diffuseLighting" in="turb" lighting-color="#ffffff" diffuseConstant="3" surfaceScale="0.6">
+                <feDistantLight elevation="16" azimuth="10.79"></feDistantLight>
+              </feDiffuseLighting>
+            </filter>
+          </defs>
+          <rect fill="#ffffff" filter="url(#waves-filter-proyectos)" height="100%" width="100%" y="0" x="0"></rect>
+        </svg>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6 relative z-10">
         <!-- Filter Chips -->
         <div class="mb-12" data-aos="fade-up">
           <div class="flex items-center justify-between mb-6">

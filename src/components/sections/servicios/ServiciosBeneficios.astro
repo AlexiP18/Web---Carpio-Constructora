@@ -5,8 +5,23 @@ import { Icon } from 'astro-icon/components';
 const serviciosBeneficiosImage = '/images/services/ServiciosBeneficios.webp';
 ---
 
-<section class="py-20 bg-gradient-to-br from-white via-gray-50 to-white">
-  <div class="max-w-7xl mx-auto px-6">
+<section class="py-20 bg-gradient-to-br from-white via-gray-50 to-white relative overflow-hidden">
+  <!-- SVG Background -->
+  <div class="absolute inset-0 w-full h-full opacity-60">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1243 590" preserveAspectRatio="xMidYMid slice" class="w-full h-full" style="background: rgb(255, 255, 255);">
+      <defs>
+        <filter id="filter-waves-servicios">
+          <feTurbulence result="turb" numOctaves="2" baseFrequency="0.01" type="turbulence"></feTurbulence>
+          <feDiffuseLighting result="diffuseLighting" in="turb" lighting-color="#ffffff" kernelUnitLength="0 0" diffuseConstant="3" surfaceScale="0.6">
+            <feDistantLight elevation="16" azimuth="10.792943954467773"></feDistantLight>
+          </feDiffuseLighting>
+        </filter>
+      </defs>
+      <rect fill="#ffffff" filter="url(#filter-waves-servicios)" height="100%" width="100%" y="0" x="0"></rect>
+    </svg>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
     <!-- Section Header -->
     <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
       <div class="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-4 py-2 mb-6">

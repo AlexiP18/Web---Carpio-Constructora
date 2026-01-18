@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1243 590" preserveAspectRatio="xMidYMid" width="1243" height="590" style="shape-rendering: auto; display: block; background: rgb(255, 255, 255);"><g data-idx="1"><filter id="filter-0.6590519274487807" data-idx="2">
+  <feTurbulence result="turb" numOctaves="2" baseFrequency="0.01" type="turbulence" data-idx="3"></feTurbulence>
+  <feDiffuseLighting result="diffuseLighting" in="turb" lighting-color="#ffffff" kernelUnitLength="0 0" diffuseConstant="3" surfaceScale="0.6000000000000001" data-idx="4">
+    <feDistantLight elevation="16" azimuth="10.792943954467773" data-idx="5">
+    
+    </feDistantLight>
+  </feDiffuseLighting>
+</filter>
+<rect fill="#ffffff" filter="url(#filter-0.6590519274487807)" height="590" width="1243" y="0" x="0" data-idx="7"></rect><g data-idx="8"></g></g><text data-watermark="true" text-anchor="middle" dominant-baseline="middle" stroke-opacity="0.1" fill="black" fill-opacity="0.1" stroke="white" stroke-width="1" font-size="15.0" x="621.5" y="295.0" data-idx="9" style="opacity: 1; font-size: 15px;">LOADING.IO</text></svg>

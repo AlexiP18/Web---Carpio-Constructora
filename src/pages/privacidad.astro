@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+---
+
+<Layout title="Política de Privacidad | Constructora Carpio">
+  <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden min-h-screen">
+    <!-- SVG Background -->
+    <div class="absolute inset-0 w-full h-full opacity-40 mix-blend-multiply pointer-events-none">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1243 590" preserveAspectRatio="xMidYMid slice" class="w-full h-full" style="background: rgb(200, 200, 200);">
+        <defs>
+          <filter id="filter-waves-privacidad">
+            <feTurbulence stitchTiles="stitch" result="turb" numOctaves="1" baseFrequency="0.008" type="fractalNoise"></feTurbulence>
+            <feColorMatrix result="cloud" values="0" type="hueRotate" in="turb"></feColorMatrix>
+            <feColorMatrix values="1 0 0 0 0
+              0 1 0 0 0
+              0 0 1 0 0
+              10 10 10 10 0" type="matrix" result="wispy" in="cloud"></feColorMatrix>
+            <feGaussianBlur stdDeviation="3"></feGaussianBlur>
+            <feComponentTransfer result="wave">
+              <feFuncR tableValues="0 0 0 0 0 0 0 0 0 0 0.0000 0.0000 1.0000 0.0000 0.0000 0 0 0 0 0 0 0 0 0 0" type="discrete"></feFuncR>
+              <feFuncG tableValues="0 0 0 0 0 0 0 0 0 0 0.0000 0.0000 1.0000 0.0000 0.0000 0 0 0 0 0 0 0 0 0 0" type="discrete"></feFuncG>
+              <feFuncB tableValues="0 0 0 0 0 0 0 0 0 0 0.0000 0.0000 1.0000 0.0000 0.0000 0 0 0 0 0 0 0 0 0 0" type="discrete"></feFuncB>
+            </feComponentTransfer>
+            <feColorMatrix values="0 0 0 0.5 0
+              0 0 0 0.5 0
+              0 0 0 0.5 0
+              0 1 0 0 0" result="r2" in="wave" type="matrix"></feColorMatrix>
+            <feColorMatrix values="0 0 0 0.7 0
+              0 0 0 0.7 0
+              0 0 0 0.7 0
+              0 0 1 0 0" result="r3" in="wave" type="matrix"></feColorMatrix>
+            <feColorMatrix values="0 0 0 0.9 0
+              0 0 0 0.9 0
+              0 0 0 0.9 0
+              1 0 0 0 0" result="r1" in="wave" type="matrix"></feColorMatrix>
+            <feBlend result="b1" mode="screen" in2="r2" in="r1"></feBlend>
+            <feGaussianBlur stdDeviation="0"></feGaussianBlur>
+          </filter>
+        </defs>
+        <rect fill="#c8c8c8" filter="url(#filter-waves-privacidad)" height="100%" width="100%" y="0" x="0"></rect>
+      </svg>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 font-urbanist">Política de Privacidad</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">Su privacidad es fundamental para nosotros. Conozca cómo protegemos y gestionamos sus datos.</p>
+        <div class="inline-flex items-center gap-2 mt-6 px-4 py-2 bg-white/50 backdrop-blur-md rounded-full text-sm text-gray-600 border border-gray-200 shadow-sm">
+            <Icon name="ph:calendar-blank" class="w-4 h-4" />
+            <span>Última actualización: {new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+        </div>
+      </div>
+      
+      <div class="space-y-8">
+        <!-- Section 1 -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white hover:shadow-lg transition-all duration-300 overflow-hidden">
+          <div class="p-6 border-b border-gray-100/50 bg-white/40 flex items-center gap-4">
+            <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 flex-shrink-0">
+                <Icon name="ph:shield-check" class="w-6 h-6" />
+            </div>
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 font-urbanist m-0">1. Introducción</h2>
+          </div>
+          <div class="p-6 md:p-8">
+            <div class="prose prose-lg text-gray-600 max-w-none">
+                <p>
+                En Constructora Carpio, respetamos su privacidad y estamos comprometidos con la protección de sus datos personales. Esta política de privacidad le informará sobre cómo cuidamos sus datos personales cuando visita nuestro sitio web y le informará sobre sus derechos de privacidad y cómo la ley lo protege.
+                </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white hover:shadow-lg transition-all duration-300 overflow-hidden">
+          <div class="p-6 border-b border-gray-100/50 bg-white/40 flex items-center gap-4">
+            <div class="w-10 h-10 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600 flex-shrink-0">
+                <Icon name="ph:database" class="w-6 h-6" />
+            </div>
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 font-urbanist m-0">2. Datos que recopilamos</h2>
+          </div>
+          <div class="p-6 md:p-8">
+            <div class="prose prose-lg text-gray-600 max-w-none">
+                <p class="mb-4">Podemos recopilar, utilizar, almacenar y transferir diferentes tipos de datos personales sobre usted que hemos agrupado de la siguiente manera:</p>
+                <ul class="list-none pl-0 space-y-3">
+                <li class="flex items-start gap-3">
+                    <Icon name="ph:user" class="w-5 h-5 text-emerald-500 mt-1 flex-shrink-0" />
+                    <span><strong>Datos de Identidad:</strong> incluye nombre, apellido, nombre de usuario o identificador similar.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <Icon name="ph:address-book" class="w-5 h-5 text-emerald-500 mt-1 flex-shrink-0" />
+                    <span><strong>Datos de Contacto:</strong> incluye dirección de facturación, dirección de entrega, dirección de correo electrónico y números de teléfono.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <Icon name="ph:desktop" class="w-5 h-5 text-emerald-500 mt-1 flex-shrink-0" />
+                    <span><strong>Datos Técnicos:</strong> incluye dirección IP, datos de inicio de sesión, tipo de navegador y ubicación.</span>
+                </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white hover:shadow-lg transition-all duration-300 overflow-hidden">
+          <div class="p-6 border-b border-gray-100/50 bg-white/40 flex items-center gap-4">
+            <div class="w-10 h-10 bg-amber-50 rounded-lg flex items-center justify-center text-amber-600 flex-shrink-0">
+                <Icon name="ph:chart-bar" class="w-6 h-6" />
+            </div>
+            <h2 class="text-xl md:text-2xl font-bold text-gray-900 font-urbanist m-0">3. Cómo utilizamos sus datos</h2>
+          </div>
+          <div class="p-6 md:p-8">
+            <div class="prose prose-lg text-gray-600 max-w-none">
+                <p class="mb-4">Solo utilizaremos sus datos personales cuando la ley nos lo permita. Más comúnmente, utilizaremos sus datos personales en las siguientes circunstancias:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                <li>Donde necesitemos ejecutar el contrato que estamos a punto de celebrar o hemos celebrado con usted.</li>
+                <li>Donde sea necesario para nuestros intereses legítimos (o los de un tercero) y sus intereses y derechos fundamentales no anulen esos intereses.</li>
+                <li>Donde necesitemos cumplir con una obligación legal o reglamentaria.</li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white hover:shadow-lg transition-all duration-300 overflow-hidden">
+            <div class="p-6 border-b border-gray-100/50 bg-white/40 flex items-center gap-4">
+              <div class="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 flex-shrink-0">
+                  <Icon name="ph:lock-key" class="w-6 h-6" />
+              </div>
+              <h2 class="text-xl md:text-2xl font-bold text-gray-900 font-urbanist m-0">4. Seguridad de los datos</h2>
+            </div>
+            <div class="p-6 md:p-8">
+              <div class="prose prose-lg text-gray-600 max-w-none">
+                  <p>
+                    Hemos implementado medidas de seguridad apropiadas para evitar que sus datos personales se pierdan accidentalmente, se utilicen o accedan de forma no autorizada, se alteren o divulguen. Además, limitamos el acceso a sus datos personales a aquellos empleados, agentes, contratistas y otros terceros que tengan una necesidad comercial de conocer.
+                  </p>
+              </div>
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-sm border border-white hover:shadow-lg transition-all duration-300 overflow-hidden">
+            <div class="p-6 border-b border-gray-100/50 bg-white/40 flex items-center gap-4">
+              <div class="w-10 h-10 bg-indigo-50 rounded-lg flex items-center justify-center text-indigo-600 flex-shrink-0">
+                  <Icon name="ph:envelope-simple" class="w-6 h-6" />
+              </div>
+              <h2 class="text-xl md:text-2xl font-bold text-gray-900 font-urbanist m-0">5. Contacto</h2>
+            </div>
+            <div class="p-6 md:p-8">
+              <div class="prose prose-lg text-gray-600 max-w-none">
+                  <p>
+                    Si tiene alguna pregunta sobre esta política de privacidad o nuestras prácticas de privacidad, contáctenos a través de nuestro formulario en el sitio web o mediante nuestros canales oficiales.
+                  </p>
+              </div>
+            </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</Layout>

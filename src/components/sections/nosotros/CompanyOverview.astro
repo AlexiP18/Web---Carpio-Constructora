@@ -6,6 +6,21 @@ const valoresImage = '/images/pages/ValoresInstitucionales.webp';
 ---
 
 <section class="bg-gray-50 py-20 relative overflow-hidden">
+  <!-- SVG Background -->
+  <div class="absolute inset-0 w-full h-full opacity-60">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1243 590" preserveAspectRatio="xMidYMid slice" class="w-full h-full" style="background: rgb(255, 255, 255);">
+      <defs>
+        <filter id="filter-waves-bg">
+          <feTurbulence result="turb" numOctaves="2" baseFrequency="0.01" type="turbulence"></feTurbulence>
+          <feDiffuseLighting result="diffuseLighting" in="turb" lighting-color="#ffffff" kernelUnitLength="0 0" diffuseConstant="3" surfaceScale="0.6">
+            <feDistantLight elevation="16" azimuth="10.792943954467773"></feDistantLight>
+          </feDiffuseLighting>
+        </filter>
+      </defs>
+      <rect fill="#ffffff" filter="url(#filter-waves-bg)" height="100%" width="100%" y="0" x="0"></rect>
+    </svg>
+  </div>
+  
   <!-- Decorative background elements -->
   <div class="absolute top-0 left-0 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl"></div>
   <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-secondary/5 rounded-full blur-3xl"></div>

@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Card from '../../base/Card.astro';
 import Button from '../../ui/Button.astro';
+import MosaicSecondaryBg from '../../ui/MosaicSecondaryBg.astro';
 
 const projectImage = '/images/pages/project/PROJECT_Hero_Slider_1.webp';
 
@@ -9,12 +10,19 @@ const projects = (await getCollection('proyectos')).slice(0, 3);
 ---
 
 <!-- Portfolio Section with Modern Card Layout -->
-<section class="w-full bg-gradient-to-br from-neutral-50 to-neutral-100 py-8 lg:py-12">
-  <div class="container mx-auto px-6 lg:px-8">
+<section 
+  class="w-full py-8 lg:py-12 relative overflow-hidden bg-brand-primary"
+>
+    <!-- SVG Background -->
+  <div class="absolute inset-0 w-full h-full opacity-30 mix-blend-normal pointer-events-none">
+    <MosaicSecondaryBg />
+  </div>
+  
+  <div class="container mx-auto px-6 lg:px-8 relative z-10">
     <!-- Header Section -->
     <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
       <!-- Tagline -->
-      <div class="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full border border-neutral-200 mb-6">
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">
         <div class="w-2 h-2 bg-[#D79528] rounded-full"></div>
         <span class="font-heebo font-semibold text-sm text-[#D79528] tracking-wider uppercase">
           Nuestros Proyectos
@@ -22,11 +30,11 @@ const projects = (await getCollection('proyectos')).slice(0, 3);
       </div>
       
       <!-- Main Title -->
-      <h2 class="font-urbanist font-bold text-4xl lg:text-6xl leading-tight text-neutral-900 mb-6 max-w-4xl mx-auto">
+      <h2 class="font-urbanist font-bold text-4xl lg:text-6xl leading-tight text-white mb-6 max-w-4xl mx-auto">
         Calidad en cada proyecto
       </h2>
       <!-- Subtitle -->
-      <p class="font-heebo text-lg lg:text-xl text-neutral-600 max-w-2xl mx-auto leading-relaxed">
+      <p class="font-heebo text-lg lg:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
         Transformamos tus ideas en realidades constructivas con excelencia y innovación.
       </p>
     </div>

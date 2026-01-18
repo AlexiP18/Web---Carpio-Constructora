@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1243 590" preserveAspectRatio="xMidYMid" width="1243" height="590" style="shape-rendering: auto; display: block; background: rgb(102, 170, 250);"><g data-idx="1"><filter id="filter-0.6590519274487807" data-idx="2">
+<feTurbulence stitchTiles="stitch" result="turb" numOctaves="1" baseFrequency="0.008" type="fractalNoise" data-idx="3"></feTurbulence>
+<feColorMatrix result="cloud" values="2.882807970046997" type="hueRotate" in="turb" data-idx="4">
+
+</feColorMatrix>
+
+<feColorMatrix values="1 0 0 0 0
+  0 1 0 0 0
+  0 0 1 0 0
+  10 10 10 10 0" type="matrix" result="wispy" in="cloud" data-idx="6"></feColorMatrix>
+
+<feGaussianBlur stdDeviation="3" data-idx="7"></feGaussianBlur>
+
+<feComponentTransfer result="wave" data-idx="8">
+  <feFuncR tableValues="0 0 0 0 0 0 0 0 0 0 0.0000 0.0000 1.0000 0.0000 0.0000 0 0 0 0 0 0 0 0 0 0" type="discrete" data-idx="9"></feFuncR>
+  <feFuncG tableValues="0 0 0 0 0 0 0 0 0 0 0.0000 0.0000 1.0000 0.0000 0.0000 0 0 0 0 0 0 0 0 0 0" type="discrete" data-idx="10"></feFuncG>
+  <feFuncB tableValues="0 0 0 0 0 0 0 0 0 0 0.0000 0.0000 1.0000 0.0000 0.0000 0 0 0 0 0 0 0 0 0 0" type="discrete" data-idx="11"></feFuncB>
+</feComponentTransfer>
+
+<feColorMatrix values="0 0 0 0.675 0
+  0 0 0 0.839 0
+  0 0 0 1.000 0
+  0 1 0 0 0" result="r2" in="wave" type="matrix" data-idx="12"></feColorMatrix>
+
+<feColorMatrix values="0 0 0 0.600 0
+  0 0 0 0.925 0
+  0 0 0 1.000 0
+  0 0 1 0 0" result="r3" in="wave" type="matrix" data-idx="13"></feColorMatrix>
+
+<feColorMatrix values="0 0 0 1.000 0
+  0 0 0 1.000 0
+  0 0 0 1.000 0
+  1 0 0 0 0" result="r1" in="wave" type="matrix" data-idx="14"></feColorMatrix><feBlend result="b1" mode="screen" in2="r2" in="r1" data-idx="15"></feBlend><feGaussianBlur stdDeviation="0" data-idx="16"></feGaussianBlur>
+</filter>
+<rect fill="#66aafa" filter="url(#filter-0.6590519274487807)" height="590" width="1243" y="0" x="0" data-idx="17"></rect><g data-idx="18"></g></g><text data-watermark="true" text-anchor="middle" dominant-baseline="middle" stroke-opacity="0.1" fill="black" fill-opacity="0.1" stroke="white" stroke-width="1" font-size="15.0" x="621.5" y="295.0" data-idx="19" style="opacity: 1; font-size: 15px;">LOADING.IO</text></svg>
