@@ -2,7 +2,6 @@
 import { Icon } from "astro-icon/components";
 import Button from "../../ui/Button.astro";
 import OptimizedImage from "../../media/OptimizedImage.astro";
-import WaveTransition from "../../ui/WaveTransition.astro";
 
 const logoCarpioConstructora = "/icons/LogoCarpioConstructora.svg";
 
@@ -35,7 +34,7 @@ const sliderImages = [
     {
       sliderImages.map((image, index) => (
         <div
-          class={`slider-slide absolute inset-0 w-full h-full transition-all duration-1000 ease-in-out ${index === 0 ? "active" : ""}`}
+          class={`slider-slide absolute inset-0 w-full h-full ${index === 0 ? "active" : ""}`}
           data-slide={index}
           style={
             index === 0 ? "opacity: 1; z-index: 2;" : "opacity: 0; z-index: 1;"
@@ -44,12 +43,40 @@ const sliderImages = [
           <img
             src={image.src}
             alt={image.alt}
-            class="absolute inset-0 w-full h-full object-cover slider-bg"
+            class="absolute inset-0 w-full h-full object-cover"
             loading={index === 0 ? "eager" : "lazy"}
           />
         </div>
       ))
     }
+
+    <!-- Structural Slices Overlay -->
+    <div
+      id="slider-slices"
+      class="absolute inset-0 w-full h-full pointer-events-none z-20 flex"
+    >
+      <!-- 5 Vertical Slices -->
+      <div
+        class="slice relative h-full w-1/5 bg-brand-primary transform -translate-y-full"
+      >
+      </div>
+      <div
+        class="slice relative h-full w-1/5 bg-brand-primary transform translate-y-full"
+      >
+      </div>
+      <div
+        class="slice relative h-full w-1/5 bg-brand-primary transform -translate-y-full"
+      >
+      </div>
+      <div
+        class="slice relative h-full w-1/5 bg-brand-primary transform translate-y-full"
+      >
+      </div>
+      <div
+        class="slice relative h-full w-1/5 bg-brand-primary transform -translate-y-full"
+      >
+      </div>
+    </div>
   </div>
 
   <!-- Enhanced Gradient Overlays -->
@@ -148,17 +175,38 @@ const sliderImages = [
   </div>
 </section>
 
-<!-- Wave Transition Overlay (outside section to avoid overflow-hidden clipping) -->
-<WaveTransition />
-
 <style>
   /* Advanced Slider Effects */
+  /* Structural Slices Animation */
+  .slice {
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    background-color: #103646; /* Brand Primary */
+  }
+
+  .slices-active .slice {
+    transform: translateY(0) !important;
+  }
+
+  /* Stagger delays */
+  .slices-active .slice:nth-child(1) {
+    transition-delay: 0s;
+  }
+  .slices-active .slice:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+  .slices-active .slice:nth-child(3) {
+    transition-delay: 0.2s;
+  }
+  .slices-active .slice:nth-child(4) {
+    transition-delay: 0.1s;
+  }
+  .slices-active .slice:nth-child(5) {
+    transition-delay: 0s;
+  }
+
+  /* Standard Fade for slides behind slices */
   .slider-slide {
-    z-index: 1;
-    transform-origin: center center;
-    transition:
-      opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1),
-      transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 0.1s ease-in-out; /* Fast fade behind curtain */
   }
 
   .slider-slide.active {
@@ -414,14 +462,8 @@ const sliderImages = [
 
       console.log("Updating slider:", { from: prevIndex, to: newIndex });
 
-      // Trigger wave transition animation if transitioning
       if (useTransition && prevIndex !== newIndex) {
-        this.triggerWaveTransition();
-
-        // Delay the actual slide change to sync with wave animation
-        setTimeout(() => {
-          this.performSlideChange(newIndex);
-        }, 500); // Change slide when waves are at peak
+        this.triggerSliceTransition(newIndex);
       } else {
         this.performSlideChange(newIndex);
       }
@@ -430,8 +472,27 @@ const sliderImages = [
       this.dots.forEach((dot, index) => {
         dot.classList.toggle("active", index === newIndex);
       });
+    }
 
-      console.log(`Active slide: ${newIndex}`);
+    private triggerSliceTransition(newIndex: number): void {
+      const slicesContainer = document.getElementById("slider-slices");
+      if (!slicesContainer) {
+        this.performSlideChange(newIndex);
+        return;
+      }
+
+      // 1. Close the curtains (slices in)
+      slicesContainer.classList.add("slices-active");
+
+      // 2. Change slide content while hidden (wait 800ms + delays)
+      setTimeout(() => {
+        this.performSlideChange(newIndex);
+
+        // 3. Open curtains (slices out) - delay slightly to ensure DOM update
+        setTimeout(() => {
+          slicesContainer.classList.remove("slices-active");
+        }, 100);
+      }, 1000); // Wait for close animation to finish
     }
 
     private performSlideChange(newIndex: number): void {
@@ -450,33 +511,6 @@ const sliderImages = [
           slide.style.transform = "scale(1.05)";
         }
       });
-    }
-
-    private triggerWaveTransition(): void {
-      const waveContainer = document.getElementById("wave-transition");
-      console.log(
-        "triggerWaveTransition called, waveContainer:",
-        waveContainer,
-      );
-      if (waveContainer) {
-        // Remove active class first to reset animation
-        waveContainer.classList.remove("active");
-
-        // Force reflow to restart animation
-        void waveContainer.offsetWidth;
-
-        // Add active class to trigger animation
-        waveContainer.classList.add("active");
-        console.log("Wave animation triggered - active class added");
-
-        // Remove active class after animation completes
-        setTimeout(() => {
-          waveContainer.classList.remove("active");
-          console.log("Wave animation complete - active class removed");
-        }, 1500);
-      } else {
-        console.error("Wave container not found!");
-      }
     }
 
     private applyTransitionEffect(prevIndex: number, newIndex: number): void {
