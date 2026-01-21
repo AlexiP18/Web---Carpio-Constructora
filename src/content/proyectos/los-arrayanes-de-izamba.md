@@ -78,6 +78,7 @@ tags:
   - Conjunto Habitacional
   - Vivienda Multifamiliar
   - Proyecto completado
+brochureUrl: https://drive.google.com/file/d/1AXsBAFizyWTiIT8gpDMYNtDK_daNgFVT/view?usp=drive_link
 backgroundImage: https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_izamba/1. exterior/vista
 images:
   - https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_izamba/1. exterior/vista

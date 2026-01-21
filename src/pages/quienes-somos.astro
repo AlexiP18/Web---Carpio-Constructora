@@ -9,6 +9,8 @@ import TwoColumnSection from "../components/sections/nosotros/TwoColumnSection.a
 import TestimonialSection from "../components/sections/nosotros/TestimonialSection.astro";
 import FeatureBannerSection from "../components/sections/nosotros/FeatureBannerSection.astro";
 import CTASection from "../components/sections/nosotros/CTASection.astro";
+import BackgroundWavesConjunto from '../components/ui/BackgroundWavesConjunto.astro';
+
 ---
 
 <style>
@@ -68,9 +70,25 @@ import CTASection from "../components/sections/nosotros/CTASection.astro";
     <TwoColumnSection />
   </div> -->
 
-  <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+
+  <section class="relative">
+
+
+    <div class="absolute inset-0 w-full h-full -z-10 pointer-events-none">
+
+
+      <BackgroundWavesConjunto />
+
+
+    </div>
+
+
+    <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
     <CompanyOverview />
   </div>
+
+
+  </section>
 
   <!-- <div data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
     <FeatureBannerSection />

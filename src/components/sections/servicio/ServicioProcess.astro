@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import Button from '../../ui/Button.astro';
+import BackgroundProcess from '../../ui/BackgroundProcess.astro';
 
 export interface Props {
   tagline: string;
@@ -19,33 +20,11 @@ const { tagline, title, description, steps } = Astro.props;
 
 <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden" id="process">
   <!-- SVG Background -->
+    <!-- Background Component -->
   <div class="absolute inset-0 w-full h-full opacity-30">
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1084 322" preserveAspectRatio="xMidYMid slice" class="w-full h-full" style="background: rgb(255, 255, 255);">
-      <defs>
-        <pattern id="mosaic-circular-pattern" x="0" y="0" width="77" height="77" patternUnits="userSpaceOnUse">
-          <g transform="matrix(0.3007812798023224,0,0,0.3007812798023224,0,0)">
-            <g><g transform="matrix(1,0,0,1,-128,-128)"><path d="M0,128c70.692,0,128-57.308,128-128C57.308,0,0,57.308,0,128z" fill="#B2B3B4"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,128,-128)"><path d="M0,128c70.692,0,128-57.308,128-128C57.308,0,0,57.308,0,128z" fill="#B2B3B4"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,-128,-128)"><path d="M128,0c0,70.692,57.308,128,128,128C256,57.308,198.692,0,128,0z" fill="#919293"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,128,-128)"><path d="M128,0c0,70.692,57.308,128,128,128C256,57.308,198.692,0,128,0z" fill="#919293"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,-128,-128)"><path d="M0,128c0,70.692,57.308,128,128,128C128,185.308,70.692,128,0,128z" fill="#F2F2F3"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,128,-128)"><path d="M0,128c0,70.692,57.308,128,128,128C128,185.308,70.692,128,0,128z" fill="#F2F2F3"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,-128,-128)"><path d="M128,256c70.692,0,128-57.308,128-128C185.308,128,128,185.308,128,256z" fill="#D2D2D3"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,128,-128)"><path d="M128,256c70.692,0,128-57.308,128-128C185.308,128,128,185.308,128,256z" fill="#D2D2D3"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,-128,128)"><path d="M0,128c70.692,0,128-57.308,128-128C57.308,0,0,57.308,0,128z" fill="#B2B3B4"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,128,128)"><path d="M0,128c70.692,0,128-57.308,128-128C57.308,0,0,57.308,0,128z" fill="#B2B3B4"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,-128,128)"><path d="M128,0c0,70.692,57.308,128,128,128C256,57.308,198.692,0,128,0z" fill="#919293"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,128,128)"><path d="M128,0c0,70.692,57.308,128,128,128C256,57.308,198.692,0,128,0z" fill="#919293"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,-128,128)"><path d="M0,128c0,70.692,57.308,128,128,128C128,185.308,70.692,128,0,128z" fill="#F2F2F3"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,128,128)"><path d="M0,128c0,70.692,57.308,128,128,128C128,185.308,70.692,128,0,128z" fill="#F2F2F3"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,-128,128)"><path d="M128,256c70.692,0,128-57.308,128-128C185.308,128,128,185.308,128,256z" fill="#D2D2D3"></path></g></g>
-            <g><g transform="matrix(1,0,0,1,128,128)"><path d="M128,256c70.692,0,128-57.308,128-128C185.308,128,128,185.308,128,256z" fill="#D2D2D3"></path></g></g>
-          </g>
-        </pattern>
-      </defs>
-      <rect x="0" y="0" width="100%" height="100%" fill="url(#mosaic-circular-pattern)"></rect>
-    </svg>
+    <BackgroundProcess />
   </div>
+
 
   <!-- Decorative background elements -->
   <div class="absolute top-0 left-0 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl"></div>

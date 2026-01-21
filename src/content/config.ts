@@ -10,6 +10,7 @@ const proyectosCollection = defineCollection({
     tags: z.array(z.string()),
     backgroundImage: z.string(),
     images: z.array(z.string()).optional(),
+    brochureUrl: z.string().optional(),
     virtualTourVideo: z.string().optional(),
     testimonial: z.object({
       rating: z.number(),

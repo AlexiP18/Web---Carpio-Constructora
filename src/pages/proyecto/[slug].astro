@@ -8,15 +8,15 @@ import ProjectVideo from "../../components/sections/project/ProjectVideo.astro";
 import ProjectImageSlider from "../../components/sections/project/ProjectImageSlider.astro";
 import ProjectMosaicNew from "../../components/sections/project/ProjectMosaicNew.astro";
 import ProjectTestimonials from "../../components/sections/project/ProjectTestimonials.astro";
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 
 // Generar las rutas estáticas desde Astro Content Collections
 export async function getStaticPaths() {
-  const proyectos = await getCollection('proyectos');
-  
-  return proyectos.map(proyecto => ({
+  const proyectos = await getCollection("proyectos");
+
+  return proyectos.map((proyecto) => ({
     params: { slug: proyecto.slug },
-    props: { proyecto }
+    props: { proyecto },
   }));
 }
 
@@ -24,64 +24,64 @@ const { proyecto } = Astro.props;
 const { Content } = await proyecto.render();
 
 // Extraer datos del frontmatter
-const { 
-  title, 
-  description, 
-  tags, 
-  backgroundImage, 
-  images = [], 
-  testimonial, 
-  testimonials, 
+const {
+  title,
+  description,
+  tags,
+  backgroundImage,
+  images = [],
+  testimonial,
+  testimonials,
   virtualTourVideo,
-  specifications 
+  specifications,
+  brochureUrl,
 } = proyecto.data;
 
 // Renderizar el contenido markdown como string
 const contentHtml = proyecto.body;
 
 // Verificar si es el proyecto Keops
-const isKeops = proyecto.slug === 'keops';
+const isKeops = proyecto.slug === "keops";
 // Verificar si es el proyecto Arrayanes de Ficoa (sin especificaciones)
-const isFicoa = proyecto.slug === 'los-arrayanes-de-ficoa';
+const isFicoa = proyecto.slug === "los-arrayanes-de-ficoa";
 ---
 
 <Layout title={`${title} - Constructora Carpio`}>
   <Header />
   <main>
-    <ProjectHero 
+    <ProjectHero
       title={title}
       description={description}
       tags={tags}
       backgroundImage={backgroundImage}
     />
-    
+
     <!-- Si es Keops, mostrar el video en lugar del ProjectContent -->
-    {isKeops && virtualTourVideo ? (
-      <ProjectVideo 
-        videoUrl={virtualTourVideo}
-        title="Recorrido Virtual KEOPS"
-        description="Descubre cada detalle de este innovador espacio retail a través de nuestro tour virtual completo"
-      />
-    ) : (
-      <ProjectContent 
-        title={title}
-        content={contentHtml}
-        images={images}
-        virtualTourVideo={virtualTourVideo}
-        specifications={isFicoa ? undefined : specifications}
-      />
-    )}
-    
+    {
+      isKeops && virtualTourVideo ? (
+        <ProjectVideo
+          videoUrl={virtualTourVideo}
+          title="Recorrido Virtual KEOPS"
+          description="Descubre cada detalle de este innovador espacio retail a través de nuestro tour virtual completo"
+        />
+      ) : (
+        <ProjectContent
+          title={title}
+          content={contentHtml}
+          images={images}
+          virtualTourVideo={virtualTourVideo}
+          brochureUrl={brochureUrl}
+          specifications={isFicoa ? undefined : specifications}
+        />
+      )
+    }
+
     <!-- <ProjectImageSlider 
       images={images}
       title="Galería del Proyecto"
     /> -->
-    
-    <ProjectMosaicNew 
-      images={images}
-      title={title}
-    />
 
+    <ProjectMosaicNew images={images} title={title} />
   </main>
   <Footer />
 </Layout>

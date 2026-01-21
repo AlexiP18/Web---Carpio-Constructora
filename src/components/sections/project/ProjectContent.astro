@@ -25,6 +25,7 @@ export interface Props {
   title: string;
   content?: string; // Ahora es opcional, puede venir del slot
   images?: (string | ImageMetadata)[]; // Ahora opcional
+  brochureUrl?: string;
   imageCategories?: {
     name: string;
     label: string;
@@ -42,7 +43,7 @@ export interface Props {
   };
 }
 
-const { title, content = '', images = [], imageCategories, virtualTourVideo, specifications } = Astro.props;
+const { title, content = '', images = [], imageCategories, virtualTourVideo, specifications, brochureUrl } = Astro.props;
 
 // Default specifications if not provided
 const defaultSpecs = {
@@ -509,12 +510,17 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
           <div class="mt-8 pt-6 border-t border-gray-200">
             <div class="grid grid-cols-3 gap-2">
               <div class="text-center">
-                <button class="w-full flex flex-col items-center gap-2 p-4 rounded-2xl bg-white hover:bg-gray-50 border border-gray-200 hover:border-brand-primary/30 transition-all duration-300 group">
+                <a 
+                  href={brochureUrl || "#"} 
+                  target={brochureUrl ? "_blank" : "_self"} 
+                  download={!!brochureUrl}
+                  class={`w-full flex flex-col items-center gap-2 p-4 rounded-2xl bg-white hover:bg-gray-50 border border-gray-200 hover:border-brand-primary/30 transition-all duration-300 group ${!brochureUrl ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}`}
+                >
                   <div class="w-12 h-12 bg-gray-100 group-hover:bg-brand-primary/10 rounded-xl flex items-center justify-center transition-colors duration-300">
                     <Icon name="ph:download" class="w-6 h-6 text-gray-600 group-hover:text-brand-primary" />
                   </div>
                   <span class="text-sm font-medium text-gray-700 group-hover:text-brand-primary">Descargar Brochure</span>
-                </button>
+                </a>
               </div>
               
               <div class="text-center">

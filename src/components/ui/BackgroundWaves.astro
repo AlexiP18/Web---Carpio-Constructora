@@ -1,0 +1,37 @@
+---
+
+---
+
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 1243 590"
+    preserveAspectRatio="xMidYMid slice"
+    class="w-full h-full opacity-70"
+    style="min-height: 100%;"
+>
+    <defs>
+        <filter id="waves-filter-residencial">
+            <feTurbulence
+                result="turb"
+                numOctaves="2"
+                baseFrequency="0.01"
+                type="turbulence"></feTurbulence>
+            <feDiffuseLighting
+                result="diffuseLighting"
+                in="turb"
+                lighting-color="#ffffff"
+                diffuseConstant="3"
+                surfaceScale="0.6"
+            >
+                <feDistantLight elevation="16" azimuth="10.79"></feDistantLight>
+            </feDiffuseLighting>
+        </filter>
+    </defs>
+    <rect
+        fill="#ffffff"
+        filter="url(#waves-filter-residencial)"
+        height="100%"
+        width="100%"
+        y="0"
+        x="0"></rect>
+</svg>
