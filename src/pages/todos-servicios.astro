@@ -2,11 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/ui/Header.astro";
 import Footer from "@/components/sections/Footer.astro";
-import { Icon } from "astro-icon/components";
-import ServiceCard from "../components/ui/ServiceCard.astro";
 import { getCollection } from "astro:content";
-import BackgroundWavesConjunto from "../components/ui/BackgroundWavesConjunto.astro";
-import MosaicHeroBg from "../components/ui/MosaicHeroBg.astro";
+import PageHero from "../components/ui/PageHero.astro";
+import GridServices from "../components/sections/services/GridServices.astro";
 
 // Obtener todos los servicios desde Content Collections
 const servicios = await getCollection("servicios");
@@ -27,249 +25,19 @@ const uniqueCategories = ["Todos", "Construcción", "Remodelación", "Diseño"];
   <Header />
   <main>
     <!-- Hero Section -->
-    <section
-      class="relative min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#103646] via-[#103646]/95 to-[#0a2530]"
-    >
-      <!-- Background Pattern -->
-      <div class="absolute inset-0 opacity-30 text-white">
-        <MosaicHeroBg />
-      </div>
-
-      <!-- Decorative Elements -->
-      <div
-        class="absolute top-20 left-10 w-72 h-72 bg-[#D79528]/20 rounded-full blur-3xl animate-pulse"
-      >
-      </div>
-      <div
-        class="absolute bottom-20 right-10 w-96 h-96 bg-[#D79528]/10 rounded-full blur-3xl animate-pulse"
-        style="animation-delay: 1s;"
-      >
-      </div>
-
-      <!-- Content -->
-      <div
-        class="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-28 text-center"
-      >
-        <!-- Badge -->
-        <div
-          class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-8"
-          data-aos="fade-down"
-        >
-          <Icon name="ph:wrench-fill" class="w-5 h-5 text-[#D79528]" />
-          <span class="text-white font-semibold text-sm"
-            >Nuestros Servicios</span
-          >
-        </div>
-
-        <!-- Title -->
-        <h1
-          class="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6"
-          data-aos="fade-up"
-        >
-          Servicios que
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-[#D79528] via-[#f0b454] to-[#D79528]"
-          >
-            Construyen Futuro
-          </span>
-        </h1>
-
-        <!-- Description -->
-        <p
-          class="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          Explora nuestra amplia gama de servicios profesionales diseñados para
-          transformar tus ideas en realidad con calidad y excelencia.
-        </p>
-
-        <!-- Scroll Indicator -->
-        <div
-          class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
-        >
-          <Icon name="ph:caret-down" class="w-8 h-8 text-white/50" />
-        </div>
-      </div>
-    </section>
+    <PageHero
+      title="Servicios que "
+      highlightedTitle="Construyen Futuro"
+      description="Explora nuestra amplia gama de servicios profesionales diseñados para transformar tus ideas en realidad con calidad y excelencia."
+      badgeText="Nuestros Servicios"
+    />
 
     <!-- Services Section -->
-    <section class="py-20 bg-gray-50 relative overflow-hidden">
-      <!-- SVG Background -->
-      <!-- Background Component -->
-      <div
-        class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
-      >
-        <BackgroundWavesConjunto />
-      </div>
-
-      <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <!-- Filter Chips -->
-        <div class="mb-12" data-aos="fade-up">
-          <div class="flex items-center justify-between mb-6">
-            <h2 class="text-2xl font-bold text-gray-900">
-              Filtrar por Categoría
-            </h2>
-            <div class="text-sm text-gray-500">
-              <span id="service-count">{servicios.length}</span> servicios
-            </div>
-          </div>
-
-          <div class="flex flex-wrap gap-3">
-            {
-              uniqueCategories.map((category, index) => {
-                // Asignar iconos según la categoría
-                let iconName = "ph:squares-four-fill";
-                if (category === "Todos") iconName = "ph:squares-four-fill";
-                else if (category === "Construcción")
-                  iconName = "ph:hammer-fill";
-                else if (category === "Remodelación")
-                  iconName = "ph:paint-roller-fill";
-                else if (category === "Diseño") iconName = "ph:ruler-fill";
-
-                return (
-                  <button
-                    data-category={category}
-                    class={`filter-chip px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 ${
-                      index === 0
-                        ? "bg-[#103646] text-white shadow-lg scale-105"
-                        : "bg-white text-gray-700 border border-gray-200 hover:border-[#103646] hover:text-[#103646] hover:shadow-md"
-                    }`}
-                  >
-                    <span class="flex items-center gap-2">
-                      <Icon name={iconName} class="w-4 h-4" />
-                      {category}
-                    </span>
-                  </button>
-                );
-              })
-            }
-          </div>
-        </div>
-
-        <!-- Services Grid -->
-        <div id="services-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {
-            servicios.map((servicio) => {
-              const serviceImage =
-                imageMap[servicio.slug] || "/images/placeholder-image.png";
-
-              return (
-                <div
-                  class="service-card"
-                  data-tags={JSON.stringify([
-                    servicio.data.service?.category || "",
-                  ])}
-                >
-                  <ServiceCard
-                    title={servicio.data.title}
-                    description={servicio.data.description}
-                    category={servicio.data.service?.category || "Servicio"}
-                    imageUrl={serviceImage}
-                    serviceSlug={servicio.data.slug ?? servicio.slug}
-                  />
-                </div>
-              );
-            })
-          }
-        </div>
-
-        <!-- No Results Message -->
-        <div id="no-results" class="hidden text-center py-20">
-          <div
-            class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6"
-          >
-            <Icon name="ph:magnifying-glass" class="w-10 h-10 text-gray-400" />
-          </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-2">
-            No se encontraron servicios
-          </h3>
-          <p class="text-gray-600">Intenta con otra categoría</p>
-        </div>
-      </div>
-    </section>
+    <GridServices
+      services={servicios}
+      categories={uniqueCategories}
+      imageMap={imageMap}
+    />
   </main>
   <Footer />
 </Layout>
-
-<script>
-  // Filter functionality
-  document.addEventListener("DOMContentLoaded", () => {
-    const filterChips =
-      document.querySelectorAll<HTMLButtonElement>(".filter-chip");
-    const serviceCards =
-      document.querySelectorAll<HTMLDivElement>(".service-card");
-    const serviceCount = document.getElementById("service-count");
-    const noResults = document.getElementById("no-results");
-
-    filterChips.forEach((chip) => {
-      chip.addEventListener("click", () => {
-        const category = chip.getAttribute("data-category");
-
-        // Update active chip
-        filterChips.forEach((c) => {
-          c.classList.remove(
-            "bg-[#103646]",
-            "text-white",
-            "shadow-lg",
-            "scale-105",
-          );
-          c.classList.add(
-            "bg-white",
-            "text-gray-700",
-            "border",
-            "border-gray-200",
-          );
-        });
-
-        chip.classList.remove(
-          "bg-white",
-          "text-gray-700",
-          "border",
-          "border-gray-200",
-        );
-        chip.classList.add(
-          "bg-[#103646]",
-          "text-white",
-          "shadow-lg",
-          "scale-105",
-        );
-
-        // Filter services
-        let visibleCount = 0;
-        serviceCards.forEach((card) => {
-          const cardEl = card as HTMLDivElement;
-          const categories = JSON.parse(
-            cardEl.getAttribute("data-tags") || "[]",
-          );
-
-          if (category === "Todos" || categories.includes(category)) {
-            cardEl.style.display = "block";
-            visibleCount++;
-          } else {
-            cardEl.style.display = "none";
-          }
-        });
-
-        // Update count and show/hide no results
-        if (serviceCount) {
-          serviceCount.textContent = visibleCount.toString();
-        }
-
-        if (noResults) {
-          noResults.classList.toggle("hidden", visibleCount > 0);
-        }
-      });
-    });
-  });
-</script>
-
-<style>
-  .filter-chip {
-    cursor: pointer;
-  }
-
-  .filter-chip:active {
-    transform: scale(0.98);
-  }
-</style>

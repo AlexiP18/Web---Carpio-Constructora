@@ -1,0 +1,244 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/ui/Header.astro";
+import Footer from "../../components/sections/Footer.astro";
+import CategoryHero from "../../components/sections/category/CategoryHero.astro";
+import CategoryProjectGrid from "../../components/sections/category/CategoryProjectGrid.astro";
+import CategoryCTA from "../../components/sections/category/CategoryCTA.astro";
+import ProjectContent from "../../components/sections/project/ProjectContent.astro";
+import ProjectMosaicNew from "../../components/sections/project/ProjectMosaicNew.astro";
+import ProjectVideo from "../../components/sections/project/ProjectVideo.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const allProyectos = await getCollection("proyectos");
+
+    const categories = [
+        {
+            slug: "conjunto-habitacional",
+            title: "Conjunto Habitacional",
+            filterTag: "conjunto habitacional",
+            hero: {
+                title: "Conjuntos Habitacionales",
+                description:
+                    "Desarrollos multifamiliares diseñados para crear comunidades vibrantes con espacios compartidos y comodidades modernas.",
+                badgeText: "Conjunto Habitacional",
+                badgeIcon: "ph:buildings-fill",
+            },
+            grid: {
+                title: "Nuestros Proyectos",
+                description: "Explora todos nuestros conjuntos habitacionales",
+                emptyMessage: {
+                    title: "No hay conjuntos habitacionales disponibles",
+                    description: "Pronto agregaremos nuevos proyectos.",
+                    icon: "ph:buildings",
+                },
+            },
+            cta: {
+                title: "¿Buscas un Hogar en Conjunto Habitacional?",
+                description:
+                    "Contáctanos y encuentra el espacio perfecto para tu familia.",
+                whatsappLink:
+                    "https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20conjuntos%20habitacionales.",
+            },
+            featuredProjects: [
+                "los-arrayanes-de-izamba",
+                "los-arrayanes-de-ficoa",
+            ],
+        },
+        {
+            slug: "diseno-residencial",
+            title: "Diseño Residencial",
+            filterTag: "diseño residencial",
+            hero: {
+                title: "Diseño Residencial",
+                description:
+                    "Diseños arquitectónicos personalizados para viviendas unifamiliares y multifamiliares que reflejan tu estilo de vida.",
+                badgeText: "Diseño Residencial",
+                badgeIcon: "ph:house-line-fill",
+            },
+            grid: {
+                title: "Nuestros Proyectos",
+                description: "Explora todos nuestros diseños residenciales",
+                emptyMessage: {
+                    title: "No hay diseños residenciales disponibles",
+                    description: "Pronto agregaremos nuevos proyectos.",
+                    icon: "ph:house",
+                },
+            },
+            cta: {
+                title: "¿Necesitas un Diseño Personalizado?",
+                description:
+                    "Contáctanos y creemos juntos el diseño perfecto para tu hogar.",
+                whatsappLink:
+                    "https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20dise%C3%B1os%20residenciales.",
+            },
+            featuredProjects: ["casa-magna", "casa-amaranto"],
+        },
+        {
+            slug: "diseno-retail",
+            title: "Diseño Retail",
+            filterTag: "diseño retail",
+            hero: {
+                title: "Diseño Retail",
+                description:
+                    "Espacios comerciales innovadores diseñados para maximizar la experiencia de compra y el éxito de tu negocio.",
+                badgeText: "Diseño Retail",
+                badgeIcon: "ph:storefront-fill",
+            },
+            grid: {
+                title: "Nuestros Proyectos",
+                description: "Explora todos nuestros diseños retail",
+                emptyMessage: {
+                    title: "No hay diseños retail disponibles",
+                    description: "Pronto agregaremos nuevos proyectos.",
+                    icon: "ph:storefront",
+                },
+            },
+            cta: {
+                title: "¿Tienes un Proyecto Comercial?",
+                description:
+                    "Contáctanos y diseñemos un espacio que impulse tu negocio.",
+                whatsappLink:
+                    "https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20dise%C3%B1os%20retail.",
+            },
+            featuredProjects: ["keops"],
+        },
+    ];
+
+    return categories.map((category) => {
+        // Filtrar proyectos para esta categoría
+        const projects = allProyectos.filter((p) =>
+            p.data.tags?.some((tag) =>
+                tag.toLowerCase().includes(category.filterTag.toLowerCase()),
+            ),
+        );
+
+        // Obtener datos completos de proyectos destacados
+        const featuredDocs = category.featuredProjects
+            .map((slug) => allProyectos.find((p) => p.slug === slug))
+            .filter((p): p is (typeof allProyectos)[0] => p !== undefined);
+
+        // Renderizar body de proyectos destacados (para pasar HTML al componente)
+        return {
+            params: { category: category.slug },
+            props: {
+                category,
+                projects,
+                featuredDocs,
+            },
+        };
+    });
+}
+
+const { category, projects, featuredDocs } = Astro.props;
+
+// Preparar imágenes para el slider del Hero
+let heroImages: { src: string; alt: string }[] = [];
+
+if (featuredDocs.length > 0) {
+    // Priorizar imágenes de proyectos destacados
+    heroImages = featuredDocs
+        .filter((p) => p.data.backgroundImage)
+        .map((p) => ({
+            src: p.data.backgroundImage,
+            alt: p.data.title,
+        }));
+} else if (projects.length > 0) {
+    // Si no hay destacados, usar imágenes de los proyectos de la lista
+    heroImages = projects
+        .filter((p) => p.data.backgroundImage)
+        .slice(0, 5) // Limitar a 5 para no sobrecargar
+        .map((p) => ({
+            src: p.data.backgroundImage,
+            alt: p.data.title,
+        }));
+}
+
+// Renderizar contenido de destacados (async needs to be at top level but we are in component)
+const renderedFeatured = await Promise.all(
+    featuredDocs.map(async (doc) => {
+        const { Content } = await doc.render();
+        return {
+            slug: doc.slug,
+            data: doc.data,
+            body: doc.body,
+            isKeops: doc.slug === "keops",
+            isFicoa: doc.slug === "los-arrayanes-de-ficoa",
+        };
+    }),
+);
+---
+
+<Layout title={`${category.hero.title} - Constructora Carpio`}>
+    <Header />
+    <main class="relative">
+        <CategoryHero
+            title={category.hero.title}
+            description={category.hero.description}
+            badgeText={category.hero.badgeText}
+            badgeIcon={category.hero.badgeIcon}
+            images={heroImages}
+        />
+
+        <!-- Renderizado Dinámico de Proyectos Destacados -->
+        {
+            renderedFeatured.map((project) => (
+                <>
+                    {project.isKeops ? (
+                        /* Lógica especial para KEOPS (Video + Mosaico) */
+                        <>
+                            {project.data.virtualTourVideo && (
+                                <ProjectVideo
+                                    videoUrl={project.data.virtualTourVideo}
+                                    title={`Recorrido Virtual ${project.data.title}`}
+                                    description="Descubre cada detalle de este innovador espacio a través de nuestro tour virtual completo"
+                                />
+                            )}
+                            <ProjectMosaicNew
+                                images={project.data.images || []}
+                                title={project.data.title}
+                            />
+                        </>
+                    ) : project.isFicoa ? (
+                        /* Lógica especial para FICOA (Solo Mosaico) */
+                        <ProjectMosaicNew
+                            images={project.data.images || []}
+                            title={project.data.title}
+                        />
+                    ) : (
+                        /* Lógica estándar (Contenido + Mosaico) */
+                        <>
+                            <ProjectContent
+                                title={project.data.title}
+                                content={project.body}
+                                images={project.data.images || []}
+                                virtualTourVideo={project.data.virtualTourVideo}
+                                brochureUrl={project.data.brochureUrl}
+                                specifications={project.data.specifications}
+                            />
+                            <ProjectMosaicNew
+                                images={project.data.images || []}
+                                title={project.data.title}
+                            />
+                        </>
+                    )}
+                </>
+            ))
+        }
+
+        <CategoryProjectGrid
+            title={category.grid.title}
+            description={category.grid.description}
+            projects={projects}
+            emptyMessage={category.grid.emptyMessage}
+        />
+
+        <CategoryCTA
+            title={category.cta.title}
+            description={category.cta.description}
+            whatsappLink={category.cta.whatsappLink}
+        />
+    </main>
+    <Footer />
+</Layout>

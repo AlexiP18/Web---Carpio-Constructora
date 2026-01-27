@@ -1,7 +1,5 @@
 ---
 import { Icon } from "astro-icon/components";
-import Button from '../../ui/Button.astro';
-import SectionLayout from '../../ui/SectionLayout.astro';
 import CloudinaryImage from '../../ui/CloudinaryImage.astro';
 
 // Project specification icons from public folder
@@ -236,7 +234,7 @@ const categories = imageCategories || (dynamicCategories.length > 0 ? dynamicCat
 const paragraphs = content.split('\n\n').filter(p => p.trim());
 ---
 
-<section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden" id="project-details">
+<section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden project-content-section" data-categories={JSON.stringify(categories)}>
   <!-- Decorative background elements -->
   <div class="absolute top-0 left-0 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl"></div>
   <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-secondary/5 rounded-full blur-3xl"></div>
@@ -259,10 +257,10 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
     </div>
 
     <!-- Main Layout Grid -->
-    <div class={`grid grid-cols-1 gap-12 w-full ${specifications ? 'lg:grid-cols-3' : 'lg:grid-cols-1'} items-start`}>
+    <div class={`grid grid-cols-1 gap-12 w-full ${specifications ? 'lg:grid-cols-3' : 'lg:grid-cols-1'} items-stretch`}>
       
       <!-- Gallery Section -->
-      <div class={`bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden ${specifications ? 'lg:col-span-2' : 'lg:col-span-1'} self-start`} data-aos="fade-right" data-aos-duration="800">
+      <div class={`bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden ${specifications ? 'lg:col-span-2' : 'lg:col-span-1'}`} data-aos="fade-right" data-aos-duration="800">
         
         <!-- Gallery Header with Category Selector -->
         <div class="bg-gradient-to-r from-gray-50 to-white p-6 border-b border-gray-100">
@@ -276,13 +274,14 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
             <div class="flex items-center gap-3">
               <!-- Category Icon - Changes based on selection -->
               <div class="w-10 h-10 bg-gradient-to-br from-brand-primary/10 to-brand-primary/20 rounded-xl flex items-center justify-center border border-brand-primary/20">
-                <Icon name="ph:images-square" id="categoryIcon" class="w-5 h-5 text-brand-primary" />
+                <div class="category-icon flex items-center justify-center w-full h-full">
+                  <Icon name="ph:images-square" class="w-5 h-5 text-brand-primary" />
+                </div>
               </div>
               
               <div class="relative">
                 <select 
-                  id="categorySelector" 
-                  class="appearance-none bg-white border border-gray-200 rounded-2xl px-4 py-2 pr-10 text-sm font-medium text-gray-700 hover:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+                  class="category-selector appearance-none bg-white border border-gray-200 rounded-2xl px-4 py-2 pr-10 text-sm font-medium text-gray-700 hover:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
                 >
                   {categories.map((category, index) => (
                     <option value={category.name} selected={index === 0}>
@@ -319,11 +318,11 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
           ))}
           
           <!-- Navigation Controls -->
-          <div class="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <button class="gallery-prev w-12 h-12 bg-white/90 backdrop-blur-sm hover:bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center">
+          <div class="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <button class="gallery-prev w-12 h-12 bg-white/90 backdrop-blur-sm hover:bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center pointer-events-auto">
               <Icon name="ph:caret-left" class="w-5 h-5 text-gray-900" />
             </button>
-            <button class="gallery-next w-12 h-12 bg-white/90 backdrop-blur-sm hover:bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center">
+            <button class="gallery-next w-12 h-12 bg-white/90 backdrop-blur-sm hover:bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center pointer-events-auto">
               <Icon name="ph:caret-right" class="w-5 h-5 text-gray-900" />
             </button>
           </div>
@@ -344,26 +343,23 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
           <div class="relative w-full">
             <!-- Scroll Navigation Buttons -->
             <button 
-              id="scrollLeft" 
-              class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-2 z-20 w-8 h-8 bg-white/90 backdrop-blur-sm hover:bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center opacity-1 pointer-events-auto"
+              class="scroll-left-btn absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-2 z-20 w-8 h-8 bg-white/90 backdrop-blur-sm hover:bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center opacity-1 pointer-events-auto"
             >
               <Icon name="ph:caret-left" class="w-4 h-4 text-gray-900" />
             </button>
             
             <button 
-              id="scrollRight" 
-              class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-2 z-20 w-8 h-8 bg-white/90 backdrop-blur-sm hover:bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center opacity-1 pointer-events-auto"
+              class="scroll-right-btn absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-2 z-20 w-8 h-8 bg-white/90 backdrop-blur-sm hover:bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center opacity-1 pointer-events-auto"
             >
               <Icon name="ph:caret-right" class="w-4 h-4 text-gray-900" />
             </button>
 
             <!-- Scrollable Container -->
             <div 
-              id="thumbnailScrollContainer" 
-              class="overflow-x-auto scrollbar-hide scroll-smooth"
+              class="thumbnail-scroll-container overflow-x-auto scrollbar-hide scroll-smooth"
               style="scrollbar-width: none; -ms-overflow-style: none; width: 100%;"
             >
-              <div class="flex gap-4 pb-2" id="thumbnailGrid" style="width: fit-content; min-width: 100%;">
+              <div class="thumbnail-grid flex gap-4 pb-2" style="width: fit-content; min-width: 100%;">
                 {categories[0].images.map((image, index) => (
                   <button 
                     class={`gallery-thumb flex-shrink-0 w-32 h-20 rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-lg ${index === 0 ? 'ring-2 ring-brand-primary' : 'ring-1 ring-gray-200 hover:ring-brand-primary/50'}`}
@@ -386,7 +382,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
       </div>
 
       <!-- Project Info Column -->
-      <div class="space-y-8 self-start" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+      <div class="h-full" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
         <!-- Project Stats Card -->
         {specifications && (
         <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8">
@@ -397,7 +393,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
             <h3 class="text-2xl font-bold text-gray-900">Especificaciones</h3>
           </div>
           
-          <div class="space-y-4">
+          <div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 specs-scroll-area">
             <!-- Bedrooms -->
             {specs.bedrooms?.enabled && (
               <div class="bg-gradient-to-br from-brand-secondary/10 to-brand-secondary/20 rounded-2xl p-4 border border-brand-secondary/30">
@@ -489,22 +485,22 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
                 </div>
               )
             ))}
-          </div>
 
-          <!-- Completion Date -->
-          {specs.deliveryDate?.enabled && (
-            <div class="mt-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-4 border border-gray-200">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center border-2 border-brand-primary">
-                  <img src={deliveryIcon} alt="Entrega" class="w-7 h-7" />
-                </div>
-                <div>
-                  <div class="text-xl font-bold text-gray-900">{specs.deliveryDate.value || 'Julio 2025'}</div>
-                  <div class="text-gray-600">{specs.deliveryDate.label || 'Fecha de entrega'}</div>
+            <!-- Completion Date (Inside Scroll) -->
+            {specs.deliveryDate?.enabled && (
+              <div class="mt-2 bg-gradient-to-r from-gray-50 to-gray-100 rounded-2xl p-4 border border-gray-200">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center border-2 border-brand-primary">
+                    <img src={deliveryIcon} alt="Entrega" class="w-7 h-7" />
+                  </div>
+                  <div>
+                    <div class="text-xl font-bold text-gray-900">{specs.deliveryDate.value || 'Julio 2025'}</div>
+                    <div class="text-gray-600">{specs.deliveryDate.label || 'Fecha de entrega'}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
           <!-- Action Buttons Footer -->
           <div class="mt-8 pt-6 border-t border-gray-200">
@@ -526,7 +522,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
               <div class="text-center">
                 <button 
                   id="virtualTourBtn"
-                  class="w-full flex flex-col items-center gap-2 p-4 rounded-2xl bg-white hover:bg-gray-50 border border-gray-200 hover:border-brand-primary/30 transition-all duration-300 group"
+                  class="virtual-tour-btn w-full flex flex-col items-center gap-2 p-4 rounded-2xl bg-white hover:bg-gray-50 border border-gray-200 hover:border-brand-primary/30 transition-all duration-300 group"
                   data-video-url={virtualTourVideo}
                   disabled={!virtualTourVideo}
                   style={!virtualTourVideo ? 'opacity: 0.5; cursor: not-allowed;' : ''}
@@ -555,12 +551,11 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
   </div>
 
   <!-- Video Modal -->
-  <div id="videoModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+  <div class="video-modal fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
     <div class="relative w-full max-w-5xl bg-gray-900 rounded-3xl overflow-hidden shadow-2xl">
       <!-- Close Button -->
       <button 
-        id="closeVideoModal"
-        class="absolute top-4 right-4 z-10 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 group"
+        class="close-video-modal absolute top-4 right-4 z-10 w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center transition-all duration-300 group"
       >
         <Icon name="ph:x" class="w-6 h-6 text-white" />
       </button>
@@ -568,8 +563,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
       <!-- Video Container -->
       <div class="relative w-full" style="padding-bottom: 56.25%;">
         <video 
-          id="virtualTourVideo"
-          class="absolute inset-0 w-full h-full"
+          class="virtual-tour-video absolute inset-0 w-full h-full"
           controls
           controlslist="nodownload"
           preload="metadata"
@@ -581,96 +575,69 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
   </div>
 </section>
 
-<!-- Pass categories data to client-side -->
-<script define:vars={{ categories }}>
-  window.projectCategories = categories;
-</script>
-
+<!-- Scoped Script -->
 <script>
+  interface CategoryImage {
+    src?: string;
+    [key: string]: any;
+  }
+
+  interface Category {
+    name: string;
+    label: string;
+    images: (string | CategoryImage)[];
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
-    // Get categories from the global variable set by define:vars
-    const serverCategories = (window as any).projectCategories || null;
-    
-    const categories = serverCategories || [
-      {
-        name: 'general',
-        label: 'General',
-        images: [
-          '/images/placeholder-image.png',
-          '/images/placeholder-image-1.png',
-          '/images/placeholder-image-2.png',
-          '/images/header-30.png',
-          '/images/header-50.png',
-          '/images/layout-355.png',
-          '/images/layout-85.png',
-          '/images/tab-pane-1.png'
-        ]
-      },
-      {
-        name: 'exterior',
-        label: 'Vista Exterior',
-        images: [
-          '/images/placeholder-image.png',
-          '/images/placeholder-image-1.png',
-          '/images/placeholder-image-2.png',
-          '/images/header-30.png',
-          '/images/header-50.png',
-          '/images/layout-355.png'
-        ]
-      },
-      {
-        name: 'interior',
-        label: 'Vista Interior',
-        images: [
-          '/images/layout-355.png',
-          '/images/layout-85.png',
-          '/images/tab-pane-1.png',
-          '/images/header-50.png',
-          '/images/placeholder-image.png',
-          '/images/placeholder-image-1.png',
-          '/images/placeholder-image-2.png'
-        ]
-      },
-      {
-        name: 'planos',
-        label: 'Planos',
-        images: [
-          '/images/tab-pane-1.png',
-          '/images/layout-355.png',
-          '/images/placeholder-image.png',
-          '/images/layout-85.png',
-          '/images/header-30.png'
-        ]
+    // Select all project content sections
+    const projectSections = document.querySelectorAll('.project-content-section');
+
+    projectSections.forEach(section => {
+      // Get categories data from data attribute
+      const categoriesData = section.getAttribute('data-categories');
+      if (!categoriesData) return;
+
+      let categories: Category[];
+      try {
+        categories = JSON.parse(categoriesData);
+      } catch (e) {
+        console.error('Error parsing categories data:', e);
+        return;
       }
-    ];
+      
+      // Select elements within this specific section
+      const categorySelector = section.querySelector('.category-selector') as HTMLSelectElement | null;
+      const categoryIcon = section.querySelector('.category-icon') as HTMLElement | null;
+      const galleryContainer = section.querySelector('.gallery-container') as HTMLElement | null;
+      const prevButton = section.querySelector('.gallery-prev') as HTMLButtonElement | null;
+      const nextButton = section.querySelector('.gallery-next') as HTMLButtonElement | null;
+      const galleryCounter = section.querySelector('.gallery-counter') as HTMLElement | null;
+      const galleryTotal = section.querySelector('.gallery-total') as HTMLElement | null;
+      const categoryBadge = section.querySelector('.category-badge') as HTMLElement | null;
+      const thumbnailGrid = section.querySelector('.thumbnail-grid') as HTMLElement | null;
+      const thumbnailScrollContainer = section.querySelector('.thumbnail-scroll-container') as HTMLElement | null;
+      const scrollLeftBtn = section.querySelector('.scroll-left-btn') as HTMLButtonElement | null;
+      const scrollRightBtn = section.querySelector('.scroll-right-btn') as HTMLButtonElement | null;
+      
+      // Video Modal Elements - Scoped to section
+      const videoModal = section.querySelector('.video-modal') as HTMLElement | null;
+      const closeVideoModal = section.querySelector('.close-video-modal') as HTMLButtonElement | null;
+      const virtualTourVideo = section.querySelector('.virtual-tour-video') as HTMLVideoElement | null;
+      const virtualTourBtns = section.querySelectorAll('.virtual-tour-btn') as NodeListOf<HTMLButtonElement>; 
+      
+      let currentSlide = 0;
+      let currentCategory = categories[0];
 
-    // DOM elements
-    const categorySelector = document.getElementById('categorySelector') as HTMLSelectElement;
-    const categoryIcon = document.getElementById('categoryIcon') as HTMLElement;
-    const gallerySlides = document.querySelectorAll('.gallery-slide') as NodeListOf<HTMLElement>;
-    const galleryThumbs = document.querySelectorAll('.gallery-thumb') as NodeListOf<HTMLButtonElement>;
-    const prevButton = document.querySelector('.gallery-prev') as HTMLButtonElement | null;
-    const nextButton = document.querySelector('.gallery-next') as HTMLButtonElement | null;
-    const galleryCounter = document.querySelector('.gallery-counter') as HTMLElement | null;
-    const galleryTotal = document.querySelector('.gallery-total') as HTMLElement | null;
-    const categoryBadge = document.querySelector('.category-badge') as HTMLElement | null;
-    const thumbnailGrid = document.getElementById('thumbnailGrid') as HTMLElement | null;
-    const thumbnailScrollContainer = document.getElementById('thumbnailScrollContainer') as HTMLElement | null;
-    const scrollLeftBtn = document.getElementById('scrollLeft') as HTMLButtonElement | null;
-    const scrollRightBtn = document.getElementById('scrollRight') as HTMLButtonElement | null;
-    const galleryContainer = document.querySelector('.gallery-container') as HTMLElement | null;
-    
-    let currentSlide = 0;
-    let currentCategory = categories[0];
-    
-    // Initialize category icon
-    updateCategoryIcon(currentCategory.name);
+      // Initialize
+      if (currentCategory) {
+          updateCategoryIcon(currentCategory.name);
+      }
 
-    // Function to update category icon
-    function updateCategoryIcon(categoryName: string): void {
-      if (categoryIcon) {
-        const iconMap: { [key: string]: string } = {
-                    'general': `<svg class="w-5 h-5 text-brand-primary" fill="currentColor" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H216V200H40ZM144,88a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H152A8,8,0,0,1,144,88Zm0,32a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H152A8,8,0,0,1,144,120Zm0,32a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H152A8,8,0,0,1,144,152ZM112,88v80a8,8,0,0,1-16,0V96L89.66,102.34a8,8,0,0,1-11.32-11.32l16-16A8,8,0,0,1,112,88Z"></path></svg>`,
+      function updateCategoryIcon(categoryName: string) {
+        if (!categoryIcon) return;
+        
+        const iconMap: Record<string, string> = {
+          'general': `<svg class="w-5 h-5 text-brand-primary" fill="currentColor" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM40,56H216V200H40ZM144,88a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H152A8,8,0,0,1,144,88Zm0,32a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H152A8,8,0,0,1,144,120Zm0,32a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H152A8,8,0,0,1,144,152ZM112,88v80a8,8,0,0,1-16,0V96L89.66,102.34a8,8,0,0,1-11.32-11.32l16-16A8,8,0,0,1,112,88Z"></path></svg>`,
           'exterior': `<svg class="w-5 h-5 text-brand-primary" fill="currentColor" viewBox="0 0 256 256"><path d="M240,208H224V96a16,16,0,0,0-16-16H164.94L139.58,51.58A16,16,0,0,0,128,48H48A16,16,0,0,0,32,64V208H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM208,80V208H48V64H128l26.42,32Z"></path></svg>`,
           'interior': `<svg class="w-5 h-5 text-brand-primary" fill="currentColor" viewBox="0 0 256 256"><path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8H216a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H48V120l80-80,80,80Z"></path></svg>`,
           'planos': `<svg class="w-5 h-5 text-brand-primary" fill="currentColor" viewBox="0 0 256 256"><path d="M232,48V208a8,8,0,0,1-8,8H32a8,8,0,0,1-8-8V48a8,8,0,0,1,8-8H224A8,8,0,0,1,232,48ZM216,56H40V200H216ZM88,88V176a8,8,0,0,1-16,0V107.31L60.69,118.63a8,8,0,0,1-11.32-11.32l24-24A8,8,0,0,1,88,88Zm136,0a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h56A8,8,0,0,1,224,88Zm0,32a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h56A8,8,0,0,1,224,120Zm0,32a8,8,0,0,1-8,8H160a8,8,0,0,1,0-16h56A8,8,0,0,1,224,152Z"></path></svg>`
@@ -679,277 +646,241 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
         const iconSvg = iconMap[categoryName] || iconMap['general'];
         categoryIcon.innerHTML = iconSvg;
       }
-    }
-    
-    function updateSlide(index: number): void {
-      if (index < 0 || index >= currentCategory.images.length) return;
-      
-      // Update slides
-      const slides = galleryContainer?.querySelectorAll('.gallery-slide') as NodeListOf<HTMLElement>;
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('opacity-100', i === index);
-        slide.classList.toggle('opacity-0', i !== index);
-      });
-      
-      // Update thumbnails
-      const thumbs = thumbnailGrid?.querySelectorAll('.gallery-thumb') as NodeListOf<HTMLButtonElement>;
-      thumbs.forEach((thumb, i) => {
-        if (i === index) {
-          thumb.classList.remove('ring-1', 'ring-gray-200', 'hover:ring-brand-primary/50');
-          thumb.classList.add('ring-2', 'ring-brand-primary');
-        } else {
-          thumb.classList.remove('ring-2', 'ring-brand-primary');
-          thumb.classList.add('ring-1', 'ring-gray-200', 'hover:ring-brand-primary/50');
-        }
-      });
-      
-      // Update counter
-      if (galleryCounter) {
-        galleryCounter.textContent = (index + 1).toString();
-      }
-      
-      currentSlide = index;
-    }
-    
-    function nextSlide(): void {
-      updateSlide((currentSlide + 1) % currentCategory.images.length);
-    }
-    
-    function prevSlide(): void {
-      updateSlide((currentSlide - 1 + currentCategory.images.length) % currentCategory.images.length);
-    }
 
-    function getImageSrc(image: any): string {
-      if (typeof image === 'string') {
-        return image;
-      }
-      return image.src || image;
-    }
-
-    function updateGalleryContent(categoryName: string): void {
-      const category = categories.find((cat: any) => cat.name === categoryName);
-      if (!category) return;
-
-      currentCategory = category;
-      currentSlide = 0;
-
-      // Update gallery slides
-      if (galleryContainer) {
-        // Remove existing slides
-        const existingSlides = galleryContainer.querySelectorAll('.gallery-slide');
-        existingSlides.forEach(slide => slide.remove());
+      function updateSlide(index: number) {
+        if (!currentCategory || !currentCategory.images || index < 0 || index >= currentCategory.images.length) return;
         
-        // Add new slides
-        category.images.forEach((image: any, index: number) => {
-          const slideDiv = document.createElement('div');
-          slideDiv.className = `gallery-slide absolute inset-0 transition-all duration-300 ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
-          slideDiv.setAttribute('data-slide', index.toString());
-          
-          const img = document.createElement('img');
-          img.src = getImageSrc(image);
-          img.alt = `Imagen ${index + 1}`;
-          img.className = 'w-full h-full object-cover';
-          
-          slideDiv.appendChild(img);
-          galleryContainer.insertBefore(slideDiv, galleryContainer.firstChild);
-        });
-      }
-
-      // Update thumbnails
-      if (thumbnailGrid) {
-        // Clear existing thumbnails
-        thumbnailGrid.innerHTML = '';
-        
-        // Add new thumbnails
-        category.images.forEach((image: any, index: number) => {
-          const thumbButton = document.createElement('button');
-          thumbButton.className = `gallery-thumb flex-shrink-0 w-32 h-20 rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-lg ${index === 0 ? 'ring-2 ring-brand-primary' : 'ring-1 ring-gray-200 hover:ring-brand-primary/50'}`;
-          thumbButton.setAttribute('data-slide', index.toString());
-          
-          const img = document.createElement('img');
-          img.src = getImageSrc(image);
-          img.alt = `Thumbnail ${index + 1}`;
-          img.className = 'w-full h-full object-cover';
-          
-          thumbButton.appendChild(img);
-          thumbButton.addEventListener('click', () => updateSlide(index));
-          
-          thumbnailGrid.appendChild(thumbButton);
-        });
-        
-        // Force the container to expand
-        thumbnailGrid.style.width = 'fit-content';
-        thumbnailGrid.style.minWidth = '100%';
-      }
-
-      // Update total count
-      if (galleryTotal) {
-        galleryTotal.textContent = category.images.length.toString();
-      }
-
-      // Update category badge
-      if (categoryBadge) {
-        categoryBadge.textContent = category.label;
-      }
-
-      // Update category icon
-      updateCategoryIcon(categoryName);
-
-      // Reset counter to 1
-      if (galleryCounter) {
-        galleryCounter.textContent = '1';
-      }
-
-      // Reset to first slide
-      currentSlide = 0;
-      
-      // Re-check scroll functionality for new content
-      setTimeout(() => {
-        setupThumbnailScroll();
-      }, 100);
-    }
-    
-    // Thumbnail scroll functionality
-    function setupThumbnailScroll() {
-      const leftBtn = document.getElementById('scrollLeft') as HTMLButtonElement;
-      const rightBtn = document.getElementById('scrollRight') as HTMLButtonElement;
-      const container = document.getElementById('thumbnailScrollContainer') as HTMLElement;
-      
-      if (!container || !leftBtn || !rightBtn) return;
-
-      const scrollAmount = 320;
-
-      // Simple scroll functions
-      leftBtn.onclick = () => {
-        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      };
-
-      rightBtn.onclick = () => {
-        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      };
-
-      // Update button visibility
-      function updateButtons() {
-        const { scrollLeft, scrollWidth, clientWidth } = container;
-        const maxScroll = scrollWidth - clientWidth;
-        
-        leftBtn.style.opacity = scrollLeft <= 0 ? '0.5' : '1';
-        rightBtn.style.opacity = scrollLeft >= maxScroll - 1 ? '0.5' : '1';
-      }
-
-      container.addEventListener('scroll', updateButtons);
-      setTimeout(updateButtons, 200);
-    }
-
-    // Event listeners
-    if (categorySelector) {
-      categorySelector.addEventListener('change', (e) => {
-        const target = e.target as HTMLSelectElement;
-        updateGalleryContent(target.value);
-      });
-    }
-
-    if (prevButton) {
-      prevButton.addEventListener('click', prevSlide);
-    }
-    
-    if (nextButton) {
-      nextButton.addEventListener('click', nextSlide);
-    }
-    
-    // Initialize thumbnail scroll
-    setupThumbnailScroll();
-    
-    // Thumbnail navigation - initial setup
-    const initialThumbs = thumbnailGrid?.querySelectorAll('.gallery-thumb') as NodeListOf<HTMLButtonElement>;
-    initialThumbs?.forEach((thumb, index) => {
-      thumb.addEventListener('click', () => updateSlide(index));
-    });
-    
-    // Initialize
-    updateSlide(0);
-  });
-</script>
-
-<script>
-  // Video Modal Handler
-  document.addEventListener('DOMContentLoaded', function() {
-    const virtualTourBtn = document.getElementById('virtualTourBtn') as HTMLButtonElement;
-    const videoModal = document.getElementById('videoModal') as HTMLElement;
-    const closeVideoModal = document.getElementById('closeVideoModal') as HTMLButtonElement;
-    const video = document.getElementById('virtualTourVideo') as HTMLVideoElement;
-    
-    if (virtualTourBtn && videoModal && closeVideoModal && video) {
-      // Open modal
-      virtualTourBtn.addEventListener('click', function() {
-        const videoUrl = virtualTourBtn.getAttribute('data-video-url');
-        
-        console.log('Video URL:', videoUrl); // Debug
-        
-        if (videoUrl && videoUrl !== 'undefined') {
-          // Set video source directly on video element
-          video.src = videoUrl;
-          
-          // Show modal
-          videoModal.classList.remove('hidden');
-          videoModal.classList.add('flex');
-          
-          // Load and play video
-          video.load();
-          video.play().catch(err => {
-            console.error('Error playing video:', err);
+        // Update slides
+        if (galleryContainer) {
+          const slides = galleryContainer.querySelectorAll('.gallery-slide');
+          slides.forEach((slide, i) => {
+            slide.classList.toggle('opacity-100', i === index);
+            slide.classList.toggle('opacity-0', i !== index);
           });
-        } else {
-          console.error('No video URL provided');
         }
-      });
-      
-      // Close modal function
-      function closeModal() {
-        videoModal.classList.add('hidden');
-        videoModal.classList.remove('flex');
         
-        // Pause and reset video
-        video.pause();
-        video.currentTime = 0;
+        // Update thumbnails
+        if (thumbnailGrid) {
+          const thumbs = thumbnailGrid.querySelectorAll('.gallery-thumb');
+          thumbs.forEach((thumb, i) => {
+            if (i === index) {
+              thumb.classList.remove('ring-1', 'ring-gray-200', 'hover:ring-brand-primary/50');
+              thumb.classList.add('ring-2', 'ring-brand-primary');
+              // Scroll thumbnail into view
+              try {
+                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+              } catch(e) { /* ignore */ }
+            } else {
+              thumb.classList.remove('ring-2', 'ring-brand-primary');
+              thumb.classList.add('ring-1', 'ring-gray-200', 'hover:ring-brand-primary/50');
+            }
+          });
+        }
+        
+        // Update counter
+        if (galleryCounter) {
+          galleryCounter.textContent = (index + 1).toString();
+        }
+        
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        if (!currentCategory || !currentCategory.images) return;
+        updateSlide((currentSlide + 1) % currentCategory.images.length);
       }
       
-      // Close button click
-      closeVideoModal.addEventListener('click', closeModal);
+      function prevSlide() {
+        if (!currentCategory || !currentCategory.images) return;
+        updateSlide((currentSlide - 1 + currentCategory.images.length) % currentCategory.images.length);
+      }
+
+      // Event Listeners
+      if (prevButton) prevButton.addEventListener('click', prevSlide);
+      if (nextButton) nextButton.addEventListener('click', nextSlide);
+
+      if (categorySelector) {
+        categorySelector.addEventListener('change', (e) => {
+          const target = e.target as HTMLSelectElement;
+          updateGalleryContent(target.value);
+        });
+      }
+
+      // Thumbnail Scroll Controls
+      if (scrollLeftBtn && thumbnailScrollContainer) {
+        scrollLeftBtn.addEventListener('click', () => {
+          thumbnailScrollContainer.scrollBy({ left: -200, behavior: 'smooth' });
+        });
+      }
       
-      // Close on background click
-      videoModal.addEventListener('click', function(e) {
-        if (e.target === videoModal) {
-          closeModal();
+      if (scrollRightBtn && thumbnailScrollContainer) {
+        scrollRightBtn.addEventListener('click', () => {
+          thumbnailScrollContainer.scrollBy({ left: 200, behavior: 'smooth' });
+        });
+      }
+
+      // Video Modal Controls
+      if (virtualTourBtns.length > 0 && videoModal && virtualTourVideo) {
+        virtualTourBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const videoUrl = btn.getAttribute('data-video-url');
+            if (videoUrl) {
+              virtualTourVideo.src = videoUrl;
+              videoModal.classList.remove('hidden');
+              videoModal.classList.add('flex');
+              virtualTourVideo.play().catch(e => console.log('Autoplay prevented:', e));
+            }
+          });
+        });
+        
+        const closeModal = () => {
+          videoModal.classList.add('hidden');
+          videoModal.classList.remove('flex');
+          virtualTourVideo.pause();
+          virtualTourVideo.currentTime = 0;
+        };
+        
+        if (closeVideoModal) closeVideoModal.addEventListener('click', closeModal);
+        
+        // Close on click outside
+        videoModal.addEventListener('click', (e) => {
+          if (e.target === videoModal) {
+            closeModal();
+          }
+        });
+      }
+
+      function getImageSrc(image: string | CategoryImage): string {
+        if (typeof image === 'string') {
+          return image;
         }
-      });
+        return image.src || '';
+      }
+
+      function updateGalleryContent(categoryName: string) {
+        const category = categories.find((cat) => cat.name === categoryName);
+        if (!category) return;
+
+        currentCategory = category;
+        currentSlide = 0;
+
+        // Update gallery slides
+        if (galleryContainer) {
+          // Remove existing slides
+          const existingSlides = galleryContainer.querySelectorAll('.gallery-slide');
+          existingSlides.forEach(slide => slide.remove());
+          
+          // Add new slides
+          category.images.forEach((image, index) => {
+            const slideDiv = document.createElement('div');
+            slideDiv.className = `gallery-slide absolute inset-0 transition-all duration-300 ease-in-out ${index === 0 ? 'opacity-100' : 'opacity-0'}`;
+            slideDiv.setAttribute('data-slide', index.toString());
+            
+            const img = document.createElement('img');
+            img.src = getImageSrc(image);
+            img.alt = `Imagen ${index + 1}`;
+            img.className = 'w-full h-full object-cover';
+            
+            slideDiv.appendChild(img);
+            galleryContainer.insertBefore(slideDiv, galleryContainer.firstChild);
+          });
+        }
+
+        // Update thumbnails
+        if (thumbnailGrid) {
+          // Clear existing thumbnails
+          thumbnailGrid.innerHTML = '';
+          
+          // Add new thumbnails
+          category.images.forEach((image, index) => {
+            const thumbButton = document.createElement('button');
+            thumbButton.className = `gallery-thumb flex-shrink-0 w-32 h-20 rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-lg ${index === 0 ? 'ring-2 ring-brand-primary' : 'ring-1 ring-gray-200 hover:ring-brand-primary/50'}`;
+            thumbButton.setAttribute('data-slide', index.toString());
+            
+            const img = document.createElement('img');
+            img.src = getImageSrc(image);
+            img.alt = `Thumbnail ${index + 1}`;
+            img.className = 'w-full h-full object-cover';
+            
+            thumbButton.appendChild(img);
+            thumbButton.addEventListener('click', () => updateSlide(index));
+            
+            thumbnailGrid.appendChild(thumbButton);
+          });
+          
+          // Force the container to expand
+          thumbnailGrid.style.width = 'fit-content';
+          thumbnailGrid.style.minWidth = '100%';
+        }
+
+        // Update total count
+        if (galleryTotal) {
+          galleryTotal.textContent = category.images.length.toString();
+        }
+
+        // Update category badge
+        if (categoryBadge) {
+          categoryBadge.textContent = category.label;
+        }
+
+        // Update category icon
+        updateCategoryIcon(categoryName);
+
+        // Reset counter to 1
+        if (galleryCounter) {
+          galleryCounter.textContent = '1';
+        }
+        
+        // Initial init for new setup
+        updateSlide(0);
+      }
       
-      // Close on ESC key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !videoModal.classList.contains('hidden')) {
-          closeModal();
-        }
-      });
-    }
+      // Initial Setup
+      updateSlide(0);
+      
+    }); // End forEach project section
   });
 </script>
 
 <style>
-  #thumbnailScrollContainer {
+  .thumbnail-scroll-container {
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
   
-  #thumbnailScrollContainer::-webkit-scrollbar {
+  .thumbnail-scroll-container::-webkit-scrollbar {
     display: none;
   }
   
-  #thumbnailGrid {
+  .thumbnail-grid {
     width: fit-content !important;
     min-width: 100%;
   }
   
   .gallery-thumb {
     min-width: 128px;
+  }
+
+  /* Specifications scroll area */
+  .specs-scroll-area {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(16, 54, 70, 0.3) transparent;
+  }
+  
+  .specs-scroll-area::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .specs-scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .specs-scroll-area::-webkit-scrollbar-thumb {
+    background: rgba(16, 54, 70, 0.3);
+    border-radius: 3px;
+  }
+  
+  .specs-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 54, 70, 0.5);
   }
 </style>

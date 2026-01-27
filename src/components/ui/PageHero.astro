@@ -1,0 +1,87 @@
+---
+import { Icon } from "astro-icon/components";
+import MosaicHeroBg from "./MosaicHeroBg.astro";
+
+interface Props {
+    title: string;
+    highlightedTitle?: string;
+    description: string;
+    badgeText?: string;
+}
+
+const { title, highlightedTitle, description, badgeText } = Astro.props;
+---
+
+<section
+    class="relative min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#103646] via-[#103646]/95 to-[#0a2530]"
+>
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-30 text-white">
+        <MosaicHeroBg />
+    </div>
+
+    <!-- Decorative Elements -->
+    <div
+        class="absolute top-20 left-10 w-72 h-72 bg-[#D79528]/20 rounded-full blur-3xl animate-pulse"
+    >
+    </div>
+    <div
+        class="absolute bottom-20 right-10 w-96 h-96 bg-[#D79528]/10 rounded-full blur-3xl animate-pulse"
+        style="animation-delay: 1s;"
+    >
+    </div>
+
+    <!-- Content -->
+    <div
+        class="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-28 text-center"
+    >
+        <!-- Badge -->
+        {
+            badgeText && (
+                <div
+                    class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-8"
+                    data-aos="fade-down"
+                >
+                    <Icon
+                        name="ph:caret-double-right-fill"
+                        class="w-5 h-5 text-[#D79528]"
+                    />
+                    <span class="text-white font-semibold text-sm">
+                        {badgeText}
+                    </span>
+                </div>
+            )
+        }
+
+        <!-- Title -->
+        <h1
+            class="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-tight mb-6"
+            data-aos="fade-up"
+        >
+            {title}
+            {
+                highlightedTitle && (
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#D79528] via-[#f0b454] to-[#D79528]">
+                        {highlightedTitle}
+                    </span>
+                )
+            }
+        </h1>
+
+        <!-- Description -->
+        <p
+            class="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto mb-10 leading-relaxed"
+            data-aos="fade-up"
+            data-aos-delay="100"
+        >
+            {description}
+        </p>
+
+        <!-- Scroll Indicator -->
+        <div
+            class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce"
+        >
+            <Icon name="ph:caret-down" class="w-8 h-8 text-white/50" />
+        </div>
+    </div>
+</section>

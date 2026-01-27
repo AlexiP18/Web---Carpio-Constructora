@@ -1,0 +1,164 @@
+---
+import { Icon } from "astro-icon/components";
+import MosaicHeroBg from "../../ui/MosaicHeroBg.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    badgeText: string;
+    badgeIcon: string;
+    images: { src: string; alt: string }[];
+}
+
+const { title, description, badgeText, badgeIcon, images } = Astro.props;
+---
+
+<section class="relative py-32 overflow-hidden hero-slider bg-brand-primary">
+    <!-- Background Image Slider -->
+    <div class="absolute inset-0 hero-slider-container z-0 opacity-60">
+        {
+            images.map((img, index) => (
+                <div class={`hero-slide ${index === 0 ? "active" : ""}`}>
+                    <img
+                        src={img.src}
+                        alt={img.alt}
+                        class="w-full h-full object-cover"
+                        loading={index === 0 ? "eager" : "lazy"}
+                    />
+                </div>
+            ))
+        }
+    </div>
+
+    <!-- Overlay -->
+    <div
+        id="mosaic-transition"
+        class="absolute inset-0 z-20 opacity-0 pointer-events-none transition-opacity duration-700 ease-in-out"
+    >
+        <MosaicHeroBg />
+    </div>
+
+    <!-- Decorative elements -->
+    <div class="absolute inset-0 opacity-10 z-20">
+        <div
+            class="absolute top-0 left-1/4 w-96 h-96 bg-[#D79528] rounded-full blur-3xl"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 right-1/4 w-96 h-96 bg-white rounded-full blur-3xl"
+        >
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="text-center max-w-4xl mx-auto" data-aos="fade-up">
+            <!-- Badge -->
+            <div
+                class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
+            >
+                <Icon name={badgeIcon} class="w-5 h-5 text-[#D79528]" />
+                <span
+                    class="text-white font-semibold text-sm uppercase tracking-wider"
+                    >{badgeText}</span
+                >
+            </div>
+
+            <!-- Title -->
+            <h1
+                class="text-5xl lg:text-7xl font-bold text-white leading-tight mb-6"
+            >
+                {title}
+            </h1>
+
+            <!-- Description -->
+            <p class="text-xl text-gray-200 leading-relaxed mb-8">
+                {description}
+            </p>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero-slider {
+        min-height: 600px;
+    }
+
+    .hero-slider-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+        will-change: opacity;
+    }
+
+    .hero-slide.active {
+        opacity: 1;
+        z-index: 1;
+    }
+
+    .hero-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        animation: kenburns 20s ease-in-out infinite;
+    }
+
+    @keyframes kenburns {
+        0%,
+        100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+    }
+</style>
+
+<script>
+    function initHeroSlider() {
+        const slides = document.querySelectorAll(".hero-slide");
+        const mosaicOverlay = document.getElementById("mosaic-transition");
+
+        if (slides.length <= 1) return;
+
+        let currentSlide = 0;
+
+        function nextSlide() {
+            // 1. Mostrar el efecto de vidrio/mosaico
+            if (mosaicOverlay) mosaicOverlay.style.opacity = "1";
+
+            // 2. Esperar a que el mosaico cubra la imagen (700ms coincide con duration-700)
+            setTimeout(() => {
+                // 3. Cambiar la imagen de fondo
+                slides[currentSlide].classList.remove("active");
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add("active");
+
+                // 4. Ocultar el mosaico para revelar la nueva imagen
+                setTimeout(() => {
+                    if (mosaicOverlay) mosaicOverlay.style.opacity = "0";
+                }, 100);
+            }, 700);
+        }
+
+        // Change slide every 3 seconds (slider más rápido)
+        setInterval(nextSlide, 3000);
+    }
+
+    // Init on load
+    document.addEventListener("DOMContentLoaded", initHeroSlider);
+    // Support Astro ViewTransitions
+    document.addEventListener("astro:page-load", initHeroSlider);
+</script>

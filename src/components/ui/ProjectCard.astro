@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import Button from './Button.astro';
+import Button from "./Button.astro";
 
 export interface Props {
   title: string;
@@ -11,46 +11,64 @@ export interface Props {
   delay?: number;
 }
 
-const { title, description, tags, imageUrl, projectSlug, delay = 0 } = Astro.props;
+const {
+  title,
+  description,
+  tags,
+  imageUrl,
+  projectSlug,
+  delay = 0,
+} = Astro.props;
 ---
 
-<div class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary-green/20 hover:-translate-y-2" data-aos="fade-up" data-aos-delay={delay}>
+<div
+  class="group bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-primary-green/20 hover:-translate-y-2"
+  data-aos="fade-up"
+  data-aos-delay={delay}
+>
   <!-- Image Section -->
   <div class="relative overflow-hidden">
-    <img 
-      src={imageUrl} 
+    <img
+      src={imageUrl}
       alt={title}
       class="w-full h-64 lg:h-80 object-cover group-hover:scale-105 transition-transform duration-500"
     />
-    
+
     <!-- Overlay with gradient -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-    
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+    >
+    </div>
+
     <!-- Floating Badge - Categoría del Proyecto -->
     <div class="absolute top-4 left-4">
-      {tags.includes('Conjunto Habitacional') ? (
-        <span class="inline-flex items-center gap-2 bg-[#103646]/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-white">
-          <Icon name="ph:buildings-fill" class="w-4 h-4" />
-          Conjunto Habitacional
-        </span>
-      ) : tags.includes('Diseño Residencial') ? (
-        <span class="inline-flex items-center gap-2 bg-[#D79528]/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-white">
-          <Icon name="ph:house-line-fill" class="w-4 h-4" />
-          Diseño Residencial
-        </span>
-      ) : tags.includes('Diseño Retail') ? (
-        <span class="inline-flex items-center gap-2 bg-[#103646]/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-white">
-          <Icon name="ph:storefront-fill" class="w-4 h-4" />
-          Diseño Retail
-        </span>
-      ) : null}
+      {
+        tags.includes("Conjunto Habitacional") ? (
+          <span class="inline-flex items-center gap-2 bg-[#D79528]/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-white">
+            <Icon name="ph:buildings-fill" class="w-4 h-4" />
+            Conjunto Habitacional
+          </span>
+        ) : tags.includes("Diseño Residencial") ? (
+          <span class="inline-flex items-center gap-2 bg-[#D79528]/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-white">
+            <Icon name="ph:house-line-fill" class="w-4 h-4" />
+            Diseño Residencial
+          </span>
+        ) : tags.includes("Diseño Retail") ? (
+          <span class="inline-flex items-center gap-2 bg-[#D79528]/90 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-white">
+            <Icon name="ph:storefront-fill" class="w-4 h-4" />
+            Diseño Retail
+          </span>
+        ) : null
+      }
     </div>
   </div>
 
   <!-- Content Section -->
   <div class="p-8 space-y-6">
     <!-- Title -->
-    <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-primary-green transition-colors leading-tight line-clamp-1">
+    <h3
+      class="text-2xl lg:text-3xl font-bold text-gray-900 group-hover:text-primary-green transition-colors leading-tight line-clamp-1"
+    >
       {title}
     </h3>
 
@@ -61,8 +79,8 @@ const { title, description, tags, imageUrl, projectSlug, delay = 0 } = Astro.pro
 
     <!-- Action Button -->
     <div class="pt-4">
-      <a 
-        href={`/proyecto/${projectSlug}`} 
+      <a
+        href={`/proyecto/${projectSlug}`}
         class="flex items-center justify-center gap-2 w-full bg-[#D79528] hover:bg-[#c08520] text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
       >
         <Icon name="ph:arrow-right" class="w-5 h-5" />
@@ -73,15 +91,24 @@ const { title, description, tags, imageUrl, projectSlug, delay = 0 } = Astro.pro
     <!-- Project Features -->
     <div class="grid grid-cols-3 gap-4 pt-4 border-t border-gray-100">
       <div class="text-center">
-        <Icon name="ph:calendar-fill" class="w-5 h-5 text-primary-green mx-auto mb-1" />
+        <Icon
+          name="ph:calendar-fill"
+          class="w-5 h-5 text-primary-green mx-auto mb-1"
+        />
         <div class="text-gray-600 text-sm">2025</div>
       </div>
       <div class="text-center">
-        <Icon name="ph:map-pin-fill" class="w-5 h-5 text-primary-green mx-auto mb-1" />
+        <Icon
+          name="ph:map-pin-fill"
+          class="w-5 h-5 text-primary-green mx-auto mb-1"
+        />
         <div class="text-gray-600 text-sm">Ambato-Ecuador</div>
       </div>
       <div class="text-center">
-        <Icon name="ph:star-fill" class="w-5 h-5 text-yellow-400 mx-auto mb-1" />
+        <Icon
+          name="ph:star-fill"
+          class="w-5 h-5 text-yellow-400 mx-auto mb-1"
+        />
         <div class="text-gray-600 text-sm">Destacado</div>
       </div>
     </div>

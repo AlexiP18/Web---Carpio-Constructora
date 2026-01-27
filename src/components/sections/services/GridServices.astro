@@ -1,0 +1,229 @@
+---
+import { Icon } from "astro-icon/components";
+import ServiceCard from "../../ui/ServiceCard.astro";
+import BackgroundWavesConjunto from "../../ui/BackgroundWavesConjunto.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    services: CollectionEntry<"servicios">[];
+    categories: string[];
+    imageMap: Record<string, string>;
+}
+
+const { services, categories, imageMap } = Astro.props;
+---
+
+<section class="py-20 bg-gray-50 relative overflow-hidden">
+    <!-- Background Component -->
+    <div
+        class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"
+    >
+        <BackgroundWavesConjunto />
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <!-- Filter Chips -->
+        <div class="mb-12" data-aos="fade-up">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-gray-900">
+                    Filtrar por Categoría
+                </h2>
+                <div class="text-sm text-gray-500">
+                    <span id="service-count">{services.length}</span> servicios
+                </div>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+                {
+                    categories.map((category, index) => {
+                        // Asignar iconos según la categoría
+                        let iconName = "ph:squares-four-fill";
+                        if (category === "Todos")
+                            iconName = "ph:squares-four-fill";
+                        else if (category === "Construcción")
+                            iconName = "ph:hammer-fill";
+                        else if (category === "Remodelación")
+                            iconName = "ph:paint-roller-fill";
+                        else if (category === "Diseño")
+                            iconName = "ph:ruler-fill";
+
+                        return (
+                            <button
+                                data-category={category}
+                                class={`filter-chip px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 ${
+                                    index === 0
+                                        ? "bg-[#103646] text-white shadow-lg scale-105"
+                                        : "bg-white text-gray-700 border border-gray-200 hover:border-[#103646] hover:text-[#103646] hover:shadow-md"
+                                }`}
+                            >
+                                <span class="flex items-center gap-2">
+                                    <Icon name={iconName} class="w-4 h-4" />
+                                    {category}
+                                </span>
+                            </button>
+                        );
+                    })
+                }
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div id="services-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {
+                services.map((servicio) => {
+                    const serviceImage =
+                        imageMap[servicio.slug] ||
+                        "/images/placeholder-image.png";
+
+                    return (
+                        <div
+                            class="service-card"
+                            data-tags={JSON.stringify([
+                                servicio.data.service?.category || "",
+                            ])}
+                        >
+                            <ServiceCard
+                                title={servicio.data.title}
+                                description={servicio.data.description}
+                                category={
+                                    servicio.data.service?.category ||
+                                    "Servicio"
+                                }
+                                imageUrl={serviceImage}
+                                serviceSlug={
+                                    servicio.data.slug ?? servicio.slug
+                                }
+                            />
+                        </div>
+                    );
+                })
+            }
+        </div>
+
+        <!-- No Results Message -->
+        <div id="no-results" class="hidden text-center py-20">
+            <div
+                class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+                <Icon
+                    name="ph:magnifying-glass"
+                    class="w-10 h-10 text-gray-400"
+                />
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">
+                No se encontraron servicios
+            </h3>
+            <p class="text-gray-600">Intenta con otra categoría</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Filter functionality
+    function initFilter() {
+        const filterChips = document.querySelectorAll(".filter-chip");
+        const serviceCards = document.querySelectorAll(".service-card");
+        const serviceCount = document.getElementById("service-count");
+        const noResults = document.getElementById("no-results");
+
+        if (!filterChips.length || !serviceCards.length) return;
+
+        filterChips.forEach((chip) => {
+            chip.addEventListener("click", () => {
+                const selectedCategory = chip.getAttribute("data-category");
+                if (!selectedCategory) return;
+
+                // Update active chip styles
+                filterChips.forEach((c) => {
+                    c.classList.remove(
+                        "bg-[#103646]",
+                        "text-white",
+                        "shadow-lg",
+                        "scale-105",
+                    );
+                    c.classList.add(
+                        "bg-white",
+                        "text-gray-700",
+                        "border",
+                        "border-gray-200",
+                    );
+                });
+
+                chip.classList.remove(
+                    "bg-white",
+                    "text-gray-700",
+                    "border",
+                    "border-gray-200",
+                );
+                chip.classList.add(
+                    "bg-[#103646]",
+                    "text-white",
+                    "shadow-lg",
+                    "scale-105",
+                );
+
+                // Filter services
+                let visibleCount = 0;
+                serviceCards.forEach((card) => {
+                    const cardEl = card as HTMLDivElement;
+                    const tagsAttr = cardEl.getAttribute("data-tags");
+
+                    try {
+                        const tags = JSON.parse(tagsAttr || "[]");
+                        const normalizedTags = tags.map((t: string) =>
+                            t.toLowerCase().trim(),
+                        );
+                        const normalizedCategory = selectedCategory
+                            .toLowerCase()
+                            .trim();
+
+                        if (
+                            selectedCategory === "Todos" ||
+                            normalizedTags.some((tag: string) =>
+                                tag.includes(normalizedCategory),
+                            )
+                        ) {
+                            cardEl.style.display = "block";
+                            visibleCount++;
+                        } else {
+                            cardEl.style.display = "none";
+                        }
+                    } catch (e) {
+                        console.error("Error parsing tags", e);
+                    }
+                });
+
+                // Update count and show/hide no results
+                if (serviceCount) {
+                    serviceCount.textContent = visibleCount.toString();
+                }
+
+                if (noResults) {
+                    noResults.classList.toggle("hidden", visibleCount > 0);
+                }
+
+                // Refresh AOS to handle layout changes
+                if (typeof window !== "undefined" && (window as any).AOS) {
+                    setTimeout(() => {
+                        (window as any).AOS.refresh();
+                    }, 100);
+                }
+            });
+        });
+    }
+
+    // Run on load
+    document.addEventListener("DOMContentLoaded", initFilter);
+    // Support Astro ViewTransitions if added later
+    document.addEventListener("astro:page-load", initFilter);
+</script>
+
+<style>
+    .filter-chip {
+        cursor: pointer;
+    }
+
+    .filter-chip:active {
+        transform: scale(0.98);
+    }
+</style>

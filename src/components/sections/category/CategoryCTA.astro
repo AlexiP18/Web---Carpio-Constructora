@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+import CubixBlackBg from "../../ui/CubixBlackBg.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    whatsappLink: string;
+    buttonText?: string;
+}
+
+const {
+    title,
+    description,
+    whatsappLink,
+    buttonText = "Contactar por WhatsApp",
+} = Astro.props;
+---
+
+<section class="py-20 bg-brand-primary relative overflow-hidden">
+    <!-- SVG Background -->
+    <div
+        class="absolute inset-0 w-full h-full opacity-30 mix-blend-normal pointer-events-none"
+    >
+        <CubixBlackBg />
+    </div>
+
+    <div
+        class="max-w-4xl mx-auto px-6 text-center relative z-10"
+        data-aos="fade-up"
+    >
+        <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
+            {title}
+        </h2>
+        <p class="text-xl text-gray-200 mb-8">
+            {description}
+        </p>
+        <a
+            href={whatsappLink}
+            target="_blank"
+            class="inline-flex items-center gap-2 bg-[#D79528] hover:bg-[#c08520] text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 shadow-lg"
+        >
+            <Icon name="ph:whatsapp-logo-fill" class="w-6 h-6" />
+            {buttonText}
+        </a>
+    </div>
+</section>
