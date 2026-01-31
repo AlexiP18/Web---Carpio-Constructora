@@ -1,204 +1,217 @@
 ---
 /**
  * ProjectsBlock.astro
- * Bloque de Proyectos con filtros y múltiples layouts
+ * Bloque de Proyectos Destacados (Slider Circular 3D)
  */
-import { getCollection } from 'astro:content';
-import CloudinaryImage from '@/components/ui/CloudinaryImage.astro';
+import { getCollection } from "astro:content";
+import MosaicSecondaryBg from "@/components/ui/MosaicSecondaryBg.astro";
 
 interface Props {
   title?: string;
   subtitle?: string;
-  layout?: 'grid' | 'masonry' | 'carousel' | 'slider';
-  limit?: number;
-  showFilters?: boolean;
-  filterCategories?: string[];
   ctaText?: string;
   ctaLink?: string;
 }
 
 const {
-  title,
-  subtitle,
-  layout = 'grid',
-  limit = 6,
-  showFilters = false,
-  filterCategories = [],
+  title = "Proyectos Destacados",
+  subtitle = "Conoce nuestros proyectos más recientes",
   ctaText,
   ctaLink,
 } = Astro.props;
 
-// Obtener proyectos de la colección
-const allProjects = await getCollection('proyectos');
-
-// Filtrar por categorías si se especifican
-let projects = filterCategories.length > 0
-  ? allProjects.filter(p => filterCategories.includes((p.data as any).category || ''))
-  : allProjects;
-
-// Limitar cantidad
-projects = projects.slice(0, limit);
-
-// Obtener categorías únicas para filtros
-const uniqueCategories = [...new Set(allProjects.map(p => (p.data as any).category).filter(Boolean))] as string[];
+// Fetch top 4 projects for the slider
+const projects = (await getCollection("proyectos")).slice(0, 4);
 ---
 
-<section class="py-16 md:py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-4">
-    {/* Header */}
-    {(title || subtitle) && (
-      <div class="text-center mb-12">
-        {title && (
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            {title}
-          </h2>
-        )}
-        {subtitle && (
-          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-            {subtitle}
-          </p>
-        )}
+<section class="w-full py-12 lg:py-20 relative overflow-hidden bg-brand-secondary">
+  <!-- SVG Background -->
+  <div class="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+    <MosaicSecondaryBg />
+  </div>
+
+  <div class="container mx-auto px-4 relative z-10">
+    <!-- Header Section -->
+    <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="1000">
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">
+        <div class="w-2 h-2 bg-[#D79528] rounded-full"></div>
+        <span class="font-heebo font-semibold text-sm text-[#D79528] tracking-wider uppercase">
+          Nuestros Proyectos
+        </span>
       </div>
-    )}
-    
-    {/* Filters */}
-    {showFilters && uniqueCategories.length > 0 && (
-      <div class="flex flex-wrap justify-center gap-2 mb-8" id="project-filters">
-        <button
-          class="px-4 py-2 rounded-full bg-primary-500 text-white font-medium transition-colors filter-btn active"
-          data-filter="all"
-        >
-          Todos
-        </button>
-        {uniqueCategories.map((category) => (
-          <button
-            class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-primary-100 font-medium transition-colors filter-btn"
-            data-filter={category}
-          >
-            {category?.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}
-          </button>
+      <h2 class="font-urbanist font-bold text-4xl lg:text-6xl text-white mb-6">
+        {title}
+      </h2>
+      <p class="font-heebo text-lg lg:text-xl text-neutral-300 max-w-2xl mx-auto">
+        {subtitle}
+      </p>
+    </div>
+
+    <!-- Swiper Container -->
+    <div class="portfolio-slider swiper w-full max-w-[1400px] mx-auto pb-12">
+      <div class="swiper-wrapper">
+        {projects.map((project) => (
+          <div class="swiper-slide w-[350px] md:w-[600px] lg:w-[800px]">
+            <div class="group relative bg-white rounded-3xl overflow-hidden shadow-2xl transition-all duration-300">
+              
+              <!-- Image Container -->
+              <div class="relative h-[250px] md:h-[400px] overflow-hidden">
+                <img 
+                  src={project.data.backgroundImage} 
+                  alt={project.data.title}
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                
+                <!-- Floating Badge -->
+                <div class="absolute top-4 left-4">
+                  <span class="px-3 py-1 bg-white/90 backdrop-blur rounded-lg text-xs font-bold text-neutral-800 uppercase tracking-wide">
+                    {project.data.tags?.[0] || "Residencial"}
+                  </span>
+                </div>
+
+                <!-- Title on Image -->
+                <div class="absolute bottom-6 left-6 right-6">
+                  <h3 class="font-urbanist font-bold text-2xl md:text-4xl text-white leading-tight">
+                    {project.data.title}
+                  </h3>
+                </div>
+              </div>
+
+              <!-- Content Body -->
+              <div class="p-6 md:p-8 bg-white relative">
+                <p class="font-heebo text-neutral-500 text-sm md:text-base mb-6 line-clamp-2">
+                  {project.data.description}
+                </p>
+                
+                <div class="flex items-center justify-between border-t border-neutral-100 pt-6">
+                  <a href={`/proyectos/${project.slug}`} class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-neutral-300 text-neutral-700 font-medium hover:bg-neutral-900 hover:text-white hover:border-neutral-900 transition-all duration-300">
+                    Ver más
+                  </a>
+                  <div class="hidden md:flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                    <span class="text-xs font-bold text-neutral-400 uppercase tracking-widest">
+                      {project.data.specifications?.deliveryDate?.label || "DISPONIBLE"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
         ))}
       </div>
-    )}
-    
-    {/* Projects Grid */}
-    <div class={`grid gap-8 ${layout === 'grid' ? 'md:grid-cols-2 lg:grid-cols-3' : ''}`} id="projects-grid">
-      {projects.map((project) => {
-        const projectData = project.data as any;
-        return (
-        <article
-          class="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow project-card"
-          data-category={projectData.category || ''}
-        >
-          <a href={`/proyecto/${project.slug}`} class="block">
-            {/* Image */}
-            <div class="relative overflow-hidden aspect-video">
-              {projectData.backgroundImage ? (
-                <CloudinaryImage
-                  src={projectData.backgroundImage}
-                  alt={projectData.title}
-                  width={400}
-                  height={250}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              ) : (
-                <div class="w-full h-full bg-gray-200 flex items-center justify-center">
-                  <span class="text-gray-400">Sin imagen</span>
-                </div>
-              )}
-              
-              {/* Status Badge */}
-              {projectData.status && (
-                <span class={`absolute top-3 left-3 px-3 py-1 text-xs font-semibold rounded-full ${
-                  projectData.status === 'completado' ? 'bg-green-500 text-white' :
-                  projectData.status === 'en-construccion' ? 'bg-yellow-500 text-white' :
-                  projectData.status === 'preventa' ? 'bg-blue-500 text-white' :
-                  'bg-gray-500 text-white'
-                }`}>
-                  {projectData.status.replace(/-/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}
-                </span>
-              )}
-            </div>
-            
-            {/* Content */}
-            <div class="p-5">
-              <h3 class="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary-500 transition-colors">
-                {projectData.title}
-              </h3>
-              
-              {projectData.description && (
-                <p class="text-gray-600 text-sm line-clamp-2 mb-3">
-                  {projectData.description}
-                </p>
-              )}
-              
-              {/* Location */}
-              {projectData.location?.city && (
-                <div class="flex items-center text-gray-500 text-sm">
-                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  {projectData.location.city}
-                  {projectData.location.sector && `, ${projectData.location.sector}`}
-                </div>
-              )}
-            </div>
-          </a>
-        </article>
-      )})}
+      
+      <!-- Pagination -->
+      <div class="swiper-pagination mt-8"></div>
     </div>
-    
-    {/* Empty State */}
-    {projects.length === 0 && (
-      <div class="text-center py-12">
-        <p class="text-gray-500">No hay proyectos disponibles.</p>
-      </div>
-    )}
-    
-    {/* CTA */}
+
+    {/* CTA footer if needed */}
     {ctaText && ctaLink && (
-      <div class="text-center mt-12">
-        <a
-          href={ctaLink}
-          class="inline-flex items-center px-6 py-3 bg-primary-500 hover:bg-primary-600 text-white font-semibold rounded-lg transition-colors"
-        >
-          {ctaText}
-        </a>
-      </div>
+       <div class="text-center mt-8">
+          <a href={ctaLink} class="inline-block px-8 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary-dark transition-colors">
+             {ctaText}
+          </a>
+       </div>
     )}
+
   </div>
 </section>
 
-{showFilters && (
-  <script>
-    // Simple filter functionality
-    document.addEventListener('DOMContentLoaded', () => {
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const projectCards = document.querySelectorAll('.project-card');
-      
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const filter = btn.getAttribute('data-filter');
-          
-          // Update active button
-          filterBtns.forEach(b => b.classList.remove('bg-primary-500', 'text-white', 'active'));
-          filterBtns.forEach(b => b.classList.add('bg-gray-100', 'text-gray-700'));
-          btn.classList.remove('bg-gray-100', 'text-gray-700');
-          btn.classList.add('bg-primary-500', 'text-white', 'active');
-          
-          // Filter cards
-          projectCards.forEach(card => {
-            const category = card.getAttribute('data-category');
-            const htmlCard = card as HTMLElement;
-            if (filter === 'all' || category === filter) {
-              htmlCard.style.display = '';
-            } else {
-              htmlCard.style.display = 'none';
-            }
-          });
-        });
-      });
+<style>
+  /* Swiper styles override */
+  .swiper-slide {
+    transition: all 0.5s ease;
+    opacity: 0.4;
+    transform: scale(0.85);
+    filter: blur(2px);
+  }
+
+  .swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+    z-index: 10;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    background: white;
+    opacity: 0.2;
+    width: 10px;
+    height: 10px;
+  }
+  
+  :global(.swiper-pagination-bullet-active) {
+    background: #D79528;
+    opacity: 1;
+    width: 30px;
+    border-radius: 10px;
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper';
+  import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/effect-coverflow';
+  import 'swiper/css/pagination';
+
+  // Initialize Swiper
+  const initSwiper = () => {
+    const swiperEl = document.querySelector('.portfolio-slider');
+    if (!swiperEl) return;
+
+    // Destroy existing instance if any
+    // @ts-ignore
+    if (swiperEl.swiper) {
+      // @ts-ignore
+      swiperEl.swiper.destroy(true, true);
+    }
+
+    new Swiper('.portfolio-slider', {
+      modules: [EffectCoverflow, Pagination, Autoplay],
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: true,
+      speed: 800,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 150,
+        modifier: 2.5,
+        slideShadows: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1.2,
+          coverflowEffect: {
+            depth: 50,
+            modifier: 1,
+          },
+        },
+        768: {
+          slidesPerView: 'auto',
+          coverflowEffect: {
+            depth: 100,
+            modifier: 2,
+          },
+        }
+      }
     });
-  </script>
-)}
+  };
+
+  // Run on page load and view transitions
+  document.addEventListener('astro:page-load', initSwiper);
+  document.addEventListener('DOMContentLoaded', initSwiper);
+</script>

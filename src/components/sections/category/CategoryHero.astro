@@ -13,7 +13,9 @@ interface Props {
 const { title, description, badgeText, badgeIcon, images } = Astro.props;
 ---
 
-<section class="relative py-32 overflow-hidden hero-slider bg-brand-primary">
+<section
+    class="relative min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center py-32 overflow-hidden hero-slider bg-brand-primary"
+>
     <!-- Background Image Slider -->
     <div class="absolute inset-0 hero-slider-container z-0 opacity-60">
         {
@@ -50,7 +52,7 @@ const { title, description, badgeText, badgeIcon, images } = Astro.props;
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-6 relative z-30">
+    <div class="max-w-7xl mx-auto px-6 relative z-30 w-full">
         <div class="text-center max-w-4xl mx-auto" data-aos="fade-up">
             <!-- Badge -->
             <div
@@ -75,6 +77,13 @@ const { title, description, badgeText, badgeIcon, images } = Astro.props;
                 {description}
             </p>
         </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div
+        class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-30"
+    >
+        <Icon name="ph:caret-down" class="w-8 h-8 text-white/50" />
     </div>
 </section>
 

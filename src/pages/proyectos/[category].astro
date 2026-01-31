@@ -137,13 +137,23 @@ const { category, projects, featuredDocs } = Astro.props;
 let heroImages: { src: string; alt: string }[] = [];
 
 if (featuredDocs.length > 0) {
-    // Priorizar imágenes de proyectos destacados
-    heroImages = featuredDocs
-        .filter((p) => p.data.backgroundImage)
-        .map((p) => ({
-            src: p.data.backgroundImage,
-            alt: p.data.title,
-        }));
+    // Priorizar imágenes de proyectos destacados (incluyendo imágenes adicionales de su galería)
+    heroImages = featuredDocs.flatMap((p) => {
+        const mainImage = p.data.backgroundImage
+            ? [{ src: p.data.backgroundImage, alt: p.data.title }]
+            : [];
+
+        // Agregar hasta 4 imágenes extra de la galería del proyecto (evitando duplicar la principal)
+        const extraImages = (p.data.images || [])
+            .map((img: any, index: number) => ({
+                src: typeof img === "string" ? img : img.src,
+                alt: `${p.data.title} - Imagen ${index + 1}`,
+            }))
+            .filter((img) => !mainImage.some((main) => main.src === img.src))
+            .slice(0, 4);
+
+        return [...mainImage, ...extraImages];
+    });
 } else if (projects.length > 0) {
     // Si no hay destacados, usar imágenes de los proyectos de la lista
     heroImages = projects

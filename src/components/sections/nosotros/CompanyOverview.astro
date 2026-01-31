@@ -1,34 +1,41 @@
 ---
-import Button from '../../ui/Button.astro';
-import { Icon } from 'astro-icon/components';
-const valoresImage = '/images/pages/ValoresInstitucionales.webp';
+import Button from "../../ui/Button.astro";
+import { Icon } from "astro-icon/components";
+const valoresImage = "/images/pages/ValoresInstitucionales.webp";
 ---
 
-<section class=" py-20 relative overflow-hidden">
-    
-
-  
+<section class="py-20 relative overflow-hidden">
   <!-- Decorative background elements -->
-  <div class="absolute top-0 left-0 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-secondary/5 rounded-full blur-3xl"></div>
+  <div
+    class="absolute top-0 left-0 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 right-0 w-96 h-96 bg-brand-secondary/5 rounded-full blur-3xl"
+  >
+  </div>
 
   <div class="max-w-7xl mx-auto px-6">
     <!-- Header Section -->
     <div class="text-center max-w-4xl mx-auto mb-20" data-aos="fade-up">
-      <div class="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-4 py-2 mb-6">
+      <div
+        class="inline-flex items-center gap-2 bg-brand-primary/10 backdrop-blur-sm border border-brand-primary/20 rounded-full px-4 py-2 mb-6"
+      >
         <Icon name="ph:buildings-fill" class="w-5 h-5 text-brand-primary" />
-        <span class="text-brand-primary font-semibold text-sm">Nuestra Empresa</span>
+        <span class="text-brand-primary font-semibold text-sm"
+          >Nuestra Empresa</span
+        >
       </div>
-      
+
       <h2 class="text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-        Comprometidos con la 
-        <span class="text-brand-primary">
-          calidad y la innovación
-        </span>
+        Comprometidos con la
+        <span class="text-brand-primary"> calidad y la innovación </span>
       </h2>
-      
+
       <p class="text-xl text-gray-600 leading-relaxed">
-        En Constructora Carpio, nos dedicamos a construir sueños. Cada proyecto es una oportunidad para crear espacios únicos y funcionales que perduren en el tiempo.
+        En Constructora Carpio, nos dedicamos a construir sueños. Cada proyecto
+        es una oportunidad para crear espacios únicos y funcionales que perduren
+        en el tiempo.
       </p>
     </div>
 
@@ -38,26 +45,39 @@ const valoresImage = '/images/pages/ValoresInstitucionales.webp';
       <div class="space-y-12">
         <!-- Misión -->
         <div class="space-y-6" data-aos="fade-right" data-aos-delay="100">
-          <div class="w-16 h-16 bg-brand-secondary rounded-2xl flex items-center justify-center">
+          <div
+            class="w-16 h-16 bg-brand-secondary rounded-2xl flex items-center justify-center"
+          >
             <Icon name="ph:target-fill" class="w-8 h-8 text-white" />
           </div>
           <div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestra Misión</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              Nuestra Misión
+            </h3>
             <p class="text-gray-600 leading-relaxed">
-              Ofrecemos soluciones integrales en construcción y diseño , creando espacios modernos, funcionales y de calidad, reflejando el estilo y las necesidades de cada cliente.
+              Ofrecemos soluciones integrales en construcción y diseño , creando
+              espacios modernos, funcionales y de calidad, reflejando el estilo
+              y las necesidades de cada cliente.
             </p>
           </div>
         </div>
 
         <!-- Visión -->
         <div class="space-y-6" data-aos="fade-right" data-aos-delay="200">
-          <div class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl flex items-center justify-center">
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl flex items-center justify-center"
+          >
             <Icon name="ph:eye-fill" class="w-8 h-8 text-white" />
           </div>
           <div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestra Visión</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              Nuestra Visión
+            </h3>
             <p class="text-gray-600 leading-relaxed">
-              Ser referentes en construcción y diseño integral, creando proyectos que inspiren bienestar y estilo, fundamentados en la innovación, la excelencia, la ética y el compromiso con nuestros clientes.
+              Ser referentes en construcción y diseño integral, creando
+              proyectos que inspiren bienestar y estilo, fundamentados en la
+              innovación, la excelencia, la ética y el compromiso con
+              nuestros clientes.
             </p>
           </div>
         </div>
@@ -66,17 +86,26 @@ const valoresImage = '/images/pages/ValoresInstitucionales.webp';
       <!-- Center Image -->
       <div class="relative" data-aos="zoom-in" data-aos-delay="300">
         <div class="h-[600px] rounded-3xl overflow-hidden shadow-2xl relative">
-          <img 
-            src={valoresImage} 
-            alt="Valores Institucionales" 
+          <img
+            src={valoresImage}
+            alt="Valores Institucionales"
             class="w-full h-full object-cover"
           />
           <!-- Text overlay -->
-          <div class="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-900/30 to-slate-900/50 flex items-center justify-center">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-slate-900/50 via-slate-900/30 to-slate-900/50 flex items-center justify-center"
+          >
             <div class="text-center space-y-4 px-6">
-              <Icon name="ph:buildings-fill" class="w-20 h-20 text-white mx-auto drop-shadow-lg" />
-              <div class="text-3xl font-bold text-white drop-shadow-lg">Constructora Carpio</div>
-              <div class="text-xl text-white/90 drop-shadow-md">8+ años construyendo sueños</div>
+              <Icon
+                name="ph:buildings-fill"
+                class="w-20 h-20 text-white mx-auto drop-shadow-lg"
+              />
+              <div class="text-3xl font-bold text-white drop-shadow-lg">
+                Constructora Carpio
+              </div>
+              <div class="text-xl text-white/90 drop-shadow-md">
+                8+ años construyendo sueños
+              </div>
             </div>
           </div>
         </div>
@@ -86,26 +115,38 @@ const valoresImage = '/images/pages/ValoresInstitucionales.webp';
       <div class="space-y-12">
         <!-- Valores -->
         <div class="space-y-6" data-aos="fade-left" data-aos-delay="100">
-          <div class="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center">
+          <div
+            class="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center"
+          >
             <Icon name="ph:heart-fill" class="w-8 h-8 text-white" />
           </div>
           <div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Nuestros Valores</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              Nuestros Valores
+            </h3>
             <p class="text-gray-600 leading-relaxed">
-              Integridad, innovación, trabajo en equipo y responsabilidad social son los pilares fundamentales que guían cada decisión en nuestra empresa.
+              Integridad, innovación, trabajo en equipo y responsabilidad social
+              son los pilares fundamentales que guían cada decisión en nuestra
+              empresa.
             </p>
           </div>
         </div>
 
         <!-- Por qué elegirnos -->
         <div class="space-y-6" data-aos="fade-left" data-aos-delay="200">
-          <div class="w-16 h-16 bg-gradient-to-br from-brand-secondary to-brand-secondary-dark rounded-2xl flex items-center justify-center">
+          <div
+            class="w-16 h-16 bg-gradient-to-br from-brand-secondary to-brand-secondary-dark rounded-2xl flex items-center justify-center"
+          >
             <Icon name="ph:star-fill" class="w-8 h-8 text-white" />
           </div>
           <div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Por Qué Elegirnos</h3>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+              Por Qué Elegirnos
+            </h3>
             <p class="text-gray-600 leading-relaxed">
-              Contamos con más de 8 años de experiencia, un equipo de expertos certificados y un compromiso inquebrantable con la satisfacción del cliente.
+              Contamos con más de 8 años de experiencia, un equipo de expertos
+              certificados y un compromiso inquebrantable con la satisfacción
+              del cliente.
             </p>
           </div>
         </div>
@@ -113,12 +154,23 @@ const valoresImage = '/images/pages/ValoresInstitucionales.webp';
     </div>
 
     <!-- CTA Section -->
-    <div class="text-center mt-20 space-y-8" data-aos="fade-up" data-aos-delay="500">
+    <div class="text-center mt-20 space-y-8">
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button variant="success" href="https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20su%20empresa%20y%20servicios.%20Estoy%20interesad%40%20en%20trabajar%20con%20ustedes." target="_blank" iconPosition="left" icon="ph:whatsapp-logo-fill">
+        <Button
+          variant="success"
+          href="https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20su%20empresa%20y%20servicios.%20Estoy%20interesad%40%20en%20trabajar%20con%20ustedes."
+          target="_blank"
+          iconPosition="left"
+          icon="ph:whatsapp-logo-fill"
+        >
           Contáctanos Hoy
         </Button>
-        <Button variant="outline-dark" href="/proyectos" iconPosition="left" icon="ph:arrow-right">
+        <Button
+          variant="outline-dark"
+          href="/proyectos"
+          iconPosition="left"
+          icon="ph:arrow-right"
+        >
           Ver Nuestros Proyectos
         </Button>
       </div>

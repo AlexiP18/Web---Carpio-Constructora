@@ -359,7 +359,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
               class="thumbnail-scroll-container overflow-x-auto scrollbar-hide scroll-smooth"
               style="scrollbar-width: none; -ms-overflow-style: none; width: 100%;"
             >
-              <div class="thumbnail-grid flex gap-4 pb-2" style="width: fit-content; min-width: 100%;">
+              <div class="thumbnail-grid flex gap-4 p-4" style="width: fit-content; min-width: 100%;">
                 {categories[0].images.map((image, index) => (
                   <button 
                     class={`gallery-thumb flex-shrink-0 w-32 h-20 rounded-2xl overflow-hidden transition-all duration-300 shadow-md hover:shadow-lg ${index === 0 ? 'ring-2 ring-brand-primary' : 'ring-1 ring-gray-200 hover:ring-brand-primary/50'}`}
@@ -647,7 +647,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
         categoryIcon.innerHTML = iconSvg;
       }
 
-      function updateSlide(index: number) {
+      function updateSlide(index: number, skipScroll: boolean = false) {
         if (!currentCategory || !currentCategory.images || index < 0 || index >= currentCategory.images.length) return;
         
         // Update slides
@@ -666,10 +666,12 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
             if (i === index) {
               thumb.classList.remove('ring-1', 'ring-gray-200', 'hover:ring-brand-primary/50');
               thumb.classList.add('ring-2', 'ring-brand-primary');
-              // Scroll thumbnail into view
-              try {
-                thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-              } catch(e) { /* ignore */ }
+              // Scroll thumbnail into view only if not skipping (e.g. init)
+              if (!skipScroll) {
+                try {
+                  thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                } catch(e) { /* ignore */ }
+              }
             } else {
               thumb.classList.remove('ring-2', 'ring-brand-primary');
               thumb.classList.add('ring-1', 'ring-gray-200', 'hover:ring-brand-primary/50');
@@ -832,11 +834,11 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
         }
         
         // Initial init for new setup
-        updateSlide(0);
+        updateSlide(0, true);
       }
       
       // Initial Setup
-      updateSlide(0);
+      updateSlide(0, true);
       
     }); // End forEach project section
   });

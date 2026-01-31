@@ -1,154 +1,209 @@
 ---
 import { getCollection } from "astro:content";
-import Card from "../../base/Card.astro";
-import Button from "../../ui/Button.astro";
 import MosaicSecondaryBg from "../../ui/MosaicSecondaryBg.astro";
 
-const projectImage = "/images/pages/project/PROJECT_Hero_Slider_1.webp";
+// Fetch projects and ensure we have enough for a smooth infinite loop (at least 8)
+const allProjects = await getCollection("proyectos");
+let projects = allProjects;
 
-const projects = (await getCollection("proyectos")).slice(0, 3);
+// Duplicate array if too few items to guarantee perfect looping (Swiper needs buffer)
+if (projects.length > 0) {
+  while (projects.length < 12) {
+    projects = [...projects, ...allProjects];
+  }
+}
+// Limit to 12 to verify loop performance without over-rendering
+projects = projects.slice(0, 12);
 ---
 
-<!-- Portfolio Section with Modern Card Layout -->
-<section
-  class="w-full py-8 lg:py-12 relative overflow-hidden bg-brand-secondary"
->
+<!-- Portfolio Section with Circular Slider -->
+<section class="w-full py-12 lg:py-20 relative overflow-hidden bg-brand-secondary">
   <!-- SVG Background -->
-  <div class="absolute inset-0 w-full h-full pointer-events-none">
+  <div class="absolute inset-0 w-full h-full pointer-events-none opacity-20">
     <MosaicSecondaryBg />
   </div>
 
-  <div class="container mx-auto px-6 lg:px-8 relative z-10">
+  <div class="container mx-auto px-4 relative z-10">
     <!-- Header Section -->
-    <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="1000">
-      <!-- Tagline -->
-      <div
-        class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6"
-      >
-        <div class="w-2 h-2 bg-[#D79528] rounded-full"></div>
-        <span
-          class="font-heebo font-semibold text-sm text-[#D79528] tracking-wider uppercase"
-        >
+    <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="1000">
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">
+        <div class="w-2 h-2 bg-white rounded-full"></div>
+        <span class="font-heebo font-semibold text-sm text-white tracking-wider uppercase">
           Nuestros Proyectos
         </span>
       </div>
-
-      <!-- Main Title -->
-      <h2
-        class="font-urbanist font-bold text-4xl lg:text-6xl leading-tight text-white mb-6 max-w-4xl mx-auto"
-      >
+      <h2 class="font-urbanist font-bold text-4xl lg:text-6xl text-white mb-6">
         Calidad en cada proyecto
       </h2>
-      <!-- Subtitle -->
-      <p
-        class="font-heebo text-lg lg:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed"
-      >
-        Transformamos tus ideas en realidades constructivas con excelencia y
-        innovación.
+      <p class="font-heebo text-lg lg:text-xl text-neutral-300 max-w-2xl mx-auto">
+        Transformamos tus ideas en realidades constructivas con excelencia y innovación.
       </p>
     </div>
 
-    <!-- Projects Grid Layout -->
-    <div class="flex justify-center mb-8">
-      <div
-        class="group relative bg-white rounded-2xl border border-neutral-200/60 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden max-w-4xl w-full"
-        data-aos="fade-up"
-        data-aos-duration="800"
-      >
-        <!-- Image Section -->
-        <div class="relative h-64 lg:h-72 overflow-hidden">
-          <img
-            src={projectImage}
-            alt="Imagen del proyecto Los Arrayanes de Izamba"
-            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-            loading="eager"
-          />
-          <!-- Overlay Gradient -->
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
-          >
-          </div>
+    <!-- Swiper Container -->
+    <div class="relative max-w-[1500px] mx-auto">
+      <div class="portfolio-slider swiper w-full pb-12">
+        <div class="swiper-wrapper">
+          {projects.map((project) => (
+            <div class="swiper-slide w-[350px] md:w-[600px] lg:w-[800px]">
+              <div class="group relative bg-white rounded-3xl overflow-hidden shadow-2xl transition-all duration-300">
+                
+                <!-- Image Container -->
+                <div class="relative h-[250px] md:h-[400px] overflow-hidden">
+                  <img 
+                    src={project.data.backgroundImage} 
+                    alt={project.data.title}
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+                  
+                  <!-- Floating Badge -->
+                  <div class="absolute top-4 left-4">
+                    <span class="px-3 py-1 bg-white/90 backdrop-blur rounded-lg text-xs font-bold text-neutral-800 uppercase tracking-wide">
+                      {project.data.tags?.[0] || "Residencial"}
+                    </span>
+                  </div>
 
-          <!-- Category Badge -->
-          <div class="absolute top-3 left-3">
-            <span
-              class="inline-flex items-center px-2 py-1 rounded-lg text-xs font-semibold bg-white/90 backdrop-blur-sm text-neutral-700 border border-white/20"
-            >
-              Residencial
-            </span>
-          </div>
+                  <!-- Title on Image -->
+                  <div class="absolute bottom-6 left-6 right-6">
+                    <h3 class="font-urbanist font-bold text-2xl md:text-4xl text-white leading-tight">
+                      {project.data.title}
+                    </h3>
+                  </div>
+                </div>
 
-          <!-- Title Overlay -->
-          <div class="absolute bottom-4 left-4 right-4">
-            <h3 class="font-urbanist font-bold text-xl text-white mb-2">
-              Los Arrayanes de Izamba
-            </h3>
-          </div>
-        </div>
+                <!-- Content Body -->
+                <div class="p-6 md:p-8 bg-white relative">
+                  <p class="font-heebo text-neutral-500 text-sm md:text-base mb-6 line-clamp-2">
+                    {project.data.description}
+                  </p>
+                  
+                  <div class="flex items-center justify-between border-t border-neutral-100 pt-6">
+                    <a href={`/proyecto/${project.slug}`} class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-neutral-300 text-neutral-700 font-medium hover:bg-neutral-900 hover:text-white hover:border-neutral-900 transition-all duration-300">
+                      Ver más
+                    </a>
+                    <div class="hidden md:flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                      <span class="text-xs font-bold text-neutral-400 uppercase tracking-widest">
+                        {project.data.specifications?.deliveryDate?.label || "DISPONIBLE"}
+                      </span>
+                    </div>
+                  </div>
+                </div>
 
-        <!-- Content Section -->
-        <div class="p-6">
-          <!-- Description -->
-          <p class="font-heebo text-sm text-neutral-600 leading-relaxed mb-4">
-            Exclusividad y crecimiento en un solo lugar.
-          </p>
-
-          <!-- CTA Button -->
-          <div class="flex items-center justify-between">
-            <a
-              href="/proyecto/los-arrayanes-de-izamba"
-              class="inline-flex items-center gap-2 px-4 py-2 bg-[#D79528] text-white rounded-xl font-semibold text-sm hover:bg-[#D79528]/90 transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
-            >
-              Ver más
-              <svg
-                class="w-3 h-3 transform group-hover:translate-x-1 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 5l7 7-7 7"></path>
-              </svg>
-            </a>
-
-            <!-- Status Indicator -->
-            <div class="flex items-center gap-1">
-              <div class="w-2 h-2 bg-[#D79528] rounded-full"></div>
-              <span class="text-xs text-neutral-500 font-semibold"
-                >Estrena hoy</span
-              >
+              </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Hover Effect -->
-        <div
-          class="absolute inset-0 bg-[#D79528]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-        >
+          ))}
         </div>
       </div>
+      
+      <!-- Custom Navigation Buttons -->
+      <button class="swiper-button-prev-custom absolute top-1/2 -left-4 md:-left-12 z-20 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-brand-primary/80 hover:border-brand-primary transition-all duration-300 group focus:outline-none">
+        <svg class="w-6 h-6 md:w-8 md:h-8 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+      </button>
+      <button class="swiper-button-next-custom absolute top-1/2 -right-4 md:-right-12 z-20 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-brand-primary/80 hover:border-brand-primary transition-all duration-300 group focus:outline-none">
+        <svg class="w-6 h-6 md:w-8 md:h-8 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
     </div>
 
-    <!-- CTA Section -->
-    <!-- <div class="text-center bg-white/60 backdrop-blur-sm rounded-3xl border border-neutral-200/60 p-8 lg:p-12" data-aos="fade-up" data-aos-delay="300">
-      <h3 class="font-urbanist font-bold text-2xl lg:text-3xl text-neutral-900 mb-4">
-        ¿Listo para tu próximo proyecto?
-      </h3>
-      <p class="font-heebo text-lg text-neutral-600 mb-8 max-w-xl mx-auto">
-        Descubre todos nuestros proyectos y encuentra la inspiración para tu próxima construcción.
-      </p>
-      <Button
-        variant="success"
-        size="lg"
-        href="/proyectos"
-        icon="ph:arrow-right"
-        class="px-8 py-4 transform hover:scale-105 transition-all duration-300"
-      >
-        Ver todos los proyectos
-      </Button>
-    </div> -->
   </div>
 </section>
+
+<style>
+  /* Prevent FOUC (Flash of Unstyled Content) */
+  .portfolio-slider:not(.swiper-initialized) {
+    opacity: 0;
+  }
+  .portfolio-slider {
+    transition: opacity 0.5s ease;
+  }
+
+  /* Swiper styles override */
+  .swiper-slide {
+    transition: all 0.5s ease;
+    opacity: 0.4;
+    transform: scale(0.85);
+    filter: blur(2px);
+  }
+
+  .swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+    z-index: 10;
+  }
+</style>
+
+<script>
+  import Swiper from 'swiper';
+  import { EffectCoverflow, Autoplay, Navigation } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/effect-coverflow';
+
+  document.addEventListener('astro:page-load', () => {
+    initSwiper();
+  });
+
+  // Fallback for non-view-transitions
+  document.addEventListener('DOMContentLoaded', () => {
+    initSwiper();
+  });
+
+  function initSwiper() {
+    const swiperEl = document.querySelector('.portfolio-slider');
+    if (!swiperEl) return;
+
+    // Destroy existing instance if any
+    // @ts-ignore
+    if (swiperEl.swiper) {
+      // @ts-ignore
+      swiperEl.swiper.destroy(true, true);
+    }
+
+    new Swiper('.portfolio-slider', {
+      modules: [EffectCoverflow, Autoplay, Navigation],
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: true,
+      initialSlide: 2, // Start at 3rd item to show 1st and 2nd on left
+      loopAdditionalSlides: 2, // Ensure loop buffer
+      observer: true, // Force update on changes
+      observeParents: true,
+      speed: 1000, 
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next-custom',
+        prevEl: '.swiper-button-prev-custom',
+      },
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 300,
+        modifier: 1,
+        slideShadows: false,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1.5,
+          coverflowEffect: {
+            rotate: 40,
+            depth: 100,
+          },
+        },
+        768: {
+          slidesPerView: 2,
+          coverflowEffect: {
+            rotate: 50,
+            depth: 300,
+          },
+        }
+      }
+    });
+  }
+</script>

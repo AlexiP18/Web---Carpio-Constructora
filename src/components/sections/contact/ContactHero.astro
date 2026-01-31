@@ -1,81 +1,124 @@
 ---
 import { Icon } from "astro-icon/components";
-import Button from '../../ui/Button.astro';
-
-const contactHeroImage = '/images/pages/ContactHero.webp';
+import CubixGlassBg from "../../ui/CubixGlassBg.astro";
+import Button from "../../ui/Button.astro";
+const contactHeroImage = "/images/pages/ContactHero.webp";
 ---
 
-<section class="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-  <!-- Background Image -->
-  <div class="absolute inset-0 w-full h-full">
-    <img 
-      src={contactHeroImage} 
-      alt="Contact Hero Background" 
-      class="w-full h-full object-cover opacity-40"
-    />
+<section class="pt-5 pb-20 bg-brand-primary relative overflow-hidden">
+  <!-- Background Pattern (Vitral Effect) -->
+  <div class="absolute inset-0 opacity-30 text-white">
+    <CubixGlassBg />
   </div>
-  
+
   <!-- Decorative background elements -->
-  <div class="absolute top-0 left-0 w-72 h-72 bg-brand-primary/10 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-secondary/10 rounded-full blur-3xl"></div>
-  <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl"></div>
+  <div
+    class="absolute top-0 left-0 w-72 h-72 bg-brand-primary/10 rounded-full blur-3xl"
+  >
+  </div>
+  <div
+    class="absolute bottom-0 right-0 w-96 h-96 bg-brand-secondary/10 rounded-full blur-3xl"
+  >
+  </div>
+  <div
+    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl"
+  >
+  </div>
 
   <div class="max-w-7xl mx-auto px-6 relative z-10">
     <div class="text-center max-w-4xl mx-auto">
       <!-- Main Content -->
       <div class="space-y-8">
         <!-- Tagline -->
-        <div class="inline-flex items-center gap-2 bg-brand-primary/20 backdrop-blur-sm border border-brand-primary/30 rounded-full px-4 py-2 mb-8" data-aos="fade-up" data-aos-delay="100">
-          <Icon name="ph:handshake" class="w-5 h-5 text-brand-primary" />
-          <span class="text-brand-primary font-semibold text-sm uppercase tracking-wider">Contacto</span>
+        <div
+          class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-2"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <Icon name="ph:handshake" class="w-5 h-5 text-white" />
+          <span
+            class="text-white font-semibold text-sm uppercase tracking-wider"
+            >Contacto</span
+          >
         </div>
-        
+
         <!-- Heading -->
         <div class="space-y-6" data-aos="fade-up" data-aos-delay="200">
-          <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
+          <h1
+            class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight"
+          >
             Contáctanos
           </h1>
-          <p class="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
-            Estamos listos para convertir tus ideas en realidad. Hablemos de tu próximo proyecto.
+          <p
+            class="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
+          >
+            Estamos listos para convertir tus ideas en realidad. Hablemos de tu
+            próximo proyecto.
           </p>
         </div>
 
         <!-- Contact Info Cards -->
-        <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
-          <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300">
-            <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <div
+          class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
+          <div
+            class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-500 rounded-2xl flex items-center justify-center mx-auto mb-4"
+            >
               <Icon name="ph:whatsapp-logo" class="w-8 h-8 text-white" />
             </div>
             <div class="text-white">
               <div class="text-lg font-bold mb-2">WhatsApp</div>
               <div class="text-gray-300 font-medium mb-4">+593 99 832 3304</div>
-              <a href="https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20contactarlos%20para%20conocer%20m%C3%A1s%20sobre%20sus%20servicios." target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+              <a
+                href="https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20contactarlos%20para%20conocer%20m%C3%A1s%20sobre%20sus%20servicios."
+                target="_blank"
+                class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
+              >
                 Enviar mensaje
               </a>
             </div>
           </div>
-          
-          <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300">
-            <div class="w-16 h-16 bg-gradient-to-br from-brand-secondary to-brand-secondary/80 rounded-2xl flex items-center justify-center mx-auto mb-4">
+
+          <div
+            class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-brand-secondary to-brand-secondary/80 rounded-2xl flex items-center justify-center mx-auto mb-4"
+            >
               <Icon name="ph:envelope" class="w-8 h-8 text-white" />
             </div>
             <div class="text-white">
               <div class="text-lg font-bold mb-2">Email</div>
               <div class="text-gray-300 font-medium mb-4">hola@carpio.com</div>
-              <a href="mailto:hola@carpio.com" class="inline-block bg-brand-secondary hover:bg-brand-secondary/80 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+              <a
+                href="mailto:hola@carpio.com"
+                class="inline-block bg-brand-secondary hover:bg-brand-secondary/80 text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
+              >
                 Enviar email
               </a>
             </div>
           </div>
 
-          <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300">
-            <div class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-primary-light rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <div
+            class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-primary-light rounded-2xl flex items-center justify-center mx-auto mb-4"
+            >
               <Icon name="ph:map-pin" class="w-8 h-8 text-white" />
             </div>
             <div class="text-white">
               <div class="text-lg font-bold mb-2">Ubicación</div>
               <div class="text-gray-300 font-medium mb-4">Ambato, Ecuador</div>
-              <a href="#" class="inline-block bg-brand-primary hover:bg-brand-primary-light text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105">
+              <a
+                href="#"
+                class="inline-block bg-brand-primary hover:bg-brand-primary-light text-white font-semibold py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105"
+              >
                 Ver en mapa
               </a>
             </div>
@@ -83,8 +126,10 @@ const contactHeroImage = '/images/pages/ContactHero.webp';
         </div>
 
         <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 items-center justify-center pt-8" data-aos="fade-up" data-aos-delay="400">
-          <Button 
+        <div
+          class="flex flex-col sm:flex-row gap-4 items-center justify-center pt-8"
+        >
+          <Button
             variant="primary"
             size="lg"
             iconPosition="left"
@@ -95,8 +140,8 @@ const contactHeroImage = '/images/pages/ContactHero.webp';
           >
             Solicitar Cotización
           </Button>
-          
-          <Button 
+
+          <Button
             variant="outline"
             size="lg"
             iconPosition="left"
@@ -115,36 +160,63 @@ const contactHeroImage = '/images/pages/ContactHero.webp';
 </section>
 
 <!-- Features Section -->
-<section class="py-16 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden">
+<section
+  class="py-16 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden"
+>
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid lg:grid-cols-3 gap-8">
-      <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-500" data-aos="fade-up" data-aos-delay="500">
-        <div class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-primary-light rounded-2xl flex items-center justify-center mb-6">
+      <div
+        class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-500"
+        data-aos="fade-up"
+        data-aos-delay="500"
+      >
+        <div
+          class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-primary-light rounded-2xl flex items-center justify-center mb-6"
+        >
           <Icon name="ph:clock" class="w-8 h-8 text-white" />
         </div>
         <h3 class="text-2xl font-bold text-gray-900 mb-4">Respuesta Rápida</h3>
         <p class="text-gray-600 leading-relaxed">
-          Te contactamos en menos de 24 horas para discutir tu proyecto y resolver todas tus dudas.
+          Te contactamos en menos de 24 horas para discutir tu proyecto y
+          resolver todas tus dudas.
         </p>
       </div>
 
-      <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-500" data-aos="fade-up" data-aos-delay="600">
-        <div class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-primary-light rounded-2xl flex items-center justify-center mb-6">
+      <div
+        class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-500"
+        data-aos="fade-up"
+        data-aos-delay="600"
+      >
+        <div
+          class="w-16 h-16 bg-gradient-to-br from-brand-primary to-brand-primary-light rounded-2xl flex items-center justify-center mb-6"
+        >
           <Icon name="ph:currency-dollar" class="w-8 h-8 text-white" />
         </div>
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">Cotización Gratuita</h3>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">
+          Cotización Gratuita
+        </h3>
         <p class="text-gray-600 leading-relaxed">
-          Evaluamos tu proyecto sin costo y te proporcionamos un presupuesto detallado y transparente.
+          Evaluamos tu proyecto sin costo y te proporcionamos un presupuesto
+          detallado y transparente.
         </p>
       </div>
 
-      <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-500" data-aos="fade-up" data-aos-delay="700">
-        <div class="w-16 h-16 bg-gradient-to-br from-brand-secondary to-brand-secondary-light rounded-2xl flex items-center justify-center mb-6">
+      <div
+        class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-all duration-500"
+        data-aos="fade-up"
+        data-aos-delay="700"
+      >
+        <div
+          class="w-16 h-16 bg-gradient-to-br from-brand-secondary to-brand-secondary-light rounded-2xl flex items-center justify-center mb-6"
+        >
           <Icon name="ph:users" class="w-8 h-8 text-white" />
         </div>
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">Asesoría Personalizada</h3>
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">
+          Asesoría Personalizada
+        </h3>
         <p class="text-gray-600 leading-relaxed">
-          Nuestros expertos te guían en cada paso del proceso para lograr los mejores resultados.
+          Nuestros expertos te guían en cada paso del proceso para lograr los
+          mejores resultados.
         </p>
       </div>
     </div>

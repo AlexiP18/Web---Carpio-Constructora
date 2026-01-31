@@ -343,7 +343,8 @@ const gradients = [
     <div id="imageModal" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm opacity-0 invisible transition-all duration-300 p-4">
       <div class="relative w-full h-full max-w-[95vw] max-h-[95vh] transform scale-95 transition-transform duration-300" id="modalContent">
         <!-- Close Button -->
-        <button id="closeModal" class="absolute top-4 right-4 z-10 w-12 h-12 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group">
+        <!-- Close Button (Desktop) -->
+        <button id="closeModalDesktop" class="close-modal-btn hidden lg:flex absolute top-4 right-4 z-10 w-12 h-12 bg-white/90 hover:bg-white rounded-full items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg group">
           <Icon name="ph:x" class="w-6 h-6 text-gray-900 group-hover:text-red-600" />
         </button>
 
@@ -361,15 +362,22 @@ const gradients = [
         </div>
 
         <!-- Main Content Wrapper -->
-        <div class="flex w-full h-full gap-4">
-          <!-- Vertical Label Section -->
-          <div class="w-24 bg-gradient-to-b from-gray-50 via-white to-gray-100 rounded-2xl shadow-xl flex flex-col items-center justify-center gap-6 py-8">
-            <div id="modalIconContainer" class="w-16 h-16 bg-gradient-to-br from-[#103646] to-[#103646]/80 rounded-2xl flex items-center justify-center shadow-lg">
-              <!-- Icon will be inserted here -->
+        <div class="flex flex-col lg:flex-row w-full h-full gap-4">
+          <!-- Vertical Label Section (Becomes Header on Mobile) -->
+          <div class="w-full lg:w-24 shrink-0 h-auto lg:h-full bg-gradient-to-r lg:bg-gradient-to-b from-gray-50 via-white to-gray-100 rounded-2xl shadow-xl flex flex-row lg:flex-col items-center justify-between lg:justify-center px-4 py-3 lg:px-0 lg:py-8 gap-4 lg:gap-6">
+            <div class="flex items-center gap-4 lg:contents">
+              <div id="modalIconContainer" class="w-10 h-10 lg:w-16 lg:h-16 bg-gradient-to-br from-[#103646] to-[#103646]/80 rounded-xl lg:rounded-2xl flex items-center justify-center shadow-lg transform scale-90 lg:scale-100 lg:-rotate-90">
+                <!-- Icon will be inserted here -->
+              </div>
+              <div class="flex flex-row lg:flex-col items-center gap-2 flex-1 justify-start lg:justify-center">
+                <h3 id="modalLabel" class="text-base lg:text-lg font-bold text-gray-900 lg:[writing-mode:vertical-rl] text-center tracking-wide lg:rotate-180">Vista Principal</h3>
+              </div>
             </div>
-            <div class="flex flex-col items-center gap-2 flex-1 justify-center">
-              <h3 id="modalLabel" class="text-lg font-bold text-gray-900 [writing-mode:vertical-rl] text-center tracking-wide rotate-180">Vista Principal</h3>
-            </div>
+            
+            <!-- Mobile Close Button -->
+            <button class="close-modal-btn flex lg:hidden w-10 h-10 bg-white hover:bg-gray-50 rounded-full items-center justify-center shadow-md transition-all duration-300 active:scale-95 group">
+              <Icon name="ph:x" class="w-5 h-5 text-gray-900 group-hover:text-red-600" />
+            </button>
           </div>
 
           <!-- Image Section Full Screen with zoom capability -->
@@ -481,7 +489,7 @@ const gradients = [
   document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('imageModal');
     const modalContent = document.getElementById('modalContent');
-    const closeModalBtn = document.getElementById('closeModal');
+    const closeModalBtns = document.querySelectorAll('.close-modal-btn');
     const modalImage = document.getElementById('modalImage') as HTMLImageElement;
     const imageContainer = document.getElementById('imageContainer');
     const zoomInBtn = document.getElementById('zoomIn');
@@ -655,7 +663,7 @@ const gradients = [
     });
 
     // Close modal events
-    closeModalBtn?.addEventListener('click', closeModal);
+    closeModalBtns.forEach(btn => btn?.addEventListener('click', closeModal));
     modal?.addEventListener('click', function(e) {
       if (e.target === modal) {
         closeModal();
