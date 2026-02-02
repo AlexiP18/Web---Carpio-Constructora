@@ -35,7 +35,9 @@ const sliderImages = [
     style={`background-image: url('${sliderImages[0].src}')`}
   >
     <!-- WebGL Canvas for Liquid Transition -->
-    <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-10"
+    <canvas
+      id="hero-canvas"
+      class="absolute inset-0 w-full h-full z-10 opacity-0 transition-opacity duration-1000"
     ></canvas>
 
     <!-- Hidden Images for Texture Loading (Visually hidden but rendered to ensure decoding) -->
@@ -337,6 +339,10 @@ const sliderImages = [
     private scrollThreshold = 50;
     private scrollCooldown = 1200; // ms to wait before next scroll trigger
 
+    // Loading state
+    private loadedImagesCount = 0;
+    private isDisplacementLoaded = false;
+
     constructor() {
       this.init();
     }
@@ -544,6 +550,25 @@ const sliderImages = [
         // Ensure textures array has correct size/order
         this.textures[index] = texture;
         console.log(`Texture ${index} loaded`);
+        this.loadedImagesCount++;
+        this.checkReady();
+      }
+    }
+
+    private checkReady() {
+      // Check if all images and displacement map are loaded
+      if (
+        this.loadedImagesCount === this.totalSlides &&
+        this.isDisplacementLoaded &&
+        this.canvas
+      ) {
+        console.log("All assets loaded. Revealing canvas.");
+        // Initial draw to ensure content is there before revealing
+        this.draw(this.currentSlide, this.currentSlide, 0);
+        // Reveal canvas
+        requestAnimationFrame(() => {
+          this.canvas?.classList.remove("opacity-0");
+        });
       }
     }
 
@@ -583,7 +608,16 @@ const sliderImages = [
           img,
         );
         this.dispTexture = texture;
+        this.isDisplacementLoaded = true;
         console.log("Displacement map loaded");
+        this.checkReady();
+      };
+
+      // Fallback if displacement fails
+      img.onerror = () => {
+        console.warn("Displacement map failed to load. Proceeding without it.");
+        this.isDisplacementLoaded = true; // Pretend it loaded to unblock
+        this.checkReady();
       };
     }
 
