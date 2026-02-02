@@ -7,19 +7,19 @@ const logoCarpioConstructora = "/icons/LogoCarpioConstructora.svg";
 
 const sliderImages = [
   {
-    src: "/images/pages/index/INDEX_Hero_Slider_1.webp",
+    src: "https://res.cloudinary.com/dt5y4fsst/image/upload/v1770001179/INDEX_Hero_Slider_1_g8gjt0.webp",
     alt: "Proyecto Constructora Carpio 1",
   },
   {
-    src: "/images/pages/index/INDEX_Hero_Slider_2.webp",
+    src: "https://res.cloudinary.com/dt5y4fsst/image/upload/v1770001180/INDEX_Hero_Slider_4_ydgvlr.webp",
     alt: "Proyecto Constructora Carpio 2",
   },
   {
-    src: "/images/pages/index/INDEX_Hero_Slider_3.webp",
+    src: "https://res.cloudinary.com/dt5y4fsst/image/upload/v1770001180/INDEX_Hero_Slider_3_tkaat7.webp",
     alt: "Proyecto Constructora Carpio 3",
   },
   {
-    src: "/images/pages/index/INDEX_Hero_Slider_4.webp",
+    src: "https://res.cloudinary.com/dt5y4fsst/image/upload/v1770001180/INDEX_Hero_Slider_2_fzeiig.webp",
     alt: "Proyecto Constructora Carpio 4",
   },
 ];
@@ -30,13 +30,16 @@ const sliderImages = [
   id="hero-slider"
 >
   <!-- Background Slider Container -->
-  <div class="absolute inset-0 w-full h-full bg-gray-900">
+  <div
+    class="absolute inset-0 w-full h-full bg-gray-900 bg-cover bg-center transition-all duration-700"
+    style={`background-image: url('${sliderImages[0].src}')`}
+  >
     <!-- WebGL Canvas for Liquid Transition -->
     <canvas id="hero-canvas" class="absolute inset-0 w-full h-full z-10"
     ></canvas>
 
-    <!-- Hidden Images for Texture Loading -->
-    <div class="hidden">
+    <!-- Hidden Images for Texture Loading (Visually hidden but rendered to ensure decoding) -->
+    <div class="absolute w-0 h-0 opacity-0 pointer-events-none overflow-hidden">
       {
         sliderImages.map((image, index) => (
           <img
@@ -44,6 +47,7 @@ const sliderImages = [
             alt={image.alt}
             id={`slide-img-${index}`}
             class="slider-source-image"
+            crossorigin="anonymous"
           />
         ))
       }
