@@ -403,7 +403,6 @@ const sliderImages = [
       this.gl = this.canvas.getContext("webgl");
       if (!this.gl) return;
 
-      this.gl.pixelStorei(this.gl.UNPACK_FLIP_Y_WEBGL, true);
       this.gl.clearColor(0.0, 0.0, 0.0, 0.0); // Transparent clear
 
       const vs = this.createShader(
