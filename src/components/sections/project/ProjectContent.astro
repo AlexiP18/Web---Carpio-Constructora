@@ -257,7 +257,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
     </div>
 
     <!-- Main Layout Grid -->
-    <div class={`grid grid-cols-1 gap-12 w-full ${specifications ? 'lg:grid-cols-3' : 'lg:grid-cols-1'} items-stretch`}>
+    <div class={`grid grid-cols-1 gap-12 w-full ${specifications ? 'lg:grid-cols-3' : 'lg:grid-cols-1 lg:max-w-4xl lg:mx-auto lg:px-8'} items-stretch`}>
       
       <!-- Gallery Section -->
       <div class={`bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden ${specifications ? 'lg:col-span-2' : 'lg:col-span-1'}`} data-aos="fade-right" data-aos-duration="800">
@@ -839,6 +839,17 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
       
       // Initial Setup
       updateSlide(0, true);
+      
+      // Attach click handlers to initial thumbnails
+      if (thumbnailGrid) {
+        const initialThumbs = thumbnailGrid.querySelectorAll('.gallery-thumb');
+        initialThumbs.forEach((thumb) => {
+          thumb.addEventListener('click', () => {
+            const slideIndex = parseInt(thumb.getAttribute('data-slide') || '0', 10);
+            updateSlide(slideIndex);
+          });
+        });
+      }
       
     }); // End forEach project section
   });

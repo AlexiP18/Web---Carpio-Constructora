@@ -77,14 +77,22 @@ const {
       {description}
     </p>
 
-    <!-- Action Button -->
-    <div class="pt-4">
+    <!-- Action Buttons -->
+    <div class="flex flex-col sm:flex-row gap-4 pt-4">
       <a
         href={`/proyecto/${projectSlug}`}
-        class="flex items-center justify-center gap-2 w-full bg-[#D79528] hover:bg-[#c08520] text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+        class="flex-1 inline-flex items-center justify-center gap-2 bg-[#D79528] hover:bg-[#c08520] text-white font-semibold px-6 py-3 rounded-xl transition-all duration-300 hover:shadow-lg"
       >
         <Icon name="ph:arrow-right" class="w-5 h-5" />
         Ver Proyecto
+      </a>
+      <a
+        href={`https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20el%20proyecto%20${encodeURIComponent(title)}.%20Estoy%20interesad%40%20en%20recibir%20m%C3%A1s%20informaci%C3%B3n.`}
+        target="_blank"
+        class="flex-1 inline-flex items-center justify-center gap-2 bg-white text-[#103646] border-2 border-[#103646] px-6 py-3 rounded-xl font-semibold hover:bg-[#103646] hover:text-white transition-all duration-200"
+      >
+        <Icon name="ph:whatsapp-logo-fill" class="w-5 h-5" />
+        Consultar
       </a>
     </div>
 

@@ -1,88 +1,98 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Header from '../../components/ui/Header.astro';
-import Footer from '../../components/sections/Footer.astro';
-import ServicioHero from '../../components/sections/servicio/ServicioHero.astro';
-import ServicioFeatures from '../../components/sections/servicio/ServicioFeatures.astro';
-import ServicioBenefits from '../../components/sections/servicio/ServicioBenefits.astro';
-import ServicioProcess from '../../components/sections/servicio/ServicioProcess.astro';
-import ServicioTestimonials from '../../components/sections/servicio/ServicioTestimonials.astro';
-import ServicioCTA from '../../components/sections/servicio/ServicioCTA.astro';
-import ServicioFAQ from '../../components/sections/servicio/ServicioFAQ.astro';
-import { getCollection } from 'astro:content';
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/ui/Header.astro";
+import Footer from "../../components/sections/Footer.astro";
+import ServicioHero from "../../components/sections/servicio/ServicioHero.astro";
+import ServicioFeatures from "../../components/sections/servicio/ServicioFeatures.astro";
+import ServicioBenefits from "../../components/sections/servicio/ServicioBenefits.astro";
+import ServicioProcess from "../../components/sections/servicio/ServicioProcess.astro";
+import ServicioTestimonials from "../../components/sections/servicio/ServicioTestimonials.astro";
+import ServicioCTA from "../../components/sections/servicio/ServicioCTA.astro";
+import ServicioFAQ from "../../components/sections/servicio/ServicioFAQ.astro";
+import { getCollection } from "astro:content";
 
 // Generar las rutas estáticas desde Astro Content Collections
 export async function getStaticPaths() {
-  const servicios = await getCollection('servicios');
-  
-  return servicios.map(servicio => ({
+  const servicios = await getCollection("servicios");
+
+  return servicios.map((servicio) => ({
     params: { slug: servicio.slug },
-    props: { servicio }
+    props: { servicio },
   }));
 }
 
 const { servicio } = Astro.props;
 
 // Extraer datos del frontmatter
-const { 
-  title, 
-  subtitle, 
-  description, 
-  backgroundImage, 
-  service 
-} = servicio.data;
+const { title, subtitle, description, backgroundImage, service } =
+  servicio.data;
 ---
 
 <Layout title={`${title} | Constructora Carpio`}>
   <Header />
-  
-  <ServicioHero 
+
+  <ServicioHero
     tagline={service.tagline}
     title={title}
     description={description}
-    serviceType={Astro.params.slug as 'construccion' | 'remodelacion' | 'diseno-arquitectonico'}
+    serviceType={Astro.params.slug as
+      | "construccion"
+      | "remodelacion"
+      | "diseno-arquitectonico"}
     heroConfig={service.heroConfig}
   />
-  
+
   <!-- <ServicioFeatures 
     tagline={service.tagline}
     title={service.featuresTitle}
     description={service.featuresDescription}
     features={service.features}
   /> -->
-  
+
   <!-- <ServicioBenefits 
     title="Beneficios de Nuestro Servicio"
     description="Conoce las ventajas que obtienes al elegir nuestro servicio profesional."
     benefits={service.benefits}
     imageUrl="/images/benefits-image.jpg"
   /> -->
-  
-  <ServicioProcess 
+
+  <ServicioProcess
     tagline="PROCESO"
     title="¿Cómo Trabajamos?"
     description="Seguimos un proceso estructurado para garantizar los mejores resultados en cada proyecto."
     steps={service.process}
   />
-  
+
   <!-- Testimonials Section - Conditional rendering based on new structure or legacy -->
-  {(() => {
-    const testimonialsSection = service.testimonialsSection;
-    const showTestimonials = testimonialsSection?.enabled !== false;
-    const testimonials = testimonialsSection?.items || service.testimonials || [];
-    const tagline = testimonialsSection?.tagline || "TESTIMONIOS";
-    const title = testimonialsSection?.title || "Lo que Dicen Nuestros Clientes";
-    
-    return showTestimonials && testimonials.length > 0 && (
-      <ServicioTestimonials 
-        tagline={tagline}
-        title={title}
-        testimonials={testimonials}
-      />
-    );
-  })()}
-  
-  <ServicioCTA 
+  {
+    (() => {
+      // Services to exclude from showing testimonials
+      const excludedSlugs = ["remodelacion", "diseno-arquitectonico"];
+      const currentSlug = Astro.params.slug as string;
+      if (excludedSlugs.includes(currentSlug)) return null;
+
+      const testimonialsSection = service.testimonialsSection;
+      const showTestimonials = testimonialsSection?.enabled !== false;
+      const testimonials =
+        testimonialsSection?.items || service.testimonials || [];
+      const tagline = testimonialsSection?.tagline || "TESTIMONIOS";
+      const title =
+        testimonialsSection?.title || "Lo que Dicen Nuestros Clientes";
+
+      return (
+        showTestimonials &&
+        testimonials.length > 0 && (
+          <ServicioTestimonials
+            tagline={tagline}
+            title={title}
+            testimonials={testimonials}
+          />
+        )
+      );
+    })()
+  }
+
+  <ServicioCTA
     title="Solicita tu asesoría hoy"
     description={`Contáctanos para obtener más información sobre nuestro ${service.name.toLowerCase()} y cómo podemos ayudarte.`}
     primaryButtonText="Solicitar Cotización"
@@ -91,25 +101,37 @@ const {
     secondaryButtonHref={`https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20su%20servicio%20de%20${encodeURIComponent(service.name)}.`}
     backgroundImage="/images/cta-background.jpg"
   />
-  
+
   <!-- FAQs Section - Conditional rendering based on new structure or legacy -->
-  {(() => {
-    const faqsSection = service.faqsSection;
-    const showFAQs = faqsSection?.enabled !== false;
-    const faqs = faqsSection?.items || service.faqs || [];
-    const tagline = faqsSection?.tagline || "PREGUNTAS FRECUENTES";
-    const title = faqsSection?.title || "Preguntas";
-    const description = faqsSection?.description || `Aquí encontrarás respuestas a las preguntas más comunes sobre nuestro ${service.name.toLowerCase()}.`;
-    
-    return showFAQs && faqs.length > 0 && (
-      <ServicioFAQ 
-        tagline={tagline}
-        title={title}
-        description={description}
-        faqs={faqs}
-      />
-    );
-  })()}
+  {
+    (() => {
+      // Services to exclude from showing FAQs
+      const excludedSlugs = ["remodelacion", "diseno-arquitectonico"];
+      const currentSlug = Astro.params.slug as string;
+      if (excludedSlugs.includes(currentSlug)) return null;
+
+      const faqsSection = service.faqsSection;
+      const showFAQs = faqsSection?.enabled !== false;
+      const faqs = faqsSection?.items || service.faqs || [];
+      const tagline = faqsSection?.tagline || "PREGUNTAS FRECUENTES";
+      const title = faqsSection?.title || "Preguntas";
+      const description =
+        faqsSection?.description ||
+        `Aquí encontrarás respuestas a las preguntas más comunes sobre nuestro ${service.name.toLowerCase()}.`;
+
+      return (
+        showFAQs &&
+        faqs.length > 0 && (
+          <ServicioFAQ
+            tagline={tagline}
+            title={title}
+            description={description}
+            faqs={faqs}
+          />
+        )
+      );
+    })()
+  }
 
   <Footer />
 </Layout>

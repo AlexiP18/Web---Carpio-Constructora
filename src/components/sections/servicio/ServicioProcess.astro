@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import Button from '../../ui/Button.astro';
-import BackgroundProcess from '../../ui/BackgroundProcess.astro';
+import BackgroundWavesConjunto from '../../ui/BackgroundWavesConjunto.astro';
 
 export interface Props {
   tagline: string;
@@ -21,8 +21,8 @@ const { tagline, title, description, steps } = Astro.props;
 <section class="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 relative overflow-hidden" id="process">
   <!-- SVG Background -->
     <!-- Background Component -->
-  <div class="absolute inset-0 w-full h-full opacity-30">
-    <BackgroundProcess />
+  <div class="absolute inset-0 w-full h-full">
+    <BackgroundWavesConjunto />
   </div>
 
 

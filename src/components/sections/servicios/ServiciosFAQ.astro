@@ -1,35 +1,42 @@
 ---
 import { Icon } from "astro-icon/components";
-import Button from '../../ui/Button.astro';
-import CubixBlackBg from '../../ui/CubixBlackBg.astro';
+import Button from "../../ui/Button.astro";
+import CubixBlackBg from "../../ui/CubixBlackBg.astro";
 ---
 
 <section class="relative py-32 bg-brand-primary overflow-hidden">
   <!-- SVG Background -->
-    <!-- Background Component -->
-  <div class="absolute inset-0 w-full h-full opacity-30 mix-blend-normal pointer-events-none">
+  <!-- Background Component -->
+  <div
+    class="absolute inset-0 w-full h-full opacity-30 mix-blend-normal pointer-events-none"
+  >
     <CubixBlackBg />
   </div>
-
 
   <div class="relative z-10 max-w-7xl mx-auto px-6">
     <!-- Section Header -->
     <div class="text-center max-w-4xl mx-auto mb-20" data-aos="fade-up">
-      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+      <div
+        class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
+      >
         <Icon name="ph:question-fill" class="w-4 h-4 text-brand-secondary" />
-        <span class="text-white font-semibold text-xs tracking-wide">PREGUNTAS FRECUENTES</span>
+        <span class="text-white font-semibold text-xs tracking-wide"
+          >PREGUNTAS FRECUENTES</span
+        >
       </div>
-      
+
       <h2 class="text-3xl lg:text-5xl font-bold text-white leading-tight mb-6">
         Resolvemos tus
-        <span class="bg-gradient-to-r from-brand-secondary via-yellow-400 to-brand-secondary bg-clip-text text-transparent">
+        <span
+          class="bg-gradient-to-r from-brand-secondary via-yellow-400 to-brand-secondary bg-clip-text text-transparent"
+        >
           dudas más frecuentes
         </span>
       </h2>
-      
+
       <p class="text-lg lg:text-xl text-white/80 leading-relaxed">
-        Aquí encontrarás respuestas a las preguntas más comunes sobre nuestros servicios de construcción, 
-        procesos y garantías.
+        Aquí encontrarás respuestas a las preguntas más comunes sobre nuestros
+        servicios de construcción, procesos y garantías.
       </p>
     </div>
 
@@ -39,20 +46,33 @@ import CubixBlackBg from '../../ui/CubixBlackBg.astro';
       <div class="space-y-6">
         <!-- FAQ 1 -->
         <div class="faq-item group" data-aos="fade-up" data-aos-delay="100">
-          <div class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+          <div
+            class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+          >
             <div class="flex-1">
-              <h3 class="text-lg font-bold text-white group-hover:text-brand-secondary transition-colors duration-300">
+              <h3
+                class="text-lg font-bold text-white group-hover:text-brand-secondary transition-colors duration-300"
+              >
                 ¿Qué servicios de construcción ofrecen?
               </h3>
             </div>
-            <div class="faq-icon w-9 h-9 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-secondary/20">
-              <Icon name="ph:plus" class="w-5 h-5 text-white transition-transform duration-300" />
+            <div
+              class="faq-icon w-9 h-9 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-secondary/20"
+            >
+              <Icon
+                name="ph:plus"
+                class="w-5 h-5 text-white transition-transform duration-300"
+              />
             </div>
           </div>
-          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <div
+            class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
+          >
             <div class="px-6 pb-6 pt-3">
               <p class="text-base text-white/70 leading-relaxed">
-                Ofrecemos soluciones integrales de construcción residencial y comercial, que incluyen diseño arquitectónico, diseño interior, remodelaciones, ampliaciones y asesoría técnica.
+                Ofrecemos soluciones integrales de construcción residencial y
+                comercial, que incluyen diseño arquitectónico, diseño interior,
+                remodelaciones, ampliaciones y asesoría técnica.
               </p>
             </div>
           </div>
@@ -60,20 +80,36 @@ import CubixBlackBg from '../../ui/CubixBlackBg.astro';
 
         <!-- FAQ 2 -->
         <div class="faq-item group" data-aos="fade-up" data-aos-delay="200">
-          <div class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+          <div
+            class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+          >
             <div class="flex-1">
-              <h3 class="text-lg font-bold text-white group-hover:text-brand-secondary transition-colors duration-300">
+              <h3
+                class="text-lg font-bold text-white group-hover:text-brand-secondary transition-colors duration-300"
+              >
                 ¿Cuánto tiempo toma completar un proyecto?
               </h3>
             </div>
-            <div class="faq-icon w-9 h-9 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-secondary/20">
-              <Icon name="ph:plus" class="w-5 h-5 text-white transition-transform duration-300" />
+            <div
+              class="faq-icon w-9 h-9 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-secondary/20"
+            >
+              <Icon
+                name="ph:plus"
+                class="w-5 h-5 text-white transition-transform duration-300"
+              />
             </div>
           </div>
-          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <div
+            class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
+          >
             <div class="px-6 pb-6 pt-3">
               <p class="text-base text-white/70 leading-relaxed">
-                El tiempo de ejecución de un proyecto depende de su complejidad y alcance, por lo que puede variar significativamente de un caso a otro. Nuestro equipo realiza una planificación detallada para cada proyecto, asegurando que los plazos se ajusten a las necesidades específicas de cada cliente y a la complejidad de la obra.
+                El tiempo de ejecución de un proyecto depende de su complejidad
+                y alcance, por lo que puede variar significativamente de un caso
+                a otro. Nuestro equipo realiza una planificación detallada para
+                cada proyecto, asegurando que los plazos se ajusten a las
+                necesidades específicas de cada cliente y a la complejidad de la
+                obra.
               </p>
             </div>
           </div>
@@ -81,20 +117,34 @@ import CubixBlackBg from '../../ui/CubixBlackBg.astro';
 
         <!-- FAQ 5 -->
         <div class="faq-item group" data-aos="fade-up" data-aos-delay="300">
-          <div class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+          <div
+            class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+          >
             <div class="flex-1">
-              <h3 class="text-lg font-bold text-white group-hover:text-brand-secondary transition-colors duration-300">
+              <h3
+                class="text-lg font-bold text-white group-hover:text-brand-secondary transition-colors duration-300"
+              >
                 ¿Trabajan con proyectos llave en mano?
               </h3>
             </div>
-            <div class="faq-icon w-9 h-9 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-secondary/20">
-              <Icon name="ph:plus" class="w-5 h-5 text-white transition-transform duration-300" />
+            <div
+              class="faq-icon w-9 h-9 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-secondary/20"
+            >
+              <Icon
+                name="ph:plus"
+                class="w-5 h-5 text-white transition-transform duration-300"
+              />
             </div>
           </div>
-          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <div
+            class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
+          >
             <div class="px-6 pb-6 pt-3">
               <p class="text-base text-white/70 leading-relaxed">
-                Sí, ofrecemos la opción de proyectos llave en mano, donde nos encargamos de todo el proceso: desde el diseño y la planificación hasta la construcción y entrega, garantizando una experiencia cómoda y sin contratiempos para nuestros clientes.
+                Sí, ofrecemos la opción de proyectos llave en mano, donde nos
+                encargamos de todo el proceso: desde el diseño y la
+                planificación hasta la construcción y entrega, garantizando una
+                experiencia cómoda y sin contratiempos para nuestros clientes.
               </p>
             </div>
           </div>
@@ -105,41 +155,67 @@ import CubixBlackBg from '../../ui/CubixBlackBg.astro';
       <div class="space-y-6">
         <!-- FAQ 3 -->
         <div class="faq-item group" data-aos="fade-up" data-aos-delay="150">
-          <div class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+          <div
+            class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+          >
             <div class="flex-1">
-              <h3 class="text-lg font-bold text-white group-hover:text-brand-secondary transition-colors duration-300">
+              <h3
+                class="text-lg font-bold text-white group-hover:text-brand-secondary transition-colors duration-300"
+              >
                 ¿Puedo personalizar mi proyecto o los planos ya están definidos?
               </h3>
             </div>
-            <div class="faq-icon w-9 h-9 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-secondary/20">
-              <Icon name="ph:plus" class="w-5 h-5 text-white transition-transform duration-300" />
+            <div
+              class="faq-icon w-9 h-9 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-secondary/20"
+            >
+              <Icon
+                name="ph:plus"
+                class="w-5 h-5 text-white transition-transform duration-300"
+              />
             </div>
           </div>
-          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <div
+            class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
+          >
             <div class="px-6 pb-6 pt-3">
               <p class="text-base text-white/70 leading-relaxed">
-                Sí, cada proyecto puede personalizarse según tus requerimientos. Podemos adaptar planos existentes o desarrollar un diseño totalmente nuevo, para que tu hogar o espacio comercial refleje tu estilo y necesidades específicas.
+                Sí, cada proyecto puede personalizarse según tus requerimientos.
+                Podemos adaptar planos existentes o desarrollar un diseño
+                totalmente nuevo, para que tu hogar o espacio comercial refleje
+                tu estilo y necesidades específicas.
               </p>
             </div>
           </div>
         </div>
-        
+
         <!-- FAQ 6 -->
         <div class="faq-item group" data-aos="fade-up" data-aos-delay="250">
-          <div class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+          <div
+            class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+          >
             <div class="flex-1">
-              <h3 class="text-lg font-bold text-white group-hover:text-brand-secondary transition-colors duration-300">
+              <h3
+                class="text-lg font-bold text-white group-hover:text-brand-secondary transition-colors duration-300"
+              >
                 ¿La construcción cumple con las normas y regulaciones locales?
               </h3>
             </div>
-            <div class="faq-icon w-9 h-9 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-secondary/20">
-              <Icon name="ph:plus" class="w-5 h-5 text-white transition-transform duration-300" />
+            <div
+              class="faq-icon w-9 h-9 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-secondary/20"
+            >
+              <Icon
+                name="ph:plus"
+                class="w-5 h-5 text-white transition-transform duration-300"
+              />
             </div>
           </div>
-          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <div
+            class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
+          >
             <div class="px-6 pb-6 pt-3">
               <p class="text-base text-white/70 leading-relaxed">
-                Absolutamente. Todos nuestros proyectos cumplen con las normas y regulaciones locales de construcción.
+                Absolutamente. Todos nuestros proyectos cumplen con las normas y
+                regulaciones locales de construcción.
               </p>
             </div>
           </div>
@@ -147,20 +223,36 @@ import CubixBlackBg from '../../ui/CubixBlackBg.astro';
 
         <!-- FAQ 8 -->
         <div class="faq-item group" data-aos="fade-up" data-aos-delay="350">
-          <div class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+          <div
+            class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+          >
             <div class="flex-1">
-              <h3 class="text-lg font-bold text-white group-hover:text-brand-secondary transition-colors duration-300">
+              <h3
+                class="text-lg font-bold text-white group-hover:text-brand-secondary transition-colors duration-300"
+              >
                 ¿Ofrecen diseño arquitectónico o solo construcción?
               </h3>
             </div>
-            <div class="faq-icon w-9 h-9 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-secondary/20">
-              <Icon name="ph:plus" class="w-5 h-5 text-white transition-transform duration-300" />
+            <div
+              class="faq-icon w-9 h-9 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg shadow-brand-secondary/20"
+            >
+              <Icon
+                name="ph:plus"
+                class="w-5 h-5 text-white transition-transform duration-300"
+              />
             </div>
           </div>
-          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+          <div
+            class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out"
+          >
             <div class="px-6 pb-6 pt-3">
               <p class="text-base text-white/70 leading-relaxed">
-                Ofrecemos servicios flexibles de diseño arquitectónico, que pueden abarcar solo la creación de planos, supervisión de obra, o el desarrollo completo del proyecto, incluyendo la construcción. Esto permite que cada cliente elija la modalidad que mejor se adapte a sus necesidades y presupuesto, manteniendo siempre estándares de calidad y precisión.
+                Ofrecemos servicios flexibles de diseño arquitectónico, que
+                pueden abarcar solo la creación de planos, supervisión de obra,
+                o el desarrollo completo del proyecto, incluyendo la
+                construcción. Esto permite que cada cliente elija la modalidad
+                que mejor se adapte a sus necesidades y presupuesto, manteniendo
+                siempre estándares de calidad y precisión.
               </p>
             </div>
           </div>
@@ -169,45 +261,69 @@ import CubixBlackBg from '../../ui/CubixBlackBg.astro';
     </div>
 
     <!-- Call to Action -->
-    <div class="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl relative overflow-hidden" data-aos="fade-up" data-aos-delay="400">
+    <div
+      class="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl relative overflow-hidden"
+      data-aos="fade-up"
+      data-aos-delay="400"
+    >
       <!-- Background decoration -->
       <div class="absolute inset-0 opacity-50">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-secondary/30 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-primary/30 rounded-full blur-3xl"></div>
+        <div
+          class="absolute top-0 right-0 w-64 h-64 bg-brand-secondary/30 rounded-full blur-3xl"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 left-0 w-64 h-64 bg-brand-primary/30 rounded-full blur-3xl"
+        >
+        </div>
       </div>
 
       <div class="relative z-10 p-10 lg:p-16">
         <div class="text-center space-y-10">
           <!-- Header -->
           <div class="space-y-4">
-            <div class="inline-flex items-center gap-2 bg-brand-secondary/20 backdrop-blur-sm border border-brand-secondary/40 rounded-full px-4 py-2">
-              <Icon name="ph:chat-circle-text-fill" class="w-4 h-4 text-brand-secondary" />
-              <span class="text-white font-semibold text-xs tracking-wide">¿NECESITAS MÁS AYUDA?</span>
+            <div
+              class="inline-flex items-center gap-2 bg-brand-secondary/20 backdrop-blur-sm border border-brand-secondary/40 rounded-full px-4 py-2"
+            >
+              <Icon
+                name="ph:chat-circle-text-fill"
+                class="w-4 h-4 text-brand-secondary"
+              />
+              <span class="text-white font-semibold text-xs tracking-wide"
+                >¿NECESITAS MÁS AYUDA?</span
+              >
             </div>
-            
-            <h3 class="text-2xl lg:text-3xl font-bold text-white leading-tight max-w-3xl mx-auto">
+
+            <h3
+              class="text-2xl lg:text-3xl font-bold text-white leading-tight max-w-3xl mx-auto"
+            >
               ¿Aún tienes dudas sobre tu proyecto?
             </h3>
-            
-            <p class="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
-              Nuestro equipo de expertos está listo para aclarar todas tus preguntas y ayudarte a 
-              planificar tu proyecto de construcción ideal.
+
+            <p
+              class="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto"
+            >
+              Nuestro equipo de expertos está listo para aclarar todas tus
+              preguntas y ayudarte a planificar tu proyecto de construcción
+              ideal.
             </p>
           </div>
 
           <!-- Action Buttons -->
-          <div class="flex flex-col sm:flex-row gap-5 items-center justify-center">
-            <Button 
+          <div
+            class="flex flex-col sm:flex-row gap-5 items-center justify-center"
+          >
+            <Button
               variant="primary"
               size="lg"
               href="/contacto"
               iconPosition="left"
               icon="ph:envelope-simple"
-              class="w-full sm:w-auto bg-gradient-to-r from-brand-secondary to-yellow-500 hover:from-brand-secondary hover:to-yellow-400 border-0 shadow-lg shadow-brand-secondary/30 text-white font-bold"
+              class="w-full sm:w-auto bg-[#103646] hover:bg-[#103646]/90 border-[#103646] border-2 text-white font-bold shadow-lg"
             >
               Contactar Ahora
             </Button>
-            
+
             <!-- <Button 
               variant="outline"
               size="lg"
@@ -219,15 +335,15 @@ import CubixBlackBg from '../../ui/CubixBlackBg.astro';
             >
               Preguntas WhatsApp
             </Button> -->
-            
-            <Button 
-              variant="success"
+
+            <Button
+              variant="primary"
               size="lg"
               href="https://wa.me/593998323304?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n%20para%20sus%20servicios."
               target="_blank"
               iconPosition="left"
               icon="ph:whatsapp-logo-fill"
-              class="w-full sm:w-auto bg-[#25D366] hover:bg-[#1ea952] border-0 shadow-lg shadow-green-500/30 text-white font-bold"
+              class="w-full sm:w-auto bg-[#D79528] hover:bg-[#D79528]/90 border-[#D79528] text-white shadow-lg hover:shadow-xl font-bold"
             >
               Solicitar Cotización
             </Button>
@@ -235,23 +351,36 @@ import CubixBlackBg from '../../ui/CubixBlackBg.astro';
 
           <!-- Trust Indicators -->
           <div class="pt-8 border-t border-white/20">
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-8 text-white">
+            <div
+              class="flex flex-col sm:flex-row items-center justify-center gap-8 text-white"
+            >
               <div class="flex items-center gap-2.5">
-                <div class="w-10 h-10 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-secondary/30">
+                <div
+                  class="w-10 h-10 bg-[#D79528] rounded-xl flex items-center justify-center shadow-md"
+                >
                   <Icon name="ph:clock-fill" class="w-5 h-5 text-white" />
                 </div>
                 <span class="font-semibold text-sm">Respuesta en 24 horas</span>
               </div>
-              
+
               <div class="flex items-center gap-2.5">
-                <div class="w-10 h-10 bg-gradient-to-br from-brand-primary to-cyan-600 rounded-xl flex items-center justify-center shadow-lg shadow-brand-primary/30">
-                  <Icon name="ph:shield-check-fill" class="w-5 h-5 text-white" />
+                <div
+                  class="w-10 h-10 bg-[#103646] rounded-xl flex items-center justify-center shadow-md"
+                >
+                  <Icon
+                    name="ph:shield-check-fill"
+                    class="w-5 h-5 text-white"
+                  />
                 </div>
-                <span class="font-semibold text-sm">Asesoría sin compromiso</span>
+                <span class="font-semibold text-sm"
+                  >Asesoría sin compromiso</span
+                >
               </div>
-              
+
               <div class="flex items-center gap-2.5">
-                <div class="w-10 h-10 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center shadow-lg shadow-brand-secondary/30">
+                <div
+                  class="w-10 h-10 bg-[#D79528] rounded-xl flex items-center justify-center shadow-md"
+                >
                   <Icon name="ph:users-fill" class="w-5 h-5 text-white" />
                 </div>
                 <span class="font-semibold text-sm">Expertos disponibles</span>
@@ -266,7 +395,9 @@ import CubixBlackBg from '../../ui/CubixBlackBg.astro';
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const faqItems = document.querySelectorAll(".faq-item") as NodeListOf<HTMLElement>;
+    const faqItems = document.querySelectorAll(
+      ".faq-item",
+    ) as NodeListOf<HTMLElement>;
 
     faqItems.forEach((item) => {
       const question = item.querySelector(".faq-question") as HTMLElement;
@@ -275,15 +406,22 @@ import CubixBlackBg from '../../ui/CubixBlackBg.astro';
 
       if (question && answer && icon) {
         question.addEventListener("click", () => {
-          const isOpen = answer.style.maxHeight && answer.style.maxHeight !== "0px";
+          const isOpen =
+            answer.style.maxHeight && answer.style.maxHeight !== "0px";
 
           // Close all other answers
           faqItems.forEach((otherItem) => {
             if (otherItem !== item) {
-              const otherAnswer = otherItem.querySelector(".faq-answer") as HTMLElement;
-              const otherIcon = otherItem.querySelector(".faq-icon svg") as SVGElement;
-              const otherQuestion = otherItem.querySelector(".faq-question") as HTMLElement;
-              
+              const otherAnswer = otherItem.querySelector(
+                ".faq-answer",
+              ) as HTMLElement;
+              const otherIcon = otherItem.querySelector(
+                ".faq-icon svg",
+              ) as SVGElement;
+              const otherQuestion = otherItem.querySelector(
+                ".faq-question",
+              ) as HTMLElement;
+
               if (otherAnswer) {
                 otherAnswer.style.maxHeight = "0px";
               }
@@ -317,15 +455,15 @@ import CubixBlackBg from '../../ui/CubixBlackBg.astro';
     background: rgba(255, 255, 255, 0.15) !important;
     border-color: rgba(215, 149, 40, 0.4) !important;
   }
-  
+
   .faq-item:hover .faq-question {
     transform: translateY(-2px);
   }
-  
+
   .faq-icon {
     transition: all 0.3s ease;
   }
-  
+
   .faq-question.active .faq-icon {
     transform: rotate(45deg);
     box-shadow: 0 8px 20px rgba(215, 149, 40, 0.4);

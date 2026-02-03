@@ -1,47 +1,73 @@
 ---
 import { Icon } from "astro-icon/components";
-import Button from '../../ui/Button.astro';
+import Button from "../../ui/Button.astro";
 
-const heroBackground = '/images/pages/NosotrosHero.webp';
+const heroBackground =
+  "https://res.cloudinary.com/dt5y4fsst/image/upload/v1770003701/ContactHero_lopgha.webp";
 ---
 
-<section class="relative min-h-screen bg-slate-800 overflow-hidden flex items-center">
+<section
+  class="relative min-h-screen bg-slate-800 overflow-hidden flex items-center"
+>
   <!-- Background Image -->
   <div class="absolute inset-0">
-    <img 
-      src={heroBackground} 
-      alt="Constructora Carpio - Nuestra Empresa" 
+    <img
+      src={heroBackground}
+      alt="Constructora Carpio - Nuestra Empresa"
       class="w-full h-full object-cover"
     />
     <!-- Dark overlay for better text readability -->
-    <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/50"
+    >
+    </div>
   </div>
-  
+
   <!-- Background decorations -->
   <div class="absolute inset-0">
-    <div class="absolute top-20 left-20 w-60 h-60 bg-brand-primary/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 right-20 w-40 h-40 bg-brand-secondary/15 rounded-full blur-2xl"></div>
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl"></div>
+    <div
+      class="absolute top-20 left-20 w-60 h-60 bg-brand-primary/10 rounded-full blur-3xl"
+    >
+    </div>
+    <div
+      class="absolute bottom-20 right-20 w-40 h-40 bg-brand-secondary/15 rounded-full blur-2xl"
+    >
+    </div>
+    <div
+      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl"
+    >
+    </div>
   </div>
 
   <div class="max-w-7xl mx-auto px-6 py-20 lg:py-24 relative z-10 w-full">
     <div class="max-w-4xl text-left">
       <!-- Main Heading -->
-      <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8" data-aos="fade-up">
-        Conoce a Nuestra<br>
+      <h1
+        class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8"
+        data-aos="fade-up"
+      >
+        Conoce a Nuestra<br />
         <span class="text-brand-secondary">Empresa</span>
       </h1>
-      
+
       <!-- Description -->
       <!-- <p class="text-xl lg:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl" data-aos="fade-up" data-aos-delay="200">
         Nos dedicamos a crear espacios que inspiran y construyen el futuro de nuestras comunidades con calidad, innovación y compromiso.
       </p> -->
-      
+
       <!-- Feature highlights -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12" data-aos="fade-up" data-aos-delay="300">
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+        data-aos="fade-up"
+        data-aos-delay="300"
+      >
+        <div
+          class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+        >
           <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-brand-primary rounded-2xl flex items-center justify-center shadow-lg">
+            <div
+              class="w-12 h-12 bg-brand-primary rounded-2xl flex items-center justify-center shadow-lg"
+            >
               <Icon name="ph:medal-fill" class="w-6 h-6 text-white" />
             </div>
             <div>
@@ -50,7 +76,7 @@ const heroBackground = '/images/pages/NosotrosHero.webp';
             </div>
           </div>
         </div>
-        
+
         <!-- <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
           <div class="flex items-center gap-4">
             <div class="w-12 h-12 bg-brand-secondary rounded-2xl flex items-center justify-center shadow-lg">
@@ -62,10 +88,14 @@ const heroBackground = '/images/pages/NosotrosHero.webp';
             </div>
           </div>
         </div> -->
-        
-        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
+
+        <div
+          class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+        >
           <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-brand-secondary rounded-2xl flex items-center justify-center shadow-lg">
+            <div
+              class="w-12 h-12 bg-brand-secondary rounded-2xl flex items-center justify-center shadow-lg"
+            >
               <Icon name="ph:heart-fill" class="w-6 h-6 text-white" />
             </div>
             <div>
@@ -75,7 +105,7 @@ const heroBackground = '/images/pages/NosotrosHero.webp';
           </div>
         </div>
       </div>
-      
+
       <!-- CTA Buttons -->
       <!-- <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="400">
         <Button 

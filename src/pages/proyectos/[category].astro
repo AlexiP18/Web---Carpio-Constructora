@@ -225,7 +225,11 @@ const renderedFeatured = await Promise.all(
                                 images={project.data.images || []}
                                 virtualTourVideo={project.data.virtualTourVideo}
                                 brochureUrl={project.data.brochureUrl}
-                                specifications={project.data.specifications}
+                                specifications={
+                                    category.slug !== "diseno-residencial"
+                                        ? project.data.specifications
+                                        : undefined
+                                }
                             />
                             <ProjectMosaicNew
                                 images={project.data.images || []}
