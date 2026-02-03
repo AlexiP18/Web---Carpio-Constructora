@@ -270,7 +270,7 @@ const sliderImages = [
     }
   `;
 
-  // Standard Displacement Map Transition
+  // Standard Displacement Map Transition with Aspect Ratio Correction
   // Based on "aqua-light.jpg" reference type behavior
   const fragmentShaderSource = `
     precision mediump float;
@@ -280,11 +280,29 @@ const sliderImages = [
     uniform sampler2D u_disp;   // Displacement Texture
     uniform float u_progress;
     uniform float u_intensity;
+    uniform float u_canvasAspect;  // Canvas width/height
+    uniform float u_imageAspect;   // Image width/height (assumed 16:9 = 1.777)
     
     varying vec2 v_texCoord;
 
+    // Calculate UV for object-fit: cover behavior
+    vec2 coverUV(vec2 uv, float canvasAspect, float imageAspect) {
+      vec2 result = uv;
+      if (canvasAspect > imageAspect) {
+        // Canvas is wider than image - fit width, crop height
+        float scale = canvasAspect / imageAspect;
+        result.y = (uv.y - 0.5) / scale + 0.5;
+      } else {
+        // Canvas is taller than image - fit height, crop width
+        float scale = imageAspect / canvasAspect;
+        result.x = (uv.x - 0.5) / scale + 0.5;
+      }
+      return result;
+    }
+
     void main() {
-      vec2 uv = v_texCoord;
+      // Apply cover UV transformation
+      vec2 uv = coverUV(v_texCoord, u_canvasAspect, u_imageAspect);
       
       // Calculate Wave Intensity
       // "Llegaria hasta la mitad y despues se retraeria"
@@ -294,7 +312,7 @@ const sliderImages = [
       
       // Sample Displacement Map
       // We can scroll the map slightly for movement feel
-      vec2 dispUV = uv + vec2(0.0, u_progress * 0.2);
+      vec2 dispUV = v_texCoord + vec2(0.0, u_progress * 0.2);
       vec4 dispColor = texture2D(u_disp, dispUV);
       
       // Calculate Displacement Vector
@@ -623,7 +641,7 @@ const sliderImages = [
     }
 
     private draw(slideIndex0: number, slideIndex1: number, progress: number) {
-      if (!this.gl || !this.program) return;
+      if (!this.gl || !this.program || !this.canvas) return;
 
       this.gl.useProgram(this.program);
 
@@ -635,6 +653,14 @@ const sliderImages = [
         this.program,
         "u_intensity",
       );
+      const u_canvasAspect = this.gl.getUniformLocation(
+        this.program,
+        "u_canvasAspect",
+      );
+      const u_imageAspect = this.gl.getUniformLocation(
+        this.program,
+        "u_imageAspect",
+      );
 
       this.gl.uniform1i(u_image0, 0);
       this.gl.uniform1i(u_image1, 1);
@@ -642,6 +668,12 @@ const sliderImages = [
       this.gl.uniform1f(u_progress, progress);
       // Soften intensity from 0.4 to 0.15 for a smoother, less "exaggerated" look
       this.gl.uniform1f(u_intensity, 0.15);
+
+      // Pass aspect ratios for cover calculation
+      const canvasAspect = this.canvas.width / this.canvas.height;
+      this.gl.uniform1f(u_canvasAspect, canvasAspect);
+      // Assume images are 16:9 (1920x1080)
+      this.gl.uniform1f(u_imageAspect, 16.0 / 9.0);
 
       this.gl.activeTexture(this.gl.TEXTURE0);
       this.gl.bindTexture(this.gl.TEXTURE_2D, this.textures[slideIndex0]);

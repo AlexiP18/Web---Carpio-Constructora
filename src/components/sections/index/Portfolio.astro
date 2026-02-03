@@ -1,209 +1,172 @@
 ---
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 import MosaicSecondaryBg from "../../ui/MosaicSecondaryBg.astro";
 
-// Fetch projects and ensure we have enough for a smooth infinite loop (at least 8)
+// Fetch projects
 const allProjects = await getCollection("proyectos");
-let projects = allProjects;
-
-// Duplicate array if too few items to guarantee perfect looping (Swiper needs buffer)
-if (projects.length > 0) {
-  while (projects.length < 12) {
-    projects = [...projects, ...allProjects];
-  }
-}
-// Limit to 12 to verify loop performance without over-rendering
-projects = projects.slice(0, 12);
+const projects = allProjects.slice(0, 8);
 ---
 
-<!-- Portfolio Section with Circular Slider -->
-<section class="w-full py-12 lg:py-20 relative overflow-hidden bg-brand-secondary">
+<!-- Portfolio Section - Simple Slider -->
+<section class="w-full py-16 lg:py-24 relative overflow-hidden bg-brand-secondary">
   <!-- SVG Background -->
   <div class="absolute inset-0 w-full h-full pointer-events-none opacity-20">
     <MosaicSecondaryBg />
   </div>
 
-  <div class="container mx-auto px-4 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
     <!-- Header Section -->
-    <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="1000">
+    <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="800">
       <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">
         <div class="w-2 h-2 bg-white rounded-full"></div>
-        <span class="font-heebo font-semibold text-sm text-white tracking-wider uppercase">
+        <span class="font-semibold text-sm text-white tracking-wider uppercase">
           Nuestros Proyectos
         </span>
       </div>
-      <h2 class="font-urbanist font-bold text-4xl lg:text-6xl text-white mb-6">
+      <h2 class="font-bold text-4xl lg:text-6xl text-white mb-6">
         Calidad en cada proyecto
       </h2>
-      <p class="font-heebo text-lg lg:text-xl text-neutral-300 max-w-2xl mx-auto">
+      <p class="text-lg lg:text-xl text-white/80 max-w-2xl mx-auto">
         Transformamos tus ideas en realidades constructivas con excelencia y innovación.
       </p>
     </div>
+  </div>
 
-    <!-- Swiper Container -->
-    <div class="relative max-w-[1500px] mx-auto">
-      <div class="portfolio-slider swiper w-full pb-12">
-        <div class="swiper-wrapper">
-          {projects.map((project) => (
-            <div class="swiper-slide w-[350px] md:w-[600px] lg:w-[800px]">
-              <div class="group relative bg-white rounded-3xl overflow-hidden shadow-2xl transition-all duration-300">
-                
-                <!-- Image Container -->
-                <div class="relative h-[250px] md:h-[400px] overflow-hidden">
-                  <img 
-                    src={project.data.backgroundImage} 
-                    alt={project.data.title}
-                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                  
-                  <!-- Floating Badge -->
-                  <div class="absolute top-4 left-4">
-                    <span class="px-3 py-1 bg-white/90 backdrop-blur rounded-lg text-xs font-bold text-neutral-800 uppercase tracking-wide">
-                      {project.data.tags?.[0] || "Residencial"}
-                    </span>
-                  </div>
+  <!-- Slider Container (full width) -->
+  <div class="relative">
+    <!-- Navigation Buttons -->
+    <button 
+      id="portfolio-prev"
+      class="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-white hover:bg-white hover:text-brand-secondary transition-all duration-300"
+    >
+      <Icon name="ph:caret-left-bold" class="w-6 h-6" />
+    </button>
+    <button 
+      id="portfolio-next"
+      class="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-white hover:bg-white hover:text-brand-secondary transition-all duration-300"
+    >
+      <Icon name="ph:caret-right-bold" class="w-6 h-6" />
+    </button>
 
-                  <!-- Title on Image -->
-                  <div class="absolute bottom-6 left-6 right-6">
-                    <h3 class="font-urbanist font-bold text-2xl md:text-4xl text-white leading-tight">
-                      {project.data.title}
-                    </h3>
-                  </div>
-                </div>
-
-                <!-- Content Body -->
-                <div class="p-6 md:p-8 bg-white relative">
-                  <p class="font-heebo text-neutral-500 text-sm md:text-base mb-6 line-clamp-2">
-                    {project.data.description}
-                  </p>
-                  
-                  <div class="flex items-center justify-between border-t border-neutral-100 pt-6">
-                    <a href={`/proyecto/${project.slug}`} class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-neutral-300 text-neutral-700 font-medium hover:bg-neutral-900 hover:text-white hover:border-neutral-900 transition-all duration-300">
-                      Ver más
-                    </a>
-                    <div class="hidden md:flex items-center gap-2">
-                      <span class="w-2 h-2 rounded-full bg-green-500"></span>
-                      <span class="text-xs font-bold text-neutral-400 uppercase tracking-widest">
-                        {project.data.specifications?.deliveryDate?.label || "DISPONIBLE"}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
+    <!-- Scrollable Track -->
+    <div 
+      id="portfolio-track"
+      class="flex gap-6 overflow-x-auto scroll-smooth px-6 lg:px-16 pb-4 hide-scrollbar"
+    >
+      {projects.map((project, index) => (
+        <a 
+          href={`/proyecto/${project.slug}`}
+          class="group flex-shrink-0 w-[320px] lg:w-[400px] bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+        >
+          <!-- Image Container -->
+          <div class="relative h-52 lg:h-64 overflow-hidden">
+            <img 
+              src={project.data.backgroundImage} 
+              alt={project.data.title}
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+            
+            <!-- Category Badge -->
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1.5 bg-white/95 backdrop-blur rounded-full text-xs font-bold text-gray-800 uppercase tracking-wide shadow-md">
+                {project.data.tags?.[0] || "Proyecto"}
+              </span>
             </div>
-          ))}
-        </div>
-      </div>
-      
-      <!-- Custom Navigation Buttons -->
-      <button class="swiper-button-prev-custom absolute top-1/2 -left-4 md:-left-12 z-20 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-brand-primary/80 hover:border-brand-primary transition-all duration-300 group focus:outline-none">
-        <svg class="w-6 h-6 md:w-8 md:h-8 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-      </button>
-      <button class="swiper-button-next-custom absolute top-1/2 -right-4 md:-right-12 z-20 w-12 h-12 md:w-16 md:h-16 flex items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-brand-primary/80 hover:border-brand-primary transition-all duration-300 group focus:outline-none">
-        <svg class="w-6 h-6 md:w-8 md:h-8 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-      </button>
-    </div>
 
+            <!-- Title on Image -->
+            <div class="absolute bottom-4 left-4 right-4">
+              <h3 class="font-bold text-xl lg:text-2xl text-white leading-tight drop-shadow-lg">
+                {project.data.title}
+              </h3>
+            </div>
+          </div>
+
+          <!-- Content Footer -->
+          <div class="p-5 bg-white">
+            <p class="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-4">
+              {project.data.description}
+            </p>
+            
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center gap-2 text-brand-primary font-semibold text-sm group-hover:gap-3 transition-all duration-300">
+                Ver proyecto
+                <Icon name="ph:arrow-right" class="w-4 h-4" />
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- CTA Button -->
+  <div class="text-center mt-12 px-6" data-aos="fade-up" data-aos-delay="300">
+    <a 
+      href="/todos-proyectos"
+      class="inline-flex items-center gap-3 px-8 py-4 bg-white text-brand-secondary font-bold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+    >
+      <span>Ver todos los proyectos</span>
+      <Icon name="ph:arrow-right-bold" class="w-5 h-5" />
+    </a>
   </div>
 </section>
 
 <style>
-  /* Prevent FOUC (Flash of Unstyled Content) */
-  .portfolio-slider:not(.swiper-initialized) {
-    opacity: 0;
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
-  .portfolio-slider {
-    transition: opacity 0.5s ease;
-  }
-
-  /* Swiper styles override */
-  .swiper-slide {
-    transition: all 0.5s ease;
-    opacity: 0.4;
-    transform: scale(0.85);
-    filter: blur(2px);
-  }
-
-  .swiper-slide-active {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0);
-    z-index: 10;
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 </style>
 
 <script>
-  import Swiper from 'swiper';
-  import { EffectCoverflow, Autoplay, Navigation } from 'swiper/modules';
-  import 'swiper/css';
-  import 'swiper/css/effect-coverflow';
+  function initPortfolioSlider() {
+    const track = document.getElementById('portfolio-track');
+    const prevBtn = document.getElementById('portfolio-prev');
+    const nextBtn = document.getElementById('portfolio-next');
+    
+    if (!track || !prevBtn || !nextBtn) return;
 
-  document.addEventListener('astro:page-load', () => {
-    initSwiper();
-  });
+    const cardWidth = 420; // Card width + gap
 
-  // Fallback for non-view-transitions
-  document.addEventListener('DOMContentLoaded', () => {
-    initSwiper();
-  });
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
 
-  function initSwiper() {
-    const swiperEl = document.querySelector('.portfolio-slider');
-    if (!swiperEl) return;
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
 
-    // Destroy existing instance if any
-    // @ts-ignore
-    if (swiperEl.swiper) {
-      // @ts-ignore
-      swiperEl.swiper.destroy(true, true);
-    }
-
-    new Swiper('.portfolio-slider', {
-      modules: [EffectCoverflow, Autoplay, Navigation],
-      effect: 'coverflow',
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      loop: true,
-      initialSlide: 2, // Start at 3rd item to show 1st and 2nd on left
-      loopAdditionalSlides: 2, // Ensure loop buffer
-      observer: true, // Force update on changes
-      observeParents: true,
-      speed: 1000, 
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      },
-      navigation: {
-        nextEl: '.swiper-button-next-custom',
-        prevEl: '.swiper-button-prev-custom',
-      },
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 300,
-        modifier: 1,
-        slideShadows: false,
-      },
-      breakpoints: {
-        320: {
-          slidesPerView: 1.5,
-          coverflowEffect: {
-            rotate: 40,
-            depth: 100,
-          },
-        },
-        768: {
-          slidesPerView: 2,
-          coverflowEffect: {
-            rotate: 50,
-            depth: 300,
-          },
-        }
+    // Auto scroll every 4 seconds
+    let autoScroll = setInterval(() => {
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll - 10) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        track.scrollBy({ left: cardWidth, behavior: 'smooth' });
       }
+    }, 4000);
+
+    // Pause on hover
+    track.addEventListener('mouseenter', () => clearInterval(autoScroll));
+    track.addEventListener('mouseleave', () => {
+      autoScroll = setInterval(() => {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        if (track.scrollLeft >= maxScroll - 10) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      }, 4000);
     });
   }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', initPortfolioSlider);
+  document.addEventListener('astro:page-load', initPortfolioSlider);
 </script>
