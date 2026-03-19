@@ -79,7 +79,7 @@ const { title, subtitle, description, backgroundImage, service } =
   {
     (() => {
       const testimonialsSection = service.testimonialsSection;
-      const showTestimonials = testimonialsSection?.enabled !== false;
+      const showTestimonials = service.showTestimonials !== false && testimonialsSection?.enabled !== false;
       const testimonials =
         testimonialsSection?.items || service.testimonials || [];
       const tagline = testimonialsSection?.tagline || "TESTIMONIOS";
@@ -118,7 +118,7 @@ const { title, subtitle, description, backgroundImage, service } =
   {
     (() => {
       const faqsSection = service.faqsSection;
-      const showFAQs = faqsSection?.enabled !== false;
+      const showFAQs = service.showFaqs !== false && faqsSection?.enabled !== false;
       const faqs = faqsSection?.items || service.faqs || [];
       const tagline = faqsSection?.tagline || "PREGUNTAS FRECUENTES";
       const title = faqsSection?.title || "Preguntas";

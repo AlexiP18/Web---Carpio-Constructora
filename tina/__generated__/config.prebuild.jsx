@@ -2389,6 +2389,16 @@ var config_default = defineConfig2({
               },
               {
                 type: "boolean",
+                name: "showTestimonials",
+                label: "Mostrar Secci\xF3n Testimonios"
+              },
+              {
+                type: "boolean",
+                name: "showFaqs",
+                label: "Mostrar Secci\xF3n FAQs"
+              },
+              {
+                type: "boolean",
                 name: "showCta",
                 label: "Mostrar Secci\xF3n CTA Final"
               },

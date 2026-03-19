@@ -491,6 +491,16 @@ export default defineConfig({
               },
               {
                 type: 'boolean',
+                name: 'showTestimonials',
+                label: 'Mostrar Sección Testimonios',
+              },
+              {
+                type: 'boolean',
+                name: 'showFaqs',
+                label: 'Mostrar Sección FAQs',
+              },
+              {
+                type: 'boolean',
                 name: 'showCta',
                 label: 'Mostrar Sección CTA Final',
               },

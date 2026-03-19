@@ -442,6 +442,8 @@ type ServiciosService {
   showFeatures: Boolean
   showBenefits: Boolean
   showProcess: Boolean
+  showTestimonials: Boolean
+  showFaqs: Boolean
   showCta: Boolean
   featuresTitle: String
   featuresDescription: String
@@ -546,6 +548,8 @@ input ServiciosServiceFilter {
   showFeatures: BooleanFilter
   showBenefits: BooleanFilter
   showProcess: BooleanFilter
+  showTestimonials: BooleanFilter
+  showFaqs: BooleanFilter
   showCta: BooleanFilter
   featuresTitle: StringFilter
   featuresDescription: StringFilter
@@ -2229,6 +2233,8 @@ input ServiciosServiceMutation {
   showFeatures: Boolean
   showBenefits: Boolean
   showProcess: Boolean
+  showTestimonials: Boolean
+  showFaqs: Boolean
   showCta: Boolean
   featuresTitle: String
   featuresDescription: String

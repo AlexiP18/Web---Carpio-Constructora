@@ -110,6 +110,8 @@ fragment ServiciosParts on Servicios {
     showFeatures
     showBenefits
     showProcess
+    showTestimonials
+    showFaqs
     showCta
     featuresTitle
     featuresDescription
