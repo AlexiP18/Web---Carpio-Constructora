@@ -75,7 +75,8 @@ export const ImagePreviewField = wrapFieldsWithMeta(({ input }: any) => {
 // Componente: Galería de imágenes con previews
 // ============================================
 export const ImageGalleryField = wrapFieldsWithMeta(({ input }: any) => {
-  const { value = [], onChange } = input;
+  const { onChange } = input;
+  const value = Array.isArray(input.value) ? input.value : [];
   const [newUrl, setNewUrl] = React.useState('');
 
   const handleAddImage = () => {

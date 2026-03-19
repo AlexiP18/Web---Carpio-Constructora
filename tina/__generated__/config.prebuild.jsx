@@ -65,7 +65,8 @@ var ImagePreviewField = wrapFieldsWithMeta(({ input }) => {
   ));
 });
 var ImageGalleryField = wrapFieldsWithMeta(({ input }) => {
-  const { value = [], onChange } = input;
+  const { onChange } = input;
+  const value = Array.isArray(input.value) ? input.value : [];
   const [newUrl, setNewUrl] = React.useState("");
   const handleAddImage = () => {
     if (newUrl.trim()) {
