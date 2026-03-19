@@ -98,58 +98,88 @@ fragment ServiciosParts on Servicios {
   __typename
   title
   slug
-  shortDescription
-  icon
-  category
-  heroConfig {
+  subtitle
+  description
+  backgroundImage
+  service {
     __typename
-    backgroundImage
-    subtitle
-    ctaText
-    ctaLink
-  }
-  gallery
-  benefits {
-    __typename
+    name
+    category
+    tagline
     icon
-    title
-    description
-  }
-  process {
-    __typename
-    step
-    title
-    description
-  }
-  testimonialsSection {
-    __typename
-    enabled
-    title
-    items {
+    showFeatures
+    showBenefits
+    showProcess
+    showCta
+    featuresTitle
+    featuresDescription
+    features {
       __typename
-      name
-      role
-      quote
-      image
+      title
+      description
+      icon
     }
-  }
-  faqsSection {
-    __typename
-    enabled
-    title
-    items {
+    heroConfig {
       __typename
-      question
-      answer
+      backgroundImage
+      subtitle
+      ctaButton {
+        __typename
+        text
+        whatsappNumber
+        url
+      }
+      chips {
+        __typename
+        title
+        description
+        icon
+        colorScheme
+      }
     }
-  }
-  ctaSection {
-    __typename
-    title
-    description
-    buttonText
-    buttonLink
-    backgroundImage
+    gallery
+    benefits {
+      __typename
+      icon
+      title
+      description
+    }
+    process {
+      __typename
+      step
+      title
+      description
+    }
+    testimonialsSection {
+      __typename
+      enabled
+      title
+      items {
+        __typename
+        name
+        role
+        quote
+        image
+      }
+    }
+    faqsSection {
+      __typename
+      enabled
+      title
+      items {
+        __typename
+        question
+        answer
+      }
+    }
+    ctaSection {
+      __typename
+      title
+      description
+      buttonText
+      buttonLink
+      backgroundImage
+    }
   }
   body
 }

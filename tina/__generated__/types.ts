@@ -562,58 +562,80 @@ export type ProyectosConnection = Connection & {
   edges?: Maybe<Array<Maybe<ProyectosConnectionEdges>>>;
 };
 
-export type ServiciosHeroConfig = {
-  __typename?: 'ServiciosHeroConfig';
-  backgroundImage?: Maybe<Scalars['String']['output']>;
-  subtitle?: Maybe<Scalars['String']['output']>;
-  ctaText?: Maybe<Scalars['String']['output']>;
-  ctaLink?: Maybe<Scalars['String']['output']>;
+export type ServiciosServiceFeatures = {
+  __typename?: 'ServiciosServiceFeatures';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
 };
 
-export type ServiciosBenefits = {
-  __typename?: 'ServiciosBenefits';
+export type ServiciosServiceHeroConfigCtaButton = {
+  __typename?: 'ServiciosServiceHeroConfigCtaButton';
+  text?: Maybe<Scalars['String']['output']>;
+  whatsappNumber?: Maybe<Scalars['String']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type ServiciosServiceHeroConfigChips = {
+  __typename?: 'ServiciosServiceHeroConfigChips';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  colorScheme?: Maybe<Scalars['String']['output']>;
+};
+
+export type ServiciosServiceHeroConfig = {
+  __typename?: 'ServiciosServiceHeroConfig';
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  subtitle?: Maybe<Scalars['String']['output']>;
+  ctaButton?: Maybe<ServiciosServiceHeroConfigCtaButton>;
+  chips?: Maybe<Array<Maybe<ServiciosServiceHeroConfigChips>>>;
+};
+
+export type ServiciosServiceBenefits = {
+  __typename?: 'ServiciosServiceBenefits';
   icon?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
 };
 
-export type ServiciosProcess = {
-  __typename?: 'ServiciosProcess';
+export type ServiciosServiceProcess = {
+  __typename?: 'ServiciosServiceProcess';
   step?: Maybe<Scalars['Float']['output']>;
   title?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
 };
 
-export type ServiciosTestimonialsSectionItems = {
-  __typename?: 'ServiciosTestimonialsSectionItems';
+export type ServiciosServiceTestimonialsSectionItems = {
+  __typename?: 'ServiciosServiceTestimonialsSectionItems';
   name?: Maybe<Scalars['String']['output']>;
   role?: Maybe<Scalars['String']['output']>;
   quote?: Maybe<Scalars['String']['output']>;
   image?: Maybe<Scalars['String']['output']>;
 };
 
-export type ServiciosTestimonialsSection = {
-  __typename?: 'ServiciosTestimonialsSection';
+export type ServiciosServiceTestimonialsSection = {
+  __typename?: 'ServiciosServiceTestimonialsSection';
   enabled?: Maybe<Scalars['Boolean']['output']>;
   title?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<ServiciosTestimonialsSectionItems>>>;
+  items?: Maybe<Array<Maybe<ServiciosServiceTestimonialsSectionItems>>>;
 };
 
-export type ServiciosFaqsSectionItems = {
-  __typename?: 'ServiciosFaqsSectionItems';
+export type ServiciosServiceFaqsSectionItems = {
+  __typename?: 'ServiciosServiceFaqsSectionItems';
   question?: Maybe<Scalars['String']['output']>;
   answer?: Maybe<Scalars['String']['output']>;
 };
 
-export type ServiciosFaqsSection = {
-  __typename?: 'ServiciosFaqsSection';
+export type ServiciosServiceFaqsSection = {
+  __typename?: 'ServiciosServiceFaqsSection';
   enabled?: Maybe<Scalars['Boolean']['output']>;
   title?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Array<Maybe<ServiciosFaqsSectionItems>>>;
+  items?: Maybe<Array<Maybe<ServiciosServiceFaqsSectionItems>>>;
 };
 
-export type ServiciosCtaSection = {
-  __typename?: 'ServiciosCtaSection';
+export type ServiciosServiceCtaSection = {
+  __typename?: 'ServiciosServiceCtaSection';
   title?: Maybe<Scalars['String']['output']>;
   description?: Maybe<Scalars['String']['output']>;
   buttonText?: Maybe<Scalars['String']['output']>;
@@ -621,70 +643,105 @@ export type ServiciosCtaSection = {
   backgroundImage?: Maybe<Scalars['String']['output']>;
 };
 
+export type ServiciosService = {
+  __typename?: 'ServiciosService';
+  name?: Maybe<Scalars['String']['output']>;
+  category?: Maybe<Scalars['String']['output']>;
+  tagline?: Maybe<Scalars['String']['output']>;
+  icon?: Maybe<Scalars['String']['output']>;
+  showFeatures?: Maybe<Scalars['Boolean']['output']>;
+  showBenefits?: Maybe<Scalars['Boolean']['output']>;
+  showProcess?: Maybe<Scalars['Boolean']['output']>;
+  showCta?: Maybe<Scalars['Boolean']['output']>;
+  featuresTitle?: Maybe<Scalars['String']['output']>;
+  featuresDescription?: Maybe<Scalars['String']['output']>;
+  features?: Maybe<Array<Maybe<ServiciosServiceFeatures>>>;
+  heroConfig?: Maybe<ServiciosServiceHeroConfig>;
+  gallery?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  benefits?: Maybe<Array<Maybe<ServiciosServiceBenefits>>>;
+  process?: Maybe<Array<Maybe<ServiciosServiceProcess>>>;
+  testimonialsSection?: Maybe<ServiciosServiceTestimonialsSection>;
+  faqsSection?: Maybe<ServiciosServiceFaqsSection>;
+  ctaSection?: Maybe<ServiciosServiceCtaSection>;
+};
+
 export type Servicios = Node & Document & {
   __typename?: 'Servicios';
   title: Scalars['String']['output'];
   slug?: Maybe<Scalars['String']['output']>;
-  shortDescription?: Maybe<Scalars['String']['output']>;
-  icon?: Maybe<Scalars['String']['output']>;
-  category?: Maybe<Scalars['String']['output']>;
-  heroConfig?: Maybe<ServiciosHeroConfig>;
-  gallery?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
-  benefits?: Maybe<Array<Maybe<ServiciosBenefits>>>;
-  process?: Maybe<Array<Maybe<ServiciosProcess>>>;
-  testimonialsSection?: Maybe<ServiciosTestimonialsSection>;
-  faqsSection?: Maybe<ServiciosFaqsSection>;
-  ctaSection?: Maybe<ServiciosCtaSection>;
+  subtitle?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  backgroundImage?: Maybe<Scalars['String']['output']>;
+  service?: Maybe<ServiciosService>;
   body?: Maybe<Scalars['JSON']['output']>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
 };
 
-export type ServiciosHeroConfigFilter = {
-  backgroundImage?: InputMaybe<StringFilter>;
-  subtitle?: InputMaybe<StringFilter>;
-  ctaText?: InputMaybe<StringFilter>;
-  ctaLink?: InputMaybe<StringFilter>;
+export type ServiciosServiceFeaturesFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
 };
 
-export type ServiciosBenefitsFilter = {
+export type ServiciosServiceHeroConfigCtaButtonFilter = {
+  text?: InputMaybe<StringFilter>;
+  whatsappNumber?: InputMaybe<StringFilter>;
+  url?: InputMaybe<StringFilter>;
+};
+
+export type ServiciosServiceHeroConfigChipsFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  colorScheme?: InputMaybe<StringFilter>;
+};
+
+export type ServiciosServiceHeroConfigFilter = {
+  backgroundImage?: InputMaybe<StringFilter>;
+  subtitle?: InputMaybe<StringFilter>;
+  ctaButton?: InputMaybe<ServiciosServiceHeroConfigCtaButtonFilter>;
+  chips?: InputMaybe<ServiciosServiceHeroConfigChipsFilter>;
+};
+
+export type ServiciosServiceBenefitsFilter = {
   icon?: InputMaybe<StringFilter>;
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
 };
 
-export type ServiciosProcessFilter = {
+export type ServiciosServiceProcessFilter = {
   step?: InputMaybe<NumberFilter>;
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
 };
 
-export type ServiciosTestimonialsSectionItemsFilter = {
+export type ServiciosServiceTestimonialsSectionItemsFilter = {
   name?: InputMaybe<StringFilter>;
   role?: InputMaybe<StringFilter>;
   quote?: InputMaybe<StringFilter>;
   image?: InputMaybe<StringFilter>;
 };
 
-export type ServiciosTestimonialsSectionFilter = {
+export type ServiciosServiceTestimonialsSectionFilter = {
   enabled?: InputMaybe<BooleanFilter>;
   title?: InputMaybe<StringFilter>;
-  items?: InputMaybe<ServiciosTestimonialsSectionItemsFilter>;
+  items?: InputMaybe<ServiciosServiceTestimonialsSectionItemsFilter>;
 };
 
-export type ServiciosFaqsSectionItemsFilter = {
+export type ServiciosServiceFaqsSectionItemsFilter = {
   question?: InputMaybe<StringFilter>;
   answer?: InputMaybe<StringFilter>;
 };
 
-export type ServiciosFaqsSectionFilter = {
+export type ServiciosServiceFaqsSectionFilter = {
   enabled?: InputMaybe<BooleanFilter>;
   title?: InputMaybe<StringFilter>;
-  items?: InputMaybe<ServiciosFaqsSectionItemsFilter>;
+  items?: InputMaybe<ServiciosServiceFaqsSectionItemsFilter>;
 };
 
-export type ServiciosCtaSectionFilter = {
+export type ServiciosServiceCtaSectionFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
   buttonText?: InputMaybe<StringFilter>;
@@ -692,19 +749,34 @@ export type ServiciosCtaSectionFilter = {
   backgroundImage?: InputMaybe<StringFilter>;
 };
 
+export type ServiciosServiceFilter = {
+  name?: InputMaybe<StringFilter>;
+  category?: InputMaybe<StringFilter>;
+  tagline?: InputMaybe<StringFilter>;
+  icon?: InputMaybe<StringFilter>;
+  showFeatures?: InputMaybe<BooleanFilter>;
+  showBenefits?: InputMaybe<BooleanFilter>;
+  showProcess?: InputMaybe<BooleanFilter>;
+  showCta?: InputMaybe<BooleanFilter>;
+  featuresTitle?: InputMaybe<StringFilter>;
+  featuresDescription?: InputMaybe<StringFilter>;
+  features?: InputMaybe<ServiciosServiceFeaturesFilter>;
+  heroConfig?: InputMaybe<ServiciosServiceHeroConfigFilter>;
+  gallery?: InputMaybe<StringFilter>;
+  benefits?: InputMaybe<ServiciosServiceBenefitsFilter>;
+  process?: InputMaybe<ServiciosServiceProcessFilter>;
+  testimonialsSection?: InputMaybe<ServiciosServiceTestimonialsSectionFilter>;
+  faqsSection?: InputMaybe<ServiciosServiceFaqsSectionFilter>;
+  ctaSection?: InputMaybe<ServiciosServiceCtaSectionFilter>;
+};
+
 export type ServiciosFilter = {
   title?: InputMaybe<StringFilter>;
   slug?: InputMaybe<StringFilter>;
-  shortDescription?: InputMaybe<StringFilter>;
-  icon?: InputMaybe<StringFilter>;
-  category?: InputMaybe<StringFilter>;
-  heroConfig?: InputMaybe<ServiciosHeroConfigFilter>;
-  gallery?: InputMaybe<StringFilter>;
-  benefits?: InputMaybe<ServiciosBenefitsFilter>;
-  process?: InputMaybe<ServiciosProcessFilter>;
-  testimonialsSection?: InputMaybe<ServiciosTestimonialsSectionFilter>;
-  faqsSection?: InputMaybe<ServiciosFaqsSectionFilter>;
-  ctaSection?: InputMaybe<ServiciosCtaSectionFilter>;
+  subtitle?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  backgroundImage?: InputMaybe<StringFilter>;
+  service?: InputMaybe<ServiciosServiceFilter>;
   body?: InputMaybe<RichTextFilter>;
 };
 
@@ -2507,50 +2579,69 @@ export type ProyectosMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type ServiciosHeroConfigMutation = {
-  backgroundImage?: InputMaybe<Scalars['String']['input']>;
-  subtitle?: InputMaybe<Scalars['String']['input']>;
-  ctaText?: InputMaybe<Scalars['String']['input']>;
-  ctaLink?: InputMaybe<Scalars['String']['input']>;
+export type ServiciosServiceFeaturesMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ServiciosBenefitsMutation = {
+export type ServiciosServiceHeroConfigCtaButtonMutation = {
+  text?: InputMaybe<Scalars['String']['input']>;
+  whatsappNumber?: InputMaybe<Scalars['String']['input']>;
+  url?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ServiciosServiceHeroConfigChipsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  colorScheme?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ServiciosServiceHeroConfigMutation = {
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  subtitle?: InputMaybe<Scalars['String']['input']>;
+  ctaButton?: InputMaybe<ServiciosServiceHeroConfigCtaButtonMutation>;
+  chips?: InputMaybe<Array<InputMaybe<ServiciosServiceHeroConfigChipsMutation>>>;
+};
+
+export type ServiciosServiceBenefitsMutation = {
   icon?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ServiciosProcessMutation = {
+export type ServiciosServiceProcessMutation = {
   step?: InputMaybe<Scalars['Float']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ServiciosTestimonialsSectionItemsMutation = {
+export type ServiciosServiceTestimonialsSectionItemsMutation = {
   name?: InputMaybe<Scalars['String']['input']>;
   role?: InputMaybe<Scalars['String']['input']>;
   quote?: InputMaybe<Scalars['String']['input']>;
   image?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ServiciosTestimonialsSectionMutation = {
+export type ServiciosServiceTestimonialsSectionMutation = {
   enabled?: InputMaybe<Scalars['Boolean']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<ServiciosTestimonialsSectionItemsMutation>>>;
+  items?: InputMaybe<Array<InputMaybe<ServiciosServiceTestimonialsSectionItemsMutation>>>;
 };
 
-export type ServiciosFaqsSectionItemsMutation = {
+export type ServiciosServiceFaqsSectionItemsMutation = {
   question?: InputMaybe<Scalars['String']['input']>;
   answer?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ServiciosFaqsSectionMutation = {
+export type ServiciosServiceFaqsSectionMutation = {
   enabled?: InputMaybe<Scalars['Boolean']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
-  items?: InputMaybe<Array<InputMaybe<ServiciosFaqsSectionItemsMutation>>>;
+  items?: InputMaybe<Array<InputMaybe<ServiciosServiceFaqsSectionItemsMutation>>>;
 };
 
-export type ServiciosCtaSectionMutation = {
+export type ServiciosServiceCtaSectionMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
   buttonText?: InputMaybe<Scalars['String']['input']>;
@@ -2558,19 +2649,34 @@ export type ServiciosCtaSectionMutation = {
   backgroundImage?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type ServiciosServiceMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  category?: InputMaybe<Scalars['String']['input']>;
+  tagline?: InputMaybe<Scalars['String']['input']>;
+  icon?: InputMaybe<Scalars['String']['input']>;
+  showFeatures?: InputMaybe<Scalars['Boolean']['input']>;
+  showBenefits?: InputMaybe<Scalars['Boolean']['input']>;
+  showProcess?: InputMaybe<Scalars['Boolean']['input']>;
+  showCta?: InputMaybe<Scalars['Boolean']['input']>;
+  featuresTitle?: InputMaybe<Scalars['String']['input']>;
+  featuresDescription?: InputMaybe<Scalars['String']['input']>;
+  features?: InputMaybe<Array<InputMaybe<ServiciosServiceFeaturesMutation>>>;
+  heroConfig?: InputMaybe<ServiciosServiceHeroConfigMutation>;
+  gallery?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  benefits?: InputMaybe<Array<InputMaybe<ServiciosServiceBenefitsMutation>>>;
+  process?: InputMaybe<Array<InputMaybe<ServiciosServiceProcessMutation>>>;
+  testimonialsSection?: InputMaybe<ServiciosServiceTestimonialsSectionMutation>;
+  faqsSection?: InputMaybe<ServiciosServiceFaqsSectionMutation>;
+  ctaSection?: InputMaybe<ServiciosServiceCtaSectionMutation>;
+};
+
 export type ServiciosMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   slug?: InputMaybe<Scalars['String']['input']>;
-  shortDescription?: InputMaybe<Scalars['String']['input']>;
-  icon?: InputMaybe<Scalars['String']['input']>;
-  category?: InputMaybe<Scalars['String']['input']>;
-  heroConfig?: InputMaybe<ServiciosHeroConfigMutation>;
-  gallery?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  benefits?: InputMaybe<Array<InputMaybe<ServiciosBenefitsMutation>>>;
-  process?: InputMaybe<Array<InputMaybe<ServiciosProcessMutation>>>;
-  testimonialsSection?: InputMaybe<ServiciosTestimonialsSectionMutation>;
-  faqsSection?: InputMaybe<ServiciosFaqsSectionMutation>;
-  ctaSection?: InputMaybe<ServiciosCtaSectionMutation>;
+  subtitle?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  backgroundImage?: InputMaybe<Scalars['String']['input']>;
+  service?: InputMaybe<ServiciosServiceMutation>;
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
@@ -3242,7 +3348,7 @@ export type ConfiguracionGlobalMutation = {
 
 export type ProyectosPartsFragment = { __typename: 'Proyectos', title: string, slug?: string | null, description?: string | null, tags?: Array<string | null> | null, status?: string | null, category: string, backgroundImage?: string | null, images?: Array<string | null> | null, virtualTourVideo?: string | null, amenities?: Array<string | null> | null, body?: any | null, location?: { __typename: 'ProyectosLocation', address?: string | null, city?: string | null, sector?: string | null, mapUrl?: string | null, lat?: number | null, lng?: number | null } | null, specifications?: { __typename: 'ProyectosSpecifications', bedrooms?: { __typename: 'ProyectosSpecificationsBedrooms', enabled?: boolean | null, value?: number | null, label?: string | null, sublabel?: string | null } | null, bathrooms?: { __typename: 'ProyectosSpecificationsBathrooms', enabled?: boolean | null, value?: number | null, label?: string | null, sublabel?: string | null } | null, area?: { __typename: 'ProyectosSpecificationsArea', enabled?: boolean | null, value?: number | null, label?: string | null, sublabel?: string | null } | null, garden?: { __typename: 'ProyectosSpecificationsGarden', enabled?: boolean | null, value?: boolean | null, label?: string | null, sublabel?: string | null } | null, petFriendly?: { __typename: 'ProyectosSpecificationsPetFriendly', enabled?: boolean | null, value?: boolean | null, label?: string | null, sublabel?: string | null } | null, deliveryDate?: { __typename: 'ProyectosSpecificationsDeliveryDate', enabled?: boolean | null, value?: string | null, label?: string | null } | null, customSpecs?: Array<{ __typename: 'ProyectosSpecificationsCustomSpecs', enabled?: boolean | null, icon?: string | null, label?: string | null, value?: string | null, sublabel?: string | null, colorScheme?: string | null } | null> | null } | null, features?: Array<{ __typename: 'ProyectosFeatures', icon?: string | null, title?: string | null, description?: string | null } | null> | null, testimonials?: Array<{ __typename: 'ProyectosTestimonials', name?: string | null, quote?: string | null, image?: string | null, unitType?: string | null } | null> | null, seo?: { __typename: 'ProyectosSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null };
 
-export type ServiciosPartsFragment = { __typename: 'Servicios', title: string, slug?: string | null, shortDescription?: string | null, icon?: string | null, category?: string | null, gallery?: Array<string | null> | null, body?: any | null, heroConfig?: { __typename: 'ServiciosHeroConfig', backgroundImage?: string | null, subtitle?: string | null, ctaText?: string | null, ctaLink?: string | null } | null, benefits?: Array<{ __typename: 'ServiciosBenefits', icon?: string | null, title?: string | null, description?: string | null } | null> | null, process?: Array<{ __typename: 'ServiciosProcess', step?: number | null, title?: string | null, description?: string | null } | null> | null, testimonialsSection?: { __typename: 'ServiciosTestimonialsSection', enabled?: boolean | null, title?: string | null, items?: Array<{ __typename: 'ServiciosTestimonialsSectionItems', name?: string | null, role?: string | null, quote?: string | null, image?: string | null } | null> | null } | null, faqsSection?: { __typename: 'ServiciosFaqsSection', enabled?: boolean | null, title?: string | null, items?: Array<{ __typename: 'ServiciosFaqsSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, ctaSection?: { __typename: 'ServiciosCtaSection', title?: string | null, description?: string | null, buttonText?: string | null, buttonLink?: string | null, backgroundImage?: string | null } | null };
+export type ServiciosPartsFragment = { __typename: 'Servicios', title: string, slug?: string | null, subtitle?: string | null, description?: string | null, backgroundImage?: string | null, body?: any | null, service?: { __typename: 'ServiciosService', name?: string | null, category?: string | null, tagline?: string | null, icon?: string | null, showFeatures?: boolean | null, showBenefits?: boolean | null, showProcess?: boolean | null, showCta?: boolean | null, featuresTitle?: string | null, featuresDescription?: string | null, gallery?: Array<string | null> | null, features?: Array<{ __typename: 'ServiciosServiceFeatures', title?: string | null, description?: string | null, icon?: string | null } | null> | null, heroConfig?: { __typename: 'ServiciosServiceHeroConfig', backgroundImage?: string | null, subtitle?: string | null, ctaButton?: { __typename: 'ServiciosServiceHeroConfigCtaButton', text?: string | null, whatsappNumber?: string | null, url?: string | null } | null, chips?: Array<{ __typename: 'ServiciosServiceHeroConfigChips', title?: string | null, description?: string | null, icon?: string | null, colorScheme?: string | null } | null> | null } | null, benefits?: Array<{ __typename: 'ServiciosServiceBenefits', icon?: string | null, title?: string | null, description?: string | null } | null> | null, process?: Array<{ __typename: 'ServiciosServiceProcess', step?: number | null, title?: string | null, description?: string | null } | null> | null, testimonialsSection?: { __typename: 'ServiciosServiceTestimonialsSection', enabled?: boolean | null, title?: string | null, items?: Array<{ __typename: 'ServiciosServiceTestimonialsSectionItems', name?: string | null, role?: string | null, quote?: string | null, image?: string | null } | null> | null } | null, faqsSection?: { __typename: 'ServiciosServiceFaqsSection', enabled?: boolean | null, title?: string | null, items?: Array<{ __typename: 'ServiciosServiceFaqsSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, ctaSection?: { __typename: 'ServiciosServiceCtaSection', title?: string | null, description?: string | null, buttonText?: string | null, buttonLink?: string | null, backgroundImage?: string | null } | null } | null };
 
 export type CategoriasProyectosPartsFragment = { __typename: 'CategoriasProyectos', name: string, slug: string, description?: string | null, icon?: string | null, image?: string | null, order?: number | null, cloudinaryFolder?: string | null };
 
@@ -3280,7 +3386,7 @@ export type ServiciosQueryVariables = Exact<{
 }>;
 
 
-export type ServiciosQuery = { __typename?: 'Query', servicios: { __typename: 'Servicios', id: string, title: string, slug?: string | null, shortDescription?: string | null, icon?: string | null, category?: string | null, gallery?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, heroConfig?: { __typename: 'ServiciosHeroConfig', backgroundImage?: string | null, subtitle?: string | null, ctaText?: string | null, ctaLink?: string | null } | null, benefits?: Array<{ __typename: 'ServiciosBenefits', icon?: string | null, title?: string | null, description?: string | null } | null> | null, process?: Array<{ __typename: 'ServiciosProcess', step?: number | null, title?: string | null, description?: string | null } | null> | null, testimonialsSection?: { __typename: 'ServiciosTestimonialsSection', enabled?: boolean | null, title?: string | null, items?: Array<{ __typename: 'ServiciosTestimonialsSectionItems', name?: string | null, role?: string | null, quote?: string | null, image?: string | null } | null> | null } | null, faqsSection?: { __typename: 'ServiciosFaqsSection', enabled?: boolean | null, title?: string | null, items?: Array<{ __typename: 'ServiciosFaqsSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, ctaSection?: { __typename: 'ServiciosCtaSection', title?: string | null, description?: string | null, buttonText?: string | null, buttonLink?: string | null, backgroundImage?: string | null } | null } };
+export type ServiciosQuery = { __typename?: 'Query', servicios: { __typename: 'Servicios', id: string, title: string, slug?: string | null, subtitle?: string | null, description?: string | null, backgroundImage?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, service?: { __typename: 'ServiciosService', name?: string | null, category?: string | null, tagline?: string | null, icon?: string | null, showFeatures?: boolean | null, showBenefits?: boolean | null, showProcess?: boolean | null, showCta?: boolean | null, featuresTitle?: string | null, featuresDescription?: string | null, gallery?: Array<string | null> | null, features?: Array<{ __typename: 'ServiciosServiceFeatures', title?: string | null, description?: string | null, icon?: string | null } | null> | null, heroConfig?: { __typename: 'ServiciosServiceHeroConfig', backgroundImage?: string | null, subtitle?: string | null, ctaButton?: { __typename: 'ServiciosServiceHeroConfigCtaButton', text?: string | null, whatsappNumber?: string | null, url?: string | null } | null, chips?: Array<{ __typename: 'ServiciosServiceHeroConfigChips', title?: string | null, description?: string | null, icon?: string | null, colorScheme?: string | null } | null> | null } | null, benefits?: Array<{ __typename: 'ServiciosServiceBenefits', icon?: string | null, title?: string | null, description?: string | null } | null> | null, process?: Array<{ __typename: 'ServiciosServiceProcess', step?: number | null, title?: string | null, description?: string | null } | null> | null, testimonialsSection?: { __typename: 'ServiciosServiceTestimonialsSection', enabled?: boolean | null, title?: string | null, items?: Array<{ __typename: 'ServiciosServiceTestimonialsSectionItems', name?: string | null, role?: string | null, quote?: string | null, image?: string | null } | null> | null } | null, faqsSection?: { __typename: 'ServiciosServiceFaqsSection', enabled?: boolean | null, title?: string | null, items?: Array<{ __typename: 'ServiciosServiceFaqsSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, ctaSection?: { __typename: 'ServiciosServiceCtaSection', title?: string | null, description?: string | null, buttonText?: string | null, buttonLink?: string | null, backgroundImage?: string | null } | null } | null } };
 
 export type ServiciosConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -3292,7 +3398,7 @@ export type ServiciosConnectionQueryVariables = Exact<{
 }>;
 
 
-export type ServiciosConnectionQuery = { __typename?: 'Query', serviciosConnection: { __typename?: 'ServiciosConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ServiciosConnectionEdges', cursor: string, node?: { __typename: 'Servicios', id: string, title: string, slug?: string | null, shortDescription?: string | null, icon?: string | null, category?: string | null, gallery?: Array<string | null> | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, heroConfig?: { __typename: 'ServiciosHeroConfig', backgroundImage?: string | null, subtitle?: string | null, ctaText?: string | null, ctaLink?: string | null } | null, benefits?: Array<{ __typename: 'ServiciosBenefits', icon?: string | null, title?: string | null, description?: string | null } | null> | null, process?: Array<{ __typename: 'ServiciosProcess', step?: number | null, title?: string | null, description?: string | null } | null> | null, testimonialsSection?: { __typename: 'ServiciosTestimonialsSection', enabled?: boolean | null, title?: string | null, items?: Array<{ __typename: 'ServiciosTestimonialsSectionItems', name?: string | null, role?: string | null, quote?: string | null, image?: string | null } | null> | null } | null, faqsSection?: { __typename: 'ServiciosFaqsSection', enabled?: boolean | null, title?: string | null, items?: Array<{ __typename: 'ServiciosFaqsSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, ctaSection?: { __typename: 'ServiciosCtaSection', title?: string | null, description?: string | null, buttonText?: string | null, buttonLink?: string | null, backgroundImage?: string | null } | null } | null } | null> | null } };
+export type ServiciosConnectionQuery = { __typename?: 'Query', serviciosConnection: { __typename?: 'ServiciosConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ServiciosConnectionEdges', cursor: string, node?: { __typename: 'Servicios', id: string, title: string, slug?: string | null, subtitle?: string | null, description?: string | null, backgroundImage?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, service?: { __typename: 'ServiciosService', name?: string | null, category?: string | null, tagline?: string | null, icon?: string | null, showFeatures?: boolean | null, showBenefits?: boolean | null, showProcess?: boolean | null, showCta?: boolean | null, featuresTitle?: string | null, featuresDescription?: string | null, gallery?: Array<string | null> | null, features?: Array<{ __typename: 'ServiciosServiceFeatures', title?: string | null, description?: string | null, icon?: string | null } | null> | null, heroConfig?: { __typename: 'ServiciosServiceHeroConfig', backgroundImage?: string | null, subtitle?: string | null, ctaButton?: { __typename: 'ServiciosServiceHeroConfigCtaButton', text?: string | null, whatsappNumber?: string | null, url?: string | null } | null, chips?: Array<{ __typename: 'ServiciosServiceHeroConfigChips', title?: string | null, description?: string | null, icon?: string | null, colorScheme?: string | null } | null> | null } | null, benefits?: Array<{ __typename: 'ServiciosServiceBenefits', icon?: string | null, title?: string | null, description?: string | null } | null> | null, process?: Array<{ __typename: 'ServiciosServiceProcess', step?: number | null, title?: string | null, description?: string | null } | null> | null, testimonialsSection?: { __typename: 'ServiciosServiceTestimonialsSection', enabled?: boolean | null, title?: string | null, items?: Array<{ __typename: 'ServiciosServiceTestimonialsSectionItems', name?: string | null, role?: string | null, quote?: string | null, image?: string | null } | null> | null } | null, faqsSection?: { __typename: 'ServiciosServiceFaqsSection', enabled?: boolean | null, title?: string | null, items?: Array<{ __typename: 'ServiciosServiceFaqsSectionItems', question?: string | null, answer?: string | null } | null> | null } | null, ctaSection?: { __typename: 'ServiciosServiceCtaSection', title?: string | null, description?: string | null, buttonText?: string | null, buttonLink?: string | null, backgroundImage?: string | null } | null } | null } | null } | null> | null } };
 
 export type CategoriasProyectosQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -3510,58 +3616,88 @@ export const ServiciosPartsFragmentDoc = gql`
   __typename
   title
   slug
-  shortDescription
-  icon
-  category
-  heroConfig {
+  subtitle
+  description
+  backgroundImage
+  service {
     __typename
-    backgroundImage
-    subtitle
-    ctaText
-    ctaLink
-  }
-  gallery
-  benefits {
-    __typename
+    name
+    category
+    tagline
     icon
-    title
-    description
-  }
-  process {
-    __typename
-    step
-    title
-    description
-  }
-  testimonialsSection {
-    __typename
-    enabled
-    title
-    items {
+    showFeatures
+    showBenefits
+    showProcess
+    showCta
+    featuresTitle
+    featuresDescription
+    features {
       __typename
-      name
-      role
-      quote
-      image
+      title
+      description
+      icon
     }
-  }
-  faqsSection {
-    __typename
-    enabled
-    title
-    items {
+    heroConfig {
       __typename
-      question
-      answer
+      backgroundImage
+      subtitle
+      ctaButton {
+        __typename
+        text
+        whatsappNumber
+        url
+      }
+      chips {
+        __typename
+        title
+        description
+        icon
+        colorScheme
+      }
     }
-  }
-  ctaSection {
-    __typename
-    title
-    description
-    buttonText
-    buttonLink
-    backgroundImage
+    gallery
+    benefits {
+      __typename
+      icon
+      title
+      description
+    }
+    process {
+      __typename
+      step
+      title
+      description
+    }
+    testimonialsSection {
+      __typename
+      enabled
+      title
+      items {
+        __typename
+        name
+        role
+        quote
+        image
+      }
+    }
+    faqsSection {
+      __typename
+      enabled
+      title
+      items {
+        __typename
+        question
+        answer
+      }
+    }
+    ctaSection {
+      __typename
+      title
+      description
+      buttonText
+      buttonLink
+      backgroundImage
+    }
   }
   body
 }

@@ -1,4 +1,4 @@
-﻿import { defineConfig } from 'tinacms';
+import { defineConfig } from 'tinacms';
 import { ImagePreviewField, ImageGalleryField } from './fields/cloudinary-fields';
 import { pageBlockTemplates } from './fields/page-blocks';
 import { ColorPickerField } from './fields/color-field';
@@ -403,7 +403,7 @@ export default defineConfig({
       {
         name: 'servicios',
         label: 'Servicios',
-        path: 'src/content/services',
+        path: 'src/content/servicios',
         format: 'md',
         ui: {
           filename: {
@@ -428,26 +428,94 @@ export default defineConfig({
           },
           {
             type: 'string',
-            name: 'shortDescription',
-            label: 'Descripción Corta',
-            description: 'Para tarjetas y listados',
+            name: 'subtitle',
+            label: 'Subtítulo',
+          },
+          {
+            type: 'string',
+            name: 'description',
+            label: 'Descripción',
             ui: {
               component: 'textarea',
             },
           },
           {
             type: 'string',
-            name: 'icon',
-            label: 'Icono del Servicio',
-            description: 'Nombre del icono (ej: building, hammer, blueprint)',
+            name: 'backgroundImage',
+            label: 'Imagen Principal (Hero)',
+            ui: {
+              // @ts-ignore
+              component: ImagePreviewField,
+            },
           },
           {
-            type: 'string',
-            name: 'category',
-            label: 'Categoría del Servicio',
-            description: 'Selecciona la categoría principal',
-            options: serviceCategories,
-          },
+            type: 'object',
+            name: 'service',
+            label: 'Detalles y Secciones del Servicio',
+            fields: [
+              {
+                type: 'string',
+                name: 'name',
+                label: 'Nombre completo (ej: Servicio de Construcción)',
+              },
+              {
+                type: 'string',
+                name: 'category',
+                label: 'Categoría',
+                options: serviceCategories,
+              },
+              {
+                type: 'string',
+                name: 'tagline',
+                label: 'Tagline (ej: CALIDAD)',
+              },
+              {
+                type: 'string',
+                name: 'icon',
+                label: 'Icono del Servicio (opcional)',
+              },
+              {
+                type: 'boolean',
+                name: 'showFeatures',
+                label: 'Mostrar Sección Características',
+              },
+              {
+                type: 'boolean',
+                name: 'showBenefits',
+                label: 'Mostrar Sección Beneficios',
+              },
+              {
+                type: 'boolean',
+                name: 'showProcess',
+                label: 'Mostrar Sección Proceso',
+              },
+              {
+                type: 'boolean',
+                name: 'showCta',
+                label: 'Mostrar Sección CTA Final',
+              },
+              {
+                type: 'string',
+                name: 'featuresTitle',
+                label: 'Título de Características',
+              },
+              {
+                type: 'string',
+                name: 'featuresDescription',
+                label: 'Descripción de las Características',
+                ui: { component: 'textarea' },
+              },
+              {
+                type: 'object',
+                name: 'features',
+                label: 'Lista de Características',
+                list: true,
+                fields: [
+                  { type: 'string', name: 'title', label: 'Título' },
+                  { type: 'string', name: 'description', label: 'Descripción' },
+                  { type: 'string', name: 'icon', label: 'Icono' },
+                ],
+              },
           
           // --- Configuración del Hero ---
           {
@@ -471,14 +539,26 @@ export default defineConfig({
                 label: 'Subtítulo',
               },
               {
-                type: 'string',
-                name: 'ctaText',
-                label: 'Texto del Botón CTA',
+                type: 'object',
+                name: 'ctaButton',
+                label: 'Botón CTA',
+                fields: [
+                  { type: 'string', name: 'text', label: 'Texto del Botón' },
+                  { type: 'string', name: 'whatsappNumber', label: 'Número de WhatsApp', description: 'Ej: 593998323304' },
+                  { type: 'string', name: 'url', label: 'URL Alternativa' },
+                ],
               },
               {
-                type: 'string',
-                name: 'ctaLink',
-                label: 'Enlace del Botón CTA',
+                type: 'object',
+                name: 'chips',
+                label: 'Chips (Etiquetas Destacadas)',
+                list: true,
+                fields: [
+                  { type: 'string', name: 'title', label: 'Título' },
+                  { type: 'string', name: 'description', label: 'Descripción' },
+                  { type: 'string', name: 'icon', label: 'Icono' },
+                  { type: 'string', name: 'colorScheme', label: 'Color', options: ['primary', 'secondary'] },
+                ],
               },
             ],
           },
@@ -669,6 +749,8 @@ export default defineConfig({
               },
             ],
           },
+        ],
+      },
           
           // --- Contenido Principal ---
           {

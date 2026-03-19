@@ -364,50 +364,69 @@ type ProyectosConnection implements Connection {
   edges: [ProyectosConnectionEdges]
 }
 
-type ServiciosHeroConfig {
-  backgroundImage: String
-  subtitle: String
-  ctaText: String
-  ctaLink: String
+type ServiciosServiceFeatures {
+  title: String
+  description: String
+  icon: String
 }
 
-type ServiciosBenefits {
+type ServiciosServiceHeroConfigCtaButton {
+  text: String
+  whatsappNumber: String
+  url: String
+}
+
+type ServiciosServiceHeroConfigChips {
+  title: String
+  description: String
+  icon: String
+  colorScheme: String
+}
+
+type ServiciosServiceHeroConfig {
+  backgroundImage: String
+  subtitle: String
+  ctaButton: ServiciosServiceHeroConfigCtaButton
+  chips: [ServiciosServiceHeroConfigChips]
+}
+
+type ServiciosServiceBenefits {
   icon: String
   title: String
   description: String
 }
 
-type ServiciosProcess {
+type ServiciosServiceProcess {
   step: Float
   title: String
   description: String
 }
 
-type ServiciosTestimonialsSectionItems {
+type ServiciosServiceTestimonialsSectionItems {
   name: String
   role: String
   quote: String
   image: String
 }
 
-type ServiciosTestimonialsSection {
+type ServiciosServiceTestimonialsSection {
   enabled: Boolean
   title: String
-  items: [ServiciosTestimonialsSectionItems]
+  items: [ServiciosServiceTestimonialsSectionItems]
 }
 
-type ServiciosFaqsSectionItems {
+type ServiciosServiceFaqsSectionItems {
   question: String
   answer: String
 }
 
-type ServiciosFaqsSection {
+type ServiciosServiceFaqsSection {
   enabled: Boolean
   title: String
-  items: [ServiciosFaqsSectionItems]
+  items: [ServiciosServiceFaqsSectionItems]
 }
 
-type ServiciosCtaSection {
+type ServiciosServiceCtaSection {
   title: String
   description: String
   buttonText: String
@@ -415,69 +434,103 @@ type ServiciosCtaSection {
   backgroundImage: String
 }
 
+type ServiciosService {
+  name: String
+  category: String
+  tagline: String
+  icon: String
+  showFeatures: Boolean
+  showBenefits: Boolean
+  showProcess: Boolean
+  showCta: Boolean
+  featuresTitle: String
+  featuresDescription: String
+  features: [ServiciosServiceFeatures]
+  heroConfig: ServiciosServiceHeroConfig
+  gallery: [String]
+  benefits: [ServiciosServiceBenefits]
+  process: [ServiciosServiceProcess]
+  testimonialsSection: ServiciosServiceTestimonialsSection
+  faqsSection: ServiciosServiceFaqsSection
+  ctaSection: ServiciosServiceCtaSection
+}
+
 type Servicios implements Node & Document {
   title: String!
   slug: String
-  shortDescription: String
-  icon: String
-  category: String
-  heroConfig: ServiciosHeroConfig
-  gallery: [String]
-  benefits: [ServiciosBenefits]
-  process: [ServiciosProcess]
-  testimonialsSection: ServiciosTestimonialsSection
-  faqsSection: ServiciosFaqsSection
-  ctaSection: ServiciosCtaSection
+  subtitle: String
+  description: String
+  backgroundImage: String
+  service: ServiciosService
   body: JSON
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
-input ServiciosHeroConfigFilter {
-  backgroundImage: StringFilter
-  subtitle: StringFilter
-  ctaText: StringFilter
-  ctaLink: StringFilter
+input ServiciosServiceFeaturesFilter {
+  title: StringFilter
+  description: StringFilter
+  icon: StringFilter
 }
 
-input ServiciosBenefitsFilter {
+input ServiciosServiceHeroConfigCtaButtonFilter {
+  text: StringFilter
+  whatsappNumber: StringFilter
+  url: StringFilter
+}
+
+input ServiciosServiceHeroConfigChipsFilter {
+  title: StringFilter
+  description: StringFilter
+  icon: StringFilter
+  colorScheme: StringFilter
+}
+
+input ServiciosServiceHeroConfigFilter {
+  backgroundImage: StringFilter
+  subtitle: StringFilter
+  ctaButton: ServiciosServiceHeroConfigCtaButtonFilter
+  chips: ServiciosServiceHeroConfigChipsFilter
+}
+
+input ServiciosServiceBenefitsFilter {
   icon: StringFilter
   title: StringFilter
   description: StringFilter
 }
 
-input ServiciosProcessFilter {
+input ServiciosServiceProcessFilter {
   step: NumberFilter
   title: StringFilter
   description: StringFilter
 }
 
-input ServiciosTestimonialsSectionItemsFilter {
+input ServiciosServiceTestimonialsSectionItemsFilter {
   name: StringFilter
   role: StringFilter
   quote: StringFilter
   image: StringFilter
 }
 
-input ServiciosTestimonialsSectionFilter {
+input ServiciosServiceTestimonialsSectionFilter {
   enabled: BooleanFilter
   title: StringFilter
-  items: ServiciosTestimonialsSectionItemsFilter
+  items: ServiciosServiceTestimonialsSectionItemsFilter
 }
 
-input ServiciosFaqsSectionItemsFilter {
+input ServiciosServiceFaqsSectionItemsFilter {
   question: StringFilter
   answer: StringFilter
 }
 
-input ServiciosFaqsSectionFilter {
+input ServiciosServiceFaqsSectionFilter {
   enabled: BooleanFilter
   title: StringFilter
-  items: ServiciosFaqsSectionItemsFilter
+  items: ServiciosServiceFaqsSectionItemsFilter
 }
 
-input ServiciosCtaSectionFilter {
+input ServiciosServiceCtaSectionFilter {
   title: StringFilter
   description: StringFilter
   buttonText: StringFilter
@@ -485,19 +538,34 @@ input ServiciosCtaSectionFilter {
   backgroundImage: StringFilter
 }
 
+input ServiciosServiceFilter {
+  name: StringFilter
+  category: StringFilter
+  tagline: StringFilter
+  icon: StringFilter
+  showFeatures: BooleanFilter
+  showBenefits: BooleanFilter
+  showProcess: BooleanFilter
+  showCta: BooleanFilter
+  featuresTitle: StringFilter
+  featuresDescription: StringFilter
+  features: ServiciosServiceFeaturesFilter
+  heroConfig: ServiciosServiceHeroConfigFilter
+  gallery: StringFilter
+  benefits: ServiciosServiceBenefitsFilter
+  process: ServiciosServiceProcessFilter
+  testimonialsSection: ServiciosServiceTestimonialsSectionFilter
+  faqsSection: ServiciosServiceFaqsSectionFilter
+  ctaSection: ServiciosServiceCtaSectionFilter
+}
+
 input ServiciosFilter {
   title: StringFilter
   slug: StringFilter
-  shortDescription: StringFilter
-  icon: StringFilter
-  category: StringFilter
-  heroConfig: ServiciosHeroConfigFilter
-  gallery: StringFilter
-  benefits: ServiciosBenefitsFilter
-  process: ServiciosProcessFilter
-  testimonialsSection: ServiciosTestimonialsSectionFilter
-  faqsSection: ServiciosFaqsSectionFilter
-  ctaSection: ServiciosCtaSectionFilter
+  subtitle: StringFilter
+  description: StringFilter
+  backgroundImage: StringFilter
+  service: ServiciosServiceFilter
   body: RichTextFilter
 }
 
@@ -2083,50 +2151,69 @@ input ProyectosMutation {
   body: JSON
 }
 
-input ServiciosHeroConfigMutation {
-  backgroundImage: String
-  subtitle: String
-  ctaText: String
-  ctaLink: String
+input ServiciosServiceFeaturesMutation {
+  title: String
+  description: String
+  icon: String
 }
 
-input ServiciosBenefitsMutation {
+input ServiciosServiceHeroConfigCtaButtonMutation {
+  text: String
+  whatsappNumber: String
+  url: String
+}
+
+input ServiciosServiceHeroConfigChipsMutation {
+  title: String
+  description: String
+  icon: String
+  colorScheme: String
+}
+
+input ServiciosServiceHeroConfigMutation {
+  backgroundImage: String
+  subtitle: String
+  ctaButton: ServiciosServiceHeroConfigCtaButtonMutation
+  chips: [ServiciosServiceHeroConfigChipsMutation]
+}
+
+input ServiciosServiceBenefitsMutation {
   icon: String
   title: String
   description: String
 }
 
-input ServiciosProcessMutation {
+input ServiciosServiceProcessMutation {
   step: Float
   title: String
   description: String
 }
 
-input ServiciosTestimonialsSectionItemsMutation {
+input ServiciosServiceTestimonialsSectionItemsMutation {
   name: String
   role: String
   quote: String
   image: String
 }
 
-input ServiciosTestimonialsSectionMutation {
+input ServiciosServiceTestimonialsSectionMutation {
   enabled: Boolean
   title: String
-  items: [ServiciosTestimonialsSectionItemsMutation]
+  items: [ServiciosServiceTestimonialsSectionItemsMutation]
 }
 
-input ServiciosFaqsSectionItemsMutation {
+input ServiciosServiceFaqsSectionItemsMutation {
   question: String
   answer: String
 }
 
-input ServiciosFaqsSectionMutation {
+input ServiciosServiceFaqsSectionMutation {
   enabled: Boolean
   title: String
-  items: [ServiciosFaqsSectionItemsMutation]
+  items: [ServiciosServiceFaqsSectionItemsMutation]
 }
 
-input ServiciosCtaSectionMutation {
+input ServiciosServiceCtaSectionMutation {
   title: String
   description: String
   buttonText: String
@@ -2134,19 +2221,34 @@ input ServiciosCtaSectionMutation {
   backgroundImage: String
 }
 
+input ServiciosServiceMutation {
+  name: String
+  category: String
+  tagline: String
+  icon: String
+  showFeatures: Boolean
+  showBenefits: Boolean
+  showProcess: Boolean
+  showCta: Boolean
+  featuresTitle: String
+  featuresDescription: String
+  features: [ServiciosServiceFeaturesMutation]
+  heroConfig: ServiciosServiceHeroConfigMutation
+  gallery: [String]
+  benefits: [ServiciosServiceBenefitsMutation]
+  process: [ServiciosServiceProcessMutation]
+  testimonialsSection: ServiciosServiceTestimonialsSectionMutation
+  faqsSection: ServiciosServiceFaqsSectionMutation
+  ctaSection: ServiciosServiceCtaSectionMutation
+}
+
 input ServiciosMutation {
   title: String
   slug: String
-  shortDescription: String
-  icon: String
-  category: String
-  heroConfig: ServiciosHeroConfigMutation
-  gallery: [String]
-  benefits: [ServiciosBenefitsMutation]
-  process: [ServiciosProcessMutation]
-  testimonialsSection: ServiciosTestimonialsSectionMutation
-  faqsSection: ServiciosFaqsSectionMutation
-  ctaSection: ServiciosCtaSectionMutation
+  subtitle: String
+  description: String
+  backgroundImage: String
+  service: ServiciosServiceMutation
   body: JSON
 }
 

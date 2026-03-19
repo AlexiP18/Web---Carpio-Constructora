@@ -89,6 +89,10 @@ const serviciosCollection = defineCollection({
       name: z.string(),
       category: z.string(),
       tagline: z.string(),
+      showFeatures: z.boolean().optional(),
+      showBenefits: z.boolean().optional(),
+      showProcess: z.boolean().optional(),
+      showCta: z.boolean().optional(),
       // Configuración del Hero
       heroConfig: z.object({
         chips: z.array(z.object({

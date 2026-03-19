@@ -2300,7 +2300,7 @@ var config_default = defineConfig2({
       {
         name: "servicios",
         label: "Servicios",
-        path: "src/content/services",
+        path: "src/content/servicios",
         format: "md",
         ui: {
           filename: {
@@ -2325,237 +2325,319 @@ var config_default = defineConfig2({
           },
           {
             type: "string",
-            name: "shortDescription",
-            label: "Descripci\xF3n Corta",
-            description: "Para tarjetas y listados",
+            name: "subtitle",
+            label: "Subt\xEDtulo"
+          },
+          {
+            type: "string",
+            name: "description",
+            label: "Descripci\xF3n",
             ui: {
               component: "textarea"
             }
           },
           {
             type: "string",
-            name: "icon",
-            label: "Icono del Servicio",
-            description: "Nombre del icono (ej: building, hammer, blueprint)"
-          },
-          {
-            type: "string",
-            name: "category",
-            label: "Categor\xEDa del Servicio",
-            description: "Selecciona la categor\xEDa principal",
-            options: serviceCategories
-          },
-          // --- Configuración del Hero ---
-          {
-            type: "object",
-            name: "heroConfig",
-            label: "Configuraci\xF3n del Hero",
-            fields: [
-              {
-                type: "string",
-                name: "backgroundImage",
-                label: "Imagen de Fondo",
-                description: `Sube a Cloudinary y pega la URL`,
-                ui: {
-                  // @ts-ignore - Custom component
-                  component: ImagePreviewField
-                }
-              },
-              {
-                type: "string",
-                name: "subtitle",
-                label: "Subt\xEDtulo"
-              },
-              {
-                type: "string",
-                name: "ctaText",
-                label: "Texto del Bot\xF3n CTA"
-              },
-              {
-                type: "string",
-                name: "ctaLink",
-                label: "Enlace del Bot\xF3n CTA"
-              }
-            ]
-          },
-          // --- Galería ---
-          {
-            type: "string",
-            name: "gallery",
-            label: "Galer\xEDa de Im\xE1genes",
-            list: true,
-            description: `URLs de Cloudinary`,
+            name: "backgroundImage",
+            label: "Imagen Principal (Hero)",
             ui: {
-              // @ts-ignore - Custom component
-              component: ImageGalleryField
+              // @ts-ignore
+              component: ImagePreviewField
             }
           },
-          // --- Beneficios ---
           {
             type: "object",
-            name: "benefits",
-            label: "Beneficios del Servicio",
-            list: true,
+            name: "service",
+            label: "Detalles y Secciones del Servicio",
             fields: [
+              {
+                type: "string",
+                name: "name",
+                label: "Nombre completo (ej: Servicio de Construcci\xF3n)"
+              },
+              {
+                type: "string",
+                name: "category",
+                label: "Categor\xEDa",
+                options: serviceCategories
+              },
+              {
+                type: "string",
+                name: "tagline",
+                label: "Tagline (ej: CALIDAD)"
+              },
               {
                 type: "string",
                 name: "icon",
-                label: "Icono"
+                label: "Icono del Servicio (opcional)"
               },
-              {
-                type: "string",
-                name: "title",
-                label: "T\xEDtulo"
-              },
-              {
-                type: "string",
-                name: "description",
-                label: "Descripci\xF3n"
-              }
-            ]
-          },
-          // --- Proceso/Pasos ---
-          {
-            type: "object",
-            name: "process",
-            label: "Proceso del Servicio",
-            list: true,
-            fields: [
-              {
-                type: "number",
-                name: "step",
-                label: "N\xFAmero de Paso"
-              },
-              {
-                type: "string",
-                name: "title",
-                label: "T\xEDtulo del Paso"
-              },
-              {
-                type: "string",
-                name: "description",
-                label: "Descripci\xF3n"
-              }
-            ]
-          },
-          // --- Testimonios del Servicio ---
-          {
-            type: "object",
-            name: "testimonialsSection",
-            label: "Secci\xF3n de Testimonios",
-            fields: [
               {
                 type: "boolean",
-                name: "enabled",
-                label: "Mostrar Testimonios"
+                name: "showFeatures",
+                label: "Mostrar Secci\xF3n Caracter\xEDsticas"
+              },
+              {
+                type: "boolean",
+                name: "showBenefits",
+                label: "Mostrar Secci\xF3n Beneficios"
+              },
+              {
+                type: "boolean",
+                name: "showProcess",
+                label: "Mostrar Secci\xF3n Proceso"
+              },
+              {
+                type: "boolean",
+                name: "showCta",
+                label: "Mostrar Secci\xF3n CTA Final"
               },
               {
                 type: "string",
-                name: "title",
-                label: "T\xEDtulo de la Secci\xF3n"
+                name: "featuresTitle",
+                label: "T\xEDtulo de Caracter\xEDsticas"
+              },
+              {
+                type: "string",
+                name: "featuresDescription",
+                label: "Descripci\xF3n de las Caracter\xEDsticas",
+                ui: { component: "textarea" }
               },
               {
                 type: "object",
-                name: "items",
-                label: "Testimonios",
+                name: "features",
+                label: "Lista de Caracter\xEDsticas",
                 list: true,
+                fields: [
+                  { type: "string", name: "title", label: "T\xEDtulo" },
+                  { type: "string", name: "description", label: "Descripci\xF3n" },
+                  { type: "string", name: "icon", label: "Icono" }
+                ]
+              },
+              // --- Configuración del Hero ---
+              {
+                type: "object",
+                name: "heroConfig",
+                label: "Configuraci\xF3n del Hero",
                 fields: [
                   {
                     type: "string",
-                    name: "name",
-                    label: "Nombre"
-                  },
-                  {
-                    type: "string",
-                    name: "role",
-                    label: "Cargo/Rol"
-                  },
-                  {
-                    type: "string",
-                    name: "quote",
-                    label: "Testimonio",
+                    name: "backgroundImage",
+                    label: "Imagen de Fondo",
+                    description: `Sube a Cloudinary y pega la URL`,
                     ui: {
-                      component: "textarea"
+                      // @ts-ignore - Custom component
+                      component: ImagePreviewField
                     }
                   },
                   {
                     type: "string",
-                    name: "image",
-                    label: "Foto"
+                    name: "subtitle",
+                    label: "Subt\xEDtulo"
+                  },
+                  {
+                    type: "object",
+                    name: "ctaButton",
+                    label: "Bot\xF3n CTA",
+                    fields: [
+                      { type: "string", name: "text", label: "Texto del Bot\xF3n" },
+                      { type: "string", name: "whatsappNumber", label: "N\xFAmero de WhatsApp", description: "Ej: 593998323304" },
+                      { type: "string", name: "url", label: "URL Alternativa" }
+                    ]
+                  },
+                  {
+                    type: "object",
+                    name: "chips",
+                    label: "Chips (Etiquetas Destacadas)",
+                    list: true,
+                    fields: [
+                      { type: "string", name: "title", label: "T\xEDtulo" },
+                      { type: "string", name: "description", label: "Descripci\xF3n" },
+                      { type: "string", name: "icon", label: "Icono" },
+                      { type: "string", name: "colorScheme", label: "Color", options: ["primary", "secondary"] }
+                    ]
                   }
                 ]
-              }
-            ]
-          },
-          // --- FAQs ---
-          {
-            type: "object",
-            name: "faqsSection",
-            label: "Preguntas Frecuentes",
-            fields: [
-              {
-                type: "boolean",
-                name: "enabled",
-                label: "Mostrar FAQs"
               },
+              // --- Galería ---
               {
                 type: "string",
-                name: "title",
-                label: "T\xEDtulo de la Secci\xF3n"
+                name: "gallery",
+                label: "Galer\xEDa de Im\xE1genes",
+                list: true,
+                description: `URLs de Cloudinary`,
+                ui: {
+                  // @ts-ignore - Custom component
+                  component: ImageGalleryField
+                }
               },
+              // --- Beneficios ---
               {
                 type: "object",
-                name: "items",
-                label: "Preguntas",
+                name: "benefits",
+                label: "Beneficios del Servicio",
                 list: true,
                 fields: [
                   {
                     type: "string",
-                    name: "question",
-                    label: "Pregunta"
+                    name: "icon",
+                    label: "Icono"
                   },
                   {
                     type: "string",
-                    name: "answer",
-                    label: "Respuesta",
-                    ui: {
-                      component: "textarea"
-                    }
+                    name: "title",
+                    label: "T\xEDtulo"
+                  },
+                  {
+                    type: "string",
+                    name: "description",
+                    label: "Descripci\xF3n"
                   }
                 ]
-              }
-            ]
-          },
-          // --- CTA Final ---
-          {
-            type: "object",
-            name: "ctaSection",
-            label: "Secci\xF3n CTA Final",
-            fields: [
-              {
-                type: "string",
-                name: "title",
-                label: "T\xEDtulo"
               },
+              // --- Proceso/Pasos ---
               {
-                type: "string",
-                name: "description",
-                label: "Descripci\xF3n"
+                type: "object",
+                name: "process",
+                label: "Proceso del Servicio",
+                list: true,
+                fields: [
+                  {
+                    type: "number",
+                    name: "step",
+                    label: "N\xFAmero de Paso"
+                  },
+                  {
+                    type: "string",
+                    name: "title",
+                    label: "T\xEDtulo del Paso"
+                  },
+                  {
+                    type: "string",
+                    name: "description",
+                    label: "Descripci\xF3n"
+                  }
+                ]
               },
+              // --- Testimonios del Servicio ---
               {
-                type: "string",
-                name: "buttonText",
-                label: "Texto del Bot\xF3n"
+                type: "object",
+                name: "testimonialsSection",
+                label: "Secci\xF3n de Testimonios",
+                fields: [
+                  {
+                    type: "boolean",
+                    name: "enabled",
+                    label: "Mostrar Testimonios"
+                  },
+                  {
+                    type: "string",
+                    name: "title",
+                    label: "T\xEDtulo de la Secci\xF3n"
+                  },
+                  {
+                    type: "object",
+                    name: "items",
+                    label: "Testimonios",
+                    list: true,
+                    fields: [
+                      {
+                        type: "string",
+                        name: "name",
+                        label: "Nombre"
+                      },
+                      {
+                        type: "string",
+                        name: "role",
+                        label: "Cargo/Rol"
+                      },
+                      {
+                        type: "string",
+                        name: "quote",
+                        label: "Testimonio",
+                        ui: {
+                          component: "textarea"
+                        }
+                      },
+                      {
+                        type: "string",
+                        name: "image",
+                        label: "Foto"
+                      }
+                    ]
+                  }
+                ]
               },
+              // --- FAQs ---
               {
-                type: "string",
-                name: "buttonLink",
-                label: "Enlace del Bot\xF3n"
+                type: "object",
+                name: "faqsSection",
+                label: "Preguntas Frecuentes",
+                fields: [
+                  {
+                    type: "boolean",
+                    name: "enabled",
+                    label: "Mostrar FAQs"
+                  },
+                  {
+                    type: "string",
+                    name: "title",
+                    label: "T\xEDtulo de la Secci\xF3n"
+                  },
+                  {
+                    type: "object",
+                    name: "items",
+                    label: "Preguntas",
+                    list: true,
+                    fields: [
+                      {
+                        type: "string",
+                        name: "question",
+                        label: "Pregunta"
+                      },
+                      {
+                        type: "string",
+                        name: "answer",
+                        label: "Respuesta",
+                        ui: {
+                          component: "textarea"
+                        }
+                      }
+                    ]
+                  }
+                ]
               },
+              // --- CTA Final ---
               {
-                type: "string",
-                name: "backgroundImage",
-                label: "Imagen de Fondo"
+                type: "object",
+                name: "ctaSection",
+                label: "Secci\xF3n CTA Final",
+                fields: [
+                  {
+                    type: "string",
+                    name: "title",
+                    label: "T\xEDtulo"
+                  },
+                  {
+                    type: "string",
+                    name: "description",
+                    label: "Descripci\xF3n"
+                  },
+                  {
+                    type: "string",
+                    name: "buttonText",
+                    label: "Texto del Bot\xF3n"
+                  },
+                  {
+                    type: "string",
+                    name: "buttonLink",
+                    label: "Enlace del Bot\xF3n"
+                  },
+                  {
+                    type: "string",
+                    name: "backgroundImage",
+                    label: "Imagen de Fondo"
+                  }
+                ]
               }
             ]
           },
