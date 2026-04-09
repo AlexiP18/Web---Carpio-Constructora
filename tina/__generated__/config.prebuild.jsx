@@ -2405,19 +2405,37 @@ var config_default = defineConfig2({
               {
                 type: "string",
                 name: "featuresTitle",
-                label: "T\xEDtulo de Caracter\xEDsticas"
+                label: "T\xEDtulo de Caracter\xEDsticas",
+                ui: {
+                  hidden: (props) => {
+                    const vals = props.tinaForm?.values || props.form?.values || {};
+                    return vals.service?.showFeatures === false;
+                  }
+                }
               },
               {
                 type: "string",
                 name: "featuresDescription",
                 label: "Descripci\xF3n de las Caracter\xEDsticas",
-                ui: { component: "textarea" }
+                ui: {
+                  component: "textarea",
+                  hidden: (props) => {
+                    const vals = props.tinaForm?.values || props.form?.values || {};
+                    return vals.service?.showFeatures === false;
+                  }
+                }
               },
               {
                 type: "object",
                 name: "features",
                 label: "Lista de Caracter\xEDsticas",
                 list: true,
+                ui: {
+                  hidden: (props) => {
+                    const vals = props.tinaForm?.values || props.form?.values || {};
+                    return vals.service?.showFeatures === false;
+                  }
+                },
                 fields: [
                   { type: "string", name: "title", label: "T\xEDtulo" },
                   { type: "string", name: "description", label: "Descripci\xF3n" },
@@ -2487,6 +2505,12 @@ var config_default = defineConfig2({
                 name: "benefits",
                 label: "Beneficios del Servicio",
                 list: true,
+                ui: {
+                  hidden: (props) => {
+                    const vals = props.tinaForm?.values || props.form?.values || {};
+                    return vals.service?.showBenefits === false;
+                  }
+                },
                 fields: [
                   {
                     type: "string",
@@ -2511,6 +2535,12 @@ var config_default = defineConfig2({
                 name: "process",
                 label: "Proceso del Servicio",
                 list: true,
+                ui: {
+                  hidden: (props) => {
+                    const vals = props.tinaForm?.values || props.form?.values || {};
+                    return vals.service?.showProcess === false;
+                  }
+                },
                 fields: [
                   {
                     type: "number",
@@ -2534,6 +2564,12 @@ var config_default = defineConfig2({
                 type: "object",
                 name: "testimonialsSection",
                 label: "Secci\xF3n de Testimonios",
+                ui: {
+                  hidden: (props) => {
+                    const vals = props.tinaForm?.values || props.form?.values || {};
+                    return vals.service?.showTestimonials === false;
+                  }
+                },
                 fields: [
                   {
                     type: "boolean",
@@ -2583,6 +2619,12 @@ var config_default = defineConfig2({
                 type: "object",
                 name: "faqsSection",
                 label: "Preguntas Frecuentes",
+                ui: {
+                  hidden: (props) => {
+                    const vals = props.tinaForm?.values || props.form?.values || {};
+                    return vals.service?.showFaqs === false;
+                  }
+                },
                 fields: [
                   {
                     type: "boolean",
@@ -2622,6 +2664,12 @@ var config_default = defineConfig2({
                 type: "object",
                 name: "ctaSection",
                 label: "Secci\xF3n CTA Final",
+                ui: {
+                  hidden: (props) => {
+                    const vals = props.tinaForm?.values || props.form?.values || {};
+                    return vals.service?.showCta === false;
+                  }
+                },
                 fields: [
                   {
                     type: "string",

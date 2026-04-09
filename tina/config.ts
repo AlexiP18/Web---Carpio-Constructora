@@ -508,18 +508,36 @@ export default defineConfig({
                 type: 'string',
                 name: 'featuresTitle',
                 label: 'Título de Características',
+                ui: {
+                  hidden: (props: any) => {
+                    const vals = props.tinaForm?.values || props.form?.values || {};
+                    return vals.service?.showFeatures === false;
+                  }
+                },
               },
               {
                 type: 'string',
                 name: 'featuresDescription',
                 label: 'Descripción de las Características',
-                ui: { component: 'textarea' },
+                ui: { 
+                  component: 'textarea',
+                  hidden: (props: any) => {
+                    const vals = props.tinaForm?.values || props.form?.values || {};
+                    return vals.service?.showFeatures === false;
+                  }
+                },
               },
               {
                 type: 'object',
                 name: 'features',
                 label: 'Lista de Características',
                 list: true,
+                ui: {
+                  hidden: (props: any) => {
+                    const vals = props.tinaForm?.values || props.form?.values || {};
+                    return vals.service?.showFeatures === false;
+                  }
+                },
                 fields: [
                   { type: 'string', name: 'title', label: 'Título' },
                   { type: 'string', name: 'description', label: 'Descripción' },
@@ -592,6 +610,12 @@ export default defineConfig({
             name: 'benefits',
             label: 'Beneficios del Servicio',
             list: true,
+            ui: {
+              hidden: (props: any) => {
+                const vals = props.tinaForm?.values || props.form?.values || {};
+                return vals.service?.showBenefits === false;
+              }
+            },
             fields: [
               {
                 type: 'string',
@@ -617,6 +641,12 @@ export default defineConfig({
             name: 'process',
             label: 'Proceso del Servicio',
             list: true,
+            ui: {
+              hidden: (props: any) => {
+                const vals = props.tinaForm?.values || props.form?.values || {};
+                return vals.service?.showProcess === false;
+              }
+            },
             fields: [
               {
                 type: 'number',
@@ -641,6 +671,12 @@ export default defineConfig({
             type: 'object',
             name: 'testimonialsSection',
             label: 'Sección de Testimonios',
+            ui: {
+              hidden: (props: any) => {
+                const vals = props.tinaForm?.values || props.form?.values || {};
+                return vals.service?.showTestimonials === false;
+              }
+            },
             fields: [
               {
                 type: 'boolean',
@@ -691,6 +727,12 @@ export default defineConfig({
             type: 'object',
             name: 'faqsSection',
             label: 'Preguntas Frecuentes',
+            ui: {
+              hidden: (props: any) => {
+                const vals = props.tinaForm?.values || props.form?.values || {};
+                return vals.service?.showFaqs === false;
+              }
+            },
             fields: [
               {
                 type: 'boolean',
@@ -731,6 +773,12 @@ export default defineConfig({
             type: 'object',
             name: 'ctaSection',
             label: 'Sección CTA Final',
+            ui: {
+              hidden: (props: any) => {
+                const vals = props.tinaForm?.values || props.form?.values || {};
+                return vals.service?.showCta === false;
+              }
+            },
             fields: [
               {
                 type: 'string',
