@@ -64,230 +64,6 @@ export default defineConfig({
   schema: {
     collections: [
       // ==========================================
-      // COLECCIÓN: CONFIGURACIÓN GLOBAL
-      // ==========================================
-      {
-        name: 'global',
-        label: 'Configuración Global',
-        path: 'src/content/config',
-        format: 'json',
-        match: {
-          include: 'global',
-        },
-        ui: {
-          allowedActions: {
-            create: false,
-            delete: false,
-          },
-        },
-        fields: [
-          // INFORMACIÓN GENERAL
-          {
-            type: 'string',
-            name: 'nombre',
-            label: 'Nombre de la Empresa',
-          },
-          {
-            type: 'string',
-            name: 'eslogan',
-            label: 'Eslogan',
-          },
-          {
-            type: 'string',
-            name: 'logo',
-            label: 'Logo Principal',
-            description: 'URL de Cloudinary',
-            ui: { component: ImagePreviewField },
-          },
-          {
-            type: 'string',
-            name: 'simbolo',
-            label: 'Símbolo / Isotipo',
-            description: 'URL de Cloudinary',
-            ui: { component: ImagePreviewField },
-          },
-          {
-            type: 'string',
-            name: 'favicon',
-            label: 'Favicon',
-            description: 'URL de Cloudinary',
-            ui: { component: ImagePreviewField },
-          },
-          {
-            type: 'object',
-            name: 'colores_institucionales',
-            label: 'Colores Institucionales',
-            fields: [
-              { type: 'string', name: 'primario', label: 'Color Primario', ui: { component: ColorPickerField } },
-              { type: 'string', name: 'secundario', label: 'Color Secundario', ui: { component: ColorPickerField } },
-              { type: 'string', name: 'acento', label: 'Color Acento', ui: { component: ColorPickerField } },
-              { type: 'string', name: 'texto', label: 'Color Texto', ui: { component: ColorPickerField } },
-              { type: 'string', name: 'fondo', label: 'Color Fondo por Defecto', ui: { component: ColorPickerField } },
-            ],
-          },
-          {
-            type: 'object',
-            name: 'contacto_general',
-            label: 'Información de Contacto General',
-            fields: [
-              { type: 'string', name: 'telefono_principal', label: 'Teléfono Principal', ui: { component: PhoneField } },
-              { type: 'string', name: 'telefono_secundario', label: 'Teléfono Secundario', ui: { component: PhoneField } },
-              { type: 'string', name: 'whatsapp', label: 'WhatsApp', ui: { component: PhoneField } },
-              { type: 'string', name: 'email_principal', label: 'Email Principal', ui: { component: EmailField } },
-              { type: 'string', name: 'email_secundario', label: 'Email Secundario', ui: { component: EmailField } },
-              { type: 'string', name: 'horarios_atencion', label: 'Horarios de Atención', ui: { component: BusinessHoursField } },
-            ],
-          },
-          {
-            type: 'object',
-            name: 'agentes_inmobiliarios',
-            label: 'Agentes Inmobiliarios',
-            list: true,
-            ui: {
-              itemProps: (item) => ({ label: item?.nombre || 'Agente' }),
-            },
-            fields: [
-              { type: 'string', name: 'nombre', label: 'Nombre del Agente' },
-              { type: 'string', name: 'telefono_principal', label: 'Teléfono Principal', ui: { component: PhoneField } },
-              { type: 'string', name: 'telefono_secundario', label: 'Teléfono Secundario', ui: { component: PhoneField } },
-              { type: 'string', name: 'whatsapp', label: 'WhatsApp', ui: { component: PhoneField } },
-              { type: 'string', name: 'email_principal', label: 'Email Principal', ui: { component: EmailField } },
-              { type: 'string', name: 'email_secundario', label: 'Email Secundario', ui: { component: EmailField } },
-              { type: 'string', name: 'horarios_atencion', label: 'Horarios de Atención', ui: { component: BusinessHoursField } },
-            ],
-          },
-          {
-            type: 'object',
-            name: 'ubicaciones',
-            label: 'Ubicaciones',
-            list: true,
-            ui: {
-              itemProps: (item) => ({ label: item?.nombre || 'Ubicación' }),
-            },
-            fields: [
-              { type: 'string', name: 'nombre', label: 'Nombre/Sucursal' },
-              { type: 'string', name: 'direccion', label: 'Dirección' },
-              { type: 'string', name: 'map_url', label: 'URL de Google Maps' },
-            ],
-          },
-          {
-            type: 'object',
-            name: 'redes_sociales',
-            label: 'Redes Sociales',
-            list: true,
-            ui: {
-              itemProps: (item) => ({ label: item?.plataforma || 'Red Social' }),
-            },
-            fields: [
-              { type: 'string', name: 'plataforma', label: 'Plataforma', ui: { component: SocialIconSelector } },
-              { type: 'string', name: 'url', label: 'URL del Perfil' },
-            ],
-          },
-          {
-            type: 'object',
-            name: 'paginas_legales',
-            label: 'Páginas Legales',
-            list: true,
-            ui: {
-              itemProps: (item) => ({ label: item?.titulo || 'Página Legal' }),
-            },
-            fields: [
-              { type: 'string', name: 'titulo', label: 'Título' },
-              { type: 'string', name: 'descripcion', label: 'Descripción', ui: { component: 'textarea' } },
-              { type: 'string', name: 'icono', label: 'Icono', description: 'URL de Cloudinary', ui: { component: ImagePreviewField } },
-              { type: 'string', name: 'color_fondo', label: 'Color de Fondo', ui: { component: ColorPickerField } },
-              { type: 'string', name: 'imagen_fondo', label: 'Imagen de Fondo', description: 'URL de Cloudinary', ui: { component: ImagePreviewField } },
-            ],
-          },
-          // ==========================================
-          // ESTRUCTURA
-          // ==========================================
-          {
-            type: 'object',
-            name: 'header',
-            label: 'Estructura: Header',
-            fields: [
-              { type: 'boolean', name: 'fixed_on_scroll', label: 'Fijo al hacer scroll' },
-              { type: 'boolean', name: 'transparent_on_hero', label: 'Transparente en el Hero' },
-              {
-                type: 'object',
-                name: 'top_bar',
-                label: 'Barra Superior',
-                fields: [
-                  { type: 'boolean', name: 'mostrar', label: 'Mostrar Barra Superior' },
-                  { type: 'string', name: 'eslogan', label: 'Eslogan en Barra' },
-                  { type: 'boolean', name: 'mostrar_redes', label: 'Mostrar Redes Sociales' },
-                  { type: 'boolean', name: 'mostrar_contacto', label: 'Mostrar Teléfono/Email' },
-                ],
-              },
-              {
-                type: 'object',
-                name: 'menu_navegacion',
-                label: 'Páginas del Menú de Navegación',
-                list: true,
-                ui: {
-                  itemProps: (item) => ({ label: item?.label || 'Link' }),
-                },
-                fields: [
-                  { type: 'string', name: 'label', label: 'Etiqueta' },
-                  { type: 'string', name: 'url', label: 'URL' },
-                ],
-              },
-              { type: 'boolean', name: 'mostrar_whatsapp', label: 'Mostrar Botón WhatsApp' },
-              { type: 'boolean', name: 'mostrar_contacto', label: 'Mostrar Botón Contacto' },
-            ],
-          },
-          {
-            type: 'object',
-            name: 'footer',
-            label: 'Estructura: Footer',
-            fields: [
-              { type: 'string', name: 'frase', label: 'Frase del Footer', ui: { component: 'textarea' } },
-              {
-                type: 'object',
-                name: 'columna_servicios',
-                label: 'Columna de Servicios',
-                list: true,
-                ui: {
-                  itemProps: (item) => ({ label: item?.label || 'Servicio' }),
-                },
-                fields: [
-                  { type: 'string', name: 'label', label: 'Etiqueta' },
-                  { type: 'string', name: 'url', label: 'URL' },
-                ],
-              },
-              {
-                type: 'object',
-                name: 'columna_proyectos',
-                label: 'Columna de Proyectos',
-                list: true,
-                ui: {
-                  itemProps: (item) => ({ label: item?.label || 'Proyecto' }),
-                },
-                fields: [
-                  { type: 'string', name: 'label', label: 'Etiqueta' },
-                  { type: 'string', name: 'url', label: 'URL' },
-                ],
-              },
-              {
-                type: 'object',
-                name: 'columna_empresa',
-                label: 'Columna de Empresa (Inicio, Nosotros, Contacto)',
-                list: true,
-                ui: {
-                  itemProps: (item) => ({ label: item?.label || 'Página' }),
-                },
-                fields: [
-                  { type: 'string', name: 'label', label: 'Etiqueta' },
-                  { type: 'string', name: 'url', label: 'URL' },
-                ],
-              },
-              { type: 'boolean', name: 'mostrar_paginas_legales', label: 'Mostrar Páginas Legales' },
-            ],
-          },
-        ],
-      },
-      // ==========================================
       // COLECCIÓN: PROYECTOS
       // ==========================================
       {
@@ -1461,7 +1237,7 @@ export default defineConfig({
           {
             type: 'object',
             name: 'contact',
-            label: 'Información de Contacto',
+            label: 'Información de Contacto General',
             fields: [
               {
                 type: 'string',
@@ -1517,6 +1293,28 @@ export default defineConfig({
                   component: BusinessHoursField,
                 },
               },
+            ],
+          },
+
+          // --- Agentes Inmobiliarios ---
+          {
+            type: 'object',
+            name: 'agents',
+            label: 'Agentes Inmobiliarios',
+            list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: item?.name || 'Agente',
+              }),
+            },
+            fields: [
+              { type: 'string', name: 'name', label: 'Nombre del Agente' },
+              { type: 'string', name: 'phone', label: 'Teléfono Principal', ui: { component: PhoneField } },
+              { type: 'string', name: 'phoneSecondary', label: 'Teléfono Secundario', ui: { component: PhoneField } },
+              { type: 'string', name: 'whatsapp', label: 'WhatsApp', ui: { component: PhoneField } },
+              { type: 'string', name: 'email', label: 'Email Principal', ui: { component: EmailField } },
+              { type: 'string', name: 'emailSecondary', label: 'Email Secundario', ui: { component: EmailField } },
+              { type: 'string', name: 'hours', label: 'Horarios de Atención', ui: { component: BusinessHoursField } },
             ],
           },
 
@@ -1635,9 +1433,25 @@ export default defineConfig({
                 label: 'Header Transparente en Hero',
               },
               {
+                type: 'object',
+                name: 'topBar',
+                label: 'Barra Superior',
+                fields: [
+                  { type: 'boolean', name: 'show', label: 'Mostrar Barra Superior' },
+                  { type: 'string', name: 'slogan', label: 'Eslogan en la Barra' },
+                  { type: 'boolean', name: 'showSocials', label: 'Mostrar Redes Sociales' },
+                  { type: 'boolean', name: 'showContact', label: 'Mostrar Teléfono/Email' },
+                ],
+              },
+              {
                 type: 'boolean',
-                name: 'showTopBar',
-                label: 'Mostrar Barra Superior (con teléfono/email)',
+                name: 'showWhatsappButton',
+                label: 'Mostrar Botón WhatsApp',
+              },
+              {
+                type: 'boolean',
+                name: 'showContactButton',
+                label: 'Mostrar Botón Contacto',
               },
               {
                 type: 'object',
@@ -1722,50 +1536,59 @@ export default defineConfig({
             fields: [
               {
                 type: 'string',
+                name: 'phrase',
+                label: 'Frase Destacada del Footer',
+                ui: { component: 'textarea' },
+              },
+              {
+                type: 'string',
                 name: 'copyright',
                 label: 'Texto de Copyright',
                 description: 'Usa {year} para el año actual',
               },
               {
-                type: 'boolean',
-                name: 'showNewsletter',
-                label: 'Mostrar Newsletter',
-              },
-              {
-                type: 'string',
-                name: 'newsletterTitle',
-                label: 'Título del Newsletter',
-              },
-              {
-                type: 'string',
-                name: 'newsletterSubtitle',
-                label: 'Subtítulo del Newsletter',
+                type: 'object',
+                name: 'servicesColumn',
+                label: 'Columna de Servicios',
+                list: true,
+                ui: {
+                  itemProps: (item) => ({ label: item?.label || 'Servicio' }),
+                },
+                fields: [
+                  { type: 'string', name: 'label', label: 'Texto' },
+                  { type: 'string', name: 'href', label: 'URL' },
+                ],
               },
               {
                 type: 'object',
-                name: 'columns',
-                label: 'Columnas del Footer',
+                name: 'projectsColumn',
+                label: 'Columna de Proyectos',
                 list: true,
                 ui: {
-                  itemProps: (item) => ({
-                    label: item?.title || 'Nueva Columna',
-                  }),
+                  itemProps: (item) => ({ label: item?.label || 'Proyecto' }),
                 },
                 fields: [
-                  { type: 'string', name: 'title', label: 'Título de la Columna' },
-                  { type: 'number', name: 'order', label: 'Orden' },
-                  {
-                    type: 'object',
-                    name: 'links',
-                    label: 'Enlaces',
-                    list: true,
-                    fields: [
-                      { type: 'string', name: 'label', label: 'Texto' },
-                      { type: 'string', name: 'href', label: 'URL' },
-                      { type: 'number', name: 'order', label: 'Orden' },
-                    ],
-                  },
+                  { type: 'string', name: 'label', label: 'Texto' },
+                  { type: 'string', name: 'href', label: 'URL' },
                 ],
+              },
+              {
+                type: 'object',
+                name: 'companyColumn',
+                label: 'Columna Empresa (Inicio, Nosotros, Contacto)',
+                list: true,
+                ui: {
+                  itemProps: (item) => ({ label: item?.label || 'Página' }),
+                },
+                fields: [
+                  { type: 'string', name: 'label', label: 'Texto' },
+                  { type: 'string', name: 'href', label: 'URL' },
+                ],
+              },
+              {
+                type: 'boolean',
+                name: 'showLegalPages',
+                label: 'Mostrar Páginas Legales en Footer',
               },
             ],
           },
