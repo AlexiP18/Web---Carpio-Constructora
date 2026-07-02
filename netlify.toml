@@ -13,6 +13,7 @@
 # Configuración de Netlify Identity para Decap CMS
 [build.environment]
   NODE_VERSION = "20"
+  NODE_OPTIONS = "--max-old-space-size=4096"
 
 # Redirecciones para el admin de Decap CMS
 [[redirects]]
