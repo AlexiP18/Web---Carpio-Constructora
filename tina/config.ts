@@ -72,6 +72,9 @@ export default defineConfig({
         path: 'src/content/proyectos',
         format: 'md',
         ui: {
+          router: ({ document }) => {
+            return `/proyecto/${document._sys.filename}`;
+          },
           filename: {
             readonly: false,
             slugify: (values) => {
@@ -406,6 +409,9 @@ export default defineConfig({
         path: 'src/content/servicios',
         format: 'md',
         ui: {
+          router: ({ document }) => {
+            return `/servicios/${document._sys.filename}`;
+          },
           filename: {
             readonly: false,
             slugify: (values) => {
@@ -1051,6 +1057,12 @@ export default defineConfig({
         path: 'src/content/paginas',
         format: 'json',
         ui: {
+          router: ({ document }) => {
+            if (document._sys.filename === 'index' || document._sys.filename === 'inicio') {
+              return '/';
+            }
+            return `/${document._sys.filename}`;
+          },
           allowedActions: {
             create: true,
             delete: false,
@@ -1059,10 +1071,6 @@ export default defineConfig({
             readonly: true,
             slugify: (values) => values?.slug || values?.title?.toLowerCase().replace(/\s+/g, '-') || '',
           },
-          // NOTA: Visual Editing con router requiere React + useTina hook
-          // Astro usa SSG/SSR sin React por defecto, por lo que usamos el 
-          // editor de página completa (full-page editor) en lugar de visual editing
-          // Más info: https://tina.io/docs/frameworks/astro/#enabling-visual-editing-optional
         },
         fields: [
           {
@@ -1125,6 +1133,7 @@ export default defineConfig({
         path: 'src/content/config',
         format: 'json',
         ui: {
+          router: () => '/',
           allowedActions: {
             create: false,
             delete: false,
