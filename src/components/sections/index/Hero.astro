@@ -868,75 +868,68 @@ const sliderImages = [
   // Singleton instance
   let heroSliderInstance: HeroSlider | null = null;
 
-  // Scroll interaction controller for Header, Mask Overlay & Action Buttons
+  // Scroll interaction controller for Header, Mask Overlay & Action Buttons (One-Time Intro on Load)
   function setupScrollInteraction() {
     const maskOverlay = document.getElementById("hero-mask-overlay");
     const heroContent = document.getElementById("hero-content-container");
     const header = document.getElementById("header");
     const scrollPrompt = document.getElementById("hero-scroll-prompt");
 
+    let converted = false;
+
     if (header) {
       header.classList.add("transition-all", "duration-500", "ease-out");
     }
 
-    function onScroll() {
-      const scrollY = window.scrollY || window.pageYOffset;
-      const threshold = 60; // scroll threshold in px
+    function triggerConversion() {
+      if (converted) return;
+      converted = true;
 
-      if (scrollY > threshold) {
-        // SCROLLED DOWN STATE:
-        // 1. Hide giant logo mask cutout & blue bg
-        if (maskOverlay) {
-          maskOverlay.classList.remove("opacity-100", "scale-100");
-          maskOverlay.classList.add("opacity-0", "scale-105", "pointer-events-none");
-        }
-        // 2. Reveal standard logo & action buttons
-        if (heroContent) {
-          heroContent.classList.remove("opacity-0", "translate-y-8", "pointer-events-none");
-          heroContent.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
-        }
-        // 3. Reveal site header
-        if (header) {
-          header.classList.remove("-translate-y-full", "opacity-0", "pointer-events-none");
-          header.classList.add("translate-y-0", "opacity-100", "pointer-events-auto");
-        }
-        // 4. Hide scroll prompt
-        if (scrollPrompt) {
-          scrollPrompt.classList.add("opacity-0", "pointer-events-none");
-        }
-      } else {
-        // TOP INITIAL STATE:
-        // 1. Show giant logo mask cutout & blue bg
-        if (maskOverlay) {
-          maskOverlay.classList.remove("opacity-0", "scale-105", "pointer-events-none");
-          maskOverlay.classList.add("opacity-100", "scale-100");
-        }
-        // 2. Hide standard logo & action buttons
-        if (heroContent) {
-          heroContent.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
-          heroContent.classList.add("opacity-0", "translate-y-8", "pointer-events-none");
-        }
-        // 3. Hide site header
-        if (header) {
-          header.classList.remove("translate-y-0", "opacity-100", "pointer-events-auto");
-          header.classList.add("-translate-y-full", "opacity-0", "pointer-events-none");
-        }
-        // 4. Show scroll prompt
-        if (scrollPrompt) {
-          scrollPrompt.classList.remove("opacity-0", "pointer-events-none");
-        }
+      // 1. Hide giant logo mask cutout & blue bg permanently
+      if (maskOverlay) {
+        maskOverlay.classList.remove("opacity-100", "scale-100");
+        maskOverlay.classList.add("opacity-0", "scale-105", "pointer-events-none");
+      }
+      // 2. Reveal standard logo & action buttons permanently
+      if (heroContent) {
+        heroContent.classList.remove("opacity-0", "translate-y-8", "pointer-events-none");
+        heroContent.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
+      }
+      // 3. Reveal site header permanently
+      if (header) {
+        header.classList.remove("-translate-y-full", "opacity-0", "pointer-events-none");
+        header.classList.add("translate-y-0", "opacity-100", "pointer-events-auto");
+      }
+      // 4. Hide scroll prompt
+      if (scrollPrompt) {
+        scrollPrompt.classList.add("opacity-0", "pointer-events-none");
       }
     }
 
-    // Initial check on load
-    onScroll();
+    function onScroll() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      if (scrollY > 30 && !converted) {
+        triggerConversion();
+      }
+    }
+
+    // Initial check on load: if page was loaded already scrolled
+    if ((window.scrollY || window.pageYOffset) > 30) {
+      triggerConversion();
+    } else {
+      // Set initial hidden states for header
+      if (header) {
+        header.classList.add("-translate-y-full", "opacity-0", "pointer-events-none");
+      }
+    }
 
     // Listen for scroll events
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    // Allow clicking scroll prompt to auto scroll down
+    // Allow clicking scroll prompt to trigger conversion & auto scroll down
     if (scrollPrompt) {
       scrollPrompt.addEventListener("click", () => {
+        triggerConversion();
         window.scrollTo({ top: window.innerHeight * 0.75, behavior: "smooth" });
       });
     }
