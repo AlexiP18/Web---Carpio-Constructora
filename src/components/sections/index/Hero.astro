@@ -57,17 +57,17 @@ const sliderImages = [
   </div>
 
   <!-- Primary Blue (#103646) Overlay with Giant Logo Cutout Window (Espejo hacia el carrusel) -->
-  <div class="absolute inset-0 z-20 w-full h-full pointer-events-none flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 z-20 w-full h-full pointer-events-none flex items-center justify-center overflow-hidden bg-[#103646]">
     <svg
-      class="w-full h-full max-w-[95vw] md:max-w-[90vw] lg:max-w-[85vw] max-h-[75vh]"
+      class="w-full h-full absolute inset-0"
       viewBox="0 0 260 70"
       preserveAspectRatio="xMidYMid meet"
       xmlns="http://www.w3.org/2000/svg"
     >
       <defs>
-        <mask id="hero-logo-cutout-mask" x="-1000" y="-1000" width="3000" height="3000" maskUnits="userSpaceOnUse">
+        <mask id="hero-logo-cutout-mask" x="-200%" y="-200%" width="500%" height="500%" maskUnits="userSpaceOnUse">
           <!-- White fills the entire viewport in the mask -> keeps solid #103646 blue -->
-          <rect x="-1000" y="-1000" width="3000" height="3000" fill="white" />
+          <rect x="-5000" y="-5000" width="10000" height="10000" fill="white" />
           <!-- Black logo shapes -> cut out hole in the blue background to reveal background slider -->
           <g fill="black">
             <path id="_408834056" d="M86.6541 41.2494c-2.4424,0 -4.7115,-0.3996 -6.8071,-1.1986 -2.0957,-0.7991 -3.9124,-1.9374 -5.4503,-3.4149 -1.5378,-1.4775 -2.7364,-3.2114 -3.5958,-5.2015 -0.8593,-1.9901 -1.289,-4.1762 -1.289,-6.5584 0,-2.3821 0.4297,-4.5682 1.289,-6.5583 0.8594,-1.9902 2.0656,-3.724 3.6185,-5.2015 1.5529,-1.4775 3.3696,-2.6158 5.4502,-3.4149 2.0806,-0.7991 4.3572,-1.1986 6.8298,-1.1986 2.7439,0 5.224,0.4749 7.4403,1.4247 2.2163,0.9499 4.0783,2.3445 5.586,4.1838l-4.704 4.3421c-1.0855,-1.2363 -2.2917,-2.1635 -3.6184,-2.7816 -1.3268,-0.6182 -2.7741,-0.9272 -4.3421,-0.9272 -1.4775,0 -2.8344,0.2412 -4.0707,0.7236 -1.2363,0.4825 -2.3068,1.176 -3.2114,2.0806 -0.9046,0.9046 -1.6056,1.9751 -2.1032,3.2114 -0.4975,1.2363 -0.7463,2.6083 -0.7463,4.1159 0,1.5077 0.2488,2.8797 0.7463,4.116 0.4976,1.2363 1.1986,2.3067 2.1032,3.2113 0.9046,0.9046 1.9751,1.5982 3.2114,2.0806 1.2363,0.4825 2.5932,0.7237 4.0707,0.7237 1.568,0 3.0153,-0.3091 4.3421,-0.9272 1.3267,-0.6182 2.5329,-1.5605 3.6184,-2.8269l4.704 4.3421c-1.5077,1.8393 -3.3697,3.2415 -5.586,4.2064 -2.2163,0.9649 -4.7115,1.4474 -7.4856,1.4474z"/>
@@ -103,7 +103,7 @@ const sliderImages = [
       </defs>
 
       <!-- Solid rectangle in Corporate Primary Blue #103646, masked by hero-logo-cutout-mask -->
-      <rect x="-1000" y="-1000" width="3000" height="3000" fill="#103646" mask="url(#hero-logo-cutout-mask)" />
+      <rect x="-5000" y="-5000" width="10000" height="10000" fill="#103646" mask="url(#hero-logo-cutout-mask)" />
     </svg>
   </div>
 
