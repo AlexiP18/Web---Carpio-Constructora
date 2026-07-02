@@ -1133,7 +1133,6 @@ export default defineConfig({
         path: 'src/content/config',
         format: 'json',
         ui: {
-          router: () => '/',
           allowedActions: {
             create: false,
             delete: false,
