@@ -1,7 +1,7 @@
 # Configuración de Netlify para Constructora Carpio
 
 [build]
-  command = "npm run build"
+  command = "npm run build:cloud"
   publish = "dist"
   functions = "netlify/functions"
 
@@ -28,10 +28,10 @@
 
 # Habilitar Git Gateway para Decap CMS
 [context.production]
-  command = "npm run build"
+  command = "npm run build:cloud"
 
 [context.deploy-preview]
-  command = "npm run build"
+  command = "npm run build:cloud"
 
 [context.branch-deploy]
-  command = "npm run build"
+  command = "npm run build:cloud"
