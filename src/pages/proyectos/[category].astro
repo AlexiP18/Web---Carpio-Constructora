@@ -203,6 +203,8 @@ const renderedFeatured = await Promise.all(
                                     videoUrl={project.data.virtualTourVideo}
                                     title={`Recorrido Virtual ${project.data.title}`}
                                     description="Descubre cada detalle de este innovador espacio a través de nuestro tour virtual completo"
+                                    projectName={project.data.title}
+                                    projectDescription={project.data.description}
                                 />
                             )}
                             <ProjectMosaicNew

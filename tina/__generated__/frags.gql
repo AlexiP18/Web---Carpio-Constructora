@@ -652,6 +652,16 @@ fragment ConfiguracionGlobalParts on ConfiguracionGlobal {
     emailSecondary
     hours
   }
+  agents {
+    __typename
+    name
+    phone
+    phoneSecondary
+    whatsapp
+    email
+    emailSecondary
+    hours
+  }
   locations {
     __typename
     main {
@@ -698,7 +708,15 @@ fragment ConfiguracionGlobalParts on ConfiguracionGlobal {
     __typename
     sticky
     transparent
-    showTopBar
+    topBar {
+      __typename
+      show
+      slogan
+      showSocials
+      showContact
+    }
+    showWhatsappButton
+    showContactButton
     navigation {
       __typename
       label
@@ -719,21 +737,24 @@ fragment ConfiguracionGlobalParts on ConfiguracionGlobal {
   }
   footer {
     __typename
+    phrase
     copyright
-    showNewsletter
-    newsletterTitle
-    newsletterSubtitle
-    columns {
+    servicesColumn {
       __typename
-      title
-      order
-      links {
-        __typename
-        label
-        href
-        order
-      }
+      label
+      href
     }
+    projectsColumn {
+      __typename
+      label
+      href
+    }
+    companyColumn {
+      __typename
+      label
+      href
+    }
+    showLegalPages
   }
   legal {
     __typename

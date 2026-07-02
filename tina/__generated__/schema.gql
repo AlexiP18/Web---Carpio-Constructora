@@ -1665,6 +1665,16 @@ type ConfiguracionGlobalContact {
   hours: String
 }
 
+type ConfiguracionGlobalAgents {
+  name: String
+  phone: String
+  phoneSecondary: String
+  whatsapp: String
+  email: String
+  emailSecondary: String
+  hours: String
+}
+
 type ConfiguracionGlobalLocationsMain {
   name: String
   address: String
@@ -1709,6 +1719,13 @@ type ConfiguracionGlobalSocialNetworks {
   order: Float
 }
 
+type ConfiguracionGlobalHeaderTopBar {
+  show: Boolean
+  slogan: String
+  showSocials: Boolean
+  showContact: Boolean
+}
+
 type ConfiguracionGlobalHeaderNavigationChildren {
   label: String
   href: String
@@ -1728,30 +1745,36 @@ type ConfiguracionGlobalHeaderNavigation {
 type ConfiguracionGlobalHeader {
   sticky: Boolean
   transparent: Boolean
-  showTopBar: Boolean
+  topBar: ConfiguracionGlobalHeaderTopBar
+  showWhatsappButton: Boolean
+  showContactButton: Boolean
   navigation: [ConfiguracionGlobalHeaderNavigation]
   ctaText: String
   ctaLink: String
 }
 
-type ConfiguracionGlobalFooterColumnsLinks {
+type ConfiguracionGlobalFooterServicesColumn {
   label: String
   href: String
-  order: Float
 }
 
-type ConfiguracionGlobalFooterColumns {
-  title: String
-  order: Float
-  links: [ConfiguracionGlobalFooterColumnsLinks]
+type ConfiguracionGlobalFooterProjectsColumn {
+  label: String
+  href: String
+}
+
+type ConfiguracionGlobalFooterCompanyColumn {
+  label: String
+  href: String
 }
 
 type ConfiguracionGlobalFooter {
+  phrase: String
   copyright: String
-  showNewsletter: Boolean
-  newsletterTitle: String
-  newsletterSubtitle: String
-  columns: [ConfiguracionGlobalFooterColumns]
+  servicesColumn: [ConfiguracionGlobalFooterServicesColumn]
+  projectsColumn: [ConfiguracionGlobalFooterProjectsColumn]
+  companyColumn: [ConfiguracionGlobalFooterCompanyColumn]
+  showLegalPages: Boolean
 }
 
 type ConfiguracionGlobalLegalPrivacyPolicy {
@@ -1801,6 +1824,7 @@ type ConfiguracionGlobal implements Node & Document {
   company: ConfiguracionGlobalCompany
   colors: ConfiguracionGlobalColors
   contact: ConfiguracionGlobalContact
+  agents: [ConfiguracionGlobalAgents]
   locations: ConfiguracionGlobalLocations
   socialNetworks: [ConfiguracionGlobalSocialNetworks]
   header: ConfiguracionGlobalHeader
@@ -1830,6 +1854,16 @@ input ConfiguracionGlobalColorsFilter {
 }
 
 input ConfiguracionGlobalContactFilter {
+  phone: StringFilter
+  phoneSecondary: StringFilter
+  whatsapp: StringFilter
+  email: StringFilter
+  emailSecondary: StringFilter
+  hours: StringFilter
+}
+
+input ConfiguracionGlobalAgentsFilter {
+  name: StringFilter
   phone: StringFilter
   phoneSecondary: StringFilter
   whatsapp: StringFilter
@@ -1882,6 +1916,13 @@ input ConfiguracionGlobalSocialNetworksFilter {
   order: NumberFilter
 }
 
+input ConfiguracionGlobalHeaderTopBarFilter {
+  show: BooleanFilter
+  slogan: StringFilter
+  showSocials: BooleanFilter
+  showContact: BooleanFilter
+}
+
 input ConfiguracionGlobalHeaderNavigationChildrenFilter {
   label: StringFilter
   href: StringFilter
@@ -1901,30 +1942,36 @@ input ConfiguracionGlobalHeaderNavigationFilter {
 input ConfiguracionGlobalHeaderFilter {
   sticky: BooleanFilter
   transparent: BooleanFilter
-  showTopBar: BooleanFilter
+  topBar: ConfiguracionGlobalHeaderTopBarFilter
+  showWhatsappButton: BooleanFilter
+  showContactButton: BooleanFilter
   navigation: ConfiguracionGlobalHeaderNavigationFilter
   ctaText: StringFilter
   ctaLink: StringFilter
 }
 
-input ConfiguracionGlobalFooterColumnsLinksFilter {
+input ConfiguracionGlobalFooterServicesColumnFilter {
   label: StringFilter
   href: StringFilter
-  order: NumberFilter
 }
 
-input ConfiguracionGlobalFooterColumnsFilter {
-  title: StringFilter
-  order: NumberFilter
-  links: ConfiguracionGlobalFooterColumnsLinksFilter
+input ConfiguracionGlobalFooterProjectsColumnFilter {
+  label: StringFilter
+  href: StringFilter
+}
+
+input ConfiguracionGlobalFooterCompanyColumnFilter {
+  label: StringFilter
+  href: StringFilter
 }
 
 input ConfiguracionGlobalFooterFilter {
+  phrase: StringFilter
   copyright: StringFilter
-  showNewsletter: BooleanFilter
-  newsletterTitle: StringFilter
-  newsletterSubtitle: StringFilter
-  columns: ConfiguracionGlobalFooterColumnsFilter
+  servicesColumn: ConfiguracionGlobalFooterServicesColumnFilter
+  projectsColumn: ConfiguracionGlobalFooterProjectsColumnFilter
+  companyColumn: ConfiguracionGlobalFooterCompanyColumnFilter
+  showLegalPages: BooleanFilter
 }
 
 input DatetimeFilter {
@@ -1982,6 +2029,7 @@ input ConfiguracionGlobalFilter {
   company: ConfiguracionGlobalCompanyFilter
   colors: ConfiguracionGlobalColorsFilter
   contact: ConfiguracionGlobalContactFilter
+  agents: ConfiguracionGlobalAgentsFilter
   locations: ConfiguracionGlobalLocationsFilter
   socialNetworks: ConfiguracionGlobalSocialNetworksFilter
   header: ConfiguracionGlobalHeaderFilter
@@ -2780,6 +2828,16 @@ input ConfiguracionGlobalContactMutation {
   hours: String
 }
 
+input ConfiguracionGlobalAgentsMutation {
+  name: String
+  phone: String
+  phoneSecondary: String
+  whatsapp: String
+  email: String
+  emailSecondary: String
+  hours: String
+}
+
 input ConfiguracionGlobalLocationsMainMutation {
   name: String
   address: String
@@ -2824,6 +2882,13 @@ input ConfiguracionGlobalSocialNetworksMutation {
   order: Float
 }
 
+input ConfiguracionGlobalHeaderTopBarMutation {
+  show: Boolean
+  slogan: String
+  showSocials: Boolean
+  showContact: Boolean
+}
+
 input ConfiguracionGlobalHeaderNavigationChildrenMutation {
   label: String
   href: String
@@ -2843,30 +2908,36 @@ input ConfiguracionGlobalHeaderNavigationMutation {
 input ConfiguracionGlobalHeaderMutation {
   sticky: Boolean
   transparent: Boolean
-  showTopBar: Boolean
+  topBar: ConfiguracionGlobalHeaderTopBarMutation
+  showWhatsappButton: Boolean
+  showContactButton: Boolean
   navigation: [ConfiguracionGlobalHeaderNavigationMutation]
   ctaText: String
   ctaLink: String
 }
 
-input ConfiguracionGlobalFooterColumnsLinksMutation {
+input ConfiguracionGlobalFooterServicesColumnMutation {
   label: String
   href: String
-  order: Float
 }
 
-input ConfiguracionGlobalFooterColumnsMutation {
-  title: String
-  order: Float
-  links: [ConfiguracionGlobalFooterColumnsLinksMutation]
+input ConfiguracionGlobalFooterProjectsColumnMutation {
+  label: String
+  href: String
+}
+
+input ConfiguracionGlobalFooterCompanyColumnMutation {
+  label: String
+  href: String
 }
 
 input ConfiguracionGlobalFooterMutation {
+  phrase: String
   copyright: String
-  showNewsletter: Boolean
-  newsletterTitle: String
-  newsletterSubtitle: String
-  columns: [ConfiguracionGlobalFooterColumnsMutation]
+  servicesColumn: [ConfiguracionGlobalFooterServicesColumnMutation]
+  projectsColumn: [ConfiguracionGlobalFooterProjectsColumnMutation]
+  companyColumn: [ConfiguracionGlobalFooterCompanyColumnMutation]
+  showLegalPages: Boolean
 }
 
 input ConfiguracionGlobalLegalPrivacyPolicyMutation {
@@ -2916,6 +2987,7 @@ input ConfiguracionGlobalMutation {
   company: ConfiguracionGlobalCompanyMutation
   colors: ConfiguracionGlobalColorsMutation
   contact: ConfiguracionGlobalContactMutation
+  agents: [ConfiguracionGlobalAgentsMutation]
   locations: ConfiguracionGlobalLocationsMutation
   socialNetworks: [ConfiguracionGlobalSocialNetworksMutation]
   header: ConfiguracionGlobalHeaderMutation

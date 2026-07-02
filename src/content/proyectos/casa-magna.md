@@ -76,7 +76,7 @@ testimonial:
   position: 'Propietario, Casa Magna'
   logo: /images/logo-placeholder.svg
   image: /images/placeholder-image.jpg
-title: Casa Magna
+title: MAGNA
 slug: casa-magna
 description: >-
   Residencia de lujo con diseño arquitectónico moderno, amplios espacios y 

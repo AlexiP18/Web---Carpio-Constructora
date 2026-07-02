@@ -5,108 +5,117 @@ import MosaicSecondaryBg from "../../ui/MosaicSecondaryBg.astro";
 
 // Fetch projects
 const allProjects = await getCollection("proyectos");
-const projects = allProjects.slice(0, 8);
+// Slice to exactly 6 projects for the vertical column layout (will show all if there are fewer, e.g. 5)
+const projects = allProjects.slice(0, 6);
 ---
 
-<!-- Portfolio Section - Simple Slider -->
-<section class="w-full py-16 lg:py-24 relative overflow-hidden bg-brand-secondary">
+<!-- Portfolio Section - Premium Sliding Accordion Panels -->
+<section class="w-full py-16 lg:py-24 relative overflow-hidden bg-gradient-to-b from-[#0a252f] to-[#051318]">
   <!-- SVG Background -->
-  <div class="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+  <div class="absolute inset-0 w-full h-full pointer-events-none opacity-10">
     <MosaicSecondaryBg />
   </div>
 
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 relative z-10 mb-12">
     <!-- Header Section -->
-    <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="800">
-      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20 mb-6">
-        <div class="w-2 h-2 bg-white rounded-full"></div>
+    <div class="text-center" data-aos="fade-up" data-aos-duration="800">
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/15 mb-6">
+        <div class="w-2 h-2 bg-[#D79528] rounded-full animate-ping"></div>
         <span class="font-semibold text-sm text-white tracking-wider uppercase">
           Nuestros Proyectos
         </span>
       </div>
-      <h2 class="font-bold text-4xl lg:text-6xl text-white mb-6">
-        Calidad en cada proyecto
+      <h2 class="font-bold text-4xl lg:text-6xl text-white mb-6 font-heading">
+        Calidad en cada detalle
       </h2>
-      <p class="text-lg lg:text-xl text-white/80 max-w-2xl mx-auto">
-        Transformamos tus ideas en realidades constructivas con excelencia y innovación.
+      <p class="text-lg lg:text-xl text-white/70 max-w-2xl mx-auto font-body">
+        Explora nuestras obras maestras. Pasa el cursor sobre cada columna para descubrir los detalles del proyecto.
       </p>
     </div>
   </div>
 
-  <!-- Slider Container (full width) -->
-  <div class="relative">
-    <!-- Navigation Buttons -->
-    <button 
-      id="portfolio-prev"
-      class="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-white hover:bg-white hover:text-brand-secondary transition-all duration-300"
-    >
-      <Icon name="ph:caret-left-bold" class="w-6 h-6" />
-    </button>
-    <button 
-      id="portfolio-next"
-      class="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 lg:w-14 lg:h-14 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 rounded-full text-white hover:bg-white hover:text-brand-secondary transition-all duration-300"
-    >
-      <Icon name="ph:caret-right-bold" class="w-6 h-6" />
-    </button>
+  <!-- Sliding Panels Container -->
+  <div class="w-full max-w-[1400px] mx-auto px-4 lg:px-8 relative z-10" data-aos="fade-up" data-aos-delay="200">
+    <div class="accordion-container flex flex-col lg:flex-row w-full gap-4 h-auto lg:h-[650px] overflow-hidden min-h-[500px]">
+      {projects.map((project, index) => {
+        // Determine tag icon
+        const firstTag = project.data.tags?.[0] || "Proyecto";
+        let iconName = "ph:briefcase";
+        
+        if (
+          firstTag.toLowerCase().includes("residencial") || 
+          firstTag.toLowerCase().includes("unifamiliar") || 
+          firstTag.toLowerCase().includes("casa")
+        ) {
+          iconName = "ph:house";
+        } else if (
+          firstTag.toLowerCase().includes("retail") || 
+          firstTag.toLowerCase().includes("comercial") || 
+          firstTag.toLowerCase().includes("local")
+        ) {
+          iconName = "ph:storefront";
+        } else if (
+          firstTag.toLowerCase().includes("conjunto") || 
+          firstTag.toLowerCase().includes("multifamiliar") || 
+          firstTag.toLowerCase().includes("edificio")
+        ) {
+          iconName = "ph:buildings";
+        }
 
-    <!-- Scrollable Track -->
-    <div 
-      id="portfolio-track"
-      class="flex gap-6 overflow-x-auto scroll-smooth px-6 lg:px-16 pb-4 hide-scrollbar"
-    >
-      {projects.map((project, index) => (
-        <a 
-          href={`/proyecto/${project.slug}`}
-          class="group flex-shrink-0 w-[320px] lg:w-[400px] bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
-        >
-          <!-- Image Container -->
-          <div class="relative h-52 lg:h-64 overflow-hidden">
-            <img 
-              src={project.data.backgroundImage} 
-              alt={project.data.title}
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              loading="lazy"
-            />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-            
-            <!-- Category Badge -->
-            <div class="absolute top-4 left-4">
-              <span class="px-3 py-1.5 bg-white/95 backdrop-blur rounded-full text-xs font-bold text-gray-800 uppercase tracking-wide shadow-md">
-                {project.data.tags?.[0] || "Proyecto"}
-              </span>
+        return (
+          <a
+            href={`/proyecto/${project.slug}`}
+            class="accordion-item group relative flex-1 h-[280px] lg:h-full overflow-hidden rounded-2xl cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-700 ease-out border border-white/5 hover:border-white/20"
+            style={`background-image: url('${project.data.backgroundImage}'); background-size: cover; background-position: center;`}
+          >
+            {/* Elegant background overlay gradient (always active, transitions to brand color on hover) */}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent group-hover:from-black/95 group-hover:via-[#103646]/75 transition-all duration-700 pointer-events-none z-10"></div>
+
+            {/* Vertical Title (Shown on desktop when collapsed, with semi-transparent background card for readability) */}
+            <div class="hidden lg:flex absolute inset-0 items-center justify-center pointer-events-none transition-all duration-500 ease-out z-15 opacity-100 group-hover:opacity-0 group-hover:-translate-y-8">
+              <div class="bg-black/55 backdrop-blur-sm py-8 px-4 rounded-full border border-white/10 shadow-xl flex items-center justify-center min-w-[54px] max-h-[85%]">
+                <span class="text-white text-base lg:text-lg font-black uppercase tracking-widest select-none vertical-text">
+                  {project.data.title}
+                </span>
+              </div>
             </div>
 
-            <!-- Title on Image -->
-            <div class="absolute bottom-4 left-4 right-4">
-              <h3 class="font-bold text-xl lg:text-2xl text-white leading-tight drop-shadow-lg">
+            {/* Horizontal content (visible on hover on desktop, always visible on mobile) */}
+            <div class="absolute inset-0 p-6 lg:p-10 flex flex-col justify-end text-white z-20 transition-all duration-700 ease-out translate-y-0 opacity-100 lg:translate-y-4 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100">
+              
+              {/* Category Tag / Chip with Icon */}
+              <div class="flex items-center gap-2 px-3 py-1.5 bg-[#D79528] text-white text-xs font-black rounded-full uppercase tracking-wider shadow-md w-fit mb-4 select-none">
+                <Icon name={iconName} class="w-4 h-4" />
+                <span>{firstTag}</span>
+              </div>
+              
+              {/* Project Title */}
+              <h3 class="font-bold text-2xl lg:text-3xl text-white mb-2 leading-tight drop-shadow-md font-heading">
                 {project.data.title}
               </h3>
-            </div>
-          </div>
 
-          <!-- Content Footer -->
-          <div class="p-5 bg-white">
-            <p class="text-gray-600 text-sm leading-relaxed line-clamp-2 mb-4">
-              {project.data.description}
-            </p>
-            
-            <div class="flex items-center justify-between">
-              <span class="inline-flex items-center gap-2 text-brand-primary font-semibold text-sm group-hover:gap-3 transition-all duration-300">
-                Ver proyecto
-                <Icon name="ph:arrow-right" class="w-4 h-4" />
+              {/* Project Description */}
+              <p class="text-white/80 text-sm leading-relaxed max-w-md mb-6 line-clamp-3 lg:line-clamp-none drop-shadow-sm font-body">
+                {project.data.description}
+              </p>
+
+              {/* View Project Link */}
+              <span class="inline-flex items-center gap-2 text-[#D79528] font-bold text-sm hover:text-white transition-colors duration-300 w-fit group/btn">
+                <span>Ver Proyecto</span>
+                <Icon name="ph:arrow-right-bold" class="w-4 h-4 group-hover/btn:translate-x-1.5 transition-transform duration-300" />
               </span>
             </div>
-          </div>
-        </a>
-      ))}
+          </a>
+        );
+      })}
     </div>
   </div>
 
-  <!-- CTA Button -->
-  <div class="text-center mt-12 px-6" data-aos="fade-up" data-aos-delay="300">
+  <!-- Bottom CTA Button -->
+  <div class="text-center mt-16 px-6" data-aos="fade-up" data-aos-delay="300">
     <a 
       href="/todos-proyectos"
-      class="inline-flex items-center gap-3 px-8 py-4 bg-white text-brand-secondary font-bold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
+      class="inline-flex items-center gap-3 px-8 py-4 bg-white text-[#103646] font-bold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300"
     >
       <span>Ver todos los proyectos</span>
       <Icon name="ph:arrow-right-bold" class="w-5 h-5" />
@@ -115,58 +124,36 @@ const projects = allProjects.slice(0, 8);
 </section>
 
 <style>
-  .hide-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  /* Base Accordion Item transition */
+  .accordion-item {
+    transition: flex 0.75s cubic-bezier(0.25, 1, 0.35, 1), border-color 0.5s ease;
   }
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;
+
+  /* Vertical upright text layout */
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 0.2em;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* Desktop hover interaction: Expand hovered card and contract others */
+  @media (min-width: 1024px) {
+    .accordion-container:hover .accordion-item {
+      flex: 0.6;
+    }
+    
+    .accordion-container .accordion-item:hover {
+      flex: 5.5;
+    }
+  }
+
+  /* Mobile/Tablet: Stack cards vertically with constant display */
+  @media (max-width: 1023px) {
+    .accordion-item {
+      flex: none !important;
+      width: 100% !important;
+    }
   }
 </style>
-
-<script>
-  function initPortfolioSlider() {
-    const track = document.getElementById('portfolio-track');
-    const prevBtn = document.getElementById('portfolio-prev');
-    const nextBtn = document.getElementById('portfolio-next');
-    
-    if (!track || !prevBtn || !nextBtn) return;
-
-    const cardWidth = 420; // Card width + gap
-
-    prevBtn.addEventListener('click', () => {
-      track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-    });
-
-    nextBtn.addEventListener('click', () => {
-      track.scrollBy({ left: cardWidth, behavior: 'smooth' });
-    });
-
-    // Auto scroll every 4 seconds
-    let autoScroll = setInterval(() => {
-      const maxScroll = track.scrollWidth - track.clientWidth;
-      if (track.scrollLeft >= maxScroll - 10) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        track.scrollBy({ left: cardWidth, behavior: 'smooth' });
-      }
-    }, 4000);
-
-    // Pause on hover
-    track.addEventListener('mouseenter', () => clearInterval(autoScroll));
-    track.addEventListener('mouseleave', () => {
-      autoScroll = setInterval(() => {
-        const maxScroll = track.scrollWidth - track.clientWidth;
-        if (track.scrollLeft >= maxScroll - 10) {
-          track.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          track.scrollBy({ left: cardWidth, behavior: 'smooth' });
-        }
-      }, 4000);
-    });
-  }
-
-  // Initialize
-  document.addEventListener('DOMContentLoaded', initPortfolioSlider);
-  document.addEventListener('astro:page-load', initPortfolioSlider);
-</script>

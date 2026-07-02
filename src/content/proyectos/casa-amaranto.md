@@ -57,7 +57,7 @@ testimonials:
     position: Residente, Casa Amaranto
     logo: /images/logo-placeholder.svg
     image: /images/placeholder-image.webp
-title: Casa Amaranto
+title: AMARANTO
 description: Vivienda unifamiliar con diseño contemporáneo que integra espacios interiores y exteriores, ideal para familias que buscan confort y estilo.
 tags:
   - Diseño Residencial

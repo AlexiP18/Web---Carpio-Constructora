@@ -53,7 +53,7 @@ testimonials:
     position: Residente, Los Arrayanes de Ficoa
     logo: /images/logo-placeholder.svg
     image: /images/placeholder-image.webp
-title: Los Arrayanes de Ficoa
+title: ARRAYANES FICOA
 description: Diseños de vivienda unifamiliar y multifamiliar que combinan
   funcionalidad y estética moderna.
 tags:

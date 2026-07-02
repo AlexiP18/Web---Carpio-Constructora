@@ -43,6 +43,7 @@ const { title, subtitle, description, backgroundImage, service } =
   />
 
   {
+    false &&
     service.showFeatures !== false && service.features && service.features.length > 0 && (
       <ServicioFeatures 
         tagline={service.tagline || ""}
@@ -54,6 +55,7 @@ const { title, subtitle, description, backgroundImage, service } =
   }
 
   {
+    false &&
     service.showBenefits !== false && service.benefits && service.benefits.length > 0 && (
       <ServicioBenefits 
         title="Beneficios de Nuestro Servicio"

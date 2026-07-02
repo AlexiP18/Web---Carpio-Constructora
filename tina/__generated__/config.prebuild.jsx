@@ -3119,7 +3119,7 @@ var config_default = defineConfig2({
           {
             type: "object",
             name: "contact",
-            label: "Informaci\xF3n de Contacto",
+            label: "Informaci\xF3n de Contacto General",
             fields: [
               {
                 type: "string",
@@ -3175,6 +3175,27 @@ var config_default = defineConfig2({
                   component: BusinessHoursField
                 }
               }
+            ]
+          },
+          // --- Agentes Inmobiliarios ---
+          {
+            type: "object",
+            name: "agents",
+            label: "Agentes Inmobiliarios",
+            list: true,
+            ui: {
+              itemProps: (item) => ({
+                label: item?.name || "Agente"
+              })
+            },
+            fields: [
+              { type: "string", name: "name", label: "Nombre del Agente" },
+              { type: "string", name: "phone", label: "Tel\xE9fono Principal", ui: { component: PhoneField } },
+              { type: "string", name: "phoneSecondary", label: "Tel\xE9fono Secundario", ui: { component: PhoneField } },
+              { type: "string", name: "whatsapp", label: "WhatsApp", ui: { component: PhoneField } },
+              { type: "string", name: "email", label: "Email Principal", ui: { component: EmailField } },
+              { type: "string", name: "emailSecondary", label: "Email Secundario", ui: { component: EmailField } },
+              { type: "string", name: "hours", label: "Horarios de Atenci\xF3n", ui: { component: BusinessHoursField } }
             ]
           },
           // --- Ubicaciones (Principal y Oficinas) ---
@@ -3290,9 +3311,25 @@ var config_default = defineConfig2({
                 label: "Header Transparente en Hero"
               },
               {
+                type: "object",
+                name: "topBar",
+                label: "Barra Superior",
+                fields: [
+                  { type: "boolean", name: "show", label: "Mostrar Barra Superior" },
+                  { type: "string", name: "slogan", label: "Eslogan en la Barra" },
+                  { type: "boolean", name: "showSocials", label: "Mostrar Redes Sociales" },
+                  { type: "boolean", name: "showContact", label: "Mostrar Tel\xE9fono/Email" }
+                ]
+              },
+              {
                 type: "boolean",
-                name: "showTopBar",
-                label: "Mostrar Barra Superior (con tel\xE9fono/email)"
+                name: "showWhatsappButton",
+                label: "Mostrar Bot\xF3n WhatsApp"
+              },
+              {
+                type: "boolean",
+                name: "showContactButton",
+                label: "Mostrar Bot\xF3n Contacto"
               },
               {
                 type: "object",
@@ -3376,50 +3413,59 @@ var config_default = defineConfig2({
             fields: [
               {
                 type: "string",
+                name: "phrase",
+                label: "Frase Destacada del Footer",
+                ui: { component: "textarea" }
+              },
+              {
+                type: "string",
                 name: "copyright",
                 label: "Texto de Copyright",
                 description: "Usa {year} para el a\xF1o actual"
               },
               {
-                type: "boolean",
-                name: "showNewsletter",
-                label: "Mostrar Newsletter"
-              },
-              {
-                type: "string",
-                name: "newsletterTitle",
-                label: "T\xEDtulo del Newsletter"
-              },
-              {
-                type: "string",
-                name: "newsletterSubtitle",
-                label: "Subt\xEDtulo del Newsletter"
+                type: "object",
+                name: "servicesColumn",
+                label: "Columna de Servicios",
+                list: true,
+                ui: {
+                  itemProps: (item) => ({ label: item?.label || "Servicio" })
+                },
+                fields: [
+                  { type: "string", name: "label", label: "Texto" },
+                  { type: "string", name: "href", label: "URL" }
+                ]
               },
               {
                 type: "object",
-                name: "columns",
-                label: "Columnas del Footer",
+                name: "projectsColumn",
+                label: "Columna de Proyectos",
                 list: true,
                 ui: {
-                  itemProps: (item) => ({
-                    label: item?.title || "Nueva Columna"
-                  })
+                  itemProps: (item) => ({ label: item?.label || "Proyecto" })
                 },
                 fields: [
-                  { type: "string", name: "title", label: "T\xEDtulo de la Columna" },
-                  { type: "number", name: "order", label: "Orden" },
-                  {
-                    type: "object",
-                    name: "links",
-                    label: "Enlaces",
-                    list: true,
-                    fields: [
-                      { type: "string", name: "label", label: "Texto" },
-                      { type: "string", name: "href", label: "URL" },
-                      { type: "number", name: "order", label: "Orden" }
-                    ]
-                  }
+                  { type: "string", name: "label", label: "Texto" },
+                  { type: "string", name: "href", label: "URL" }
                 ]
+              },
+              {
+                type: "object",
+                name: "companyColumn",
+                label: "Columna Empresa (Inicio, Nosotros, Contacto)",
+                list: true,
+                ui: {
+                  itemProps: (item) => ({ label: item?.label || "P\xE1gina" })
+                },
+                fields: [
+                  { type: "string", name: "label", label: "Texto" },
+                  { type: "string", name: "href", label: "URL" }
+                ]
+              },
+              {
+                type: "boolean",
+                name: "showLegalPages",
+                label: "Mostrar P\xE1ginas Legales en Footer"
               }
             ]
           },

@@ -1945,6 +1945,17 @@ export type ConfiguracionGlobalContact = {
   hours?: Maybe<Scalars['String']['output']>;
 };
 
+export type ConfiguracionGlobalAgents = {
+  __typename?: 'ConfiguracionGlobalAgents';
+  name?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  phoneSecondary?: Maybe<Scalars['String']['output']>;
+  whatsapp?: Maybe<Scalars['String']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  emailSecondary?: Maybe<Scalars['String']['output']>;
+  hours?: Maybe<Scalars['String']['output']>;
+};
+
 export type ConfiguracionGlobalLocationsMain = {
   __typename?: 'ConfiguracionGlobalLocationsMain';
   name?: Maybe<Scalars['String']['output']>;
@@ -1993,6 +2004,14 @@ export type ConfiguracionGlobalSocialNetworks = {
   order?: Maybe<Scalars['Float']['output']>;
 };
 
+export type ConfiguracionGlobalHeaderTopBar = {
+  __typename?: 'ConfiguracionGlobalHeaderTopBar';
+  show?: Maybe<Scalars['Boolean']['output']>;
+  slogan?: Maybe<Scalars['String']['output']>;
+  showSocials?: Maybe<Scalars['Boolean']['output']>;
+  showContact?: Maybe<Scalars['Boolean']['output']>;
+};
+
 export type ConfiguracionGlobalHeaderNavigationChildren = {
   __typename?: 'ConfiguracionGlobalHeaderNavigationChildren';
   label?: Maybe<Scalars['String']['output']>;
@@ -2015,33 +2034,40 @@ export type ConfiguracionGlobalHeader = {
   __typename?: 'ConfiguracionGlobalHeader';
   sticky?: Maybe<Scalars['Boolean']['output']>;
   transparent?: Maybe<Scalars['Boolean']['output']>;
-  showTopBar?: Maybe<Scalars['Boolean']['output']>;
+  topBar?: Maybe<ConfiguracionGlobalHeaderTopBar>;
+  showWhatsappButton?: Maybe<Scalars['Boolean']['output']>;
+  showContactButton?: Maybe<Scalars['Boolean']['output']>;
   navigation?: Maybe<Array<Maybe<ConfiguracionGlobalHeaderNavigation>>>;
   ctaText?: Maybe<Scalars['String']['output']>;
   ctaLink?: Maybe<Scalars['String']['output']>;
 };
 
-export type ConfiguracionGlobalFooterColumnsLinks = {
-  __typename?: 'ConfiguracionGlobalFooterColumnsLinks';
+export type ConfiguracionGlobalFooterServicesColumn = {
+  __typename?: 'ConfiguracionGlobalFooterServicesColumn';
   label?: Maybe<Scalars['String']['output']>;
   href?: Maybe<Scalars['String']['output']>;
-  order?: Maybe<Scalars['Float']['output']>;
 };
 
-export type ConfiguracionGlobalFooterColumns = {
-  __typename?: 'ConfiguracionGlobalFooterColumns';
-  title?: Maybe<Scalars['String']['output']>;
-  order?: Maybe<Scalars['Float']['output']>;
-  links?: Maybe<Array<Maybe<ConfiguracionGlobalFooterColumnsLinks>>>;
+export type ConfiguracionGlobalFooterProjectsColumn = {
+  __typename?: 'ConfiguracionGlobalFooterProjectsColumn';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
+};
+
+export type ConfiguracionGlobalFooterCompanyColumn = {
+  __typename?: 'ConfiguracionGlobalFooterCompanyColumn';
+  label?: Maybe<Scalars['String']['output']>;
+  href?: Maybe<Scalars['String']['output']>;
 };
 
 export type ConfiguracionGlobalFooter = {
   __typename?: 'ConfiguracionGlobalFooter';
+  phrase?: Maybe<Scalars['String']['output']>;
   copyright?: Maybe<Scalars['String']['output']>;
-  showNewsletter?: Maybe<Scalars['Boolean']['output']>;
-  newsletterTitle?: Maybe<Scalars['String']['output']>;
-  newsletterSubtitle?: Maybe<Scalars['String']['output']>;
-  columns?: Maybe<Array<Maybe<ConfiguracionGlobalFooterColumns>>>;
+  servicesColumn?: Maybe<Array<Maybe<ConfiguracionGlobalFooterServicesColumn>>>;
+  projectsColumn?: Maybe<Array<Maybe<ConfiguracionGlobalFooterProjectsColumn>>>;
+  companyColumn?: Maybe<Array<Maybe<ConfiguracionGlobalFooterCompanyColumn>>>;
+  showLegalPages?: Maybe<Scalars['Boolean']['output']>;
 };
 
 export type ConfiguracionGlobalLegalPrivacyPolicy = {
@@ -2097,6 +2123,7 @@ export type ConfiguracionGlobal = Node & Document & {
   company?: Maybe<ConfiguracionGlobalCompany>;
   colors?: Maybe<ConfiguracionGlobalColors>;
   contact?: Maybe<ConfiguracionGlobalContact>;
+  agents?: Maybe<Array<Maybe<ConfiguracionGlobalAgents>>>;
   locations?: Maybe<ConfiguracionGlobalLocations>;
   socialNetworks?: Maybe<Array<Maybe<ConfiguracionGlobalSocialNetworks>>>;
   header?: Maybe<ConfiguracionGlobalHeader>;
@@ -2126,6 +2153,16 @@ export type ConfiguracionGlobalColorsFilter = {
 };
 
 export type ConfiguracionGlobalContactFilter = {
+  phone?: InputMaybe<StringFilter>;
+  phoneSecondary?: InputMaybe<StringFilter>;
+  whatsapp?: InputMaybe<StringFilter>;
+  email?: InputMaybe<StringFilter>;
+  emailSecondary?: InputMaybe<StringFilter>;
+  hours?: InputMaybe<StringFilter>;
+};
+
+export type ConfiguracionGlobalAgentsFilter = {
+  name?: InputMaybe<StringFilter>;
   phone?: InputMaybe<StringFilter>;
   phoneSecondary?: InputMaybe<StringFilter>;
   whatsapp?: InputMaybe<StringFilter>;
@@ -2178,6 +2215,13 @@ export type ConfiguracionGlobalSocialNetworksFilter = {
   order?: InputMaybe<NumberFilter>;
 };
 
+export type ConfiguracionGlobalHeaderTopBarFilter = {
+  show?: InputMaybe<BooleanFilter>;
+  slogan?: InputMaybe<StringFilter>;
+  showSocials?: InputMaybe<BooleanFilter>;
+  showContact?: InputMaybe<BooleanFilter>;
+};
+
 export type ConfiguracionGlobalHeaderNavigationChildrenFilter = {
   label?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
@@ -2197,30 +2241,36 @@ export type ConfiguracionGlobalHeaderNavigationFilter = {
 export type ConfiguracionGlobalHeaderFilter = {
   sticky?: InputMaybe<BooleanFilter>;
   transparent?: InputMaybe<BooleanFilter>;
-  showTopBar?: InputMaybe<BooleanFilter>;
+  topBar?: InputMaybe<ConfiguracionGlobalHeaderTopBarFilter>;
+  showWhatsappButton?: InputMaybe<BooleanFilter>;
+  showContactButton?: InputMaybe<BooleanFilter>;
   navigation?: InputMaybe<ConfiguracionGlobalHeaderNavigationFilter>;
   ctaText?: InputMaybe<StringFilter>;
   ctaLink?: InputMaybe<StringFilter>;
 };
 
-export type ConfiguracionGlobalFooterColumnsLinksFilter = {
+export type ConfiguracionGlobalFooterServicesColumnFilter = {
   label?: InputMaybe<StringFilter>;
   href?: InputMaybe<StringFilter>;
-  order?: InputMaybe<NumberFilter>;
 };
 
-export type ConfiguracionGlobalFooterColumnsFilter = {
-  title?: InputMaybe<StringFilter>;
-  order?: InputMaybe<NumberFilter>;
-  links?: InputMaybe<ConfiguracionGlobalFooterColumnsLinksFilter>;
+export type ConfiguracionGlobalFooterProjectsColumnFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
+};
+
+export type ConfiguracionGlobalFooterCompanyColumnFilter = {
+  label?: InputMaybe<StringFilter>;
+  href?: InputMaybe<StringFilter>;
 };
 
 export type ConfiguracionGlobalFooterFilter = {
+  phrase?: InputMaybe<StringFilter>;
   copyright?: InputMaybe<StringFilter>;
-  showNewsletter?: InputMaybe<BooleanFilter>;
-  newsletterTitle?: InputMaybe<StringFilter>;
-  newsletterSubtitle?: InputMaybe<StringFilter>;
-  columns?: InputMaybe<ConfiguracionGlobalFooterColumnsFilter>;
+  servicesColumn?: InputMaybe<ConfiguracionGlobalFooterServicesColumnFilter>;
+  projectsColumn?: InputMaybe<ConfiguracionGlobalFooterProjectsColumnFilter>;
+  companyColumn?: InputMaybe<ConfiguracionGlobalFooterCompanyColumnFilter>;
+  showLegalPages?: InputMaybe<BooleanFilter>;
 };
 
 export type DatetimeFilter = {
@@ -2278,6 +2328,7 @@ export type ConfiguracionGlobalFilter = {
   company?: InputMaybe<ConfiguracionGlobalCompanyFilter>;
   colors?: InputMaybe<ConfiguracionGlobalColorsFilter>;
   contact?: InputMaybe<ConfiguracionGlobalContactFilter>;
+  agents?: InputMaybe<ConfiguracionGlobalAgentsFilter>;
   locations?: InputMaybe<ConfiguracionGlobalLocationsFilter>;
   socialNetworks?: InputMaybe<ConfiguracionGlobalSocialNetworksFilter>;
   header?: InputMaybe<ConfiguracionGlobalHeaderFilter>;
@@ -3208,6 +3259,16 @@ export type ConfiguracionGlobalContactMutation = {
   hours?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type ConfiguracionGlobalAgentsMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  phoneSecondary?: InputMaybe<Scalars['String']['input']>;
+  whatsapp?: InputMaybe<Scalars['String']['input']>;
+  email?: InputMaybe<Scalars['String']['input']>;
+  emailSecondary?: InputMaybe<Scalars['String']['input']>;
+  hours?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type ConfiguracionGlobalLocationsMainMutation = {
   name?: InputMaybe<Scalars['String']['input']>;
   address?: InputMaybe<Scalars['String']['input']>;
@@ -3252,6 +3313,13 @@ export type ConfiguracionGlobalSocialNetworksMutation = {
   order?: InputMaybe<Scalars['Float']['input']>;
 };
 
+export type ConfiguracionGlobalHeaderTopBarMutation = {
+  show?: InputMaybe<Scalars['Boolean']['input']>;
+  slogan?: InputMaybe<Scalars['String']['input']>;
+  showSocials?: InputMaybe<Scalars['Boolean']['input']>;
+  showContact?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
 export type ConfiguracionGlobalHeaderNavigationChildrenMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
@@ -3271,30 +3339,36 @@ export type ConfiguracionGlobalHeaderNavigationMutation = {
 export type ConfiguracionGlobalHeaderMutation = {
   sticky?: InputMaybe<Scalars['Boolean']['input']>;
   transparent?: InputMaybe<Scalars['Boolean']['input']>;
-  showTopBar?: InputMaybe<Scalars['Boolean']['input']>;
+  topBar?: InputMaybe<ConfiguracionGlobalHeaderTopBarMutation>;
+  showWhatsappButton?: InputMaybe<Scalars['Boolean']['input']>;
+  showContactButton?: InputMaybe<Scalars['Boolean']['input']>;
   navigation?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalHeaderNavigationMutation>>>;
   ctaText?: InputMaybe<Scalars['String']['input']>;
   ctaLink?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ConfiguracionGlobalFooterColumnsLinksMutation = {
+export type ConfiguracionGlobalFooterServicesColumnMutation = {
   label?: InputMaybe<Scalars['String']['input']>;
   href?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Scalars['Float']['input']>;
 };
 
-export type ConfiguracionGlobalFooterColumnsMutation = {
-  title?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Scalars['Float']['input']>;
-  links?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalFooterColumnsLinksMutation>>>;
+export type ConfiguracionGlobalFooterProjectsColumnMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ConfiguracionGlobalFooterCompanyColumnMutation = {
+  label?: InputMaybe<Scalars['String']['input']>;
+  href?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ConfiguracionGlobalFooterMutation = {
+  phrase?: InputMaybe<Scalars['String']['input']>;
   copyright?: InputMaybe<Scalars['String']['input']>;
-  showNewsletter?: InputMaybe<Scalars['Boolean']['input']>;
-  newsletterTitle?: InputMaybe<Scalars['String']['input']>;
-  newsletterSubtitle?: InputMaybe<Scalars['String']['input']>;
-  columns?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalFooterColumnsMutation>>>;
+  servicesColumn?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalFooterServicesColumnMutation>>>;
+  projectsColumn?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalFooterProjectsColumnMutation>>>;
+  companyColumn?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalFooterCompanyColumnMutation>>>;
+  showLegalPages?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type ConfiguracionGlobalLegalPrivacyPolicyMutation = {
@@ -3344,6 +3418,7 @@ export type ConfiguracionGlobalMutation = {
   company?: InputMaybe<ConfiguracionGlobalCompanyMutation>;
   colors?: InputMaybe<ConfiguracionGlobalColorsMutation>;
   contact?: InputMaybe<ConfiguracionGlobalContactMutation>;
+  agents?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalAgentsMutation>>>;
   locations?: InputMaybe<ConfiguracionGlobalLocationsMutation>;
   socialNetworks?: InputMaybe<Array<InputMaybe<ConfiguracionGlobalSocialNetworksMutation>>>;
   header?: InputMaybe<ConfiguracionGlobalHeaderMutation>;
@@ -3366,7 +3441,7 @@ export type PaginasPruebaPartsFragment = { __typename: 'PaginasPrueba', title?: 
 
 export type PaginasPartsFragment = { __typename: 'Paginas', title?: string | null, slug?: string | null, published?: boolean | null, seo?: { __typename: 'PaginasSeo', metaTitle?: string | null, metaDescription?: string | null, ogImage?: string | null } | null, sections?: Array<{ __typename: 'PaginasSectionsHero', title?: string | null, subtitle?: string | null, backgroundImage?: string | null, backgroundVideo?: string | null, ctaText?: string | null, ctaLink?: string | null, secondaryCtaText?: string | null, secondaryCtaLink?: string | null, alignment?: string | null, overlay?: boolean | null, animation?: { __typename: 'PaginasSectionsHeroAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsHeroSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsAbout', title?: string | null, subtitle?: string | null, content?: string | null, image?: string | null, imagePosition?: string | null, showStats?: boolean | null, ctaText?: string | null, ctaLink?: string | null, stats?: Array<{ __typename: 'PaginasSectionsAboutStats', value?: string | null, label?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsAboutAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsAboutSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsServices', title?: string | null, subtitle?: string | null, layout?: string | null, ctaText?: string | null, ctaLink?: string | null, items?: Array<{ __typename: 'PaginasSectionsServicesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null, link?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsServicesAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsServicesSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsProjects', title?: string | null, subtitle?: string | null, layout?: string | null, limit?: number | null, showFilters?: boolean | null, filterCategories?: Array<string | null> | null, ctaText?: string | null, ctaLink?: string | null, animation?: { __typename: 'PaginasSectionsProjectsAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsProjectsSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsTestimonials', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsTestimonialsItems', quote: string, author?: string | null, position?: string | null, avatar?: string | null, rating?: number | null } | null> | null, animation?: { __typename: 'PaginasSectionsTestimonialsAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsTestimonialsSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsCta', title?: string | null, description?: string | null, backgroundImage?: string | null, buttonText?: string | null, buttonLink?: string | null, secondaryButtonText?: string | null, secondaryButtonLink?: string | null, style?: string | null, animation?: { __typename: 'PaginasSectionsCtaAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsCtaSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsContact', title?: string | null, subtitle?: string | null, showForm?: boolean | null, showMap?: boolean | null, showInfo?: boolean | null, mapUrl?: string | null, info?: { __typename: 'PaginasSectionsContactInfo', address?: string | null, phone?: string | null, email?: string | null, hours?: string | null } | null, animation?: { __typename: 'PaginasSectionsContactAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsContactSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsTeam', title?: string | null, subtitle?: string | null, layout?: string | null, members?: Array<{ __typename: 'PaginasSectionsTeamMembers', name: string, position?: string | null, bio?: string | null, photo?: string | null, linkedin?: string | null, email?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsTeamAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsTeamSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsFaq', title?: string | null, subtitle?: string | null, items?: Array<{ __typename: 'PaginasSectionsFaqItems', question: string, answer: string } | null> | null, animation?: { __typename: 'PaginasSectionsFaqAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsFaqSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsGallery', title?: string | null, subtitle?: string | null, layout?: string | null, columns?: number | null, images?: Array<string | null> | null, animation?: { __typename: 'PaginasSectionsGalleryAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsGallerySectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsFeatures', title?: string | null, subtitle?: string | null, layout?: string | null, items?: Array<{ __typename: 'PaginasSectionsFeaturesItems', title?: string | null, description?: string | null, icon?: string | null, image?: string | null } | null> | null, animation?: { __typename: 'PaginasSectionsFeaturesAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsFeaturesSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsContent', title?: string | null, body?: any | null, backgroundColor?: string | null, maxWidth?: string | null, animation?: { __typename: 'PaginasSectionsContentAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsContentSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | { __typename: 'PaginasSectionsSpacer', size?: string | null, showDivider?: boolean | null, animation?: { __typename: 'PaginasSectionsSpacerAnimation', enabled?: boolean | null, type?: string | null, duration?: string | null, delay?: string | null, easing?: string | null, stagger?: boolean | null } | null, sectionConfig?: { __typename: 'PaginasSectionsSpacerSectionConfig', id?: string | null, backgroundColor?: string | null, paddingTop?: string | null, paddingBottom?: string | null, fullWidth?: boolean | null, visible?: boolean | null } | null } | null> | null };
 
-export type ConfiguracionGlobalPartsFragment = { __typename: 'ConfiguracionGlobal', company?: { __typename: 'ConfiguracionGlobalCompany', name?: string | null, slogan?: string | null, logo?: string | null, logoWhite?: string | null, logoIcon?: string | null, favicon?: string | null } | null, colors?: { __typename: 'ConfiguracionGlobalColors', primary?: string | null, secondary?: string | null, accent?: string | null, background?: string | null, text?: string | null } | null, contact?: { __typename: 'ConfiguracionGlobalContact', phone?: string | null, phoneSecondary?: string | null, whatsapp?: string | null, email?: string | null, emailSecondary?: string | null, hours?: string | null } | null, locations?: { __typename: 'ConfiguracionGlobalLocations', main?: { __typename: 'ConfiguracionGlobalLocationsMain', name?: string | null, address?: string | null, city?: string | null, province?: string | null, country?: string | null, postalCode?: string | null, phone?: string | null, email?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null } | null, offices?: Array<{ __typename: 'ConfiguracionGlobalLocationsOffices', name?: string | null, address?: string | null, city?: string | null, province?: string | null, phone?: string | null, email?: string | null, hours?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null, order?: number | null } | null> | null } | null, socialNetworks?: Array<{ __typename: 'ConfiguracionGlobalSocialNetworks', name?: string | null, icon?: string | null, url?: string | null, showInHeader?: boolean | null, showInFooter?: boolean | null, order?: number | null } | null> | null, header?: { __typename: 'ConfiguracionGlobalHeader', sticky?: boolean | null, transparent?: boolean | null, showTopBar?: boolean | null, ctaText?: string | null, ctaLink?: string | null, navigation?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigation', label?: string | null, href?: string | null, order?: number | null, highlight?: boolean | null, type?: string | null, dropdownLimit?: number | null, children?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigationChildren', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, footer?: { __typename: 'ConfiguracionGlobalFooter', copyright?: string | null, showNewsletter?: boolean | null, newsletterTitle?: string | null, newsletterSubtitle?: string | null, columns?: Array<{ __typename: 'ConfiguracionGlobalFooterColumns', title?: string | null, order?: number | null, links?: Array<{ __typename: 'ConfiguracionGlobalFooterColumnsLinks', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, legal?: { __typename: 'ConfiguracionGlobalLegal', privacyPolicy?: { __typename: 'ConfiguracionGlobalLegalPrivacyPolicy', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, termsOfService?: { __typename: 'ConfiguracionGlobalLegalTermsOfService', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, cookies?: { __typename: 'ConfiguracionGlobalLegalCookies', enabled?: boolean | null, showBanner?: boolean | null, title?: string | null, slug?: string | null, bannerText?: string | null, acceptButtonText?: string | null, rejectButtonText?: string | null, settingsButtonText?: string | null, content?: any | null } | null } | null, seo?: { __typename: 'ConfiguracionGlobalSeo', defaultTitle?: string | null, titleTemplate?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null, googleAnalyticsId?: string | null, googleTagManagerId?: string | null } | null };
+export type ConfiguracionGlobalPartsFragment = { __typename: 'ConfiguracionGlobal', company?: { __typename: 'ConfiguracionGlobalCompany', name?: string | null, slogan?: string | null, logo?: string | null, logoWhite?: string | null, logoIcon?: string | null, favicon?: string | null } | null, colors?: { __typename: 'ConfiguracionGlobalColors', primary?: string | null, secondary?: string | null, accent?: string | null, background?: string | null, text?: string | null } | null, contact?: { __typename: 'ConfiguracionGlobalContact', phone?: string | null, phoneSecondary?: string | null, whatsapp?: string | null, email?: string | null, emailSecondary?: string | null, hours?: string | null } | null, agents?: Array<{ __typename: 'ConfiguracionGlobalAgents', name?: string | null, phone?: string | null, phoneSecondary?: string | null, whatsapp?: string | null, email?: string | null, emailSecondary?: string | null, hours?: string | null } | null> | null, locations?: { __typename: 'ConfiguracionGlobalLocations', main?: { __typename: 'ConfiguracionGlobalLocationsMain', name?: string | null, address?: string | null, city?: string | null, province?: string | null, country?: string | null, postalCode?: string | null, phone?: string | null, email?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null } | null, offices?: Array<{ __typename: 'ConfiguracionGlobalLocationsOffices', name?: string | null, address?: string | null, city?: string | null, province?: string | null, phone?: string | null, email?: string | null, hours?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null, order?: number | null } | null> | null } | null, socialNetworks?: Array<{ __typename: 'ConfiguracionGlobalSocialNetworks', name?: string | null, icon?: string | null, url?: string | null, showInHeader?: boolean | null, showInFooter?: boolean | null, order?: number | null } | null> | null, header?: { __typename: 'ConfiguracionGlobalHeader', sticky?: boolean | null, transparent?: boolean | null, showWhatsappButton?: boolean | null, showContactButton?: boolean | null, ctaText?: string | null, ctaLink?: string | null, topBar?: { __typename: 'ConfiguracionGlobalHeaderTopBar', show?: boolean | null, slogan?: string | null, showSocials?: boolean | null, showContact?: boolean | null } | null, navigation?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigation', label?: string | null, href?: string | null, order?: number | null, highlight?: boolean | null, type?: string | null, dropdownLimit?: number | null, children?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigationChildren', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, footer?: { __typename: 'ConfiguracionGlobalFooter', phrase?: string | null, copyright?: string | null, showLegalPages?: boolean | null, servicesColumn?: Array<{ __typename: 'ConfiguracionGlobalFooterServicesColumn', label?: string | null, href?: string | null } | null> | null, projectsColumn?: Array<{ __typename: 'ConfiguracionGlobalFooterProjectsColumn', label?: string | null, href?: string | null } | null> | null, companyColumn?: Array<{ __typename: 'ConfiguracionGlobalFooterCompanyColumn', label?: string | null, href?: string | null } | null> | null } | null, legal?: { __typename: 'ConfiguracionGlobalLegal', privacyPolicy?: { __typename: 'ConfiguracionGlobalLegalPrivacyPolicy', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, termsOfService?: { __typename: 'ConfiguracionGlobalLegalTermsOfService', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, cookies?: { __typename: 'ConfiguracionGlobalLegalCookies', enabled?: boolean | null, showBanner?: boolean | null, title?: string | null, slug?: string | null, bannerText?: string | null, acceptButtonText?: string | null, rejectButtonText?: string | null, settingsButtonText?: string | null, content?: any | null } | null } | null, seo?: { __typename: 'ConfiguracionGlobalSeo', defaultTitle?: string | null, titleTemplate?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null, googleAnalyticsId?: string | null, googleTagManagerId?: string | null } | null };
 
 export type ProyectosQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -3506,7 +3581,7 @@ export type ConfiguracionGlobalQueryVariables = Exact<{
 }>;
 
 
-export type ConfiguracionGlobalQuery = { __typename?: 'Query', configuracionGlobal: { __typename: 'ConfiguracionGlobal', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, company?: { __typename: 'ConfiguracionGlobalCompany', name?: string | null, slogan?: string | null, logo?: string | null, logoWhite?: string | null, logoIcon?: string | null, favicon?: string | null } | null, colors?: { __typename: 'ConfiguracionGlobalColors', primary?: string | null, secondary?: string | null, accent?: string | null, background?: string | null, text?: string | null } | null, contact?: { __typename: 'ConfiguracionGlobalContact', phone?: string | null, phoneSecondary?: string | null, whatsapp?: string | null, email?: string | null, emailSecondary?: string | null, hours?: string | null } | null, locations?: { __typename: 'ConfiguracionGlobalLocations', main?: { __typename: 'ConfiguracionGlobalLocationsMain', name?: string | null, address?: string | null, city?: string | null, province?: string | null, country?: string | null, postalCode?: string | null, phone?: string | null, email?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null } | null, offices?: Array<{ __typename: 'ConfiguracionGlobalLocationsOffices', name?: string | null, address?: string | null, city?: string | null, province?: string | null, phone?: string | null, email?: string | null, hours?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null, order?: number | null } | null> | null } | null, socialNetworks?: Array<{ __typename: 'ConfiguracionGlobalSocialNetworks', name?: string | null, icon?: string | null, url?: string | null, showInHeader?: boolean | null, showInFooter?: boolean | null, order?: number | null } | null> | null, header?: { __typename: 'ConfiguracionGlobalHeader', sticky?: boolean | null, transparent?: boolean | null, showTopBar?: boolean | null, ctaText?: string | null, ctaLink?: string | null, navigation?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigation', label?: string | null, href?: string | null, order?: number | null, highlight?: boolean | null, type?: string | null, dropdownLimit?: number | null, children?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigationChildren', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, footer?: { __typename: 'ConfiguracionGlobalFooter', copyright?: string | null, showNewsletter?: boolean | null, newsletterTitle?: string | null, newsletterSubtitle?: string | null, columns?: Array<{ __typename: 'ConfiguracionGlobalFooterColumns', title?: string | null, order?: number | null, links?: Array<{ __typename: 'ConfiguracionGlobalFooterColumnsLinks', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, legal?: { __typename: 'ConfiguracionGlobalLegal', privacyPolicy?: { __typename: 'ConfiguracionGlobalLegalPrivacyPolicy', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, termsOfService?: { __typename: 'ConfiguracionGlobalLegalTermsOfService', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, cookies?: { __typename: 'ConfiguracionGlobalLegalCookies', enabled?: boolean | null, showBanner?: boolean | null, title?: string | null, slug?: string | null, bannerText?: string | null, acceptButtonText?: string | null, rejectButtonText?: string | null, settingsButtonText?: string | null, content?: any | null } | null } | null, seo?: { __typename: 'ConfiguracionGlobalSeo', defaultTitle?: string | null, titleTemplate?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null, googleAnalyticsId?: string | null, googleTagManagerId?: string | null } | null } };
+export type ConfiguracionGlobalQuery = { __typename?: 'Query', configuracionGlobal: { __typename: 'ConfiguracionGlobal', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, company?: { __typename: 'ConfiguracionGlobalCompany', name?: string | null, slogan?: string | null, logo?: string | null, logoWhite?: string | null, logoIcon?: string | null, favicon?: string | null } | null, colors?: { __typename: 'ConfiguracionGlobalColors', primary?: string | null, secondary?: string | null, accent?: string | null, background?: string | null, text?: string | null } | null, contact?: { __typename: 'ConfiguracionGlobalContact', phone?: string | null, phoneSecondary?: string | null, whatsapp?: string | null, email?: string | null, emailSecondary?: string | null, hours?: string | null } | null, agents?: Array<{ __typename: 'ConfiguracionGlobalAgents', name?: string | null, phone?: string | null, phoneSecondary?: string | null, whatsapp?: string | null, email?: string | null, emailSecondary?: string | null, hours?: string | null } | null> | null, locations?: { __typename: 'ConfiguracionGlobalLocations', main?: { __typename: 'ConfiguracionGlobalLocationsMain', name?: string | null, address?: string | null, city?: string | null, province?: string | null, country?: string | null, postalCode?: string | null, phone?: string | null, email?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null } | null, offices?: Array<{ __typename: 'ConfiguracionGlobalLocationsOffices', name?: string | null, address?: string | null, city?: string | null, province?: string | null, phone?: string | null, email?: string | null, hours?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null, order?: number | null } | null> | null } | null, socialNetworks?: Array<{ __typename: 'ConfiguracionGlobalSocialNetworks', name?: string | null, icon?: string | null, url?: string | null, showInHeader?: boolean | null, showInFooter?: boolean | null, order?: number | null } | null> | null, header?: { __typename: 'ConfiguracionGlobalHeader', sticky?: boolean | null, transparent?: boolean | null, showWhatsappButton?: boolean | null, showContactButton?: boolean | null, ctaText?: string | null, ctaLink?: string | null, topBar?: { __typename: 'ConfiguracionGlobalHeaderTopBar', show?: boolean | null, slogan?: string | null, showSocials?: boolean | null, showContact?: boolean | null } | null, navigation?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigation', label?: string | null, href?: string | null, order?: number | null, highlight?: boolean | null, type?: string | null, dropdownLimit?: number | null, children?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigationChildren', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, footer?: { __typename: 'ConfiguracionGlobalFooter', phrase?: string | null, copyright?: string | null, showLegalPages?: boolean | null, servicesColumn?: Array<{ __typename: 'ConfiguracionGlobalFooterServicesColumn', label?: string | null, href?: string | null } | null> | null, projectsColumn?: Array<{ __typename: 'ConfiguracionGlobalFooterProjectsColumn', label?: string | null, href?: string | null } | null> | null, companyColumn?: Array<{ __typename: 'ConfiguracionGlobalFooterCompanyColumn', label?: string | null, href?: string | null } | null> | null } | null, legal?: { __typename: 'ConfiguracionGlobalLegal', privacyPolicy?: { __typename: 'ConfiguracionGlobalLegalPrivacyPolicy', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, termsOfService?: { __typename: 'ConfiguracionGlobalLegalTermsOfService', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, cookies?: { __typename: 'ConfiguracionGlobalLegalCookies', enabled?: boolean | null, showBanner?: boolean | null, title?: string | null, slug?: string | null, bannerText?: string | null, acceptButtonText?: string | null, rejectButtonText?: string | null, settingsButtonText?: string | null, content?: any | null } | null } | null, seo?: { __typename: 'ConfiguracionGlobalSeo', defaultTitle?: string | null, titleTemplate?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null, googleAnalyticsId?: string | null, googleTagManagerId?: string | null } | null } };
 
 export type ConfiguracionGlobalConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -3518,7 +3593,7 @@ export type ConfiguracionGlobalConnectionQueryVariables = Exact<{
 }>;
 
 
-export type ConfiguracionGlobalConnectionQuery = { __typename?: 'Query', configuracionGlobalConnection: { __typename?: 'ConfiguracionGlobalConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ConfiguracionGlobalConnectionEdges', cursor: string, node?: { __typename: 'ConfiguracionGlobal', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, company?: { __typename: 'ConfiguracionGlobalCompany', name?: string | null, slogan?: string | null, logo?: string | null, logoWhite?: string | null, logoIcon?: string | null, favicon?: string | null } | null, colors?: { __typename: 'ConfiguracionGlobalColors', primary?: string | null, secondary?: string | null, accent?: string | null, background?: string | null, text?: string | null } | null, contact?: { __typename: 'ConfiguracionGlobalContact', phone?: string | null, phoneSecondary?: string | null, whatsapp?: string | null, email?: string | null, emailSecondary?: string | null, hours?: string | null } | null, locations?: { __typename: 'ConfiguracionGlobalLocations', main?: { __typename: 'ConfiguracionGlobalLocationsMain', name?: string | null, address?: string | null, city?: string | null, province?: string | null, country?: string | null, postalCode?: string | null, phone?: string | null, email?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null } | null, offices?: Array<{ __typename: 'ConfiguracionGlobalLocationsOffices', name?: string | null, address?: string | null, city?: string | null, province?: string | null, phone?: string | null, email?: string | null, hours?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null, order?: number | null } | null> | null } | null, socialNetworks?: Array<{ __typename: 'ConfiguracionGlobalSocialNetworks', name?: string | null, icon?: string | null, url?: string | null, showInHeader?: boolean | null, showInFooter?: boolean | null, order?: number | null } | null> | null, header?: { __typename: 'ConfiguracionGlobalHeader', sticky?: boolean | null, transparent?: boolean | null, showTopBar?: boolean | null, ctaText?: string | null, ctaLink?: string | null, navigation?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigation', label?: string | null, href?: string | null, order?: number | null, highlight?: boolean | null, type?: string | null, dropdownLimit?: number | null, children?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigationChildren', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, footer?: { __typename: 'ConfiguracionGlobalFooter', copyright?: string | null, showNewsletter?: boolean | null, newsletterTitle?: string | null, newsletterSubtitle?: string | null, columns?: Array<{ __typename: 'ConfiguracionGlobalFooterColumns', title?: string | null, order?: number | null, links?: Array<{ __typename: 'ConfiguracionGlobalFooterColumnsLinks', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, legal?: { __typename: 'ConfiguracionGlobalLegal', privacyPolicy?: { __typename: 'ConfiguracionGlobalLegalPrivacyPolicy', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, termsOfService?: { __typename: 'ConfiguracionGlobalLegalTermsOfService', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, cookies?: { __typename: 'ConfiguracionGlobalLegalCookies', enabled?: boolean | null, showBanner?: boolean | null, title?: string | null, slug?: string | null, bannerText?: string | null, acceptButtonText?: string | null, rejectButtonText?: string | null, settingsButtonText?: string | null, content?: any | null } | null } | null, seo?: { __typename: 'ConfiguracionGlobalSeo', defaultTitle?: string | null, titleTemplate?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null, googleAnalyticsId?: string | null, googleTagManagerId?: string | null } | null } | null } | null> | null } };
+export type ConfiguracionGlobalConnectionQuery = { __typename?: 'Query', configuracionGlobalConnection: { __typename?: 'ConfiguracionGlobalConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'ConfiguracionGlobalConnectionEdges', cursor: string, node?: { __typename: 'ConfiguracionGlobal', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, company?: { __typename: 'ConfiguracionGlobalCompany', name?: string | null, slogan?: string | null, logo?: string | null, logoWhite?: string | null, logoIcon?: string | null, favicon?: string | null } | null, colors?: { __typename: 'ConfiguracionGlobalColors', primary?: string | null, secondary?: string | null, accent?: string | null, background?: string | null, text?: string | null } | null, contact?: { __typename: 'ConfiguracionGlobalContact', phone?: string | null, phoneSecondary?: string | null, whatsapp?: string | null, email?: string | null, emailSecondary?: string | null, hours?: string | null } | null, agents?: Array<{ __typename: 'ConfiguracionGlobalAgents', name?: string | null, phone?: string | null, phoneSecondary?: string | null, whatsapp?: string | null, email?: string | null, emailSecondary?: string | null, hours?: string | null } | null> | null, locations?: { __typename: 'ConfiguracionGlobalLocations', main?: { __typename: 'ConfiguracionGlobalLocationsMain', name?: string | null, address?: string | null, city?: string | null, province?: string | null, country?: string | null, postalCode?: string | null, phone?: string | null, email?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null } | null, offices?: Array<{ __typename: 'ConfiguracionGlobalLocationsOffices', name?: string | null, address?: string | null, city?: string | null, province?: string | null, phone?: string | null, email?: string | null, hours?: string | null, mapUrl?: string | null, mapEmbed?: string | null, lat?: number | null, lng?: number | null, order?: number | null } | null> | null } | null, socialNetworks?: Array<{ __typename: 'ConfiguracionGlobalSocialNetworks', name?: string | null, icon?: string | null, url?: string | null, showInHeader?: boolean | null, showInFooter?: boolean | null, order?: number | null } | null> | null, header?: { __typename: 'ConfiguracionGlobalHeader', sticky?: boolean | null, transparent?: boolean | null, showWhatsappButton?: boolean | null, showContactButton?: boolean | null, ctaText?: string | null, ctaLink?: string | null, topBar?: { __typename: 'ConfiguracionGlobalHeaderTopBar', show?: boolean | null, slogan?: string | null, showSocials?: boolean | null, showContact?: boolean | null } | null, navigation?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigation', label?: string | null, href?: string | null, order?: number | null, highlight?: boolean | null, type?: string | null, dropdownLimit?: number | null, children?: Array<{ __typename: 'ConfiguracionGlobalHeaderNavigationChildren', label?: string | null, href?: string | null, order?: number | null } | null> | null } | null> | null } | null, footer?: { __typename: 'ConfiguracionGlobalFooter', phrase?: string | null, copyright?: string | null, showLegalPages?: boolean | null, servicesColumn?: Array<{ __typename: 'ConfiguracionGlobalFooterServicesColumn', label?: string | null, href?: string | null } | null> | null, projectsColumn?: Array<{ __typename: 'ConfiguracionGlobalFooterProjectsColumn', label?: string | null, href?: string | null } | null> | null, companyColumn?: Array<{ __typename: 'ConfiguracionGlobalFooterCompanyColumn', label?: string | null, href?: string | null } | null> | null } | null, legal?: { __typename: 'ConfiguracionGlobalLegal', privacyPolicy?: { __typename: 'ConfiguracionGlobalLegalPrivacyPolicy', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, termsOfService?: { __typename: 'ConfiguracionGlobalLegalTermsOfService', enabled?: boolean | null, title?: string | null, slug?: string | null, lastUpdated?: string | null, content?: any | null } | null, cookies?: { __typename: 'ConfiguracionGlobalLegalCookies', enabled?: boolean | null, showBanner?: boolean | null, title?: string | null, slug?: string | null, bannerText?: string | null, acceptButtonText?: string | null, rejectButtonText?: string | null, settingsButtonText?: string | null, content?: any | null } | null } | null, seo?: { __typename: 'ConfiguracionGlobalSeo', defaultTitle?: string | null, titleTemplate?: string | null, defaultDescription?: string | null, defaultOgImage?: string | null, googleAnalyticsId?: string | null, googleTagManagerId?: string | null } | null } | null } | null> | null } };
 
 export const ProyectosPartsFragmentDoc = gql`
     fragment ProyectosParts on Proyectos {
@@ -4182,6 +4257,16 @@ export const ConfiguracionGlobalPartsFragmentDoc = gql`
     emailSecondary
     hours
   }
+  agents {
+    __typename
+    name
+    phone
+    phoneSecondary
+    whatsapp
+    email
+    emailSecondary
+    hours
+  }
   locations {
     __typename
     main {
@@ -4228,7 +4313,15 @@ export const ConfiguracionGlobalPartsFragmentDoc = gql`
     __typename
     sticky
     transparent
-    showTopBar
+    topBar {
+      __typename
+      show
+      slogan
+      showSocials
+      showContact
+    }
+    showWhatsappButton
+    showContactButton
     navigation {
       __typename
       label
@@ -4249,21 +4342,24 @@ export const ConfiguracionGlobalPartsFragmentDoc = gql`
   }
   footer {
     __typename
+    phrase
     copyright
-    showNewsletter
-    newsletterTitle
-    newsletterSubtitle
-    columns {
+    servicesColumn {
       __typename
-      title
-      order
-      links {
-        __typename
-        label
-        href
-        order
-      }
+      label
+      href
     }
+    projectsColumn {
+      __typename
+      label
+      href
+    }
+    companyColumn {
+      __typename
+      label
+      href
+    }
+    showLegalPages
   }
   legal {
     __typename

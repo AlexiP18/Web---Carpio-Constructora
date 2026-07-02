@@ -69,7 +69,7 @@ testimonial:
   position: 'Propietario, Los Arrayanes de Izamba'
   logo: /images/logo-placeholder.svg
   image: /images/placeholder-image.jpg
-title: Los Arrayanes de Izamba
+title: ARRAYANES IZAMBA
 slug: los-arrayanes-de-izamba
 description: >-
   Conjunto habitacional diseñado para ofrecer calidad de vida y espacios
