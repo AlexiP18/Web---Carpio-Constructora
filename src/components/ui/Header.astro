@@ -6,7 +6,7 @@ const logoCarpio = "/icons/LogoCarpioConstructora.svg";
 ---
 
 <header
-  class="fixed top-0 left-0 right-0 bg-[#103646]/95 backdrop-blur-md w-full z-50 border-b border-[#103646] shadow-sm transition-all duration-300"
+  class="fixed top-0 left-0 right-0 bg-[#103646]/95 backdrop-blur-md w-full z-50 border-b border-[#103646] shadow-sm transition-all duration-500 ease-out"
   id="header"
 >
   <nav class="w-full">
@@ -1018,3 +1018,20 @@ const logoCarpio = "/icons/LogoCarpioConstructora.svg";
     transform: scale(1.05);
   }
 </style>
+
+<script>
+  function initHeaderState() {
+    const hasHeroSlider = !!document.getElementById("hero-slider");
+    const header = document.getElementById("header");
+    if (header && !hasHeroSlider) {
+      header.classList.remove("-translate-y-full", "opacity-0", "pointer-events-none");
+      header.classList.add("translate-y-0", "opacity-100", "pointer-events-auto");
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeaderState);
+  } else {
+    initHeaderState();
+  }
+</script>
