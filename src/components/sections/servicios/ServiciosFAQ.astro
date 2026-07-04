@@ -2,7 +2,6 @@
 import { Icon } from "astro-icon/components";
 import Button from "../../ui/Button.astro";
 import CubixBlackBg from "../../ui/CubixBlackBg.astro";
-import ServiciosFAQReact from "./ServiciosFAQReact";
 ---
 
 <section class="relative py-32 bg-[#050505] overflow-hidden">
@@ -15,12 +14,12 @@ import ServiciosFAQReact from "./ServiciosFAQReact";
 
   <div class="relative z-10 max-w-7xl mx-auto px-6">
     <!-- Section Header -->
-    <div class="text-center max-w-4xl mx-auto mb-16" data-aos="fade-up">
+    <div class="text-center max-w-4xl mx-auto mb-20" data-aos="fade-up">
       <div
         class="inline-flex items-center gap-2 bg-emerald-500/10 backdrop-blur-sm border border-emerald-500/20 rounded-full px-4 py-2 mb-6"
       >
         <Icon name="ph:question-fill" class="w-4 h-4 text-emerald-400" />
-        <span class="text-emerald-400 font-semibold text-xs tracking-wide"
+        <span class="text-emerald-400 font-semibold text-xs tracking-wide uppercase"
           >PREGUNTAS FRECUENTES</span
         >
       </div>
@@ -40,9 +39,139 @@ import ServiciosFAQReact from "./ServiciosFAQReact";
       </p>
     </div>
 
-    <!-- 3D Mouse Panning Carousel (React) -->
-    <div class="mb-20">
-      <ServiciosFAQReact client:load />
+    <!-- FAQ Accordion Grid -->
+    <div class="grid lg:grid-cols-2 gap-6 mb-20">
+      <!-- Left Column -->
+      <div class="space-y-6">
+        <!-- FAQ 1 -->
+        <div class="faq-item group" data-aos="fade-up" data-aos-delay="100">
+          <div class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors duration-300">
+                ¿Qué servicios de construcción ofrecen?
+              </h3>
+            </div>
+            <div class="faq-icon w-9 h-9 bg-gradient-to-br from-[#D79528] to-amber-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+              <Icon name="ph:plus" class="w-5 h-5 text-white transition-transform duration-300" />
+            </div>
+          </div>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+            <div class="px-6 pb-6 pt-3">
+              <p class="text-base text-white/70 leading-relaxed font-light">
+                Ofrecemos soluciones integrales de construcción residencial y comercial, que incluyen diseño arquitectónico, diseño interior, remodelaciones, ampliaciones y asesoría técnica.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item group" data-aos="fade-up" data-aos-delay="200">
+          <div class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors duration-300">
+                ¿Cuánto tiempo toma completar un proyecto?
+              </h3>
+            </div>
+            <div class="faq-icon w-9 h-9 bg-gradient-to-br from-[#D79528] to-amber-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+              <Icon name="ph:plus" class="w-5 h-5 text-white transition-transform duration-300" />
+            </div>
+          </div>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+            <div class="px-6 pb-6 pt-3">
+              <p class="text-base text-white/70 leading-relaxed font-light">
+                El tiempo de ejecución de un proyecto depende de su complejidad y alcance. Nuestro equipo realiza una planificación detallada asegurando que los plazos se ajusten a las necesidades de cada cliente.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item group" data-aos="fade-up" data-aos-delay="300">
+          <div class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors duration-300">
+                ¿Trabajan con proyectos llave en mano?
+              </h3>
+            </div>
+            <div class="faq-icon w-9 h-9 bg-gradient-to-br from-[#D79528] to-amber-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+              <Icon name="ph:plus" class="w-5 h-5 text-white transition-transform duration-300" />
+            </div>
+          </div>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+            <div class="px-6 pb-6 pt-3">
+              <p class="text-base text-white/70 leading-relaxed font-light">
+                Sí, ofrecemos proyectos llave en mano donde nos encargamos de todo el proceso: desde el diseño y planificación hasta la construcción y entrega final del proyecto.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="space-y-6">
+        <!-- FAQ 4 -->
+        <div class="faq-item group" data-aos="fade-up" data-aos-delay="150">
+          <div class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors duration-300">
+                ¿Puedo personalizar mi proyecto o los planos ya están definidos?
+              </h3>
+            </div>
+            <div class="faq-icon w-9 h-9 bg-gradient-to-br from-[#D79528] to-amber-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+              <Icon name="ph:plus" class="w-5 h-5 text-white transition-transform duration-300" />
+            </div>
+          </div>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+            <div class="px-6 pb-6 pt-3">
+              <p class="text-base text-white/70 leading-relaxed font-light">
+                Todos nuestros diseños son 100% personalizables. Trabajamos estrechamente contigo para crear un espacio único que refleje tu estilo, necesidades y presupuesto.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item group" data-aos="fade-up" data-aos-delay="250">
+          <div class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors duration-300">
+                ¿Qué garantías ofrecen en las construcciones?
+              </h3>
+            </div>
+            <div class="faq-icon w-9 h-9 bg-gradient-to-br from-[#D79528] to-amber-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+              <Icon name="ph:plus" class="w-5 h-5 text-white transition-transform duration-300" />
+            </div>
+          </div>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+            <div class="px-6 pb-6 pt-3">
+              <p class="text-base text-white/70 leading-relaxed font-light">
+                Garantizamos la máxima calidad en estructura y acabados. Todos nuestros proyectos incluyen respaldo técnico y certificaciones de cumplimiento de normas de construcción.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="faq-item group" data-aos="fade-up" data-aos-delay="350">
+          <div class="faq-question flex justify-between items-start gap-4 p-6 cursor-pointer bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+            <div class="flex-1">
+              <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors duration-300">
+                ¿Ofrecen únicamente diseño o también construcción?
+              </h3>
+            </div>
+            <div class="faq-icon w-9 h-9 bg-gradient-to-br from-[#D79528] to-amber-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+              <Icon name="ph:plus" class="w-5 h-5 text-white transition-transform duration-300" />
+            </div>
+          </div>
+          <div class="faq-answer max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+            <div class="px-6 pb-6 pt-3">
+              <p class="text-base text-white/70 leading-relaxed font-light">
+                Ofrecemos servicios flexibles que pueden abarcar solo la creación de planos y diseño, supervisión de obra, o el desarrollo completo del proyecto incluyendo la construcción.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Call to Action -->
@@ -51,8 +180,7 @@ import ServiciosFAQReact from "./ServiciosFAQReact";
       data-aos="fade-up"
       data-aos-delay="200"
     >
-      {/* Background green glow matching the screenshot */}
-      <div className="absolute inset-0 opacity-50">
+      <div class="absolute inset-0 opacity-50">
         <div
           class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"
         >
@@ -94,7 +222,7 @@ import ServiciosFAQReact from "./ServiciosFAQReact";
             </p>
           </div>
 
-          {/* Action Buttons */}
+          <!-- Action Buttons -->
           <div
             class="flex flex-col sm:flex-row gap-5 items-center justify-center"
           >
@@ -165,3 +293,71 @@ import ServiciosFAQReact from "./ServiciosFAQReact";
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqItems = document.querySelectorAll(".faq-item") as NodeListOf<HTMLElement>;
+
+    faqItems.forEach((item) => {
+      const question = item.querySelector(".faq-question") as HTMLElement;
+      const answer = item.querySelector(".faq-answer") as HTMLElement;
+      const icon = item.querySelector(".faq-icon svg") as SVGElement;
+
+      if (question && answer && icon) {
+        question.addEventListener("click", () => {
+          const isOpen = answer.style.maxHeight && answer.style.maxHeight !== "0px";
+
+          // Close all other answers
+          faqItems.forEach((otherItem) => {
+            if (otherItem !== item) {
+              const otherAnswer = otherItem.querySelector(".faq-answer") as HTMLElement;
+              const otherIcon = otherItem.querySelector(".faq-icon svg") as SVGElement;
+              const otherQuestion = otherItem.querySelector(".faq-question") as HTMLElement;
+              
+              if (otherAnswer) {
+                otherAnswer.style.maxHeight = "0px";
+              }
+              if (otherIcon) {
+                otherIcon.style.transform = "rotate(0deg)";
+              }
+              if (otherQuestion) {
+                otherQuestion.classList.remove("active");
+              }
+            }
+          });
+
+          // Toggle current answer
+          if (isOpen) {
+            answer.style.maxHeight = "0px";
+            icon.style.transform = "rotate(0deg)";
+            question.classList.remove("active");
+          } else {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+            icon.style.transform = "rotate(45deg)";
+            question.classList.add("active");
+          }
+        });
+      }
+    });
+  });
+</script>
+
+<style>
+  .faq-question.active {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border-color: rgba(16, 185, 129, 0.4) !important;
+  }
+  
+  .faq-item:hover .faq-question {
+    transform: translateY(-2px);
+  }
+  
+  .faq-icon {
+    transition: all 0.3s ease;
+  }
+  
+  .faq-question.active .faq-icon {
+    transform: rotate(45deg);
+    box-shadow: 0 8px 20px rgba(215, 149, 40, 0.4);
+  }
+</style>
