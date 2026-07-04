@@ -13,7 +13,7 @@ const { title, highlightedTitle, description, badgeText } = Astro.props;
 ---
 
 <section
-    class="relative min-h-[60vh] lg:min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#103646] via-[#103646]/95 to-[#0a2530]"
+    class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#103646] via-[#103646]/95 to-[#0a2530]"
 >
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-30 text-white">
@@ -33,7 +33,7 @@ const { title, highlightedTitle, description, badgeText } = Astro.props;
 
     <!-- Content -->
     <div
-        class="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-28 text-center"
+        class="relative z-10 max-w-7xl mx-auto px-6 pt-28 sm:pt-32 pb-16 lg:pb-20 text-center"
     >
         <!-- Badge -->
         {
