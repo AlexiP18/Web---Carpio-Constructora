@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 
 // --- DATA ---
@@ -67,15 +67,16 @@ const GalleryCard: React.FC<GalleryCardProps> = ({ url, rotation, label, onClick
   return (
     <div 
       onClick={onClick}
-      className={`aspect-square w-32 sm:w-56 md:w-72 lg:w-80 rounded-[20px] sm:rounded-[30px] overflow-hidden border border-white/10 hover:border-white/40 bg-slate-900 transition-all duration-500 transform hover:scale-105 cursor-pointer shadow-2xl relative pointer-events-auto group ${rotation}`}
+      className={`aspect-square w-32 sm:w-56 md:w-72 lg:w-80 rounded-[20px] sm:rounded-[30px] overflow-hidden border border-gray-200 hover:border-[#103646]/40 bg-white transition-all duration-500 transform hover:scale-105 cursor-pointer shadow-xl relative pointer-events-auto group ${rotation}`}
     >
+      {/* Full vibrant color image without grayscale */}
       <img 
         src={url} 
         alt={label} 
-        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+        className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" 
       />
-      {/* Subtle overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+      {/* Subtle hover overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#103646]/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
         <span className="text-white text-xs sm:text-sm font-semibold tracking-wide">{label}</span>
       </div>
     </div>
@@ -107,25 +108,20 @@ export default function ExplorationsGallery() {
   });
 
   // Parallax offsets for the columns
-  // Column 1 (Left): Moves upwards
   const yLeft = useTransform(scrollYProgress, [0, 1], [250, -250]);
-  // Column 2 (Right): Moves downwards
   const yRight = useTransform(scrollYProgress, [0, 1], [-250, 250]);
 
   // Current active text item
   const activeItem = BENEFITS_DATA[activeIndex];
 
   return (
-    <section 
+    <div 
       ref={containerRef}
-      className="relative min-h-[300vh] bg-slate-950 text-white overflow-visible"
+      className="relative min-h-[300vh] bg-transparent text-gray-900 overflow-visible"
     >
       {/* Layer 1: Pinned Center (z-10) */}
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden z-10 pointer-events-none">
         
-        {/* Decorative Grid Lines */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none"></div>
-
         {/* Content Box */}
         <div className="relative flex flex-col items-center justify-center text-center max-w-xl mx-auto px-6 pointer-events-auto">
           
@@ -138,24 +134,24 @@ export default function ExplorationsGallery() {
               transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
               className="flex flex-col items-center"
             >
-              {/* Eyebrow */}
-              <span className="text-xs uppercase tracking-widest text-[#B600A8] font-bold mb-4 bg-[#B600A8]/10 px-4 py-1.5 rounded-full border border-[#B600A8]/20">
+              {/* Eyebrow badge with corporate colors */}
+              <span className="text-xs uppercase tracking-widest text-[#103646] font-bold mb-4 bg-[#103646]/10 px-4 py-1.5 rounded-full border border-[#103646]/20">
                 {activeItem.eyebrow}
               </span>
 
-              {/* Changing Heading */}
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-none mb-6">
+              {/* Heading */}
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-none mb-6 text-gray-900">
                 {activeItem.heading.split(' ').map((word, i) => (
                   <span key={i} className="inline-block mr-2">
                     {word.toLowerCase() === 'experiencia' || word.toLowerCase() === 'estándares' || word.toLowerCase() === 'personalizadas' ? (
-                      <span className="italic font-light text-[#BE4C00]">{word}</span>
+                      <span className="italic font-bold text-[#D79528]">{word}</span>
                     ) : word}
                   </span>
                 ))}
               </h2>
 
-              {/* Changing Subtext */}
-              <p className="text-sm sm:text-base md:text-lg text-gray-400 font-light leading-relaxed mb-8 max-w-md">
+              {/* Subtext */}
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 font-normal leading-relaxed mb-8 max-w-md">
                 {activeItem.description}
               </p>
             </motion.div>
@@ -165,7 +161,7 @@ export default function ExplorationsGallery() {
           <div className="flex gap-4 items-center">
             <a 
               href="/contacto" 
-              className="inline-flex items-center justify-center px-6 py-3 border-2 border-white/20 text-white font-semibold uppercase tracking-wider rounded-full text-xs sm:text-sm hover:bg-white hover:text-black hover:border-white transition-all duration-300 shadow-xl"
+              className="inline-flex items-center justify-center px-7 py-3.5 bg-[#103646] text-white hover:bg-[#103646]/90 font-bold uppercase tracking-wider rounded-full text-xs sm:text-sm transition-all duration-300 shadow-xl hover:scale-105"
             >
               Solicitar Información
             </a>
@@ -243,6 +239,6 @@ export default function ExplorationsGallery() {
           </motion.div>
         )}
       </AnimatePresence>
-    </section>
+    </div>
   );
 }

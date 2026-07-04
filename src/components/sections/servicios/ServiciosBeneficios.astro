@@ -1,5 +1,13 @@
 ---
+import BackgroundWavesConjunto from "../../ui/BackgroundWavesConjunto.astro";
 import ExplorationsGallery from './ExplorationsGallery';
 ---
 
-<ExplorationsGallery client:load />
+<section class="relative bg-white text-gray-900 overflow-hidden">
+  <!-- Background Component from Contact section -->
+  <div class="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-90">
+    <BackgroundWavesConjunto />
+  </div>
+
+  <ExplorationsGallery client:load />
+</section>
