@@ -6,219 +6,158 @@ import ServiciosLista from './ServiciosLista.astro';
 const serviciosHeroImage = '/images/services/ServiciosHero.webp';
 ---
 
-<section class="relative py-16 lg:py-20 bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 overflow-hidden">
-  <!-- Background Image -->
-  <div class="absolute inset-0 w-full h-full">
-    <img 
-      src={serviciosHeroImage} 
-      alt="Servicios Hero Background" 
-      class="w-full h-full object-cover opacity-50"
-    />
-  </div>
-  
-  <!-- Background decorations (more subtle) -->
-  <div class="absolute inset-0">
-    <div class="absolute top-20 left-20 w-60 h-60 bg-[#103646]/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-20 right-20 w-40 h-40 bg-[#D79528]/10 rounded-full blur-2xl"></div>
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#103646]/3 rounded-full blur-3xl"></div>
-  </div>
-
-  <div class="max-w-7xl mx-auto px-6 relative z-10">
-    <!-- Header Section -->
-    <div class="max-w-4xl mx-auto text-center mb-12">
-      <!-- Main Heading -->
-      <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8" data-aos="fade-up" data-aos-delay="100">
-        Nuestros<br>
-        <span class="text-[#D79528]">Servicios</span>
-      </h1>
-      
-      <!-- Description -->
-      <p class="text-xl lg:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-        Ofrecemos soluciones constructivas integrales con los más altos estándares de calidad para satisfacer todas tus necesidades.
-      </p>
-      
-      <!-- Feature highlights (chips que se transforman) -->
-      <div id="servicesChips" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 transition-all duration-700" data-aos="fade-up" data-aos-delay="300">
-        <div data-service="construccion" class="service-chip bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer group">
-          <div class="flex flex-col items-center justify-center text-center gap-3">
-            <div class="w-12 h-12 bg-gradient-to-br from-[#103646] to-[#103646]/80 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Icon name="ph:buildings-fill" class="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h3 class="text-lg font-bold text-white mb-1">Construcción</h3>
-              <p class="text-white/70 text-sm">Residencial y comercial</p>
-            </div>
-          </div>
-        </div>
-        
-        <div data-service="remodelacion" class="service-chip bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer group">
-          <div class="flex flex-col items-center justify-center text-center gap-3">
-            <div class="w-12 h-12 bg-gradient-to-br from-[#D79528] to-[#D79528]/80 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Icon name="ph:hammer-fill" class="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h3 class="text-lg font-bold text-white mb-1">Remodelación</h3>
-              <p class="text-white/70 text-sm">Modernización completa</p>
-            </div>
-          </div>
-        </div>
-        
-        <div data-service="diseno" class="service-chip bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer group">
-          <div class="flex flex-col items-center justify-center text-center gap-3">
-            <div class="w-12 h-12 bg-[#103646] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-              <Icon name="ph:pencil-ruler-fill" class="w-6 h-6 text-white" />
-            </div>
-            <div>
-              <h3 class="text-lg font-bold text-white mb-1">Diseño Arquitectónico</h3>
-              <p class="text-white/70 text-sm">Proyectos personalizados</p>
-            </div>
-          </div>
-        </div>
-      </div>
+<section id="serviciosHeroTrack" class="relative min-h-[250vh] bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 overflow-visible">
+  <!-- Pinned Sticky Container -->
+  <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden z-10">
+    
+    <!-- Background Image (Neutral tint for visibility) -->
+    <div class="absolute inset-0 w-full h-full">
+      <img 
+        src={serviciosHeroImage} 
+        alt="Servicios Hero Background" 
+        class="w-full h-full object-cover opacity-50"
+      />
     </div>
     
-    <!-- Services List Component (oculto inicialmente) -->
-    <div id="servicesList" class="opacity-0 transition-opacity duration-500" data-aos="fade-up" data-aos-delay="400">
-      <ServiciosLista />
+    <!-- Subtle Background decorations -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-20 left-20 w-60 h-60 bg-[#103646]/5 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-20 right-20 w-40 h-40 bg-[#D79528]/10 rounded-full blur-2xl"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#103646]/3 rounded-full blur-3xl"></div>
+    </div>
+
+    <!-- Interactive Scroll Content Container -->
+    <div class="max-w-7xl mx-auto px-6 relative z-10 w-full flex flex-col items-center justify-center">
+      
+      <!-- Permanent Main Header Section (Does NOT change or fade) -->
+      <div class="max-w-4xl mx-auto text-center mb-8 shrink-0">
+        <h1 class="text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4">
+          Nuestros <span class="text-[#D79528]">Servicios</span>
+        </h1>
+        
+        <p class="text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto font-light">
+          Ofrecemos soluciones constructivas integrales con los más altos estándares de calidad para satisfacer todas tus necesidades.
+        </p>
+      </div>
+
+      <!-- Dynamic Content Swap Container (Chips -> Cards) -->
+      <div class="relative w-full max-w-7xl min-h-[360px] flex items-center justify-center">
+        
+        <!-- Stage 1: Feature Chips -->
+        <div id="servicesChipsContainer" class="w-full max-w-4xl mx-auto transition-all duration-500 ease-out">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="service-chip bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 shadow-lg group">
+              <div class="flex flex-col items-center justify-center text-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-[#103646] to-[#103646]/80 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Icon name="ph:buildings-fill" class="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-white mb-1">Construcción</h3>
+                  <p class="text-white/70 text-sm">Residencial y comercial</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="service-chip bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 shadow-lg group">
+              <div class="flex flex-col items-center justify-center text-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-[#D79528] to-[#D79528]/80 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Icon name="ph:hammer-fill" class="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-white mb-1">Remodelación</h3>
+                  <p class="text-white/70 text-sm">Modernización completa</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="service-chip bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 shadow-lg group">
+              <div class="flex flex-col items-center justify-center text-center gap-3">
+                <div class="w-12 h-12 bg-[#103646] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Icon name="ph:pencil-ruler-fill" class="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-white mb-1">Diseño Arquitectónico</h3>
+                  <p class="text-white/70 text-sm">Proyectos personalizados</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Stage 2: Detailed Cards (ServiciosLista) -->
+        <div id="servicesListContainer" class="absolute inset-0 w-full flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 ease-out">
+          <ServiciosLista />
+        </div>
+
+      </div>
+
     </div>
   </div>
 </section>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const servicesChips = document.getElementById('servicesChips') as HTMLElement | null;
-    const servicesList = document.getElementById('servicesList') as HTMLElement | null;
-    const chips = document.querySelectorAll('.service-chip') as NodeListOf<HTMLElement>;
-    
-    if (!servicesChips || !servicesList) return;
-    
-    let hasTransformed = false;
-    
-    // Función para manejar la transformación
-    function handleScroll() {
-      if (!servicesChips || !servicesList) return;
+    const track = document.getElementById('serviciosHeroTrack');
+    const chipsContainer = document.getElementById('servicesChipsContainer');
+    const listContainer = document.getElementById('servicesListContainer');
+
+    if (!track || !chipsContainer || !listContainer) return;
+
+    function updateHeroScroll() {
+      if (!track || !chipsContainer || !listContainer) return;
+      const rect = track.getBoundingClientRect();
+      const trackHeight = track.offsetHeight - window.innerHeight;
       
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const chipsPosition = servicesChips.getBoundingClientRect().top + window.scrollY;
-      
-      // Punto de activación: cuando los chips están a mitad de la pantalla
-      const triggerPoint = chipsPosition - (windowHeight * 0.5);
-      
-      if (scrollPosition > triggerPoint && !hasTransformed) {
-        hasTransformed = true;
-        transformChipsToCards();
-      } else if (scrollPosition <= triggerPoint && hasTransformed) {
-        hasTransformed = false;
-        resetTransformation();
+      if (trackHeight <= 0) return;
+
+      // Progress from 0 to 1 as track scrolls through viewport
+      const progress = Math.min(Math.max(-rect.top / trackHeight, 0), 1);
+
+      // Phase 1 (0 to 0.20): Chips visible, cards hidden
+      if (progress < 0.20) {
+        chipsContainer.style.opacity = '1';
+        chipsContainer.style.transform = 'translateY(0px) scale(1)';
+        chipsContainer.style.pointerEvents = 'auto';
+
+        listContainer.style.opacity = '0';
+        listContainer.style.transform = 'translateY(30px) scale(0.95)';
+        listContainer.style.pointerEvents = 'none';
+      } 
+      // Phase 2 (0.20 to 0.55): Chips fade out & slide down/up, Cards fade in & slide up into place
+      else if (progress >= 0.20 && progress < 0.55) {
+        const t = (progress - 0.20) / 0.35; // Normalized 0 to 1
+
+        chipsContainer.style.opacity = `${Math.max(1 - t * 1.5, 0)}`;
+        chipsContainer.style.transform = `translateY(${t * 30}px) scale(${1 - t * 0.05})`;
+        chipsContainer.style.pointerEvents = t > 0.5 ? 'none' : 'auto';
+
+        listContainer.style.opacity = `${Math.min(t * 1.3, 1)}`;
+        listContainer.style.transform = `translateY(${Math.max(30 - t * 30, 0)}px) scale(${0.95 + t * 0.05})`;
+        listContainer.style.pointerEvents = t > 0.5 ? 'auto' : 'none';
+      } 
+      // Phase 3 (0.55 to 1.0): Cards fully visible right under title/description & pinned for comfortable viewing before scrolling to next section
+      else {
+        chipsContainer.style.opacity = '0';
+        chipsContainer.style.pointerEvents = 'none';
+
+        listContainer.style.opacity = '1';
+        listContainer.style.transform = 'translateY(0px) scale(1)';
+        listContainer.style.pointerEvents = 'auto';
       }
     }
-    
-    // Transformar chips a cards
-    function transformChipsToCards() {
-      if (!servicesChips || !servicesList) return;
-      
-      // Animar chips hacia abajo y desvanecerlos
-      chips.forEach((chip, index) => {
-        setTimeout(() => {
-          chip.style.transform = 'translateY(30px) scale(0.95)';
-          chip.style.opacity = '0';
-        }, index * 100);
-      });
-      
-      // Después de que los chips se oculten, mostrar las cards
-      setTimeout(() => {
-        if (!servicesChips || !servicesList) return;
-        
-        servicesChips.style.height = '0';
-        servicesChips.style.marginBottom = '0';
-        servicesChips.style.overflow = 'hidden';
-        
-        // Mostrar la lista de servicios con animación
-        setTimeout(() => {
-          if (!servicesList) return;
-          
-          servicesList.style.opacity = '1';
-          
-          // Animar cada card individualmente
-          const cards = servicesList.querySelectorAll('.service-card') as NodeListOf<HTMLElement>;
-          cards.forEach((card, index) => {
-            card.style.transform = 'translateY(20px)';
-            card.style.opacity = '0';
-            
-            setTimeout(() => {
-              card.style.transition = 'all 0.6s ease-out';
-              card.style.transform = 'translateY(0)';
-              card.style.opacity = '1';
-            }, index * 150);
-          });
-        }, 100);
-      }, 400);
-    }
-    
-    // Resetear transformación
-    function resetTransformation() {
-      if (!servicesChips || !servicesList) return;
-      
-      // Ocultar cards
-      const cards = servicesList.querySelectorAll('.service-card') as NodeListOf<HTMLElement>;
-      cards.forEach((card, index) => {
-        setTimeout(() => {
-          card.style.transform = 'translateY(20px)';
-          card.style.opacity = '0';
-        }, index * 50);
-      });
-      
-      setTimeout(() => {
-        if (!servicesList || !servicesChips) return;
-        
-        servicesList.style.opacity = '0';
-        
-        // Restaurar chips
-        setTimeout(() => {
-          if (!servicesChips) return;
-          
-          servicesChips.style.height = '';
-          servicesChips.style.marginBottom = '';
-          servicesChips.style.overflow = '';
-          
-          chips.forEach((chip, index) => {
-            setTimeout(() => {
-              chip.style.transform = 'translateY(0) scale(1)';
-              chip.style.opacity = '1';
-            }, index * 100);
-          });
-        }, 100);
-      }, 300);
-    }
-    
-    // Agregar evento de scroll con throttle para mejor performance
+
     let ticking = false;
     window.addEventListener('scroll', function() {
       if (!ticking) {
         window.requestAnimationFrame(function() {
-          handleScroll();
+          updateHeroScroll();
           ticking = false;
         });
         ticking = true;
       }
-    });
-    
-    // Verificar posición inicial
-    handleScroll();
+    }, { passive: true });
+
+    // Initial check
+    updateHeroScroll();
   });
 </script>
-
-<style>
-  .service-chip {
-    transition: transform 0.4s ease-out, opacity 0.4s ease-out;
-  }
-  
-  #servicesChips {
-    transition: height 0.4s ease-out, margin-bottom 0.4s ease-out;
-  }
-  
-  #servicesList .service-card {
-    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
-  }
-</style>
