@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { House, Storefront, Buildings, Briefcase, ArrowRight } from 'lucide-react';
+import { House, Store, Building, Briefcase, ArrowRight } from 'lucide-react';
 
 interface ProjectItem {
   slug: string;
@@ -18,8 +18,8 @@ interface MobileProjectsStackProps {
 const getTagIcon = (tag: string) => {
   const t = (tag || '').toLowerCase();
   if (t.includes('residencial') || t.includes('unifamiliar') || t.includes('casa')) return House;
-  if (t.includes('retail') || t.includes('comercial') || t.includes('local')) return Storefront;
-  if (t.includes('conjunto') || t.includes('multifamiliar') || t.includes('edificio')) return Buildings;
+  if (t.includes('retail') || t.includes('comercial') || t.includes('local')) return Store;
+  if (t.includes('conjunto') || t.includes('multifamiliar') || t.includes('edificio')) return Building;
   return Briefcase;
 };
 
