@@ -36,8 +36,8 @@ if (isCloudinaryUrl && videoUrl.includes('/upload/')) {
 }
 ---
 
-<section class="relative w-full py-0 sm:py-8 md:py-12 bg-[#050505] overflow-hidden">
-  <div class="w-full max-w-full px-0">
+<section class="relative w-full py-8 md:py-16 bg-[#050505] overflow-hidden">
+  <div class="w-full max-w-[1400px] mx-auto px-4 sm:px-8 md:px-12">
     <!-- Header Section (Solo si no hay proyecto/descripción específica o para dar contexto superior) -->
     {(!projectName) && (
       <div class="text-center mb-8 px-4">
@@ -53,9 +53,9 @@ if (isCloudinaryUrl && videoUrl.includes('/upload/')) {
     )}
 
     <!-- Video Container -->
-    <div class="relative w-full max-w-full mx-auto">
-      <!-- Video wrapper with shadow and border -->
-      <div class="relative bg-[#050505] w-full overflow-hidden border-y sm:border border-gray-800/60 shadow-2xl group">
+    <div class="relative w-full mx-auto">
+      <!-- Video wrapper with shadow, rounded corners and border -->
+      <div class="relative bg-[#050505] w-full rounded-2xl md:rounded-3xl overflow-hidden border border-gray-800/80 shadow-2xl group">
         <!-- Aspect ratio container -->
         <div class="relative w-full video-container" style="padding-bottom: 56.25%;"> <!-- 16:9 aspect ratio -->
           {isCloudinaryUrl ? (
