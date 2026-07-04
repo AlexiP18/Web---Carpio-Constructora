@@ -29,70 +29,66 @@ const serviciosHeroImage = '/images/services/ServiciosHero.webp';
     <!-- Interactive Scroll Content Container -->
     <div class="max-w-7xl mx-auto px-6 relative z-10 w-full flex flex-col items-center justify-center">
       
-      <!-- Header & Chips Initial Stage -->
-      <div id="heroInitialStage" class="w-full max-w-4xl mx-auto text-center transition-all duration-500 ease-out">
-        <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-8">
-          Nuestros<br />
-          <span class="text-[#D79528]">Servicios</span>
+      <!-- Permanent Main Header Section (Does NOT change or fade) -->
+      <div class="max-w-4xl mx-auto text-center mb-8 shrink-0">
+        <h1 class="text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4">
+          Nuestros <span class="text-[#D79528]">Servicios</span>
         </h1>
         
-        <p class="text-xl lg:text-2xl text-white/90 leading-relaxed mb-12 max-w-3xl mx-auto font-light">
+        <p class="text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto font-light">
           Ofrecemos soluciones constructivas integrales con los más altos estándares de calidad para satisfacer todas tus necesidades.
         </p>
+      </div>
+
+      <!-- Dynamic Content Swap Container (Chips -> Cards) -->
+      <div class="relative w-full max-w-7xl min-h-[360px] flex items-center justify-center">
         
-        <!-- Feature Chips -->
-        <div id="servicesChips" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div class="service-chip bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 shadow-lg group">
-            <div class="flex flex-col items-center justify-center text-center gap-3">
-              <div class="w-12 h-12 bg-gradient-to-br from-[#103646] to-[#103646]/80 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <Icon name="ph:buildings-fill" class="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-white mb-1">Construcción</h3>
-                <p class="text-white/70 text-sm">Residencial y comercial</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="service-chip bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 shadow-lg group">
-            <div class="flex flex-col items-center justify-center text-center gap-3">
-              <div class="w-12 h-12 bg-gradient-to-br from-[#D79528] to-[#D79528]/80 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <Icon name="ph:hammer-fill" class="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-white mb-1">Remodelación</h3>
-                <p class="text-white/70 text-sm">Modernización completa</p>
+        <!-- Stage 1: Feature Chips -->
+        <div id="servicesChipsContainer" class="w-full max-w-4xl mx-auto transition-all duration-500 ease-out">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="service-chip bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 shadow-lg group">
+              <div class="flex flex-col items-center justify-center text-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-[#103646] to-[#103646]/80 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Icon name="ph:buildings-fill" class="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-white mb-1">Construcción</h3>
+                  <p class="text-white/70 text-sm">Residencial y comercial</p>
+                </div>
               </div>
             </div>
-          </div>
-          
-          <div class="service-chip bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 shadow-lg group">
-            <div class="flex flex-col items-center justify-center text-center gap-3">
-              <div class="w-12 h-12 bg-[#103646] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                <Icon name="ph:pencil-ruler-fill" class="w-6 h-6 text-white" />
+            
+            <div class="service-chip bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 shadow-lg group">
+              <div class="flex flex-col items-center justify-center text-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-[#D79528] to-[#D79528]/80 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Icon name="ph:hammer-fill" class="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-white mb-1">Remodelación</h3>
+                  <p class="text-white/70 text-sm">Modernización completa</p>
+                </div>
               </div>
-              <div>
-                <h3 class="text-lg font-bold text-white mb-1">Diseño Arquitectónico</h3>
-                <p class="text-white/70 text-sm">Proyectos personalizados</p>
+            </div>
+            
+            <div class="service-chip bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 shadow-lg group">
+              <div class="flex flex-col items-center justify-center text-center gap-3">
+                <div class="w-12 h-12 bg-[#103646] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Icon name="ph:pencil-ruler-fill" class="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 class="text-lg font-bold text-white mb-1">Diseño Arquitectónico</h3>
+                  <p class="text-white/70 text-sm">Proyectos personalizados</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      
-      <!-- Cards Reveal Stage (ServiciosLista) -->
-      <div id="heroCardsStage" class="absolute inset-0 flex flex-col items-center justify-center p-6 opacity-0 pointer-events-none transition-all duration-500 ease-out">
-        <div class="w-full max-w-7xl mx-auto">
-          <div class="text-center mb-8">
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-2">
-              Explora Nuestros Servicios
-            </h2>
-            <p class="text-white/70 text-base max-w-xl mx-auto font-light">
-              Haz clic en cualquier categoría para conocer a fondo nuestros proyectos y soluciones.
-            </p>
-          </div>
+        
+        <!-- Stage 2: Detailed Cards (ServiciosLista) -->
+        <div id="servicesListContainer" class="absolute inset-0 w-full flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 ease-out">
           <ServiciosLista />
         </div>
+
       </div>
 
     </div>
@@ -102,13 +98,13 @@ const serviciosHeroImage = '/images/services/ServiciosHero.webp';
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const track = document.getElementById('serviciosHeroTrack');
-    const initialStage = document.getElementById('heroInitialStage');
-    const cardsStage = document.getElementById('heroCardsStage');
+    const chipsContainer = document.getElementById('servicesChipsContainer');
+    const listContainer = document.getElementById('servicesListContainer');
 
-    if (!track || !initialStage || !cardsStage) return;
+    if (!track || !chipsContainer || !listContainer) return;
 
     function updateHeroScroll() {
-      if (!track || !initialStage || !cardsStage) return;
+      if (!track || !chipsContainer || !listContainer) return;
       const rect = track.getBoundingClientRect();
       const trackHeight = track.offsetHeight - window.innerHeight;
       
@@ -117,36 +113,36 @@ const serviciosHeroImage = '/images/services/ServiciosHero.webp';
       // Progress from 0 to 1 as track scrolls through viewport
       const progress = Math.min(Math.max(-rect.top / trackHeight, 0), 1);
 
-      // Phase 1 (0 to 0.20): Initial hero visible, fully static
+      // Phase 1 (0 to 0.20): Chips visible, cards hidden
       if (progress < 0.20) {
-        initialStage.style.opacity = '1';
-        initialStage.style.transform = 'translateY(0px) scale(1)';
-        initialStage.style.pointerEvents = 'auto';
+        chipsContainer.style.opacity = '1';
+        chipsContainer.style.transform = 'translateY(0px) scale(1)';
+        chipsContainer.style.pointerEvents = 'auto';
 
-        cardsStage.style.opacity = '0';
-        cardsStage.style.transform = 'translateY(40px) scale(0.95)';
-        cardsStage.style.pointerEvents = 'none';
+        listContainer.style.opacity = '0';
+        listContainer.style.transform = 'translateY(30px) scale(0.95)';
+        listContainer.style.pointerEvents = 'none';
       } 
-      // Phase 2 (0.20 to 0.55): Smooth transition - Initial stage fades out, Cards stage fades in
+      // Phase 2 (0.20 to 0.55): Chips fade out & slide down/up, Cards fade in & slide up into place
       else if (progress >= 0.20 && progress < 0.55) {
         const t = (progress - 0.20) / 0.35; // Normalized 0 to 1
 
-        initialStage.style.opacity = `${Math.max(1 - t * 1.5, 0)}`;
-        initialStage.style.transform = `translateY(${-t * 40}px) scale(${1 - t * 0.05})`;
-        initialStage.style.pointerEvents = t > 0.5 ? 'none' : 'auto';
+        chipsContainer.style.opacity = `${Math.max(1 - t * 1.5, 0)}`;
+        chipsContainer.style.transform = `translateY(${t * 30}px) scale(${1 - t * 0.05})`;
+        chipsContainer.style.pointerEvents = t > 0.5 ? 'none' : 'auto';
 
-        cardsStage.style.opacity = `${Math.min(t * 1.3, 1)}`;
-        cardsStage.style.transform = `translateY(${Math.max(40 - t * 40, 0)}px) scale(${0.95 + t * 0.05})`;
-        cardsStage.style.pointerEvents = t > 0.5 ? 'auto' : 'none';
+        listContainer.style.opacity = `${Math.min(t * 1.3, 1)}`;
+        listContainer.style.transform = `translateY(${Math.max(30 - t * 30, 0)}px) scale(${0.95 + t * 0.05})`;
+        listContainer.style.pointerEvents = t > 0.5 ? 'auto' : 'none';
       } 
-      // Phase 3 (0.55 to 1.0): Cards stage fully visible & pinned for comfortable viewing before scrolling to next section
+      // Phase 3 (0.55 to 1.0): Cards fully visible right under title/description & pinned for comfortable viewing before scrolling to next section
       else {
-        initialStage.style.opacity = '0';
-        initialStage.style.pointerEvents = 'none';
+        chipsContainer.style.opacity = '0';
+        chipsContainer.style.pointerEvents = 'none';
 
-        cardsStage.style.opacity = '1';
-        cardsStage.style.transform = 'translateY(0px) scale(1)';
-        cardsStage.style.pointerEvents = 'auto';
+        listContainer.style.opacity = '1';
+        listContainer.style.transform = 'translateY(0px) scale(1)';
+        listContainer.style.pointerEvents = 'auto';
       }
     }
 
