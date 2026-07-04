@@ -754,10 +754,40 @@ fragment ConfiguracionGlobalParts on ConfiguracionGlobal {
       label
       href
     }
+    socialAndContactColumn {
+      __typename
+      title
+      socialLinks {
+        __typename
+        name
+        url
+        icon
+      }
+      phone
+      email
+      address
+    }
     showLegalPages
+    legalPagesLinks {
+      __typename
+      label
+      href
+    }
   }
   legal {
     __typename
+    background {
+      __typename
+      type
+      color
+      image
+    }
+    cards {
+      __typename
+      icon
+      title
+      description
+    }
     privacyPolicy {
       __typename
       enabled

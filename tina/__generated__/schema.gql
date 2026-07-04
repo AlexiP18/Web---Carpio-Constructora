@@ -1768,13 +1768,46 @@ type ConfiguracionGlobalFooterCompanyColumn {
   href: String
 }
 
+type ConfiguracionGlobalFooterSocialAndContactColumnSocialLinks {
+  name: String
+  url: String
+  icon: String
+}
+
+type ConfiguracionGlobalFooterSocialAndContactColumn {
+  title: String
+  socialLinks: [ConfiguracionGlobalFooterSocialAndContactColumnSocialLinks]
+  phone: String
+  email: String
+  address: String
+}
+
+type ConfiguracionGlobalFooterLegalPagesLinks {
+  label: String
+  href: String
+}
+
 type ConfiguracionGlobalFooter {
   phrase: String
   copyright: String
   servicesColumn: [ConfiguracionGlobalFooterServicesColumn]
   projectsColumn: [ConfiguracionGlobalFooterProjectsColumn]
   companyColumn: [ConfiguracionGlobalFooterCompanyColumn]
+  socialAndContactColumn: ConfiguracionGlobalFooterSocialAndContactColumn
   showLegalPages: Boolean
+  legalPagesLinks: [ConfiguracionGlobalFooterLegalPagesLinks]
+}
+
+type ConfiguracionGlobalLegalBackground {
+  type: String
+  color: String
+  image: String
+}
+
+type ConfiguracionGlobalLegalCards {
+  icon: String
+  title: String
+  description: String
 }
 
 type ConfiguracionGlobalLegalPrivacyPolicy {
@@ -1806,6 +1839,8 @@ type ConfiguracionGlobalLegalCookies {
 }
 
 type ConfiguracionGlobalLegal {
+  background: ConfiguracionGlobalLegalBackground
+  cards: [ConfiguracionGlobalLegalCards]
   privacyPolicy: ConfiguracionGlobalLegalPrivacyPolicy
   termsOfService: ConfiguracionGlobalLegalTermsOfService
   cookies: ConfiguracionGlobalLegalCookies
@@ -1965,13 +2000,46 @@ input ConfiguracionGlobalFooterCompanyColumnFilter {
   href: StringFilter
 }
 
+input ConfiguracionGlobalFooterSocialAndContactColumnSocialLinksFilter {
+  name: StringFilter
+  url: StringFilter
+  icon: StringFilter
+}
+
+input ConfiguracionGlobalFooterSocialAndContactColumnFilter {
+  title: StringFilter
+  socialLinks: ConfiguracionGlobalFooterSocialAndContactColumnSocialLinksFilter
+  phone: StringFilter
+  email: StringFilter
+  address: StringFilter
+}
+
+input ConfiguracionGlobalFooterLegalPagesLinksFilter {
+  label: StringFilter
+  href: StringFilter
+}
+
 input ConfiguracionGlobalFooterFilter {
   phrase: StringFilter
   copyright: StringFilter
   servicesColumn: ConfiguracionGlobalFooterServicesColumnFilter
   projectsColumn: ConfiguracionGlobalFooterProjectsColumnFilter
   companyColumn: ConfiguracionGlobalFooterCompanyColumnFilter
+  socialAndContactColumn: ConfiguracionGlobalFooterSocialAndContactColumnFilter
   showLegalPages: BooleanFilter
+  legalPagesLinks: ConfiguracionGlobalFooterLegalPagesLinksFilter
+}
+
+input ConfiguracionGlobalLegalBackgroundFilter {
+  type: StringFilter
+  color: StringFilter
+  image: ImageFilter
+}
+
+input ConfiguracionGlobalLegalCardsFilter {
+  icon: StringFilter
+  title: StringFilter
+  description: StringFilter
 }
 
 input DatetimeFilter {
@@ -2011,6 +2079,8 @@ input ConfiguracionGlobalLegalCookiesFilter {
 }
 
 input ConfiguracionGlobalLegalFilter {
+  background: ConfiguracionGlobalLegalBackgroundFilter
+  cards: ConfiguracionGlobalLegalCardsFilter
   privacyPolicy: ConfiguracionGlobalLegalPrivacyPolicyFilter
   termsOfService: ConfiguracionGlobalLegalTermsOfServiceFilter
   cookies: ConfiguracionGlobalLegalCookiesFilter
@@ -2931,13 +3001,46 @@ input ConfiguracionGlobalFooterCompanyColumnMutation {
   href: String
 }
 
+input ConfiguracionGlobalFooterSocialAndContactColumnSocialLinksMutation {
+  name: String
+  url: String
+  icon: String
+}
+
+input ConfiguracionGlobalFooterSocialAndContactColumnMutation {
+  title: String
+  socialLinks: [ConfiguracionGlobalFooterSocialAndContactColumnSocialLinksMutation]
+  phone: String
+  email: String
+  address: String
+}
+
+input ConfiguracionGlobalFooterLegalPagesLinksMutation {
+  label: String
+  href: String
+}
+
 input ConfiguracionGlobalFooterMutation {
   phrase: String
   copyright: String
   servicesColumn: [ConfiguracionGlobalFooterServicesColumnMutation]
   projectsColumn: [ConfiguracionGlobalFooterProjectsColumnMutation]
   companyColumn: [ConfiguracionGlobalFooterCompanyColumnMutation]
+  socialAndContactColumn: ConfiguracionGlobalFooterSocialAndContactColumnMutation
   showLegalPages: Boolean
+  legalPagesLinks: [ConfiguracionGlobalFooterLegalPagesLinksMutation]
+}
+
+input ConfiguracionGlobalLegalBackgroundMutation {
+  type: String
+  color: String
+  image: String
+}
+
+input ConfiguracionGlobalLegalCardsMutation {
+  icon: String
+  title: String
+  description: String
 }
 
 input ConfiguracionGlobalLegalPrivacyPolicyMutation {
@@ -2969,6 +3072,8 @@ input ConfiguracionGlobalLegalCookiesMutation {
 }
 
 input ConfiguracionGlobalLegalMutation {
+  background: ConfiguracionGlobalLegalBackgroundMutation
+  cards: [ConfiguracionGlobalLegalCardsMutation]
   privacyPolicy: ConfiguracionGlobalLegalPrivacyPolicyMutation
   termsOfService: ConfiguracionGlobalLegalTermsOfServiceMutation
   cookies: ConfiguracionGlobalLegalCookiesMutation

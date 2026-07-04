@@ -3440,40 +3440,78 @@ var config_default = defineConfig2({
                   itemProps: (item) => ({ label: item?.label || "Servicio" })
                 },
                 fields: [
-                  { type: "string", name: "label", label: "Texto" },
+                  { type: "string", name: "label", label: "Texto del Enlace" },
                   { type: "string", name: "href", label: "URL" }
                 ]
               },
               {
                 type: "object",
                 name: "projectsColumn",
-                label: "Columna de Proyectos",
+                label: "Columna de Proyectos (Conjunto Habitacional, Dise\xF1o Residencial, Dise\xF1o Retail)",
                 list: true,
                 ui: {
                   itemProps: (item) => ({ label: item?.label || "Proyecto" })
                 },
                 fields: [
-                  { type: "string", name: "label", label: "Texto" },
+                  { type: "string", name: "label", label: "Texto del Enlace (ej: Conjunto Habitacional)" },
                   { type: "string", name: "href", label: "URL" }
                 ]
               },
               {
                 type: "object",
                 name: "companyColumn",
-                label: "Columna Empresa (Inicio, Nosotros, Contacto)",
+                label: "Columna de Empresa (Inicio, Nosotros, Contacto)",
                 list: true,
                 ui: {
                   itemProps: (item) => ({ label: item?.label || "P\xE1gina" })
                 },
                 fields: [
-                  { type: "string", name: "label", label: "Texto" },
+                  { type: "string", name: "label", label: "Texto del Enlace (ej: Inicio, Nosotros, Contacto)" },
                   { type: "string", name: "href", label: "URL" }
+                ]
+              },
+              {
+                type: "object",
+                name: "socialAndContactColumn",
+                label: "Columna de Redes Sociales y Contacto",
+                fields: [
+                  { type: "string", name: "title", label: "T\xEDtulo de la Secci\xF3n" },
+                  {
+                    type: "object",
+                    name: "socialLinks",
+                    label: "Redes Sociales",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => ({ label: item?.name || "Red Social" })
+                    },
+                    fields: [
+                      { type: "string", name: "name", label: "Nombre de la Red" },
+                      { type: "string", name: "url", label: "URL de Perfil" },
+                      { type: "string", name: "icon", label: "Icono" }
+                    ]
+                  },
+                  { type: "string", name: "phone", label: "Tel\xE9fono de Contacto" },
+                  { type: "string", name: "email", label: "Correo Electr\xF3nico" },
+                  { type: "string", name: "address", label: "Direcci\xF3n" }
                 ]
               },
               {
                 type: "boolean",
                 name: "showLegalPages",
-                label: "Mostrar P\xE1ginas Legales en Footer"
+                label: "Mostrar P\xE1ginas Legales (Pol\xEDtica de Privacidad, T\xE9rminos, Cookies)"
+              },
+              {
+                type: "object",
+                name: "legalPagesLinks",
+                label: "Enlaces de P\xE1ginas Legales en Footer",
+                list: true,
+                ui: {
+                  itemProps: (item) => ({ label: item?.label || "P\xE1gina Legal" })
+                },
+                fields: [
+                  { type: "string", name: "label", label: "Texto (ej: Pol\xEDtica de Privacidad)" },
+                  { type: "string", name: "href", label: "URL" }
+                ]
               }
             ]
           },
@@ -3481,8 +3519,53 @@ var config_default = defineConfig2({
           {
             type: "object",
             name: "legal",
-            label: "P\xE1ginas Legales",
+            label: "Configuraci\xF3n de P\xE1ginas Legales",
             fields: [
+              // Fondo, Color de fondo/imagen
+              {
+                type: "object",
+                name: "background",
+                label: "Fondo de P\xE1ginas Legales (Color / Imagen)",
+                fields: [
+                  {
+                    type: "string",
+                    name: "type",
+                    label: "Tipo de Fondo",
+                    options: [
+                      { value: "color", label: "Color S\xF3lido" },
+                      { value: "gradient", label: "Degradado Corporativo" },
+                      { value: "image", label: "Imagen de Fondo" }
+                    ]
+                  },
+                  {
+                    type: "string",
+                    name: "color",
+                    label: "Color de Fondo",
+                    description: "C\xF3digo de color HEX o CSS (ej: #103646)"
+                  },
+                  {
+                    type: "image",
+                    name: "image",
+                    label: "Imagen de Fondo",
+                    description: "Se sube a Cloudinary"
+                  }
+                ]
+              },
+              // Cards (Icono, Título, Descripción)
+              {
+                type: "object",
+                name: "cards",
+                label: "Cards de P\xE1ginas Legales (Icono, T\xEDtulo, Descripci\xF3n)",
+                list: true,
+                ui: {
+                  itemProps: (item) => ({ label: item?.title || "Card Legal" })
+                },
+                fields: [
+                  { type: "string", name: "icon", label: "Icono (ej: ph:shield-check)" },
+                  { type: "string", name: "title", label: "T\xEDtulo" },
+                  { type: "string", name: "description", label: "Descripci\xF3n", ui: { component: "textarea" } }
+                ]
+              },
               {
                 type: "object",
                 name: "privacyPolicy",
