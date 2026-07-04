@@ -2,11 +2,21 @@
 import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
 import MosaicSecondaryBg from "../../ui/MosaicSecondaryBg.astro";
+import MobileProjectsStack from "./MobileProjectsStack";
 
 // Fetch projects
 const allProjects = await getCollection("proyectos");
 // Slice to exactly 6 projects for the vertical column layout (will show all if there are fewer, e.g. 5)
 const projects = allProjects.slice(0, 6);
+
+const projectsForMobile = projects.map(p => ({
+  slug: p.slug,
+  title: p.data.title,
+  description: p.data.description,
+  tags: p.data.tags || [],
+  backgroundImage: p.data.backgroundImage,
+  images: p.data.images || []
+}));
 ---
 
 <!-- Portfolio Section - Premium Sliding Accordion Panels -->
@@ -34,97 +44,8 @@ const projects = allProjects.slice(0, 6);
     </div>
   </div>
 
-  <!-- Mobile Version: Stacking Card Effect (lg:hidden) -->
-  <div class="w-full max-w-[1400px] mx-auto px-4 relative z-10 lg:hidden flex flex-col gap-6" data-aos="fade-up" data-aos-delay="200">
-    {projects.map((project) => {
-      const firstTag = project.data.tags?.[0] || "Proyecto";
-      let iconName = "ph:briefcase";
-      
-      if (
-        firstTag.toLowerCase().includes("residencial") || 
-        firstTag.toLowerCase().includes("unifamiliar") || 
-        firstTag.toLowerCase().includes("casa")
-      ) {
-        iconName = "ph:house";
-      } else if (
-        firstTag.toLowerCase().includes("retail") || 
-        firstTag.toLowerCase().includes("comercial") || 
-        firstTag.toLowerCase().includes("local")
-      ) {
-        iconName = "ph:storefront";
-      } else if (
-        firstTag.toLowerCase().includes("conjunto") || 
-        firstTag.toLowerCase().includes("multifamiliar") || 
-        firstTag.toLowerCase().includes("edificio")
-      ) {
-        iconName = "ph:buildings";
-      }
-
-      const img1 = project.data.backgroundImage;
-      const img2 = project.data.images?.[0] || img1;
-
-      return (
-        <div class="w-full border-2 border-[#D7E2EA]/30 bg-[#0C0C0C] rounded-[32px] sm:rounded-[40px] p-5 sm:p-7 shadow-2xl flex flex-col justify-between">
-          {/* Card Header Row */}
-          <div class="flex flex-col gap-3 border-b border-gray-800/80 pb-4">
-            <div class="flex items-center justify-between gap-3">
-              <div class="flex items-center gap-2 px-3 py-1 bg-[#D79528] text-white text-[11px] font-black rounded-full uppercase tracking-wider shadow-md select-none">
-                <Icon name={iconName} class="w-3.5 h-3.5" />
-                <span>{firstTag}</span>
-              </div>
-              <a 
-                href={`/proyecto/${project.slug}`} 
-                class="inline-flex items-center gap-1.5 px-4 py-1.5 border border-[#D79528] text-[#D79528] hover:bg-[#D79528] hover:text-white font-semibold uppercase tracking-wider rounded-full text-xs transition-colors duration-300"
-              >
-                <span>Ver Proyecto</span>
-                <Icon name="ph:arrow-right-bold" class="w-3.5 h-3.5" />
-              </a>
-            </div>
-
-            <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-tight mt-1">
-              {project.data.title}
-            </h3>
-
-            {project.data.description && (
-              <p class="text-xs sm:text-sm text-gray-400 font-normal leading-relaxed line-clamp-3">
-                {project.data.description}
-              </p>
-            )}
-          </div>
-
-          {/* Card Body: Two-Column Image Grid */}
-          <div class="grid grid-cols-[40%_60%] gap-3 mt-4 h-[200px] sm:h-[240px] overflow-hidden">
-            {/* Left Column (40%) - Two stacked images */}
-            <div class="flex flex-col gap-3 justify-between h-full">
-              <div class="w-full overflow-hidden rounded-[20px] h-[48%] relative">
-                <img 
-                  src={img1} 
-                  alt={`${project.data.title} 1`} 
-                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                />
-              </div>
-              <div class="w-full overflow-hidden rounded-[20px] h-[48%] relative">
-                <img 
-                  src={img2} 
-                  alt={`${project.data.title} 2`} 
-                  class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                />
-              </div>
-            </div>
-
-            {/* Right Column (60%) - One main tall image */}
-            <div class="w-full h-full overflow-hidden rounded-[24px] relative">
-              <img 
-                src={img1} 
-                alt={`${project.data.title} main`} 
-                class="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              />
-            </div>
-          </div>
-        </div>
-      );
-    })}
-  </div>
+  <!-- Mobile Version: Interactive Scroll Stacking Card Effect (lg:hidden) -->
+  <MobileProjectsStack client:load projects={projectsForMobile} />
 
   <!-- Desktop Version: Sliding Panels Container (hidden lg:block) -->
   <div class="hidden lg:block w-full max-w-[1400px] mx-auto px-8 relative z-10" data-aos="fade-up" data-aos-delay="200">
