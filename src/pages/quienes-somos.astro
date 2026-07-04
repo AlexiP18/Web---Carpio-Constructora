@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Header from '../components/ui/Header.astro';
 import Footer from "../components/sections/Footer.astro";
 import HeroSection from "../components/sections/nosotros/HeroSection.astro";
-import ProjectsSection from "../components/sections/nosotros/ProjectsSection.tsx";
+import CompanyOverview from "../components/sections/nosotros/CompanyOverview.astro";
 import TeamSection from "../components/sections/nosotros/TeamSection.astro";
 import TwoColumnSection from "../components/sections/nosotros/TwoColumnSection.astro";
 import TestimonialSection from "../components/sections/nosotros/TestimonialSection.astro";
@@ -84,8 +84,8 @@ import BackgroundWavesConjunto from '../components/ui/BackgroundWavesConjunto.as
 
 
     <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-    <ProjectsSection client:load />
-  </div>
+      <CompanyOverview />
+    </div>
 
 
   </section>
