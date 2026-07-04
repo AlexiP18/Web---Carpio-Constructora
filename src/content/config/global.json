@@ -136,90 +136,80 @@
     "ctaLink": "/contacto"
   },
   "footer": {
+    "phrase": "Construyendo sueños con calidad, innovación y compromiso. Más de 8 años de experiencia en proyectos residenciales y comerciales en Ecuador.",
     "copyright": "© {year} Constructora Carpio. Todos los derechos reservados.",
-    "showNewsletter": true,
-    "newsletterTitle": "Suscríbete a nuestro boletín",
-    "newsletterSubtitle": "Recibe las últimas novedades de nuestros proyectos",
-    "columns": [
-      {
-        "title": "Empresa",
-        "order": 1,
-        "links": [
-          {
-            "label": "Quiénes Somos",
-            "href": "/quienes-somos",
-            "order": 1
-          },
-          {
-            "label": "Nuestro Equipo",
-            "href": "/quienes-somos#equipo",
-            "order": 2
-          },
-          {
-            "label": "Trabaja con Nosotros",
-            "href": "/contacto",
-            "order": 3
-          }
-        ]
-      },
-      {
-        "title": "Servicios",
-        "order": 2,
-        "links": [
-          {
-            "label": "Construcción",
-            "href": "/servicios/construccion",
-            "order": 1
-          },
-          {
-            "label": "Diseño",
-            "href": "/servicios/diseno-arquitectonico",
-            "order": 2
-          },
-          {
-            "label": "Remodelación",
-            "href": "/servicios/remodelacion",
-            "order": 3
-          }
-        ]
-      },
-      {
-        "title": "Legal",
-        "order": 3,
-        "links": [
-          {
-            "label": "Términos de Servicio",
-            "href": "/terminos",
-            "order": 1
-          },
-          {
-            "label": "Política de Privacidad",
-            "href": "/privacidad",
-            "order": 2
-          },
-          {
-            "label": "Política de Cookies",
-            "href": "/cookies",
-            "order": 3
-          }
-        ]
-      }
+    "servicesColumn": [
+      { "label": "Construcción", "href": "/servicios/construccion" },
+      { "label": "Remodelación", "href": "/servicios/remodelacion" },
+      { "label": "Diseño Arquitectónico", "href": "/servicios/diseno-arquitectonico" },
+      { "label": "Ver todos los servicios", "href": "/servicios" }
+    ],
+    "projectsColumn": [
+      { "label": "Conjunto Habitacional", "href": "/proyectos/conjunto-habitacional" },
+      { "label": "Diseño Residencial", "href": "/proyectos/diseno-residencial" },
+      { "label": "Diseño Retail", "href": "/proyectos/diseno-retail" },
+      { "label": "Ver todos los proyectos", "href": "/proyectos" }
+    ],
+    "companyColumn": [
+      { "label": "Inicio", "href": "/" },
+      { "label": "Nosotros", "href": "/quienes-somos" },
+      { "label": "Contacto", "href": "/contacto" }
+    ],
+    "socialAndContactColumn": {
+      "title": "Conecta con Nosotros",
+      "socialLinks": [
+        { "name": "Facebook", "url": "https://facebook.com", "icon": "ph:facebook-logo" },
+        { "name": "Instagram", "url": "https://instagram.com", "icon": "ph:instagram-logo" },
+        { "name": "YouTube", "url": "https://youtube.com", "icon": "ph:youtube-logo" },
+        { "name": "WhatsApp", "url": "https://wa.me/593998323304", "icon": "ph:whatsapp-logo" }
+      ],
+      "phone": "+593 99 832 3304",
+      "email": "hola@carpio.com",
+      "address": "Ambato, Ecuador"
+    },
+    "showLegalPages": true,
+    "legalPagesLinks": [
+      { "label": "Política de Privacidad", "href": "/privacidad" },
+      { "label": "Términos de Servicio", "href": "/terminos" },
+      { "label": "Cookies", "href": "/cookies" }
     ]
   },
   "legal": {
+    "background": {
+      "type": "gradient",
+      "color": "#103646",
+      "image": ""
+    },
+    "cards": [
+      {
+        "icon": "ph:shield-check",
+        "title": "Protección de Datos",
+        "description": "Garantizamos la privacidad y seguridad de tu información personal en todo momento."
+      },
+      {
+        "icon": "ph:file-text",
+        "title": "Términos Claros",
+        "description": "Condiciones transparentes y profesionales para todos nuestros clientes y proyectos."
+      },
+      {
+        "icon": "ph:cookie",
+        "title": "Uso Responsable de Cookies",
+        "description": "Optimizamos tu navegación respetando tus preferencias y consentimiento."
+      }
+    ],
     "privacyPolicy": {
       "enabled": true,
       "title": "Política de Privacidad",
       "slug": "privacidad",
       "lastUpdated": "2024-01-01T00:00:00.000Z",
-      "content": "\\[object Object]\n"
+      "content": ""
     },
     "termsOfService": {
       "enabled": true,
       "title": "Términos de Servicio",
       "slug": "terminos",
       "lastUpdated": "2024-01-01T00:00:00.000Z",
-      "content": "\\[object Object]\n"
+      "content": ""
     },
     "cookies": {
       "enabled": true,
@@ -230,7 +220,7 @@
       "acceptButtonText": "Aceptar",
       "rejectButtonText": "Rechazar",
       "settingsButtonText": "Configurar",
-      "content": "\\[object Object]\n"
+      "content": ""
     }
   },
   "seo": {
