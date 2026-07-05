@@ -35,7 +35,7 @@ const IMAGES = [
   {
     url: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/keops/2. interior/1. Principal",
     rotation: "rotate-2",
-    label: "Proyecto Keops - Interior"
+    label: "Proyecto Keops - Interior Retail"
   },
   {
     url: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_ficoa/2. interior/2_Sala",
@@ -45,12 +45,42 @@ const IMAGES = [
   {
     url: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_izamba/1. exterior/vista",
     rotation: "rotate-6",
-    label: "Arrayanes Izamba - Exterior"
+    label: "Arrayanes Izamba - Conjunto"
   },
   {
     url: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_amaranto/2. interior/7_interior_bbq",
     rotation: "-rotate-3",
     label: "Casa Amaranto - Área BBQ"
+  },
+  {
+    url: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/v1770001179/INDEX_Hero_Slider_1_g8gjt0.webp",
+    rotation: "rotate-4",
+    label: "Diseño Arquitectónico"
+  },
+  {
+    url: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/v1770001180/INDEX_Hero_Slider_2_fzeiig.webp",
+    rotation: "-rotate-5",
+    label: "Construcción Comercial"
+  },
+  {
+    url: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/v1770001180/INDEX_Hero_Slider_3_tkaat7.webp",
+    rotation: "rotate-3",
+    label: "Remodelación Integral"
+  },
+  {
+    url: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/v1770001180/INDEX_Hero_Slider_4_ydgvlr.webp",
+    rotation: "-rotate-3",
+    label: "Residencia Exclusiva"
+  },
+  {
+    url: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/arrayanes_ficoa/1. exterior/0_Vista_Exterior",
+    rotation: "rotate-5",
+    label: "Arrayanes Ficoa - Exterior"
+  },
+  {
+    url: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1200,q_auto,f_auto/carpio-constructora/projects/casa_magna/1. exterior/3_Vista_Frontal",
+    rotation: "-rotate-4",
+    label: "Casa Magna - Fachada"
   }
 ];
 
@@ -90,7 +120,7 @@ export default function ExplorationsGallery() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Track scroll progress of the 450vh section for smooth pacing
+  // Track scroll progress of the 650vh section for smooth pacing
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
@@ -108,8 +138,8 @@ export default function ExplorationsGallery() {
   });
 
   // Parallax offsets for the columns
-  const yLeft = useTransform(scrollYProgress, [0, 1], [350, -350]);
-  const yRight = useTransform(scrollYProgress, [0, 1], [-350, 350]);
+  const yLeft = useTransform(scrollYProgress, [0, 1], [600, -600]);
+  const yRight = useTransform(scrollYProgress, [0, 1], [-600, 600]);
 
   // Current active text item
   const activeItem = BENEFITS_DATA[activeIndex];
@@ -117,7 +147,7 @@ export default function ExplorationsGallery() {
   return (
     <div 
       ref={containerRef}
-      className="relative min-h-[450vh] bg-transparent text-gray-900 overflow-visible"
+      className="relative min-h-[650vh] bg-transparent text-gray-900 overflow-visible"
     >
       {/* Layer 1: Pinned Center (z-10) */}
       <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden z-10 pointer-events-none">
@@ -174,12 +204,12 @@ export default function ExplorationsGallery() {
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
         <div className="grid grid-cols-2 gap-[140px] sm:gap-[380px] md:gap-[540px] lg:gap-[640px] max-w-[1400px] w-full px-4 items-center justify-items-center pointer-events-none">
           
-          {/* Column 1 (Left Parallax Column): Cards 1-3 */}
+          {/* Column 1 (Left Parallax Column): Cards 1-6 */}
           <motion.div 
             style={{ y: yLeft }}
             className="flex flex-col gap-16 sm:gap-24 md:gap-32 pointer-events-none"
           >
-            {IMAGES.slice(0, 3).map((img, idx) => (
+            {IMAGES.slice(0, 6).map((img, idx) => (
               <GalleryCard 
                 key={idx}
                 url={img.url}
@@ -190,12 +220,12 @@ export default function ExplorationsGallery() {
             ))}
           </motion.div>
 
-          {/* Column 2 (Right Parallax Column): Cards 4-6 */}
+          {/* Column 2 (Right Parallax Column): Cards 7-12 */}
           <motion.div 
             style={{ y: yRight }}
             className="flex flex-col gap-16 sm:gap-24 md:gap-32 pointer-events-none"
           >
-            {IMAGES.slice(3, 6).map((img, idx) => (
+            {IMAGES.slice(6, 12).map((img, idx) => (
               <GalleryCard 
                 key={idx}
                 url={img.url}
