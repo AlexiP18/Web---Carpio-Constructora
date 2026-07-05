@@ -90,17 +90,17 @@ export default function ExplorationsGallery() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Track scroll progress of the 300vh section
+  // Track scroll progress of the 450vh section for smooth pacing
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
 
-  // Split scroll timeline into 3 stages for the text content
+  // Split scroll timeline into 3 balanced stages for the text content
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest < 0.35) {
+    if (latest < 0.33) {
       setActiveIndex(0);
-    } else if (latest < 0.70) {
+    } else if (latest < 0.66) {
       setActiveIndex(1);
     } else {
       setActiveIndex(2);
@@ -108,8 +108,8 @@ export default function ExplorationsGallery() {
   });
 
   // Parallax offsets for the columns
-  const yLeft = useTransform(scrollYProgress, [0, 1], [250, -250]);
-  const yRight = useTransform(scrollYProgress, [0, 1], [-250, 250]);
+  const yLeft = useTransform(scrollYProgress, [0, 1], [350, -350]);
+  const yRight = useTransform(scrollYProgress, [0, 1], [-350, 350]);
 
   // Current active text item
   const activeItem = BENEFITS_DATA[activeIndex];
@@ -117,21 +117,21 @@ export default function ExplorationsGallery() {
   return (
     <div 
       ref={containerRef}
-      className="relative min-h-[300vh] bg-transparent text-gray-900 overflow-visible"
+      className="relative min-h-[450vh] bg-transparent text-gray-900 overflow-visible"
     >
       {/* Layer 1: Pinned Center (z-10) */}
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden z-10 pointer-events-none">
+      <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden z-10 pointer-events-none">
         
         {/* Content Box */}
-        <div className="relative flex flex-col items-center justify-center text-center max-w-xl mx-auto px-6 pointer-events-auto">
+        <div class="relative flex flex-col items-center justify-center text-center max-w-xl mx-auto px-6 pointer-events-auto">
           
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -30, filter: 'blur(6px)' }}
+              transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col items-center"
             >
               {/* Eyebrow badge with corporate colors */}
