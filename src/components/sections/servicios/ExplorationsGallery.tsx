@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValueEvent, useSpring, AnimatePresence } from 'framer-motion';
 
 // --- DATA ---
 
@@ -96,6 +96,13 @@ export default function ExplorationsGallery() {
     offset: ["start start", "end end"]
   });
 
+  // Apply smooth physics-based spring smoothing to eliminate scroll stutter
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 80,
+    damping: 25,
+    restDelta: 0.001
+  });
+
   // Split scroll timeline into 3 stages for the text content
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (latest < 0.35) {
@@ -107,9 +114,9 @@ export default function ExplorationsGallery() {
     }
   });
 
-  // Parallax offsets for the columns
-  const yLeft = useTransform(scrollYProgress, [0, 1], [250, -250]);
-  const yRight = useTransform(scrollYProgress, [0, 1], [-250, 250]);
+  // Fluid staggered parallax offsets for both columns moving upwards smoothly
+  const yLeft = useTransform(smoothProgress, [0, 1], [300, -300]);
+  const yRight = useTransform(smoothProgress, [0, 1], [420, -180]);
 
   // Current active text item
   const activeItem = BENEFITS_DATA[activeIndex];
