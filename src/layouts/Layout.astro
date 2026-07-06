@@ -87,7 +87,7 @@ const { title = "Constructora Carpio - Transformamos sueños en estructuras dura
         <!-- Netlify Identity -->
         {import.meta.env.PROD && (
             <script is:inline>
-                if (window.netlifyIdentity) {
+                if (window.self === window.top && window.netlifyIdentity) {
                     window.netlifyIdentity.on("init", user => {
                         if (!user) {
                             window.netlifyIdentity.on("login", () => {
