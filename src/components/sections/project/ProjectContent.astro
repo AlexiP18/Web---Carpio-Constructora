@@ -382,18 +382,18 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
       </div>
 
       <!-- Project Info Column -->
-      <div class="h-full" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+      <div class="h-full flex flex-col" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
         <!-- Project Stats Card -->
         {specifications && (
-        <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8">
-          <div class="flex items-center gap-3 mb-6">
+        <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 p-8 flex-1 flex flex-col justify-between h-full">
+          <div class="flex items-center gap-3 mb-6 flex-shrink-0">
             <div class="w-12 h-12 bg-gradient-to-br from-brand-primary to-brand-primary/80 rounded-2xl flex items-center justify-center">
               <Icon name="ph:chart-bar-fill" class="w-6 h-6 text-white" />
             </div>
             <h3 class="text-2xl font-bold text-gray-900">Especificaciones</h3>
           </div>
           
-          <div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 specs-scroll-area">
+          <div class="space-y-4 flex-1 min-h-0 overflow-y-auto pr-2 specs-scroll-area">
             <!-- Bedrooms -->
             {specs.bedrooms?.enabled && (
               <div class="bg-gradient-to-br from-brand-secondary/10 to-brand-secondary/20 rounded-2xl p-4 border border-brand-secondary/30">
@@ -503,7 +503,7 @@ const paragraphs = content.split('\n\n').filter(p => p.trim());
           </div>
 
           <!-- Action Buttons Footer -->
-          <div class="mt-8 pt-6 border-t border-gray-200">
+          <div class="mt-8 pt-6 border-t border-gray-200 flex-shrink-0">
             <div class="grid grid-cols-3 gap-2">
               <div class="text-center">
                 <a 
