@@ -3,6 +3,18 @@ import { Icon } from "astro-icon/components";
 import Button from "../../ui/Button.astro";
 import BackgroundWavesConjunto from "../../ui/BackgroundWavesConjunto.astro";
 
+export interface Props {
+  showEmailCard?: boolean;
+  showSocialsCard?: boolean;
+  showLocationCard?: boolean;
+}
+
+const {
+  showEmailCard = true,
+  showSocialsCard = true,
+  showLocationCard = true,
+} = Astro.props;
+
 // Contact data basado en la imagen de referencia
 const contactInfo = {
   email: "carpio.constructora@gmail.com",
@@ -59,126 +71,136 @@ const contactInfo = {
     </div>
 
     <!-- 3 Cards superiores en fila -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-      <!-- Card 1: Correo Electrónico -->
-      <div
-        class="bg-white rounded-2xl p-6 border border-gray-200/50 hover:border-[#103646]/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
-        data-aos="zoom-in-up"
-        data-aos-delay="0"
-        data-aos-duration="800"
-      >
-        <div class="text-center">
-          <div
-            class="w-12 h-12 bg-[#103646] rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg"
-          >
-            <Icon name="ph:envelope-fill" class="w-6 h-6 text-white" />
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">
-            Correo Electrónico
-          </h3>
-          <div class="space-y-1">
-            <a
-              href={`mailto:${contactInfo.email}`}
-              class="block text-[#103646] hover:text-[#103646]/80 font-medium text-sm transition-colors"
+    {
+      (showEmailCard || showSocialsCard || showLocationCard) && (
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <!-- Card 1: Correo Electrónico -->
+          {showEmailCard && (
+            <div
+              class="bg-white rounded-2xl p-6 border border-gray-200/50 hover:border-[#103646]/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
+              data-aos="zoom-in-up"
+              data-aos-delay="0"
+              data-aos-duration="800"
             >
-              {contactInfo.email}
-            </a>
-            <a
-              href={`mailto:ventas@constructoracarpio.com`}
-              class="block text-[#103646] hover:text-[#103646]/80 font-medium text-sm transition-colors"
-            >
-              ventas@constructoracarpio.com
-            </a>
-          </div>
-        </div>
-      </div>
+              <div class="text-center">
+                <div
+                  class="w-12 h-12 bg-[#103646] rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg"
+                >
+                  <Icon name="ph:envelope-fill" class="w-6 h-6 text-white" />
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">
+                  Correo Electrónico
+                </h3>
+                <div class="space-y-1">
+                  <a
+                    href={`mailto:${contactInfo.email}`}
+                    class="block text-[#103646] hover:text-[#103646]/80 font-medium text-sm transition-colors"
+                  >
+                    {contactInfo.email}
+                  </a>
+                  <a
+                    href={`mailto:ventas@constructoracarpio.com`}
+                    class="block text-[#103646] hover:text-[#103646]/80 font-medium text-sm transition-colors"
+                  >
+                    ventas@constructoracarpio.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
 
-      <!-- Card 2: Redes Sociales -->
-      <div
-        class="bg-white rounded-2xl p-6 border border-gray-200/50 hover:border-[#103646]/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
-        data-aos="zoom-in-up"
-        data-aos-delay="150"
-        data-aos-duration="800"
-      >
-        <div class="text-center">
-          <div
-            class="w-12 h-12 bg-[#103646] rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg"
-          >
-            <Icon name="ph:share-network-fill" class="w-6 h-6 text-white" />
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-4">Redes Sociales</h3>
-          <div class="flex justify-center gap-3">
-            <a
-              href="https://wa.me/593956324598"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-10 h-10 bg-[#25D366]/10 backdrop-blur-sm border border-[#25D366]/20 rounded-xl flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] group transition-all duration-300 hover:scale-110"
-              aria-label="Escríbenos por WhatsApp"
+          <!-- Card 2: Redes Sociales -->
+          {showSocialsCard && (
+            <div
+              class="bg-white rounded-2xl p-6 border border-gray-200/50 hover:border-[#103646]/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
+              data-aos="zoom-in-up"
+              data-aos-delay="150"
+              data-aos-duration="800"
             >
-              <Icon
-                name="ph:whatsapp-logo-fill"
-                class="w-5 h-5 text-[#25D366] group-hover:text-white transition-colors duration-300"
-              />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-10 h-10 bg-[#E4405F]/10 backdrop-blur-sm border border-[#E4405F]/20 rounded-xl flex items-center justify-center hover:bg-[#E4405F] hover:border-[#E4405F] group transition-all duration-300 hover:scale-110"
-              aria-label="Síguenos en Instagram"
-            >
-              <Icon
-                name="ph:instagram-logo-fill"
-                class="w-5 h-5 text-[#E4405F] group-hover:text-white transition-colors duration-300"
-              />
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-10 h-10 bg-[#1877F2]/10 backdrop-blur-sm border border-[#1877F2]/20 rounded-xl flex items-center justify-center hover:bg-[#1877F2] hover:border-[#1877F2] group transition-all duration-300 hover:scale-110"
-              aria-label="Síguenos en Facebook"
-            >
-              <Icon
-                name="ph:facebook-logo-fill"
-                class="w-5 h-5 text-[#1877F2] group-hover:text-white transition-colors duration-300"
-              />
-            </a>
-          </div>
-        </div>
-      </div>
+              <div class="text-center">
+                <div
+                  class="w-12 h-12 bg-[#103646] rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg"
+                >
+                  <Icon name="ph:share-network-fill" class="w-6 h-6 text-white" />
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-4">Redes Sociales</h3>
+                <div class="flex justify-center gap-3">
+                  <a
+                    href="https://wa.me/593956324598"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 bg-[#25D366]/10 backdrop-blur-sm border border-[#25D366]/20 rounded-xl flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] group transition-all duration-300 hover:scale-110"
+                    aria-label="Escríbenos por WhatsApp"
+                  >
+                    <Icon
+                      name="ph:whatsapp-logo-fill"
+                      class="w-5 h-5 text-[#25D366] group-hover:text-white transition-colors duration-300"
+                    />
+                  </a>
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 bg-[#E4405F]/10 backdrop-blur-sm border border-[#E4405F]/20 rounded-xl flex items-center justify-center hover:bg-[#E4405F] hover:border-[#E4405F] group transition-all duration-300 hover:scale-110"
+                    aria-label="Síguenos en Instagram"
+                  >
+                    <Icon
+                      name="ph:instagram-logo-fill"
+                      class="w-5 h-5 text-[#E4405F] group-hover:text-white transition-colors duration-300"
+                    />
+                  </a>
+                  <a
+                    href="https://facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="w-10 h-10 bg-[#1877F2]/10 backdrop-blur-sm border border-[#1877F2]/20 rounded-xl flex items-center justify-center hover:bg-[#1877F2] hover:border-[#1877F2] group transition-all duration-300 hover:scale-110"
+                    aria-label="Síguenos en Facebook"
+                  >
+                    <Icon
+                      name="ph:facebook-logo-fill"
+                      class="w-5 h-5 text-[#1877F2] group-hover:text-white transition-colors duration-300"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
 
-      <!-- Card 3: Ubicación -->
-      <div
-        class="bg-white rounded-2xl p-6 border border-gray-200/50 hover:border-[#103646]/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
-        data-aos="zoom-in-up"
-        data-aos-delay="300"
-        data-aos-duration="800"
-      >
-        <div class="text-center">
-          <div
-            class="w-12 h-12 bg-[#103646] rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg"
-          >
-            <Icon name="ph:map-pin-fill" class="w-6 h-6 text-white" />
-          </div>
-          <h3 class="text-lg font-bold text-gray-900 mb-2">Ubicación</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            Encuéntranos en Ambato, Ecuador
-          </p>
-          <Button
-            href="https://maps.google.com/?q=-1.239756,-78.6272345"
-            variant="primary"
-            size="sm"
-            icon="ph:arrow-square-out"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-[#103646] hover:bg-[#103646]/90"
-          >
-            Ver en Maps
-          </Button>
+          <!-- Card 3: Ubicación -->
+          {showLocationCard && (
+            <div
+              class="bg-white rounded-2xl p-6 border border-gray-200/50 hover:border-[#103646]/30 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02]"
+              data-aos="zoom-in-up"
+              data-aos-delay="300"
+              data-aos-duration="800"
+            >
+              <div class="text-center">
+                <div
+                  class="w-12 h-12 bg-[#103646] rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg"
+                >
+                  <Icon name="ph:map-pin-fill" class="w-6 h-6 text-white" />
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">Ubicación</h3>
+                <p class="text-gray-600 text-sm mb-4">
+                  Encuéntranos en Ambato, Ecuador
+                </p>
+                <Button
+                  href="https://maps.google.com/?q=-1.239756,-78.6272345"
+                  variant="primary"
+                  size="sm"
+                  icon="ph:arrow-square-out"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-[#103646] hover:bg-[#103646]/90"
+                >
+                  Ver en Maps
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
-      </div>
-    </div>
+      )
+    }
 
     <!-- Card Principal del Mapa -->
     <div

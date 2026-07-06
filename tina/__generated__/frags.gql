@@ -248,6 +248,9 @@ fragment PaginasParts on Paginas {
     ... on PaginasSectionsHero {
       title
       subtitle
+      sliderImages
+      showProjectsButton
+      showServicesButton
       backgroundImage
       backgroundVideo
       ctaText
@@ -344,6 +347,7 @@ fragment PaginasParts on Paginas {
     ... on PaginasSectionsProjects {
       title
       subtitle
+      selectedProjects
       layout
       limit
       showFilters
@@ -431,6 +435,9 @@ fragment PaginasParts on Paginas {
     ... on PaginasSectionsContact {
       title
       subtitle
+      showEmailCard
+      showSocialsCard
+      showLocationCard
       showForm
       showMap
       showInfo

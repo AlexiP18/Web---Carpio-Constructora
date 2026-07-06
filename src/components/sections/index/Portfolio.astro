@@ -4,10 +4,29 @@ import { Icon } from "astro-icon/components";
 import MosaicSecondaryBg from "../../ui/MosaicSecondaryBg.astro";
 import MobileProjectsStack from "./MobileProjectsStack";
 
+export interface Props {
+  selectedProjects?: string[];
+}
+
+const { selectedProjects } = Astro.props;
+
 // Fetch projects
 const allProjects = await getCollection("proyectos");
-// Slice to exactly 6 projects for the vertical column layout (will show all if there are fewer, e.g. 5)
-const projects = allProjects.slice(0, 6);
+
+// Filter projects if selectedProjects is specified, otherwise take first 6
+let projects = allProjects;
+if (selectedProjects && selectedProjects.length > 0) {
+  const filtered = selectedProjects
+    .map(slugOrTitle => allProjects.find(p => p.slug === slugOrTitle || p.data.title.toLowerCase().includes(slugOrTitle.toLowerCase())))
+    .filter((p): p is typeof allProjects[0] => Boolean(p));
+  if (filtered.length > 0) {
+    projects = filtered;
+  } else {
+    projects = allProjects.slice(0, 6);
+  }
+} else {
+  projects = allProjects.slice(0, 6);
+}
 
 const projectsForMobile = projects.map(p => ({
   slug: p.slug,

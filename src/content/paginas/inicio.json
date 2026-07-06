@@ -12,11 +12,19 @@
       "_template": "hero",
       "title": "Construimos tus sueños con excelencia",
       "subtitle": "Más de 20 años de experiencia transformando espacios en hogares y proyectos comerciales de primer nivel.",
+      "sliderImages": [
+        "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1920,q_auto,f_auto/v1770001179/INDEX_Hero_Slider_1_g8gjt0.webp",
+        "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1920,q_auto,f_auto/v1770001180/INDEX_Hero_Slider_4_ydgvlr.webp",
+        "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1920,q_auto,f_auto/v1770001180/INDEX_Hero_Slider_3_tkaat7.webp",
+        "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1920,q_auto,f_auto/v1770001180/INDEX_Hero_Slider_2_fzeiig.webp"
+      ],
+      "showProjectsButton": true,
+      "showServicesButton": true,
       "backgroundImage": "",
       "ctaText": "Ver Proyectos",
       "ctaLink": "/proyectos",
-      "secondaryCtaText": "Contáctanos",
-      "secondaryCtaLink": "/contacto",
+      "secondaryCtaText": "Ver Servicios",
+      "secondaryCtaLink": "/servicios",
       "alignment": "center",
       "overlay": true
     },
@@ -70,8 +78,15 @@
     },
     {
       "_template": "projects",
-      "title": "Proyectos Destacados",
-      "subtitle": "Conoce algunos de nuestros proyectos más recientes y exitosos.",
+      "title": "Nuestros Proyectos",
+      "subtitle": "Calidad en cada detalle. Explora nuestras obras maestras.",
+      "selectedProjects": [
+        "casa-amaranto",
+        "casa-magna",
+        "keops",
+        "los-arrayanes-de-ficoa",
+        "los-arrayanes-de-izamba"
+      ],
       "layout": "grid",
       "limit": 6,
       "showFilters": false,
@@ -100,6 +115,16 @@
           "rating": 5
         }
       ]
+    },
+    {
+      "_template": "contact",
+      "title": "Contáctanos",
+      "subtitle": "Estamos aquí para ayudarte con tu proyecto de construcción",
+      "showEmailCard": true,
+      "showSocialsCard": true,
+      "showLocationCard": true,
+      "showForm": true,
+      "showMap": true
     },
     {
       "_template": "cta",

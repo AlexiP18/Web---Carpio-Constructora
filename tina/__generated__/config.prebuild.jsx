@@ -325,8 +325,12 @@ var heroSection = {
     defaultItem: {
       title: "T\xEDtulo Principal",
       subtitle: "Subt\xEDtulo descriptivo",
-      ctaText: "Cont\xE1ctanos",
-      ctaLink: "/contacto"
+      showProjectsButton: true,
+      showServicesButton: true,
+      ctaText: "Ver Proyectos",
+      ctaLink: "/proyectos",
+      secondaryCtaText: "Ver Servicios",
+      secondaryCtaLink: "/servicios"
     }
   },
   fields: [
@@ -342,9 +346,30 @@ var heroSection = {
       ui: { component: "textarea" }
     },
     {
+      type: "string",
+      name: "sliderImages",
+      label: "Galer\xEDa de im\xE1genes para carrusel (m\xE1ximo 6)",
+      description: "URLs de im\xE1genes para el slider de fondo del hero",
+      list: true,
+      ui: {
+        // @ts-ignore
+        component: ImageGalleryField
+      }
+    },
+    {
+      type: "boolean",
+      name: "showProjectsButton",
+      label: 'Habilitar bot\xF3n "Ver Proyectos"'
+    },
+    {
+      type: "boolean",
+      name: "showServicesButton",
+      label: 'Habilitar bot\xF3n "Ver Servicios"'
+    },
+    {
       type: "image",
       name: "backgroundImage",
-      label: "Imagen de Fondo"
+      label: "Imagen de Fondo (opcional)"
     },
     {
       type: "string",
@@ -355,22 +380,22 @@ var heroSection = {
     {
       type: "string",
       name: "ctaText",
-      label: "Texto del Bot\xF3n"
+      label: 'Texto del Bot\xF3n "Ver Proyectos"'
     },
     {
       type: "string",
       name: "ctaLink",
-      label: "Enlace del Bot\xF3n"
+      label: 'Enlace del Bot\xF3n "Ver Proyectos"'
     },
     {
       type: "string",
       name: "secondaryCtaText",
-      label: "Texto del Bot\xF3n Secundario"
+      label: 'Texto del Bot\xF3n "Ver Servicios"'
     },
     {
       type: "string",
       name: "secondaryCtaLink",
-      label: "Enlace del Bot\xF3n Secundario"
+      label: 'Enlace del Bot\xF3n "Ver Servicios"'
     },
     {
       type: "string",
@@ -542,6 +567,13 @@ var projectsSection = {
     },
     {
       type: "string",
+      name: "selectedProjects",
+      label: "Selecci\xF3n de proyectos a mostrar en las columnas",
+      description: "Ingresa los slugs de los proyectos (ej: casa-amaranto, los-arrayanes-de-izamba) a mostrar en el acorde\xF3n de columnas",
+      list: true
+    },
+    {
+      type: "string",
       name: "layout",
       label: "Dise\xF1o",
       options: [
@@ -700,6 +732,9 @@ var contactSection = {
     previewSrc: getPreviewSrc("contact.svg"),
     defaultItem: {
       title: "Cont\xE1ctanos",
+      showEmailCard: true,
+      showSocialsCard: true,
+      showLocationCard: true,
       showMap: true,
       showForm: true
     }
@@ -715,6 +750,21 @@ var contactSection = {
       name: "subtitle",
       label: "Subt\xEDtulo",
       ui: { component: "textarea" }
+    },
+    {
+      type: "boolean",
+      name: "showEmailCard",
+      label: "Habilitar card de Correo Electr\xF3nico"
+    },
+    {
+      type: "boolean",
+      name: "showSocialsCard",
+      label: "Habilitar card de Redes Sociales"
+    },
+    {
+      type: "boolean",
+      name: "showLocationCard",
+      label: "Habilitar card de Ubicaci\xF3n"
     },
     {
       type: "boolean",

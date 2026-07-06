@@ -175,8 +175,12 @@ export const heroSection: Template = {
     defaultItem: {
       title: 'Título Principal',
       subtitle: 'Subtítulo descriptivo',
-      ctaText: 'Contáctanos',
-      ctaLink: '/contacto',
+      showProjectsButton: true,
+      showServicesButton: true,
+      ctaText: 'Ver Proyectos',
+      ctaLink: '/proyectos',
+      secondaryCtaText: 'Ver Servicios',
+      secondaryCtaLink: '/servicios',
     },
   },
   fields: [
@@ -192,9 +196,30 @@ export const heroSection: Template = {
       ui: { component: 'textarea' },
     },
     {
+      type: 'string',
+      name: 'sliderImages',
+      label: 'Galería de imágenes para carrusel (máximo 6)',
+      description: 'URLs de imágenes para el slider de fondo del hero',
+      list: true,
+      ui: {
+        // @ts-ignore
+        component: ImageGalleryField,
+      },
+    },
+    {
+      type: 'boolean',
+      name: 'showProjectsButton',
+      label: 'Habilitar botón "Ver Proyectos"',
+    },
+    {
+      type: 'boolean',
+      name: 'showServicesButton',
+      label: 'Habilitar botón "Ver Servicios"',
+    },
+    {
       type: 'image',
       name: 'backgroundImage',
-      label: 'Imagen de Fondo',
+      label: 'Imagen de Fondo (opcional)',
     },
     {
       type: 'string',
@@ -205,22 +230,22 @@ export const heroSection: Template = {
     {
       type: 'string',
       name: 'ctaText',
-      label: 'Texto del Botón',
+      label: 'Texto del Botón "Ver Proyectos"',
     },
     {
       type: 'string',
       name: 'ctaLink',
-      label: 'Enlace del Botón',
+      label: 'Enlace del Botón "Ver Proyectos"',
     },
     {
       type: 'string',
       name: 'secondaryCtaText',
-      label: 'Texto del Botón Secundario',
+      label: 'Texto del Botón "Ver Servicios"',
     },
     {
       type: 'string',
       name: 'secondaryCtaLink',
-      label: 'Enlace del Botón Secundario',
+      label: 'Enlace del Botón "Ver Servicios"',
     },
     {
       type: 'string',
@@ -404,6 +429,13 @@ export const projectsSection: Template = {
     },
     {
       type: 'string',
+      name: 'selectedProjects',
+      label: 'Selección de proyectos a mostrar en las columnas',
+      description: 'Ingresa los slugs de los proyectos (ej: casa-amaranto, los-arrayanes-de-izamba) a mostrar en el acordeón de columnas',
+      list: true,
+    },
+    {
+      type: 'string',
       name: 'layout',
       label: 'Diseño',
       options: [
@@ -574,6 +606,9 @@ export const contactSection: Template = {
     previewSrc: getPreviewSrc('contact.svg'),
     defaultItem: {
       title: 'Contáctanos',
+      showEmailCard: true,
+      showSocialsCard: true,
+      showLocationCard: true,
       showMap: true,
       showForm: true,
     },
@@ -589,6 +624,21 @@ export const contactSection: Template = {
       name: 'subtitle',
       label: 'Subtítulo',
       ui: { component: 'textarea' },
+    },
+    {
+      type: 'boolean',
+      name: 'showEmailCard',
+      label: 'Habilitar card de Correo Electrónico',
+    },
+    {
+      type: 'boolean',
+      name: 'showSocialsCard',
+      label: 'Habilitar card de Redes Sociales',
+    },
+    {
+      type: 'boolean',
+      name: 'showLocationCard',
+      label: 'Habilitar card de Ubicación',
     },
     {
       type: 'boolean',

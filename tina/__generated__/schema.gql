@@ -755,6 +755,9 @@ type PaginasSectionsHeroSectionConfig {
 type PaginasSectionsHero {
   title: String
   subtitle: String
+  sliderImages: [String]
+  showProjectsButton: Boolean
+  showServicesButton: Boolean
   backgroundImage: String
   backgroundVideo: String
   ctaText: String
@@ -862,6 +865,7 @@ type PaginasSectionsProjectsSectionConfig {
 type PaginasSectionsProjects {
   title: String
   subtitle: String
+  selectedProjects: [String]
   layout: String
   limit: Float
   showFilters: Boolean
@@ -966,6 +970,9 @@ type PaginasSectionsContactSectionConfig {
 type PaginasSectionsContact {
   title: String
   subtitle: String
+  showEmailCard: Boolean
+  showSocialsCard: Boolean
+  showLocationCard: Boolean
   showForm: Boolean
   showMap: Boolean
   showInfo: Boolean
@@ -1203,6 +1210,9 @@ input PaginasSectionsHeroSectionConfigFilter {
 input PaginasSectionsHeroFilter {
   title: StringFilter
   subtitle: StringFilter
+  sliderImages: StringFilter
+  showProjectsButton: BooleanFilter
+  showServicesButton: BooleanFilter
   backgroundImage: ImageFilter
   backgroundVideo: StringFilter
   ctaText: StringFilter
@@ -1310,6 +1320,7 @@ input PaginasSectionsProjectsSectionConfigFilter {
 input PaginasSectionsProjectsFilter {
   title: StringFilter
   subtitle: StringFilter
+  selectedProjects: StringFilter
   layout: StringFilter
   limit: NumberFilter
   showFilters: BooleanFilter
@@ -1414,6 +1425,9 @@ input PaginasSectionsContactSectionConfigFilter {
 input PaginasSectionsContactFilter {
   title: StringFilter
   subtitle: StringFilter
+  showEmailCard: BooleanFilter
+  showSocialsCard: BooleanFilter
+  showLocationCard: BooleanFilter
   showForm: BooleanFilter
   showMap: BooleanFilter
   showInfo: BooleanFilter
@@ -2447,6 +2461,9 @@ input PaginasSectionsHeroSectionConfigMutation {
 input PaginasSectionsHeroMutation {
   title: String
   subtitle: String
+  sliderImages: [String]
+  showProjectsButton: Boolean
+  showServicesButton: Boolean
   backgroundImage: String
   backgroundVideo: String
   ctaText: String
@@ -2554,6 +2571,7 @@ input PaginasSectionsProjectsSectionConfigMutation {
 input PaginasSectionsProjectsMutation {
   title: String
   subtitle: String
+  selectedProjects: [String]
   layout: String
   limit: Float
   showFilters: Boolean
@@ -2658,6 +2676,9 @@ input PaginasSectionsContactSectionConfigMutation {
 input PaginasSectionsContactMutation {
   title: String
   subtitle: String
+  showEmailCard: Boolean
+  showSocialsCard: Boolean
+  showLocationCard: Boolean
   showForm: Boolean
   showMap: Boolean
   showInfo: Boolean

@@ -262,6 +262,9 @@ export const PaginasPartsFragmentDoc = gql`
     ... on PaginasSectionsHero {
       title
       subtitle
+      sliderImages
+      showProjectsButton
+      showServicesButton
       backgroundImage
       backgroundVideo
       ctaText
@@ -358,6 +361,7 @@ export const PaginasPartsFragmentDoc = gql`
     ... on PaginasSectionsProjects {
       title
       subtitle
+      selectedProjects
       layout
       limit
       showFilters
@@ -445,6 +449,9 @@ export const PaginasPartsFragmentDoc = gql`
     ... on PaginasSectionsContact {
       title
       subtitle
+      showEmailCard
+      showSocialsCard
+      showLocationCard
       showForm
       showMap
       showInfo

@@ -5,7 +5,7 @@ import OptimizedImage from "../../media/OptimizedImage.astro";
 
 const logoCarpioConstructora = "/icons/LogoCarpioConstructora.svg";
 
-const sliderImages = [
+const defaultSliderImages = [
   {
     src: "https://res.cloudinary.com/dt5y4fsst/image/upload/w_1920,q_auto,f_auto/v1770001179/INDEX_Hero_Slider_1_g8gjt0.webp",
     alt: "Proyecto Constructora Carpio 1",
@@ -23,6 +23,26 @@ const sliderImages = [
     alt: "Proyecto Constructora Carpio 4",
   },
 ];
+
+export interface Props {
+  sliderImages?: string[];
+  showProjectsButton?: boolean;
+  showServicesButton?: boolean;
+}
+
+const {
+  sliderImages: propSliderImages,
+  showProjectsButton = true,
+  showServicesButton = true,
+} = Astro.props;
+
+// Limitar a máximo 6 imágenes si se definen en el CMS
+const sliderImages = propSliderImages && propSliderImages.length > 0
+  ? propSliderImages.slice(0, 6).map((src, index) => ({
+      src,
+      alt: `Proyecto Constructora Carpio ${index + 1}`
+    }))
+  : defaultSliderImages;
 ---
 
 <!-- Hero Scroll Track Container for Scroll-Driven Pinning Animation -->
@@ -138,31 +158,39 @@ const sliderImages = [
       </div>
 
       <!-- Action Buttons -->
-      <div
-        class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
-      >
-        <Button
-          href="/proyectos"
-          variant="primary"
-          size="lg"
-          icon="ph:arrow-right"
-          iconPosition="left"
-          class="min-w-[180px] bg-[#103646] hover:bg-[#103646]/90 text-white border-[#103646] shadow-xl"
-        >
-          Ver Proyectos
-        </Button>
+      {
+        (showProjectsButton || showServicesButton) && (
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4"
+          >
+            {showProjectsButton && (
+              <Button
+                href="/proyectos"
+                variant="primary"
+                size="lg"
+                icon="ph:arrow-right"
+                iconPosition="left"
+                class="min-w-[180px] bg-[#103646] hover:bg-[#103646]/90 text-white border-[#103646] shadow-xl"
+              >
+                Ver Proyectos
+              </Button>
+            )}
 
-        <Button
-          href="/servicios"
-          variant="outline"
-          size="lg"
-          icon="ph:list-bullets"
-          iconPosition="left"
-          class="min-w-[180px] border-white/60 text-white hover:bg-white hover:text-[#103646] backdrop-blur-md shadow-xl"
-        >
-          Ver Servicios
-        </Button>
-      </div>
+            {showServicesButton && (
+              <Button
+                href="/servicios"
+                variant="outline"
+                size="lg"
+                icon="ph:list-bullets"
+                iconPosition="left"
+                class="min-w-[180px] border-white/60 text-white hover:bg-white hover:text-[#103646] backdrop-blur-md shadow-xl"
+              >
+                Ver Servicios
+              </Button>
+            )}
+          </div>
+        )
+      }
     </div>
   </div>
 
