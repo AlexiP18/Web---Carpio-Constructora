@@ -1057,12 +1057,6 @@ export default defineConfig({
         path: 'src/content/paginas',
         format: 'json',
         ui: {
-          router: ({ document }) => {
-            if (document._sys.filename === 'index' || document._sys.filename === 'inicio') {
-              return '/';
-            }
-            return `/${document._sys.filename}`;
-          },
           allowedActions: {
             create: true,
             delete: false,

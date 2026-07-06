@@ -2992,12 +2992,6 @@ var config_default = defineConfig2({
         path: "src/content/paginas",
         format: "json",
         ui: {
-          router: ({ document: document2 }) => {
-            if (document2._sys.filename === "index" || document2._sys.filename === "inicio") {
-              return "/";
-            }
-            return `/${document2._sys.filename}`;
-          },
           allowedActions: {
             create: true,
             delete: false
