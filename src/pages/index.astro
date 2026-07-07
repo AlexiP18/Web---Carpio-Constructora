@@ -1,48 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/ui/Header.astro';
-import Hero from '../components/sections/index/Hero.astro';
-import AboutSummary from '../components/sections/index/AboutSummary.astro';
-import Portfolio from '../components/sections/index/Portfolio.astro';
-import MissionVision from '../components/sections/index/MissionVision.astro';
-import Services from '../components/sections/index/Services.astro';
-import TestimonialsSlider from '../components/sections/index/TestimonialsSlider.astro';
-import Contact from '../components/sections/index/Contact.astro';
 import Footer from '../components/sections/Footer.astro';
-import ServicesBook from '@/components/sections/index/ServicesBook.astro';
-import ServicesVerticalAccordion from '@/components/sections/index/ServicesVerticalAccordion.astro';
-import ServicesVertical from '@/components/sections/index/ServicesVertical.astro';
-import inicioData from '../content/paginas/inicio.json';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import HomeBody from '../components/islands/HomeBody.astro';
+import { getHome } from '../lib/tina/data';
+import { islands } from '../lib/tina/islands';
 
-// Extraer configuraciones de cada sección de inicio.json
-const heroBlock = inicioData.sections?.find((s: any) => s._template === 'hero') || {};
-const projectsBlock = inicioData.sections?.find((s: any) => s._template === 'projects') || {};
-const contactBlock = inicioData.sections?.find((s: any) => s._template === 'contact') || {};
+const page = await getHome();
+const data = page.data?.paginas;
 ---
 
-<Layout>
+<Layout title={data?.seo?.metaTitle || data?.title}>
 	<Header />
-	<main>
-		<Hero 
-			sliderImages={heroBlock.sliderImages}
-			showProjectsButton={heroBlock.showProjectsButton}
-			showServicesButton={heroBlock.showServicesButton}
-		/>
-		<!-- <AboutSummary /> -->
-		<Portfolio 
-			selectedProjects={projectsBlock.selectedProjects}
-		/>
-		<!-- <MissionVision /> -->
-		<!-- <Services /> -->
-		<!-- <ServicesBook /> -->
-		<!-- <ServicesVerticalAccordion /> -->
-		<!-- <ServicesVertical /> -->
-		<!-- <TestimonialsSlider /> -->
-		<Contact 
-			showEmailCard={contactBlock.showEmailCard}
-			showSocialsCard={contactBlock.showSocialsCard}
-			showLocationCard={contactBlock.showLocationCard}
-		/>
-	</main>
+	<TinaIsland name="home" wrapper={islands.home.wrapper} params={{}} primary>
+		<HomeBody data={data} />
+	</TinaIsland>
 	<Footer />
 </Layout>

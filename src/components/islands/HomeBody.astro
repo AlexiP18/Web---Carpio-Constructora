@@ -1,0 +1,43 @@
+---
+import Hero from '../sections/index/Hero.astro';
+import Portfolio from '../sections/index/Portfolio.astro';
+import Contact from '../sections/index/Contact.astro';
+import { tinaField } from '@tinacms/astro/tina-field';
+
+const { data } = Astro.props;
+
+// Extraer configuraciones de cada sección de data.sections
+const heroBlock = data?.sections?.find((s: any) => s._template === 'hero') || {};
+const projectsBlock = data?.sections?.find((s: any) => s._template === 'projects') || {};
+const contactBlock = data?.sections?.find((s: any) => s._template === 'contact') || {};
+---
+
+<div data-tina-field={tinaField(data, 'sections')}>
+  {heroBlock && (
+    <div data-tina-field={tinaField(heroBlock)}>
+      <Hero 
+        sliderImages={heroBlock.sliderImages}
+        showProjectsButton={heroBlock.showProjectsButton}
+        showServicesButton={heroBlock.showServicesButton}
+      />
+    </div>
+  )}
+
+  {projectsBlock && (
+    <div data-tina-field={tinaField(projectsBlock)}>
+      <Portfolio 
+        selectedProjects={projectsBlock.selectedProjects}
+      />
+    </div>
+  )}
+
+  {contactBlock && (
+    <div data-tina-field={tinaField(contactBlock)}>
+      <Contact 
+        showEmailCard={contactBlock.showEmailCard}
+        showSocialsCard={contactBlock.showSocialsCard}
+        showLocationCard={contactBlock.showLocationCard}
+      />
+    </div>
+  )}
+</div>
