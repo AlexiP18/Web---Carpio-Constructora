@@ -12,7 +12,7 @@ const projectsBlock = data?.sections?.find((s: any) => s._template === 'projects
 const contactBlock = data?.sections?.find((s: any) => s._template === 'contact') || {};
 ---
 
-<div data-tina-field={tinaField(data, 'sections')}>
+<div>
   {heroBlock && (
     <div data-tina-field={tinaField(heroBlock)}>
       <Hero 
