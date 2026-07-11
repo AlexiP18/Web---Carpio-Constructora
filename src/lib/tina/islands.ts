@@ -1,8 +1,9 @@
 import type { IslandRegistry } from '@tinacms/astro/experimental';
 import type { QueryResult } from '@tinacms/astro/data';
-import type { PaginasQuery } from '../../../tina/__generated__/types';
+import type { PaginasQuery, PaginasPruebaQuery } from '../../../tina/__generated__/types';
 import HomeBody from '../../components/islands/HomeBody.astro';
-import { getHome } from './data';
+import PruebaBody from '../../components/islands/PruebaBody.astro';
+import { getHome, getPrueba } from './data';
 
 export const islands: IslandRegistry = {
   home: {
@@ -11,6 +12,14 @@ export const islands: IslandRegistry = {
     wrapper: { tag: 'main' },
     propsFromData: (data) => ({
       data: (data as QueryResult<PaginasQuery>).data?.paginas,
+    }),
+  },
+  prueba: {
+    fetch: (_request, _params) => getPrueba(),
+    component: PruebaBody,
+    wrapper: { tag: 'div' },
+    propsFromData: (data) => ({
+      data: (data as QueryResult<PaginasPruebaQuery>).data?.paginasPrueba,
     }),
   },
 };

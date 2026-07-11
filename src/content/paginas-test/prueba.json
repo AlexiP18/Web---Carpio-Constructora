@@ -1,4 +1,5 @@
 {
-  "title": "Página de Prueba Simple",
-  "content": "Este es el contenido de prueba"
+  "titulo": "Página de Prueba",
+  "descripcion": "Esta es una página de prueba para verificar que TinaCMS funciona correctamente.",
+  "color_favorito": "azul"
 }

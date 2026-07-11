@@ -1034,6 +1034,11 @@ export default defineConfig({
         label: 'Páginas Prueba',
         path: 'src/content/paginas-test',
         format: 'json',
+        ui: {
+          router: ({ document }) => {
+            return `/prueba-cms`;
+          },
+        },
         fields: [
           {
             type: 'string',

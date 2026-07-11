@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/ui/Header.astro';
+import Footer from '../components/sections/Footer.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import PruebaBody from '../components/islands/PruebaBody.astro';
+import { getPrueba } from '../lib/tina/data';
+import { islands } from '../lib/tina/islands';
+
+const page = await getPrueba();
+const data = page.data?.paginasPrueba;
+---
+
+<Layout title={data?.title || "Prueba CMS"}>
+  <Header />
+  <TinaIsland name="prueba" wrapper={islands.prueba.wrapper} params={{}} primary>
+    <PruebaBody data={data} />
+  </TinaIsland>
+  <Footer />
+</Layout>

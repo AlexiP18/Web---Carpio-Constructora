@@ -1,0 +1,14 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+
+const { data } = Astro.props;
+---
+
+<div style="padding: 4rem; max-width: 800px; margin: 4rem auto; background: rgba(255, 255, 255, 0.85); border-radius: 16px; box-shadow: 0 8px 32px rgba(31, 38, 135, 0.08); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.4); text-align: center;">
+  <h1 data-tina-field={tinaField(data, 'title')} style="font-size: 2.5rem; margin-bottom: 1.5rem; color: #1e293b; font-family: system-ui, sans-serif; font-weight: 800; letter-spacing: -0.025em;">
+    {data?.title || 'Título de Prueba'}
+  </h1>
+  <p data-tina-field={tinaField(data, 'content')} style="font-size: 1.25rem; line-height: 1.75; color: #475569; font-family: system-ui, sans-serif; font-weight: 400; max-width: 600px; margin: 0 auto;">
+    {data?.content || 'Contenido de la página de prueba de TinaCMS...'}
+  </p>
+</div>

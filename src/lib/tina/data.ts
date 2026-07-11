@@ -35,3 +35,9 @@ export const getHome = () =>
     customClient.queries.paginas({ relativePath: 'inicio.json' }),
     { priority: 'primary' }
   );
+
+export const getPrueba = () =>
+  requestWithMetadata(
+    customClient.queries.paginasPrueba({ relativePath: 'prueba.json' }),
+    { priority: 'primary' }
+  );
