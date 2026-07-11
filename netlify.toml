@@ -15,6 +15,17 @@
   NODE_VERSION = "20"
   NODE_OPTIONS = "--max-old-space-size=4096"
 
+# Excepciones para archivos estáticos de TinaCMS (bridge.js y assets)
+[[redirects]]
+  from = "/admin/bridge.js"
+  to = "/admin/bridge.js"
+  status = 200
+
+[[redirects]]
+  from = "/admin/assets/*"
+  to = "/admin/assets/:splat"
+  status = 200
+
 # Redirecciones para el admin de Decap CMS
 [[redirects]]
   from = "/admin/*"
