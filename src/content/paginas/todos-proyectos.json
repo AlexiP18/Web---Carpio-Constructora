@@ -1,0 +1,20 @@
+{
+  "title": "Todos los Proyectos",
+  "slug": "todos-proyectos",
+  "published": true,
+  "seo": {
+    "metaTitle": "Todos los Proyectos | Constructora Carpio",
+    "metaDescription": "Descubre nuestra colección de proyectos exitosos donde la innovación, calidad y diseño se unen para crear espacios extraordinarios.",
+    "ogImage": ""
+  },
+  "sections": [
+    {
+      "_template": "hero",
+      "titleNormal": "Proyectos que ",
+      "titleHighlight": "Transforman Espacios",
+      "description": "Descubre nuestra colección de proyectos exitosos donde la innovación, calidad y diseño se unen para crear espacios extraordinarios.",
+      "backgroundOverlay": true,
+      "backgroundOpacity": 80
+    }
+  ]
+}

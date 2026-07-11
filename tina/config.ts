@@ -45,6 +45,335 @@ const cloudinaryBaseUrl = 'https://res.cloudinary.com/dt5y4fsst';
 const cloudinaryUploadPath = `${cloudinaryBaseUrl}/image/upload`;
 const cloudinaryVideoPath = `${cloudinaryBaseUrl}/video/upload`;
 
+// ============================================
+// HELPERS Y CAMPOS COMPARTIDOS
+// ============================================
+
+const seoField = {
+  type: 'object',
+  name: 'seo',
+  label: 'SEO / Metadatos',
+  fields: [
+    { type: 'string', name: 'metaTitle', label: 'Meta Título' },
+    { type: 'string', name: 'metaDescription', label: 'Meta Descripción', ui: { component: 'textarea' } },
+    { type: 'string', name: 'ogImage', label: 'Imagen OG' },
+  ],
+};
+
+const backgroundFields: any[] = [
+  { type: 'image', name: 'backgroundImage', label: 'Imagen de Fondo' },
+  { type: 'string', name: 'backgroundColor', label: 'Color de Fondo', description: 'Color Hex o clase CSS (ej: #ffffff o bg-gray-50)' },
+  { type: 'number', name: 'backgroundOpacity', label: 'Opacidad del Fondo (%)', description: '0 (transparente) a 100 (opaco)' },
+  { type: 'boolean', name: 'backgroundOverlay', label: 'Habilitar Overlay de Fondo' },
+];
+
+// ============================================
+// PLANTILLAS DE SECCIONES ESPECÍFICAS
+// ============================================
+
+// --- INICIO ---
+const inicioHeroTemplate = {
+  name: 'hero',
+  label: 'Sección Hero Carrusel',
+  fields: [
+    { type: 'string', name: 'title', label: 'Título' },
+    { type: 'string', name: 'subtitle', label: 'Subtítulo', ui: { component: 'textarea' } },
+    {
+      type: 'string',
+      name: 'sliderImages',
+      label: 'Galería de imágenes para carrusel (máximo 6)',
+      list: true,
+      validate: (value: any) => {
+        if (value && value.length > 6) {
+          return 'Máximo 6 imágenes permitidas';
+        }
+      }
+    },
+    { type: 'boolean', name: 'showProjectsButton', label: 'Habilitar botón "Ver Proyectos"' },
+    { type: 'boolean', name: 'showServicesButton', label: 'Habilitar botón "Ver Servicios"' },
+    { type: 'string', name: 'ctaText', label: 'Texto botón proyectos' },
+    { type: 'string', name: 'ctaLink', label: 'Enlace botón proyectos' },
+    { type: 'string', name: 'secondaryCtaText', label: 'Texto botón servicios' },
+    { type: 'string', name: 'secondaryCtaLink', label: 'Enlace botón servicios' },
+    { type: 'boolean', name: 'overlay', label: 'Mostrar overlay oscuro' },
+  ]
+};
+
+const inicioProjectsTemplate = {
+  name: 'projects',
+  label: 'Sección Nuestros Proyectos',
+  fields: [
+    { type: 'string', name: 'title', label: 'Título de la Sección' },
+    { type: 'string', name: 'subtitle', label: 'Subtítulo' },
+    {
+      type: 'reference',
+      name: 'selectedProjects',
+      label: 'Selección de proyectos a mostrar en las columnas',
+      list: true,
+      collections: ['proyectos']
+    }
+  ]
+};
+
+const inicioContactTemplate = {
+  name: 'contact',
+  label: 'Sección Contacto',
+  fields: [
+    { type: 'string', name: 'title', label: 'Título' },
+    { type: 'string', name: 'subtitle', label: 'Subtítulo' },
+    { type: 'boolean', name: 'showEmailCard', label: 'Habilitar card de correo electrónico' },
+    { type: 'boolean', name: 'showSocialsCard', label: 'Habilitar card de redes sociales' },
+    { type: 'boolean', name: 'showLocationCard', label: 'Habilitar card de ubicación' },
+    { type: 'boolean', name: 'showForm', label: 'Mostrar formulario de contacto' },
+    { type: 'boolean', name: 'showMap', label: 'Mostrar mapa de ubicación' },
+  ]
+// Extraer plantillas genéricas existentes para compatibilidad
+const testimonialsSectionTemplate = pageBlockTemplates[4];
+const ctaSectionTemplate = pageBlockTemplates[5];
+const teamSectionTemplate = pageBlockTemplates[7];
+const faqSectionTemplate = pageBlockTemplates[8];
+
+// --- NOSOTROS ---
+const nosotrosHeroTemplate = {
+  name: 'hero',
+  label: 'Sección HERO',
+  fields: [
+    { type: 'string', name: 'title', label: 'Título' },
+    { type: 'string', name: 'subtitle', label: 'Subtítulo' },
+    { type: 'string', name: 'chips', label: 'Chips / Etiquetas', list: true },
+    ...backgroundFields,
+    { type: 'boolean', name: 'overlay', label: 'Mostrar overlay oscuro' }
+  ]
+};
+
+const nosotrosEmpresaTemplate = {
+  name: 'about',
+  label: 'Sección Nuestra Empresa',
+  fields: [
+    { type: 'string', name: 'title', label: 'Título' },
+    { type: 'string', name: 'subtitle', label: 'Subtítulo' },
+    { type: 'string', name: 'content', label: 'Descripción', ui: { component: 'textarea' } },
+    { type: 'string', name: 'mision', label: 'Misión', ui: { component: 'textarea' } },
+    { type: 'string', name: 'vision', label: 'Visión', ui: { component: 'textarea' } },
+    {
+      type: 'object',
+      name: 'valores',
+      label: 'Valores',
+      list: true,
+      fields: [
+        { type: 'string', name: 'title', label: 'Título' },
+        { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+        { type: 'string', name: 'icon', label: 'Icono (Lucide o clase)' }
+      ]
+    },
+    { type: 'string', name: 'whyChooseUs', label: '¿Por qué elegirnos?', ui: { component: 'textarea' } },
+    { type: 'image', name: 'image', label: 'Imagen' },
+    { type: 'string', name: 'icon', label: 'Icono principal' },
+    { type: 'string', name: 'slogan', label: 'Eslogan' },
+    { type: 'boolean', name: 'showStats', label: 'Habilitar Botones / Estadísticas' },
+    {
+      type: 'object',
+      name: 'stats',
+      label: 'Estadísticas',
+      list: true,
+      fields: [
+        { type: 'string', name: 'value', label: 'Valor (ej: +20)' },
+        { type: 'string', name: 'label', label: 'Etiqueta (ej: Proyectos)' }
+      ]
+    }
+  ]
+};
+
+// --- SERVICIOS ---
+const serviciosHeroTemplate = {
+  name: 'hero',
+  label: 'Sección HERO',
+  fields: [
+    { type: 'string', name: 'title', label: 'Título' },
+    { type: 'string', name: 'subtitle', label: 'Descripción' },
+    { type: 'string', name: 'chips', label: 'Chips de servicios (información)', list: true },
+    ...backgroundFields,
+    { type: 'boolean', name: 'overlay', label: 'Mostrar overlay oscuro' }
+  ]
+};
+
+const serviciosWhyChooseUsTemplate = {
+  name: 'features',
+  label: 'Sección ¿Por qué elegirnos?',
+  fields: [
+    { type: 'string', name: 'title', label: 'Título' },
+    { type: 'string', name: 'subtitle', label: 'Descripción', ui: { component: 'textarea' } },
+    {
+      type: 'object',
+      name: 'items',
+      label: 'Chips de Información',
+      list: true,
+      fields: [
+        { type: 'string', name: 'title', label: 'Título' },
+        { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+        { type: 'string', name: 'icon', label: 'Icono' }
+      ]
+    },
+    { type: 'image', name: 'images', label: 'Imágenes', list: true },
+    { type: 'number', name: 'opacity', label: 'Opacidad de Imágenes (%)' }
+  ]
+};
+
+const serviciosPreguntasTemplate = {
+  name: 'faq',
+  label: 'Sección Preguntas (FAQ)',
+  fields: [
+    { type: 'string', name: 'title', label: 'Título' },
+    { type: 'string', name: 'subtitle', label: 'Descripción' },
+    {
+      type: 'object',
+      name: 'items',
+      label: 'Preguntas y Respuestas',
+      list: true,
+      fields: [
+        { type: 'string', name: 'question', label: 'Pregunta' },
+        { type: 'string', name: 'answer', label: 'Respuesta', ui: { component: 'textarea' } }
+      ]
+    },
+    {
+      type: 'object',
+      name: 'contactCard',
+      label: 'Tarjeta de Contacto',
+      fields: [
+        { type: 'boolean', name: 'enabled', label: 'Habilitar Tarjeta' },
+        { type: 'string', name: 'title', label: 'Título' },
+        { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+        { type: 'string', name: 'buttonText', label: 'Texto del Botón' },
+        { type: 'string', name: 'buttonLink', label: 'Enlace del Botón' }
+      ]
+    }
+  ]
+};
+
+// --- TODOS LOS SERVICIOS ---
+const todosServiciosHeroTemplate = {
+  name: 'hero',
+  label: 'Sección HERO',
+  fields: [
+    { type: 'string', name: 'titleNormal', label: 'Título Normal' },
+    { type: 'string', name: 'titleHighlight', label: 'Título con Énfasis' },
+    { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+    ...backgroundFields,
+    { type: 'boolean', name: 'overlay', label: 'Mostrar overlay oscuro' }
+  ]
+};
+
+// --- PROYECTOS ---
+const proyectosHeroTemplate = {
+  name: 'hero',
+  label: 'Sección HERO / Carrusel',
+  fields: [
+    {
+      type: 'reference',
+      name: 'selectedProjects',
+      label: 'Seleccionar proyectos para el carrusel',
+      list: true,
+      collections: ['proyectos']
+    }
+  ]
+};
+
+const proyectosVigenteTemplate = {
+  name: 'proyectoVigente',
+  label: 'Sección Proyecto Vigente',
+  fields: [
+    { type: 'string', name: 'title', label: 'Título' },
+    { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+    ...backgroundFields,
+    { type: 'boolean', name: 'overlay', label: 'Mostrar overlay oscuro' },
+    {
+      type: 'reference',
+      name: 'selectedProject',
+      label: 'Selección de Proyecto',
+      collections: ['proyectos']
+    }
+  ]
+};
+
+// --- TODOS LOS PROYECTOS ---
+const todosProyectosHeroTemplate = {
+  name: 'hero',
+  label: 'Sección HERO',
+  fields: [
+    { type: 'string', name: 'titleNormal', label: 'Título Normal' },
+    { type: 'string', name: 'titleHighlight', label: 'Título con Énfasis' },
+    { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+    ...backgroundFields,
+    { type: 'boolean', name: 'overlay', label: 'Mostrar overlay oscuro' }
+  ]
+};
+
+// --- CONTACTO ---
+const contactoHeroTemplate = {
+  name: 'hero',
+  label: 'Sección HERO',
+  fields: [
+    { type: 'string', name: 'title', label: 'Título' },
+    { type: 'string', name: 'subtitle', label: 'Descripción', ui: { component: 'textarea' } },
+    {
+      type: 'object',
+      name: 'cards',
+      label: 'Cards Informativos',
+      list: true,
+      fields: [
+        { type: 'string', name: 'title', label: 'Título' },
+        { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+        { type: 'string', name: 'icon', label: 'Icono' }
+      ]
+    },
+    {
+      type: 'object',
+      name: 'buttons',
+      label: 'Botones de Contacto',
+      list: true,
+      fields: [
+        { type: 'string', name: 'title', label: 'Título del Botón' },
+        { type: 'string', name: 'icon', label: 'Icono (Lucide)' },
+        { type: 'string', name: 'link', label: 'Enlace' }
+      ]
+    },
+    ...backgroundFields,
+    { type: 'boolean', name: 'overlay', label: 'Mostrar overlay oscuro' }
+  ]
+};
+
+const contactoCardsTemplate = {
+  name: 'cardsContacto',
+  label: 'Sección de Cards de Contacto',
+  fields: [
+    {
+      type: 'object',
+      name: 'items',
+      label: 'Tarjetas de Contacto',
+      list: true,
+      fields: [
+        { type: 'string', name: 'icon', label: 'Icono' },
+        { type: 'string', name: 'title', label: 'Título' },
+        { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } }
+      ]
+    }
+  ]
+};
+
+const contactoInformacionTemplate = {
+  name: 'contact',
+  label: 'Sección de Información de Contacto',
+  fields: [
+    { type: 'string', name: 'title', label: 'Título' },
+    { type: 'string', name: 'subtitle', label: 'Subtítulo' },
+    { type: 'boolean', name: 'showEmailCard', label: 'Habilitar card de correo electrónico' },
+    { type: 'boolean', name: 'showSocialsCard', label: 'Habilitar card de redes sociales' },
+    { type: 'boolean', name: 'showLocationCard', label: 'Habilitar card de ubicación' },
+    { type: 'boolean', name: 'showForm', label: 'Mostrar formulario de contacto' },
+    { type: 'boolean', name: 'showMap', label: 'Mostrar mapa de ubicación' }
+  ]
+};
+
 export default defineConfig({
   branch: process.env.TINA_BRANCH || 'main',
   clientId: process.env.TINA_PUBLIC_CLIENT_ID,
@@ -1044,73 +1373,207 @@ export default defineConfig({
       },
       
       // ==========================================
-      // COLECCIÓN: PÁGINAS DEL SITIO
+      // COLECCIÓN: PÁGINAS DEL SITIO (INDIVIDUALES)
       // ==========================================
       {
-        name: 'paginas',
-        label: 'Páginas del Sitio',
+        name: 'inicioPage',
+        label: 'Página Inicio',
         path: 'src/content/paginas',
         format: 'json',
+        match: {
+          include: 'inicio',
+        },
         ui: {
-          allowedActions: {
-            create: true,
-            delete: false,
-          },
-          filename: {
-            readonly: true,
-            slugify: (values) => values?.slug || values?.title?.toLowerCase().replace(/\s+/g, '-') || '',
-          },
+          allowedActions: { create: false, delete: false },
         },
         fields: [
-          {
-            type: 'string',
-            name: 'title',
-            label: 'Título de la Página',
-          },
-          {
-            type: 'string',
-            name: 'slug',
-            label: 'Slug (URL)',
-          },
-          {
-            type: 'boolean',
-            name: 'published',
-            label: 'Publicada',
-          },
-          {
-            type: 'object',
-            name: 'seo',
-            label: 'SEO',
-            fields: [
-              {
-                type: 'string',
-                name: 'metaTitle',
-                label: 'Meta Título',
-              },
-              {
-                type: 'string',
-                name: 'metaDescription',
-                label: 'Meta Descripción',
-                ui: { component: 'textarea' },
-              },
-              {
-                type: 'string',
-                name: 'ogImage',
-                label: 'Imagen OG',
-              },
-            ],
-          },
+          { type: 'string', name: 'title', label: 'Título de la Página' },
+          { type: 'string', name: 'slug', label: 'Slug' },
+          { type: 'boolean', name: 'published', label: 'Publicada' },
+          seoField,
           {
             type: 'object',
             name: 'sections',
-            label: 'Secciones',
+            label: 'Secciones de la Página',
             list: true,
-            templates: pageBlockTemplates,
-            ui: {
-              visualSelector: true,
-            },
-          },
-        ],
+            templates: [
+              inicioHeroTemplate,
+              inicioProjectsTemplate,
+              inicioContactTemplate
+            ]
+          }
+        ]
+      },
+      {
+        name: 'nosotrosPage',
+        label: 'Página Nosotros',
+        path: 'src/content/paginas',
+        format: 'json',
+        match: {
+          include: 'nosotros',
+        },
+        ui: {
+          allowedActions: { create: false, delete: false },
+        },
+        fields: [
+          { type: 'string', name: 'title', label: 'Título de la Página' },
+          { type: 'string', name: 'slug', label: 'Slug' },
+          { type: 'boolean', name: 'published', label: 'Publicada' },
+          seoField,
+          {
+            type: 'object',
+            name: 'sections',
+            label: 'Secciones de la Página',
+            list: true,
+            templates: [
+              nosotrosHeroTemplate,
+              nosotrosEmpresaTemplate,
+              teamSectionTemplate,
+              testimonialsSectionTemplate,
+              ctaSectionTemplate
+            ]
+          }
+        ]
+      },
+      {
+        name: 'serviciosPage',
+        label: 'Página Servicios',
+        path: 'src/content/paginas',
+        format: 'json',
+        match: {
+          include: 'servicios',
+        },
+        ui: {
+          allowedActions: { create: false, delete: false },
+        },
+        fields: [
+          { type: 'string', name: 'title', label: 'Título de la Página' },
+          { type: 'string', name: 'slug', label: 'Slug' },
+          { type: 'boolean', name: 'published', label: 'Publicada' },
+          seoField,
+          {
+            type: 'object',
+            name: 'sections',
+            label: 'Secciones de la Página',
+            list: true,
+            templates: [
+              serviciosHeroTemplate,
+              serviciosWhyChooseUsTemplate,
+              serviciosPreguntasTemplate
+            ]
+          }
+        ]
+      },
+      {
+        name: 'todosServiciosPage',
+        label: 'Página Todos los Servicios',
+        path: 'src/content/paginas',
+        format: 'json',
+        match: {
+          include: 'todos-servicios',
+        },
+        ui: {
+          allowedActions: { create: false, delete: false },
+        },
+        fields: [
+          { type: 'string', name: 'title', label: 'Título de la Página' },
+          { type: 'string', name: 'slug', label: 'Slug' },
+          { type: 'boolean', name: 'published', label: 'Publicada' },
+          seoField,
+          {
+            type: 'object',
+            name: 'sections',
+            label: 'Secciones de la Página',
+            list: true,
+            templates: [
+              todosServiciosHeroTemplate
+            ]
+          }
+        ]
+      },
+      {
+        name: 'proyectosPage',
+        label: 'Página Proyectos',
+        path: 'src/content/paginas',
+        format: 'json',
+        match: {
+          include: 'proyectos',
+        },
+        ui: {
+          allowedActions: { create: false, delete: false },
+        },
+        fields: [
+          { type: 'string', name: 'title', label: 'Título de la Página' },
+          { type: 'string', name: 'slug', label: 'Slug' },
+          { type: 'boolean', name: 'published', label: 'Publicada' },
+          seoField,
+          {
+            type: 'object',
+            name: 'sections',
+            label: 'Secciones de la Página',
+            list: true,
+            templates: [
+              proyectosHeroTemplate,
+              proyectosVigenteTemplate
+            ]
+          }
+        ]
+      },
+      {
+        name: 'todosProyectosPage',
+        label: 'Página Todos los Proyectos',
+        path: 'src/content/paginas',
+        format: 'json',
+        match: {
+          include: 'todos-proyectos',
+        },
+        ui: {
+          allowedActions: { create: false, delete: false },
+        },
+        fields: [
+          { type: 'string', name: 'title', label: 'Título de la Página' },
+          { type: 'string', name: 'slug', label: 'Slug' },
+          { type: 'boolean', name: 'published', label: 'Publicada' },
+          seoField,
+          {
+            type: 'object',
+            name: 'sections',
+            label: 'Secciones de la Página',
+            list: true,
+            templates: [
+              todosProyectosHeroTemplate
+            ]
+          }
+        ]
+      },
+      {
+        name: 'contactoPage',
+        label: 'Página Contacto',
+        path: 'src/content/paginas',
+        format: 'json',
+        match: {
+          include: 'contacto',
+        },
+        ui: {
+          allowedActions: { create: false, delete: false },
+        },
+        fields: [
+          { type: 'string', name: 'title', label: 'Título de la Página' },
+          { type: 'string', name: 'slug', label: 'Slug' },
+          { type: 'boolean', name: 'published', label: 'Publicada' },
+          seoField,
+          {
+            type: 'object',
+            name: 'sections',
+            label: 'Secciones de la Página',
+            list: true,
+            templates: [
+              contactoHeroTemplate,
+              contactoCardsTemplate,
+              contactoInformacionTemplate
+            ]
+          }
+        ]
       },
       
       // ==========================================

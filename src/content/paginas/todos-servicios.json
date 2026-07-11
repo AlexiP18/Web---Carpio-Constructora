@@ -1,0 +1,20 @@
+{
+  "title": "Todos los Servicios",
+  "slug": "todos-servicios",
+  "published": true,
+  "seo": {
+    "metaTitle": "Todos los Servicios | Constructora Carpio",
+    "metaDescription": "Explora nuestra amplia gama de servicios profesionales diseñados para transformar tus ideas en realidad con calidad y excelencia.",
+    "ogImage": ""
+  },
+  "sections": [
+    {
+      "_template": "hero",
+      "titleNormal": "Servicios que ",
+      "titleHighlight": "Construyen Futuro",
+      "description": "Explora nuestra amplia gama de servicios profesionales diseñados para transformar tus ideas en realidad con calidad y excelencia.",
+      "backgroundOverlay": true,
+      "backgroundOpacity": 80
+    }
+  ]
+}
