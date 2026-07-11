@@ -72,9 +72,6 @@ export default defineConfig({
         path: 'src/content/proyectos',
         format: 'md',
         ui: {
-          router: ({ document }) => {
-            return `/proyecto/${document._sys.filename}`;
-          },
           filename: {
             readonly: false,
             slugify: (values) => {
@@ -409,9 +406,6 @@ export default defineConfig({
         path: 'src/content/servicios',
         format: 'md',
         ui: {
-          router: ({ document }) => {
-            return `/servicios/${document._sys.filename}`;
-          },
           filename: {
             readonly: false,
             slugify: (values) => {
@@ -1034,11 +1028,7 @@ export default defineConfig({
         label: 'Páginas Prueba',
         path: 'src/content/paginas-test',
         format: 'json',
-        ui: {
-          router: ({ document }) => {
-            return `/prueba-cms`;
-          },
-        },
+
         fields: [
           {
             type: 'string',
@@ -1062,12 +1052,6 @@ export default defineConfig({
         path: 'src/content/paginas',
         format: 'json',
         ui: {
-          router: ({ document }) => {
-            if (document._sys.filename === 'index' || document._sys.filename === 'inicio') {
-              return '/';
-            }
-            return `/${document._sys.filename}`;
-          },
           allowedActions: {
             create: true,
             delete: false,
