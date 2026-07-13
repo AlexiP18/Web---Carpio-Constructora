@@ -106,11 +106,10 @@ const inicioProjectsTemplate = {
     { type: 'string', name: 'title', label: 'Título de la Sección' },
     { type: 'string', name: 'subtitle', label: 'Subtítulo' },
     {
-      type: 'reference',
+      type: 'string',
       name: 'selectedProjects',
       label: 'Selección de proyectos a mostrar en las columnas',
       list: true,
-      collections: ['proyectos']
     }
   ]
 };
@@ -266,15 +265,14 @@ const todosServiciosHeroTemplate = {
 
 // --- PROYECTOS ---
 const proyectosHeroTemplate = {
-  name: 'hero',
+  name: 'projectsCarousel',
   label: 'Sección HERO / Carrusel',
   fields: [
     {
-      type: 'reference',
+      type: 'string',
       name: 'selectedProjects',
       label: 'Seleccionar proyectos para el carrusel',
       list: true,
-      collections: ['proyectos']
     }
   ]
 };
@@ -1399,8 +1397,12 @@ export default defineConfig({
             list: true,
             templates: [
               inicioHeroTemplate,
+              pageBlockTemplates[1], // about
+              pageBlockTemplates[2], // services
               inicioProjectsTemplate,
-              inicioContactTemplate
+              pageBlockTemplates[4], // testimonials
+              inicioContactTemplate,
+              pageBlockTemplates[5], // cta
             ]
           }
         ]
@@ -1429,9 +1431,10 @@ export default defineConfig({
             templates: [
               nosotrosHeroTemplate,
               nosotrosEmpresaTemplate,
-              teamSectionTemplate,
-              testimonialsSectionTemplate,
-              ctaSectionTemplate
+              pageBlockTemplates[7], // team
+              pageBlockTemplates[4], // testimonials
+              pageBlockTemplates[5], // cta
+              pageBlockTemplates[10], // features
             ]
           }
         ]
@@ -1459,8 +1462,11 @@ export default defineConfig({
             list: true,
             templates: [
               serviciosHeroTemplate,
+              pageBlockTemplates[11], // content
+              pageBlockTemplates[2], // services
               serviciosWhyChooseUsTemplate,
-              serviciosPreguntasTemplate
+              serviciosPreguntasTemplate,
+              pageBlockTemplates[5], // cta
             ]
           }
         ]
@@ -1514,8 +1520,11 @@ export default defineConfig({
             label: 'Secciones de la Página',
             list: true,
             templates: [
-              proyectosHeroTemplate,
-              proyectosVigenteTemplate
+              pageBlockTemplates[0], // hero genérico
+              proyectosHeroTemplate, // projectsCarousel
+              pageBlockTemplates[3], // projects genérico
+              proyectosVigenteTemplate, // proyectoVigente personalizado
+              pageBlockTemplates[5], // cta genérico
             ]
           }
         ]
@@ -1571,7 +1580,8 @@ export default defineConfig({
             templates: [
               contactoHeroTemplate,
               contactoCardsTemplate,
-              contactoInformacionTemplate
+              contactoInformacionTemplate,
+              pageBlockTemplates[8], // faq
             ]
           }
         ]
