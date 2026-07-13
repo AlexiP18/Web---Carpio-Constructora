@@ -48,6 +48,7 @@ const ProjectCardMobile: React.FC<{
           scale,
           top: `calc(5rem + ${index * 20}px)`,
         }}
+        data-cuelume-hover="whisper"
         className="w-full border-2 border-[#D7E2EA]/30 bg-[#0C0C0C] rounded-[32px] sm:rounded-[40px] p-5 sm:p-7 shadow-2xl flex flex-col justify-between pointer-events-auto"
       >
         {/* Card Header Row */}

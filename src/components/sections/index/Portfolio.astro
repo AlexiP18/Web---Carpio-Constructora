@@ -97,6 +97,7 @@ const projectsForMobile = projects.map(p => ({
         return (
           <a
             href={`/proyecto/${project.slug}`}
+            data-cuelume-hover="whisper"
             class="accordion-item group relative flex-1 h-full overflow-hidden rounded-2xl cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-700 ease-out border border-white/5 hover:border-white/20"
             style={`background-image: url('${project.data.backgroundImage}'); background-size: cover; background-position: center;`}
           >
