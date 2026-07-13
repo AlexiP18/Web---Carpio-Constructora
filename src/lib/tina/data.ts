@@ -41,7 +41,7 @@ export const logClientConfig = () => {
 
 export const getHome = () =>
   requestWithMetadata(
-    customClient.queries.paginas({ relativePath: 'inicio.json' }),
+    customClient.queries.inicioPage({ relativePath: 'inicio.json' }),
     { priority: 'primary' }
   );
 
