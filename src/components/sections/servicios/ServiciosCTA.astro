@@ -63,11 +63,11 @@ import Button from '../../ui/Button.astro';
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row gap-4" data-aos="fade-up" data-aos-delay="400">
-          <Button variant="success" href="/contacto">
+          <Button variant="success" href="/contacto" data-cuelume-press={null} data-cuelume-toggle="chime">
             <Icon name="ph:calendar-plus" class="w-5 h-5" />
             Solicitar Cotización
           </Button>
-          <Button variant="outline" href="tel:+50688887777">
+          <Button variant="outline" href="tel:+50688887777" data-cuelume-press={null} data-cuelume-toggle="chime">
             <Icon name="ph:phone" class="w-5 h-5" />
             Llamar Ahora
           </Button>
@@ -92,7 +92,7 @@ import Button from '../../ui/Button.astro';
               </div>
               <div>
                 <p class="text-white font-semibold">Teléfono</p>
-                <a href="tel:+50688887777" class="text-primary-green hover:text-emerald-400 transition-colors">
+                <a href="tel:+50688887777" data-cuelume-toggle="chime" data-cuelume-hover="whisper" class="text-primary-green hover:text-emerald-400 transition-colors">
                   +506 8888-7777
                 </a>
               </div>
@@ -105,7 +105,7 @@ import Button from '../../ui/Button.astro';
               </div>
               <div>
                 <p class="text-white font-semibold">Email</p>
-                <a href="mailto:info@constructoracarpio.com" class="text-blue-400 hover:text-blue-300 transition-colors">
+                <a href="mailto:info@constructoracarpio.com" data-cuelume-toggle="chime" data-cuelume-hover="whisper" class="text-blue-400 hover:text-blue-300 transition-colors">
                   info@constructoracarpio.com
                 </a>
               </div>
@@ -118,7 +118,7 @@ import Button from '../../ui/Button.astro';
               </div>
               <div>
                 <p class="text-white font-semibold">WhatsApp</p>
-                <a href="https://wa.me/50688887777" class="text-green-400 hover:text-green-300 transition-colors">
+                <a href="https://wa.me/50688887777" data-cuelume-toggle="chime" data-cuelume-hover="whisper" class="text-green-400 hover:text-green-300 transition-colors">
                   Chatear Ahora
                 </a>
               </div>
@@ -182,7 +182,7 @@ import Button from '../../ui/Button.astro';
           las herramientas para hacer realidad tu visión. ¡Hablemos de tu proyecto!
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-          <Button variant="success" href="/contacto">
+          <Button variant="success" href="/contacto" data-cuelume-press={null} data-cuelume-toggle="chime">
             <Icon name="ph:paper-plane-tilt" class="w-5 h-5" />
             Enviar Consulta
           </Button>

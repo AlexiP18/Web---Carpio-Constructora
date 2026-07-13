@@ -98,14 +98,41 @@ const { title = "Constructora Carpio - Transformamos sueños en estructuras dura
                 }
             </script>
         )}
-        <!-- Initialize Cuelume -->
+        <!-- Initialize Cuelume with Audio Diagnostics -->
         <script>
             import { bind } from 'cuelume';
+            
+            console.log("[Cuelume Diagnostics]: Inicializando Cuelume...");
             try {
                 bind();
+                console.log("[Cuelume Diagnostics]: Enlace a document completado con éxito.");
             } catch (e) {
-                console.error("[Cuelume Init Error]:", e);
+                console.error("[Cuelume Diagnostics Error]:", e);
             }
+
+            // Monitorear clics de Cuelume en la consola para depuración
+            document.addEventListener('click', (e) => {
+                const target = e.target;
+                if (!(target instanceof Element)) return;
+                
+                const element = target.closest('[data-cuelume-toggle]');
+                if (element) {
+                    const sound = element.getAttribute('data-cuelume-toggle');
+                    console.log(`%c[Cuelume Click Trigger]: Elemento clickeado:`, 'color: #D79528; font-weight: bold;', element, `| Sonido solicitado: "${sound}"`);
+                }
+            }, true);
+
+            // Monitorear pulsaciones (pointerdown) de Cuelume
+            document.addEventListener('pointerdown', (e) => {
+                const target = e.target;
+                if (!(target instanceof Element)) return;
+                
+                const element = target.closest('[data-cuelume-press]');
+                if (element) {
+                    const sound = element.getAttribute('data-cuelume-press');
+                    console.log(`%c[Cuelume Press Trigger]: Elemento presionado:`, 'color: #103646; font-weight: bold;', element, `| Sonido solicitado: "${sound}"`);
+                }
+            }, true);
         </script>
     </body>
 </html>

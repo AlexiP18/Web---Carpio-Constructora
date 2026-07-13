@@ -94,12 +94,16 @@ const contactInfo = {
                 <div class="space-y-1">
                   <a
                     href={`mailto:${contactInfo.email}`}
+                    data-cuelume-toggle="chime"
+                    data-cuelume-hover="whisper"
                     class="block text-[#103646] hover:text-[#103646]/80 font-medium text-sm transition-colors"
                   >
                     {contactInfo.email}
                   </a>
                   <a
                     href={`mailto:ventas@constructoracarpio.com`}
+                    data-cuelume-toggle="chime"
+                    data-cuelume-hover="whisper"
                     class="block text-[#103646] hover:text-[#103646]/80 font-medium text-sm transition-colors"
                   >
                     ventas@constructoracarpio.com
@@ -129,6 +133,8 @@ const contactInfo = {
                     href="https://wa.me/593956324598"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-cuelume-toggle="chime"
+                    data-cuelume-hover="whisper"
                     class="w-10 h-10 bg-[#25D366]/10 backdrop-blur-sm border border-[#25D366]/20 rounded-xl flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] group transition-all duration-300 hover:scale-110"
                     aria-label="Escríbenos por WhatsApp"
                   >
@@ -191,6 +197,8 @@ const contactInfo = {
                   icon="ph:arrow-square-out"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-cuelume-press={null}
+                  data-cuelume-toggle="chime"
                   class="bg-[#103646] hover:bg-[#103646]/90"
                 >
                   Ver en Maps
