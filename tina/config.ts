@@ -127,6 +127,7 @@ const inicioContactTemplate = {
     { type: 'boolean', name: 'showForm', label: 'Mostrar formulario de contacto' },
     { type: 'boolean', name: 'showMap', label: 'Mostrar mapa de ubicación' },
   ]
+};
 // Extraer plantillas genéricas existentes para compatibilidad
 const testimonialsSectionTemplate = pageBlockTemplates[4];
 const ctaSectionTemplate = pageBlockTemplates[5];
