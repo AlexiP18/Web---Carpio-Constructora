@@ -742,7 +742,6 @@ export default defineConfig({
           },
         },
         fields: [
-          // --- Información Básica ---
           {
             type: 'string',
             name: 'title',
@@ -762,383 +761,168 @@ export default defineConfig({
           {
             type: 'string',
             name: 'description',
-            label: 'Descripción',
-            ui: {
-              component: 'textarea',
-            },
+            label: 'Descripción Corta (SEO)',
+            ui: { component: 'textarea' },
           },
           {
-            type: 'string',
+            type: 'image',
             name: 'backgroundImage',
-            label: 'Imagen Principal (Hero)',
-            ui: {
-              // @ts-ignore
-              component: ImagePreviewField,
-            },
+            label: 'Imagen Principal de Fondo',
           },
           {
             type: 'object',
             name: 'service',
-            label: 'Detalles y Secciones del Servicio',
+            label: 'Detalles del Servicio',
             fields: [
-              {
-                type: 'string',
-                name: 'name',
-                label: 'Nombre completo (ej: Servicio de Construcción)',
-              },
-              {
-                type: 'string',
-                name: 'category',
-                label: 'Categoría',
-                options: serviceCategories,
-              },
-              {
-                type: 'string',
-                name: 'tagline',
-                label: 'Tagline (ej: CALIDAD)',
-              },
-              {
-                type: 'string',
-                name: 'icon',
-                label: 'Icono del Servicio (opcional)',
-              },
-              {
-                type: 'boolean',
-                name: 'showFeatures',
-                label: 'Mostrar Sección Características',
-              },
-              {
-                type: 'boolean',
-                name: 'showBenefits',
-                label: 'Mostrar Sección Beneficios',
-              },
-              {
-                type: 'boolean',
-                name: 'showProcess',
-                label: 'Mostrar Sección Proceso',
-              },
-              {
-                type: 'boolean',
-                name: 'showTestimonials',
-                label: 'Mostrar Sección Testimonios',
-              },
-              {
-                type: 'boolean',
-                name: 'showFaqs',
-                label: 'Mostrar Sección FAQs',
-              },
-              {
-                type: 'boolean',
-                name: 'showCta',
-                label: 'Mostrar Sección CTA Final',
-              },
-              {
-                type: 'string',
-                name: 'featuresTitle',
-                label: 'Título de Características',
-                ui: {
-                  hidden: (props: any) => {
-                    const vals = props.tinaForm?.values || props.form?.values || {};
-                    return vals.service?.showFeatures === false;
-                  }
-                },
-              },
-              {
-                type: 'string',
-                name: 'featuresDescription',
-                label: 'Descripción de las Características',
-                ui: { 
-                  component: 'textarea',
-                  hidden: (props: any) => {
-                    const vals = props.tinaForm?.values || props.form?.values || {};
-                    return vals.service?.showFeatures === false;
-                  }
-                },
-              },
+              // --- CATEGORIAS ---
               {
                 type: 'object',
-                name: 'features',
-                label: 'Lista de Características',
-                list: true,
-                ui: {
-                  hidden: (props: any) => {
-                    const vals = props.tinaForm?.values || props.form?.values || {};
-                    return vals.service?.showFeatures === false;
-                  }
-                },
+                name: 'categories',
+                label: 'Categorías',
                 fields: [
-                  { type: 'string', name: 'title', label: 'Título' },
-                  { type: 'string', name: 'description', label: 'Descripción' },
                   { type: 'string', name: 'icon', label: 'Icono' },
-                ],
-              },
-          
-          // --- Configuración del Hero ---
-          {
-            type: 'object',
-            name: 'heroConfig',
-            label: 'Configuración del Hero',
-            fields: [
-              {
-                type: 'string',
-                name: 'backgroundImage',
-                label: 'Imagen de Fondo',
-                description: `Sube a Cloudinary y pega la URL`,
-                ui: {
-                  // @ts-ignore - Custom component
-                  component: ImagePreviewField,
-                },
-              },
-              {
-                type: 'string',
-                name: 'subtitle',
-                label: 'Subtítulo',
-              },
-              {
-                type: 'object',
-                name: 'ctaButton',
-                label: 'Botón CTA',
-                fields: [
-                  { type: 'string', name: 'text', label: 'Texto del Botón' },
-                  { type: 'string', name: 'whatsappNumber', label: 'Número de WhatsApp', description: 'Ej: 593998323304' },
-                  { type: 'string', name: 'url', label: 'URL Alternativa' },
-                ],
-              },
-              {
-                type: 'object',
-                name: 'chips',
-                label: 'Chips (Etiquetas Destacadas)',
-                list: true,
-                fields: [
                   { type: 'string', name: 'title', label: 'Título' },
-                  { type: 'string', name: 'description', label: 'Descripción' },
-                  { type: 'string', name: 'icon', label: 'Icono' },
-                  { type: 'string', name: 'colorScheme', label: 'Color', options: ['primary', 'secondary'] },
-                ],
+                  { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+                ]
               },
-            ],
-          },
-          
-          // --- Galería ---
-          {
-            type: 'string',
-            name: 'gallery',
-            label: 'Galería de Imágenes',
-            list: true,
-            description: `URLs de Cloudinary`,
-            ui: {
-              // @ts-ignore - Custom component
-              component: ImageGalleryField,
-            },
-          },
-          
-          // --- Beneficios ---
-          {
-            type: 'object',
-            name: 'benefits',
-            label: 'Beneficios del Servicio',
-            list: true,
-            ui: {
-              hidden: (props: any) => {
-                const vals = props.tinaForm?.values || props.form?.values || {};
-                return vals.service?.showBenefits === false;
-              }
-            },
-            fields: [
-              {
-                type: 'string',
-                name: 'icon',
-                label: 'Icono',
-              },
-              {
-                type: 'string',
-                name: 'title',
-                label: 'Título',
-              },
-              {
-                type: 'string',
-                name: 'description',
-                label: 'Descripción',
-              },
-            ],
-          },
-          
-          // --- Proceso/Pasos ---
-          {
-            type: 'object',
-            name: 'process',
-            label: 'Proceso del Servicio',
-            list: true,
-            ui: {
-              hidden: (props: any) => {
-                const vals = props.tinaForm?.values || props.form?.values || {};
-                return vals.service?.showProcess === false;
-              }
-            },
-            fields: [
-              {
-                type: 'number',
-                name: 'step',
-                label: 'Número de Paso',
-              },
-              {
-                type: 'string',
-                name: 'title',
-                label: 'Título del Paso',
-              },
-              {
-                type: 'string',
-                name: 'description',
-                label: 'Descripción',
-              },
-            ],
-          },
-          
-          // --- Testimonios del Servicio ---
-          {
-            type: 'object',
-            name: 'testimonialsSection',
-            label: 'Sección de Testimonios',
-            ui: {
-              hidden: (props: any) => {
-                const vals = props.tinaForm?.values || props.form?.values || {};
-                return vals.service?.showTestimonials === false;
-              }
-            },
-            fields: [
-              {
-                type: 'boolean',
-                name: 'enabled',
-                label: 'Mostrar Testimonios',
-              },
-              {
-                type: 'string',
-                name: 'title',
-                label: 'Título de la Sección',
-              },
+              // --- GENERAL ---
               {
                 type: 'object',
-                name: 'items',
-                label: 'Testimonios',
-                list: true,
+                name: 'general',
+                label: 'Información General',
                 fields: [
+                  { type: 'string', name: 'name', label: 'Nombre del Servicio' },
+                  { type: 'string', name: 'description', label: 'Descripción del Servicio', ui: { component: 'textarea' } },
+                  { type: 'string', name: 'contact', label: 'Contacto (Ej: Teléfono o Correo)' },
                   {
-                    type: 'string',
-                    name: 'name',
-                    label: 'Nombre',
-                  },
-                  {
-                    type: 'string',
-                    name: 'role',
-                    label: 'Cargo/Rol',
-                  },
-                  {
-                    type: 'string',
-                    name: 'quote',
-                    label: 'Testimonio',
-                    ui: {
-                      component: 'textarea',
-                    },
-                  },
-                  {
-                    type: 'string',
-                    name: 'image',
-                    label: 'Foto',
-                  },
-                ],
+                    type: 'object',
+                    name: 'process',
+                    label: 'Proceso/Pasos del Servicio',
+                    list: true,
+                    fields: [
+                      { type: 'string', name: 'number', label: 'Número de Paso (ej: 01, #)' },
+                      { type: 'string', name: 'icon', label: 'Icono' },
+                      { type: 'string', name: 'title', label: 'Título' },
+                      { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+                    ]
+                  }
+                ]
               },
-            ],
-          },
-          
-          // --- FAQs ---
-          {
-            type: 'object',
-            name: 'faqsSection',
-            label: 'Preguntas Frecuentes',
-            ui: {
-              hidden: (props: any) => {
-                const vals = props.tinaForm?.values || props.form?.values || {};
-                return vals.service?.showFaqs === false;
-              }
-            },
-            fields: [
-              {
-                type: 'boolean',
-                name: 'enabled',
-                label: 'Mostrar FAQs',
-              },
-              {
-                type: 'string',
-                name: 'title',
-                label: 'Título de la Sección',
-              },
+              // --- HERO ---
               {
                 type: 'object',
-                name: 'items',
-                label: 'Preguntas',
-                list: true,
+                name: 'heroSection',
+                label: 'Sección HERO',
                 fields: [
+                  { type: 'image', name: 'backgroundImage', label: 'Imagen de Fondo' },
+                  { type: 'string', name: 'backgroundColor', label: 'Color de Fondo' },
+                  { type: 'number', name: 'backgroundOpacity', label: 'Opacidad del Fondo (%)' },
+                  { type: 'boolean', name: 'backgroundOverlay', label: 'Habilitar Overlay de Fondo' },
                   {
-                    type: 'string',
-                    name: 'question',
-                    label: 'Pregunta',
-                  },
-                  {
-                    type: 'string',
-                    name: 'answer',
-                    label: 'Respuesta',
-                    ui: {
-                      component: 'textarea',
+                    type: 'object',
+                    name: 'infoCards',
+                    label: 'Cards Informativos (Máximo 3)',
+                    list: true,
+                    validate: (value: any) => {
+                      if (value && value.length > 3) {
+                        return 'No puedes agregar más de 3 tarjetas';
+                      }
                     },
+                    fields: [
+                      { type: 'string', name: 'icon', label: 'Icono' },
+                      { type: 'string', name: 'title', label: 'Título' },
+                      {
+                        type: 'string',
+                        name: 'description',
+                        label: 'Descripción (Máximo 50 caracteres)',
+                        validate: (val: any) => {
+                          if (val && val.length > 50) {
+                            return 'La descripción no puede superar los 50 caracteres';
+                          }
+                        }
+                      }
+                    ]
                   },
-                ],
+                  {
+                    type: 'object',
+                    name: 'buttons',
+                    label: 'Botones Informativos',
+                    fields: [
+                      { type: 'boolean', name: 'whatsapp', label: 'Habilitar WhatsApp' },
+                      { type: 'boolean', name: 'email', label: 'Habilitar Email' },
+                      { type: 'boolean', name: 'contacto', label: 'Habilitar Contacto' },
+                    ]
+                  }
+                ]
               },
-            ],
-          },
-          
-          // --- CTA Final ---
-          {
-            type: 'object',
-            name: 'ctaSection',
-            label: 'Sección CTA Final',
-            ui: {
-              hidden: (props: any) => {
-                const vals = props.tinaForm?.values || props.form?.values || {};
-                return vals.service?.showCta === false;
+              // --- PROCESO ---
+              {
+                type: 'object',
+                name: 'proceso',
+                label: 'Sección PROCESO',
+                fields: [
+                  { type: 'string', name: 'title', label: 'Título de la Sección' },
+                  { type: 'string', name: 'description', label: 'Descripción de la Sección', ui: { component: 'textarea' } },
+                  {
+                    type: 'object',
+                    name: 'steps',
+                    label: 'Pasos del Proceso',
+                    list: true,
+                    fields: [
+                      { type: 'string', name: 'number', label: 'Número de Paso (ej: 01, #)' },
+                      { type: 'string', name: 'icon', label: 'Icono' },
+                      { type: 'string', name: 'title', label: 'Título' },
+                      { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+                    ]
+                  }
+                ]
+              },
+              // --- COMIENZA HOY ---
+              {
+                type: 'object',
+                name: 'comienzaHoy',
+                label: 'Sección COMIENZA HOY',
+                fields: [
+                  { type: 'string', name: 'title', label: 'Título de la Sección' },
+                  { type: 'string', name: 'description', label: 'Descripción de la Sección', ui: { component: 'textarea' } },
+                  {
+                    type: 'object',
+                    name: 'infoCards',
+                    label: 'Cards Informativos (Máximo 4)',
+                    list: true,
+                    validate: (value: any) => {
+                      if (value && value.length > 4) {
+                        return 'No puedes agregar más de 4 tarjetas';
+                      }
+                    },
+                    fields: [
+                      { type: 'string', name: 'icon', label: 'Icono' },
+                      { type: 'string', name: 'title', label: 'Título' },
+                      {
+                        type: 'string',
+                        name: 'description',
+                        label: 'Descripción (Máximo 50 caracteres)',
+                        validate: (val: any) => {
+                          if (val && val.length > 50) {
+                            return 'La descripción no puede superar los 50 caracteres';
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    type: 'object',
+                    name: 'contactCard',
+                    label: 'Card Contacto',
+                    fields: [
+                      { type: 'boolean', name: 'showWhatsapp', label: 'Habilitar botón WhatsApp' },
+                      { type: 'boolean', name: 'showEmail', label: 'Habilitar botón Email' },
+                    ]
+                  }
+                ]
               }
-            },
-            fields: [
-              {
-                type: 'string',
-                name: 'title',
-                label: 'Título',
-              },
-              {
-                type: 'string',
-                name: 'description',
-                label: 'Descripción',
-              },
-              {
-                type: 'string',
-                name: 'buttonText',
-                label: 'Texto del Botón',
-              },
-              {
-                type: 'string',
-                name: 'buttonLink',
-                label: 'Enlace del Botón',
-              },
-              {
-                type: 'string',
-                name: 'backgroundImage',
-                label: 'Imagen de Fondo',
-              },
-            ],
+            ]
           },
-        ],
-      },
-          
-          // --- Contenido Principal ---
           {
             type: 'rich-text',
             name: 'body',

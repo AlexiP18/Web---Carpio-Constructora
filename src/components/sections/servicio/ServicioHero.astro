@@ -27,9 +27,10 @@ export interface Props {
   description: string;
   serviceType?: 'construccion' | 'remodelacion' | 'diseno-arquitectonico';
   heroConfig?: HeroConfig;
+  heroSection?: any; // Soporte para el nuevo esquema configurable de TinaCMS
 }
 
-const { tagline, title, description, serviceType = 'construccion', heroConfig } = Astro.props;
+const { tagline, title, description, serviceType = 'construccion', heroConfig, heroSection } = Astro.props;
 
 // Select background image based on service type from public folder
 const backgroundImages = {
@@ -38,21 +39,50 @@ const backgroundImages = {
   'diseno-arquitectonico': '/images/services/disenio_arquitectonico/diseno-hero.webp'
 };
 
-const backgroundImage = backgroundImages[serviceType];
+const defaultBgImage = backgroundImages[serviceType];
+
+// Variables del nuevo esquema con respaldo
+const bgImage = heroSection?.backgroundImage || heroConfig?.backgroundImage || defaultBgImage;
+const bgColor = heroSection?.backgroundColor || '';
+const bgOpacity = heroSection?.backgroundOpacity !== undefined ? (heroSection.backgroundOpacity / 100) : 0.4;
+const hasOverlay = heroSection?.backgroundOverlay !== false;
+
+// Tarjetas Informativas (máximo 3)
+const cards = heroSection?.infoCards || heroConfig?.chips || [];
+
+// Botones Informativos
+const showWhatsapp = heroSection?.buttons?.whatsapp !== false;
+const showEmail = heroSection?.buttons?.email !== false;
+const showContacto = heroSection?.buttons?.contacto !== false;
+
+// WhatsApp Number
+const whatsappNumber = heroSection?.general?.contact || heroConfig?.ctaButton?.whatsappNumber || '593998323304';
+const whatsappClean = whatsappNumber.replace(/\+/g, '').replace(/\s+/g, '');
 ---
 
-<section class="relative min-h-screen pt-28 sm:pt-32 pb-16 lg:pb-20 flex items-center justify-center bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 overflow-hidden">
+<section 
+  class="relative min-h-screen pt-28 sm:pt-32 pb-16 lg:pb-20 flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900"
+  style={bgColor && !bgImage ? { backgroundColor: bgColor } : undefined}
+>
   <!-- Background Image -->
-  <div class="absolute inset-0 w-full h-full">
-    <img 
-      src={backgroundImage} 
-      alt={`${title} Hero Background`}
-      class="w-full h-full object-cover opacity-40"
-    />
-  </div>
+  {bgImage && (
+    <div class="absolute inset-0 w-full h-full">
+      <img 
+        src={bgImage} 
+        alt={`${title} Hero Background`}
+        class="w-full h-full object-cover"
+        style={{ opacity: bgOpacity }}
+      />
+    </div>
+  )}
+  
+  <!-- Overlay oscuro -->
+  {hasOverlay && (
+    <div class="absolute inset-0 bg-black/60 z-0"></div>
+  )}
   
   <!-- Background decorations -->
-  <div class="absolute inset-0">
+  <div class="absolute inset-0 pointer-events-none">
     <div class="absolute top-20 left-20 w-60 h-60 bg-brand-primary/10 rounded-full blur-3xl"></div>
     <div class="absolute bottom-20 right-20 w-40 h-40 bg-brand-secondary/15 rounded-full blur-2xl"></div>
     <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-brand-primary/5 rounded-full blur-3xl"></div>
@@ -70,90 +100,73 @@ const backgroundImage = backgroundImages[serviceType];
         {description}
       </p>
       
-      <!-- Service highlights - Modern cards (dynamic) -->
-      {(heroConfig?.chips && heroConfig.chips.length > 0) ? (
-        <div class={`grid gap-4 mb-12 ${heroConfig.chips.length === 1 ? 'grid-cols-1 max-w-md' : heroConfig.chips.length === 2 ? 'grid-cols-1 md:grid-cols-2' : heroConfig.chips.length === 3 ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'}`} data-aos="fade-up" data-aos-delay="300">
-          {heroConfig.chips.map((chip) => {
-            const colorScheme = chip.colorScheme || 'primary';
-            const bgGradient = colorScheme === 'primary' 
-              ? 'from-brand-primary to-brand-primary-dark' 
-              : 'from-brand-secondary to-brand-secondary-dark';
+      <!-- Service highlights - Modern cards -->
+      {cards && cards.length > 0 && (
+        <div 
+          class={`grid gap-4 mb-12 ${cards.length === 1 ? 'grid-cols-1 max-w-md' : cards.length === 2 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-3'}`} 
+          data-aos="fade-up" 
+          data-aos-delay="300"
+        >
+          {cards.map((card: any, idx: number) => {
+            const isOdd = idx % 2 === 1;
+            const bgGradient = isOdd 
+              ? 'from-brand-secondary to-brand-secondary-dark' 
+              : 'from-brand-primary to-brand-primary-dark';
             
             return (
               <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
                 <div class="flex items-center gap-4">
                   <div class={`w-14 h-14 bg-gradient-to-br ${bgGradient} rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0`}>
-                    <Icon name={chip.icon} class="w-7 h-7 text-white" />
+                    <Icon name={card.icon || "ph:star-fill"} class="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <h3 class="text-lg font-bold text-white mb-1">{chip.title}</h3>
-                    <p class="text-white/70 text-sm leading-relaxed">{chip.description}</p>
+                    <h3 class="text-lg font-bold text-white mb-1">{card.title}</h3>
+                    <p class="text-white/70 text-sm leading-relaxed">{card.description}</p>
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
-      ) : (
-        <!-- Default chips if none configured -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12" data-aos="fade-up" data-aos-delay="300">
-          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-            <div class="flex items-center gap-4">
-              <div class="w-14 h-14 bg-gradient-to-br from-brand-primary to-brand-primary-dark rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
-                <Icon name="ph:star-fill" class="w-7 h-7 text-white" />
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-white mb-1">Calidad Premium</h3>
-                <p class="text-white/70 text-sm leading-relaxed">Materiales de primera y acabados impecables</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-6 hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl">
-            <div class="flex items-center gap-4">
-              <div class="w-14 h-14 bg-gradient-to-br from-brand-secondary to-brand-secondary-dark rounded-2xl flex items-center justify-center shadow-lg flex-shrink-0">
-                <Icon name="ph:users-fill" class="w-7 h-7 text-white" />
-              </div>
-              <div>
-                <h3 class="text-lg font-bold text-white mb-1">Equipo Profesional</h3>
-                <p class="text-white/70 text-sm leading-relaxed">Especialistas con años de experiencia</p>
-              </div>
-            </div>
-          </div>
-        </div>
       )}
       
-      <!-- CTA Button (dynamic) -->
-      <div class="inline-block">
-        <Button 
-          variant="secondary"
-          size="lg"
-          href={(() => {
-            const ctaConfig = heroConfig?.ctaButton;
-            const whatsappNumber = ctaConfig?.whatsappNumber || '593998323304';
-            
-            // Si hay URL personalizada, usarla
-            if (ctaConfig?.url) {
-              return ctaConfig.url;
-            }
-            
-            // Mapeo de tipos de servicio a nombres formateados
-            const serviceNames = {
-              'construccion': 'Construcción Integral',
-              'remodelacion': 'Remodelación',
-              'diseno-arquitectonico': 'Diseño Arquitectónico'
-            };
-            
-            const serviceName = serviceNames[serviceType] || title || 'sus servicios';
-            const mensaje = `¡Hola Carpio Constructora! 🤩 Me encantaría solicitar una cotización para su servicio de ${serviceName}. Estoy interesad@ en conocer más detalles sobre los costos y el proceso.`;
-            
-            return `https://wa.me/${whatsappNumber.replace(/\+/g, '')}?text=${encodeURIComponent(mensaje)}`;
-          })()}
-          icon="ph:whatsapp-logo-fill"
-          class="shadow-xl hover:shadow-2xl"
-        >
-          {heroConfig?.ctaButton?.text || 'Solicitar Cotización'}
-        </Button>
+      <!-- CTA Buttons Section -->
+      <div class="flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="400">
+        {showWhatsapp && (
+          <Button 
+            variant="secondary"
+            size="lg"
+            href={`https://wa.me/${whatsappClean}?text=${encodeURIComponent(`¡Hola Carpio Constructora! 🤩 Me interesa solicitar una cotización para su servicio de ${title}.`)}`}
+            icon="ph:whatsapp-logo-fill"
+            class="shadow-xl hover:shadow-2xl bg-[#25D366] border-[#25D366] hover:bg-transparent hover:text-[#25D366] hover:border-[#25D366]"
+          >
+            {heroConfig?.ctaButton?.text || 'Solicitar Cotización'}
+          </Button>
+        )}
+        
+        {showEmail && (
+          <Button 
+            variant="secondary"
+            size="lg"
+            href={`mailto:contacto@carpioconstructora.com?subject=${encodeURIComponent(`Información sobre ${title}`)}`}
+            icon="ph:envelope-fill"
+            class="shadow-xl hover:shadow-2xl border-white bg-transparent text-white hover:bg-white hover:text-gray-900"
+          >
+            Enviar Email
+          </Button>
+        )}
+        
+        {showContacto && (
+          <Button 
+            variant="primary"
+            size="lg"
+            href="/contacto"
+            icon="ph:arrow-right-bold"
+            class="shadow-xl hover:shadow-2xl"
+          >
+            Contacto
+          </Button>
+        )}
       </div>
     </div>
   </div>

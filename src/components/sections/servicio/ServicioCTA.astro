@@ -11,6 +11,7 @@ export interface Props {
   secondaryButtonText?: string;
   secondaryButtonHref?: string;
   backgroundImage?: string;
+  comienzaHoy?: any; // Añadido para el soporte dinámico del nuevo esquema de Tina
 }
 
 const {
@@ -21,12 +22,28 @@ const {
   secondaryButtonText,
   secondaryButtonHref,
   backgroundImage = "/images/placeholder-image.jpg",
+  comienzaHoy,
 } = Astro.props;
+
+// Variables dinámicas o por defecto
+const displayTitle = comienzaHoy?.title || title;
+const displayDescription = comienzaHoy?.description || description;
+
+const defaultCards = [
+  { icon: "ph:clock", title: "Puntualidad", description: "Garantizada en cada entrega" },
+  { icon: "ph:shield-check", title: "Calidad Certificada", description: "Estándares de excelencia" },
+  { icon: "ph:currency-dollar", title: "Asesoría Gratuita", description: "Sin compromiso alguno" },
+  { icon: "ph:users", title: "Atención Personalizada", description: "Expertos dedicados a ti" }
+];
+
+const cards = comienzaHoy?.infoCards || defaultCards;
+
+const showWhatsapp = comienzaHoy?.contactCard?.showWhatsapp !== false;
+const showEmail = comienzaHoy?.contactCard?.showEmail !== false;
 ---
 
 <section class="relative py-24 bg-brand-primary overflow-hidden" id="cta">
   <!-- SVG Background -->
-  <!-- Background Component -->
   <div
     class="absolute inset-0 w-full h-full opacity-30 mix-blend-normal pointer-events-none"
   >
@@ -46,70 +63,44 @@ const {
       </div>
 
       <h2 class="text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
-        {title}
+        {displayTitle}
       </h2>
 
       <p class="text-xl text-white/80 leading-relaxed">
-        {description}
+        {displayDescription}
       </p>
     </div>
 
     <!-- Features Grid -->
-    <div
-      class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
-      data-aos="fade-up"
-      data-aos-delay="100"
-    >
+    {cards && cards.length > 0 && (
       <div
-        class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-brand-secondary/50 transition-all duration-300 group"
+        class={`grid gap-6 mb-12 ${cards.length === 1 ? 'grid-cols-1 max-w-md mx-auto' : cards.length === 2 ? 'grid-cols-1 md:grid-cols-2' : cards.length === 3 ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4'}`}
+        data-aos="fade-up"
+        data-aos-delay="100"
       >
-        <div
-          class="w-14 h-14 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-brand-secondary/30 group-hover:scale-110 transition-transform duration-300"
-        >
-          <Icon name="ph:clock" class="w-7 h-7 text-white" />
-        </div>
-        <h3 class="text-white font-bold text-lg mb-2">Puntualidad</h3>
-        <p class="text-white/70 text-sm">Garantizada en cada entrega</p>
+        {cards.map((card: any, idx: number) => {
+          const isOdd = idx % 2 === 1;
+          const hoverBorder = isOdd ? 'hover:border-brand-primary/50' : 'hover:border-brand-secondary/50';
+          const iconBg = isOdd 
+            ? 'from-brand-primary to-cyan-600 shadow-brand-primary/30' 
+            : 'from-brand-secondary to-yellow-500 shadow-brand-secondary/30';
+            
+          return (
+            <div
+              class={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 ${hoverBorder} transition-all duration-300 group`}
+            >
+              <div
+                class={`w-14 h-14 bg-gradient-to-br ${iconBg} rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}
+              >
+                <Icon name={card.icon || "ph:star"} class="w-7 h-7 text-white" />
+              </div>
+              <h3 class="text-white font-bold text-lg mb-2">{card.title}</h3>
+              <p class="text-white/70 text-sm">{card.description}</p>
+            </div>
+          );
+        })}
       </div>
-
-      <div
-        class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-brand-primary/50 transition-all duration-300 group"
-      >
-        <div
-          class="w-14 h-14 bg-gradient-to-br from-brand-primary to-cyan-600 rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-brand-primary/30 group-hover:scale-110 transition-transform duration-300"
-        >
-          <Icon name="ph:shield-check" class="w-7 h-7 text-white" />
-        </div>
-        <h3 class="text-white font-bold text-lg mb-2">Calidad Certificada</h3>
-        <p class="text-white/70 text-sm">Estándares de excelencia</p>
-      </div>
-
-      <div
-        class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-brand-secondary/50 transition-all duration-300 group"
-      >
-        <div
-          class="w-14 h-14 bg-gradient-to-br from-brand-secondary to-yellow-500 rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-brand-secondary/30 group-hover:scale-110 transition-transform duration-300"
-        >
-          <Icon name="ph:currency-dollar" class="w-7 h-7 text-white" />
-        </div>
-        <h3 class="text-white font-bold text-lg mb-2">Asesoría Gratuita</h3>
-        <p class="text-white/70 text-sm">Sin compromiso alguno</p>
-      </div>
-
-      <div
-        class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-brand-primary/50 transition-all duration-300 group"
-      >
-        <div
-          class="w-14 h-14 bg-gradient-to-br from-brand-primary to-cyan-600 rounded-xl flex items-center justify-center mb-4 shadow-lg shadow-brand-primary/30 group-hover:scale-110 transition-transform duration-300"
-        >
-          <Icon name="ph:users" class="w-7 h-7 text-white" />
-        </div>
-        <h3 class="text-white font-bold text-lg mb-2">
-          Atención Personalizada
-        </h3>
-        <p class="text-white/70 text-sm">Expertos dedicados a ti</p>
-      </div>
-    </div>
+    )}
 
     <!-- CTA Actions -->
     <div
@@ -154,18 +145,33 @@ const {
 
         <!-- Right side - Buttons -->
         <div class="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-          <Button
-            variant="primary"
-            size="lg"
-            iconPosition="left"
-            icon="ph:whatsapp-logo-fill"
-            animation="hover"
-            href={primaryButtonHref}
-            target="_blank"
-            class="bg-[#25D366] border-2 border-[#25D366] text-white font-bold shadow-none hover:bg-transparent hover:border-white"
-          >
-            {primaryButtonText}
-          </Button>
+          {showWhatsapp && (
+            <Button
+              variant="primary"
+              size="lg"
+              iconPosition="left"
+              icon="ph:whatsapp-logo-fill"
+              animation="hover"
+              href={primaryButtonHref}
+              target="_blank"
+              class="bg-[#25D366] border-2 border-[#25D366] text-white font-bold shadow-none hover:bg-transparent hover:border-white"
+            >
+              {primaryButtonText}
+            </Button>
+          )}
+          {showEmail && (
+            <Button
+              variant="secondary"
+              size="lg"
+              iconPosition="left"
+              icon="ph:envelope-fill"
+              animation="hover"
+              href="mailto:contacto@carpioconstructora.com"
+              class="bg-transparent border-2 border-white text-white font-bold shadow-none hover:bg-white hover:text-brand-primary"
+            >
+              Enviar Email
+            </Button>
+          )}
         </div>
       </div>
     </div>

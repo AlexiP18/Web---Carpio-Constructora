@@ -32,7 +32,7 @@ const { title, subtitle, description, backgroundImage, service } =
   <Header />
 
   <ServicioHero
-    tagline={service.tagline}
+    tagline={service.tagline || ""}
     title={title}
     description={description}
     serviceType={Astro.params.slug as
@@ -40,6 +40,7 @@ const { title, subtitle, description, backgroundImage, service } =
       | "remodelacion"
       | "diseno-arquitectonico"}
     heroConfig={service.heroConfig}
+    heroSection={service.heroSection}
   />
 
   {
@@ -67,12 +68,12 @@ const { title, subtitle, description, backgroundImage, service } =
   }
 
   {
-    service.showProcess !== false && service.process && service.process.length > 0 && (
+    (service.proceso || (service.showProcess !== false && service.process && service.process.length > 0)) && (
       <ServicioProcess
         tagline="PROCESO"
-        title="¿Cómo Trabajamos?"
-        description="Seguimos un proceso estructurado para garantizar los mejores resultados."
-        steps={service.process}
+        title={service.proceso?.title || "¿Cómo Trabajamos?"}
+        description={service.proceso?.description || "Seguimos un proceso estructurado para garantizar los mejores resultados."}
+        steps={service.proceso?.steps || service.process}
       />
     )
   }
@@ -101,17 +102,18 @@ const { title, subtitle, description, backgroundImage, service } =
     })()
   }
 
-  {/* CTA Section */}
+  {/* CTA Section / Comienza Hoy */}
   {
-    service.showCta !== false && (
+    (service.comienzaHoy || service.showCta !== false) && (
       <ServicioCTA
-        title="Solicita tu asesoría hoy"
-        description={`Contáctanos para obtener más información sobre nuestro ${service.name.toLowerCase()} y cómo podemos ayudarte.`}
+        title={service.comienzaHoy?.title || "Solicita tu asesoría hoy"}
+        description={service.comienzaHoy?.description || `Contáctanos para obtener más información sobre nuestro ${(service.general?.name || service.name || "servicio").toLowerCase()} y cómo podemos ayudarte.`}
         primaryButtonText="Solicitar Cotización"
-        primaryButtonHref={`https://wa.me/${service.heroConfig?.ctaButton?.whatsappNumber || '593998323304'}?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20gustar%C3%ADa%20solicitar%20una%20cotizaci%C3%B3n%20para%20su%20servicio%20de%20${encodeURIComponent(service.name)}.`}
+        primaryButtonHref={`https://wa.me/${(service.comienzaHoy?.contactCard?.whatsappNumber || service.general?.contact || service.heroConfig?.ctaButton?.whatsappNumber || '593998323304').replace(/\+/g, '').replace(/\s/g, '')}?text=${encodeURIComponent(`¡Hola Carpio Constructora! 🤩 Me interesa solicitar una cotización para su servicio de ${service.general?.name || service.name || title}.`)}`}
         secondaryButtonText="Más Información"
-        secondaryButtonHref={`https://wa.me/${service.heroConfig?.ctaButton?.whatsappNumber || '593998323304'}?text=%C2%A1Hola%20Carpio%20Constructora!%20%F0%9F%A4%A9%20Me%20encantar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20su%20servicio%20de%20${encodeURIComponent(service.name)}.`}
+        secondaryButtonHref={`https://wa.me/${(service.comienzaHoy?.contactCard?.whatsappNumber || service.general?.contact || service.heroConfig?.ctaButton?.whatsappNumber || '593998323304').replace(/\+/g, '').replace(/\s/g, '')}?text=${encodeURIComponent(`¡Hola Carpio Constructora! 🤩 Me interesa obtener más información sobre el servicio de ${service.general?.name || service.name || title}.`)}`}
         backgroundImage="/images/cta-background.jpg"
+        comienzaHoy={service.comienzaHoy}
       />
     )
   }
