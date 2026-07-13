@@ -408,7 +408,6 @@ export default defineConfig({
           },
         },
         fields: [
-          // --- Información Básica ---
           {
             type: 'string',
             name: 'title',
@@ -419,303 +418,188 @@ export default defineConfig({
             type: 'string',
             name: 'slug',
             label: 'Slug (URL)',
-            description: 'Se genera automáticamente del título si se deja vacío',
           },
           {
             type: 'string',
             name: 'description',
-            label: 'Descripción Corta',
-            description: 'Resumen breve para tarjetas y SEO (máx. 160 caracteres)',
-            ui: {
-              component: 'textarea',
-            },
+            label: 'Descripción Corta (SEO)',
+            ui: { component: 'textarea' },
           },
-          {
-            type: 'string',
-            name: 'tags',
-            label: 'Etiquetas',
-            list: true,
-            options: projectTagOptions,
-          },
-          {
-            type: 'string',
-            name: 'status',
-            label: 'Estado del Proyecto',
-            options: [
-              { value: 'en-construccion', label: 'En Construcción' },
-              { value: 'completado', label: 'Completado' },
-              { value: 'preventa', label: 'Preventa' },
-              { value: 'planificacion', label: 'En Planificación' },
-            ],
-          },
-          {
-            type: 'string',
-            name: 'category',
-            label: 'Categoría del Proyecto',
-            description: 'Selecciona la categoría principal del proyecto',
-            options: projectCategories,
-            required: true,
-          },
-          
-          // --- Imágenes (compatibles con Cloudinary y locales) ---
-          {
-            type: 'string',
-            name: 'backgroundImage',
-            label: 'Imagen Principal (Hero)',
-            description: `Sube la imagen a Cloudinary y pega la URL aquí`,
-            ui: {
-              // @ts-ignore - Custom component
-              component: ImagePreviewField,
-            },
-          },
-          {
-            type: 'string',
-            name: 'images',
-            label: 'Galería de Imágenes',
-            description: 'URLs de imágenes de Cloudinary',
-            list: true,
-            ui: {
-              // @ts-ignore - Custom component
-              component: ImageGalleryField,
-            },
-          },
-          {
-            type: 'string',
-            name: 'virtualTourVideo',
-            label: 'Video Tour Virtual',
-            description: `URL de video de Cloudinary`,
-          },
-          
-          // --- Ubicación ---
           {
             type: 'object',
-            name: 'location',
-            label: 'Ubicación',
+            name: 'project',
+            label: 'Información y Secciones del Proyecto',
             fields: [
-              {
-                type: 'string',
-                name: 'address',
-                label: 'Dirección',
-              },
-              {
-                type: 'string',
-                name: 'city',
-                label: 'Ciudad',
-              },
-              {
-                type: 'string',
-                name: 'sector',
-                label: 'Sector/Barrio',
-              },
-              {
-                type: 'string',
-                name: 'mapUrl',
-                label: 'URL de Google Maps',
-              },
-              {
-                type: 'number',
-                name: 'lat',
-                label: 'Latitud',
-              },
-              {
-                type: 'number',
-                name: 'lng',
-                label: 'Longitud',
-              },
-            ],
-          },
-          
-          // --- Especificaciones del Proyecto ---
-          {
-            type: 'object',
-            name: 'specifications',
-            label: 'Especificaciones',
-            fields: [
-              // Estructura para specs con enabled/value/label
+              // --- CATEGORIAS ---
               {
                 type: 'object',
-                name: 'bedrooms',
-                label: 'Dormitorios',
+                name: 'categories',
+                label: 'Categorías',
                 fields: [
-                  { type: 'boolean', name: 'enabled', label: 'Habilitado' },
-                  { type: 'number', name: 'value', label: 'Cantidad' },
-                  { type: 'string', name: 'label', label: 'Etiqueta' },
-                  { type: 'string', name: 'sublabel', label: 'Subetiqueta' },
-                ],
+                  { type: 'string', name: 'icon', label: 'Icono' },
+                  { type: 'string', name: 'title', label: 'Título' },
+                  { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+                ]
               },
+              // --- GENERAL ---
               {
                 type: 'object',
-                name: 'bathrooms',
-                label: 'Baños',
+                name: 'general',
+                label: 'Información General',
                 fields: [
-                  { type: 'boolean', name: 'enabled', label: 'Habilitado' },
-                  { type: 'number', name: 'value', label: 'Cantidad' },
-                  { type: 'string', name: 'label', label: 'Etiqueta' },
-                  { type: 'string', name: 'sublabel', label: 'Subetiqueta' },
-                ],
-              },
-              {
-                type: 'object',
-                name: 'area',
-                label: 'Área',
-                fields: [
-                  { type: 'boolean', name: 'enabled', label: 'Habilitado' },
-                  { type: 'number', name: 'value', label: 'Valor (m²)' },
-                  { type: 'string', name: 'label', label: 'Etiqueta' },
-                  { type: 'string', name: 'sublabel', label: 'Subetiqueta' },
-                ],
-              },
-              {
-                type: 'object',
-                name: 'garden',
-                label: 'Jardín',
-                fields: [
-                  { type: 'boolean', name: 'enabled', label: 'Habilitado' },
-                  { type: 'boolean', name: 'value', label: 'Tiene Jardín' },
-                  { type: 'string', name: 'label', label: 'Etiqueta' },
-                  { type: 'string', name: 'sublabel', label: 'Subetiqueta' },
-                ],
-              },
-              {
-                type: 'object',
-                name: 'petFriendly',
-                label: 'Pet Friendly',
-                fields: [
-                  { type: 'boolean', name: 'enabled', label: 'Habilitado' },
-                  { type: 'boolean', name: 'value', label: 'Permite Mascotas' },
-                  { type: 'string', name: 'label', label: 'Etiqueta' },
-                  { type: 'string', name: 'sublabel', label: 'Subetiqueta' },
-                ],
-              },
-              {
-                type: 'object',
-                name: 'deliveryDate',
-                label: 'Fecha de Entrega',
-                fields: [
-                  { type: 'boolean', name: 'enabled', label: 'Habilitado' },
-                  { type: 'string', name: 'value', label: 'Fecha/Estado' },
-                  { type: 'string', name: 'label', label: 'Etiqueta' },
-                ],
-              },
-              {
-                type: 'object',
-                name: 'customSpecs',
-                label: 'Especificaciones Personalizadas',
-                list: true,
-                fields: [
-                  { type: 'boolean', name: 'enabled', label: 'Habilitado' },
-                  { type: 'string', name: 'icon', label: 'Icono (ej: ph:car)' },
-                  { type: 'string', name: 'label', label: 'Etiqueta' },
-                  { type: 'string', name: 'value', label: 'Valor' },
-                  { type: 'string', name: 'sublabel', label: 'Subetiqueta' },
-                  { 
-                    type: 'string', 
-                    name: 'colorScheme', 
-                    label: 'Color',
-                    options: ['primary', 'secondary', 'accent'],
+                  { type: 'string', name: 'name', label: 'Nombre del Proyecto' },
+                  { type: 'string', name: 'description', label: 'Descripción del Proyecto', ui: { component: 'textarea' } },
+                  {
+                    type: 'string',
+                    name: 'category',
+                    label: 'Categoría',
+                    options: [
+                      { value: 'conjunto-habitacional', label: 'Conjuntos Habitacionales' },
+                      { value: 'diseno-residencial', label: 'Diseño Residencial' },
+                      { value: 'diseno-retail', label: 'Diseño Retail' }
+                    ]
                   },
-                ],
+                  { type: 'string', name: 'location', label: 'Ubicación' },
+                  {
+                    type: 'object',
+                    name: 'specifications',
+                    label: 'Especificaciones',
+                    list: true,
+                    fields: [
+                      { type: 'string', name: 'icon', label: 'Icono' },
+                      { type: 'string', name: 'title', label: 'Título' },
+                      { type: 'string', name: 'description', label: 'Descripción' }
+                    ]
+                  },
+                  {
+                    type: 'image',
+                    name: 'images',
+                    label: 'Galería de imágenes (Máximo 30 imágenes)',
+                    list: true,
+                    validate: (value: any) => {
+                      if (value && value.length > 30) {
+                        return 'No puedes agregar más de 30 imágenes';
+                      }
+                    }
+                  },
+                  { type: 'string', name: 'brochure', label: 'Brochure (Link/Ruta)' },
+                  { type: 'string', name: 'virtualTourVideo', label: 'Tour Virtual / Video (Link)' },
+                  { type: 'string', name: 'manager', label: 'Encargado del proyecto (Usuario Contacto)' }
+                ]
               },
-            ],
+              // --- HERO ---
+              {
+                type: 'object',
+                name: 'heroSection',
+                label: 'Sección HERO',
+                fields: [
+                  {
+                    type: 'string',
+                    name: 'projectStatusChip',
+                    label: 'Estado del Proyecto (Chip)',
+                    options: [
+                      { value: 'disponible', label: 'Proyecto Disponible' },
+                      { value: 'vigente', label: 'Proyecto Vigente' },
+                      { value: 'proximo', label: 'Proyecto Próximo' }
+                    ]
+                  },
+                  { type: 'image', name: 'backgroundImage', label: 'Imagen de Fondo' },
+                  { type: 'string', name: 'backgroundColor', label: 'Color de Fondo' },
+                  { type: 'number', name: 'backgroundOpacity', label: 'Opacidad del Fondo (%)' },
+                  { type: 'boolean', name: 'backgroundOverlay', label: 'Habilitar Overlay de Fondo' },
+                  {
+                    type: 'object',
+                    name: 'infoChips',
+                    label: 'Chips Informativos (Máximo 3)',
+                    list: true,
+                    validate: (value: any) => {
+                      if (value && value.length > 3) {
+                        return 'No puedes agregar más de 3 chips';
+                      }
+                    },
+                    fields: [
+                      { type: 'string', name: 'icon', label: 'Icono' },
+                      { type: 'string', name: 'title', label: 'Título' }
+                    ]
+                  },
+                  {
+                    type: 'object',
+                    name: 'buttons',
+                    label: 'Botones Informativos',
+                    fields: [
+                      { type: 'boolean', name: 'whatsapp', label: 'Habilitar WhatsApp' },
+                      { type: 'boolean', name: 'email', label: 'Habilitar Email' },
+                      { type: 'boolean', name: 'contacto', label: 'Habilitar Contacto' }
+                    ]
+                  }
+                ]
+              },
+              // --- DETALLES PROYECTO ---
+              {
+                type: 'object',
+                name: 'detailsSection',
+                label: 'Sección DETALLES PROYECTO',
+                fields: [
+                  { type: 'boolean', name: 'showSpecifications', label: 'Habilitar Especificaciones' }
+                ]
+              },
+              // --- VIDEO ---
+              {
+                type: 'object',
+                name: 'videoSection',
+                label: 'Sección VIDEO',
+                fields: [
+                  { type: 'boolean', name: 'enabled', label: 'Habilitar Sección' },
+                  { type: 'string', name: 'videoUrl', label: 'URL de Video (Link)' },
+                  { type: 'string', name: 'title', label: 'Título' },
+                  { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } }
+                ]
+              },
+              // --- MOSAICO VISUAL ---
+              {
+                type: 'object',
+                name: 'visualMosaicSection',
+                label: 'Sección MOSAICO VISUAL',
+                fields: [
+                  { type: 'boolean', name: 'enabled', label: 'Habilitar Sección' },
+                  { type: 'string', name: 'title', label: 'Título' },
+                  { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+                  { type: 'image', name: 'images', label: 'Imágenes del Mosaico', list: true }
+                ]
+              },
+              // --- NUESTROS PROYECTOS ---
+              {
+                type: 'object',
+                name: 'ourProjectsSection',
+                label: 'Sección NUESTROS PROYECTOS',
+                fields: [
+                  { type: 'boolean', name: 'enabled', label: 'Habilitar Sección' },
+                  { type: 'string', name: 'title', label: 'Título' },
+                  { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } }
+                ]
+              },
+              // --- CONTACTO ---
+              {
+                type: 'object',
+                name: 'contactSection',
+                label: 'Sección CONTACTO',
+                fields: [
+                  { type: 'boolean', name: 'enabled', label: 'Habilitar Sección' },
+                  { type: 'string', name: 'title', label: 'Título' },
+                  { type: 'string', name: 'description', label: 'Descripción', ui: { component: 'textarea' } },
+                  {
+                    type: 'object',
+                    name: 'buttons',
+                    label: 'Botones de Contacto',
+                    fields: [
+                      { type: 'boolean', name: 'whatsapp', label: 'Habilitar WhatsApp' },
+                      { type: 'boolean', name: 'email', label: 'Habilitar Email' }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
-          
-          // --- Amenidades ---
-          {
-            type: 'string',
-            name: 'amenities',
-            label: 'Amenidades',
-            list: true,
-            description: 'Lista de amenidades del proyecto',
-          },
-          
-          // --- Características Destacadas ---
-          {
-            type: 'object',
-            name: 'features',
-            label: 'Características Destacadas',
-            list: true,
-            fields: [
-              {
-                type: 'string',
-                name: 'icon',
-                label: 'Icono',
-                description: 'Nombre del icono (ej: home, building, tree)',
-              },
-              {
-                type: 'string',
-                name: 'title',
-                label: 'Título',
-              },
-              {
-                type: 'string',
-                name: 'description',
-                label: 'Descripción',
-              },
-            ],
-          },
-          
-          // --- Testimonios del Proyecto ---
-          {
-            type: 'object',
-            name: 'testimonials',
-            label: 'Testimonios',
-            list: true,
-            fields: [
-              {
-                type: 'string',
-                name: 'name',
-                label: 'Nombre del Cliente',
-              },
-              {
-                type: 'string',
-                name: 'quote',
-                label: 'Testimonio',
-                ui: {
-                  component: 'textarea',
-                },
-              },
-              {
-                type: 'string',
-                name: 'image',
-                label: 'Foto del Cliente',
-                description: 'URL de Cloudinary o ruta local',
-              },
-              {
-                type: 'string',
-                name: 'unitType',
-                label: 'Tipo de Unidad Adquirida',
-              },
-            ],
-          },
-          
-          // --- SEO ---
-          {
-            type: 'object',
-            name: 'seo',
-            label: 'SEO',
-            fields: [
-              {
-                type: 'string',
-                name: 'metaTitle',
-                label: 'Meta Título',
-              },
-              {
-                type: 'string',
-                name: 'metaDescription',
-                label: 'Meta Descripción',
-                ui: {
-                  component: 'textarea',
-                },
-              },
-              {
-                type: 'string',
-                name: 'ogImage',
-                label: 'Imagen para Redes Sociales',
-              },
-            ],
-          },
-          
-          // --- Contenido Principal ---
           {
             type: 'rich-text',
             name: 'body',

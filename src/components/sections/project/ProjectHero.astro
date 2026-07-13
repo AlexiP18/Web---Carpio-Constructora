@@ -1,15 +1,18 @@
 ---
+import { Icon } from "astro-icon/components";
+import Button from "../../ui/Button.astro";
 import MosaicHeroBg from "../../ui/MosaicHeroBg.astro";
 
 export interface Props {
   title: string;
   description: string;
-  tags: string[];
+  tags?: string[];
   backgroundImage?: string;
   images?: any[];
+  heroSection?: any; // Soporte para el nuevo esquema configurable de TinaCMS
 }
 
-const { title, description, tags, backgroundImage, images = [] } = Astro.props;
+const { title, description, tags = [], backgroundImage, images = [], heroSection } = Astro.props;
 
 // Function to get image src
 function getImageSrc(image: any): string {
@@ -17,15 +20,34 @@ function getImageSrc(image: any): string {
   return typeof image === 'string' ? image : (image.src || image.url || "");
 }
 
-// Build an array of backgrounds. If gallery images are present, we use them, otherwise fallback to backgroundImage
+// Variables del nuevo esquema con respaldo
+const projectStatus = heroSection?.projectStatusChip || 'disponible';
+const statusLabels: Record<string, string> = {
+  'disponible': 'Proyecto Disponible',
+  'vigente': 'Proyecto Vigente',
+  'proximo': 'Proyecto Próximo'
+};
+const statusText = statusLabels[projectStatus] || 'Proyecto Disponible';
+
+const bgImage = heroSection?.backgroundImage || backgroundImage;
+const bgColor = heroSection?.backgroundColor || '';
+const bgOpacity = heroSection?.backgroundOpacity !== undefined ? (heroSection.backgroundOpacity / 100) : 0.6;
+const hasOverlay = heroSection?.backgroundOverlay !== false;
+
+// Chips Informativos (Máximo 3)
+const infoChips = heroSection?.infoChips || [];
+
+// Botones Informativos
+const showWhatsapp = heroSection?.buttons?.whatsapp !== false;
+const showEmail = heroSection?.buttons?.email !== false;
+const showContacto = heroSection?.buttons?.contacto !== false;
+
+// Build an array of backgrounds
 let heroImages = images && images.length > 0 
   ? images.map(getImageSrc).filter(src => src !== "")
-  : (backgroundImage ? [backgroundImage] : []);
+  : (bgImage ? [bgImage] : []);
 
-// Fallback just in case
 if (heroImages.length === 0) heroImages = ["/images/default-hero.jpg"];
-
-// Limit to first 5 or 6 images to avoid loading too many in the hero slider
 heroImages = heroImages.slice(0, 6);
 
 // Colors for tags
@@ -37,22 +59,32 @@ const tagColors = [
 ];
 ---
 
-<section class="relative min-h-screen pt-28 sm:pt-32 pb-16 lg:pb-20 flex items-center justify-center overflow-hidden hero-slider bg-[#103646]">
+<section 
+  class="relative min-h-screen pt-28 sm:pt-32 pb-16 lg:pb-20 flex items-center justify-center overflow-hidden hero-slider bg-[#103646]"
+  style={bgColor && !bgImage ? { backgroundColor: bgColor } : undefined}
+>
     <!-- Background Image Slider -->
-    <div class="absolute inset-0 hero-slider-container z-0 opacity-60">
-        {
-            heroImages.map((src, index) => (
-                <div class={`hero-slide ${index === 0 ? "active" : ""}`}>
-                    <img
-                        src={src}
-                        alt={`${title} - Vista ${index + 1}`}
-                        class="w-full h-full object-cover"
-                        loading={index === 0 ? "eager" : "lazy"}
-                    />
-                </div>
-            ))
-        }
-    </div>
+    {bgImage && (
+      <div class="absolute inset-0 hero-slider-container z-0" style={{ opacity: bgOpacity }}>
+          {
+              heroImages.map((src, index) => (
+                  <div class={`hero-slide ${index === 0 ? "active" : ""}`}>
+                      <img
+                          src={src}
+                          alt={`${title} - Vista ${index + 1}`}
+                          class="w-full h-full object-cover"
+                          loading={index === 0 ? "eager" : "lazy"}
+                      />
+                  </div>
+              ))
+          }
+      </div>
+    )}
+
+    <!-- Overlay oscuro -->
+    {hasOverlay && (
+      <div class="absolute inset-0 bg-black/60 z-10 pointer-events-none"></div>
+    )}
 
     <!-- Overlay Mosaico -->
     <div
@@ -69,12 +101,12 @@ const tagColors = [
     </div>
 
   <div class="max-w-4xl mx-auto px-6 text-center relative z-30">
-    <!-- Badge -->
+    <!-- Status Badge -->
     <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 mb-8">
       <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
       </svg>
-      <span class="text-white font-semibold text-sm tracking-wider uppercase">Proyecto Disponible</span>
+      <span class="text-white font-semibold text-sm tracking-wider uppercase">{statusText}</span>
     </div>
 
     <!-- Title -->
@@ -87,13 +119,68 @@ const tagColors = [
       {description}
     </p>
 
+    <!-- Info Chips (máximo 3) -->
+    {infoChips && infoChips.length > 0 && (
+      <div class="flex flex-wrap gap-4 justify-center mb-8">
+        {infoChips.map((chip: any) => (
+          <div class="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-5 py-3 hover:bg-white/15 transition-all duration-300">
+            {chip.icon && (
+              <Icon name={chip.icon} class="w-5 h-5 text-[#D79528]" />
+            )}
+            <span class="text-white font-semibold text-sm">{chip.title}</span>
+          </div>
+        ))}
+      </div>
+    )}
+
     <!-- Tags -->
-    <div class="flex flex-wrap gap-4 justify-center mb-12">
-      {tags.map((tag, index) => (
-        <div class={`${tagColors[index % tagColors.length]} rounded-full px-6 py-3 text-white font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 uppercase tracking-wide`}>
-          {tag}
-        </div>
-      ))}
+    {tags && tags.length > 0 && (
+      <div class="flex flex-wrap gap-4 justify-center mb-12">
+        {tags.map((tag, index) => (
+          <div class={`${tagColors[index % tagColors.length]} rounded-full px-6 py-3 text-white font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 uppercase tracking-wide`}>
+            {tag}
+          </div>
+        ))}
+      </div>
+    )}
+
+    <!-- CTA Buttons Section -->
+    <div class="flex flex-wrap gap-4 justify-center">
+      {showWhatsapp && (
+        <Button 
+          variant="secondary"
+          size="lg"
+          href={`https://wa.me/593998323304?text=${encodeURIComponent(`¡Hola Carpio Constructora! 🤩 Me interesa obtener más información sobre el proyecto ${title}.`)}`}
+          icon="ph:whatsapp-logo-fill"
+          class="shadow-xl hover:shadow-2xl bg-[#25D366] border-[#25D366] text-white hover:bg-transparent hover:text-[#25D366] hover:border-[#25D366]"
+        >
+          Solicitar Info
+        </Button>
+      )}
+      
+      {showEmail && (
+        <Button 
+          variant="secondary"
+          size="lg"
+          href={`mailto:contacto@carpioconstructora.com?subject=${encodeURIComponent(`Consulta sobre Proyecto ${title}`)}`}
+          icon="ph:envelope-fill"
+          class="shadow-xl hover:shadow-2xl border-white bg-transparent text-white hover:bg-white hover:text-gray-900"
+        >
+          Enviar Email
+        </Button>
+      )}
+      
+      {showContacto && (
+        <Button 
+          variant="primary"
+          size="lg"
+          href="/contacto"
+          icon="ph:arrow-right-bold"
+          class="shadow-xl hover:shadow-2xl"
+        >
+          Contacto
+        </Button>
+      )}
     </div>
   </div>
 </section>

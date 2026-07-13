@@ -5,9 +5,8 @@ import Footer from "../../components/sections/Footer.astro";
 import ProjectHero from "../../components/sections/project/ProjectHero.astro";
 import ProjectContent from "../../components/sections/project/ProjectContent.astro";
 import ProjectVideo from "../../components/sections/project/ProjectVideo.astro";
-import ProjectImageSlider from "../../components/sections/project/ProjectImageSlider.astro";
 import ProjectMosaicNew from "../../components/sections/project/ProjectMosaicNew.astro";
-import ProjectTestimonials from "../../components/sections/project/ProjectTestimonials.astro";
+import ServicioCTA from "../../components/sections/servicio/ServicioCTA.astro"; // Importar para sección contacto
 import { getCollection } from "astro:content";
 
 // Generar las rutas estáticas desde Astro Content Collections
@@ -35,6 +34,7 @@ const {
   virtualTourVideo,
   specifications,
   brochureUrl,
+  project, // Objeto del nuevo esquema de TinaCMS
 } = proyecto.data;
 
 // Renderizar el contenido markdown como string
@@ -49,42 +49,92 @@ const isFicoa = proyecto.slug === "los-arrayanes-de-ficoa";
 <Layout title={`${title} - Constructora Carpio`}>
   <Header />
   <main>
+    <!-- Sección HERO -->
     <ProjectHero
-      title={title}
-      description={description}
+      title={project?.general?.name || title}
+      description={project?.general?.description || description}
       tags={tags}
       backgroundImage={backgroundImage}
-      images={images}
+      images={project?.general?.images || images}
+      heroSection={project?.heroSection}
     />
 
-    <!-- Si es Keops, mostrar el video en lugar del ProjectContent -->
+    <!-- Sección VIDEO -->
     {
-      isKeops && virtualTourVideo ? (
+      ((project?.videoSection?.enabled && project?.videoSection?.videoUrl) || (isKeops && virtualTourVideo)) && (
         <ProjectVideo
-          videoUrl={virtualTourVideo}
-          title="Recorrido Virtual KEOPS"
-          description="Descubre cada detalle de este innovador espacio retail a través de nuestro tour virtual completo"
-          projectName={title}
-          projectDescription={description}
-        />
-      ) : (
-        <ProjectContent
-          title={title}
-          content={contentHtml}
-          images={images}
-          virtualTourVideo={virtualTourVideo}
-          brochureUrl={brochureUrl}
-          specifications={isFicoa ? undefined : specifications}
+          videoUrl={project?.videoSection?.videoUrl || virtualTourVideo}
+          title={project?.videoSection?.title || "Recorrido Virtual"}
+          description={project?.videoSection?.description || "Descubre cada detalle de este proyecto a través de nuestro tour virtual."}
+          projectName={project?.general?.name || title}
+          projectDescription={project?.general?.description || description}
         />
       )
     }
 
-    <!-- <ProjectImageSlider 
-      images={images}
-      title="Galería del Proyecto"
-    /> -->
+    <!-- Sección DETALLES PROYECTO -->
+    <ProjectContent
+      title={project?.general?.name || title}
+      content={contentHtml}
+      images={project?.general?.images || images}
+      virtualTourVideo={project?.general?.virtualTourVideo || virtualTourVideo}
+      brochureUrl={project?.general?.brochure || brochureUrl}
+      specifications={
+        (project?.detailsSection?.showSpecifications === false || isFicoa)
+          ? undefined
+          : (project?.general?.specifications || specifications)
+      }
+    />
 
-    <ProjectMosaicNew images={images} title={title} />
+    <!-- Sección MOSAICO VISUAL -->
+    {
+      (project?.visualMosaicSection?.enabled !== false) && (
+        <ProjectMosaicNew 
+          images={project?.visualMosaicSection?.images || project?.general?.images || images} 
+          title={project?.visualMosaicSection?.title || title} 
+        />
+      )
+    }
+
+    <!-- Sección NUESTROS PROYECTOS / OTROS PROYECTOS -->
+    {
+      project?.ourProjectsSection?.enabled && (
+        <section class="py-16 bg-gray-50 border-t border-b border-gray-100 text-center">
+          <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+              {project?.ourProjectsSection?.title || "Explora más Proyectos"}
+            </h2>
+            <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+              {project?.ourProjectsSection?.description || "Descubre nuestro portafolio de conjuntos residenciales, locales comerciales y más obras de calidad."}
+            </p>
+            <a 
+              href="/proyectos" 
+              class="inline-flex items-center gap-2 bg-[#103646] hover:bg-[#103646]/90 text-white font-bold px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              Ver Portafolio Completo
+            </a>
+          </div>
+        </section>
+      )
+    }
+
+    <!-- Sección CONTACTO -->
+    {
+      project?.contactSection?.enabled && (
+        <ServicioCTA
+          title={project?.contactSection?.title || "¿Te interesa este proyecto?"}
+          description={project?.contactSection?.description || "Obtén asesoría personalizada sobre precios, financiamiento y detalles técnicos."}
+          primaryButtonText="Contactar por WhatsApp"
+          primaryButtonHref={`https://wa.me/593998323304?text=${encodeURIComponent(`¡Hola Carpio Constructora! 🤩 Me interesa recibir información sobre el proyecto ${project?.general?.name || title}.`)}`}
+          comienzaHoy={{
+            contactCard: {
+              showWhatsapp: project?.contactSection?.buttons?.whatsapp !== false,
+              showEmail: project?.contactSection?.buttons?.email !== false
+            }
+          }}
+        />
+      )
+    }
   </main>
   <Footer />
 </Layout>
