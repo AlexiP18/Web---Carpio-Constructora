@@ -106,6 +106,8 @@ const iconClasses = cn(
     class={classes} 
     aria-disabled={disabled}
     tabindex={disabled ? -1 : undefined}
+    data-cuelume-press="tick"
+    data-cuelume-hover="whisper"
     {...rest}
   >
     {icon && iconPosition === 'left' && (
@@ -126,6 +128,8 @@ const iconClasses = cn(
     type={type} 
     class={classes}
     disabled={disabled}
+    data-cuelume-press="tick"
+    data-cuelume-hover="whisper"
     {...rest}
   >
     {icon && iconPosition === 'left' && (

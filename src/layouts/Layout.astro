@@ -98,5 +98,14 @@ const { title = "Constructora Carpio - Transformamos sueños en estructuras dura
                 }
             </script>
         )}
+        <!-- Initialize Cuelume -->
+        <script>
+            import { bind } from 'cuelume';
+            try {
+                bind();
+            } catch (e) {
+                console.error("[Cuelume Init Error]:", e);
+            }
+        </script>
     </body>
 </html>

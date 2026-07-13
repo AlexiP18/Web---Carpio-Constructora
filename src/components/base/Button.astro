@@ -63,6 +63,8 @@ const classes = cn(buttonVariants({ variant, size, fullWidth }), className);
     href={href}
     class={classes}
     role="button"
+    data-cuelume-press="tick"
+    data-cuelume-hover="whisper"
     {...rest}
   >
     <slot />
@@ -73,6 +75,8 @@ const classes = cn(buttonVariants({ variant, size, fullWidth }), className);
     type={type}
     disabled={disabled}
     class={classes}
+    data-cuelume-press="tick"
+    data-cuelume-hover="whisper"
     {...rest}
   >
     <slot />
